@@ -21,3 +21,5 @@ set tacklebox_plugins python extract pip up
 # Load Tacklebox configuration
 . ~/.config/fish/tacklebox.fish
 
+# Load Aliases
+. ~/.config/fish/aliases.fish
