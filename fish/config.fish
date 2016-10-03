@@ -16,7 +16,7 @@ set tacklebox_modules virtualfish virtualhooks
 # Custom plugins may be added to ~/.tacklebox/plugins/
 # Example format: set tacklebox_plugins python extract
 
-set tacklebox_plugins python extract pip up
+set tacklebox_plugins python extract pip up sdl
 
 # Load Tacklebox configuration
 . ~/.config/fish/tacklebox.fish
