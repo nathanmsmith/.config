@@ -6,11 +6,9 @@ function up -d "Update software to the latest versions"
         which brew >/dev/null
         and begin
             brew update
-            brew upgrade --all
+            brew upgrade
         end
-        which tlmgr >/dev/null
-        and  tlmgr update --self --all
-        set -l plugins python vundle
+        set -l plugins python
         for plugin in $plugins
             if contains $plugin $tacklebox_plugins
                 up $plugin
@@ -47,8 +45,6 @@ function up -d "Update software to the latest versions"
                                 pip install --upgrade $outdated
                             end
                         end
-                    case "vundle"
-                        env SHELL=/bin/bash vim +PluginInstall! +PluginClean +qall
                 end
             else
                 echo "Could not locate that plugin in your tacklebox_plugins setting."
