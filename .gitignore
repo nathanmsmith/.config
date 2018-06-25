@@ -2,3 +2,4 @@
 yarn/
 configstore/
 fish/fishd.*
+/fish/completions
