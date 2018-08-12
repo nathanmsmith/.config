@@ -15,51 +15,7 @@
                 },
                 "rules": []
             },
-            "devices": [
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": false,
-                        "is_pointing_device": true,
-                        "product_id": 50475,
-                        "vendor_id": 1133
-                    },
-                    "ignore": true,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 8211,
-                        "vendor_id": 1241
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "key_code": "left_command"
-                            },
-                            "to": {
-                                "key_code": "left_option"
-                            }
-                        },
-                        {
-                            "from": {
-                                "key_code": "left_option"
-                            },
-                            "to": {
-                                "key_code": "left_command"
-                            }
-                        }
-                    ]
-                }
-            ],
+            "devices": [],
             "fn_function_keys": [
                 {
                     "from": {
@@ -98,7 +54,7 @@
                         "key_code": "f5"
                     },
                     "to": {
-                        "consumer_key_code": "rewind"
+                        "key_code": "illumination_decrement"
                     }
                 },
                 {
@@ -106,7 +62,7 @@
                         "key_code": "f6"
                     },
                     "to": {
-                        "consumer_key_code": "play_or_pause"
+                        "key_code": "illumination_increment"
                     }
                 },
                 {
@@ -114,7 +70,7 @@
                         "key_code": "f7"
                     },
                     "to": {
-                        "consumer_key_code": "fastforward"
+                        "consumer_key_code": "rewind"
                     }
                 },
                 {
@@ -122,7 +78,7 @@
                         "key_code": "f8"
                     },
                     "to": {
-                        "key_code": "f8"
+                        "consumer_key_code": "play_or_pause"
                     }
                 },
                 {
@@ -130,7 +86,7 @@
                         "key_code": "f9"
                     },
                     "to": {
-                        "consumer_key_code": "mute"
+                        "consumer_key_code": "fastforward"
                     }
                 },
                 {
@@ -138,7 +94,7 @@
                         "key_code": "f10"
                     },
                     "to": {
-                        "consumer_key_code": "volume_decrement"
+                        "consumer_key_code": "mute"
                     }
                 },
                 {
@@ -146,7 +102,7 @@
                         "key_code": "f11"
                     },
                     "to": {
-                        "consumer_key_code": "volume_increment"
+                        "consumer_key_code": "volume_decrement"
                     }
                 },
                 {
@@ -154,7 +110,7 @@
                         "key_code": "f12"
                     },
                     "to": {
-                        "consumer_key_code": "eject"
+                        "consumer_key_code": "volume_increment"
                     }
                 }
             ],

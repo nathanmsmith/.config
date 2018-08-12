@@ -25,7 +25,7 @@ function fish_prompt -d "Write out the prompt"
     if not set -q __fish_prompt_repo_clean
         set -g __fish_prompt_repo_clean (set_color --bold green)
     end
-    
+
     if not set -q __fish_prompt_need_push
         set -g __fish_prompt_need_push (set_color --bold magenta)
     end
@@ -40,14 +40,14 @@ function fish_prompt -d "Write out the prompt"
     else
         set -g __vcprompt $__fish_prompt_normal' on '$__fish_prompt_repo_dirty(__fish_git_prompt "%s" | sed 's/ //')
     end
-    
-    
+
+
     set -l push_index (git cherry -v ^/dev/null)
     if test -z "$push_index"
         set -g __need_push
     else
         set -g __need_push $__fish_prompt_normal" with "$__fish_prompt_need_push"unpushed"
-    end	
+    end
 
     switch $USER
 
