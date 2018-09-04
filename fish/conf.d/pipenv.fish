@@ -1,0 +1,1 @@
+/Users/nathan/.config/fisherman/pipenv/conf.d/pipenv.fish
