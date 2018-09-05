@@ -4,7 +4,7 @@ end
 
 function _node -d "Writes the node version if there is a package.json"
   if test -f ./package.json
-    echo -s 'via ' (set_color --bold green) '⬢ ' (node -v) (set_color normal)
+    echo -s ' via ' (set_color --bold green) '⬢ ' (node -v) (set_color normal)
   end
 end
 
