@@ -20,9 +20,9 @@ function _git_status -d "Writes the current git status, if there is one."
   else
     set_color --bold red
   end
-  echo -s $branch_name (set_color normal)
+  echo -s "$branch_name" (set_color normal)
 
-  if test -z (git cherry -v ^/dev/null)
+  if test -z "(command git cherry -v ^/dev/null)"
     return
   end
 
