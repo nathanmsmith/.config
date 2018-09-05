@@ -87,12 +87,31 @@ function fish_prompt -d "Write out the prompt"
 
     end
 
-    if set -q VIRTUAL_ENV
-        if not set -q __fish_prompt_virtualenv
-            set __fish_prompt_virtualenv $__fish_prompt_virtualenv_color"("(basename "$VIRTUAL_ENV")")"$__fish_prompt_normal" "
-        end
+  if set -q VIRTUAL_ENV
+    if not set -q __fish_prompt_virtualenv
+        set __fish_prompt_virtualenv $__fish_prompt_virtualenv_color"("(basename "$VIRTUAL_ENV")")"$__fish_prompt_normal" "
     end
+  end
 
-    echo -n -s "$__fish_prompt_userhost" "$__fish_prompt_virtualenv" "in " "$__fish_prompt_cwd" (prompt_pwd) "$__vcprompt" "$__need_push" "$__fish_prompt_normal"\n"$__fish_prompt_char"
+  echo
+  if test "$fish_key_bindings" = "fish_vi_key_bindings"
+    switch $fish_bind_mode
+      case default
+        set_color --bold red
+        echo -n 🅽
+      case insert
+        set_color --bold green
+        echo -n 🅸
+      case replace_one
+        set_color --bold green
+        echo -n 🆁
+      case visual
+        set_color --bold brmagenta
+        echo -n 🆅
+    end
+    set_color normal
+  end
+
+  echo -s "$__fish_prompt_userhost" "$__fish_prompt_virtualenv" " in " "$__fish_prompt_cwd" (prompt_pwd) "$__vcprompt" "$__need_push" "$__fish_prompt_normal"\n"$__fish_prompt_char"
 
 end
