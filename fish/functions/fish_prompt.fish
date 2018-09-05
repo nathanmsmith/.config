@@ -26,7 +26,7 @@ function _git_status -d "Writes the current git status, if there is one."
     return
   end
 
-  echo " with " (set_color --bold magenta) "unpushed" (set_color normal)
+  echo -s " with " (set_color --bold magenta) "unpushed" (set_color normal)
 
 end
 
