@@ -1,98 +1,57 @@
-# Based of the Entropy prompt theme, by Justin Mayer <http://justinmayer.com/> and Zach Holman's <https://zachholman.com> prompt
+function _directory -d "Writes the colorized present working directory"
+  echo -s 'in ' (set_color --bold cyan) (prompt_pwd) (set_color normal)
+end
+
+function _node -d "Writes the node version if there is a package.json"
+  if test -f ./package.json
+    echo -s 'via ' (set_color --bold green) '⬢ ' (node -v) (set_color normal)
+  end
+end
+
+function _git_status -d "Writes the current git status, if there is one."
+  set -l branch_name (command git rev-parse --abbrev-ref HEAD ^/dev/null)
+  if test -z $branch_name
+    return
+  end
+
+  echo -s (set_color normal) " on "
+  if test -z (command git status --porcelain ^/dev/null)
+    set_color --bold green
+  else
+    set_color --bold red
+  end
+  echo -s "$branch_name" (set_color normal)
+
+  set -l unpushed_changes (git cherry -v ^/dev/null)
+  if test -z "$unpushed_changes"
+    return
+  end
+
+  echo -s " with " (set_color --bold magenta) "unpushed" (set_color normal)
+
+end
+
+function _vim_mode -d "Writes the current vim mode"
+  if test "$fish_key_bindings" = "fish_vi_key_bindings"
+    switch $fish_bind_mode
+      case default
+        set_color --bold red
+        echo -n 🅽
+      case insert
+        set_color --bold green
+        echo -n 🅸
+      case replace_one
+        set_color --bold green
+        echo -n 🆁
+      case visual
+        set_color --bold brmagenta
+        echo -n 🆅
+    end
+    echo " "
+    set_color normal
+  end
+end
+
 function fish_prompt -d "Write out the prompt"
-
-    # Just calculate these once, to save a few cycles when displaying the prompt
-    if not set -q __fish_prompt_hostname
-        set -g __fish_prompt_hostname (hostname|cut -d . -f 1)
-    end
-
-    if not set -q __fish_prompt_normal
-        set -g __fish_prompt_normal (set_color normal)
-    end
-
-    if not set -q __fish_prompt_virtualenv_color
-        set -g __fish_prompt_virtualenv_color (set_color --bold yellow)
-    end
-
-    if not set -q __fish_prompt_userhost_color
-        set -g __fish_prompt_userhost_color (set_color blue)
-    end
-
-    if not set -q __fish_prompt_repo_dirty
-        set -g __fish_prompt_repo_dirty (set_color --bold red)
-    end
-
-    if not set -q __fish_prompt_repo_clean
-        set -g __fish_prompt_repo_clean (set_color --bold green)
-    end
-
-    if not set -q __fish_prompt_need_push
-        set -g __fish_prompt_need_push (set_color --bold magenta)
-    end
-
-    if not set -q __fish_prompt_gray
-        set -g __fish_prompt_gray (set_color -o black)
-    end
-
-    set -l index (git status --porcelain ^/dev/null)
-    if test -z "$index"
-        set -g __vcprompt $__fish_prompt_normal' on '$__fish_prompt_repo_clean(__fish_git_prompt "%s" | sed 's/ //')
-    else
-        set -g __vcprompt $__fish_prompt_normal' on '$__fish_prompt_repo_dirty(__fish_git_prompt "%s" | sed 's/ //')
-    end
-
-
-    set -l push_index (git cherry -v ^/dev/null)
-    if test -z "$push_index"
-        set -g __need_push
-    else
-        set -g __need_push $__fish_prompt_normal" with "$__fish_prompt_need_push"unpushed"
-    end
-
-    switch $USER
-
-        case root
-
-        if not set -q __fish_prompt_cwd
-            if set -q fish_color_cwd_root
-                set -g __fish_prompt_cwd (set_color $fish_color_cwd_root)
-            else
-                set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-            end
-        end
-
-        set -g __fish_prompt_char '# '
-
-        case '*'
-
-        if not set -q __fish_prompt_cwd
-            set -g __fish_prompt_cwd (set_color --bold cyan)
-        end
-
-        set -g __fish_prompt_char '› '
-
-    end
-
-    if [ -z $SSH_CONNECTION ]
-
-        if not set -q __fish_prompt_userhost
-            set -g __fish_prompt_userhost
-        end
-
-    else
-
-        if not set -q __fish_prompt_userhost
-            set -g __fish_prompt_userhost $__fish_prompt_userhost_color$USER"@"$__fish_prompt_hostname" "
-        end
-
-    end
-
-    if set -q VIRTUAL_ENV
-        if not set -q __fish_prompt_virtualenv
-            set __fish_prompt_virtualenv $__fish_prompt_virtualenv_color"("(basename "$VIRTUAL_ENV")")"$__fish_prompt_normal" "
-        end
-    end
-
-    echo -n -s "$__fish_prompt_userhost" "$__fish_prompt_virtualenv" "in " "$__fish_prompt_cwd" (prompt_pwd) "$__vcprompt" "$__need_push" "$__fish_prompt_normal"\n"$__fish_prompt_char"
-
+  echo -nes "\n" (_vim_mode) (_directory) (_git_status) (_node) '\n› '
 end
