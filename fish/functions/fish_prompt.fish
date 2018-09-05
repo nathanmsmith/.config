@@ -22,7 +22,8 @@ function _git_status -d "Writes the current git status, if there is one."
   end
   echo -s "$branch_name" (set_color normal)
 
-  if test -z "(command git cherry -v ^/dev/null)"
+  set -l unpushed_changes (git cherry -v ^/dev/null)
+  if test -z "$unpushed_changes"
     return
   end
 
