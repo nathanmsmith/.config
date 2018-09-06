@@ -30,18 +30,18 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "left_option"
+                                "key_code": "left_command"
                             },
                             "to": {
-                                "key_code": "left_command"
+                                "key_code": "left_option"
                             }
                         },
                         {
                             "from": {
-                                "key_code": "left_command"
+                                "key_code": "left_option"
                             },
                             "to": {
-                                "key_code": "left_option"
+                                "key_code": "left_command"
                             }
                         }
                     ]
@@ -85,7 +85,7 @@
                         "key_code": "f5"
                     },
                     "to": {
-                        "key_code": "illumination_decrement"
+                        "consumer_key_code": "rewind"
                     }
                 },
                 {
@@ -93,7 +93,7 @@
                         "key_code": "f6"
                     },
                     "to": {
-                        "key_code": "illumination_increment"
+                        "consumer_key_code": "play_or_pause"
                     }
                 },
                 {
@@ -101,7 +101,7 @@
                         "key_code": "f7"
                     },
                     "to": {
-                        "consumer_key_code": "rewind"
+                        "consumer_key_code": "fastforward"
                     }
                 },
                 {
@@ -109,7 +109,7 @@
                         "key_code": "f8"
                     },
                     "to": {
-                        "consumer_key_code": "play_or_pause"
+                        "key_code": "dashboard"
                     }
                 },
                 {
@@ -117,7 +117,7 @@
                         "key_code": "f9"
                     },
                     "to": {
-                        "consumer_key_code": "fastforward"
+                        "consumer_key_code": "mute"
                     }
                 },
                 {
@@ -125,7 +125,7 @@
                         "key_code": "f10"
                     },
                     "to": {
-                        "consumer_key_code": "mute"
+                        "consumer_key_code": "volume_decrement"
                     }
                 },
                 {
@@ -133,7 +133,7 @@
                         "key_code": "f11"
                     },
                     "to": {
-                        "consumer_key_code": "volume_decrement"
+                        "consumer_key_code": "volume_increment"
                     }
                 },
                 {
@@ -141,7 +141,7 @@
                         "key_code": "f12"
                     },
                     "to": {
-                        "consumer_key_code": "volume_increment"
+                        "consumer_key_code": "eject"
                     }
                 }
             ],
