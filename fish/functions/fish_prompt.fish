@@ -15,7 +15,8 @@ function _git_status -d "Writes the current git status, if there is one."
   end
 
   echo -s (set_color normal) " on "
-  if test -z (command git status --porcelain ^/dev/null)
+  set -l dirty (command git status --porcelain ^/dev/null)
+  if test -z "$dirty"
     set_color --bold green
   else
     set_color --bold red
