@@ -9,7 +9,7 @@
 	repo = town repo
 	ship = town ship
 	sync = town sync
-	discard = checkout .
+	discard = clean -df && checkout -- .
 [credential]
 	helper = osxkeychain
 [commit]
