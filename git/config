@@ -7,9 +7,9 @@
 	prune-branches = town prune-branches
 	rename-branch = town rename-branch
 	repo = town repo
-	ship = town ship
+	ship = town shi
 	sync = town sync
-	discard = clean -df && checkout -- .
+	discard = !git clean -df && git checkout -- .
 [credential]
 	helper = osxkeychain
 [commit]
