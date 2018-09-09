@@ -12,6 +12,8 @@
 	discard = checkout .
 [credential]
 	helper = osxkeychain
+[commit]
+	gpgsign = true
 [user]
 	name = Nathan Smith
 	email = nathan@nathansmith.io
