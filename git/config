@@ -7,11 +7,13 @@
 	prune-branches = town prune-branches
 	rename-branch = town rename-branch
 	repo = town repo
-	ship = town ship
+	ship = town shi
 	sync = town sync
-	discard = checkout .
+	discard = !git clean -df && git checkout -- .
 [credential]
 	helper = osxkeychain
+[commit]
+	gpgsign = true
 [user]
 	name = Nathan Smith
 	email = nathan@nathansmith.io

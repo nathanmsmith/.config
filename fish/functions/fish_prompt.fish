@@ -9,7 +9,7 @@ function _node -d "Writes the node version if there is a package.json"
 end
 
 function _git_status -d "Writes the current git status, if there is one."
-  set -l branch_name (command git rev-parse --abbrev-ref HEAD ^/dev/null)
+  set -l branch_name (__fish_git_prompt "%s" | sed 's/ //')
   if test -z $branch_name
     return
   end

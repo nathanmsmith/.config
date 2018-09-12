@@ -11,34 +11,33 @@ Plugin manager: fisher
 
 ### Applications I use
 
-* 1Password
-* Airmail
-* Alfred
-* Backblaze
-* Bartender 3
-* Bear
-* Caffeine
-* cd to
-* DaisyDisk
-* Day One
-* Figma
-* Firefox
-* iStat Menus
-* Kaleidoscope
-* Pixelmator
-* Reeder
-* Scroll Reverser
-* Sketch
-* Slack
-* Soulver
-* The Unarchiver
-* Things
-* Tower
-* Transmission
-* Transmit
-* Trello
-* Tweetbot
-* Visual Studio Code
-* VLC
-* Xcode
-* XLD
+- 1Password
+- Alfred
+- Backblaze
+- Bartender 3
+- Caffeine
+- Canary Mail
+- cd to
+- DaisyDisk
+- Day One
+- Figma
+- Firefox
+- iStat Menus
+- Kaleidoscope
+- Pixelmator
+- Reeder
+- Scroll Reverser
+- Sketch
+- Slack
+- Soulver
+- The Unarchiver
+- Things
+- Tower
+- Transmission
+- Transmit
+- Trello
+- Tweetbot
+- Visual Studio Code
+- VLC
+- Xcode
+- XLD
