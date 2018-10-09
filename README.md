@@ -41,3 +41,9 @@ Plugin manager: fisher
 - VLC
 - Xcode
 - XLD
+
+## Adobe DNG Converter
+
+```
+ln -s "/Applications/Adobe DNG Converter.app/Contents/MacOS/Adobe DNG Converter" dng-converter
+```
