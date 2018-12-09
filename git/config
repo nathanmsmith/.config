@@ -1,5 +1,6 @@
 [alias]
 	append = town append
+	continue = town continue
 	hack = town hack
 	kill = town kill
 	new-pull-request = town new-pull-request
