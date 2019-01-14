@@ -7,6 +7,16 @@ known as “dotfiles”, in a folder called ".config". This is my .config folder
 
 Plugin manager: fisher
 
+### Changing shell to fish
+
+```
+brew install fish
+echo /usr/local/bin/fish >> /etc/shells
+chsh -s /usr/local/bin/fish
+```
+
+Also enable secure text entry, a line cursor, and blinking.
+
 ## Bootstrapping a new mac
 
 ### Applications I use
