@@ -3,6 +3,12 @@ brew 'fish'
 brew 'wget'
 brew 'git'
 brew 'git-town'
+brew 'neovim'
+brew 'vim'
+brew 'tig'
+brew 'tree'
+brew 'go'
+brew 'youtube-dl'
 
 # JavaScript Dev
 brew 'node'
