@@ -10,7 +10,11 @@ brew 'tree'
 brew 'go'
 brew 'youtube-dl'
 
-# JavaScript Dev
+# Python dev
+brew 'python'
+brew 'python@2'
+
+# JavaScript dev
 brew 'node'
 brew 'yarn'
 
