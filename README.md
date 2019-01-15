@@ -21,36 +21,43 @@ Also enable secure text entry, a line cursor, and blinking.
 
 ### Applications I use
 
+#### All Computers
+
 - 1Password
 - Alfred
 - Backblaze
 - Bartender 3
-- Caffeine
+- Amphetamine
 - Canary Mail
-- cd to
-- DaisyDisk
+- [cd to](https://github.com/jbtule/cdto)
 - Day One
-- Figma
 - Firefox
+- Chrome
 - iStat Menus
 - Kaleidoscope
-- Pixelmator
-- Reeder
 - Scroll Reverser
-- Sketch
 - Slack
-- Soulver
 - The Unarchiver
 - Things
 - Tower
-- Transmission
-- Transmit
 - Trello
-- Tweetbot
 - Visual Studio Code
-- VLC
 - Xcode
+
+#### Personal Computer
+
+- Pixelmator
+- Reeder
+- Soulver
+- Transmit
 - XLD
+- VLC
+- Tweetbot
+- Transmission
+- Sketch
+
+- Figma
+- DaisyDisk
 
 ## Adobe DNG Converter
 
