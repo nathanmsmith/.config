@@ -8,11 +8,6 @@ set fish_key_bindings fish_user_key_bindings
 # Load aliases
 source ~/.config/fish/aliases.fish
 
-# Nodenv
-status --is-interactive; and source (nodenv init -|psub)
-
-# Rbenv
-status --is-interactive; and source (rbenv init -|psub)
 
 # BEGIN ANSIBLE MANAGED BLOCK
 # Add homebrew binaries to the path.
@@ -44,3 +39,9 @@ set AWS_VAULT_KEYCHAIN_NAME login
 set AWS_SESSION_TTL 24h
 set AWS_ASSUME_ROLE_TTL 1h
 # END ANSIBLE MANAGED BLOCK⏎                                                    
+# Nodenv
+status --is-interactive; and source (nodenv init -|psub)
+
+# Rbenv
+status --is-interactive; and source (rbenv init -|psub)
+
