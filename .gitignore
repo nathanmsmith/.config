@@ -3,3 +3,4 @@ yarn/
 configstore/
 fish/fishd.*
 /fish/completions
+fish/secrets.fish

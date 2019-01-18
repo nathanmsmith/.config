@@ -8,6 +8,8 @@ set fish_key_bindings fish_user_key_bindings
 # Load aliases
 source ~/.config/fish/aliases.fish
 
+# Load secrets
+source ~/.config/fish/secrets.fish
 
 # BEGIN ANSIBLE MANAGED BLOCK
 # Add homebrew binaries to the path.
@@ -16,6 +18,8 @@ set -x PATH "/usr/local/bin:$PATH"
 # Force certain more-secure behaviours from homebrew
 set -x HOMEBREW_NO_INSECURE_REDIRECT 1
 set -x HOMEBREW_CASK_OPTS --require-sha
+
+set -x NODE_OPTIONS "--max-old-space-size=4096"
 
 # Prefer GNU binaries to Macintosh binaries.
 set -x PATH "/usr/local/opt/coreutils/libexec/gnubin:$PATH"
