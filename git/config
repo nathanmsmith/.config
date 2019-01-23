@@ -21,3 +21,5 @@
 	signingkey = 86BD1B91
 [core]
 	editor = code --wait
+[pull]
+	rebase = true
