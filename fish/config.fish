@@ -42,7 +42,10 @@ set -x AWS_VAULT_KEYCHAIN_NAME login
 # tweak session times so you don't have to re-enter passwords every 5min
 set -x AWS_SESSION_TTL 24h
 set -x AWS_ASSUME_ROLE_TTL 1h
-# END ANSIBLE MANAGED BLOCK⏎                                                    
+# END ANSIBLE MANAGED BLOCK⏎                                           
+set -x VAGRANT_CWD $DATADOG_ROOT
+set -x DEVENV_MEM 8192
+
 # Nodenv
 status --is-interactive; and source (nodenv init -|psub)
 
