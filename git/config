@@ -23,3 +23,5 @@
 	editor = code --wait
 [pull]
 	rebase = true
+[fetch]
+	prune = true
