@@ -21,6 +21,9 @@ status --is-interactive; and source (nodenv init -|psub)
 # Rbenv
 status --is-interactive; and source (rbenv init -|psub)
 
+# Add gems to path
+set -gx PATH $PATH /usr/local/lib/ruby/gems/2.6.0/bin
+
 # Go specific settings
 # GOPATH
 set -gx GOPATH $HOME/Developer/go
