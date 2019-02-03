@@ -1,3 +1,5 @@
+# For some reason, the default vim keybindings don't change the cursor type for fish
+# See https://github.com/fish-shell/fish-shell/issues/1403#issuecomment-397109051
 function fish_vi_cursor --on-variable fish_bind_mode
     if set -q __last_fish_bind_mode
         and test $__last_fish_bind_mode = $fish_bind_mode
