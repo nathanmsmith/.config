@@ -1,6 +1,8 @@
-set fish_greeting ""
+if status --is-login
+  set -gx fish_greeting ""
 
-# TODO: use -U option
+  # Set vi bindings
+  set -gx fish_key_bindings fish_user_key_bindings
 
 # Set vi bindings
 set fish_key_bindings fish_user_key_bindings

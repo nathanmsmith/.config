@@ -1,7 +1,16 @@
 # .config
 
-My preferred shell of choice, fish, stores all configuration files, commonly
-known as “dotfiles”, in a folder called ".config". This is my .config folder.
+These are my dotfiles. There are many like them, but these are mine.
+
+## Setup
+
+Clone this directory in your home folder, `~`. Run `install.sh`
+
+```
+git clone https://github.com/nathunsmitty/.config
+cd .config
+./install.sh
+```
 
 ## fish
 
