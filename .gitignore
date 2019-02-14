@@ -4,3 +4,5 @@ configstore/
 fish/fishd.*
 /fish/completions
 fish/secrets.fish
+nvim/autoload/
+nvim/plugged/
