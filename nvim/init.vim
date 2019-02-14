@@ -18,6 +18,9 @@ Plug 'tpope/vim-commentary'                 " Commenting support (gc)
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
+Plug 'rizzatti/dash.vim'                    " Dash Integration
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " --------------------------------------------------
 " 1.2 JavaScript/TypeScript
@@ -34,6 +37,11 @@ Plug 'styled-components/vim-styled-components', {'branch': 'main'}
 Plug 'leafgarland/typescript-vim'
 " Add flow typing support
 Plug 'flowtype/vim-flow'
+
+" --------------------------------------------------
+" 1.2 GraphQL
+" --------------------------------------------------
+Plug 'jparise/vim-graphql'
 
 " --------------------------------------------------
 " 1.3 HTML/CSS
