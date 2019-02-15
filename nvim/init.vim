@@ -21,6 +21,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'rizzatti/dash.vim'                    " Dash Integration
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'
 
 " --------------------------------------------------
 " 1.2 JavaScript/TypeScript
@@ -30,6 +31,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 " JSX syntax
 Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] }
+
+" JSDoc generation
+Plug 'heavenshell/vim-jsdoc'
 
 " CSS-in-JS Support
 Plug 'styled-components/vim-styled-components', {'branch': 'main'}
@@ -101,4 +105,12 @@ syntax on
 colorscheme night-owl
 
 
+set guicursor+=a:blinkon1
 
+
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}

@@ -10,9 +10,9 @@ if status --is-login
   # Load secrets
   source ~/.config/fish/secrets.fish
 
+  set -gx FZF_DEFAULT_COMMAND  'rg --files --no-ignore-vcs --hidden'
+
   # BEGIN ANSIBLE MANAGED BLOCK
-  # Add homebrew binaries to the path.
-  set -x PATH "/usr/local/bin:$PATH"
 
   # Force certain more-secure behaviours from homebrew
   set -x HOMEBREW_NO_INSECURE_REDIRECT 1

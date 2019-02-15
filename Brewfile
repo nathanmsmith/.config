@@ -1,5 +1,11 @@
+# ripgrep with the optimizations
+# https://github.com/BurntSushi/ripgrep#installation
+# tap 'burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git'
+
 # General tools
 brew 'wget'
+brew 'fzf'
+brew 'ripgrep-bin'
 brew 'neovim'
 brew 'vim'
 brew 'tree'
