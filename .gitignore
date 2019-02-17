@@ -6,3 +6,4 @@ fish/fishd.*
 /nvim/plugged
 /nvim/autoload
 /nvim/.netrwhist
+/fish/fish_variables
