@@ -3,3 +3,6 @@ yarn/
 configstore/
 fish/fishd.*
 /fish/completions
+/nvim/plugged
+/nvim/autoload
+/nvim/.netrwhist
