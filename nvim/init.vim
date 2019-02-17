@@ -51,6 +51,8 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'styled-components/vim-styled-components', {'branch': 'main'}
 " TypeScript Syntax
 Plug 'leafgarland/typescript-vim'
+" TSX Support
+Plug 'ianks/vim-tsx'
 " Add flow typing support
 Plug 'flowtype/vim-flow'
 
@@ -66,7 +68,7 @@ Plug 'jparise/vim-graphql'
 " HTML5 syntax
 Plug 'othree/html5.vim'
 " Emmett HTML completion
-Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'html', 'css'] }
+Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'typescript.tsx', 'html', 'css'] }
 
 
 
@@ -95,7 +97,8 @@ set noswapfile                              " New buffers will be loaded without
 set clipboard+=unnamed                      " Allow to use system clipboard
 " set nostartofline                           " Prevent cursor from moving to beginning of line when switching buffers
 
-
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
@@ -105,13 +108,34 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 
+
 " --------------------------------------------------
-" 2.6 White characters settings
+" Autocompletion
+" aka intellisense, omnicomplete
+" refs:
+" - http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
+" --------------------------------------------------
+:set completeopt=longest,menuone
+:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+
+" --------------------------------------------------
+" Whitespace characters settings
 " refs:
 " - http://vimcasts.org/episodes/show-invisibles/
 " --------------------------------------------------
-
-
+" View tabs as 2 spaces wide
+set tabstop=2
+" Ident by 2:
+set shiftwidth=2
+" Use spaces instead of tabs
+set expandtab
+" Tab to the current indent level
+set smarttab
 
 set list                                    " Show listchars by default
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·,nbsp:·
@@ -128,14 +152,11 @@ let g:nord_comment_brightness = 20
 let g:nord_underline = 1
 colorscheme nord
 
-set guicursor=n:blinkon1
+set guicursor=a:blinkon1
 
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'css': ['prettier'],
-\}
 " Set this variable to 1 to fix files when you save them.
 let g:ale_completion_enabled = 1
+let g:ale_completion_delay = 0
 let g:ale_fix_on_save = 1
 let g:airline#extensions#ale#enabled = 1
 
