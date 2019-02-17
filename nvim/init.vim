@@ -5,19 +5,35 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
-" 1.0 Plug List
+" ==================================================
+" Plug List
 " ==================================================
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'haishanh/night-owl.vim'
+" --------------------------------------------------
+" Themes, statuses, etc.
+" --------------------------------------------------
+Plug 'arcticicestudio/nord-vim'             " A nice theme
+Plug 'vim-airline/vim-airline'              " Status bar
+
+Plug 'kien/rainbow_parentheses.vim'
 
 " --------------------------------------------------
-" 1.1 General tools - linters, formatting, etc.
+" Git tools
+" --------------------------------------------------
+
+Plug 'airblade/vim-gitgutter'
+
+" --------------------------------------------------
+" General tools - linters, formatting, etc.
 " --------------------------------------------------
 Plug 'tpope/vim-commentary'                 " Commenting support (gc)
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround'                   " Surrounding text shortcuts
+Plug 'tpope/vim-repeat'                     " Use `.` for plugins
+Plug 'rizzatti/dash.vim'                    " Dash Integration
+Plug '/usr/local/opt/fzf'                   " Fuzzy finder
+Plug 'junegunn/fzf.vim'
+Plug 'w0rp/ale'                             " Linting and LSP support
 
 " --------------------------------------------------
 " 1.2 JavaScript/TypeScript
@@ -28,12 +44,20 @@ Plug 'pangloss/vim-javascript'
 " JSX syntax
 Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] }
 
+" JSDoc generation
+Plug 'heavenshell/vim-jsdoc'
+
 " CSS-in-JS Support
 Plug 'styled-components/vim-styled-components', {'branch': 'main'}
 " TypeScript Syntax
 Plug 'leafgarland/typescript-vim'
 " Add flow typing support
 Plug 'flowtype/vim-flow'
+
+" --------------------------------------------------
+" 1.2 GraphQL
+" --------------------------------------------------
+Plug 'jparise/vim-graphql'
 
 " --------------------------------------------------
 " 1.3 HTML/CSS
@@ -50,6 +74,10 @@ Plug 'dag/vim-fish'
 
 call plug#end()
 
+" --------------------------------------------------
+" 1.4 C
+" --------------------------------------------------
+" Plug 'vim-scripts/aftersyntaxc.vim', { 'dir': 'after/' }
 
 " ==================================================
 " 2.0 Basic settings
@@ -67,6 +95,11 @@ set noswapfile                              " New buffers will be loaded without
 set clipboard+=unnamed                      " Allow to use system clipboard
 " set nostartofline                           " Prevent cursor from moving to beginning of line when switching buffers
 
+
+
+" See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
+" and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
+:au VimLeave * set guicursor=a:ver25-blinkon1
 
 if &shell =~# 'fish$'
     set shell=sh
@@ -87,10 +120,37 @@ set showbreak=↪
 
 
 
-
 set termguicolors
 syntax on
-colorscheme night-owl
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_comment_brightness = 20
+let g:nord_underline = 1
+colorscheme nord
 
+set guicursor=n:blinkon1
 
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\}
+" Set this variable to 1 to fix files when you save them.
+let g:ale_completion_enabled = 1
+let g:ale_fix_on_save = 1
+let g:airline#extensions#ale#enabled = 1
 
+" Mappings in the style of unimpaired-next
+nmap <silent> [W <Plug>(ale_first)
+nmap <silent> [w <Plug>(ale_previous)
+nmap <silent> ]w <Plug>(ale_next)
+nmap <silent> ]W <Plug>(ale_last)%
+
+" https://stackoverflow.com/questions/19936145/vim-remove-whitespace-for-specific-files
+fun! StripTrailingWhiteSpace()
+  " don't strip on these filetypes
+  if &ft =~ 'markdown'
+    return
+  endif
+  %s/\s\+$//e
+endfun
+autocmd bufwritepre * :call StripTrailingWhiteSpace()
