@@ -7,3 +7,4 @@ fish/fishd.*
 /nvim/autoload
 /nvim/.netrwhist
 /fish/fish_variables
+/karabiner/assets
