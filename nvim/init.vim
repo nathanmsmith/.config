@@ -166,12 +166,26 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)%
 
-" https://stackoverflow.com/questions/19936145/vim-remove-whitespace-for-specific-files
-fun! StripTrailingWhiteSpace()
-  " don't strip on these filetypes
-  if &ft =~ 'markdown'
-    return
-  endif
-  %s/\s\+$//e
-endfun
-autocmd bufwritepre * :call StripTrailingWhiteSpace()
+nnoremap <C-p> :Files<Cr>
+
+:set mouse=a
+" augroup vimrc     " Source vim configuration upon save
+"   autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+" augroup END
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier'],
+\   'javascript.jsx': ['eslint', 'prettier'],
+\   'typescript.tsx': ['eslint', 'prettier'],
+\}
+let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
+let g:ale_javascript_eslint_suppress_missing_config = 1
+
+:set wrap
+
+"
+" Treat all numbers as decimal, even if prefixed with leading 0s
+" See Pratical Vim, pg 21 for details
+set nrformats=
