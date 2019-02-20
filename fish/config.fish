@@ -4,6 +4,9 @@ if status --is-login
   # Set vi bindings
   set -gx fish_key_bindings fish_user_key_bindings
 
+  set -gx FZF_DEFAULT_COMMAND  'rg --files --hidden'
+  set -gx MYVIMRC '~/.config/nvim/init.vim'
+
   # Load aliases
   source ~/.config/fish/aliases.fish
 
@@ -41,7 +44,7 @@ if status --is-login
   # tweak session times so you don't have to re-enter passwords every 5min
   set -x AWS_SESSION_TTL 24h
   set -x AWS_ASSUME_ROLE_TTL 1h
-  # END ANSIBLE MANAGED BLOCK⏎                                           
+  # END ANSIBLE MANAGED BLOCK⏎
   set -x VAGRANT_CWD $DATADOG_ROOT
   set -x DEVENV_MEM 8192
 
