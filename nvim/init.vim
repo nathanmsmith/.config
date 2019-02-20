@@ -21,22 +21,46 @@ Plug 'kien/rainbow_parentheses.vim'
 " --------------------------------------------------
 " Git tools
 " --------------------------------------------------
-
+" Git commands in vim
+Plug 'tpope/vim-fugitive'
+" Fugitive extensions for GitHub
+Plug 'tpope/vim-rhubarb'
+" Pluses and minuses in the sidebar!
 Plug 'airblade/vim-gitgutter'
 
 " --------------------------------------------------
-" General tools - linters, formatting, etc.
+" General tools
 " --------------------------------------------------
-Plug 'tpope/vim-commentary'                 " Commenting support (gc)
-Plug 'tpope/vim-surround'                   " Surrounding text shortcuts
-Plug 'tpope/vim-repeat'                     " Use `.` for plugins
-Plug 'rizzatti/dash.vim'                    " Dash Integration
-Plug '/usr/local/opt/fzf'                   " Fuzzy finder
+" Easily define text objects (required for textobj-entire)
+Plug 'kana/vim-textobj-user'
+" Text objects to select entire buffer (ae, ie)
+Plug 'kana/vim-textobj-entire'
+" Commenting support (gc)
+Plug 'tpope/vim-commentary'
+" Surrounding text shortcuts
+Plug 'tpope/vim-surround'
+" Use `.` for plugins
+Plug 'tpope/vim-repeat'
+" Ctrl-a, ctrl-x for dates, times, etc.
+Plug 'tpope/vim-speeddating'
+" Dash Integration
+Plug 'rizzatti/dash.vim'
+
+" --------------------------------------------------
+" Fuzzy finding (with fzf)
+" --------------------------------------------------
+"  Source fzf (installed with homebrew)
+Plug '/usr/local/opt/fzf'
+" fzf vim plugin
 Plug 'junegunn/fzf.vim'
+
+" --------------------------------------------------
+" Linters and Autocomplete
+" --------------------------------------------------
 Plug 'w0rp/ale'                             " Linting and LSP support
 
 " --------------------------------------------------
-" 1.2 JavaScript/TypeScript
+" JavaScript/TypeScript
 " --------------------------------------------------
 
 " Moder JS support (indent, syntax, etc)
@@ -57,20 +81,22 @@ Plug 'ianks/vim-tsx'
 Plug 'flowtype/vim-flow'
 
 " --------------------------------------------------
-" 1.2 GraphQL
+" GraphQL
 " --------------------------------------------------
 Plug 'jparise/vim-graphql'
 
 " --------------------------------------------------
-" 1.3 HTML/CSS
+" HTML/CSS
 " --------------------------------------------------
-
 " HTML5 syntax
 Plug 'othree/html5.vim'
 " Emmett HTML completion
 Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'typescript.tsx', 'html', 'css'] }
 
-
+" --------------------------------------------------
+" Go
+" --------------------------------------------------
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
 Plug 'dag/vim-fish'
 
@@ -85,7 +111,8 @@ call plug#end()
 " 2.0 Basic settings
 "   (Neovim defaults: https://neovim.io/doc/user/vim_diff.html#nvim-option-defaults)
 " ==================================================
-set nocompatible                            " Use Vim, not vi. This should be set by default, but let's make it explicit.
+" Use Vim, not vi. This should be set by default, but let's make it explicit.
+set nocompatible
 set number                                  " Line numbers on
 set showmode                                " Always show mode
 set nowrap                                  " Do not wrap long line
@@ -96,6 +123,9 @@ set noswapfile                              " New buffers will be loaded without
 " set hidden                                  " Enables to switch between unsaved buffers and keep undo history
 set clipboard+=unnamed                      " Allow to use system clipboard
 " set nostartofline                           " Prevent cursor from moving to beginning of line when switching buffers
+
+
+
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -126,6 +156,7 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 " --------------------------------------------------
 " Whitespace characters settings
 " refs:
+" - http://vimcasts.org/episodes/tabs-and-spaces/
 " - http://vimcasts.org/episodes/show-invisibles/
 " --------------------------------------------------
 " View tabs as 2 spaces wide
@@ -136,28 +167,29 @@ set shiftwidth=2
 set expandtab
 " Tab to the current indent level
 set smarttab
-
-set list                                    " Show listchars by default
+" Show whitespace characters
+set list
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·,nbsp:·
 set showbreak=↪
 
-
-
-
+" --------------------------------------------------
+" Appearance
+" --------------------------------------------------
 set termguicolors
 syntax on
+colorscheme nord
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_comment_brightness = 20
 let g:nord_underline = 1
-colorscheme nord
-
 set guicursor=a:blinkon1
 
 " Set this variable to 1 to fix files when you save them.
 let g:ale_completion_enabled = 1
 let g:ale_completion_delay = 0
 let g:ale_fix_on_save = 1
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1
 
 " Mappings in the style of unimpaired-next

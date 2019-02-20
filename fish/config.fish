@@ -4,6 +4,9 @@ if status --is-login
   # Set vi bindings
   set -gx fish_key_bindings fish_user_key_bindings
 
+  set -gx FZF_DEFAULT_COMMAND  'rg --files --hidden'
+  set -gx MYVIMRC '~/.config/nvim/init.vim'
+
   # Load aliases
   source ~/.config/fish/aliases.fish
 
