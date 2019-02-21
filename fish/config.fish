@@ -13,7 +13,7 @@ if status --is-login
   # Load secrets
   source ~/.config/fish/secrets.fish
 
-  set -gx FZF_DEFAULT_COMMAND  'rg --files --no-ignore-vcs --hidden'
+  set -gx FZF_DEFAULT_COMMAND  'rg --files --hidden'
 
   # BEGIN ANSIBLE MANAGED BLOCK
 

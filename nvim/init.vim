@@ -138,10 +138,9 @@ call plug#end()
 " ==================================================
 " Use Vim, not vi. This should be set by default, but let's make it explicit.
 set nocompatible
-
-:let mapleader = " "
+" Map leader to <space>
+let mapleader = " "
 nnoremap Y y$
-
 set number                                  " Line numbers on
 set showmode                                " Always show mode
 set nowrap                                  " Do not wrap long line
@@ -223,7 +222,7 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)%
 
-nnoremap <Leader>p :Files<Cr>
+nnoremap <leader>p :Files<Cr>
 
 :set mouse=a
 " augroup vimrc     " Source vim configuration upon save
@@ -247,8 +246,9 @@ let g:ale_javascript_eslint_suppress_missing_config = 1
 " See Pratical Vim, pg 21 for details
 set nrformats=
 
-:set ignorecase
-:set smartcase
 
-" Disable markdown folding
-let g:vim_markdown_folding_disabled = 1
+" Searching
+" ignore case
+:set ignorecase
+" Don't ignore case when there are capital letters
+:set smartcase
