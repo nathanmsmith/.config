@@ -10,6 +10,9 @@ endif
 " ==================================================
 call plug#begin('~/.config/nvim/plugged')
 
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+
 " --------------------------------------------------
 " Themes, statuses, etc.
 " --------------------------------------------------
@@ -41,10 +44,16 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 " Use `.` for plugins
 Plug 'tpope/vim-repeat'
+" Helpful character metadata on `ga` 😍
+Plug 'tpope/vim-characterize'
 " Ctrl-a, ctrl-x for dates, times, etc.
 Plug 'tpope/vim-speeddating'
 " Dash Integration
 Plug 'rizzatti/dash.vim'
+" Detect indentation settings
+Plug 'tpope/vim-sleuth'
+" Editorconfig support
+Plug 'editorconfig/editorconfig-vim'
 
 " --------------------------------------------------
 " Fuzzy finding (with fzf)
@@ -58,6 +67,12 @@ Plug 'junegunn/fzf.vim'
 " Linters and Autocomplete
 " --------------------------------------------------
 Plug 'w0rp/ale'                             " Linting and LSP support
+
+
+" --------------------------------------------------
+" Markdown
+" --------------------------------------------------
+Plug 'plasticboy/vim-markdown'
 
 " --------------------------------------------------
 " JavaScript/TypeScript
@@ -80,6 +95,12 @@ Plug 'ianks/vim-tsx'
 " Add flow typing support
 Plug 'flowtype/vim-flow'
 
+
+" --------------------------------------------------
+" JSON
+" --------------------------------------------------
+Plug 'elzr/vim-json'
+
 " --------------------------------------------------
 " GraphQL
 " --------------------------------------------------
@@ -92,12 +113,16 @@ Plug 'jparise/vim-graphql'
 Plug 'othree/html5.vim'
 " Emmett HTML completion
 Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'typescript.tsx', 'html', 'css'] }
+Plug 'digitaltoad/vim-pug'
 
 " --------------------------------------------------
 " Go
 " --------------------------------------------------
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 
+
+
+Plug 'tpope/vim-dotenv'
 Plug 'dag/vim-fish'
 
 call plug#end()
@@ -113,6 +138,10 @@ call plug#end()
 " ==================================================
 " Use Vim, not vi. This should be set by default, but let's make it explicit.
 set nocompatible
+
+:let mapleader = " "
+nnoremap Y y$
+
 set number                                  " Line numbers on
 set showmode                                " Always show mode
 set nowrap                                  " Do not wrap long line
@@ -133,10 +162,6 @@ set omnifunc=syntaxcomplete#Complete
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
 :au VimLeave * set guicursor=a:ver25-blinkon1
-
-if &shell =~# 'fish$'
-    set shell=sh
-endif
 
 
 " --------------------------------------------------
@@ -169,7 +194,7 @@ set expandtab
 set smarttab
 " Show whitespace characters
 set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮,trail:·,nbsp:·
+set listchars=tab:▸\ ,extends:❯,precedes:❮,trail:·,nbsp:·,space:·
 set showbreak=↪
 
 " --------------------------------------------------
@@ -198,7 +223,7 @@ nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)%
 
-nnoremap <C-p> :Files<Cr>
+nnoremap <Leader>p :Files<Cr>
 
 :set mouse=a
 " augroup vimrc     " Source vim configuration upon save
@@ -221,3 +246,9 @@ let g:ale_javascript_eslint_suppress_missing_config = 1
 " Treat all numbers as decimal, even if prefixed with leading 0s
 " See Pratical Vim, pg 21 for details
 set nrformats=
+
+:set ignorecase
+:set smartcase
+
+" Disable markdown folding
+let g:vim_markdown_folding_disabled = 1
