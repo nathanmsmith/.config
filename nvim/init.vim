@@ -67,7 +67,9 @@ Plug 'junegunn/fzf.vim'
 " Linters and Autocomplete
 " --------------------------------------------------
 Plug 'w0rp/ale'                             " Linting and LSP support
-
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'zchee/deoplete-jedi'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " --------------------------------------------------
 " Markdown
@@ -131,6 +133,15 @@ call plug#end()
 " 1.4 C
 " --------------------------------------------------
 " Plug 'vim-scripts/aftersyntaxc.vim', { 'dir': 'after/' }
+
+
+
+" -----------------------------------------------------
+" 4.11 Deoplete autocomplete settings
+" -----------------------------------------------------
+let g:deoplete#enable_at_startup=1
+let g:deoplete#enable_refresh_always=0
+let g:deoplete#file#enable_buffer_path=1
 
 " ==================================================
 " 2.0 Basic settings
@@ -209,7 +220,7 @@ let g:nord_underline = 1
 set guicursor=a:blinkon1
 
 " Set this variable to 1 to fix files when you save them.
-let g:ale_completion_enabled = 1
+" let g:ale_completion_enabled = 1
 let g:ale_completion_delay = 0
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '⤫'
