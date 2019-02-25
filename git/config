@@ -17,8 +17,8 @@
 	gpgsign = true
 [user]
 	name = Nathan Smith
-	email = nathan.smith@datadoghq.com
-	signingkey = 86BD1B91
+	email = nathan@nathansmith.io
+	signingkey = 3B9BA490BA8CCFE7
 [core]
 	editor = code --wait
 [pull]

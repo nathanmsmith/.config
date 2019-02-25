@@ -13,6 +13,15 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 
+Plug 'sjl/gundo.vim'
+
+" Return to the last cursor position of a file on reopen.
+" Similar to commands like those in Gary Berhardt's dotfiles and :help last-position-jump,
+" but a little more fully featured
+" See for details:
+" https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+Plug 'farmergreg/vim-lastplace'
+
 " --------------------------------------------------
 " Themes, statuses, etc.
 " --------------------------------------------------
@@ -129,6 +138,14 @@ Plug 'dag/vim-fish'
 
 call plug#end()
 
+
+" --------------------------------------------------
+" Custom Commands
+" --------------------------------------------------
+command! Config execute ":vsplit $MYVIMRC"
+autocmd bufwritepost init.vim source $MYVIMRC
+
+
 " --------------------------------------------------
 " 1.4 C
 " --------------------------------------------------
@@ -139,9 +156,9 @@ call plug#end()
 " -----------------------------------------------------
 " 4.11 Deoplete autocomplete settings
 " -----------------------------------------------------
-let g:deoplete#enable_at_startup=1
-let g:deoplete#enable_refresh_always=0
-let g:deoplete#file#enable_buffer_path=1
+" let g:deoplete#enable_at_startup=1
+" let g:deoplete#enable_refresh_always=0
+" let g:deoplete#file#enable_buffer_path=1
 
 " ==================================================
 " 2.0 Basic settings
@@ -263,3 +280,10 @@ set nrformats=
 :set ignorecase
 " Don't ignore case when there are capital letters
 :set smartcase
+
+" Disable markdown folding
+let g:vim_markdown_folding_disabled = 1
+
+" Natural splits
+set splitbelow
+set splitright
