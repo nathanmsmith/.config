@@ -2,10 +2,11 @@
 yarn/
 configstore/
 fish/fishd.*
-/fish/completions
+fish/fish_variables
 fish/secrets.fish
-/nvim/plugged
-/nvim/autoload
-/nvim/.netrwhist
-/fish/fish_variables
-/karabiner/assets
+fish/completions
+nvim/plugged
+nvim/autoload
+nvim/.netrwhist
+fish/fish_variables
+karabiner/assets
