@@ -191,6 +191,21 @@ set omnifunc=syntaxcomplete#Complete
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
 :au VimLeave * set guicursor=a:ver25-blinkon1
 
+" --------------------------------------------------
+" Spell checking
+" refs:
+" - http://vimcasts.org/episodes/spell-checking/
+" --------------------------------------------------
+" Spell file location
+set spellfile=~/.config/nvim/spell/dictionary.utf-8.add
+" 'Murican English
+set spelllang=en_us
+" No spelling by default
+" Toggable by keyboard settings in unimpaired
+" <os to enable
+" >os to disable
+" =os to toggle
+set nospell
 
 " --------------------------------------------------
 " Autocompletion
@@ -281,6 +296,18 @@ set nrformats=
 " Disable markdown folding
 let g:vim_markdown_folding_disabled = 1
 
+
+" Unimpaired configuration
+" Because "[" and "]" are a little hard to type on a Dvorak keyboard
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
+
 " Natural splits
 set splitbelow
 set splitright
+" Split help windows vertically, on the right
+autocmd FileType help wincmd L
