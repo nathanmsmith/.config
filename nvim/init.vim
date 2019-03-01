@@ -26,9 +26,16 @@ Plug 'farmergreg/vim-lastplace'
 " Themes, statuses, etc.
 " --------------------------------------------------
 Plug 'arcticicestudio/nord-vim'             " A nice theme
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'morhetz/gruvbox'
+" Plug 'nathunsmitty/night-owl.vim'
+Plug '~/Developer/Personal Projects/night-owl.vim'
+
+
 Plug 'vim-airline/vim-airline'              " Status bar
 
-Plug 'kien/rainbow_parentheses.vim'
+" Most maintained rainbow parens plugin
+Plug 'luochen1990/rainbow'
 
 " --------------------------------------------------
 " Git tools
@@ -139,6 +146,11 @@ Plug 'dag/vim-fish'
 call plug#end()
 
 
+" Learn Vimscript the Hard Way
+" http://learnvimscriptthehardway.stevelosh.com/chapters/01.html
+:echo "Welcome back, Nathan! >^.^<"
+
+
 " --------------------------------------------------
 " Custom Commands
 " --------------------------------------------------
@@ -190,6 +202,21 @@ set omnifunc=syntaxcomplete#Complete
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
 :au VimLeave * set guicursor=a:ver25-blinkon1
 
+" --------------------------------------------------
+" Spell checking
+" refs:
+" - http://vimcasts.org/episodes/spell-checking/
+" --------------------------------------------------
+" Spell file location
+set spellfile=~/.config/nvim/spell/dictionary.utf-8.add
+" 'Murican English
+set spelllang=en_us
+" No spelling by default
+" Toggable by keyboard settings in unimpaired
+" <os to enable
+" >os to disable
+" =os to toggle
+set nospell
 
 " --------------------------------------------------
 " Autocompletion
@@ -227,13 +254,18 @@ set showbreak=↪
 " --------------------------------------------------
 " Appearance
 " --------------------------------------------------
+" True colors
 set termguicolors
+" Syntax highlighting
 syntax on
-colorscheme nord
-let g:nord_italic = 1
-let g:nord_italic_comments = 1
-let g:nord_comment_brightness = 20
-let g:nord_underline = 1
+" Palenight color scheme
+set background=dark
+" colorscheme palenight
+" colorscheme gruvbox
+colorscheme night-owl
+let g:gruvbox_italic=1
+let g:palenight_terminal_italics=1
+" Blink the cursor
 set guicursor=a:blinkon1
 
 " Set this variable to 1 to fix files when you save them.
@@ -284,6 +316,28 @@ set nrformats=
 " Disable markdown folding
 let g:vim_markdown_folding_disabled = 1
 
+
+" Unimpaired configuration
+" Because "[" and "]" are a little hard to type on a Dvorak keyboard
+nmap < [
+nmap > ]
+omap < [
+omap > ]
+xmap < [
+xmap > ]
+
 " Natural splits
 set splitbelow
 set splitright
+" Split help windows vertically, on the right
+autocmd FileType help wincmd L
+
+
+" --------------------------------------------------
+" Rainbow Parentheses
+" refs: https://github.com/luochen1990/rainbow
+" --------------------------------------------------
+let g:rainbow_active = 1
+let g:rainbow_conf = {
+\  'guifgs': ['#ffd700', '#da70d6', '#87cefa']
+\}
