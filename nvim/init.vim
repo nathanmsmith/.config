@@ -6,7 +6,7 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 " ==================================================
-" Plug List
+" Plugins
 " ==================================================
 call plug#begin('~/.config/nvim/plugged')
 
