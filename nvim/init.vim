@@ -1,243 +1,47 @@
-" Auto install Plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall
+" Nathan Smith's vim configuration
+
+
+" Overarching Philosophy:
+" 1. Prefer the defaults
+"
+"
+"
+"
+"
+
+" Normally `:set nocp` is not needed, because it is done automatically
+" when .vimrc is found.
+if &compatible
+  " `:set nocp` has many side effects. Therefore this should be done
+  " only when 'compatible' is set.
+  set nocompatible
 endif
 
-" ==================================================
-" Plug List
-" ==================================================
-call plug#begin('~/.config/nvim/plugged')
 
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-unimpaired'
-
-Plug 'sjl/gundo.vim'
-
-" Return to the last cursor position of a file on reopen.
-" Similar to commands like those in Gary Berhardt's dotfiles and :help last-position-jump,
-" but a little more fully featured
-" See for details:
-" https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-Plug 'farmergreg/vim-lastplace'
-
-" --------------------------------------------------
-" Themes, statuses, etc.
-" --------------------------------------------------
-Plug 'arcticicestudio/nord-vim'             " A nice theme
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'morhetz/gruvbox'
-" Plug 'nathunsmitty/night-owl.vim'
-Plug '~/Developer/Personal Projects/night-owl.vim'
-
-
-Plug 'vim-airline/vim-airline'              " Status bar
-
-" Most maintained rainbow parens plugin
-Plug 'luochen1990/rainbow'
-
-" --------------------------------------------------
-" Git tools
-" --------------------------------------------------
-" Git commands in vim
-Plug 'tpope/vim-fugitive'
-" Fugitive extensions for GitHub
-Plug 'tpope/vim-rhubarb'
-" Pluses and minuses in the sidebar!
-Plug 'airblade/vim-gitgutter'
-
-" --------------------------------------------------
-" General tools
-" --------------------------------------------------
-" Easily define text objects (required for textobj-entire)
-Plug 'kana/vim-textobj-user'
-" Text objects to select entire buffer (ae, ie)
-Plug 'kana/vim-textobj-entire'
-" Commenting support (gc)
-Plug 'tpope/vim-commentary'
-" Surrounding text shortcuts
-Plug 'tpope/vim-surround'
-" Use `.` for plugins
-Plug 'tpope/vim-repeat'
-" Helpful character metadata on `ga` 😍
-Plug 'tpope/vim-characterize'
-" Ctrl-a, ctrl-x for dates, times, etc.
-Plug 'tpope/vim-speeddating'
-" Dash Integration
-Plug 'rizzatti/dash.vim'
-" Detect indentation settings
-Plug 'tpope/vim-sleuth'
-" Editorconfig support
-Plug 'editorconfig/editorconfig-vim'
-
-" --------------------------------------------------
-" Fuzzy finding (with fzf)
-" --------------------------------------------------
-"  Source fzf (installed with homebrew)
-Plug '/usr/local/opt/fzf'
-" fzf vim plugin
-Plug 'junegunn/fzf.vim'
-
-" --------------------------------------------------
-" Linters and Autocomplete
-" --------------------------------------------------
-Plug 'w0rp/ale'                             " Linting and LSP support
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'zchee/deoplete-jedi'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-" --------------------------------------------------
-" Markdown
-" --------------------------------------------------
-Plug 'plasticboy/vim-markdown'
-
-" --------------------------------------------------
-" JavaScript/TypeScript
-" --------------------------------------------------
-
-" Moder JS support (indent, syntax, etc)
-Plug 'pangloss/vim-javascript'
-" JSX syntax
-Plug 'mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] }
-
-" JSDoc generation
-Plug 'heavenshell/vim-jsdoc'
-
-" CSS-in-JS Support
-Plug 'styled-components/vim-styled-components', {'branch': 'main'}
-" TypeScript Syntax
-Plug 'leafgarland/typescript-vim'
-" TSX Support
-Plug 'ianks/vim-tsx'
-" Add flow typing support
-Plug 'flowtype/vim-flow'
-
-
-" --------------------------------------------------
-" JSON
-" --------------------------------------------------
-Plug 'elzr/vim-json'
-
-" --------------------------------------------------
-" GraphQL
-" --------------------------------------------------
-Plug 'jparise/vim-graphql'
-
-" --------------------------------------------------
-" HTML/CSS
-" --------------------------------------------------
-" HTML5 syntax
-Plug 'othree/html5.vim'
-" Emmett HTML completion
-Plug 'mattn/emmet-vim', { 'for': ['javascript.jsx', 'typescript.tsx', 'html', 'css'] }
-Plug 'digitaltoad/vim-pug'
-
-" --------------------------------------------------
-" Go
-" --------------------------------------------------
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
-
-
-
-Plug 'tpope/vim-dotenv'
-Plug 'dag/vim-fish'
-
-call plug#end()
-
-
-" Learn Vimscript the Hard Way
-" http://learnvimscriptthehardway.stevelosh.com/chapters/01.html
-:echo "Welcome back, Nathan! >^.^<"
-
-
-" --------------------------------------------------
-" Custom Commands
-" --------------------------------------------------
-command! Config execute ":vsplit $MYVIMRC"
-autocmd bufwritepost init.vim source $MYVIMRC
-
-
-" --------------------------------------------------
-" 1.4 C
-" --------------------------------------------------
-" Plug 'vim-scripts/aftersyntaxc.vim', { 'dir': 'after/' }
-
-
-
-" -----------------------------------------------------
-" 4.11 Deoplete autocomplete settings
-" -----------------------------------------------------
-" let g:deoplete#enable_at_startup=1
-" let g:deoplete#enable_refresh_always=0
-" let g:deoplete#file#enable_buffer_path=1
-
-" ==================================================
-" 2.0 Basic settings
-"   (Neovim defaults: https://neovim.io/doc/user/vim_diff.html#nvim-option-defaults)
-" ==================================================
-" Use Vim, not vi. This should be set by default, but let's make it explicit.
-set nocompatible
-" Map leader to <space>
-let mapleader = " "
-nnoremap Y y$
-set number                                  " Line numbers on
-set showmode                                " Always show mode
-set nowrap                                  " Do not wrap long line
-set showcmd                                 " Show commands as you type them
-" set cmdheight=1                             " Command line height
-" set pumheight=10                            " Completion window max size
-set noswapfile                              " New buffers will be loaded without creating a swapfile
-" set hidden                                  " Enables to switch between unsaved buffers and keep undo history
-set clipboard+=unnamed                      " Allow to use system clipboard
-" set nostartofline                           " Prevent cursor from moving to beginning of line when switching buffers
-
-
-
-
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
+" Reset the cursor on exit
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
 :au VimLeave * set guicursor=a:ver25-blinkon1
 
-" --------------------------------------------------
-" Spell checking
-" refs:
-" - http://vimcasts.org/episodes/spell-checking/
-" --------------------------------------------------
-" Spell file location
-set spellfile=~/.config/nvim/spell/dictionary.utf-8.add
-" 'Murican English
-set spelllang=en_us
-" No spelling by default
-" Toggable by keyboard settings in unimpaired
-" <os to enable
-" >os to disable
-" =os to toggle
-set nospell
+" Map leader
+let mapleader = " "
 
-" --------------------------------------------------
-" Autocompletion
-" aka intellisense, omnicomplete
-" refs:
-" - http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
-" --------------------------------------------------
-:set completeopt=longest,menuone
-:inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+" Color Defaults
+set background=dark
+set termguicolors
 
+" Searching
+" Case insensitive by default, case sensitive with an uppercase char
+set ignorecase
+set smartcase
 
-" --------------------------------------------------
+" Line Numbers
+set number
+
 " Whitespace characters settings
 " refs:
 " - http://vimcasts.org/episodes/tabs-and-spaces/
 " - http://vimcasts.org/episodes/show-invisibles/
-" --------------------------------------------------
 " View tabs as 2 spaces wide
 set tabstop=2
 " Ident by 2:
@@ -251,93 +55,192 @@ set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,trail:·,nbsp:·,space:·
 set showbreak=↪
 
-" --------------------------------------------------
-" Appearance
-" --------------------------------------------------
-" True colors
-set termguicolors
-" Syntax highlighting
-syntax on
-" Palenight color scheme
-set background=dark
-" colorscheme palenight
-" colorscheme gruvbox
-colorscheme night-owl
-let g:gruvbox_italic=1
-let g:palenight_terminal_italics=1
-" Blink the cursor
-set guicursor=a:blinkon1
 
-" Set this variable to 1 to fix files when you save them.
-" let g:ale_completion_enabled = 1
-let g:ale_completion_delay = 0
-let g:ale_fix_on_save = 1
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-let g:airline#extensions#ale#enabled = 1
+" Buffers
+" ref: http://vimcasts.org/episodes/working-with-buffers/
+" Enables to switch between unsaved buffers and keep undo history
+set hidden
 
-" Mappings in the style of unimpaired-next
-nmap <silent> [W <Plug>(ale_first)
-nmap <silent> [w <Plug>(ale_previous)
-nmap <silent> ]w <Plug>(ale_next)
-nmap <silent> ]W <Plug>(ale_last)%
-
-nnoremap <leader>p :Files<Cr>
-
-:set mouse=a
-" augroup vimrc     " Source vim configuration upon save
-"   autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
-" augroup END
-
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['eslint', 'prettier'],
-\   'javascript.jsx': ['eslint', 'prettier'],
-\   'typescript.tsx': ['eslint', 'prettier'],
-\}
-let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
-let g:ale_javascript_eslint_suppress_missing_config = 1
-
-:set wrap
-
+" Windows
+" ref: http://vimcasts.org/episodes/working-with-windows/
 "
-" Treat all numbers as decimal, even if prefixed with leading 0s
-" See Pratical Vim, pg 21 for details
-set nrformats=
 
 
-" Searching
-" ignore case
-:set ignorecase
-" Don't ignore case when there are capital letters
-:set smartcase
-
-" Disable markdown folding
-let g:vim_markdown_folding_disabled = 1
-
-
-" Unimpaired configuration
-" Because "[" and "]" are a little hard to type on a Dvorak keyboard
-nmap < [
-nmap > ]
-omap < [
-omap > ]
-xmap < [
-xmap > ]
-
-" Natural splits
+" More sensible window splits
 set splitbelow
 set splitright
 " Split help windows vertically, on the right
 autocmd FileType help wincmd L
 
+" Use system clipboard
+set clipboard+=unnamed
 
-" --------------------------------------------------
-" Rainbow Parentheses
-" refs: https://github.com/luochen1990/rainbow
-" --------------------------------------------------
-let g:rainbow_active = 1
-let g:rainbow_conf = {
-\  'guifgs': ['#ffd700', '#da70d6', '#87cefa']
-\}
+" grep with ripgrep
+" https://github.com/BurntSushi/ripgrep
+" if executable('rg')
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+set grepformat=%f:%l:%c:%m
+" endif
+
+
+" Spell checking
+" refs:
+" - http://vimcasts.org/episodes/spell-checking/
+" Spell file location
+set spellfile=~/.config/nvim/spell/dictionary.utf-8.add
+" 'Murican English
+set spelllang=en_us
+" No spelling by default
+" Toggable by keyboard settings in unimpaired
+" [os to enable
+" ]os to disable
+" =os to toggle
+set nospell
+
+" ==================================================
+" Plugins
+" Package manager: Minpac, https://github.com/k-takata/minpac
+" ref: Modern Vim, tip 6
+" ==================================================
+" Easy to use commands
+packadd minpac
+
+command! PacInstall source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
+command! PacClean source $MYVIMRC | call minpac#clean()
+command! PacStatus source $MYVIMRC | call minpac#status()
+
+if exists('*minpac#init')
+  call minpac#init()
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
+
+  " Types of Plugins
+  " Improvements: Overwrite Vim's default behaviour
+  " Extensions: Extend Vim's functionality
+
+  " Color Scheme
+  call minpac#add('tyrannicaltoucan/vim-quantum')
+  colorscheme quantum
+  let g:quantum_italics=1
+
+  " Sensible defaults
+  " See https://github.com/tpope/vim-sensible for the full list
+  " Use <C-L> to turn off highlighting after search
+  call minpac#add('tpope/vim-sensible')
+
+  " Easy commenting
+  " This really should be a default, I don't know where I'd be without it
+  call minpac#add('tpope/vim-commentary')
+
+  " Quoting/Parenthesis made simple
+  " Also should be a default
+  call minpac#add('tpope/vim-surround')
+
+  " Use `.` for plugins (Like commentary and surround)
+  call minpac#add('tpope/vim-repeat')
+
+  " Easier shortcuts for lots of miscellanea
+  call minpac#add('tpope/vim-unimpaired')
+
+  " Autodetect indentation
+  " call minpac#add('tpope/vim-sleuth')
+
+  " Git commands in Vim
+  call minpac#add('tpope/vim-fugitive')
+  " Fugitive extensions for GitHub
+  call minpac#add('tpope/vim-rhubarb')
+
+  " Pluses and minuses in the sidebar!
+  call minpac#add('airblade/vim-gitgutter')
+
+  " Editorconfig support
+  call minpac#add('editorconfig/editorconfig-vim')
+  " Make editorconfig play nice with Fugitive
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+  " Return to the last cursor position of a file on reopen.
+  " Similar to commands like those in Gary Berhardt's dotfiles and :help last-position-jump,
+  " but a little more fully featured
+  " See for details:
+  " https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+  call minpac#add('farmergreg/vim-lastplace')
+
+  " Helpful character metadata on `ga` 😍
+  call minpac#add('tpope/vim-characterize')
+
+  " Ctrl-a, ctrl-x for dates, times, etc.
+  call minpac#add('tpope/vim-speeddating')
+
+  " Dash Integration
+  call minpac#add('rizzatti/dash.vim')
+
+  " Fuzzy finding with FZF
+  " refs:
+  " - https://github.com/junegunn/fzf
+  " - https://github.com/junegunn/fzf.vim
+  " Source FZF from the homebrew install
+  set rtp+=/usr/local/opt/fzf
+  call minpac#add('junegunn/fzf.vim')
+  " Using FZF
+  nnoremap <silent> <leader>p :Files<CR>
+  nnoremap <silent> <leader>b :Buffers<CR>
+
+
+  " Airline Status Bar
+  " ref: https://github.com/vim-airline/vim-airline
+  call minpac#add('vim-airline/vim-airline')
+  " Enable buffer tab line
+  let g:airline#extensions#tabline#enabled = 1
+  " Square buffer tabs
+  let g:airline#extensions#tabline#left_sep = ' '
+  let g:airline#extensions#tabline#left_alt_sep = '|'
+  " Tab path formatting
+  let g:airline#extensions#tabline#formatter = 'jsformatter'
+  let g:airline_theme='quantum'
+
+  " Rainbow Parentheses
+  " There are many different plugins out there for rainbow parentheses, this one is the most
+  " maintained.
+  " refs: https://github.com/luochen1990/rainbow
+  " call minpac#add('luochen1990/rainbow')
+  let g:rainbow_active = 1
+  let g:rainbow_conf = {
+  \  'guifgs': ['#ffd700', '#da70d6', '#87cefa']
+  \}
+
+  "
+  " Languages
+  " Most of these are from vim-polyglot
+  " (https://github.com/sheerun/vim-polyglot)
+  "
+  " Fish
+  call minpac#add('dag/vim-fish')
+  " HTML
+  call minpac#add('othree/html5.vim')
+  " Sass
+
+  " Less
+
+  " Better JS support (indent, syntax, etc)
+  call minpac#add('pangloss/vim-javascript')
+  " JSX syntax
+  call minpac#add('mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] })
+  " JSDoc generation
+  call minpac#add('heavenshell/vim-jsdoc')
+  " CSS-in-JS Support
+  call minpac#add('styled-components/vim-styled-components', {'branch': 'main'})
+  " TypeScript Syntax
+  call minpac#add('leafgarland/typescript-vim')
+  " TSX Support
+  call minpac#add('ianks/vim-tsx')
+  " Add Flow support
+  call minpac#add('flowtype/vim-flow')
+  " JSON
+  call minpac#add('elzr/vim-json')
+  " GraphQL
+  call minpac#add('jparise/vim-graphql')
+
+else
+  colorscheme elflord
+
+endif
+
