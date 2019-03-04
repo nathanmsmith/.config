@@ -5,7 +5,7 @@ fish/fishd.*
 fish/fish_variables
 fish/secrets.fish
 fish/completions
-nvim/plugged
+nvim/pack
 nvim/autoload
 nvim/.netrwhist
 fish/fish_variables
