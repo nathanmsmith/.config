@@ -39,3 +39,6 @@ if status --is-login
   # Opam configuration
   source /Users/nathan/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
 end
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
