@@ -53,7 +53,6 @@ set smarttab
 " Show whitespace characters
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,trail:·,nbsp:·,space:·
-set showbreak=↪
 
 
 " Buffers
@@ -96,6 +95,10 @@ set spelllang=en_us
 " ]os to disable
 " =os to toggle
 set nospell
+
+" Config comman
+command! Config execute ":vsplit $MYVIMRC"
+autocmd bufwritepost init.vim source $MYVIMRC
 
 " ==================================================
 " Plugins
@@ -207,6 +210,20 @@ if exists('*minpac#init')
   \  'guifgs': ['#ffd700', '#da70d6', '#87cefa']
   \}
 
+  " ALE
+  call minpac#add('w0rp/ale')
+  let g:ale_fix_on_save = 1
+  let g:airline#extensions#ale#enabled = 1
+  let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier'],
+\   'javascript.jsx': ['eslint', 'prettier'],
+\   'typescript.tsx': ['eslint', 'prettier'],
+\}
+  let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
+  let g:ale_javascript_eslint_suppress_missing_config = 1
+
   "
   " Languages
   " Most of these are from vim-polyglot
@@ -243,4 +260,3 @@ else
   colorscheme elflord
 
 endif
-
