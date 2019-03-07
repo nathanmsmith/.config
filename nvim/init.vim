@@ -104,6 +104,12 @@ autocmd bufwritepost init.vim source $MYVIMRC
 " Default to all code unfolded
 set foldlevel=99
 
+" Autosave on InsertLeave, TextChanged, or buffer change, etc.
+" Inspired by https://github.com/907th/vim-auto-save/
+autocmd InsertLeave * :update
+autocmd TextChanged * :update
+set autowrite
+
 " ==================================================
 " Plugins
 " Package manager: Minpac, https://github.com/k-takata/minpac
