@@ -1,60 +1,72 @@
-# ripgrep with the optimizations
-# https://github.com/BurntSushi/ripgrep#installation
-# tap 'burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git'
-
-# General tools
-brew 'wget'
-brew 'fzf'
-brew 'ripgrep-bin'
-brew 'neovim'
-brew 'vim'
-brew 'tree'
-brew 'ffmpeg'
-brew 'youtube-dl'
-
-# Git
-brew 'git'
-brew 'git-town'
-brew 'bfg'
-brew 'tig'
-
-# Fish
-brew 'fish'
-
-# Go dev
-brew 'go'
-
-# Python dev
-brew 'python'
-brew 'python@2'
-
-# JavaScript dev
-brew 'node'
-brew 'yarn'
-
-# Cask
-cask 'gpg-suite'
-cask 'karabiner-elements'
-cask 'bartender'
-cask 'moom'
-cask 'istat-menus'
-cask 'the-unarchiver'
-cask 'scroll-reverser'
-cask 'fantastical'
-cask 'open-in-code'
-cask 'kaleidoscope'
-cask 'cd-to-iterm'
-cask 'spotify'
-cask 'visual-studio-code'
-cask 'dash'
-cask 'soulver'
-cask 'highsierramediakeyenabler'
-
-# Personal apps
-cask 'backblaze'
-cask 'pdf-expert'
-cask 'transmission'
-cask 'transmit'
-cask 'sketch'
-cask 'hazel'
-cask 'typora'
+tap "burntsushi/ripgrep", "https://github.com/BurntSushi/ripgrep.git"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+brew "bash"
+brew "coreutils"
+brew "figlet"
+brew "fish"
+brew "fzf"
+brew "gcc"
+brew "gimme"
+brew "git"
+brew "git-town"
+brew "gnu-sed"
+brew "gnupg", link: false
+brew "go"
+brew "jq"
+brew "make"
+brew "mas"
+brew "python"
+brew "python@2"
+brew "mitmproxy"
+brew "neovim"
+brew "node"
+brew "nodenv"
+brew "pre-commit"
+brew "rbenv"
+brew "rename"
+brew "ruby"
+brew "tfenv"
+brew "tig"
+brew "tree"
+brew "vim"
+brew "wget"
+brew "yarn"
+brew "youtube-dl"
+brew "burntsushi/ripgrep/ripgrep-bin"
+cask "aws-vault"
+cask "bartender"
+cask "cd-to-iterm"
+cask "charles"
+cask "dash"
+cask "gpg-suite"
+cask "istat-menus"
+cask "iterm2"
+cask "kaleidoscope"
+cask "karabiner-elements"
+cask "moom"
+cask "oni"
+cask "open-in-code"
+cask "phantomjs"
+cask "postman"
+cask "scroll-reverser"
+cask "soulver"
+cask "spotify"
+cask "the-unarchiver"
+cask "typora"
+cask "vagrant"
+cask "vimr"
+cask "virtualbox"
+mas "Amphetamine", id: 937984704
+mas "Canary Mail", id: 1236045954
+mas "Day One", id: 1055511498
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pixelmator Pro", id: 1289583905
+mas "Things3", id: 904280696
+mas "Trello", id: 1278508951
+mas "Xcode", id: 497799835
