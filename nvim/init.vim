@@ -98,7 +98,11 @@ set nospell
 
 " Config comman
 command! Config execute ":vsplit $MYVIMRC"
+" Auto source vimrc on save
 autocmd bufwritepost init.vim source $MYVIMRC
+
+" Default to all code unfolded
+set foldlevel=99
 
 " ==================================================
 " Plugins
