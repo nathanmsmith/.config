@@ -220,6 +220,7 @@ if exists('*minpac#init')
 \   'typescript': ['eslint', 'prettier'],
 \   'javascript.jsx': ['eslint', 'prettier'],
 \   'typescript.tsx': ['eslint', 'prettier'],
+\   'css': ['prettier'],
 \}
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
@@ -238,10 +239,13 @@ if exists('*minpac#init')
   call minpac#add('dag/vim-fish')
   " HTML
   call minpac#add('othree/html5.vim')
+  " CSS
+  call minpac#add('JulesWang/css.vim')
+  " call minpac#add('hail2u/vim-css3-syntax')
   " Sass
-
+  call minpac#add('cakebaker/scss-syntax.vim')
   " Less
-
+  call minpac#add('groenewege/vim-less')
   " Better JS support (indent, syntax, etc)
   call minpac#add('pangloss/vim-javascript')
   " JSX syntax
@@ -255,7 +259,7 @@ if exists('*minpac#init')
   call minpac#add('HerringtonDarkholme/yats.vim')
   " TSX Support
   " call minpac#add('ianks/vim-tsx')
-  call minpac#add('peitalin/vim-jsx-typescript')
+  " call minpac#add('peitalin/vim-jsx-typescript')
   " Add Flow support
   call minpac#add('flowtype/vim-flow')
   " JSON
