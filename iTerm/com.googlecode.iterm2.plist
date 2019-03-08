@@ -776,11 +776,13 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>2347 74 606 469 1920 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>469 391 796 486 0 0 1440 877 </string>
+	<string>378 391 796 486 0 0 1440 877 </string>
+	<key>NSWindow Frame com.apple.typography_panel_DankMono-Regular</key>
+	<string>246 443 260 116 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>351 149 892 629 0 0 1440 877 </string>
+	<string>452 44 811 827 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>398 405 570 377 0 0 1920 1057 </string>
+	<string>0 167 1405 710 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>326 342 976 489 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
