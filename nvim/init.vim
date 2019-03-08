@@ -229,6 +229,11 @@ if exists('*minpac#init')
   " Most of these are from vim-polyglot
   " (https://github.com/sheerun/vim-polyglot)
   "
+
+
+  " C improvements
+  call minpac#add('vim-scripts/aftersyntaxc.vim')
+
   " Fish
   call minpac#add('dag/vim-fish')
   " HTML
@@ -246,9 +251,11 @@ if exists('*minpac#init')
   " CSS-in-JS Support
   call minpac#add('styled-components/vim-styled-components', {'branch': 'main'})
   " TypeScript Syntax
-  call minpac#add('leafgarland/typescript-vim')
+  " call minpac#add('leafgarland/typescript-vim')
+  call minpac#add('HerringtonDarkholme/yats.vim')
   " TSX Support
-  call minpac#add('ianks/vim-tsx')
+  " call minpac#add('ianks/vim-tsx')
+  call minpac#add('peitalin/vim-jsx-typescript')
   " Add Flow support
   call minpac#add('flowtype/vim-flow')
   " JSON
