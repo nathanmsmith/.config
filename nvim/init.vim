@@ -221,6 +221,11 @@ if exists('*minpac#init')
 \   'javascript.jsx': ['eslint', 'prettier'],
 \   'typescript.tsx': ['eslint', 'prettier'],
 \   'css': ['prettier'],
+\   'scss': ['prettier'],
+\   'less': ['prettier'],
+\   'md': ['prettier'],
+\   'json': ['prettier'],
+\   'graphql': ['prettier'],
 \}
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
@@ -230,11 +235,14 @@ if exists('*minpac#init')
   " Most of these are from vim-polyglot
   " (https://github.com/sheerun/vim-polyglot)
   "
-
+  " Markdown
+  " TODO: evaluate whether plasticboy's repo is worth using
+  " https://github.com/plasticboy/vim-markdown
+  " call minpac#add('tpope/vim-markdown')
+  " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 'html']
 
   " C improvements
   call minpac#add('vim-scripts/aftersyntaxc.vim')
-
   " Fish
   call minpac#add('dag/vim-fish')
   " HTML
@@ -256,7 +264,7 @@ if exists('*minpac#init')
   call minpac#add('styled-components/vim-styled-components', {'branch': 'main'})
   " TypeScript Syntax
   " call minpac#add('leafgarland/typescript-vim')
-  call minpac#add('HerringtonDarkholme/yats.vim')
+  call minpac#add('HerringtonDarkholme/yats.vim') " YATS is better
   " TSX Support
   " call minpac#add('ianks/vim-tsx')
   " call minpac#add('peitalin/vim-jsx-typescript')
