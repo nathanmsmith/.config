@@ -730,7 +730,7 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSColorPanelMode</key>
-	<string>6</string>
+	<string>1</string>
 	<key>NSColorPickerPreferredRGBEntryMode</key>
 	<integer>2</integer>
 	<key>NSColorPickerSlidersDefaults</key>
@@ -772,8 +772,8 @@
 	<false/>
 	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
 	<array>
-		<string>0.000000, 0.000000, 224.000000, 246.000000, NO, NO</string>
-		<string>0.000000, 247.000000, 224.000000, 48.000000, NO, NO</string>
+		<string>0.000000, 0.000000, 228.000000, 299.000000, NO, NO</string>
+		<string>0.000000, 300.000000, 228.000000, 43.000000, NO, NO</string>
 	</array>
 	<key>NSTableView Columns v2 KeyBingingTable</key>
 	<data>
@@ -804,23 +804,23 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>33 380 224 227 0 0 1440 877 </string>
+	<string>286 115 228 280 0 0 1440 877 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>835 139 445 77 0 0 1440 877 </string>
+	<string>760 268 445 77 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 363 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>378 391 796 486 0 0 1440 877 </string>
+	<string>362 391 796 486 0 0 1440 877 </string>
 	<key>NSWindow Frame com.apple.typography_panel_DankMono-Regular</key>
 	<string>246 443 260 116 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>452 44 811 827 0 0 1440 877 </string>
+	<string>4 500 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 167 1405 710 0 0 1440 877 </string>
+	<string>0 0 712 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>67 165 570 377 0 0 1440 877 </string>
+	<string>4 481 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>868 5 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
@@ -1484,7 +1484,7 @@
 			<key>ASCII Anti Aliased</key>
 			<true/>
 			<key>ASCII Ligatures</key>
-			<true/>
+			<false/>
 			<key>Ambiguous Double Width</key>
 			<false/>
 			<key>Ansi 0 Color</key>
@@ -1635,12 +1635,16 @@
 			<true/>
 			<key>Background Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.0</real>
+				<real>0.2196078431372549</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.19607843137254902</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.14901960784313725</real>
 			</dict>
 			<key>Background Image Location</key>
 			<string></string>
@@ -2064,6 +2068,8 @@
 			<string>DankMono-Regular 16</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
+			<key>Prevent Opening in a Tab</key>
+			<true/>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
@@ -2196,7 +2202,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-03-06T02:21:52Z</date>
+	<date>2019-03-12T01:01:19Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Secure Input</key>
@@ -2206,7 +2212,7 @@
 	<key>iTerm Version</key>
 	<string>3.2.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
-	<integer>6</integer>
+	<integer>3</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<false/>
 	<key>kCPKUseSystemColorPicker</key>
