@@ -26,6 +26,12 @@ endif
 " Map leader
 let mapleader = " "
 
+" Disable arrow keys
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " Color Defaults
 set background=dark
 set termguicolors
@@ -81,6 +87,7 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 " endif
 
+set mouse=a
 
 " Spell checking
 " refs:
