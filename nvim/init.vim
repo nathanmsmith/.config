@@ -99,16 +99,19 @@ set nospell
 " Config comman
 command! Config execute ":vsplit $MYVIMRC"
 " Auto source vimrc on save
-autocmd bufwritepost init.vim source $MYVIMRC
+" autocmd bufwritepost init.vim source $MYVIMRC
 
 " Default to all code unfolded
 set foldlevel=99
 
 " Autosave on InsertLeave, TextChanged, or buffer change, etc.
 " Inspired by https://github.com/907th/vim-auto-save/
-autocmd InsertLeave * :update
-autocmd TextChanged * :update
-set autowrite
+" ref: https://vi.stackexchange.com/questions/2545/how-can-i-run-an-autocmd-when-starting-vim-with-no-file-a-non-existing-file-or
+" if @% != ""
+"   autocmd InsertLeave * update
+"   autocmd TextChanged * update
+"   set autowrite
+" end
 
 " ==================================================
 " Plugins

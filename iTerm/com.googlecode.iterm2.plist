@@ -730,11 +730,9 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSColorPanelMode</key>
-	<string>1</string>
+	<string>7</string>
 	<key>NSColorPickerPreferredRGBEntryMode</key>
 	<integer>2</integer>
-	<key>NSColorPickerSlidersDefaults</key>
-	<string>1</string>
 	<key>NSFontPanelAttributes</key>
 	<string>1, 0</string>
 	<key>NSNavLastRootDirectory</key>
@@ -783,23 +781,19 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
-	<string>286 115 228 280 0 0 1440 877 </string>
+	<string>1944 101 228 280 1920 0 1920 1057 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>760 268 445 77 0 0 1440 877 </string>
-	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>410 363 620 392 0 0 1440 877 </string>
+	<string>71 397 806 94 0 0 1920 1057 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>2347 74 606 469 1920 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>362 391 796 486 0 0 1440 877 </string>
-	<key>NSWindow Frame com.apple.typography_panel_DankMono-Regular</key>
-	<string>246 443 260 116 0 0 1440 877 </string>
+	<string>417 363 937 514 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>4 500 570 377 0 0 1440 877 </string>
+	<string>295 0 1135 907 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 0 712 877 0 0 1440 877 </string>
+	<string>12 141 997 727 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>4 481 570 377 0 0 1440 877 </string>
+	<string>1921 358 1249 699 1920 0 1920 1080 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>692 67 585 377 0 0 1440 900 </string>
 	<key>New Bookmarks</key>
@@ -1397,7 +1391,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>1000</integer>
+			<integer>0</integer>
 			<key>Selected Text Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -1431,7 +1425,7 @@
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>
-			<false/>
+			<true/>
 			<key>Use Bold Font</key>
 			<true/>
 			<key>Use Bright Bold</key>
@@ -1453,7 +1447,7 @@
 			<key>ASCII Anti Aliased</key>
 			<true/>
 			<key>ASCII Ligatures</key>
-			<false/>
+			<true/>
 			<key>Ambiguous Double Width</key>
 			<false/>
 			<key>Ansi 0 Color</key>
@@ -2165,7 +2159,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-03-12T01:01:19Z</date>
+	<date>2019-03-11T14:08:20Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Secure Input</key>
@@ -2175,10 +2169,10 @@
 	<key>iTerm Version</key>
 	<string>3.2.7</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
-	<integer>3</integer>
+	<integer>6</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
 	<false/>
 	<key>kCPKUseSystemColorPicker</key>
-	<true/>
+	<false/>
 </dict>
 </plist>
