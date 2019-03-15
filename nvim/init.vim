@@ -34,6 +34,8 @@ set termguicolors
 " Case insensitive by default, case sensitive with an uppercase char
 set ignorecase
 set smartcase
+" Clear search buffer on return
+nnoremap <silent> <CR> :nohlsearch<CR>
 
 " Line Numbers
 set number
@@ -74,6 +76,20 @@ autocmd FileType help wincmd L
 " Use system clipboard
 set clipboard+=unnamed
 
+" Wildmenu
+" set wildmenu
+" set wildmode=list:full
+
+" Mouse support
+" Useful for things like resizing windows
+set mouse=a
+
+" ARROW KEYS ARE UNACCEPTABLE
+noremap <Left> :echo "no!"<cr>
+noremap <Right> :echo "no!"<cr>
+noremap <Up> :echo "no!"<cr>
+noremap <Down> :echo "no!"<cr>
+
 " grep with ripgrep
 " https://github.com/BurntSushi/ripgrep
 " if executable('rg')
@@ -97,8 +113,15 @@ set spelllang=en_us
 set nospell
 
 " Config comman
-command! Config execute ":vsplit $MYVIMRC"
-autocmd bufwritepost init.vim source $MYVIMRC
+function! OpenInSplitIfBufferDirty(file)
+  if line('$') == 1 && getline(1) == ''
+    execute 'edit' a:file
+  else
+    execute 'vsplit' a:file
+  endif
+endfu
+command! Config :call OpenInSplitIfBufferDirty($MYVIMRC)
+" autocmd bufwritepost init.vim source $MYVIMRC
 
 " ==================================================
 " Plugins
@@ -274,6 +297,8 @@ if exists('*minpac#init')
   call minpac#add('elzr/vim-json')
   " GraphQL
   call minpac#add('jparise/vim-graphql')
+  " Ruby
+  call minpac#add('vim-ruby/vim-ruby')
 
 else
   colorscheme elflord
