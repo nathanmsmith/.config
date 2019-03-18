@@ -187,7 +187,7 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-unimpaired')
 
   " Autodetect indentation
-  " call minpac#add('tpope/vim-sleuth')
+  call minpac#add('tpope/vim-sleuth')
 
   " Git commands in Vim
   call minpac#add('tpope/vim-fugitive')
@@ -212,7 +212,10 @@ if exists('*minpac#init')
   call minpac#add('rizzatti/dash.vim')
 
   " Better definitions of a word
-  call minpac#add ('chaoren/vim-wordmotion')
+  call minpac#add('chaoren/vim-wordmotion')
+
+  " Autosave
+  call minpac#add('907th/vim-auto-save')
 
   " Fuzzy finding with FZF
   " refs:
