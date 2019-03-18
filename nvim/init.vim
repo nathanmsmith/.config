@@ -3,6 +3,8 @@
 
 " Overarching Philosophy:
 " 1. Prefer the defaults
+" 2. Extend functionality where needed
+" 3. Change functionality only when it doesn't make sense
 "
 "
 "
@@ -82,7 +84,9 @@ set clipboard+=unnamed
 
 " Mouse support
 " Useful for things like resizing windows
-set mouse=a
+if has('mouse')
+  set mouse=a
+end
 
 " ARROW KEYS ARE UNACCEPTABLE
 noremap <Left> :echo "no!"<cr>
@@ -96,6 +100,21 @@ noremap <Down> :echo "no!"<cr>
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 " endif
+
+augroup vimStartup
+  au!
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid, when inside an event handler
+  " (happens when dropping a file on gvim) and for a commit message (it's
+  " likely a different one than last time).
+  " Copied from defaults.vim)
+  autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+
+augroup END
 
 
 " Spell checking
@@ -183,13 +202,6 @@ if exists('*minpac#init')
   " Make editorconfig play nice with Fugitive
   let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-  " Return to the last cursor position of a file on reopen.
-  " Similar to commands like those in Gary Berhardt's dotfiles and :help last-position-jump,
-  " but a little more fully featured
-  " See for details:
-  " https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-  call minpac#add('farmergreg/vim-lastplace')
-
   " Helpful character metadata on `ga` 😍
   call minpac#add('tpope/vim-characterize')
 
@@ -198,6 +210,9 @@ if exists('*minpac#init')
 
   " Dash Integration
   call minpac#add('rizzatti/dash.vim')
+
+  " Better definitions of a word
+  call minpac#add ('chaoren/vim-wordmotion')
 
   " Fuzzy finding with FZF
   " refs:
@@ -261,7 +276,11 @@ if exists('*minpac#init')
   " Markdown
   " TODO: evaluate whether plasticboy's repo is worth using
   " https://github.com/plasticboy/vim-markdown
-  " call minpac#add('tpope/vim-markdown')
+  call minpac#add('plasticboy/vim-markdown')
+  let g:vim_markdown_folding_disabled = 1
+  let g:vim_markdown_frontmatter = 1
+  let g:vim_markdown_math = 1
+  let g:vim_markdown_strikethrough = 1
   " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 'html']
 
   " C improvements
