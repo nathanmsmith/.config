@@ -1,8 +1,11 @@
 [alias]
 	br = branch
+	co = checkout
 	cm = commit -m
 	p = push
 	pf = push --force-with-lease
+	r = rebase
+	ri = rebase --interactive
 
 	append = town append
 	continue = town continue
