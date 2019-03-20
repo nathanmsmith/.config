@@ -1,23 +1,15 @@
 [alias]
-	br = branch
-	co = checkout
-	cm = commit -m
-	p = push
-	pf = push --force-with-lease
-	r = rebase
-	ri = rebase --interactive
-
-	append = town append
-	continue = town continue
-	hack = town hack
-	kill = town kill
-	new-pull-request = town new-pull-request
-	prepend = town prepend
-	prune-branches = town prune-branches
+	; append = town append
+	; continue = town continue
+	; hack = town hack
+	; kill = town kill
+	; new-pull-request = town new-pull-request
+	; prepend = town prepend
+	; prune-branches = town prune-branches
 	rename-branch = town rename-branch
-	repo = town repo
-	ship = town shi
-	sync = town sync
+	; repo = town repo
+	; ship = town shi
+	; sync = town sync
 
 	discard = !git clean -df && git checkout -- .
 [credential]

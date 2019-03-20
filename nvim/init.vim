@@ -116,6 +116,9 @@ augroup vimStartup
 
 augroup END
 
+" Code Folding
+set foldmethod=syntax
+set foldlevelstart=99
 
 " Spell checking
 " refs:
