@@ -311,7 +311,7 @@ if exists('*minpac#init')
   " call minpac#add('ianks/vim-tsx')
   " call minpac#add('peitalin/vim-jsx-typescript')
   " Add Flow support
-  call minpac#add('flowtype/vim-flow')
+  " call minpac#add('flowtype/vim-flow')
   " JSON
   call minpac#add('elzr/vim-json')
   " GraphQL
