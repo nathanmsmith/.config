@@ -212,7 +212,7 @@ if exists('*minpac#init')
   call minpac#add('rizzatti/dash.vim')
 
   " Better definitions of a word
-  call minpac#add ('chaoren/vim-wordmotion')
+  call minpac#add('chaoren/vim-wordmotion')
 
   " Fuzzy finding with FZF
   " refs:
@@ -224,7 +224,6 @@ if exists('*minpac#init')
   " Using FZF
   nnoremap <silent> <leader>p :Files<CR>
   nnoremap <silent> <leader>b :Buffers<CR>
-
 
   " Airline Status Bar
   " ref: https://github.com/vim-airline/vim-airline
@@ -242,11 +241,17 @@ if exists('*minpac#init')
   " There are many different plugins out there for rainbow parentheses, this one is the most
   " maintained.
   " refs: https://github.com/luochen1990/rainbow
-  " call minpac#add('luochen1990/rainbow')
+  call minpac#add('luochen1990/rainbow')
   let g:rainbow_active = 1
   let g:rainbow_conf = {
   \  'guifgs': ['#ffd700', '#da70d6', '#87cefa']
   \}
+
+  " Snippets
+  call minpac#add('SirVer/ultisnips')
+  let g:UltiSnipsEditSplit="vertical"
+  let g:UltiSnipsUsePythonVersion = 3
+  let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 
   " ALE
   call minpac#add('w0rp/ale')
