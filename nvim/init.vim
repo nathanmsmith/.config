@@ -273,6 +273,12 @@ if exists('*minpac#init')
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
 
+  " VimWiki
+  call minpac#add('vimwiki/vimwiki')
+  let g:vimwiki_list = [{'path': '~/wiki',
+  \ 'syntax': 'markdown', 'ext': '.wiki'}]
+  let g:vimwiki_table_mappings = 0
+
   "
   " Languages
   " Most of these are from vim-polyglot
