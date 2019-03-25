@@ -4,8 +4,8 @@ alias typora "open -a typora"
 
 # Abbreviations
 # See https://github.com/fish-shell/fish-shell/issues/1976#issuecomment-168698602
-if not set -q abbr_initialized
-  set -U abbr_initialized
+# if not set -q abbr_initialized
+#   set -U abbr_initialized
   abbr --add g 'git'
   abbr --add ga 'git add'
   abbr --add gad 'git add .'
@@ -19,4 +19,4 @@ if not set -q abbr_initialized
   abbr --add gri 'git rebase --interactive'
   abbr --add yn 'yarn'
   abbr --add yns 'yarn start'
-end
+# end

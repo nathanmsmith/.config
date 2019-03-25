@@ -274,6 +274,18 @@ if exists('*minpac#init')
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
 
+  " " Autocomplete
+  " call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
+  " let g:deoplete#enable_at_startup = 1
+
+  " Snippets
+  call minpac#add('SirVer/ultisnips')
+  " call minpac#add('honza/vim-snippets')
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+  let g:UltiSnipsEditSplit="vertical"
+
   "
   " Languages
   " Most of these are from vim-polyglot
