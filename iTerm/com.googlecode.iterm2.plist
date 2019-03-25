@@ -749,8 +749,8 @@
 	<false/>
 	<key>NSSplitView Subview Frames NSColorPanelSplitView</key>
 	<array>
-		<string>0.000000, 0.000000, 228.000000, 299.000000, NO, NO</string>
-		<string>0.000000, 300.000000, 228.000000, 43.000000, NO, NO</string>
+		<string>0.000000, 0.000000, 228.000000, 263.000000, NO, NO</string>
+		<string>0.000000, 264.000000, 228.000000, 43.000000, NO, NO</string>
 	</array>
 	<key>NSTableView Columns v2 KeyBingingTable</key>
 	<data>
@@ -895,12 +895,16 @@
 			</dict>
 			<key>Ansi 4 Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.73333334922790527</real>
+				<real>0.78216177225112915</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.0</real>
+				<real>0.14576995372772217</real>
 				<key>Red Component</key>
-				<real>0.0</real>
+				<real>0.0096152340993285179</real>
 			</dict>
 			<key>Ansi 5 Color</key>
 			<dict>
@@ -973,14 +977,20 @@
 				<key>Red Component</key>
 				<real>1</real>
 			</dict>
+			<key>Blink Allowed</key>
+			<false/>
 			<key>Blinking Cursor</key>
 			<true/>
 			<key>Blur</key>
 			<false/>
 			<key>Bold Color</key>
 			<dict>
+				<key>Alpha Component</key>
+				<real>1</real>
 				<key>Blue Component</key>
 				<real>0.0</real>
+				<key>Color Space</key>
+				<string>sRGB</string>
 				<key>Green Component</key>
 				<real>0.0</real>
 				<key>Red Component</key>
@@ -994,6 +1004,8 @@
 			<integer>80</integer>
 			<key>Command</key>
 			<string></string>
+			<key>Cursor Boost</key>
+			<real>0.0</real>
 			<key>Cursor Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -1430,9 +1442,13 @@
 			<true/>
 			<key>Use Bright Bold</key>
 			<false/>
+			<key>Use Cursor Guide</key>
+			<false/>
 			<key>Use Italic Font</key>
-			<true/>
+			<false/>
 			<key>Use Non-ASCII Font</key>
+			<false/>
+			<key>Use Tab Color</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>

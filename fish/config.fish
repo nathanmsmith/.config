@@ -4,7 +4,7 @@ if status --is-login
   # Set vi bindings
   set -gx fish_key_bindings fish_user_key_bindings
 
-  set -gx FZF_DEFAULT_COMMAND  'rg --files --hidden'
+  set -gx FZF_DEFAULT_COMMAND  'rg -g !.git/ --files --hidden'
 
   # Load aliases
   source ~/.config/fish/aliases.fish

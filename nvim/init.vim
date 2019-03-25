@@ -217,9 +217,6 @@ if exists('*minpac#init')
   " Better definitions of a word
   call minpac#add('chaoren/vim-wordmotion')
 
-  " Autosave
-  call minpac#add('907th/vim-auto-save')
-
   " Fuzzy finding with FZF
   " refs:
   " - https://github.com/junegunn/fzf
@@ -230,7 +227,6 @@ if exists('*minpac#init')
   " Using FZF
   nnoremap <silent> <leader>p :Files<CR>
   nnoremap <silent> <leader>b :Buffers<CR>
-
 
   " Airline Status Bar
   " ref: https://github.com/vim-airline/vim-airline
@@ -248,11 +244,17 @@ if exists('*minpac#init')
   " There are many different plugins out there for rainbow parentheses, this one is the most
   " maintained.
   " refs: https://github.com/luochen1990/rainbow
-  " call minpac#add('luochen1990/rainbow')
+  call minpac#add('luochen1990/rainbow')
   let g:rainbow_active = 1
   let g:rainbow_conf = {
   \  'guifgs': ['#ffd700', '#da70d6', '#87cefa']
   \}
+
+  " Snippets
+  call minpac#add('SirVer/ultisnips')
+  let g:UltiSnipsEditSplit="vertical"
+  let g:UltiSnipsUsePythonVersion = 3
+  let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
 
   " ALE
   call minpac#add('w0rp/ale')
@@ -277,14 +279,6 @@ if exists('*minpac#init')
   " " Autocomplete
   " call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
   " let g:deoplete#enable_at_startup = 1
-
-  " Snippets
-  call minpac#add('SirVer/ultisnips')
-  " call minpac#add('honza/vim-snippets')
-  let g:UltiSnipsExpandTrigger="<tab>"
-  let g:UltiSnipsJumpForwardTrigger="<c-b>"
-  let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-  let g:UltiSnipsEditSplit="vertical"
 
   "
   " Languages
@@ -329,7 +323,7 @@ if exists('*minpac#init')
   " call minpac#add('ianks/vim-tsx')
   " call minpac#add('peitalin/vim-jsx-typescript')
   " Add Flow support
-  call minpac#add('flowtype/vim-flow')
+  " call minpac#add('flowtype/vim-flow')
   " JSON
   call minpac#add('elzr/vim-json')
   " GraphQL
