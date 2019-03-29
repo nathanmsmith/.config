@@ -1,9 +1,74 @@
+# Vanilla JavaScript
+
+snippet fun "Function declaration"
+function ${1:function_name}(${2}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet if "if statement"
+if (${1:true}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if-else statement"
+if (${1:true}) {
+	${VISUAL}$0
+} else {
+	${2}
+}
+endsnippet
+
+snippet switch
+switch (${VISUAL}${1:expression}) {
+	case '${VISUAL}${2:case}':
+		${3}
+		break;
+	${0}
+	default:
+		${4}
+}
+endsnippet
+
+snippet case "case 'xyz': ... break"
+case '${VISUAL}${1:case}':
+	${VISUAL}$0
+	break;
+endsnippet
+
+snippet clo "console.log"
+console.log($0);
+endsnippet
+
+snippet clol "console.log with label"
+console.log('$0:', $0);
+endsnippet
+
 # React
 # https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
 
 # Jest
-snippet desc "Create a Jest describe block"
+snippet desc "Jest describe block" b
 describe('${1:Name of the group}', () => {
 	$0
 });
+endsnippet
+
+snippet it "Jest it block" b
+it('${1:should }', () => {
+	$0
+});
+endsnippet
+
+snippet exp "Jest expect statement" b
+expect($0)
+endsnippet
+
+snippet tb "Jest expect.toBe statement"
+expect($1).toBe($0);
+endsnippet
+
+snippet te "Jest expect.toEqual statement"
+expect($1).toEqual($0);
 endsnippet

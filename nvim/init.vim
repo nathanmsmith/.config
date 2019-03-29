@@ -145,6 +145,8 @@ endfu
 command! Config :call OpenInSplitIfBufferDirty($MYVIMRC)
 " autocmd bufwritepost init.vim source $MYVIMRC
 
+set diffopt+=vertical
+
 " ==================================================
 " Plugins
 " Package manager: Minpac, https://github.com/k-takata/minpac
@@ -211,11 +213,19 @@ if exists('*minpac#init')
   " Ctrl-a, ctrl-x for dates, times, etc.
   call minpac#add('tpope/vim-speeddating')
 
+
+  " Substitution and Coercion
+  call minpac#add('tpope/vim-abolish')
+  " Let's call it PascalCase, not MixedCase
+  nmap crp crm
+  " Also kebabcase
+  nmap cr- crk
+
   " Dash Integration
   call minpac#add('rizzatti/dash.vim')
 
   " Better definitions of a word
-  call minpac#add('chaoren/vim-wordmotion')
+  " call minpac#add('chaoren/vim-wordmotion')
 
   " Fuzzy finding with FZF
   " refs:
@@ -255,6 +265,8 @@ if exists('*minpac#init')
   let g:UltiSnipsEditSplit="vertical"
   let g:UltiSnipsUsePythonVersion = 3
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
   " ALE
   call minpac#add('w0rp/ale')

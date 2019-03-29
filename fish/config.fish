@@ -19,8 +19,8 @@ if status --is-login
   # Use GNU coreutils instead of macOS versions
   set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
 
-  # Use ripgrep for fzf
-  set -gx FZF_DEFAULT_COMMAND  'rg --files --hidden'
+  # Use install LLVM tools
+  set -gx PATH /usr/local/opt/llvm/bin $PATH
 
   # JavaScript specific settings
   # Set up nodenv
