@@ -116,6 +116,9 @@ augroup vimStartup
 
 augroup END
 
+" Code Folding
+set foldmethod=syntax
+set foldlevelstart=99
 
 " Spell checking
 " refs:
@@ -141,6 +144,8 @@ function! OpenInSplitIfBufferDirty(file)
 endfu
 command! Config :call OpenInSplitIfBufferDirty($MYVIMRC)
 " autocmd bufwritepost init.vim source $MYVIMRC
+
+set diffopt+=vertical
 
 " ==================================================
 " Plugins
@@ -208,6 +213,14 @@ if exists('*minpac#init')
   " Ctrl-a, ctrl-x for dates, times, etc.
   call minpac#add('tpope/vim-speeddating')
 
+
+  " Substitution and Coercion
+  call minpac#add('tpope/vim-abolish')
+  " Let's call it PascalCase, not MixedCase
+  nmap crp crm
+  " Also kebabcase
+  nmap cr- crk
+
   " Dash Integration
   call minpac#add('rizzatti/dash.vim')
 
@@ -252,6 +265,8 @@ if exists('*minpac#init')
   let g:UltiSnipsEditSplit="vertical"
   let g:UltiSnipsUsePythonVersion = 3
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
+  let g:UltiSnipsJumpForwardTrigger="<tab>"
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
   " ALE
   call minpac#add('w0rp/ale')
@@ -273,11 +288,9 @@ if exists('*minpac#init')
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
 
-  " VimWiki
-  call minpac#add('vimwiki/vimwiki')
-  let g:vimwiki_list = [{'path': '~/wiki',
-  \ 'syntax': 'markdown', 'ext': '.wiki'}]
-  let g:vimwiki_table_mappings = 0
+  " " Autocomplete
+  " call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
+  " let g:deoplete#enable_at_startup = 1
 
   "
   " Languages
