@@ -10,7 +10,7 @@ if status --is-login
   source ~/.config/fish/aliases.fish
 
   # Load secrets
-  source ~/.config/fish/secrets.fish
+  # source ~/.config/fish/secrets.fish
 
   # Force certain more-secure behaviors from homebrew
   set -x HOMEBREW_NO_INSECURE_REDIRECT 1

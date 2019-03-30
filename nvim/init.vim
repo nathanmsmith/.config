@@ -201,6 +201,11 @@ if exists('*minpac#init')
 
   " Pluses and minuses in the sidebar!
   call minpac#add('airblade/vim-gitgutter')
+  if exists('&signcolumn')
+    set signcolumn=yes
+  else
+    let g:gitgutter_sign_column_always = 1
+  endif
 
   " Editorconfig support
   call minpac#add('editorconfig/editorconfig-vim')
@@ -265,8 +270,9 @@ if exists('*minpac#init')
   let g:UltiSnipsEditSplit="vertical"
   let g:UltiSnipsUsePythonVersion = 3
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
-  let g:UltiSnipsJumpForwardTrigger="<tab>"
-  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+  let g:UltiSnipsExpandTrigger="<c-k>"
+  " let g:UltiSnipsJumpForwardTrigger="<tab>"
+  " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
   " ALE
   call minpac#add('w0rp/ale')
@@ -288,9 +294,15 @@ if exists('*minpac#init')
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
 
-  " " Autocomplete
+  " LSP Support
+  " Autocomplete
   " call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
+  " call minpac#add('fszymanski/deoplete-emoji')
   " let g:deoplete#enable_at_startup = 1
+  " call minpac#add('autozimu/LanguageClient-neovim', {
+  "   \ 'branch': 'next',
+  "   \ 'do': 'bash install.sh',
+  "   \ })
 
   "
   " Languages
