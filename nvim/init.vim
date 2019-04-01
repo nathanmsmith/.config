@@ -201,6 +201,11 @@ if exists('*minpac#init')
 
   " Pluses and minuses in the sidebar!
   call minpac#add('airblade/vim-gitgutter')
+  if exists('&signcolumn')
+    set signcolumn=yes
+  else
+    let g:gitgutter_sign_column_always = 1
+  endif
 
   " Editorconfig support
   call minpac#add('editorconfig/editorconfig-vim')
@@ -265,6 +270,7 @@ if exists('*minpac#init')
   let g:UltiSnipsEditSplit="vertical"
   let g:UltiSnipsUsePythonVersion = 3
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
+  let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
@@ -287,10 +293,21 @@ if exists('*minpac#init')
 \}
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
+  nmap <silent> [W <Plug>(ale_first)
+  nmap <silent> [w <Plug>(ale_previous)
+  nmap <silent> ]w <Plug>(ale_next)
+  nmap <silent> ]W <Plug>(ale_last)
+  nmap gh :ALEHover<cr>
 
-  " " Autocomplete
+  " LSP Support
+  " Autocomplete
   " call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
+  " call minpac#add('fszymanski/deoplete-emoji')
   " let g:deoplete#enable_at_startup = 1
+  " call minpac#add('autozimu/LanguageClient-neovim', {
+  "   \ 'branch': 'next',
+  "   \ 'do': 'bash install.sh',
+  "   \ })
 
   "
   " Languages
@@ -305,6 +322,8 @@ if exists('*minpac#init')
   let g:vim_markdown_frontmatter = 1
   let g:vim_markdown_math = 1
   let g:vim_markdown_strikethrough = 1
+  let g:vim_markdown_new_list_item_indent = 2
+  set conceallevel=2
   " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 'html']
 
   " C improvements
@@ -342,6 +361,23 @@ if exists('*minpac#init')
   call minpac#add('jparise/vim-graphql')
   " Ruby
   call minpac#add('vim-ruby/vim-ruby')
+  " Go
+  call minpac#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
+  " Vim-go all the colors
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_methods = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_structs = 1
+  let g:go_highlight_types = 1
+  " auto import deps
+  let g:go_fmt_command = "goimports"
+
+  " Evaluating
+  call minpac#add('janko-m/vim-test')
+  call minpac#add('tpope/vim-projectionist')
 
 else
   colorscheme elflord
