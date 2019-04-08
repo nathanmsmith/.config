@@ -15,6 +15,8 @@ alias typora "open -a typora"
   abbr --add gco 'git checkout'
   abbr --add gcm 'git commit -m'
   abbr --add gcma 'git commit -ma'
+  abbr --add gbd 'git branch -d'
+  abbr --add gbD 'git branch -D'
   abbr --add gp 'git push'
   abbr --add gpf 'git push --force-with-lease'
   abbr --add gpl 'git pull'
