@@ -332,6 +332,8 @@ if exists('*minpac#init')
   call minpac#add('dag/vim-fish')
   " HTML
   call minpac#add('othree/html5.vim')
+  " Handlebars
+  call minpac#add('mustache/vim-mustache-handlebars')
   " CSS
   call minpac#add('JulesWang/css.vim')
   " call minpac#add('hail2u/vim-css3-syntax')
@@ -377,6 +379,12 @@ if exists('*minpac#init')
 
   " Evaluating
   call minpac#add('janko-m/vim-test')
+  let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx)$'
+  let g:test#javascript#jest#executable = 'yarn test:unit'
+  nnoremap <leader>t :TestNearest<cr>
+  nnoremap <leader>T :TestFile<cr>
+  nnoremap <leader>a :TestSuite<cr>
+
   call minpac#add('tpope/vim-projectionist')
 
 else
