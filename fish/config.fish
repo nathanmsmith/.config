@@ -1,8 +1,19 @@
 if status --is-login
   set -gx fish_greeting ""
 
+  # Bootstrap fisher
+  # https://github.com/jorgebucaran/fisher
+  if not functions -q fisher
+      set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
+      curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
+      fish -c fisher
+  end
+
   # Set vi bindings
   set -gx fish_key_bindings fish_user_key_bindings
+
+  # Set editor
+  set -gx EDITOR nvim
 
   set -gx FZF_DEFAULT_COMMAND  'rg -g !.git/ --files --hidden'
 
@@ -17,7 +28,7 @@ if status --is-login
   set -x HOMEBREW_CASK_OPTS --require-sha
 
   # Use GNU coreutils instead of macOS versions
-  set -gx PATH /usr/local/opt/coreutils/libexec/gnubin $PATH
+  set -gx PATH /usr/local/opt/coreutils/libexec/gnubin /usr/local/opt/grep/libexec/gnubin $PATH
 
   # Use install LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH
@@ -36,7 +47,7 @@ if status --is-login
 
   # Go specific settings
   # GOPATH
-  set -gx GOPATH $HOME/Developer/go
+  set -gx GOPATH $HOME/go
   # Add locally compiled go programs to bin	  # DD Stuff
   set -gx PATH $PATH $GOPATH/bin
 
