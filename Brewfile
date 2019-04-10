@@ -14,7 +14,10 @@ brew "git-town"
 brew "gnu-sed"
 brew "gnupg", link: false
 brew "go"
+brew "grep"
+brew "hub"
 brew "jq"
+brew "llvm"
 brew "make"
 brew "mas"
 brew "python"
@@ -58,15 +61,15 @@ cask "typora"
 cask "vagrant"
 cask "vimr"
 cask "virtualbox"
-mas "Amphetamine", id: 937984704
-mas "Canary Mail", id: 1236045954
-mas "Day One", id: 1055511498
-mas "GarageBand", id: 682658836
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Pixelmator Pro", id: 1289583905
-mas "Things3", id: 904280696
-mas "Trello", id: 1278508951
-mas "Xcode", id: 497799835
+mas "com.apple.dt.Xcode", id: 497799835
+mas "com.apple.garageband10", id: 682658836
+mas "com.apple.iMovieApp", id: 408981434
+mas "com.apple.iWork.Keynote", id: 409183694
+mas "com.apple.iWork.Numbers", id: 409203825
+mas "com.apple.iWork.Pages", id: 409201541
+mas "com.atlassian.trello", id: 1278508951
+mas "com.bloombuilt.dayone-mac", id: 1055511498
+mas "com.culturedcode.ThingsMac", id: 904280696
+mas "com.if.Amphetamine", id: 937984704
+mas "com.pixelmatorteam.pixelmator.x", id: 1289583905
+mas "io.canarymail.mac", id: 1236045954
