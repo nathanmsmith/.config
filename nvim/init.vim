@@ -315,8 +315,6 @@ if exists('*minpac#init')
   " (https://github.com/sheerun/vim-polyglot)
   "
   " Markdown
-  " TODO: evaluate whether plasticboy's repo is worth using
-  " https://github.com/plasticboy/vim-markdown
   call minpac#add('plasticboy/vim-markdown')
   let g:vim_markdown_folding_disabled = 1
   let g:vim_markdown_frontmatter = 1
@@ -325,6 +323,8 @@ if exists('*minpac#init')
   let g:vim_markdown_new_list_item_indent = 2
   set conceallevel=2
   " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 'html']
+  " MDX support
+  call minpac#add('jxnblk/vim-mdx-js')
 
   " C improvements
   call minpac#add('vim-scripts/aftersyntaxc.vim')
@@ -364,7 +364,8 @@ if exists('*minpac#init')
   " Ruby
   call minpac#add('vim-ruby/vim-ruby')
   " Go
-  call minpac#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
+  " Make sure to call :GoUpdateBinaries on install
+  call minpac#add('fatih/vim-go')
   " Vim-go all the colors
   let g:go_highlight_build_constraints = 1
   let g:go_highlight_extra_types = 1
