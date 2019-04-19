@@ -218,13 +218,16 @@ if exists('*minpac#init')
   " Ctrl-a, ctrl-x for dates, times, etc.
   call minpac#add('tpope/vim-speeddating')
 
-
   " Substitution and Coercion
   call minpac#add('tpope/vim-abolish')
   " Let's call it PascalCase, not MixedCase
   nmap crp crm
   " Also kebabcase
   nmap cr- crk
+
+  " Handle swap files better
+  call minpac#add('gioele/vim-autoswap')
+  set title titlestring=
 
   " Dash Integration
   call minpac#add('rizzatti/dash.vim')

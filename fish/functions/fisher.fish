@@ -1,4 +1,4 @@
-set -g fisher_version 3.2.8
+set -g fisher_version 3.2.9
 
 function fisher -a cmd -d "fish package manager"
     set -q XDG_CACHE_HOME; or set XDG_CACHE_HOME ~/.cache
@@ -115,7 +115,7 @@ function _fisher_ls
 end
 
 function _fisher_fmt
-    command sed "s|^[[:space:]]*||;s|^$fisher_config/||;s|^~|$HOME|;s|^\.\/*|$PWD/|;s|^github\.com/||;s|^https*:/*||;s|/*\$||"
+    command sed "s|^[[:space:]]*||;s|^$fisher_config/||;s|^~|$HOME|;s|^\.\/*|$PWD/|;s|^https*:/*||;s|^github\.com/||;s|/*\$||"
 end
 
 function _fisher_help
