@@ -15,7 +15,9 @@ if status --is-login
   # Set editor
   set -gx EDITOR nvim
 
+  # FZF
   set -gx FZF_DEFAULT_COMMAND  'rg -g !.git/ --files --hidden'
+  set -gx FZF_LEGACY_KEYBINDINGS 0
 
   # Load aliases
   source ~/.config/fish/aliases.fish
@@ -27,8 +29,8 @@ if status --is-login
   set -x HOMEBREW_NO_INSECURE_REDIRECT 1
   set -x HOMEBREW_CASK_OPTS --require-sha
 
-  # Use GNU coreutils instead of macOS versions
-  set -gx PATH /usr/local/opt/coreutils/libexec/gnubin /usr/local/opt/grep/libexec/gnubin $PATH
+  # Use GNU utilities instead of macOS versions
+  set -gx PATH /usr/local/opt/{coreutils,grep,gnu-sed}/libexec/gnubin $PATH
 
   # Use install LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH

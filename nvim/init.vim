@@ -218,6 +218,8 @@ if exists('*minpac#init')
   " Ctrl-a, ctrl-x for dates, times, etc.
   call minpac#add('tpope/vim-speeddating')
 
+  call minpac#add('tpope/vim-eunuch')
+
   " Substitution and Coercion
   call minpac#add('tpope/vim-abolish')
   " Let's call it PascalCase, not MixedCase
