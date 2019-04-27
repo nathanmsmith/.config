@@ -42,6 +42,12 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 " Line Numbers
 set number
 
+" Status line
+" TODO: set up vanilla status line
+" set laststatus=2
+" set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+" set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+
 " Whitespace characters settings
 " refs:
 " - http://vimcasts.org/episodes/tabs-and-spaces/
@@ -54,6 +60,8 @@ set shiftwidth=2
 set expandtab
 " Tab to the current indent level
 set smarttab
+" Autoindent new lines
+set autoindent
 " Show whitespace characters
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,trail:·,nbsp:·,space:·
@@ -235,7 +243,7 @@ if exists('*minpac#init')
   call minpac#add('rizzatti/dash.vim')
 
   " Better definitions of a word
-  " call minpac#add('chaoren/vim-wordmotion')
+  call minpac#add('chaoren/vim-wordmotion')
 
   " Fuzzy finding with FZF
   " refs:
@@ -251,13 +259,13 @@ if exists('*minpac#init')
   " Airline Status Bar
   " ref: https://github.com/vim-airline/vim-airline
   call minpac#add('vim-airline/vim-airline')
-  " Enable buffer tab line
-  let g:airline#extensions#tabline#enabled = 1
-  " Square buffer tabs
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  " Tab path formatting
-  let g:airline#extensions#tabline#formatter = 'jsformatter'
+  " " Enable buffer tab line
+  " let g:airline#extensions#tabline#enabled = 1
+  " " Square buffer tabs
+  " let g:airline#extensions#tabline#left_sep = ' '
+  " let g:airline#extensions#tabline#left_alt_sep = '|'
+  " " Tab path formatting
+  " let g:airline#extensions#tabline#formatter = 'jsformatter'
   let g:airline_theme='quantum'
 
   " Rainbow Parentheses
@@ -292,7 +300,6 @@ if exists('*minpac#init')
 \   'css': ['prettier'],
 \   'scss': ['prettier'],
 \   'less': ['prettier'],
-\   'md': ['prettier'],
 \   'json': ['prettier'],
 \   'graphql': ['prettier'],
 \}
@@ -313,6 +320,14 @@ if exists('*minpac#init')
   "   \ 'branch': 'next',
   "   \ 'do': 'bash install.sh',
   "   \ })
+
+  " vim-test
+  call minpac#add('janko-m/vim-test')
+  let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx)$'
+  let g:test#javascript#jest#executable = 'yarn test:unit'
+  nnoremap <leader>t :TestNearest<cr>
+  nnoremap <leader>T :TestFile<cr>
+  nnoremap <leader>a :TestSuite<cr>
 
   "
   " Languages
@@ -384,14 +399,15 @@ if exists('*minpac#init')
   let g:go_fmt_command = "goimports"
 
   " Evaluating
-  call minpac#add('janko-m/vim-test')
-  let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx)$'
-  let g:test#javascript#jest#executable = 'yarn test:unit'
-  nnoremap <leader>t :TestNearest<cr>
-  nnoremap <leader>T :TestFile<cr>
-  nnoremap <leader>a :TestSuite<cr>
-
   call minpac#add('tpope/vim-projectionist')
+  call minpac#add('scrooloose/nerdtree')
+  call minpac#add('Xuyuanp/nerdtree-git-plugin')
+  " s for sidebar
+  map <leader>s :NERDTreeToggle %<CR>
+  call minpac#add('nelstrom/vim-visual-star-search')
+  " Syntax highlighting for github's hub tool
+  call minpac#add('jez/vim-github-hub')
+  call minpac#add('dhruvasagar/vim-table-mode')
 
 else
   colorscheme elflord

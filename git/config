@@ -10,8 +10,8 @@
 	; repo = town repo
 	; ship = town shi
 	; sync = town sync
-
 	discard = !git clean -df && git checkout -- .
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi"
 [credential]
 	helper = osxkeychain
 [commit]
@@ -26,6 +26,14 @@
 	rebase = true
 [fetch]
 	prune = true
+; [diff]
+; 	tool = nvimdiff
+; [difftool]
+; 	prompt = false
+[merge]
+	tool = nvimdiff
+[mergetool "nvimdiff"]
+	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 [merge "ours"]
 	# Dummy merge strategy,
 	# see https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_merge_strategies

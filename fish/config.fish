@@ -1,5 +1,6 @@
 if status --is-login
   set -gx fish_greeting ""
+  set -gx XDG_CONFIG_HOME ~/.config
 
   # Bootstrap fisher
   # https://github.com/jorgebucaran/fisher

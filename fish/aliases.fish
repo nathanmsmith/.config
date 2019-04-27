@@ -12,9 +12,12 @@ alias wiki "cd ~/wiki; and $EDITOR ~/wiki"
   abbr --add cfg 'config'
   abbr --add w 'wiki'
 
+  abbr --add o 'open .'
+
   # Git
   abbr --add g 'git'
   abbr --add ga 'git add'
+  abbr --add gi 'git ignore'
   abbr --add gad 'git add .'
   abbr --add ga. 'git add .'
   abbr --add gst 'git status'
@@ -25,6 +28,7 @@ alias wiki "cd ~/wiki; and $EDITOR ~/wiki"
   abbr --add gbd 'git branch -d'
   abbr --add gbD 'git branch -D'
   abbr --add gp 'git push'
+  abbr --add gpu 'git push -u origin'
   abbr --add gpf 'git push --force-with-lease'
   abbr --add gpl 'git pull'
   abbr --add gr 'git rebase'
