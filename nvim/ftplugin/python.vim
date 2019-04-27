@@ -1,2 +1,5 @@
-let b:ale_fixers = ['black']
-:set shiftwidth=4 softtabstop=4 expandtab
+" let b:ale_fixers = ['black']
+let b:ale_fixers = []
+setlocal shiftwidth=4
+setlocal softtabstop=4
+setlocal expandtab

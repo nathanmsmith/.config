@@ -42,7 +42,20 @@ console.log($0);
 endsnippet
 
 snippet clol "console.log with label"
-console.log('$0:', $0);
+console.log('$1:', $1);
+endsnippet
+
+# Imports/Exports
+snippet imp "import xyz from 'xyz'"
+import ${1} from '${2:$1}';
+endsnippet
+
+snippet imps "import * as xyz from 'xyz'"
+import * as ${1} from '${2:$1}';
+endsnippet
+
+snippet impm "import { member } from 'xyz'"
+import { ${1} } from '${2:$1}';
 endsnippet
 
 # React

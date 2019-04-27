@@ -8,3 +8,15 @@ tags: $3
 # $1
 $0
 endsnippet
+
+snippet _ "italics"
+_${1:${VISUAL}}_$0
+endsnippet
+
+snippet ** "bold"
+**${1:${VISUAL}}**$0
+endsnippet
+
+snippet lk "Link to something"
+[${1:${VISUAL:Text}}](${3:http://${2:www.example.com}})$0
+endsnippet

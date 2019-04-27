@@ -42,6 +42,12 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 " Line Numbers
 set number
 
+" Status line
+" TODO: set up vanilla status line
+" set laststatus=2
+" set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
+" set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+
 " Whitespace characters settings
 " refs:
 " - http://vimcasts.org/episodes/tabs-and-spaces/
@@ -54,6 +60,8 @@ set shiftwidth=2
 set expandtab
 " Tab to the current indent level
 set smarttab
+" Autoindent new lines
+set autoindent
 " Show whitespace characters
 set list
 set listchars=tab:▸\ ,extends:❯,precedes:❮,trail:·,nbsp:·,space:·
@@ -218,6 +226,8 @@ if exists('*minpac#init')
   " Ctrl-a, ctrl-x for dates, times, etc.
   call minpac#add('tpope/vim-speeddating')
 
+  call minpac#add('tpope/vim-eunuch')
+
   " Substitution and Coercion
   call minpac#add('tpope/vim-abolish')
   " Let's call it PascalCase, not MixedCase
@@ -249,13 +259,13 @@ if exists('*minpac#init')
   " Airline Status Bar
   " ref: https://github.com/vim-airline/vim-airline
   call minpac#add('vim-airline/vim-airline')
-  " Enable buffer tab line
-  let g:airline#extensions#tabline#enabled = 1
-  " Square buffer tabs
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
-  " Tab path formatting
-  let g:airline#extensions#tabline#formatter = 'jsformatter'
+  " " Enable buffer tab line
+  " let g:airline#extensions#tabline#enabled = 1
+  " " Square buffer tabs
+  " let g:airline#extensions#tabline#left_sep = ' '
+  " let g:airline#extensions#tabline#left_alt_sep = '|'
+  " " Tab path formatting
+  " let g:airline#extensions#tabline#formatter = 'jsformatter'
   let g:airline_theme='quantum'
 
   " Rainbow Parentheses
@@ -290,7 +300,6 @@ if exists('*minpac#init')
 \   'css': ['prettier'],
 \   'scss': ['prettier'],
 \   'less': ['prettier'],
-\   'md': ['prettier'],
 \   'json': ['prettier'],
 \   'graphql': ['prettier'],
 \}
@@ -312,14 +321,20 @@ if exists('*minpac#init')
   "   \ 'do': 'bash install.sh',
   "   \ })
 
+  " vim-test
+  call minpac#add('janko-m/vim-test')
+  let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx)$'
+  let g:test#javascript#jest#executable = 'yarn test:unit'
+  nnoremap <leader>t :TestNearest<cr>
+  nnoremap <leader>T :TestFile<cr>
+  nnoremap <leader>a :TestSuite<cr>
+
   "
   " Languages
   " Most of these are from vim-polyglot
   " (https://github.com/sheerun/vim-polyglot)
   "
   " Markdown
-  " TODO: evaluate whether plasticboy's repo is worth using
-  " https://github.com/plasticboy/vim-markdown
   call minpac#add('plasticboy/vim-markdown')
   let g:vim_markdown_folding_disabled = 1
   let g:vim_markdown_frontmatter = 1
@@ -328,6 +343,8 @@ if exists('*minpac#init')
   let g:vim_markdown_new_list_item_indent = 2
   set conceallevel=2
   " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 'html']
+  " MDX support
+  call minpac#add('jxnblk/vim-mdx-js')
 
   " C improvements
   call minpac#add('vim-scripts/aftersyntaxc.vim')
@@ -335,6 +352,8 @@ if exists('*minpac#init')
   call minpac#add('dag/vim-fish')
   " HTML
   call minpac#add('othree/html5.vim')
+  " Handlebars
+  call minpac#add('mustache/vim-mustache-handlebars')
   " CSS
   call minpac#add('JulesWang/css.vim')
   " call minpac#add('hail2u/vim-css3-syntax')
@@ -365,7 +384,8 @@ if exists('*minpac#init')
   " Ruby
   call minpac#add('vim-ruby/vim-ruby')
   " Go
-  call minpac#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
+  " Make sure to call :GoUpdateBinaries on install
+  call minpac#add('fatih/vim-go')
   " Vim-go all the colors
   let g:go_highlight_build_constraints = 1
   let g:go_highlight_extra_types = 1
@@ -379,8 +399,15 @@ if exists('*minpac#init')
   let g:go_fmt_command = "goimports"
 
   " Evaluating
-  call minpac#add('janko-m/vim-test')
   call minpac#add('tpope/vim-projectionist')
+  call minpac#add('scrooloose/nerdtree')
+  call minpac#add('Xuyuanp/nerdtree-git-plugin')
+  " s for sidebar
+  map <leader>s :NERDTreeToggle %<CR>
+  call minpac#add('nelstrom/vim-visual-star-search')
+  " Syntax highlighting for github's hub tool
+  call minpac#add('jez/vim-github-hub')
+  call minpac#add('dhruvasagar/vim-table-mode')
 
 else
   colorscheme elflord
