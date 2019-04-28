@@ -398,6 +398,9 @@ if exists('*minpac#init')
   " auto import deps
   let g:go_fmt_command = "goimports"
 
+  " Rust
+  call minpac#add('rust-lang/rust.vim')
+
   " Evaluating
   call minpac#add('tpope/vim-projectionist')
   call minpac#add('scrooloose/nerdtree')
