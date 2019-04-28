@@ -4,7 +4,6 @@ configstore/
 fish/fishd.*
 fish/fish_variables
 fish/secrets.fish
-fish/completions
 nvim/pack
 nvim/autoload
 nvim/.netrwhist

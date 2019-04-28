@@ -49,6 +49,10 @@ if status --is-login
   # GOPATH
   set -gx PATH $PATH $GOPATH/bin
 
+  # Rust specific settings
+  set -gx PATH $PATH ~/.cargo/bin
+
+
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
