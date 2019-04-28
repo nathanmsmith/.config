@@ -1,6 +1,10 @@
 if status --is-login
   set -gx fish_greeting ""
-  set -gx XDG_CONFIG_HOME ~/.config
+
+  # XDG Directories
+  set -gx XDG_CONFIG_HOME $HOME/.config
+  set -gx XDG_CACHE_HOME $HOME/.cache
+  set -gx XDG_DATA_HOME $HOME/.local/share
 
   # Bootstrap fisher
   # https://github.com/jorgebucaran/fisher
@@ -32,7 +36,7 @@ if status --is-login
   # Use GNU utilities instead of macOS versions
   set -gx PATH /usr/local/opt/{coreutils,grep,gnu-sed}/libexec/gnubin $PATH
 
-  # Use install LLVM tools
+  # Use installed LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH
 
   # JavaScript specific settings
@@ -50,8 +54,11 @@ if status --is-login
   set -gx PATH $PATH $GOPATH/bin
 
   # Rust specific settings
-  set -gx PATH $PATH ~/.cargo/bin
+  # Rust tools XDG compatibility
+  set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
+  set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 
+  set -gx PATH $PATH $CARGO_HOME/bin
 
 end
 

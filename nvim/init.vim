@@ -400,6 +400,8 @@ if exists('*minpac#init')
 
   " Rust
   call minpac#add('rust-lang/rust.vim')
+  " TOML
+  call minpac#add('cespare/vim-toml')
 
   " Evaluating
   call minpac#add('tpope/vim-projectionist')
