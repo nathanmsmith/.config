@@ -41,11 +41,12 @@ if status --is-login
 
   # JavaScript specific settings
   # Set up nodenv
-  status --is-interactive; and source (nodenv init -|psub)
+  # Note: We don't need psub here like nodenv reccomends
+  status --is-interactive; and nodenv init - | source
 
   # Ruby specific settings
   # Rbenv
-  status --is-interactive; and source (rbenv init -|psub)
+  status --is-interactive; and rbenv init - | source
   # Add gems to path
   set -gx PATH $PATH /usr/local/lib/ruby/gems/2.6.0/bin
 
