@@ -30,44 +30,6 @@ Also enable secure text entry, a line cursor, and blinking.
 
 ### Applications I use
 
-#### All Computers
-
-- 1Password
-- Alfred
-- Backblaze
-- Bartender 3
-- Amphetamine
-- Canary Mail
-- [cd to](https://github.com/jbtule/cdto)
-- Day One
-- Firefox
-- Chrome
-- iStat Menus
-- Kaleidoscope
-- Scroll Reverser
-- Slack
-- The Unarchiver
-- Things
-- Tower
-- Trello
-- Visual Studio Code
-- Xcode
-
-#### Personal Computer
-
-- Pixelmator
-- Reeder
-- Soulver
-- Transmit
-- XLD
-- VLC
-- Tweetbot
-- Transmission
-- Sketch
-
-- Figma
-- DaisyDisk
-
 ## Adobe DNG Converter
 
 ```
