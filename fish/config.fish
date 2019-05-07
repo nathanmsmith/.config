@@ -32,6 +32,7 @@ if status --is-login
   # Force certain more-secure behaviors from homebrew
   set -x HOMEBREW_NO_INSECURE_REDIRECT 1
   set -x HOMEBREW_CASK_OPTS --require-sha
+  set -gx HOMEBREW_NO_ANALYTICS 1
 
   # Use GNU utilities instead of macOS versions
   set -gx PATH /usr/local/opt/{coreutils,grep,gnu-sed}/libexec/gnubin $PATH
