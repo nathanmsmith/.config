@@ -28,6 +28,7 @@
 	signingkey = 3B9BA490BA8CCFE7
 [core]
 	editor = code --wait
+	pager = diff-so-fancy | less --tabs=4 -RFX
 [pull]
 	rebase = true
 [fetch]
@@ -36,3 +37,23 @@
 	# Dummy merge strategy,
 	# see https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_merge_strategies
 	driver = true
+[diff "spaceman-diff"]
+  command = spaceman-diff
+[difftool]
+	prompt = false
+[diff]
+	tool = icdiff
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
