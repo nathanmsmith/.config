@@ -48,8 +48,6 @@ if status --is-login
   # Ruby specific settings
   # Rbenv
   status --is-interactive; and rbenv init - | source
-  # Add gems to path
-  set -gx PATH $PATH /usr/local/lib/ruby/gems/2.6.0/bin
 
   # Go specific settings
   # GOPATH
