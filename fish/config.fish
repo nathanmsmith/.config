@@ -39,6 +39,8 @@ if status --is-login
   # JavaScript specific settings
   # Set up nodenv
   status --is-interactive; and source (nodenv init -|psub)
+
+  set -gx PATH $PATH $HOME/.local/share/npm/bin
   # what is memory?
   set -x NODE_OPTIONS "--max-old-space-size=4096"
 

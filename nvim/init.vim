@@ -226,7 +226,11 @@ if exists('*minpac#init')
   " Ctrl-a, ctrl-x for dates, times, etc.
   call minpac#add('tpope/vim-speeddating')
 
+  " Unix helpers
   call minpac#add('tpope/vim-eunuch')
+
+  " Asyncronous dispatching
+  call minpac#add('tpope/vim-dispatch')
 
   " Substitution and Coercion
   call minpac#add('tpope/vim-abolish')
