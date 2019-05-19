@@ -806,33 +806,39 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>286 115 228 280 0 0 1440 877 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>760 268 445 77 0 0 1440 877 </string>
+	<string>770 64 445 77 0 0 1440 877 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>410 363 620 392 0 0 1440 877 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 126 606 469 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>130 339 796 486 0 0 1440 877 </string>
+	<string>425 369 918 452 0 0 1440 877 </string>
 	<key>NSWindow Frame com.apple.typography_panel_DankMono-Regular</key>
 	<string>246 443 260 116 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>127 419 570 377 0 0 1440 877 </string>
+	<string>962 67 478 810 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>6 78 1288 787 0 0 1440 877 </string>
+	<string>458 350 730 527 0 0 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 10</key>
+	<string>407 283 570 377 0 0 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 11</key>
+	<string>205 311 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>647 84 766 554 0 0 1440 877 </string>
+	<string>642 126 730 527 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>367 39 570 321 0 0 1440 877 </string>
+	<string>395 495 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>756 17 570 377 0 0 1440 877 </string>
+	<string>596 214 836 475 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>260 284 730 527 0 0 1440 877 </string>
+	<string>615 500 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>319 99 1009 607 0 0 1440 877 </string>
+	<string>617 145 730 527 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
-	<string>592 412 570 377 0 0 1440 877 </string>
+	<string>94 164 1333 713 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 8</key>
-	<string>386 295 570 377 0 0 1440 877 </string>
+	<string>300 183 1039 517 0 0 1440 877 </string>
+	<key>NSWindow Frame iTerm Window 9</key>
+	<string>134 123 570 377 0 0 1440 877 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2085,7 +2091,7 @@
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prevent Opening in a Tab</key>
-			<true/>
+			<false/>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
@@ -2154,6 +2160,10 @@
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
 	<integer>0</integer>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
+	<integer>1</integer>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
@@ -2222,7 +2232,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-03-31T17:17:17Z</date>
+	<date>2019-05-11T01:26:50Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Secure Input</key>
@@ -2230,7 +2240,7 @@
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.2.8</string>
+	<string>3.2.9</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>3</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
