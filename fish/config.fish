@@ -18,7 +18,7 @@ if status --is-login
 
   # FZF
   set -gx FZF_DEFAULT_COMMAND  'rg -g !.git/ --files --hidden'
-  set -gx FZF_LEGACY_KEYBINDINGS 0
+  set -gx FZF_LEGACY_KEYBINDINGS 1
 
   # Load aliases
   source ~/.config/fish/aliases.fish
@@ -31,7 +31,7 @@ if status --is-login
   set -x HOMEBREW_CASK_OPTS --require-sha
 
   # Use GNU utilities instead of macOS versions
-  set -gx PATH /usr/local/opt/{coreutils,grep,gnu-sed}/libexec/gnubin $PATH
+  set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed}/libexec/gnubin $PATH
 
   # Use install LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH
