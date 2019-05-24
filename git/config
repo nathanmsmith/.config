@@ -27,7 +27,7 @@
 	email = nathan@nathansmith.io
 	signingkey = 3B9BA490BA8CCFE7
 [core]
-	editor = code --wait
+	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [pull]
 	rebase = true
