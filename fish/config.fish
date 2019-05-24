@@ -60,6 +60,10 @@ if status --is-login
 
   set -gx PATH $PATH $CARGO_HOME/bin
 
+  # Io specific settings
+  set -gx EERIEDIR ~/.eerie
+  set -gx PATH $PATH $EERIEDIR/base/bin $EERIEDIR/activeEnv/bin
+
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
