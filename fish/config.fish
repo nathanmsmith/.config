@@ -9,7 +9,6 @@ if status --is-login
   # Bootstrap fisher
   # https://github.com/jorgebucaran/fisher
   if not functions -q fisher
-      set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
       curl https://git.io/fisher --create-dirs -sLo "$XDG_CONFIG_HOME/fish/functions/fisher.fish"
       fish -c fisher
   end
@@ -35,7 +34,7 @@ if status --is-login
   set -gx HOMEBREW_NO_ANALYTICS 1
 
   # Use GNU utilities instead of macOS versions
-  set -gx PATH /usr/local/opt/{coreutils,grep,gnu-sed}/libexec/gnubin $PATH
+  set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed}/libexec/gnubin $PATH
 
   # Use installed LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH
