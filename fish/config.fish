@@ -10,6 +10,18 @@ if status --is-login
       fish -c fisher
   end
 
+  # XDG Directories
+  set -gx XDG_CONFIG_HOME $HOME/.config
+  set -gx XDG_CACHE_HOME $HOME/.cache
+  set -gx XDG_DATA_HOME $HOME/.local/share
+
+  # Bootstrap fisher
+  # https://github.com/jorgebucaran/fisher
+  if not functions -q fisher
+      curl https://git.io/fisher --create-dirs -sLo "$XDG_CONFIG_HOME/fish/functions/fisher.fish"
+      fish -c fisher
+  end
+
   # Set vi bindings
   set -gx fish_key_bindings fish_user_key_bindings
 
@@ -29,16 +41,18 @@ if status --is-login
   # Force certain more-secure behaviors from homebrew
   set -x HOMEBREW_NO_INSECURE_REDIRECT 1
   set -x HOMEBREW_CASK_OPTS --require-sha
+  set -gx HOMEBREW_NO_ANALYTICS 1
 
   # Use GNU utilities instead of macOS versions
   set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed}/libexec/gnubin $PATH
 
-  # Use install LLVM tools
+  # Use installed LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH
 
   # JavaScript specific settings
   # Set up nodenv
-  status --is-interactive; and source (nodenv init -|psub)
+  # Note: We don't need psub here like nodenv reccomends
+  status --is-interactive; and nodenv init - | source
 
   set -gx PATH $PATH $HOME/.local/share/npm/bin
   # what is memory?
@@ -46,36 +60,23 @@ if status --is-login
 
   # Ruby specific settings
   # Rbenv
-  status --is-interactive; and source (rbenv init -|psub)
-  # Add gems to path
-  set -gx PATH $PATH /usr/local/lib/ruby/gems/2.6.0/bin
+  status --is-interactive; and rbenv init - | source
 
   # Go specific settings
   # GOPATH
-  set -gx GOPATH $HOME/go
-  # Add locally compiled go programs to bin	  # DD Stuff
   set -gx PATH $PATH $GOPATH/bin
 
-  source ~/.config/fish/datadog.fish
+  # Rust specific settings
+  # Rust tools XDG compatibility
+  set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
+  set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 
-  # DD Stuff
-  # Add datadog devtools binaries to the PATH
-  set -x PATH "$HOME/dd/devtools/bin:$PATH"
+  set -gx PATH $PATH $CARGO_HOME/bin
 
-  # Point DATADOG_ROOT to ~/dd symlink
-  set -x DATADOG_ROOT "$HOME/dd"
+  # Io specific settings
+  set -gx EERIEDIR ~/.eerie
+  set -gx PATH $PATH $EERIEDIR/base/bin $EERIEDIR/activeEnv/bin
 
-  # Tell the devenv vm to mount $GOPATH/src rather than just dd-go
-  set -x MOUNT_ALL_GO_SRC 1
-
-  # store key in the login keychain instead of aws-vault managing a hidden keychain
-  set -x AWS_VAULT_KEYCHAIN_NAME login
-
-  # tweak session times so you don't have to re-enter passwords every 5min
-  set -x AWS_SESSION_TTL 24h
-  set -x AWS_ASSUME_ROLE_TTL 1h
-  set -x VAGRANT_CWD $DATADOG_ROOT
-  set -x DEVENV_MEM 8192
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

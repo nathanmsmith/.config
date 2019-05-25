@@ -15,11 +15,10 @@
 [credential]
 	helper = osxkeychain
 [commit]
-	gpgsign = true
+	gpgsign = false
 [user]
 	name = Nathan Smith
 	email = nathan.smith@datadoghq.com
-	signingkey = 86BD1B91
 [core]
 	editor = nvim
 [pull]

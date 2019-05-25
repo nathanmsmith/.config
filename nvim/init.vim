@@ -283,10 +283,11 @@ if exists('*minpac#init')
   \}
 
   " Snippets
+  call minpac#add('adriaanzon/vim-emmet-ultisnips')
   call minpac#add('SirVer/ultisnips')
   let g:UltiSnipsEditSplit="vertical"
   let g:UltiSnipsUsePythonVersion = 3
-  let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips']
+  let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', 'UltiSnips']
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -387,6 +388,8 @@ if exists('*minpac#init')
   call minpac#add('jparise/vim-graphql')
   " Ruby
   call minpac#add('vim-ruby/vim-ruby')
+  " Ruby on Rails
+  call minpac#add('tpope/vim-rails')
   " Go
   " Make sure to call :GoUpdateBinaries on install
   call minpac#add('fatih/vim-go')
@@ -401,6 +404,11 @@ if exists('*minpac#init')
   let g:go_highlight_types = 1
   " auto import deps
   let g:go_fmt_command = "goimports"
+
+  " Rust
+  call minpac#add('rust-lang/rust.vim')
+  " TOML
+  call minpac#add('cespare/vim-toml')
 
   " Evaluating
   call minpac#add('tpope/vim-projectionist')
