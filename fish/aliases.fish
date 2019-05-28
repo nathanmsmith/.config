@@ -9,34 +9,40 @@ alias wiki "cd ~/wiki; and $EDITOR ~/wiki"
 # if not set -q abbr_initialized
 #   set -U abbr_initialized
 
-  abbr --add cfg 'config'
-  abbr --add w 'wiki'
+abbr --add cfg 'config'
+abbr --add w 'wiki'
 
-  abbr --add o 'open .'
+abbr --add o 'open .'
 
-  # Git
-  abbr --add g 'git'
-  abbr --add ga 'git add'
-  abbr --add gi 'git ignore'
-  abbr --add gad 'git add .'
-  abbr --add ga. 'git add .'
-  abbr --add gst 'git status'
-  abbr --add gbr 'git branch'
-  abbr --add gco 'git checkout'
-  abbr --add gcm 'git commit -m'
-  abbr --add gcma 'git commit -ma'
-  abbr --add gbd 'git branch -d'
-  abbr --add gbD 'git branch -D'
-  abbr --add gp 'git push'
-  abbr --add gpu 'git push -u origin'
-  abbr --add gpf 'git push --force-with-lease'
-  abbr --add gpl 'git pull'
-  abbr --add gr 'git rebase'
-  abbr --add gri 'git rebase --interactive'
-  abbr --add gst 'git status'
-  abbr --add gd 'git diff'
+# ls
+abbr --add l 'ls'
+abbr --add la 'ls -a'
+abbr --add ll 'ls -l'
+abbr --add lla 'ls -la'
 
-  # Yarn
-  abbr --add yn 'yarn'
-  abbr --add yns 'yarn start'
+# Git
+abbr --add g 'git'
+abbr --add ga 'git add'
+abbr --add gi 'git ignore'
+abbr --add gad 'git add .'
+abbr --add ga. 'git add .'
+abbr --add gst 'git status'
+abbr --add gbr 'git branch'
+abbr --add gco 'git checkout'
+abbr --add gcm 'git commit -m'
+abbr --add gcma 'git commit -ma'
+abbr --add gbd 'git branch -d'
+abbr --add gbD 'git branch -D'
+abbr --add gp 'git push'
+abbr --add gpu 'git push -u origin'
+abbr --add gpf 'git push --force-with-lease'
+abbr --add gpl 'git pull'
+abbr --add gr 'git rebase'
+abbr --add gri 'git rebase --interactive'
+abbr --add gst 'git status'
+abbr --add gd 'git diff'
+
+# Yarn
+abbr --add yn 'yarn'
+abbr --add yns 'yarn start'
 # end
