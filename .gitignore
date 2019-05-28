@@ -25,5 +25,4 @@ karabiner/assets
 /fish/functions/__fzf_complete_preview.fish
 /fish/functions/__fzf_cd.fish
 /karabiner/automatic_backups
-/fish/conf.d/fzf_key_bindings.fish
-/fish/conf.d/fzf.fish
+/fish/conf.d/
