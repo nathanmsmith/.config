@@ -1,6 +1,7 @@
 tap "burntsushi/ripgrep", "https://github.com/BurntSushi/ripgrep.git"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
@@ -14,6 +15,7 @@ brew "diff-so-fancy"
 brew "diffutils"
 brew "elm"
 brew "elm-format"
+brew "fd"
 brew "giflib"
 brew "jpeg"
 brew "ffmpeg"
@@ -30,9 +32,10 @@ brew "hub"
 brew "hugo"
 brew "icarus-verilog"
 brew "imagemagick"
-brew "io"
+brew "io", args: ["HEAD"]
 brew "jenv"
 brew "jp2a"
+brew "jq"
 brew "mas"
 brew "python@2"
 brew "mongodb", restart_service: true
@@ -81,12 +84,13 @@ cask "hazel"
 cask "highsierramediakeyenabler"
 cask "imageoptim"
 cask "istat-menus"
-cask "iterm2"
+cask "iterm2-beta"
 cask "java8"
 cask "keybase"
 cask "kitematic"
 cask "knockknock"
 cask "latexit"
+cask "logitech-control-center"
 cask "moom"
 cask "nordvpn"
 cask "oni"
@@ -110,20 +114,19 @@ cask "vimr"
 cask "visual-studio-code"
 cask "vlc"
 cask "whatsyoursign"
-mas "com.apple.dt.Xcode", id: 497799835
-mas "com.apple.garageband10", id: 682658836
-mas "com.apple.iWork.Keynote", id: 409183694
-mas "com.apple.iWork.Numbers", id: 409203825
-mas "com.apple.iWork.Pages", id: 409201541
-mas "com.atlassian.trello", id: 1278508951
-mas "com.bloombuilt.dayone-mac", id: 1055511498
-mas "com.culturedcode.ThingsMac", id: 904280696
-mas "com.if.Amphetamine", id: 937984704
-mas "com.junecloud.mac.Deliveries", id: 924726344
-mas "com.khanov.BlockerMac", id: 1107421413
-mas "com.pixelmatorteam.pixelmator.x", id: 1289583905
-mas "com.reederapp.rkit2.mac", id: 880001334
-mas "com.tapbots.TweetbotMac", id: 557168941
-mas "com.tinyspeck.slackmacgap", id: 803453959
-mas "io.canarymail.mac", id: 1236045954
-mas "net.shinyfrog.bear", id: 1091189122
+mas "1Blocker", id: 1107421413
+mas "Amphetamine", id: 937984704
+mas "Bear", id: 1091189122
+mas "Canary Mail", id: 1236045954
+mas "Day One", id: 1055511498
+mas "Deliveries", id: 924726344
+mas "GarageBand", id: 682658836
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Pixelmator Pro", id: 1289583905
+mas "Slack", id: 803453959
+mas "Things", id: 904280696
+mas "Trello", id: 1278508951
+mas "Tweetbot", id: 557168941
+mas "Xcode", id: 497799835
