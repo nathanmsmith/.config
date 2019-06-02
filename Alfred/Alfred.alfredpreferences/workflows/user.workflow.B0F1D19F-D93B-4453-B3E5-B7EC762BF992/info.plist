@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.vitorgalvao.alfred.temporaryemail</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>1BFF14FC-DF72-4BC9-807B-3D38432CF08D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>45C10052-0E98-4B4A-9B23-99DF057B5FA5</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>9066A3FA-E9D2-44AF-BB72-A54ABBEB3A3D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>1BFF14FC-DF72-4BC9-807B-3D38432CF08D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Vítor Galvão</string>
+	<key>description</key>
+	<string>Get a temporary email inbox</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>TemporaryEmail</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>function notification {
+  ./Notificator.app/Contents/Resources/Scripts/notificator --message "${1}" --title "${alfred_workflow_name}"
+}
+
+if [[ -n "${1}" ]]; then
+  email_name="${1//[^[:alnum:]]}"
+else
+  email_name="$(openssl rand -base64 12 | tr -d '/=+')"
+fi
+
+email="${email_name}@teleosaurs.xyz"
+url="https://teleosaurs.xyz/inbox/${email_name}"
+
+front_browser="$(osascript -e 'tell application "System Events" to return name of first process whose frontmost is true')"
+
+if [[ "${front_browser}" == 'Safari' || "${front_browser}" == 'Safari Technology Preview' || "${front_browser}" == 'Webkit' ]]; then
+  osascript &lt;&lt;EOF
+    tell application "${front_browser}"
+      set tabIndex to index of current tab of front window
+      open location "${url}"
+      tell front window to set current tab to tab tabIndex
+    end tell
+EOF
+elif [[ "${front_browser}" == 'Google Chrome' || "${front_browser}" == 'Google Chrome Canary' || "${front_browser}" == 'Chromium' || "${front_browser}" == 'Opera' || "${front_browser}" == 'Vivaldi' || "${front_browser}" == 'Brave' ]]; then
+  osascript &lt;&lt;EOF
+    tell application "${front_browser}"
+      set tabIndex to active tab index of front window
+      open location "${url}"
+      set active tab index of front window to tabIndex
+    end tell
+EOF
+else
+  notification 'You need a supported browser as your frontmost app'
+  exit 1
+fi
+
+pbcopy &lt;&lt;&lt; "${email}"
+notification 'Temporary email address copied to clipboard'</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>1BFF14FC-DF72-4BC9-807B-3D38432CF08D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>tmpmail</string>
+				<key>subtext</key>
+				<string>Instant disposable email</string>
+				<key>text</key>
+				<string>TemporaryEmail</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>9066A3FA-E9D2-44AF-BB72-A54ABBEB3A3D</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>script</key>
+				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
+readonly remote_info_plist="https://raw.githubusercontent.com/vitorgalvao/alfred-workflows/master/${alfred_workflow_name}/source/info.plist"
+readonly workflow_url="https://raw.githubusercontent.com/vitorgalvao/alfred-workflows/master/${alfred_workflow_name}/${alfred_workflow_name}.alfredworkflow"
+readonly download_type='direct'
+readonly frequency_check='4'
+
+# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
+function abort {
+  echo "${1}" &gt;&amp;2
+  exit 1
+}
+
+function url_exists {
+  curl --silent --location --output /dev/null --fail --range 0-0 "${1}"
+}
+
+function notification {
+  readonly local notificator="$(find . -type d -name 'Notificator.app')"
+  if [[ -n "${notificator}" ]]; then
+    "${notificator}/Contents/Resources/Scripts/notificator" --message "${1}" --title "${alfred_workflow_name}" --subtitle 'A new version is available'
+    return
+  fi
+
+  readonly local terminal_notifier="$(find . -type f -name 'terminal-notifier')"
+  if [[ -n "${terminal_notifier}" ]]; then
+    "${terminal_notifier}" -title "${alfred_workflow_name}" -subtitle 'A new version is available' -message "${1}"
+    return
+  fi
+
+  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
+}
+
+# Local sanity checks
+readonly local_info_plist='info.plist'
+readonly local_version="$(/usr/libexec/PlistBuddy -c 'print version' "${local_info_plist}")"
+
+[[ -n "${local_version}" ]] || abort 'You need to set a workflow version in the configuration sheet.'
+[[ "${download_type}" =~ ^(direct|page|github_release)$ ]] || abort "'download_type' (${download_type}) needs to be one of 'direct', 'page', or 'github_release'."
+[[ "${frequency_check}" =~ ^[0-9]+$ ]] || abort "'frequency_check' (${frequency_check}) needs to be a number."
+
+# Check for updates
+if [[ $(find "${local_info_plist}" -mtime +"${frequency_check}"d) ]]; then
+  if ! url_exists "${remote_info_plist}"; then abort "'remote_info_plist' (${remote_info_plist}) appears to not be reachable."; fi # Remote sanity check
+
+  readonly tmp_file="$(mktemp)"
+  curl --silent --location --output "${tmp_file}" "${remote_info_plist}"
+  readonly remote_version="$(/usr/libexec/PlistBuddy -c 'print version' "${tmp_file}")"
+
+  if [[ "${local_version}" == "${remote_version}" ]]; then
+    touch "${local_info_plist}" # Reset timer by touching local file
+    exit 0
+  fi
+
+  if [[ "${download_type}" == 'page' ]]; then
+    notification 'Opening download page…'
+    open "${workflow_url}"
+    exit 0
+  fi
+
+  download_url="$([[ "${download_type}" == 'github_release' ]] &amp;&amp; curl --silent "https://api.github.com/repos/${workflow_url}/releases/latest" | grep 'browser_download_url' | head -1 | sed -E 's/.*browser_download_url": "(.*)"/\1/' || echo "${workflow_url}")"
+
+  if url_exists "${download_url}"; then
+    notification 'Downloading and installing…'
+    curl --silent --location --output "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow" "${download_url}"
+    open "${HOME}/Downloads/${alfred_workflow_name}.alfredworkflow"
+  else
+    abort "'workflow_url' (${download_url}) appears to not be reachable."
+  fi
+fi</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>45C10052-0E98-4B4A-9B23-99DF057B5FA5</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Create temporary email inboxes via [Teleosaurs Mail](http://teleosaurs.xyz/).
+
+Call `tmpmail` to make a temporary email address and open a background tab with the corresponding inbox. The address will be copied to your clipboard.
+
+![](https://i.imgur.com/HpF0tRM.png)
+
+Giving an argument will try to use that specific name, while leaving it blank will create a random address.</string>
+	<key>uidata</key>
+	<dict>
+		<key>1BFF14FC-DF72-4BC9-807B-3D38432CF08D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>240</integer>
+			<key>ypos</key>
+			<integer>20</integer>
+		</dict>
+		<key>45C10052-0E98-4B4A-9B23-99DF057B5FA5</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>12</integer>
+			<key>note</key>
+			<string>OneUpdater</string>
+			<key>xpos</key>
+			<integer>450</integer>
+			<key>ypos</key>
+			<integer>20</integer>
+		</dict>
+		<key>9066A3FA-E9D2-44AF-BB72-A54ABBEB3A3D</key>
+		<dict>
+			<key>xpos</key>
+			<integer>30</integer>
+			<key>ypos</key>
+			<integer>20</integer>
+		</dict>
+	</dict>
+	<key>version</key>
+	<string>1.6.1</string>
+	<key>webaddress</key>
+	<string>http://vitorgalvao.com/</string>
+</dict>
+</plist>
