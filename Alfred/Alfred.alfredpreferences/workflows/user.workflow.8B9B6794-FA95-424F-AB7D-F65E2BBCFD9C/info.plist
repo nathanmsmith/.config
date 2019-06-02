@@ -21,7 +21,7 @@
 				<false/>
 			</dict>
 		</array>
-		<key>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</key>
+		<key>453FD97A-30E3-4229-975F-1079272DC3FE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
@@ -49,6 +49,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>D2DD9DE1-3C22-4CED-B89A-D9660095D84A</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>25DA0D72-264A-4CD8-9A6A-9FFD4B652DF1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 	</dict>
 	<key>createdby</key>
 	<string>Benzi Ahamed</string>
@@ -63,29 +76,44 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>action</key>
-				<integer>0</integer>
-				<key>argument</key>
-				<integer>0</integer>
-				<key>focusedappvariable</key>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>menu</string>
+				<key>subtext</key>
+				<string>Menu Bar Search</string>
+				<key>text</key>
+				<string>Menu</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>453FD97A-30E3-4229-975F-1079272DC3FE</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
 				<false/>
-				<key>focusedappvariablename</key>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
+				<string>./menu -click "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
 				<string></string>
-				<key>hotkey</key>
-				<integer>0</integer>
-				<key>hotmod</key>
-				<integer>0</integer>
-				<key>leftcursor</key>
-				<false/>
-				<key>modsmode</key>
-				<integer>0</integer>
-				<key>relatedAppsMode</key>
+				<key>type</key>
 				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.trigger.hotkey</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</string>
+			<string>C8DFF277-2C74-48D3-B685-F304268DF007</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -140,25 +168,36 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>4</integer>
-				<key>script</key>
-				<string>./menu -click "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>help</string>
+				<key>subtext</key>
+				<string>Menu Bar Search</string>
+				<key>text</key>
+				<string>Help</string>
+				<key>withspace</key>
+				<true/>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.action.script</string>
+			<string>alfred.workflow.input.keyword</string>
 			<key>uid</key>
-			<string>C8DFF277-2C74-48D3-B685-F304268DF007</string>
+			<string>D2DD9DE1-3C22-4CED-B89A-D9660095D84A</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>path</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.browseinalfred</string>
+			<key>uid</key>
+			<string>CE6777D4-DFB9-460C-897D-EB6C45E6A769</string>
+			<key>version</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -206,19 +245,6 @@
 			<string>CD061C82-1321-458D-B46E-3603B3DB27E0</string>
 			<key>version</key>
 			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>path</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.browseinalfred</string>
-			<key>uid</key>
-			<string>CE6777D4-DFB9-460C-897D-EB6C45E6A769</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -289,12 +315,12 @@ You can change the workflow environment variables to fine tune menu listings
 			<key>ypos</key>
 			<integer>140</integer>
 		</dict>
-		<key>892B9EF8-E33C-4D32-BBEB-591DFBEFFFEC</key>
+		<key>453FD97A-30E3-4229-975F-1079272DC3FE</key>
 		<dict>
 			<key>xpos</key>
 			<integer>70</integer>
 			<key>ypos</key>
-			<integer>140</integer>
+			<integer>10</integer>
 		</dict>
 		<key>C8DFF277-2C74-48D3-B685-F304268DF007</key>
 		<dict>
@@ -316,6 +342,13 @@ You can change the workflow environment variables to fine tune menu listings
 			<integer>560</integer>
 			<key>ypos</key>
 			<integer>280</integer>
+		</dict>
+		<key>D2DD9DE1-3C22-4CED-B89A-D9660095D84A</key>
+		<dict>
+			<key>xpos</key>
+			<integer>70</integer>
+			<key>ypos</key>
+			<integer>150</integer>
 		</dict>
 	</dict>
 	<key>variables</key>
