@@ -725,6 +725,114 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>926B332A-3C6C-444B-A9FB-6D12FE1E0347</string>
+	<key>GlobalKeyMap</key>
+	<dict>
+		<key>0x19-0x60000</key>
+		<dict>
+			<key>Action</key>
+			<integer>39</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0x70-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>12</integer>
+			<key>Text</key>
+			<string> p</string>
+		</dict>
+		<key>0x9-0x40000</key>
+		<dict>
+			<key>Action</key>
+			<integer>32</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf700-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>7</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf701-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>6</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf702-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>2</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf702-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>33</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf703-0x300000</key>
+		<dict>
+			<key>Action</key>
+			<integer>0</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf703-0x320000</key>
+		<dict>
+			<key>Action</key>
+			<integer>34</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf729-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>5</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72b-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>4</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72c-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>9</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72c-0x20000</key>
+		<dict>
+			<key>Action</key>
+			<integer>9</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72d-0x100000</key>
+		<dict>
+			<key>Action</key>
+			<integer>8</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+		<key>0xf72d-0x20000</key>
+		<dict>
+			<key>Action</key>
+			<integer>8</integer>
+			<key>Text</key>
+			<string></string>
+		</dict>
+	</dict>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
@@ -818,25 +926,25 @@
 	<key>NSWindow Frame com.apple.typography_panel_DankMono-Regular</key>
 	<string>246 443 260 116 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>647 490 570 377 0 0 1440 877 </string>
+	<string>1139 1013 585 377 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>555 350 730 527 0 0 1440 877 </string>
+	<string>389 0 1051 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
 	<string>407 283 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 11</key>
 	<string>205 311 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>275 335 570 377 0 0 1440 877 </string>
+	<string>13 321 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>395 495 570 377 0 0 1440 877 </string>
+	<string>11 500 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>596 214 836 475 0 0 1440 877 </string>
+	<string>130 119 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
 	<string>615 500 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>617 145 730 527 0 0 1440 877 </string>
+	<string>617 285 570 377 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
-	<string>94 164 1333 713 0 0 1440 877 </string>
+	<string>94 318 570 559 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 8</key>
 	<string>300 183 1039 517 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 9</key>
@@ -2175,7 +2283,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1440, 900}}</string>
 		<key>topLeft</key>
-		<string>{209, 754}</string>
+		<string>{269, 595}</string>
 	</dict>
 	<key>NoSyncHaveRequestedFullDiskAccess</key>
 	<true/>
@@ -2184,7 +2292,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>7067658E-2267-409A-BE9F-16361D3E3907</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>3</integer>
+	<integer>20</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2813,6 +2921,10 @@
 			</dict>
 		</array>
 	</dict>
+	<key>NoSyncSearchHistory</key>
+	<array>
+		<string>BUILD</string>
+	</array>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>558906914.35893404</real>
 	<key>OnlyWhenMoreTabs</key>
@@ -2869,7 +2981,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-05-19T04:23:07Z</date>
+	<date>2019-05-27T19:38:22Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>Secure Input</key>
