@@ -306,6 +306,7 @@ if exists('*minpac#init')
 \}
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
+  let g:ale_prolog_swipl_timeout = 10
   nmap <silent> [W <Plug>(ale_first)
   nmap <silent> [w <Plug>(ale_previous)
   nmap <silent> ]w <Plug>(ale_next)
