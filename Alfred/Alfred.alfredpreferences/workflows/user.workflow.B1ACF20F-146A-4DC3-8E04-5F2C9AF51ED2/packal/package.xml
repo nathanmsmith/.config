@@ -1,8 +1,0 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<workflow>
-  <name>Fantastical > Apple Calendar</name>
-  <version>1.0</version>
-  <bundle>com.ryanblock.fantastical.alias</bundle>
-  <updated>1427310828</updated>
-  <file>fantastical_2_alias.alfredworkflow</file>
-</workflow>

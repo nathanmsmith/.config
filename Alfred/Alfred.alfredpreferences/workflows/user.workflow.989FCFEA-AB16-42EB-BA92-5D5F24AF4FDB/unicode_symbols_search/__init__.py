@@ -1,1 +1,0 @@
-from .unicode_symbols_search import search_symbols
