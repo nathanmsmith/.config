@@ -426,8 +426,6 @@ if exists('*minpac#init')
   " Syntax highlighting for github's hub tool
   call minpac#add('jez/vim-github-hub')
   call minpac#add('dhruvasagar/vim-table-mode')
-  call minpac#add('Alok/notational-fzf-vim')
-  let g:nv_search_paths = ['~/wiki']
 
 else
   colorscheme elflord

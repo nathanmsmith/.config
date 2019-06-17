@@ -49,7 +49,7 @@ if status --is-login
   status --is-interactive; and rbenv init - | source
 
   # Go specific settings
-  # GOPATH
+  set -gx GOPATH ~/Developer/go
   set -gx PATH $PATH $GOPATH/bin
 
   # Rust specific settings
