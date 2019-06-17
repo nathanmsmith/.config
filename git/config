@@ -10,6 +10,7 @@
 	ship = town shi
 	sync = town sync
 	discard = !git clean -df && git checkout -- .
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi > .gitignore"
 [credential]
 	helper = osxkeychain
 [commit]
