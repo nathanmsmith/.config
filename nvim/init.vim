@@ -245,6 +245,9 @@ if exists('*minpac#init')
   " Better definitions of a word
   call minpac#add('chaoren/vim-wordmotion')
 
+  " call minpac#add('907th/vim-auto-save')
+  " let g:auto_save = 1
+
   " Fuzzy finding with FZF
   " refs:
   " - https://github.com/junegunn/fzf
@@ -387,6 +390,7 @@ if exists('*minpac#init')
   call minpac#add('vim-ruby/vim-ruby')
   " Ruby on Rails
   call minpac#add('tpope/vim-rails')
+  call minpac#add('tpope/vim-endwise')
   " Go
   " Make sure to call :GoUpdateBinaries on install
   call minpac#add('fatih/vim-go')
@@ -406,6 +410,11 @@ if exists('*minpac#init')
   call minpac#add('rust-lang/rust.vim')
   " TOML
   call minpac#add('cespare/vim-toml')
+  " Scala
+  call minpac#add('derekwyatt/vim-scala')
+  let g:scala_scaladoc_indent = 1
+  " Erlang
+  call minpac#add('vim-erlang/vim-erlang-runtime')
 
   " Evaluating
   call minpac#add('tpope/vim-projectionist')
