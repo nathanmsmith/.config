@@ -42,6 +42,8 @@ abbr --add gri 'git rebase --interactive'
 abbr --add gst 'git status'
 abbr --add gd 'git diff'
 abbr --add gds 'git diff --staged'
+abbr --add gs 'git stash'
+abbr --add gsa 'git stash --all'
 
 # Yarn
 abbr --add yn 'yarn'
