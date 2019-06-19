@@ -50,7 +50,7 @@ if status --is-login
 
   # Go specific settings
   set -gx GOPATH ~/Developer/go
-  set -gx PATH $PATH $GOPATH/bin
+  set -gx PATH $GOPATH/bin $PATH
 
   # Rust specific settings
   # Rust tools XDG compatibility
@@ -62,6 +62,11 @@ if status --is-login
   # Io specific settings
   set -gx EERIEDIR ~/.eerie
   set -gx PATH $PATH $EERIEDIR/base/bin $EERIEDIR/activeEnv/bin
+
+  # Keybase development
+  set -e KEYBASE_PERF
+  set -x KEYBASE_LOCAL_DEBUG 1
+  set -x KEYBASE_DEV_TOOL_ROOTS "$HOME/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi,$HOME/Library/Application Support/Google/Chrome/Default/Extensions/hgldghadipiblonfkkicmgcbbijnpeog"
 
 end
 
