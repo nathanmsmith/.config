@@ -359,6 +359,9 @@ if exists('*minpac#init')
   call minpac#add('othree/html5.vim')
   " Handlebars
   call minpac#add('mustache/vim-mustache-handlebars')
+  " Coffeescript + iced support
+  call minpac#add('kchmck/vim-coffee-script')
+  autocmd BufNewFile,BufRead *.iced set filetype=coffee
   " CSS
   call minpac#add('JulesWang/css.vim')
   " call minpac#add('hail2u/vim-css3-syntax')
