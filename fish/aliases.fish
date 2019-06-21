@@ -20,6 +20,10 @@ abbr --add la 'ls -a'
 abbr --add ll 'ls -l'
 abbr --add lla 'ls -la'
 
+# Vim
+abbr --add v 'nvim'
+abbr --add n 'nvim'
+
 # Git
 abbr --add g 'git'
 abbr --add ga 'git add'
