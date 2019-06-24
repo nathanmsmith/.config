@@ -27,6 +27,10 @@ abbr --add --global bc 'brew cask'
 # Docker
 
 
+# Vim
+abbr --add v 'nvim'
+abbr --add n 'nvim'
+
 # Git
 abbr --add --global g 'git'
 abbr --add --global ga 'git add'

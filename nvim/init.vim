@@ -397,17 +397,6 @@ if exists('*minpac#init')
   " Go
   " Make sure to call :GoUpdateBinaries on install
   call minpac#add('fatih/vim-go')
-  " Vim-go all the colors
-  let g:go_highlight_build_constraints = 1
-  let g:go_highlight_extra_types = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_functions = 1
-  let g:go_highlight_methods = 1
-  let g:go_highlight_operators = 1
-  let g:go_highlight_structs = 1
-  let g:go_highlight_types = 1
-  " auto import deps
-  let g:go_fmt_command = "goimports"
 
   " Rust
   call minpac#add('rust-lang/rust.vim')
@@ -431,6 +420,7 @@ if exists('*minpac#init')
   " Syntax highlighting for github's hub tool
   call minpac#add('jez/vim-github-hub')
   call minpac#add('dhruvasagar/vim-table-mode')
+  call minpac#add('ap/vim-css-color')
 
 else
   colorscheme elflord
