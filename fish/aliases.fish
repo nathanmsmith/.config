@@ -24,6 +24,9 @@ abbr --add --global lla 'ls -la'
 abbr --add --global b 'brew'
 abbr --add --global bc 'brew cask'
 
+# Docker
+
+
 # Git
 abbr --add --global g 'git'
 abbr --add --global ga 'git add'
@@ -32,6 +35,7 @@ abbr --add --global gad 'git add .'
 abbr --add --global ga. 'git add .'
 abbr --add --global gst 'git status'
 abbr --add --global gbr 'git branch'
+abbr --add --global gcl 'git clone'
 abbr --add --global gco 'git checkout'
 abbr --add --global gcom 'git checkout master'
 abbr --add --global gc 'git commit'
@@ -42,8 +46,10 @@ abbr --add --global gbD 'git branch -D'
 abbr --add --global gp 'git push'
 abbr --add --global gpu 'git push -u origin'
 abbr --add --global gpf 'git push --force-with-lease'
+abbr --add --global gf 'git fetch'
 abbr --add --global gpl 'git pull'
 abbr --add --global gr 'git rebase'
+abbr --add --global grm 'git rebase master'
 abbr --add --global gri 'git rebase --interactive'
 abbr --add --global gst 'git status'
 abbr --add --global gd 'git diff'
@@ -61,5 +67,12 @@ abbr --add --global ynst 'yarn storybook'
 abbr --add --global ynrnst 'yarn rn-storybook'
 abbr --add --global ynrns 'yarn rn-start'
 abbr --add --global ynrnsi 'yarn rn-start ios'
+
+# Keybase
+
+abbr --add --global kb 'keybase'
+abbr --add --global kbc 'keybase chat'
+abbr --add --global kbw 'keybase wallet'
+abbr --add --global kbwa 'keybase wallet api'
 
 # end

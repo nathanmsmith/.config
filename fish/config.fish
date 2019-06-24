@@ -67,6 +67,8 @@ if status --is-login
   set -e KEYBASE_PERF
   set -x KEYBASE_LOCAL_DEBUG 1
   set -x KEYBASE_DEV_TOOL_ROOTS "$HOME/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi,$HOME/Library/Application Support/Google/Chrome/Default/Extensions/hgldghadipiblonfkkicmgcbbijnpeog"
+  set -x RUN_MODE devel
+  set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
 
 end
 

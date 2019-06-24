@@ -200,7 +200,7 @@ if exists('*minpac#init')
   call minpac#add('tpope/vim-unimpaired')
 
   " Autodetect indentation
-  call minpac#add('tpope/vim-sleuth')
+  " call minpac#add('tpope/vim-sleuth')
 
   " Git commands in Vim
   call minpac#add('tpope/vim-fugitive')
@@ -418,6 +418,8 @@ if exists('*minpac#init')
   let g:scala_scaladoc_indent = 1
   " Erlang
   call minpac#add('vim-erlang/vim-erlang-runtime')
+  " Avro
+  call minpac#add('gurpreetatwal/vim-avro')
 
   " Evaluating
   call minpac#add('tpope/vim-projectionist')
