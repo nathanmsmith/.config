@@ -50,6 +50,7 @@ if status --is-login
 
   # Go specific settings
   # GOPATH
+  set -gx GOPATH ~/Developer/go
   set -gx PATH $PATH $GOPATH/bin
 
   # Rust specific settings
