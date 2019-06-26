@@ -219,6 +219,10 @@ if exists('*minpac#init')
   call minpac#add('editorconfig/editorconfig-vim')
   " Make editorconfig play nice with Fugitive
   let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+  " No one tell me how big my tabs will be!
+  " For real though, I was working on a Go project where the indent size was 4
+  " and it drove me crazy until I figured out it was because of editorconfig
+  let g:EditorConfig_disable_rules = ['tab_width', 'indent_size']
 
   " Helpful character metadata on `ga` 😍
   call minpac#add('tpope/vim-characterize')
@@ -258,6 +262,7 @@ if exists('*minpac#init')
   " Using FZF
   nnoremap <silent> <leader>p :Files<CR>
   nnoremap <silent> <leader>b :Buffers<CR>
+  nnoremap <silent> <leader>f :Rg<CR>
 
   " Airline Status Bar
   " ref: https://github.com/vim-airline/vim-airline
