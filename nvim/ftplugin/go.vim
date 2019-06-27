@@ -15,3 +15,15 @@ let g:go_highlight_types = 1
 let b:ale_linters = ["golint", "go build"]
 let b:ale_fixers = []
 let g:go_fmt_command = "goimports"
+
+let g:projectionist_heuristics = {
+            \ '*.go': {
+            \   '*.go': {
+            \       'alternate': '{}_test.go',
+            \       'type': 'source'
+            \   },
+            \   '*_test.go': {
+            \       'alternate': '{}.go',
+            \       'type': 'test'
+            \   },
+            \ }}
