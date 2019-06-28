@@ -882,9 +882,23 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-2023 599 1999 1292 -2560 493 2560 1417 </string>
+	<string>2560 340 997 537 2560 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>-2118 804 1108 707 -2560 493 2560 1417 </string>
+	<string>1120 1015 570 402 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>0 167 1720 1250 0 0 2560 1440 </string>
+	<key>NSWindow Frame iTerm Window 3</key>
+	<string>150 13 822 702 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 4</key>
+	<string>218 24 1207 807 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>0 70 1440 807 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 6</key>
+	<string>364 68 1018 492 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 7</key>
+	<string>168 63 570 402 0 0 1440 900 </string>
+	<key>NSWindow Frame iTerm Window 8</key>
+	<string>260 444 570 402 0 0 1440 900 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2225,15 +2239,17 @@
 	<key>NoSyncInstallationId</key>
 	<string>E419DFD5-DC75-4741-B710-1FB05F1AA13A</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>5</integer>
+	<integer>10</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncNextAnnoyanceTime</key>
-	<real>582647615.47025299</real>
+	<real>582826833.39846694</real>
 	<key>NoSyncOnboardingWindowHasBeenShown</key>
 	<true/>
+	<key>NoSyncPermissionToShowTip</key>
+	<false/>
 	<key>NoSyncRecordedVariables</key>
 	<dict>
 		<key>0</key>
@@ -2869,7 +2885,16 @@
 		</array>
 	</dict>
 	<key>NoSyncSearchHistory</key>
-	<true/>
+	<array>
+		<string>payment</string>
+		<string>loc2</string>
+		<string>merged into</string>
+		<string>double-check</string>
+		<string>merging direct</string>
+		<string>stellard</string>
+		<string>horizon</string>
+		<string>nate4</string>
+	</array>
 	<key>NoSyncTipOfTheDayEligibilityBeganTime</key>
 	<real>582474815.47005296</real>
 	<key>OnlyWhenMoreTabs</key>
@@ -2924,9 +2949,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-06-18T15:12:10Z</date>
+	<date>2019-06-27T03:14:26Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>ShowFullScreenTabBar</key>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>

@@ -15,6 +15,7 @@
 	helper = osxkeychain
 [commit]
 	gpgsign = true
+	verbose = 2
 [user]
 	name = Nathan Smith
 	email = nathan@keyba.se
@@ -38,6 +39,7 @@
 	tool = nvimdiff
 [mergetool "nvimdiff"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+	keppBackup = false
 [color]
 	ui = true
 [color "diff-highlight"]
