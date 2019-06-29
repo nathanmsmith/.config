@@ -15,6 +15,7 @@
 	helper = osxkeychain
 [commit]
 	gpgsign = true
+	verbose = 2
 [user]
 	name = Nathan Smith
 	email = nathan@nathansmith.io
