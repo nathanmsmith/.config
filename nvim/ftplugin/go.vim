@@ -10,20 +10,21 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
+highlight link goBuiltins Keyword
 
 " Let vim-go handle running "go fmt" on save
 let b:ale_linters = ["golint", "go build"]
 let b:ale_fixers = []
 let g:go_fmt_command = "goimports"
 
+
 let g:projectionist_heuristics = {
-            \ '*.go': {
-            \   '*.go': {
-            \       'alternate': '{}_test.go',
-            \       'type': 'source'
-            \   },
-            \   '*_test.go': {
-            \       'alternate': '{}.go',
-            \       'type': 'test'
-            \   },
-            \ }}
+      \   '*.go': {
+      \       'alternate': '{}_test.go',
+      \       'type': 'source'
+      \   },
+      \   '*_test.go': {
+      \       'alternate': '{}.go',
+      \       'type': 'test'
+      \   },
+      \ }

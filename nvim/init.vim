@@ -219,6 +219,10 @@ if exists('*minpac#init')
   call minpac#add('editorconfig/editorconfig-vim')
   " Make editorconfig play nice with Fugitive
   let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+  " No one tell me how big my tabs will be!
+  " For real though, I was working on a Go project where the indent size was 4
+  " and it drove me crazy until I figured out it was because of editorconfig
+  let g:EditorConfig_disable_rules = ['tab_width', 'indent_size']
 
   " Helpful character metadata on `ga` 😍
   call minpac#add('tpope/vim-characterize')
@@ -258,6 +262,7 @@ if exists('*minpac#init')
   " Using FZF
   nnoremap <silent> <leader>p :Files<CR>
   nnoremap <silent> <leader>b :Buffers<CR>
+  nnoremap <silent> <leader>f :Rg<CR>
 
   " Airline Status Bar
   " ref: https://github.com/vim-airline/vim-airline
@@ -359,6 +364,9 @@ if exists('*minpac#init')
   call minpac#add('othree/html5.vim')
   " Handlebars
   call minpac#add('mustache/vim-mustache-handlebars')
+  " Coffeescript + iced support
+  call minpac#add('kchmck/vim-coffee-script')
+  autocmd BufNewFile,BufRead *.iced set filetype=coffee
   " CSS
   call minpac#add('JulesWang/css.vim')
   " call minpac#add('hail2u/vim-css3-syntax')
@@ -404,6 +412,8 @@ if exists('*minpac#init')
   let g:scala_scaladoc_indent = 1
   " Erlang
   call minpac#add('vim-erlang/vim-erlang-runtime')
+  " Avro
+  call minpac#add('gurpreetatwal/vim-avro')
 
   " Evaluating
   call minpac#add('tpope/vim-projectionist')
