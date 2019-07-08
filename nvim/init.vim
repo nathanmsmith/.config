@@ -290,7 +290,7 @@ if exists('*minpac#init')
   call minpac#add('adriaanzon/vim-emmet-ultisnips')
   call minpac#add('SirVer/ultisnips')
   let g:UltiSnipsEditSplit="vertical"
-  let g:UltiSnipsUsePythonVersion = 3
+  " let g:UltiSnipsUsePythonVersion = 3
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', 'UltiSnips']
   let g:UltiSnipsExpandTrigger="<tab>"
   let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -333,8 +333,8 @@ if exists('*minpac#init')
 
   " vim-test
   call minpac#add('janko-m/vim-test')
-  let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx)$'
-  let g:test#javascript#jest#executable = 'yarn test:unit'
+  " let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx)$'
+  let g:test#javascript#jest#executable = 'yarn test'
   nnoremap <leader>t :TestNearest<cr>
   nnoremap <leader>T :TestFile<cr>
   nnoremap <leader>a :TestSuite<cr>
@@ -394,6 +394,10 @@ if exists('*minpac#init')
   call minpac#add('elzr/vim-json')
   " GraphQL
   call minpac#add('jparise/vim-graphql')
+  " Python
+  call minpac#add('vim-python/python-syntax')
+  let g:python_highlight_all = 1
+  let g:python_highlight_space_errors = 0
   " Ruby
   call minpac#add('vim-ruby/vim-ruby')
   " Ruby on Rails
@@ -417,6 +421,27 @@ if exists('*minpac#init')
 
   " Evaluating
   call minpac#add('tpope/vim-projectionist')
+  let g:projectionist_heuristics = {
+        \ '*.go': {
+        \   '*.go': {
+        \       'alternate': '{}_test.go',
+        \       'type': 'source'
+        \   },
+        \   '*_test.go': {
+        \       'alternate': '{}.go',
+        \       'type': 'test'
+        \   },
+        \ },
+        \ '*.js': {
+        \   '*.js': {
+        \       'alternate': '{}.test.js',
+        \       'type': 'source'
+        \   },
+        \   '*.test.js': {
+        \       'alternate': '{}.js',
+        \       'type': 'test'
+        \   },
+        \ }}
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('Xuyuanp/nerdtree-git-plugin')
   " s for sidebar
@@ -425,8 +450,15 @@ if exists('*minpac#init')
   " Syntax highlighting for github's hub tool
   call minpac#add('jez/vim-github-hub')
   call minpac#add('dhruvasagar/vim-table-mode')
-  call minpac#add('ap/vim-css-color')
-
+  " call minpac#add('ap/vim-css-color')
+  call minpac#add('Shougo/deoplete.nvim')
+  " let g:deoplete#enable_at_startup = 1
+  "
+" call deoplete#custom#option('sources', {
+" \ '_': ['ale'],
+" \ })
+  " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
+  call minpac#add('tmsvg/pear-tree')
 else
   colorscheme elflord
 

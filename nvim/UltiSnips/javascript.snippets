@@ -1,7 +1,7 @@
 # Vanilla JavaScript
 
 snippet fun "Function declaration"
-function ${1:function_name}(${2}) {
+function ${1:functionName}(${2}) {
 	${VISUAL}$0
 }
 endsnippet
@@ -76,9 +76,9 @@ import * as React from 'react'
 import * as Sb from '../../stories/storybook'
 
 const load = () => {
-  Sb.storiesOf('$1', module)
-    .add('$2', () => $3)
-    $0
+	Sb.storiesOf('$1', module)
+		.add('$2', () => $3)
+		$0
 }
 
 export default load
@@ -93,6 +93,13 @@ endsnippet
 
 snippet it "Jest it block" b
 it('${1:should }', () => {
+	$0
+})
+endsnippet
+
+
+snippet test "Jest test block" b
+test('${1:test name}', () => {
 	$0
 })
 endsnippet
