@@ -62,6 +62,9 @@ abbr --add --global gds 'git diff --staged'
 abbr --add --global gdc 'git discard'
 abbr --add --global gs 'git stash'
 abbr --add --global gsa 'git stash --all'
+abbr --add --global gl 'git log'
+
+abbr --add --global gnpr 'git new-pull-request'
 
 # Yarn
 abbr --add --global yn 'yarn'

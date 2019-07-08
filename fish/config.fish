@@ -69,6 +69,9 @@ if status --is-login
   set -x KEYBASE_DEV_TOOL_ROOTS "$HOME/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi,$HOME/Library/Application Support/Google/Chrome/Default/Extensions/hgldghadipiblonfkkicmgcbbijnpeog"
   set -x RUN_MODE devel
   set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
+  # Android
+  set -x ANDROID_HOME "$HOME/Library/Android/sdk"
+  set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
 end
 
