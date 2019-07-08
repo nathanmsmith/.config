@@ -3,8 +3,8 @@ if status --is-login
 
   # XDG Directories
   set -gx XDG_CONFIG_HOME $HOME/.config
-  set -gx XDG_CACHE_HOME $HOME/.cache
-  set -gx XDG_DATA_HOME $HOME/.local/share
+  # set -gx XDG_CACHE_HOME $HOME/.cache
+  # set -gx XDG_DATA_HOME $HOME/.local/share
 
   # Bootstrap fisher
   # https://github.com/jorgebucaran/fisher
@@ -55,8 +55,8 @@ if status --is-login
 
   # Rust specific settings
   # Rust tools XDG compatibility
-  set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
-  set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
+  # set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
+  # set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 
   set -gx PATH $PATH $CARGO_HOME/bin
 
