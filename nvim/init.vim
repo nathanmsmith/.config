@@ -452,6 +452,9 @@ if exists('*minpac#init')
   call minpac#add('dhruvasagar/vim-table-mode')
   " call minpac#add('ap/vim-css-color')
   call minpac#add('tmsvg/pear-tree')
+  let g:pear_tree_smart_openers = 0
+  let g:pear_tree_smart_closers = 0
+  let g:pear_tree_smart_backspace = 0
   call minpac#add('Shougo/deoplete.nvim')
   let g:deoplete#enable_at_startup = 1
   autocmd VimEnter * call deoplete#custom#option('sources', {
