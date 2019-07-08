@@ -39,6 +39,7 @@
 	tool = nvimdiff
 [mergetool "nvimdiff"]
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
+	keepBackup = false
 [color]
 	ui = true
 [color "diff-highlight"]
