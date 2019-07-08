@@ -383,11 +383,11 @@ if exists('*minpac#init')
   " CSS-in-JS Support
   call minpac#add('styled-components/vim-styled-components', {'branch': 'main'})
   " TypeScript Syntax
-  " call minpac#add('leafgarland/typescript-vim')
-  call minpac#add('HerringtonDarkholme/yats.vim') " YATS is better
+  call minpac#add('leafgarland/typescript-vim')
+  " call minpac#add('HerringtonDarkholme/yats.vim') " YATS is better
   " TSX Support
   " call minpac#add('ianks/vim-tsx')
-  " call minpac#add('peitalin/vim-jsx-typescript')
+  call minpac#add('peitalin/vim-jsx-typescript')
   " Add Flow support
   " call minpac#add('flowtype/vim-flow')
   " JSON
@@ -451,14 +451,16 @@ if exists('*minpac#init')
   call minpac#add('jez/vim-github-hub')
   call minpac#add('dhruvasagar/vim-table-mode')
   " call minpac#add('ap/vim-css-color')
-  call minpac#add('Shougo/deoplete.nvim')
-  " let g:deoplete#enable_at_startup = 1
-  "
-" call deoplete#custom#option('sources', {
-" \ '_': ['ale'],
-" \ })
-  " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
   call minpac#add('tmsvg/pear-tree')
+  let g:pear_tree_smart_openers = 0
+  let g:pear_tree_smart_closers = 0
+  let g:pear_tree_smart_backspace = 0
+  call minpac#add('Shougo/deoplete.nvim')
+  let g:deoplete#enable_at_startup = 1
+  autocmd VimEnter * call deoplete#custom#option('sources', {
+  \ '_': ['ale'],
+  \ })
+  " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
 else
   colorscheme elflord
 
