@@ -76,6 +76,7 @@ abbr --add --global ynst 'yarn storybook'
 abbr --add --global ynrnst 'yarn rn-storybook'
 abbr --add --global ynrns 'yarn rn-start'
 abbr --add --global ynrnsi 'yarn rn-start ios'
+abbr --add --global yt 'yarn tsc'
 
 # Keybase
 

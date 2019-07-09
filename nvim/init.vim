@@ -303,9 +303,6 @@ if exists('*minpac#init')
   let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['eslint', 'prettier'],
-\   'javascript.jsx': ['eslint', 'prettier'],
-\   'typescript.tsx': ['eslint', 'prettier'],
 \   'css': ['prettier'],
 \   'scss': ['prettier'],
 \   'less': ['prettier'],
