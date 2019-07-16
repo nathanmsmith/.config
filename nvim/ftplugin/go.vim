@@ -13,6 +13,6 @@ let g:go_highlight_types = 1
 highlight link goBuiltins Keyword
 
 " Let vim-go handle running "go fmt" on save
-let b:ale_linters = ["golangci-lint"]
+let b:ale_linters = ["gobuild", "golangci-lint"]
 let b:ale_fixers = []
 let g:go_fmt_command = "goimports"

@@ -125,7 +125,8 @@ augroup vimStartup
 augroup END
 
 " Code Folding
-set foldmethod=syntax
+" See https://github.com/w0rp/ale/issues/1829
+" set foldmethod=syntax
 set foldlevelstart=99
 
 " Spell checking
@@ -374,7 +375,8 @@ if exists('*minpac#init')
   " Better JS support (indent, syntax, etc)
   call minpac#add('pangloss/vim-javascript')
   " JSX syntax
-  call minpac#add('mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] })
+  " call minpac#add('mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] })
+  call minpac#add('maxmellon/vim-jsx-pretty')
   " JSDoc generation
   call minpac#add('heavenshell/vim-jsdoc')
   " CSS-in-JS Support
@@ -384,7 +386,7 @@ if exists('*minpac#init')
   " call minpac#add('HerringtonDarkholme/yats.vim') " YATS is better
   " TSX Support
   " call minpac#add('ianks/vim-tsx')
-  call minpac#add('peitalin/vim-jsx-typescript')
+  " call minpac#add('peitalin/vim-jsx-typescript')
   " Add Flow support
   " call minpac#add('flowtype/vim-flow')
   " JSON
@@ -442,8 +444,10 @@ if exists('*minpac#init')
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('Xuyuanp/nerdtree-git-plugin')
   " s for sidebar
-  map <leader>s :NERDTreeToggle %<CR>
+  map <leader>s :NERDTreeFind<CR>
   call minpac#add('nelstrom/vim-visual-star-search')
+  let g:NERDTreeAutoDeleteBuffer = 1
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   " Syntax highlighting for github's hub tool
   call minpac#add('jez/vim-github-hub')
   call minpac#add('dhruvasagar/vim-table-mode')

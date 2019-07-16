@@ -20,6 +20,9 @@ abbr --add --global la 'ls -a'
 abbr --add --global ll 'ls -l'
 abbr --add --global lla 'ls -la'
 
+abbr --add --global md 'mkdir -p'
+abbr --add --global rd 'rm -r'
+
 # Homebrew --global
 abbr --add --global b 'brew'
 abbr --add --global bc 'brew cask'
@@ -32,6 +35,7 @@ abbr --add v 'nvim'
 abbr --add n 'nvim'
 
 # Git
+# Mainly inspired by https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet#git
 abbr --add --global g 'git'
 abbr --add --global ga 'git add'
 abbr --add --global gi 'git ignore'
@@ -53,9 +57,12 @@ abbr --add --global gpu 'git push -u origin'
 abbr --add --global gpf 'git push --force-with-lease'
 abbr --add --global gf 'git fetch'
 abbr --add --global gpl 'git pull'
-abbr --add --global gr 'git rebase'
-abbr --add --global grm 'git rebase master'
-abbr --add --global gri 'git rebase --interactive'
+abbr --add --global grh 'git reset HEAD'
+abbr --add --global grb 'git rebase'
+abbr --add --global grbm 'git rebase master'
+abbr --add --global grbi 'git rebase --interactive'
+abbr --add --global grbc 'git rebase --continue'
+abbr --add --global grbs 'git rebase --skip'
 abbr --add --global gst 'git status'
 abbr --add --global gd 'git diff'
 abbr --add --global gds 'git diff --staged'
@@ -69,6 +76,7 @@ abbr --add --global gnpr 'git new-pull-request'
 # Yarn
 abbr --add --global yn 'yarn'
 abbr --add --global yns 'yarn start'
+abbr --add --global ynt 'yarn test'
 # Keybase specific
 abbr --add --global ynsh 'yarn start-hot'
 abbr --add --global ynhs 'yarn hot-server'
@@ -76,7 +84,8 @@ abbr --add --global ynst 'yarn storybook'
 abbr --add --global ynrnst 'yarn rn-storybook'
 abbr --add --global ynrns 'yarn rn-start'
 abbr --add --global ynrnsi 'yarn rn-start ios'
-abbr --add --global yt 'yarn tsc'
+abbr --add --global ynts 'yarn test story --silent'
+abbr --add --global yntsu 'yarn test story --silent -u'
 
 # Keybase
 
