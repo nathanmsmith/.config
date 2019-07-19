@@ -16,3 +16,5 @@ highlight link goBuiltins Keyword
 let b:ale_linters = ["gobuild", "golangci-lint"]
 let b:ale_fixers = []
 let g:go_fmt_command = "goimports"
+
+nnoremap gh :GoInfo<cr>

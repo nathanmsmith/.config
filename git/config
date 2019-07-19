@@ -31,15 +31,20 @@
 	# Dummy merge strategy,
 	# see https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_merge_strategies
 	driver = true
-[diff "spaceman-diff"]
-	command = spaceman-diff
+[diff]
+	command = Kaleidoscope
 [difftool]
 	prompt = false
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [merge]
-	tool = nvimdiff
+	tool = Kaleidoscope
 [mergetool "nvimdiff"]
+	prompt = false
 	cmd = nvim -f -c \"Gdiff\" \"$MERGED\"
 	keppBackup = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" \"$REMOTE\"
 [color]
 	ui = true
 [color "diff-highlight"]

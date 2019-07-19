@@ -47,6 +47,7 @@ if status --is-login
   # Ruby specific settings
   # Rbenv
   status --is-interactive; and rbenv init - | source
+  set -gx PATH /usr/local/opt/ruby/bin $PATH
 
   # Go specific settings
   set -gx GOPATH ~/Developer/go
@@ -71,7 +72,7 @@ if status --is-login
   set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
   # Android
   set -x ANDROID_HOME "$HOME/Library/Android/sdk"
-  set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
+  set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $ANDROID_HOME/tools/bin $ANDROID_HOME/emulator
 
 end
 

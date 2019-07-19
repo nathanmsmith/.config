@@ -462,6 +462,8 @@ if exists('*minpac#init')
   \ '_': ['ale'],
   \ })
   " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
+  " https://github.com/Shougo/deoplete.nvim/issues/298
+  set completeopt-=preview
 else
   colorscheme elflord
 

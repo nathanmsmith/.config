@@ -1,3 +1,4 @@
 .ignore
 .projections.json
 .idea
+.gradle/

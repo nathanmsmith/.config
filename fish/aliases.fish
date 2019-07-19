@@ -29,6 +29,11 @@ abbr --add --global bc 'brew cask'
 
 # Docker
 
+# Go
+abbr --add --global got 'go test'
+abbr --add --global gor 'go run'
+abbr --add --global gob 'go build'
+
 
 # Vim
 abbr --add v 'nvim'
@@ -71,12 +76,16 @@ abbr --add --global gs 'git stash'
 abbr --add --global gsa 'git stash --all'
 abbr --add --global gl 'git log'
 
+abbr --add --global gmt 'git mergetool'
+abbr --add --global gdt 'git difftool'
+
 abbr --add --global gnpr 'git new-pull-request'
 
 # Yarn
 abbr --add --global yn 'yarn'
 abbr --add --global yns 'yarn start'
 abbr --add --global ynt 'yarn test'
+abbr --add --global ynb 'yarn build'
 # Keybase specific
 abbr --add --global ynsh 'yarn start-hot'
 abbr --add --global ynhs 'yarn hot-server'
