@@ -125,7 +125,7 @@ augroup vimStartup
 augroup END
 
 " Code Folding
-set foldmethod=syntax
+" set foldmethod=syntax
 set foldlevelstart=99
 
 " Spell checking
@@ -441,6 +441,16 @@ if exists('*minpac#init')
         \       'alternate': '{}.js',
         \       'type': 'test'
         \   },
+        \ },
+        \ '*.py': {
+        \   '*.py': {
+        \       'alternate': '{}_test.js',
+        \       'type': 'source'
+        \   },
+        \   '*_test.py': {
+        \       'alternate': '{}.py',
+        \       'type': 'test'
+        \   },
         \ }}
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('Xuyuanp/nerdtree-git-plugin')
@@ -460,6 +470,7 @@ if exists('*minpac#init')
   autocmd VimEnter * call deoplete#custom#option('sources', {
   \ '_': ['ale'],
   \ })
+  set completeopt-=preview
   " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
 else
   colorscheme elflord
