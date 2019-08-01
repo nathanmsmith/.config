@@ -444,7 +444,7 @@ if exists('*minpac#init')
         \ },
         \ '*.py': {
         \   '*.py': {
-        \       'alternate': '{}_test.js',
+        \       'alternate': '{}_test.py',
         \       'type': 'source'
         \   },
         \   '*_test.py': {
