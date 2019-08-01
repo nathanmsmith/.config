@@ -34,7 +34,8 @@ if status --is-login
   set -gx HOMEBREW_NO_ANALYTICS 1
 
   # Use GNU utilities instead of macOS versions
-  set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed}/libexec/gnubin $PATH
+  set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,make}/libexec/gnubin $PATH
+  set -gx PATH /usr/local/opt/gettext/bin $PATH
 
   # Use installed LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH

@@ -451,7 +451,6 @@ if exists('*minpac#init')
   " Syntax highlighting for github's hub tool
   call minpac#add('jez/vim-github-hub')
   call minpac#add('dhruvasagar/vim-table-mode')
-  " call minpac#add('ap/vim-css-color')
   call minpac#add('tmsvg/pear-tree')
   let g:pear_tree_smart_openers = 0
   let g:pear_tree_smart_closers = 0
@@ -464,6 +463,13 @@ if exists('*minpac#init')
   " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
   " https://github.com/Shougo/deoplete.nvim/issues/298
   set completeopt-=preview
+
+  call minpac#add('junegunn/vim-peekaboo')
+  let g:peekaboo_delay = 1000
+  " let g:peekaboo_compact = 1
+
+  call minpac#add('kana/vim-textobj-user')
+  call minpac#add('kana/vim-textobj-entire')
 else
   colorscheme elflord
 
