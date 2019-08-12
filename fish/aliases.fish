@@ -31,6 +31,7 @@ abbr --add --global bc 'brew cask'
 
 # Go
 abbr --add --global got 'go test'
+abbr --add --global gotv 'go test -v'
 abbr --add --global gor 'go run'
 abbr --add --global gob 'go build'
 
@@ -51,6 +52,7 @@ abbr --add --global gbr 'git branch'
 abbr --add --global gcl 'git clone'
 abbr --add --global gco 'git checkout'
 abbr --add --global gcom 'git checkout master'
+abbr --add --global gco- 'git checkout -'
 abbr --add --global gc 'git commit'
 abbr --add --global gca 'git commit -a'
 abbr --add --global gcm 'git commit -m'
