@@ -386,7 +386,7 @@ if exists('*minpac#init')
   " call minpac#add('HerringtonDarkholme/yats.vim') " YATS is better
   " TSX Support
   " call minpac#add('ianks/vim-tsx')
-  " call minpac#add('peitalin/vim-jsx-typescript')
+  call minpac#add('peitalin/vim-jsx-typescript')
   " Add Flow support
   " call minpac#add('flowtype/vim-flow')
   " JSON
@@ -438,6 +438,16 @@ if exists('*minpac#init')
         \   },
         \   '*.test.js': {
         \       'alternate': '{}.js',
+        \       'type': 'test'
+        \   },
+        \ },
+        \ '*.py': {
+        \   '*.py': {
+        \       'alternate': '{}_test.py',
+        \       'type': 'source'
+        \   },
+        \   '*_test.py': {
+        \       'alternate': '{}.py',
         \       'type': 'test'
         \   },
         \ }}
