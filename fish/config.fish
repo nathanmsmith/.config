@@ -54,6 +54,9 @@ if status --is-login
   set -gx GOPATH ~/Developer/go
   set -gx PATH $GOPATH/bin $PATH
 
+  # Python settings
+  set -gx PATH $HOME/.poetry/bin $PATH
+
   # Rust specific settings
   # Rust tools XDG compatibility
   # set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
