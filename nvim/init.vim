@@ -1,5 +1,5 @@
 " Nathan Smith's vim configuration
-
+set shortmess=I
 
 " Overarching Philosophy:
 " 1. Prefer the defaults
