@@ -56,6 +56,7 @@ if status --is-login
 
   # Python settings
   set -gx PATH $HOME/.poetry/bin $PATH
+  status --is-interactive; and pyenv init - | source
 
   # Rust specific settings
   # Rust tools XDG compatibility

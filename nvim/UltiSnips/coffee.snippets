@@ -5,3 +5,17 @@ endsnippet
 snippet cll "console.log with label"
 console.log '$1:', $1
 endsnippet
+
+
+# Jest
+snippet desc "Jest describe block" b
+describe "${1:Name of the group}", () ->
+	$0
+	return
+endsnippet
+
+snippet it "Jest it block" b
+it "${1:should }", () ->
+	$0
+	return
+endsnippet

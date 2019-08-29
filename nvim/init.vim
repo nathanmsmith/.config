@@ -156,6 +156,11 @@ command! Config :call OpenInSplitIfBufferDirty($MYVIMRC)
 
 set diffopt+=vertical
 
+
+" Python support
+let g:python_host_prog = "/usr/local/bin/python"
+let g:python3_host_prog = "/usr/local/bin/python3"
+
 " ==================================================
 " Plugins
 " Package manager: Minpac, https://github.com/k-takata/minpac
@@ -331,7 +336,7 @@ if exists('*minpac#init')
 
   " vim-test
   call minpac#add('janko-m/vim-test')
-  " let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx)$'
+  let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
   let g:test#javascript#jest#executable = 'yarn test'
   nnoremap <leader>t :TestNearest<cr>
   nnoremap <leader>T :TestFile<cr>
@@ -438,6 +443,16 @@ if exists('*minpac#init')
         \   },
         \   '*.test.js': {
         \       'alternate': '{}.js',
+        \       'type': 'test'
+        \   },
+        \ },
+        \ '*.iced': {
+        \   '*.iced': {
+        \       'alternate': '{}.test.iced',
+        \       'type': 'source'
+        \   },
+        \   '*.test.iced': {
+        \       'alternate': '{}.iced',
         \       'type': 'test'
         \   },
         \ },
