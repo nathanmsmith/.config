@@ -1,5 +1,5 @@
 " Nathan Smith's vim configuration
-set shortmess=I
+
 
 " Overarching Philosophy:
 " 1. Prefer the defaults
@@ -125,6 +125,7 @@ augroup vimStartup
 augroup END
 
 " Code Folding
+" See https://github.com/w0rp/ale/issues/1829
 " set foldmethod=syntax
 set foldlevelstart=99
 
@@ -154,6 +155,10 @@ command! Config :call OpenInSplitIfBufferDirty($MYVIMRC)
 " autocmd bufwritepost init.vim source $MYVIMRC
 
 set diffopt+=vertical
+
+" Python support
+let g:python_host_prog = "/usr/local/bin/python"
+let g:python3_host_prog = "/usr/local/bin/python3"
 
 " ==================================================
 " Plugins
@@ -303,9 +308,6 @@ if exists('*minpac#init')
   let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['eslint', 'prettier'],
-\   'javascript.jsx': ['eslint', 'prettier'],
-\   'typescript.tsx': ['eslint', 'prettier'],
 \   'css': ['prettier'],
 \   'scss': ['prettier'],
 \   'less': ['prettier'],
@@ -333,7 +335,7 @@ if exists('*minpac#init')
 
   " vim-test
   call minpac#add('janko-m/vim-test')
-  " let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx)$'
+  let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
   let g:test#javascript#jest#executable = 'yarn test'
   nnoremap <leader>t :TestNearest<cr>
   nnoremap <leader>T :TestFile<cr>
@@ -377,7 +379,8 @@ if exists('*minpac#init')
   " Better JS support (indent, syntax, etc)
   call minpac#add('pangloss/vim-javascript')
   " JSX syntax
-  call minpac#add('mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] })
+  " call minpac#add('mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] })
+  call minpac#add('maxmellon/vim-jsx-pretty')
   " JSDoc generation
   call minpac#add('heavenshell/vim-jsdoc')
   " CSS-in-JS Support
@@ -442,6 +445,16 @@ if exists('*minpac#init')
         \       'type': 'test'
         \   },
         \ },
+        \ '*.iced': {
+        \   '*.iced': {
+        \       'alternate': '{}.test.iced',
+        \       'type': 'source'
+        \   },
+        \   '*.test.iced': {
+        \       'alternate': '{}.iced',
+        \       'type': 'test'
+        \   },
+        \ },
         \ '*.py': {
         \   '*.py': {
         \       'alternate': '{}_test.py',
@@ -455,13 +468,14 @@ if exists('*minpac#init')
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('Xuyuanp/nerdtree-git-plugin')
   " s for sidebar
-  map <leader>s :NERDTreeToggle %<CR>
+  map <leader>s :NERDTreeFind<CR>
   call minpac#add('nelstrom/vim-visual-star-search')
+  let g:NERDTreeAutoDeleteBuffer = 1
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   " Syntax highlighting for github's hub tool
   call minpac#add('jez/vim-github-hub')
   call minpac#add('dhruvasagar/vim-table-mode')
-  " call minpac#add('ap/vim-css-color')
-  call minpac#add('tmsvg/pear-tree')
+  " call minpac#add('tmsvg/pear-tree')
   let g:pear_tree_smart_openers = 0
   let g:pear_tree_smart_closers = 0
   let g:pear_tree_smart_backspace = 0
@@ -470,9 +484,16 @@ if exists('*minpac#init')
   autocmd VimEnter * call deoplete#custom#option('sources', {
   \ '_': ['ale'],
   \ })
-  set completeopt-=preview
   " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
+  " https://github.com/Shougo/deoplete.nvim/issues/298
+  set completeopt-=preview
+
+  call minpac#add('junegunn/vim-peekaboo')
+  let g:peekaboo_delay = 1000
+  " let g:peekaboo_compact = 1
+
+  call minpac#add('kana/vim-textobj-user')
+  call minpac#add('kana/vim-textobj-entire')
 else
   colorscheme elflord
-
 endif
