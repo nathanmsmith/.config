@@ -235,7 +235,53 @@ if exists('*minpac#init')
   " Ctrl-a, ctrl-x for dates, times, etc.
   call minpac#add('tpope/vim-speeddating')
 
+  " Unix utilities
   call minpac#add('tpope/vim-eunuch')
+
+  " Faster file switching with alternates
+  " Also integrates with vim-test
+  call minpac#add('tpope/vim-projectionist')
+  let g:projectionist_heuristics = {
+        \ '*.go': {
+        \   '*.go': {
+        \       'alternate': '{}_test.go',
+        \       'type': 'source'
+        \   },
+        \   '*_test.go': {
+        \       'alternate': '{}.go',
+        \       'type': 'test'
+        \   },
+        \ },
+        \ '*.js': {
+        \   '*.js': {
+        \       'alternate': '{}.test.js',
+        \       'type': 'source'
+        \   },
+        \   '*.test.js': {
+        \       'alternate': '{}.js',
+        \       'type': 'test'
+        \   },
+        \ },
+        \ '*.iced': {
+        \   '*.iced': {
+        \       'alternate': '{}.test.iced',
+        \       'type': 'source'
+        \   },
+        \   '*.test.iced': {
+        \       'alternate': '{}.iced',
+        \       'type': 'test'
+        \   },
+        \ },
+        \ '*.py': {
+        \   '*.py': {
+        \       'alternate': '{}_test.py',
+        \       'type': 'source'
+        \   },
+        \   '*_test.py': {
+        \       'alternate': '{}.py',
+        \       'type': 'test'
+        \   },
+        \ }}
 
   " Substitution and Coercion
   call minpac#add('tpope/vim-abolish')
@@ -302,7 +348,7 @@ if exists('*minpac#init')
   let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
   " ALE
-  call minpac#add('w0rp/ale')
+  call minpac#add('dense-analysis/ale')
   let g:ale_fix_on_save = 1
   let g:airline#extensions#ale#enabled = 1
   let g:ale_fixers = {
@@ -321,7 +367,9 @@ if exists('*minpac#init')
   nmap <silent> [w <Plug>(ale_previous)
   nmap <silent> ]w <Plug>(ale_next)
   nmap <silent> ]W <Plug>(ale_last)
-  nmap gh :ALEHover<cr>
+  nmap gh <Plug>(ale_hover)
+  nmap gd <Plug>(ale_go_to_definition)
+  nmap gr <Plug>(ale_find_references)
 
   " LSP Support
   " Autocomplete
@@ -355,6 +403,12 @@ if exists('*minpac#init')
   let g:vim_markdown_new_list_item_indent = 2
   set conceallevel=2
   " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 'html']
+  " Syntax highlighting for github's hub tool
+  call minpac#add('jez/vim-github-hub')
+  " Markdown table support
+  call minpac#add('dhruvasagar/vim-table-mode')
+
+
   " MDX support
   call minpac#add('jxnblk/vim-mdx-js')
 
@@ -422,49 +476,7 @@ if exists('*minpac#init')
   " Avro
   call minpac#add('gurpreetatwal/vim-avro')
 
-  " Evaluating
-  call minpac#add('tpope/vim-projectionist')
-  let g:projectionist_heuristics = {
-        \ '*.go': {
-        \   '*.go': {
-        \       'alternate': '{}_test.go',
-        \       'type': 'source'
-        \   },
-        \   '*_test.go': {
-        \       'alternate': '{}.go',
-        \       'type': 'test'
-        \   },
-        \ },
-        \ '*.js': {
-        \   '*.js': {
-        \       'alternate': '{}.test.js',
-        \       'type': 'source'
-        \   },
-        \   '*.test.js': {
-        \       'alternate': '{}.js',
-        \       'type': 'test'
-        \   },
-        \ },
-        \ '*.iced': {
-        \   '*.iced': {
-        \       'alternate': '{}.test.iced',
-        \       'type': 'source'
-        \   },
-        \   '*.test.iced': {
-        \       'alternate': '{}.iced',
-        \       'type': 'test'
-        \   },
-        \ },
-        \ '*.py': {
-        \   '*.py': {
-        \       'alternate': '{}_test.py',
-        \       'type': 'source'
-        \   },
-        \   '*_test.py': {
-        \       'alternate': '{}.py',
-        \       'type': 'test'
-        \   },
-        \ }}
+  " NERDTree
   call minpac#add('scrooloose/nerdtree')
   call minpac#add('Xuyuanp/nerdtree-git-plugin')
   " s for sidebar
@@ -473,13 +485,13 @@ if exists('*minpac#init')
   let g:NERDTreeAutoDeleteBuffer = 1
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   let NERDTreeIgnore=['.DS_Store$', '.git/$']
-  " Syntax highlighting for github's hub tool
-  call minpac#add('jez/vim-github-hub')
-  call minpac#add('dhruvasagar/vim-table-mode')
+
   call minpac#add('tmsvg/pear-tree')
   let g:pear_tree_smart_openers = 0
   let g:pear_tree_smart_closers = 0
   let g:pear_tree_smart_backspace = 0
+
+  " Deoplete autocompletion
   call minpac#add('Shougo/deoplete.nvim')
   let g:deoplete#enable_at_startup = 1
   autocmd VimEnter * call deoplete#custom#option('sources', {
@@ -493,6 +505,7 @@ if exists('*minpac#init')
   let g:peekaboo_delay = 1000
   " let g:peekaboo_compact = 1
 
+  " Evaluating
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-entire')
   call minpac#add('andrewradev/splitjoin.vim')
