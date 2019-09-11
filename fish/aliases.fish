@@ -36,6 +36,10 @@ abbr --add --global gor 'go run'
 abbr --add --global gob 'go build'
 
 
+# Make
+abbr --add --global m 'make'
+abbr --add --global mb 'make build'
+
 # Vim
 abbr --add v 'nvim'
 abbr --add n 'nvim'
