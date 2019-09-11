@@ -37,9 +37,10 @@
 	prompt = false
 [merge]
 	tool = nvimdiff
+[mergetool]
+	keepBackup = false
 [mergetool "nvimdiff"]
 	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
-	keepBackup = false
 [color]
 	ui = true
 [color "diff-highlight"]
