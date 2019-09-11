@@ -23,3 +23,11 @@ then
     echo "\n\nWARNING: You have merge markers in the above files, lines. Fix them before committing.\n\n"
     exit 1
 fi
+
+# from https://stackoverflow.com/questions/40462111/git-prevent-commits-in-master-branch
+branch="$(git rev-parse --abbrev-ref HEAD)"
+
+if [ "$branch" = "master" ]; then
+  echo "You can't commit directly to master branch"
+  exit 1
+fi

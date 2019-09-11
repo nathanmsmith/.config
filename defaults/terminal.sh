@@ -14,5 +14,5 @@ defaults write com.apple.terminal SecureKeyboardEntry -bool true
 # defaults write com.apple.Terminal ShowLineMarks -int 0
 
 # Change shell to fish
-echo /usr/local/bin/fish >> /etc/shells
+# sudo echo /usr/local/bin/fish >> /etc/shells
 chsh -s /usr/local/bin/fish

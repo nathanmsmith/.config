@@ -50,11 +50,15 @@ if status --is-login
   # Ruby specific settings
   # Rbenv
   status --is-interactive; and rbenv init - | source
+  set -gx PATH /usr/local/opt/ruby/bin $PATH
 
   # Go specific settings
-  # GOPATH
   set -gx GOPATH ~/Developer/go
-  set -gx PATH $PATH $GOPATH/bin
+  set -gx PATH $GOPATH/bin $PATH
+
+  # Python settings
+  set -gx PATH $HOME/.poetry/bin $PATH
+  status --is-interactive; and pyenv init - | source
 
   # Rust specific settings
   # Rust tools XDG compatibility
@@ -67,16 +71,16 @@ if status --is-login
   set -gx EERIEDIR ~/.eerie
   set -gx PATH $PATH $EERIEDIR/base/bin $EERIEDIR/activeEnv/bin
 
+  # Keybase development
+  set -e KEYBASE_PERF
+  set -x KEYBASE_LOCAL_DEBUG 1
+  set -x KEYBASE_DEV_TOOL_ROOTS "$HOME/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi,$HOME/Library/Application Support/Google/Chrome/Default/Extensions/hgldghadipiblonfkkicmgcbbijnpeog"
+  set -x RUN_MODE devel
+  set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
+  # Android
+  set -x ANDROID_HOME "$HOME/Library/Android/sdk"
+  set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $ANDROID_HOME/tools/bin $ANDROID_HOME/emulator
+
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/serverless.fish ]; and . /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/serverless.fish
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/sls.fish ]; and . /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/sls.fish
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[ -f /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/slss.fish ]; and . /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/slss.fish

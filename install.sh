@@ -10,12 +10,10 @@ then
 fi
 
 # Install Homebrew packages
-brew bundle
+# brew bundle
 
 # Change settings
 for f in defaults/*.sh
 do
-  bash "$f" 
+  bash "$f"
 done
-
-
