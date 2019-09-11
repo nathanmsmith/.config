@@ -22,6 +22,9 @@ if status --is-login
   # FZF
   set -gx FZF_DEFAULT_COMMAND  'rg -g !.git/ --files --hidden'
 
+  # AWS
+  set -gx SAM_CLI_TELEMETRY 0
+
   # Load aliases
   source ~/.config/fish/aliases.fish
 
@@ -34,7 +37,7 @@ if status --is-login
   set -gx HOMEBREW_NO_ANALYTICS 1
 
   # Use GNU utilities instead of macOS versions
-  set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed}/libexec/gnubin $PATH
+  set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,make}/libexec/gnubin $PATH
 
   # Use installed LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH

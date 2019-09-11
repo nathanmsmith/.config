@@ -27,6 +27,10 @@ abbr --add --global bc 'brew cask'
 # Docker
 
 
+# Make
+abbr --add --global m 'make'
+abbr --add --global mb 'make build'
+
 # Vim
 abbr --add v 'nvim'
 abbr --add n 'nvim'

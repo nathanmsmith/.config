@@ -1,5 +1,8 @@
 {
 	"telemetry": {
 		"enabled": false
+	},
+	"cli": {
+		"packageManager": "yarn"
 	}
 }

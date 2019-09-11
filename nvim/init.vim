@@ -472,6 +472,7 @@ if exists('*minpac#init')
   call minpac#add('nelstrom/vim-visual-star-search')
   let g:NERDTreeAutoDeleteBuffer = 1
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+  let NERDTreeIgnore=['.DS_Store$', '.git/$']
   " Syntax highlighting for github's hub tool
   call minpac#add('jez/vim-github-hub')
   call minpac#add('dhruvasagar/vim-table-mode')
@@ -494,6 +495,7 @@ if exists('*minpac#init')
 
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-entire')
+  call minpac#add('andrewradev/splitjoin.vim')
 else
   colorscheme elflord
 endif
