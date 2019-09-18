@@ -7,9 +7,8 @@
 " 3. Change functionality only when it doesn't make sense
 "
 "
-"
-"
-"
+
+let s:uname = system("uname -s")
 
 " Normally `:set nocp` is not needed, because it is done automatically
 " when .vimrc is found.
@@ -157,8 +156,10 @@ command! Config :call OpenInSplitIfBufferDirty($MYVIMRC)
 set diffopt+=vertical
 
 " Python support
-let g:python_host_prog = "/usr/local/bin/python"
-let g:python3_host_prog = "/usr/local/bin/python3"
+if s:uname == "Darwin"
+  let g:python_host_prog = "/usr/local/bin/python"
+  let g:python3_host_prog = "/usr/local/bin/python3"
+endif
 
 " ==================================================
 " Plugins

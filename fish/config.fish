@@ -94,3 +94,4 @@ test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shel
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
 [ -f /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/slss.fish ]; and . /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/slss.fish
+set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths
