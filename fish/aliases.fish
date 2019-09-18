@@ -93,6 +93,8 @@ abbr --add --global yn 'yarn'
 abbr --add --global yns 'yarn start'
 abbr --add --global ynt 'yarn test'
 abbr --add --global ynb 'yarn build'
+abbr --add --global yna 'yarn add'
+abbr --add --global ynad 'yarn add --dev'
 # Keybase specific
 abbr --add --global ynsh 'yarn start-hot'
 abbr --add --global ynhs 'yarn hot-server'

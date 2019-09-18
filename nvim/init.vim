@@ -432,6 +432,7 @@ if exists('*minpac#init')
   call minpac#add('groenewege/vim-less')
   " Better JS support (indent, syntax, etc)
   call minpac#add('pangloss/vim-javascript')
+  let g:javascript_plugin_jsdoc = 1
   " JSX syntax
   " call minpac#add('mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] })
   call minpac#add('maxmellon/vim-jsx-pretty')
@@ -486,7 +487,7 @@ if exists('*minpac#init')
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
   let NERDTreeIgnore=['.DS_Store$', '.git/$']
 
-  call minpac#add('tmsvg/pear-tree')
+  " call minpac#add('tmsvg/pear-tree')
   let g:pear_tree_smart_openers = 0
   let g:pear_tree_smart_closers = 0
   let g:pear_tree_smart_backspace = 0
@@ -509,6 +510,8 @@ if exists('*minpac#init')
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-entire')
   call minpac#add('andrewradev/splitjoin.vim')
+  call minpac#add('AndrewRadev/tagalong.vim')
+  let g:tagalong_additional_filetypes = ['typescript.tsx']
 else
   colorscheme elflord
 endif
