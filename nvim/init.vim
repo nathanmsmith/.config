@@ -8,6 +8,7 @@
 "
 "
 
+set rtp+=~/.fzf
 let s:uname = system("uname -s")
 
 " Normally `:set nocp` is not needed, because it is done automatically
@@ -22,6 +23,7 @@ endif
 " Reset the cursor on exit
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
+set guicursor=a:blinkon100
 :au VimLeave * set guicursor=a:ver25-blinkon1
 
 " Map leader
@@ -83,7 +85,7 @@ set splitright
 autocmd FileType help wincmd L
 
 " Use system clipboard
-set clipboard+=unnamed
+set clipboard+=unnamedplus
 
 " Wildmenu
 " set wildmenu
