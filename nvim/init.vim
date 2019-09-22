@@ -437,18 +437,16 @@ if exists('*minpac#init')
   call minpac#add('pangloss/vim-javascript')
   let g:javascript_plugin_jsdoc = 1
   " JSX syntax
-  " call minpac#add('mxw/vim-jsx', { 'for': ['jsx', 'javascript.jsx'] })
   call minpac#add('maxmellon/vim-jsx-pretty')
   " JSDoc generation
   call minpac#add('heavenshell/vim-jsdoc')
   " CSS-in-JS Support
   call minpac#add('styled-components/vim-styled-components', {'branch': 'main'})
   " TypeScript Syntax
-  call minpac#add('leafgarland/typescript-vim')
-  " call minpac#add('HerringtonDarkholme/yats.vim') " YATS is better
+  " call minpac#add('leafgarland/typescript-vim')
+  call minpac#add('HerringtonDarkholme/yats.vim') " YATS is better
   " TSX Support
-  " call minpac#add('ianks/vim-tsx')
-  call minpac#add('peitalin/vim-jsx-typescript')
+  " call minpac#add('peitalin/vim-jsx-typescript')
   " Add Flow support
   " call minpac#add('flowtype/vim-flow')
   " JSON
