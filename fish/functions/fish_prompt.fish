@@ -1,11 +1,13 @@
 function _user_host_name -d "Displays the user and host name if connected via SSH"
-  switch "$USER"
-    case root toor
-      set user_color red
-    case '*'
-      set user_color yellow
+  if test -n "$SSH_TTY"
+    switch "$USER"
+      case root toor
+        set user_color red
+      case '*'
+        set user_color yellow
+    end
+    echo -s (set_color --bold $user_color) $USER (set_color normal) ' at ' (set_color --bold blue) (prompt_hostname) (set_color normal) ' '
   end
-  echo -s (set_color --bold $user_color) $USER (set_color normal) ' at ' (set_color --bold blue) (prompt_hostname) (set_color normal) ' '
 end
 
 function _directory -d "Writes the colorized present working directory"
