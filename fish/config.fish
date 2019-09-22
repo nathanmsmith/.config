@@ -1,6 +1,8 @@
 if status --is-login
   set -gx fish_greeting ""
 
+  set -gx PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/MacGPG2/bin /Library/TeX/texbin
+
   # XDG Directories
   set -gx XDG_CONFIG_HOME $HOME/.config
   # set -gx XDG_CACHE_HOME $HOME/.cache
@@ -38,18 +40,22 @@ if status --is-login
 
   # Use GNU utilities instead of macOS versions
   set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,make}/libexec/gnubin $PATH
-
+  # Use Homebrew curl
+  set -gx PATH /usr/local/opt/curl/bin $PATH
   # Use installed LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH
 
   # JavaScript specific settings
   # Set up nodenv
-  # Note: We don't need psub here like nodenv reccomends
-  status --is-interactive; and nodenv init - | source
+  if type --no-function --quiet nodenv
+    status --is-interactive; and nodenv init - | source
+  end
 
   # Ruby specific settings
   # Rbenv
-  status --is-interactive; and rbenv init - | source
+  if type --no-function --quiet rbenv
+    status --is-interactive; and rbenv init - | source
+  end
   set -gx PATH /usr/local/opt/ruby/bin $PATH
 
   # Go specific settings
@@ -58,7 +64,9 @@ if status --is-login
 
   # Python settings
   set -gx PATH $HOME/.poetry/bin $PATH
-  status --is-interactive; and pyenv init - | source
+  if type --no-function --quiet pyenv
+    status --is-interactive; and pyenv init - | source
+  end
 
   # Rust specific settings
   # Rust tools XDG compatibility
@@ -76,7 +84,7 @@ if status --is-login
   set -x KEYBASE_LOCAL_DEBUG 1
   set -x KEYBASE_DEV_TOOL_ROOTS "$HOME/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi,$HOME/Library/Application Support/Google/Chrome/Default/Extensions/hgldghadipiblonfkkicmgcbbijnpeog"
   set -x RUN_MODE devel
-  set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
+  # set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
   # Android
   set -x ANDROID_HOME "$HOME/Library/Android/sdk"
   set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $ANDROID_HOME/tools/bin $ANDROID_HOME/emulator
@@ -84,14 +92,3 @@ if status --is-login
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/serverless.fish ]; and . /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/serverless.fish
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/sls.fish ]; and . /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/sls.fish
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[ -f /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/slss.fish ]; and . /Users/nathan/.config/yarn/global/node_modules/tabtab/.completions/slss.fish
-set -g fish_user_paths "/usr/local/opt/terraform@0.11/bin" $fish_user_paths

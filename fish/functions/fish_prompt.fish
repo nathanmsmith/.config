@@ -1,3 +1,13 @@
+function _user_host_name -d "Displays the user and host name if connected via SSH"
+  switch "$USER"
+    case root toor
+      set user_color red
+    case '*'
+      set user_color yellow
+  end
+  echo -s (set_color --bold $user_color) $USER (set_color normal) ' at ' (set_color --bold blue) (prompt_hostname) (set_color normal) ' '
+end
+
 function _directory -d "Writes the colorized present working directory"
   echo -s 'in ' (set_color --bold cyan) (prompt_pwd) (set_color normal)
 end
@@ -54,5 +64,5 @@ function _vim_mode -d "Writes the current vim mode"
 end
 
 function fish_prompt -d "Write out the prompt"
-  echo -nes "\n" (_vim_mode) (_directory) (_git_status) (_node) '\n› '
+  echo -nes "\n" (_vim_mode) (_user_host_name) (_directory) (_git_status) (_node) '\n› '
 end
