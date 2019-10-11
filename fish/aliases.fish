@@ -26,6 +26,9 @@ abbr --add --global rd 'rm -r'
 # Homebrew --global
 abbr --add --global b 'brew'
 abbr --add --global bc 'brew cask'
+abbr --add --global bs 'brew search'
+abbr --add --global bi 'brew info'
+abbr --add --global bist 'brew install'
 
 # Docker
 

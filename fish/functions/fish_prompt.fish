@@ -16,7 +16,13 @@ end
 
 function _node -d "Writes the node version if there is a package.json"
   if test -f ./package.json
-    echo -s ' via ' (set_color --bold green) '⬢ ' (node -v) (set_color normal)
+    echo -s (set_color --bold green) ' ⬢ ' (node -v) (set_color normal)
+  end
+end
+
+function _ruby -d "Writes the ruby version if there are ruby files"
+  if test -f Gemfile # -o -f Rakefile -o (count *.rb) -gt 0
+    echo -s (set_color --bold red) ' 💎 ' (rbenv version-name) (set_color normal)
   end
 end
 
@@ -66,5 +72,5 @@ function _vim_mode -d "Writes the current vim mode"
 end
 
 function fish_prompt -d "Write out the prompt"
-  echo -nes "\n" (_vim_mode) (_user_host_name) (_directory) (_git_status) (_node) '\n› '
+  echo -nes "\n" (_vim_mode) (_user_host_name) (_directory) (_git_status) (_node) (_ruby) '\n› '
 end

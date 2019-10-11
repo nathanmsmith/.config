@@ -9,7 +9,7 @@
 "
 
 set rtp+=~/.fzf
-let s:uname = system("uname -s")
+let s:uname = trim(system("uname -s"))
 
 " Normally `:set nocp` is not needed, because it is done automatically
 " when .vimrc is found.
@@ -461,7 +461,7 @@ if exists('*minpac#init')
   call minpac#add('vim-ruby/vim-ruby')
   " Ruby on Rails
   call minpac#add('tpope/vim-rails')
-  " call minpac#add('tpope/vim-endwise')
+  call minpac#add('tpope/vim-endwise')
   " Go
   " Make sure to call :GoUpdateBinaries on install
   call minpac#add('fatih/vim-go')
@@ -502,6 +502,7 @@ if exists('*minpac#init')
   " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
   " https://github.com/Shougo/deoplete.nvim/issues/298
   set completeopt-=preview
+  let g:ale_completion_tsserver_autoimport = 1
 
   call minpac#add('junegunn/vim-peekaboo')
   let g:peekaboo_delay = 1000
