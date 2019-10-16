@@ -8,8 +8,14 @@
 "
 "
 
-set rtp+=~/.fzf
+
 let s:uname = trim(system("uname -s"))
+
+if s:uname == "Darwin"
+  set rtp+=~/.fzf
+else
+  set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
+endif
 
 " Normally `:set nocp` is not needed, because it is done automatically
 " when .vimrc is found.

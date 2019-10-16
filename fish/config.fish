@@ -4,6 +4,12 @@ if status --is-login
   switch (uname)
   case Linux
       echo Hi Tux!
+      set -gx HOMEBREW_PREFIX "/home/linuxbrew/.linuxbrew";
+      set -gx HOMEBREW_CELLAR "/home/linuxbrew/.linuxbrew/Cellar";
+      set -gx HOMEBREW_REPOSITORY "/home/linuxbrew/.linuxbrew/Homebrew";
+      set -g fish_user_paths "/home/linuxbrew/.linuxbrew/bin" "/home/linuxbrew/.linuxbrew/sbin" $fish_user_paths;
+      set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH;
+      set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH;
   case Darwin
       set -gx PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/MacGPG2/bin /Library/TeX/texbin
       # Use GNU utilities instead of macOS versions
