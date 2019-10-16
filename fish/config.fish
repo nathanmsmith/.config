@@ -86,11 +86,11 @@ if status --is-login
   # set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
   # set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
 
-  set -gx PATH $PATH $CARGO_HOME/bin
+  # set -gx PATH $PATH $CARGO_HOME/bin
 
   # Io specific settings
-  set -gx EERIEDIR ~/.eerie
-  set -gx PATH $PATH $EERIEDIR/base/bin $EERIEDIR/activeEnv/bin
+  # set -gx EERIEDIR ~/.eerie
+  # set -gx PATH $PATH $EERIEDIR/base/bin $EERIEDIR/activeEnv/bin
 
   # Keybase development
   set -e KEYBASE_PERF
@@ -99,8 +99,8 @@ if status --is-login
   set -x RUN_MODE devel
   # set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
   # Android
-  set -x ANDROID_HOME "$HOME/Library/Android/sdk"
-  set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $ANDROID_HOME/tools/bin $ANDROID_HOME/emulator
+  # set -x ANDROID_HOME "$HOME/Library/Android/sdk"
+  # set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $ANDROID_HOME/tools/bin $ANDROID_HOME/emulator
 
 end
 
