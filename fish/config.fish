@@ -1,7 +1,22 @@
 if status --is-login
   set -gx fish_greeting ""
 
-  set -gx PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/MacGPG2/bin /Library/TeX/texbin
+  switch (uname)
+  case Linux
+      echo Hi Tux!
+  case Darwin
+      set -gx PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/MacGPG2/bin /Library/TeX/texbin
+      # Use GNU utilities instead of macOS versions
+      set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,make}/libexec/gnubin $PATH
+      # Use Homebrew curl
+      set -gx PATH /usr/local/opt/curl/bin $PATH
+      # Use installed LLVM tools
+      set -gx PATH /usr/local/opt/llvm/bin $PATH
+  case '*'
+      echo Unknown OS, you may want to add some config!
+      uname
+  end
+
 
   # XDG Directories
   set -gx XDG_CONFIG_HOME $HOME/.config
@@ -37,13 +52,6 @@ if status --is-login
   set -x HOMEBREW_NO_INSECURE_REDIRECT 1
   set -x HOMEBREW_CASK_OPTS --require-sha
   set -gx HOMEBREW_NO_ANALYTICS 1
-
-  # Use GNU utilities instead of macOS versions
-  set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,make}/libexec/gnubin $PATH
-  # Use Homebrew curl
-  set -gx PATH /usr/local/opt/curl/bin $PATH
-  # Use installed LLVM tools
-  set -gx PATH /usr/local/opt/llvm/bin $PATH
 
   # Java
   if type --no-function --quiet nodenv
