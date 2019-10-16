@@ -45,6 +45,11 @@ if status --is-login
   # Use installed LLVM tools
   set -gx PATH /usr/local/opt/llvm/bin $PATH
 
+  # Java
+  if type --no-function --quiet nodenv
+    status --is-interactive; and jenv init - | source
+  end
+
   # JavaScript specific settings
   # Set up nodenv
   if type --no-function --quiet nodenv

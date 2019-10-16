@@ -38,6 +38,9 @@ abbr --add --global gotv 'go test -v'
 abbr --add --global gor 'go run'
 abbr --add --global gob 'go build'
 
+# Ruby
+# Rails
+abbr --add --global r 'rails'
 
 # Make
 abbr --add --global m 'make'
