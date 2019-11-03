@@ -1,5 +1,5 @@
 let b:ale_linters = ['pyls', 'mypy', 'flake8']
-let b:ale_fixers = ['isort', 'black']
+let b:ale_fixers = ['black'] " having some issues with isort
 setlocal shiftwidth=4
 setlocal softtabstop=4
 setlocal expandtab
