@@ -1,3 +1,13 @@
+let b:ale_python_pyls_config = {
+\   'pyls': {
+\     'plugins': {
+\       'pycodestyle': {
+\         'enabled': v:false
+\       }
+\     }
+\   },
+\ }
+
 let b:ale_linters = ['pyls', 'mypy', 'flake8']
 let b:ale_fixers = ['black'] " having some issues with isort
 setlocal shiftwidth=4

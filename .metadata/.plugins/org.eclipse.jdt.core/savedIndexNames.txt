@@ -1,0 +1,3 @@
+INDEX VERSION 1.131+/Users/nathan/.config/.metadata/.plugins/org.eclipse.jdt.core
+1052929003.index
+3842426239.index
