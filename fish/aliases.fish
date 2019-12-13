@@ -26,6 +26,7 @@ abbr --add --global rd 'rm -r'
 # Homebrew --global
 abbr --add --global b 'brew'
 abbr --add --global bc 'brew cask'
+abbr --add --global bci 'brew cask info'
 abbr --add --global bs 'brew search'
 abbr --add --global bi 'brew info'
 abbr --add --global bist 'brew install'
@@ -40,7 +41,7 @@ abbr --add --global gob 'go build'
 
 # Ruby
 # Rails
-abbr --add --global r 'rails'
+abbr --add --global ra 'rails'
 
 # Make
 abbr --add --global m 'make'

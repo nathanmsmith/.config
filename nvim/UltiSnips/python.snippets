@@ -80,13 +80,13 @@ def get_args(arglist):
 
 
 def get_quoting_style(snip):
-	style = snip.opt("g:ultisnips_python_quoting_style", "double")
+	style = snip.opt("g:ultisnips_python_quoting_style", "single")
 	if style == 'single':
 		return SINGLE_QUOTES
 	return DOUBLE_QUOTES
 
 def triple_quotes(snip):
-	style = snip.opt("g:ultisnips_python_triple_quoting_style")
+	style = snip.opt("g:ultisnips_python_triple_quoting_style", "double")
 	if not style:
 		return get_quoting_style(snip) * 3
 	return (SINGLE_QUOTES if style == 'single' else DOUBLE_QUOTES) * 3
@@ -120,7 +120,7 @@ def triple_quotes_handle_trailing(snip, quoting_style):
 		snip.rv = snip.c
 
 def get_style(snip):
-	style = snip.opt("g:ultisnips_python_style", "normal")
+	style = snip.opt("g:ultisnips_python_style", "google")
 
 	if    style == "doxygen": return DOXYGEN
 	elif  style == "sphinx": return SPHINX
@@ -506,11 +506,21 @@ snippet def "function with docstrings" b
 def ${1:function}(`!p
 if snip.indent:
 	snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
-	`!p snip.rv = triple_quotes(snip)`${4:TODO: Docstring for $1.}`!p
+	`!p snip.rv = triple_quotes(snip)`
+	${4:TODO: Docstring for $1.}`!p
 write_function_docstring(t, snip) `
 	${5:${VISUAL:pass}}
 endsnippet
 
+snippet defa "async function with docstrings" b
+async def ${1:function}(`!p
+if snip.indent:
+	snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
+	`!p snip.rv = triple_quotes(snip)`
+	${4:TODO: Docstring for $1.}`!p
+write_function_docstring(t, snip) `
+	${5:${VISUAL:pass}}
+endsnippet
 
 snippet defc "class method with docstrings" b
 @classmethod

@@ -1,3 +1,20 @@
 snippet sout "System.out.println" b
 System.out.println($0);
 endsnippet
+
+snippet switch
+switch (${VISUAL}${1:expression}) {
+	case "${VISUAL}${2:case}":
+		${3}
+		break;
+	${0}
+	default:
+		${4}
+}
+endsnippet
+
+snippet case "case 'xyz': ... break"
+case "${VISUAL}${1:case}":
+	${VISUAL}$0
+	break;
+endsnippet
