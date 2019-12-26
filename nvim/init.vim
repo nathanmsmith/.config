@@ -50,12 +50,6 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 set number
 set cursorline
 
-" Status line
-" TODO: set up vanilla status line
-" set laststatus=2
-" set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
-" set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
-
 " Whitespace characters settings
 " refs:
 " - http://vimcasts.org/episodes/tabs-and-spaces/
@@ -178,13 +172,19 @@ endfunction
 
 " Rolling our own status line
 set laststatus=2
-
 set statusline=
-set statusline+=%f
-set statusline+=\ %m          " Modified flag
-set statusline+=\ %{FugitiveStatusline()}
+set statusline+=%1*
+set statusline+=%{&modified?'':expand('%')}
+set statusline+=%*
+set statusline+=%2*
+set statusline+=%{&modified?expand('%'):''}
+set statusline+=%m
+set statusline+=%*
+set statusline+=\ on
+set statusline+=\ %{FugitiveHead()}
 set statusline+=%=
 set statusline+=%{SyntaxItem()}
+set statusline+=\ %y
 
 " ==================================================
 " Plugins
@@ -342,18 +342,11 @@ if exists('*minpac#init')
   nnoremap <silent> <leader>b :Buffers<CR>
   nnoremap <silent> <leader>f :Rg<CR>
 
-  " Airline Status Bar
-  " ref: https://github.com/vim-airline/vim-airline
-  " call minpac#add('vim-airline/vim-airline')
-  " call minpac#add('vim-airline/vim-airline-themes')
-  " " Enable buffer tab line
-  " let g:airline#extensions#tabline#enabled = 1
-  " " Square buffer tabs
-  " let g:airline#extensions#tabline#left_sep = ' '
-  " let g:airline#extensions#tabline#left_alt_sep = '|'
-  " " Tab path formatting
-  " let g:airline#extensions#tabline#formatter = 'jsformatter'
-  " let g:airline_theme='wombat'
+  " Lightline
+  " call minpac#add('itchyny/lightline.vim')
+  " let g:lightline = {
+  "       \ 'colorscheme': 'nightowl',
+  "       \ }
 
   " Rainbow Parentheses
   " There are many different plugins out there for rainbow parentheses, this one is the most
