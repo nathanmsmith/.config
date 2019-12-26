@@ -48,6 +48,7 @@ nnoremap <silent> <CR> :nohlsearch<CR>
 
 " Line Numbers
 set number
+set cursorline
 
 " Status line
 " TODO: set up vanilla status line
@@ -169,6 +170,22 @@ if s:uname == "Darwin"
   let g:python3_host_prog = "/usr/local/bin/python3"
 endif
 
+
+" Get syntax highlighting item
+function! SyntaxItem()
+  return synIDattr(synID(line("."),col("."),1),"name")
+endfunction
+
+" Rolling our own status line
+set laststatus=2
+
+set statusline=
+set statusline+=%f
+set statusline+=\ %m          " Modified flag
+set statusline+=\ %{FugitiveStatusline()}
+set statusline+=%=
+set statusline+=%{SyntaxItem()}
+
 " ==================================================
 " Plugins
 " Package manager: Minpac, https://github.com/k-takata/minpac
@@ -191,8 +208,9 @@ if exists('*minpac#init')
 
   " Color Scheme
   call minpac#add('tyrannicaltoucan/vim-quantum')
-  colorscheme quantum
-  let g:quantum_italics=1
+  call minpac#add('nathunsmitty/night-owl.vim')
+  colorscheme night-owl
+  " colorscheme quantum
 
   " Sensible defaults
   " See https://github.com/tpope/vim-sensible for the full list
@@ -326,7 +344,8 @@ if exists('*minpac#init')
 
   " Airline Status Bar
   " ref: https://github.com/vim-airline/vim-airline
-  call minpac#add('vim-airline/vim-airline')
+  " call minpac#add('vim-airline/vim-airline')
+  " call minpac#add('vim-airline/vim-airline-themes')
   " " Enable buffer tab line
   " let g:airline#extensions#tabline#enabled = 1
   " " Square buffer tabs
@@ -334,17 +353,21 @@ if exists('*minpac#init')
   " let g:airline#extensions#tabline#left_alt_sep = '|'
   " " Tab path formatting
   " let g:airline#extensions#tabline#formatter = 'jsformatter'
-  let g:airline_theme='quantum'
+  " let g:airline_theme='wombat'
 
   " Rainbow Parentheses
   " There are many different plugins out there for rainbow parentheses, this one is the most
   " maintained.
   " refs: https://github.com/luochen1990/rainbow
   call minpac#add('luochen1990/rainbow')
-  let g:rainbow_active = 1
-  let g:rainbow_conf = {
-  \  'guifgs': ['#ffd700', '#da70d6', '#87cefa']
-  \}
+  " let g:rainbow_active = 1
+  " let g:rainbow_conf = {
+  " \  'guifgs': ['#ffd700', '#da70d6', '#87cefa'],
+  " \  'operators': '',
+  " \  'separately': {
+  " \    'html': 0
+  " \  }
+  " \}
 
   " Snippets
   call minpac#add('adriaanzon/vim-emmet-ultisnips')
@@ -403,6 +426,47 @@ if exists('*minpac#init')
   " Most of these are from vim-polyglot
   " (https://github.com/sheerun/vim-polyglot)
   "
+
+  " C improvements
+  call minpac#add('vim-scripts/aftersyntaxc.vim')
+
+  " Fish
+  call minpac#add('dag/vim-fish')
+
+  " HTML
+  call minpac#add('https://notabug.org/jorgesumle/vim-html-syntax')
+  let g:html_no_rendering = 1
+
+  " Handlebars
+  call minpac#add('mustache/vim-mustache-handlebars')
+
+  " CSS, Less, Sass
+  call minpac#add('JulesWang/css.vim')
+  call minpac#add('cakebaker/scss-syntax.vim')
+  call minpac#add('groenewege/vim-less')
+  " Custom rules
+  syn region cssFunction contained matchgroup=cssFunctionName start="\<\(minmax\|repeat\)\s*(" end=")" oneline keepend
+
+
+  " Coffeescript + iced support
+  call minpac#add('kchmck/vim-coffee-script')
+  autocmd BufNewFile,BufRead *.iced set filetype=coffee
+
+  " JavaScript
+  call minpac#add('pangloss/vim-javascript')
+  let g:javascript_plugin_jsdoc = 1
+  call minpac#add('styled-components/vim-styled-components', {'branch': 'main'})
+  call minpac#add('maxmellon/vim-jsx-pretty')
+
+  " TypeScript
+  call minpac#add('HerringtonDarkholme/yats.vim')
+
+  " JSON
+  call minpac#add('elzr/vim-json')
+
+  " GraphQL
+  call minpac#add('jparise/vim-graphql')
+
   " Markdown
   call minpac#add('plasticboy/vim-markdown')
   let g:vim_markdown_folding_disabled = 1
@@ -411,66 +475,25 @@ if exists('*minpac#init')
   let g:vim_markdown_strikethrough = 1
   let g:vim_markdown_new_list_item_indent = 2
   set conceallevel=2
-  " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 'html']
+  " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 't_space_errors = 0
+
   " Syntax highlighting for github's hub tool
   call minpac#add('jez/vim-github-hub')
-  " Markdown table support
-  call minpac#add('dhruvasagar/vim-table-mode')
 
-
-  " MDX support
-  call minpac#add('jxnblk/vim-mdx-js')
-
-  " C improvements
-  call minpac#add('vim-scripts/aftersyntaxc.vim')
-  " Fish
-  call minpac#add('dag/vim-fish')
-  " HTML
-  call minpac#add('othree/html5.vim')
-  " Handlebars
-  call minpac#add('mustache/vim-mustache-handlebars')
-  " Coffeescript + iced support
-  call minpac#add('kchmck/vim-coffee-script')
-  autocmd BufNewFile,BufRead *.iced set filetype=coffee
-  " CSS
-  call minpac#add('JulesWang/css.vim')
-  " call minpac#add('hail2u/vim-css3-syntax')
-  " Sass
-  call minpac#add('cakebaker/scss-syntax.vim')
-  " Less
-  call minpac#add('groenewege/vim-less')
-  " Better JS support (indent, syntax, etc)
-  call minpac#add('pangloss/vim-javascript')
-  let g:javascript_plugin_jsdoc = 1
-  " JSX syntax
-  call minpac#add('maxmellon/vim-jsx-pretty')
-  " JSDoc generation
-  call minpac#add('heavenshell/vim-jsdoc')
-  " CSS-in-JS Support
-  call minpac#add('styled-components/vim-styled-components', {'branch': 'main'})
-  " TypeScript Syntax
-  " call minpac#add('leafgarland/typescript-vim')
-  call minpac#add('HerringtonDarkholme/yats.vim') " YATS is better
-  " TSX Support
-  " call minpac#add('peitalin/vim-jsx-typescript')
-  " Add Flow support
-  " call minpac#add('flowtype/vim-flow')
-  " JSON
-  call minpac#add('elzr/vim-json')
-  " GraphQL
-  call minpac#add('jparise/vim-graphql')
-  " Python
-  call minpac#add('vim-python/python-syntax')
-  let g:python_highlight_all = 1
-  let g:python_highlight_space_errors = 0
   " Ruby
   call minpac#add('vim-ruby/vim-ruby')
   " Ruby on Rails
   call minpac#add('tpope/vim-rails')
   call minpac#add('tpope/vim-endwise')
+
   " Go
   " Make sure to call :GoUpdateBinaries on install
   call minpac#add('fatih/vim-go')
+
+  " Python
+  call minpac#add('vim-python/python-syntax')
+  let g:python_highlight_all = 1
+  let g:python_highlight_space_errors = 0
 
   " Rust
   call minpac#add('rust-lang/rust.vim')
@@ -514,12 +537,14 @@ if exists('*minpac#init')
   let g:peekaboo_delay = 1000
   " let g:peekaboo_compact = 1
 
-  " Evaluating
   call minpac#add('kana/vim-textobj-user')
   call minpac#add('kana/vim-textobj-entire')
+
   call minpac#add('andrewradev/splitjoin.vim')
   call minpac#add('AndrewRadev/tagalong.vim')
-  let g:tagalong_additional_filetypes = ['typescript.tsx']
+
+  call minpac#add('ap/vim-css-color')
+
 else
   colorscheme elflord
 endif

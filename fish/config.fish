@@ -86,6 +86,8 @@ if status --is-login
   if type --no-function --quiet pyenv
     status --is-interactive; and pyenv init - | source
   end
+  # Use pyenv's current python version
+  set -gx PIPENV_PYTHON $HOME/.pyenv/shims/python
 
   # Rust specific settings
   # Rust tools XDG compatibility
