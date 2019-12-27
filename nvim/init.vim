@@ -173,15 +173,9 @@ endfunction
 " Rolling our own status line
 set laststatus=2
 set statusline=
-set statusline+=%1*
-set statusline+=%{&modified?'':expand('%')}
-set statusline+=%*
-set statusline+=%2*
-set statusline+=%{&modified?expand('%'):''}
+set statusline+=%f
 set statusline+=%m
-set statusline+=%*
-set statusline+=\ on
-set statusline+=\ %{FugitiveHead()}
+set statusline+=\ %{FugitiveStatusline()}
 set statusline+=%=
 set statusline+=%{SyntaxItem()}
 set statusline+=\ %y
@@ -482,11 +476,13 @@ if exists('*minpac#init')
   " Go
   " Make sure to call :GoUpdateBinaries on install
   call minpac#add('fatih/vim-go')
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_functions = 1
 
   " Python
   call minpac#add('vim-python/python-syntax')
   let g:python_highlight_all = 1
-  let g:python_highlight_space_errors = 0
+  let g:go_highlight_function_calls = 1
 
   " Rust
   call minpac#add('rust-lang/rust.vim')
