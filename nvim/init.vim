@@ -567,6 +567,8 @@ if exists('*minpac#init')
   " nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
   " nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 
+  call minpac#add('christoomey/vim-tmux-navigator')
+  autocmd VimResized * :wincmd =
 
 else
   colorscheme elflord
