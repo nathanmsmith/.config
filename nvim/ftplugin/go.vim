@@ -22,4 +22,4 @@ let g:ale_go_golangci_lint_options = "--enable-all --disable lll"
 let b:ale_fixers = []
 let g:go_fmt_command = "goimports"
 
-nnoremap <buffer> gh :GoInfo<cr>
+" nnoremap <buffer> gh :GoInfo<cr>

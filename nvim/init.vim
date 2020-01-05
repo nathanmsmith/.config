@@ -366,8 +366,8 @@ if exists('*minpac#init')
   " \}
 
   " Snippets
-  call minpac#add('adriaanzon/vim-emmet-ultisnips')
   call minpac#add('SirVer/ultisnips')
+  call minpac#add('adriaanzon/vim-emmet-ultisnips')
   let g:UltiSnipsEditSplit="vertical"
   " let g:UltiSnipsUsePythonVersion = 3
   let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', 'UltiSnips']
@@ -381,7 +381,6 @@ if exists('*minpac#init')
   let g:airline#extensions#ale#enabled = 1
   let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint', 'prettier'],
 \   'css': ['prettier'],
 \   'scss': ['prettier'],
 \   'less': ['prettier'],
@@ -485,8 +484,10 @@ if exists('*minpac#init')
   " Go
   " Make sure to call :GoUpdateBinaries on install
   call minpac#add('fatih/vim-go')
+  let g:go_gopls_enabled = 0
   let g:go_highlight_extra_types = 1
   let g:go_highlight_functions = 1
+  let g:go_def_mapping_enabled = 0
 
   " Python
   call minpac#add('vim-python/python-syntax')
@@ -521,15 +522,15 @@ if exists('*minpac#init')
   let g:pear_tree_smart_backspace = 0
 
   " Deoplete autocompletion
-  call minpac#add('Shougo/deoplete.nvim')
-  let g:deoplete#enable_at_startup = 1
-  autocmd VimEnter * call deoplete#custom#option('sources', {
-  \ '_': ['ale'],
-  \ })
+  " call minpac#add('Shougo/deoplete.nvim')
+  " let g:deoplete#enable_at_startup = 1
+  " autocmd VimEnter * call deoplete#custom#option('sources', {
+  " \ '_': ['ale'],
+  " \ })
   " https://github.com/Shougo/deoplete.nvim/issues/766#issuecomment-498403969
   " https://github.com/Shougo/deoplete.nvim/issues/298
-  set completeopt-=preview
-  let g:ale_completion_tsserver_autoimport = 1
+  " set completeopt-=preview
+  " let g:ale_completion_tsserver_autoimport = 1
 
   call minpac#add('machakann/vim-highlightedyank')
 
@@ -544,6 +545,28 @@ if exists('*minpac#init')
   call minpac#add('AndrewRadev/tagalong.vim')
 
   call minpac#add('ap/vim-css-color')
+
+  call minpac#add('prabirshrestha/async.vim')
+  call minpac#add('prabirshrestha/asyncomplete.vim')
+  call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+  call minpac#add('prabirshrestha/vim-lsp')
+  call minpac#add('mattn/vim-lsp-settings')
+  call minpac#add('thomasfaingnaert/vim-lsp-snippets')
+  call minpac#add('thomasfaingnaert/vim-lsp-ultisnips')
+  let g:lsp_virtual_text_enabled = 0
+  let g:lsp_fold_enabled = 0
+  " let g:lsp_preview_float = 0
+
+  nmap gh <plug>(lsp-hover)
+  nmap gd <plug>(lsp-declaration)
+  " nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+  " nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  " nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+  " nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+  " nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  " nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+  " nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+
 
 else
   colorscheme elflord
