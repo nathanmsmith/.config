@@ -1,8 +1,6 @@
 alias tower "gittower ."
 alias typora "open -a typora"
 # alias macchanger 'openssl rand -hex 6 | sed "s/\(..\)/\1:/g; s/.$//" | xargs sudo ifconfig en0 ether'
-alias config "cd $XDG_CONFIG_HOME; and $EDITOR $XDG_CONFIG_HOME"
-alias wiki "cd ~/wiki; and $EDITOR ~/wiki"
 
 # Abbreviations
 # See https://github.com/fish-shell/fish-shell/issues/1976#issuecomment-168698602
@@ -103,14 +101,14 @@ abbr --add --global ynb 'yarn build'
 abbr --add --global yna 'yarn add'
 abbr --add --global ynad 'yarn add --dev'
 # Keybase specific
-abbr --add --global ynsh 'yarn start-hot'
-abbr --add --global ynhs 'yarn hot-server'
-abbr --add --global ynst 'yarn storybook'
-abbr --add --global ynrnst 'yarn rn-storybook'
-abbr --add --global ynrns 'yarn rn-start'
-abbr --add --global ynrnsi 'yarn rn-start ios'
-abbr --add --global ynts 'yarn test story --silent'
-abbr --add --global yntsu 'yarn test story --silent -u'
+# abbr --add --global ynsh 'yarn start-hot'
+# abbr --add --global ynhs 'yarn hot-server'
+# abbr --add --global ynst 'yarn storybook'
+# abbr --add --global ynrnst 'yarn rn-storybook'
+# abbr --add --global ynrns 'yarn rn-start'
+# abbr --add --global ynrnsi 'yarn rn-start ios'
+# abbr --add --global ynts 'yarn test story --silent'
+# abbr --add --global yntsu 'yarn test story --silent -u'
 
 # Keybase
 

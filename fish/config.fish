@@ -13,7 +13,7 @@ if status --is-login
   case Darwin
       set -gx PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/sbin /usr/local/MacGPG2/bin /Library/TeX/texbin
       # Use GNU utilities instead of macOS versions
-      set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,make}/libexec/gnubin $PATH
+      set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,gnu-time,make}/libexec/gnubin $PATH
       # Use Homebrew curl
       set -gx PATH /usr/local/opt/curl/bin $PATH
       # Use installed LLVM tools
@@ -31,10 +31,10 @@ if status --is-login
 
   # Bootstrap fisher
   # https://github.com/jorgebucaran/fisher
-  if not functions -q fisher
-      curl https://git.io/fisher --create-dirs -sLo "$XDG_CONFIG_HOME/fish/functions/fisher.fish"
-      fish -c fisher
-  end
+  # if not functions -q fisher
+  #     curl https://git.io/fisher --create-dirs -sLo "$XDG_CONFIG_HOME/fish/functions/fisher.fish"
+  #     fish -c fisher
+  # end
 
   # Set vi bindings
   set -gx fish_key_bindings fish_user_key_bindings
@@ -59,22 +59,17 @@ if status --is-login
   set -x HOMEBREW_CASK_OPTS --require-sha
   set -gx HOMEBREW_NO_ANALYTICS 1
 
-  # Java
-  if type --no-function --quiet nodenv
-    status --is-interactive; and jenv init - | source
-  end
-
   # JavaScript specific settings
   # Set up nodenv
-  if type --no-function --quiet nodenv
-    status --is-interactive; and nodenv init - | source
-  end
+  # if type --no-function --quiet nodenv
+  #   status --is-interactive; and nodenv init - | source
+  # end
 
   # Ruby specific settings
   # Rbenv
-  if type --no-function --quiet rbenv
-    status --is-interactive; and rbenv init - | source
-  end
+  # if type --no-function --quiet rbenv
+  #   status --is-interactive; and rbenv init - | source
+  # end
   # set -gx PATH /usr/local/opt/ruby/bin $PATH
 
   # Go specific settings
@@ -83,11 +78,12 @@ if status --is-login
 
   # Python settings
   set -gx PATH $HOME/.poetry/bin $PATH
-  if type --no-function --quiet pyenv
-    status --is-interactive; and pyenv init - | source
-  end
+  set -gx PATH /usr/local/opt/python@3.8/bin $PATH
+  # if type --no-function --quiet pyenv
+  #   status --is-interactive; and pyenv init - | source
+  # end
   # Use pyenv's current python version
-  set -gx PIPENV_PYTHON $HOME/.pyenv/shims/python
+  # set -gx PIPENV_PYTHON $HOME/.pyenv/shims/python
 
   # Rust specific settings
   # Rust tools XDG compatibility
@@ -100,16 +96,15 @@ if status --is-login
   # set -gx EERIEDIR ~/.eerie
   # set -gx PATH $PATH $EERIEDIR/base/bin $EERIEDIR/activeEnv/bin
 
-  # Keybase development
-  set -e KEYBASE_PERF
-  set -x KEYBASE_LOCAL_DEBUG 1
-  set -x KEYBASE_DEV_TOOL_ROOTS "$HOME/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi,$HOME/Library/Application Support/Google/Chrome/Default/Extensions/hgldghadipiblonfkkicmgcbbijnpeog"
-  set -x RUN_MODE devel
-  # set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
-  # Android
-  # set -x ANDROID_HOME "$HOME/Library/Android/sdk"
-  # set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $ANDROID_HOME/tools/bin $ANDROID_HOME/emulator
+#   # Keybase development
+#   set -e KEYBASE_PERF
+#   set -x KEYBASE_LOCAL_DEBUG 1
+#   set -x KEYBASE_DEV_TOOL_ROOTS "$HOME/Library/Application Support/Google/Chrome/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi,$HOME/Library/Application Support/Google/Chrome/Default/Extensions/hgldghadipiblonfkkicmgcbbijnpeog"
+#   set -x RUN_MODE devel
+#   # set -gx PATH /usr/local/opt/mysql@5.6/bin $PATH
+#   # Android
+#   # set -x ANDROID_HOME "$HOME/Library/Android/sdk"
+#   # set -x PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools $ANDROID_HOME/tools/bin $ANDROID_HOME/emulator
 
+  test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 end
-
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

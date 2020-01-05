@@ -46,9 +46,15 @@ set smartcase
 " Clear search buffer on return
 nnoremap <silent> <CR> :nohlsearch<CR>
 
+" Replacing
+set inccommand=nosplit
+" Vim's substitute command is not interactive.
+
 " Line Numbers
 set number
 set cursorline
+set nocursorcolumn
+
 
 " Whitespace characters settings
 " refs:
@@ -126,6 +132,9 @@ augroup vimStartup
 
 augroup END
 
+" https://til.hashrocket.com/vim?name=vim&page=3
+" :autocmd BufEnter *.png,*.jpg,*gif exec "! ~/.iterm2/imgcat ".expand("%") | :bw
+
 " Code Folding
 " See https://github.com/w0rp/ale/issues/1829
 " set foldmethod=syntax
@@ -161,7 +170,7 @@ set diffopt+=vertical
 " Python support
 if s:uname == "Darwin"
   let g:python_host_prog = "/usr/local/bin/python"
-  let g:python3_host_prog = "/usr/local/bin/python3"
+  let g:python3_host_prog = "/usr/local/opt/python@3.8/bin/python3"
 endif
 
 
@@ -242,13 +251,13 @@ if exists('*minpac#init')
   endif
 
   " Editorconfig support
-  call minpac#add('editorconfig/editorconfig-vim')
+  " call minpac#add('editorconfig/editorconfig-vim')
   " Make editorconfig play nice with Fugitive
-  let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+  " let g:EditorConfig_exclude_patterns = ['fugitive://.*']
   " No one tell me how big my tabs will be!
   " For real though, I was working on a Go project where the indent size was 4
   " and it drove me crazy until I figured out it was because of editorconfig
-  let g:EditorConfig_disable_rules = ['tab_width', 'indent_size']
+  " let g:EditorConfig_disable_rules = ['tab_width', 'indent_size']
 
   " Helpful character metadata on `ga` 😍
   call minpac#add('tpope/vim-characterize')
@@ -522,8 +531,10 @@ if exists('*minpac#init')
   set completeopt-=preview
   let g:ale_completion_tsserver_autoimport = 1
 
+  call minpac#add('machakann/vim-highlightedyank')
+
   call minpac#add('junegunn/vim-peekaboo')
-  let g:peekaboo_delay = 1000
+  let g:peekaboo_delay = 500
   " let g:peekaboo_compact = 1
 
   call minpac#add('kana/vim-textobj-user')
