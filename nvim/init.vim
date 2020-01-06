@@ -551,8 +551,8 @@ if exists('*minpac#init')
   call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
   call minpac#add('prabirshrestha/vim-lsp')
   call minpac#add('mattn/vim-lsp-settings')
-  call minpac#add('thomasfaingnaert/vim-lsp-snippets')
-  call minpac#add('thomasfaingnaert/vim-lsp-ultisnips')
+  " call minpac#add('thomasfaingnaert/vim-lsp-snippets')
+  " call minpac#add('thomasfaingnaert/vim-lsp-ultisnips')
   let g:lsp_virtual_text_enabled = 0
   let g:lsp_fold_enabled = 0
   " let g:lsp_preview_float = 0
