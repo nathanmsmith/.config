@@ -321,17 +321,12 @@ if exists('*minpac#init')
   nmap cr- crk
 
   " Handle swap files better
-  call minpac#add('gioele/vim-autoswap')
+  " call minpac#add('gioele/vim-autoswap')
+  let g:autoswap_detect_tmux = 1
   set title titlestring=
-
-  " Dash Integration
-  call minpac#add('rizzatti/dash.vim')
 
   " Better definitions of a word
   call minpac#add('chaoren/vim-wordmotion')
-
-  " call minpac#add('907th/vim-auto-save')
-  " let g:auto_save = 1
 
   " Fuzzy finding with FZF
   " refs:
@@ -355,7 +350,7 @@ if exists('*minpac#init')
   " There are many different plugins out there for rainbow parentheses, this one is the most
   " maintained.
   " refs: https://github.com/luochen1990/rainbow
-  call minpac#add('luochen1990/rainbow')
+  " call minpac#add('luochen1990/rainbow')
   " let g:rainbow_active = 1
   " let g:rainbow_conf = {
   " \  'guifgs': ['#ffd700', '#da70d6', '#87cefa'],
@@ -381,11 +376,6 @@ if exists('*minpac#init')
   let g:airline#extensions#ale#enabled = 1
   let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'css': ['prettier'],
-\   'scss': ['prettier'],
-\   'less': ['prettier'],
-\   'json': ['prettier'],
-\   'graphql': ['prettier'],
 \}
   let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
@@ -397,16 +387,6 @@ if exists('*minpac#init')
   nmap gh <Plug>(ale_hover)
   nmap gd <Plug>(ale_go_to_definition)
   nmap gr <Plug>(ale_find_references)
-
-  " LSP Support
-  " Autocomplete
-  " call minpac#add('Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'})
-  " call minpac#add('fszymanski/deoplete-emoji')
-  " let g:deoplete#enable_at_startup = 1
-  " call minpac#add('autozimu/LanguageClient-neovim', {
-  "   \ 'branch': 'next',
-  "   \ 'do': 'bash install.sh',
-  "   \ })
 
   " vim-test
   call minpac#add('janko-m/vim-test')
@@ -553,12 +533,15 @@ if exists('*minpac#init')
   call minpac#add('mattn/vim-lsp-settings')
   " call minpac#add('thomasfaingnaert/vim-lsp-snippets')
   " call minpac#add('thomasfaingnaert/vim-lsp-ultisnips')
-  let g:lsp_virtual_text_enabled = 0
+  let g:lsp_virtual_text_enabled = 1
   let g:lsp_fold_enabled = 0
   " let g:lsp_preview_float = 0
+  let g:lsp_log_file = expand('~/vim-lsp.log')
 
   nmap gh <plug>(lsp-hover)
-  nmap gd <plug>(lsp-declaration)
+  nmap gr <plug>(lsp-references)
+  nmap gd <plug>(lsp-definition)
+  nmap gD <plug>(lsp-implementation)
   " nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
   " nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
   " nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
