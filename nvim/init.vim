@@ -30,7 +30,7 @@ endif
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
 " set guicursor=a:blinkon100
-:au VimLeave * set guicursor=a:ver25-blinkon1
+:au VimLeave,VimSuspend * set guicursor=a:ver25-blinkon1
 
 " Map leader
 let mapleader = " "
@@ -553,6 +553,7 @@ if exists('*minpac#init')
   call minpac#add('christoomey/vim-tmux-navigator')
   autocmd VimResized * :wincmd =
 
+  let g:tex_conceal = 0
 else
   colorscheme elflord
 endif

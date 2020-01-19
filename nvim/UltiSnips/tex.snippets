@@ -1,0 +1,32 @@
+snippet "b(egin)?" "begin{} / end{}" br
+\begin{${1:something}}
+	${0:${VISUAL}}
+\end{$1}
+endsnippet
+
+snippet enum "Enumerate" b
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet it "Individual item" b
+\item $0
+endsnippet
+
+snippet sec "Section"
+\newpage
+\section{${1:${VISUAL:section name}}}%
+
+$0
+endsnippet
+
+snippet al "Align without a number" b
+\begin{align*}
+	${0:${VISUAL}}
+\end{align*}
+endsnippet
+
+snippet // "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
