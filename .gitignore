@@ -26,3 +26,5 @@ karabiner/assets
 /fish/functions/__fzf_cd.fish
 /karabiner/automatic_backups
 /fish/conf.d/
+
+vim-lsp.log
