@@ -553,6 +553,7 @@ if exists('*minpac#init')
   call minpac#add('christoomey/vim-tmux-navigator')
   autocmd VimResized * :wincmd =
 
+  call minpac#add('lervag/vimtex')
   let g:tex_conceal = 0
 else
   colorscheme elflord
