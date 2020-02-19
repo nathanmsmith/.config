@@ -443,13 +443,13 @@ if exists('*minpac#init')
   call minpac#add('jparise/vim-graphql')
 
   " Markdown
-  call minpac#add('plasticboy/vim-markdown')
-  let g:vim_markdown_folding_disabled = 1
-  let g:vim_markdown_frontmatter = 1
-  let g:vim_markdown_math = 1
-  let g:vim_markdown_strikethrough = 1
-  let g:vim_markdown_new_list_item_indent = 2
-  set conceallevel=2
+  " call minpac#add('plasticboy/vim-markdown')
+  " let g:vim_markdown_folding_disabled = 1
+  " let g:vim_markdown_frontmatter = 1
+  " let g:vim_markdown_math = 1
+  " let g:vim_markdown_strikethrough = 1
+  " let g:vim_markdown_new_list_item_indent = 2
+  " set conceallevel=2
   " let g:markdown_fenced_languages = ['coffee', 'css', 'erb=eruby', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml', 't_space_errors = 0
 
   " Syntax highlighting for github's hub tool
