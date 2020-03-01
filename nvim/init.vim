@@ -1,12 +1,9 @@
 " Nathan Smith's vim configuration
 
-
 " Overarching Philosophy:
 " 1. Prefer the defaults
 " 2. Extend functionality where needed
 " 3. Change functionality only when it doesn't make sense
-"
-"
 
 
 let s:uname = trim(system("uname -s"))
@@ -195,25 +192,26 @@ set statusline+=\ %y
 " ref: Modern Vim, tip 6
 " ==================================================
 " Easy to use commands
-packadd minpac
+try
+  packadd minpac
 
-command! PacInstall source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
-command! PacClean source $MYVIMRC | call minpac#clean()
-command! PacStatus source $MYVIMRC | call minpac#status()
+  command! PacInstall source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
+  command! PacClean source $MYVIMRC | call minpac#clean()
+  command! PacStatus source $MYVIMRC | call minpac#status()
+catch
+  fun! InstallPlug() " Bootstrap plugin manager on new systems. Copied from https://github.com/justinmk/config/blob/master/.config/nvim/init.vim#L19
+    exe '!git clone https://github.com/k-takata/minpac.git ' stdpath('config').'/pack/minpac/opt/minpac'
+    " call minpac#update()
+  endfun
+endtry
 
 if exists('*minpac#init')
   call minpac#init()
   call minpac#add('k-takata/minpac', {'type': 'opt'})
 
-  " Types of Plugins
-  " Improvements: Overwrite Vim's default behaviour
-  " Extensions: Extend Vim's functionality
-
   " Color Scheme
-  call minpac#add('tyrannicaltoucan/vim-quantum')
   call minpac#add('nathunsmitty/night-owl.vim')
   colorscheme night-owl
-  " colorscheme quantum
 
   " Sensible defaults
   " See https://github.com/tpope/vim-sensible for the full list
