@@ -271,47 +271,7 @@ if exists('*minpac#init')
   " Faster file switching with alternates
   " Also integrates with vim-test
   call minpac#add('tpope/vim-projectionist')
-  let g:projectionist_heuristics = {
-        \ '*.go': {
-        \   '*.go': {
-        \       'alternate': '{}_test.go',
-        \       'type': 'source'
-        \   },
-        \   '*_test.go': {
-        \       'alternate': '{}.go',
-        \       'type': 'test'
-        \   },
-        \ },
-        \ '*.js': {
-        \   '*.js': {
-        \       'alternate': '{}.test.js',
-        \       'type': 'source'
-        \   },
-        \   '*.test.js': {
-        \       'alternate': '{}.js',
-        \       'type': 'test'
-        \   },
-        \ },
-        \ '*.iced': {
-        \   '*.iced': {
-        \       'alternate': '{}.test.iced',
-        \       'type': 'source'
-        \   },
-        \   '*.test.iced': {
-        \       'alternate': '{}.iced',
-        \       'type': 'test'
-        \   },
-        \ },
-        \ '*.py': {
-        \   '*.py': {
-        \       'alternate': '{}_test.py',
-        \       'type': 'source'
-        \   },
-        \   '*_test.py': {
-        \       'alternate': '{}.py',
-        \       'type': 'test'
-        \   },
-        \ }}
+  lua require("projectionist")
 
   " Substitution and Coercion
   call minpac#add('tpope/vim-abolish')
@@ -339,12 +299,6 @@ if exists('*minpac#init')
   nnoremap <silent> <leader>p :Files<CR>
   nnoremap <silent> <leader>b :Buffers<CR>
   nnoremap <silent> <leader>f :Rg<CR>
-
-  " Lightline
-  " call minpac#add('itchyny/lightline.vim')
-  " let g:lightline = {
-  "       \ 'colorscheme': 'nightowl',
-  "       \ }
 
   " Rainbow Parentheses
   " There are many different plugins out there for rainbow parentheses, this one is the most
