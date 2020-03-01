@@ -29,12 +29,10 @@ vim.api.nvim_set_var('projectionist_heuristics', {
       ['type'] = 'test'
     },
   },
-  ['/*.c|src/*.c'] = {
-    ['*.c'] = {['alternate'] = {'../include/{}.h', '{}.h'}},
-    ['*.h'] = {['alternate'] = '{}.c'},
-  },
-  ['Makefile'] = {
-    ['*Makefile'] = {['alternate'] = '{dirname}CMakeLists.txt'},
-    ['*CMakeLists.txt'] = {['alternate'] = '{dirname}Makefile'},
+  ['*.c|*.h|*.cpp|*.hpp'] = {
+    ['*.c'] = {['alternate'] = {'{}.h'}},
+    ['*.cpp'] = {['alternate'] = {'{}.h', '{}.hpp'}},
+    ['*.h'] = {['alternate'] = {'{}.cpp', '{}.c'}},
+    ['*.hpp'] = {['alternate'] = '{}.cpp'},
   },
 })
