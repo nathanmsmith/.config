@@ -481,7 +481,7 @@ if exists('*minpac#init')
   call minpac#add('neovim/nvim-lsp')
   packadd nvim-lsp
   lua require'nvim_lsp'.tsserver.setup{}
-  lua require'nvim_lsp'.pyls.setup{}
+  " lua require'nvim_lsp'.pyls.setup{}
   nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
   " nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
