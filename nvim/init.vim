@@ -522,6 +522,8 @@ if exists('*minpac#init')
 
   call minpac#add('lervag/vimtex')
   let g:tex_conceal = 0
+
+  call minpac#add('tommcdo/vim-exchange')
 else
   colorscheme elflord
 endif
