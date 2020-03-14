@@ -524,6 +524,7 @@ if exists('*minpac#init')
   let g:tex_conceal = 0
 
   call minpac#add('tommcdo/vim-exchange')
+  call minpac#add('fvictorio/vim-textobj-backticks')
 else
   colorscheme elflord
 endif
