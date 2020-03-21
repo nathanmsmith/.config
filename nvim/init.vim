@@ -528,3 +528,5 @@ if exists('*minpac#init')
 else
   colorscheme elflord
 endif
+
+command! DumbQuotes %s/“\|”/"/g | %s/‘\|’/'/g
