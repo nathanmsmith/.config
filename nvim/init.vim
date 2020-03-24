@@ -500,6 +500,9 @@ if exists('*minpac#init')
 
   call minpac#add('tommcdo/vim-exchange')
   call minpac#add('fvictorio/vim-textobj-backticks')
+
+  call minpac#add('kshenoy/vim-signature')
+
 else
   colorscheme elflord
 endif
