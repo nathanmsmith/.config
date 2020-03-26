@@ -60,3 +60,8 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[hub]
+	protocol = https
+[diff]
+	# https://link.springer.com/article/10.1007%2Fs10664-019-09772-z
+	algorithm = histogram
