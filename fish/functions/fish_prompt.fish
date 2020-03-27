@@ -20,11 +20,11 @@ function _node -d "Writes the node version if there is a package.json"
   end
 end
 
-function _ruby -d "Writes the ruby version if there are ruby files"
-  if test -f Gemfile # -o -f Rakefile -o (count *.rb) -gt 0
-    echo -s (set_color --bold red) ' 💎 ' (rbenv version-name) (set_color normal)
-  end
-end
+# function _ruby -d "Writes the ruby version if there are ruby files"
+#   if test -f Gemfile # -o -f Rakefile -o (count *.rb) -gt 0
+#     echo -s (set_color --bold red) ' 💎 ' (ruby -v) (set_color normal)
+#   end
+# end
 
 function _git_status -d "Writes the current git status, if there is one."
   set -l branch_name (__fish_git_prompt "%s" | sed 's/ //')
@@ -72,5 +72,5 @@ function _vim_mode -d "Writes the current vim mode"
 end
 
 function fish_prompt -d "Write out the prompt"
-  echo -nes "\n" (_vim_mode) (_user_host_name) (_directory) (_git_status) (_node) (_ruby) '\n› '
+  echo -nes "\n" (_vim_mode) (_user_host_name) (_directory) (_git_status) (_node) '\n› '
 end
