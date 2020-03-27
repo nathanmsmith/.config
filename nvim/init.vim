@@ -444,6 +444,9 @@ if exists('*minpac#init')
   call minpac#add('Xuyuanp/nerdtree-git-plugin')
   " s for sidebar
   map <leader>s :NERDTreeFind<CR>
+  " m conflicts with vim-signature
+  let NERDTreeMapMenu='n'
+
   call minpac#add('nelstrom/vim-visual-star-search')
   let g:NERDTreeAutoDeleteBuffer = 1
   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -479,6 +482,7 @@ if exists('*minpac#init')
 
   call minpac#add('ap/vim-css-color')
 
+  " TODO: wait for nvim 0.5.0 on this
   " call minpac#add('neovim/nvim-lsp')
   " packadd nvim-lsp
   " lua require'nvim_lsp'.tsserver.setup{}
@@ -502,6 +506,8 @@ if exists('*minpac#init')
   call minpac#add('fvictorio/vim-textobj-backticks')
 
   call minpac#add('kshenoy/vim-signature')
+
+  call minpac#add('tpope/vim-fireplace', {'type': 'opt'})
 
 else
   colorscheme elflord
