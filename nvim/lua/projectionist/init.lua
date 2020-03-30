@@ -1,4 +1,14 @@
 vim.api.nvim_set_var('projectionist_heuristics', {
+  ['*.rb'] = {
+    ['lib/*.rb'] = {
+      ['alternate'] = 'spec/{}_spec.rb',
+      ['type'] = 'source'
+    },
+    ['spec/*_spec.rb'] = {
+      ['alternate'] = 'lib/{}.rb',
+      ['type'] = 'test',
+    },
+  },
   ['*.go'] = {
     ['*.go'] = {
       ['alternate'] = '{}_test.go',
