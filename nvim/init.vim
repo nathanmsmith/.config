@@ -292,6 +292,7 @@ if exists('*minpac#init')
   " - https://github.com/junegunn/fzf.vim
   " Source FZF from the homebrew install
   set rtp+=/usr/local/opt/fzf
+  let g:fzf_preview_window = ''
   call minpac#add('junegunn/fzf.vim')
   " Using FZF
   nnoremap <silent> <leader>p :Files<CR>
