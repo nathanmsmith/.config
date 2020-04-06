@@ -170,6 +170,10 @@ if s:uname == "Darwin"
   let g:python3_host_prog = "/usr/local/opt/python@3.8/bin/python3"
 endif
 
+if s:uname == "Darwin"
+  autocmd BufEnter *.png,*.jpg,*gif exec "silent !open ".expand("%") | :bw
+endif
+
 
 " Get syntax highlighting item
 function! SyntaxItem()
