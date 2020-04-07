@@ -8,15 +8,14 @@ alias typora "open -a typora"
 #   set -U abbr_initialized
 
 abbr --add --global cfg 'config'
-abbr --add --global w 'wiki'
 
 abbr --add --global o 'open .'
 
-# ls
-abbr --add --global l 'ls'
-abbr --add --global la 'ls -a'
-abbr --add --global ll 'ls -l'
-abbr --add --global lla 'ls -la'
+# ls/exa
+abbr --add --global l 'exa'
+abbr --add --global la 'exa -a'
+abbr --add --global ll 'exa -lh'
+abbr --add --global lla 'exa -lha'
 
 abbr --add --global md 'mkdir -p'
 abbr --add --global rd 'rm -r'
@@ -57,7 +56,7 @@ abbr --add --global gi 'git ignore'
 abbr --add --global ginit 'git init'
 abbr --add --global gad 'git add .'
 abbr --add --global ga. 'git add .'
-abbr --add --global gst 'git status'
+abbr --add --global gsts 'git status'
 abbr --add --global gbr 'git branch'
 abbr --add --global gcl 'git clone'
 abbr --add --global gco 'git checkout'
@@ -80,12 +79,12 @@ abbr --add --global grbm 'git rebase master'
 abbr --add --global grbi 'git rebase --interactive'
 abbr --add --global grbc 'git rebase --continue'
 abbr --add --global grbs 'git rebase --skip'
-abbr --add --global gst 'git status'
 abbr --add --global gd 'git diff'
 abbr --add --global gds 'git diff --staged'
 abbr --add --global gdc 'git discard'
-abbr --add --global gs 'git stash'
-abbr --add --global gsa 'git stash --all'
+abbr --add --global gs 'git sync'
+abbr --add --global gsta 'git stash'
+abbr --add --global gstaa 'git stash --all'
 abbr --add --global gl 'git log'
 
 abbr --add --global gmt 'git mergetool'
