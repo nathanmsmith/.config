@@ -50,27 +50,27 @@ function _git_status -d "Writes the current git status, if there is one."
 
 end
 
-function _vim_mode -d "Writes the current vim mode"
-  if test "$fish_key_bindings" = "fish_vi_key_bindings"
-    switch $fish_bind_mode
-      case default
-        set_color --bold red
-        echo -n 🅽
-      case insert
-        set_color --bold green
-        echo -n 🅸
-      case replace_one
-        set_color --bold green
-        echo -n 🆁
-      case visual
-        set_color --bold brmagenta
-        echo -n 🆅
-    end
-    echo " "
-    set_color normal
-  end
-end
+# function _vim_mode -d "Writes the current vim mode"
+#   if test "$fish_key_bindings" = "fish_vi_key_bindings"
+#     switch $fish_bind_mode
+#       case default
+#         set_color --bold red
+#         echo -n 🅽
+#       case insert
+#         set_color --bold green
+#         echo -n 🅸
+#       case replace_one
+#         set_color --bold green
+#         echo -n 🆁
+#       case visual
+#         set_color --bold brmagenta
+#         echo -n 🆅
+#     end
+#     echo " "
+#     set_color normal
+#   end
+# end
 
 function fish_prompt -d "Write out the prompt"
-  echo -nes "\n" (_vim_mode) (_user_host_name) (_directory) (_git_status) (_node) '\n› '
+  echo -nes "\n" (_user_host_name) (_directory) (_git_status) (_node) '\n› '
 end
