@@ -47,3 +47,9 @@ call textobj#user#plugin('latex', {
 \ })
 
 let g:loaded_textobj_latex = 1
+
+" Make
+let b:tex_flavor = 'pdflatex'
+:compiler tex
+:set makeprg=pdflatex\ \-file\-line\-error\ \-interaction=nonstopmode
+:set errorformat=%f:%l:\ %m
