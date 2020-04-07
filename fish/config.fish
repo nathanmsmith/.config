@@ -36,9 +36,6 @@ if status --is-login
   #     fish -c fisher
   # end
 
-  # Set vi bindings
-  set -gx fish_key_bindings fish_user_key_bindings
-
   # Set editor
   set -gx EDITOR nvim
 
