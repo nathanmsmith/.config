@@ -31,7 +31,7 @@ vim.api.nvim_set_var('projectionist_heuristics', {
   },
   ['*.js'] = {
     ['*.js'] = {
-      ['alternate'] = '{}.js',
+      ['alternate'] = '{}.test.js',
       ['type'] = 'source',
     },
     ['*.test.js'] = {
