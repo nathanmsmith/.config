@@ -67,7 +67,7 @@ if status --is-login
   # if type --no-function --quiet rbenv
   #   status --is-interactive; and rbenv init - | source
   # end
-  set -gx PATH /usr/local/opt/ruby/bin $PATH
+  set -gx PATH /usr/local/lib/ruby/gems/2.7.0/bin /usr/local/opt/ruby/bin $PATH
 
   # Go specific settings
   set -gx GOPATH ~/Developer/go

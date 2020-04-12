@@ -1,5 +1,4 @@
-alias tower "gittower ."
-alias typora "open -a typora"
+alias config "cd ~/.config"
 # alias macchanger 'openssl rand -hex 6 | sed "s/\(..\)/\1:/g; s/.$//" | xargs sudo ifconfig en0 ether'
 
 # Abbreviations
@@ -46,7 +45,7 @@ abbr --add --global mb 'make build'
 
 # Vim
 abbr --add v 'nvim'
-abbr --add n 'nvim'
+abbr --add n 'fzf | xargs nvim'
 
 # Git
 # Mainly inspired by https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet#git

@@ -17,3 +17,5 @@ setlocal expandtab
 let test#python#runner = 'pytest'
 let b:ale_python_auto_pipenv = 1
 let b:ale_python_pyls_use_global = 1
+
+setlocal omnifunc=v:lua.vim.lsp.omnifunc
