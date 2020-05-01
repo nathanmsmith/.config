@@ -11,9 +11,9 @@ if status --is-login
       set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/home/linuxbrew/.linuxbrew/share/man" $MANPATH;
       set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/home/linuxbrew/.linuxbrew/share/info" $INFOPATH;
   case Darwin
-      set -gx PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/sbin /usr/local/MacGPG2/bin /Library/TeX/texbin
+      # set -gx PATH /usr/local/bin /usr/bin /bin /usr/sbin /sbin /usr/local/sbin /usr/local/MacGPG2/bin /Library/TeX/texbin
       # Use GNU utilities instead of macOS versions
-      set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,gnu-time,make}/libexec/gnubin $PATH
+      set -gx PATH /usr/local/opt/{coreutils,findutils,grep,gnu-sed,gnu-time,make,gnu-units}/libexec/gnubin $PATH
       # Use Homebrew curl
       set -gx PATH /usr/local/opt/curl/bin $PATH
       # Use installed LLVM tools
