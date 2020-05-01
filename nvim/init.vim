@@ -284,8 +284,7 @@ if exists('*minpac#init')
 
   " Handle swap files better
   " call minpac#add('gioele/vim-autoswap')
-  let g:autoswap_detect_tmux = 1
-  set title titlestring=
+  " let g:autoswap_detect_tmux = 1
 
   " Better definitions of a word
   call minpac#add('chaoren/vim-wordmotion')
@@ -491,8 +490,8 @@ if exists('*minpac#init')
   packadd nvim-lsp
   lua require'nvim_lsp'.tsserver.setup{}
   lua require'nvim_lsp'.pyls.setup{}
-  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+  " nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
   nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
   nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
@@ -518,3 +517,7 @@ else
 endif
 
 command! DumbQuotes %s/“\|”/"/g | %s/‘\|’/'/g
+
+
+set title
+set titlestring="nvim"
