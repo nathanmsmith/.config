@@ -65,3 +65,8 @@
 [diff]
 	# https://link.springer.com/article/10.1007%2Fs10664-019-09772-z
 	algorithm = histogram
+[sendemail]
+	smtpserver = smtp.fastmail.com
+	smtpuser = natedub@fastmail.com
+	smtpencryption = tls
+	smtpserverport = 587
