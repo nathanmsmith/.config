@@ -3,6 +3,12 @@ snippet defun "Define function" b
 	${0:(body)})
 endsnippet
 
+snippet if "if statement"
+(if (${1:= x y})
+	(${2:then})
+	${0:else})
+endsnippet
+
 snippet cond "Test conditions"
 (cond ((${1:= x y}) (${2:do z}))
 	(t ($0))))
@@ -10,4 +16,14 @@ endsnippet
 
 snippet test "Test a function" b
 (test ($1) $0)
+endsnippet
+
+snippet let "let" b
+(let ((${1:x (+ a b)})${2})
+	$0)
+endsnippet
+
+snippet let* "let*" b
+(let* ((${1:x (+ a b)})${2})
+	$0)
 endsnippet
