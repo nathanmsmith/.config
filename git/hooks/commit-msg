@@ -1,0 +1,2 @@
+#!/bin/bash
+commitlint --config ~/.config/commitlint.config.js --edit
