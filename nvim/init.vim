@@ -107,6 +107,9 @@ noremap <Right> :echo "no!"<cr>
 noremap <Up> :echo "no!"<cr>
 noremap <Down> :echo "no!"<cr>
 
+" make Y consistent with C and D.
+nnoremap Y y$
+
 " grep with ripgrep
 " https://github.com/BurntSushi/ripgrep
 " if executable('rg')
