@@ -85,6 +85,7 @@ abbr --add --global gs 'git sync'
 abbr --add --global gsta 'git stash'
 abbr --add --global gstaa 'git stash --all'
 abbr --add --global gl 'git log'
+abbr --add --global gnpr 'git new-pull-request'
 
 abbr --add --global gmt 'git mergetool'
 abbr --add --global gdt 'git difftool'
