@@ -8,7 +8,8 @@ alias config "cd ~/.config"
 
 abbr --add --global cfg 'config'
 
-abbr --add --global o 'open .'
+abbr --add --global o 'open'
+abbr --add --global o. 'open .'
 
 # ls/exa
 abbr --add --global l 'exa'
