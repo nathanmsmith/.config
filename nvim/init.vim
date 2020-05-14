@@ -525,3 +525,4 @@ command! DumbQuotes %s/“\|”/"/g | %s/‘\|’/'/g
 
 set title
 set titlestring="nvim"
+set colorcolumn=+1
