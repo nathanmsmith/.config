@@ -365,6 +365,9 @@ if exists('*minpac#init')
   " C improvements
   call minpac#add('vim-scripts/aftersyntaxc.vim')
 
+  " C++ improvements
+  call minpac#add('octol/vim-cpp-enhanced-highlight')
+
   " Fish
   call minpac#add('dag/vim-fish')
 
