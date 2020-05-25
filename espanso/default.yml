@@ -29,8 +29,17 @@ matches:
   #       params:
   #         cmd: "echo Hello from your shell"
 
+  #TeX shorthands
+  - trigger: "\\/"
+    replace: "\\frac{"
+  - trigger: "\\ket"
+    replace: "|$|$\\rangle"
+  - trigger: "\\)"
+    replace: "\\right)"
+  - trigger: "\\("
+    replace: "\\left("
 
-  # TeX shorthands
+  # TeX to Unicode shorthands
   # Greek
   - trigger: ";alpha"
     replace: "α"
@@ -150,6 +159,36 @@ matches:
   - trigger: ";int"
     replace: "∫"
 
+  # Analysis
+  - trigger: ";times"
+    replace: "×"
+  - trigger: ";div"
+    replace: "÷"
+  - trigger: ";infty"
+    replace: "∞"
+  - trigger: ";nabla"
+    replace: "∇"
+# \partial	∂
+# \sum	∑
+# \prod	∏
+# \coprod	∐
+# \int	∫
+# \iint	∬
+# \iiint	∭
+# \iiiint	⨌
+# \oint	∮
+# \surfintegral	∯
+# \volintegral	∰
+# \Re	ℜ
+# \Im	ℑ
+# \wp	℘
+# \mp	∓
+# \langle	⟨
+# \rangle	⟩
+# \lfloor	⌊
+# \rfloor	⌋
+# \lceil	⌈
+# \rceil	⌉
 
 # Greek
 # # Relation
@@ -260,32 +299,6 @@ matches:
 # \rightsquigarrow	⇝
 # \rightleftharpoons	⇌	\leftrightharpoons	⇋
 # \rightharpoonup	⇀	\rightharpoondown	⇁
-# # Analysis
-# \times	×
-# \div	÷
-# \infty	∞
-# \nabla	∇
-# \partial	∂
-# \sum	∑
-# \prod	∏
-# \coprod	∐
-# \int	∫
-# \iint	∬
-# \iiint	∭
-# \iiiint	⨌
-# \oint	∮
-# \surfintegral	∯
-# \volintegral	∰
-# \Re	ℜ
-# \Im	ℑ
-# \wp	℘
-# \mp	∓
-# \langle	⟨
-# \rangle	⟩
-# \lfloor	⌊
-# \rfloor	⌋
-# \lceil	⌈
-# \rceil	⌉
 # # Blackboard Bold, Fraktur
 # \mathbb{a}	𝕒	\mathbb{A}	𝔸
 # \mathbb{b}	𝕓	\mathbb{B}	𝔹
