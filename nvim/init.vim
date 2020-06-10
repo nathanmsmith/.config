@@ -529,3 +529,6 @@ command! DumbQuotes %s/“\|”/"/g | %s/‘\|’/'/g
 set title
 set titlestring="nvim"
 set colorcolumn=+1
+
+" Add current directory to path
+set path+=.,,
