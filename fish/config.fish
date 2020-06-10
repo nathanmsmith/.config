@@ -82,6 +82,10 @@ if status --is-login
   # Use pyenv's current python version
   set -gx PIPENV_PYTHON /usr/local/opt/python@3.8/bin/python3
 
+  # PySpark
+  set -gx PYSPARK_PYTHON /usr/local/opt/python/libexec/bin/python
+
+
   # Rust specific settings
   # Rust tools XDG compatibility
   # set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo

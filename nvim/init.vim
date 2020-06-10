@@ -291,7 +291,8 @@ if exists('*minpac#init')
   " let g:autoswap_detect_tmux = 1
 
   " Better definitions of a word
-  call minpac#add('chaoren/vim-wordmotion')
+  " call minpac#add('chaoren/vim-wordmotion')
+  " CamelCaseWord->followed_by_snake_case
 
   " Fuzzy finding with FZF
   " refs:
