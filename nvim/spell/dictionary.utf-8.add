@@ -20,3 +20,4 @@ Clojure
 configurability
 blog
 performant
+serializable

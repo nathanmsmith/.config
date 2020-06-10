@@ -38,6 +38,8 @@ matches:
     replace: "\\right)"
   - trigger: "\\("
     replace: "\\left("
+  - trigger: "\\matp"
+    replace: "\\begin{pmatrix}$|$\\end{pmatrix}"
 
   # TeX to Unicode shorthands
   # Greek
