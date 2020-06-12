@@ -117,21 +117,20 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat=%f:%l:%c:%m
 " endif
 
-augroup vimStartup
-  au!
-
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid, when inside an event handler
-  " (happens when dropping a file on gvim) and for a commit message (it's
-  " likely a different one than last time).
-  " Copied from defaults.vim)
-  " See :h restore-cursor
-  autocmd BufReadPost *
-    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
-    \ |   exe "normal! g`\""
-    \ | endif
-
-augroup END
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid, when inside an event handler
+" (happens when dropping a file on gvim) and for a commit message (it's
+" likely a different one than last time).
+" Copied from defaults.vim)
+" See :h restore-cursor
+let g:test=0
+autocmd BufReadPost let g:test=1
+autocmd VimEnter * echo "hello world"
+  " \ :echom "test"
+  " \ if line("'\"") >= 1 && line("'\"") <= line("$") " && &ft != 'gitcommit'
+  " \ |   exe '!ls' | echo "test"
+  " " \ |   exe "normal! g`\""
+  " \ | endif
 
 " https://til.hashrocket.com/vim?name=vim&page=3
 " :autocmd BufEnter *.png,*.jpg,*gif exec "! ~/.iterm2/imgcat ".expand("%") | :bw
@@ -175,7 +174,7 @@ if s:uname == "Darwin"
 endif
 
 if s:uname == "Darwin"
-  autocmd BufEnter *.png,*.jpg,*gif exec "silent !open ".expand("%") | :bw
+  autocmd BufEnter *.png,*.jpg,*.gif exec "silent !open ".expand("%") | :bw
 endif
 
 
@@ -498,6 +497,7 @@ if exists('*minpac#init')
   packadd nvim-lsp
   lua require'nvim_lsp'.tsserver.setup{}
   lua require'nvim_lsp'.pyls.setup{}
+  lua require'nvim_lsp'.solargraph.setup{}
   nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
   " nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -528,7 +528,7 @@ command! DumbQuotes %s/“\|”/"/g | %s/‘\|’/'/g
 
 
 set title
-set titlestring="nvim"
+setglobal titlestring=nvim
 set colorcolumn=+1
 
 " Add current directory to path
