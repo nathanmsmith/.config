@@ -78,12 +78,6 @@ if has('mouse')
   set mouse=a
 end
 
-" ARROW KEYS ARE UNACCEPTABLE
-noremap <Left> :echo "no!"<cr>
-noremap <Right> :echo "no!"<cr>
-noremap <Up> :echo "no!"<cr>
-noremap <Down> :echo "no!"<cr>
-
 " make Y consistent with C and D.
 nnoremap Y y$
 
@@ -142,6 +136,7 @@ command! Config :call OpenInSplitIfBufferDirty($MYVIMRC)
 
 set diffopt+=vertical
 
+let s:uname = trim(system("uname -s"))
 " Python support
 if s:uname == "Darwin"
   let g:python_host_prog = "/usr/local/bin/python"
@@ -265,13 +260,16 @@ if exists('*minpac#init')
   " let g:autoswap_detect_tmux = 1
 
   " Better definitions of a word
+  " TODO: an update seems to have made this buggy, fix
   " call minpac#add('chaoren/vim-wordmotion')
   " CamelCaseWord->followed_by_snake_case
 
    " Fuzzy finding with vim-picker
+   " I've found it to be faster that the default fzf plugin.
+   " fzf is much better than selecta, fzy, etc. though
+   " ripgrep has the fastest search
    call minpac#add('srstevenson/vim-picker')
    nnoremap <silent> <leader>p :PickerEdit<CR>
-   " rg -g !.git/ --files --hidden
    let g:picker_custom_find_executable = 'rg'
    let g:picker_custom_find_flags = '-g !.git/ --files --hidden --color never'
    let g:picker_selector_executable = 'fzf'
