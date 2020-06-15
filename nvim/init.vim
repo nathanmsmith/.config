@@ -5,24 +5,6 @@
 " 2. Extend functionality where needed
 " 3. Change functionality only when it doesn't make sense
 
-
-let s:uname = trim(system("uname -s"))
-
-if s:uname == "Darwin"
-  set rtp+=~/.fzf
-else
-  set rtp+=/home/linuxbrew/.linuxbrew/opt/fzf
-endif
-
-" Normally `:set nocp` is not needed, because it is done automatically
-" when .vimrc is found.
-if &compatible
-  " `:set nocp` has many side effects. Therefore this should be done
-  " only when 'compatible' is set.
-  set nocompatible
-endif
-
-
 " Reset the cursor on exit
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
@@ -51,7 +33,6 @@ set inccommand=nosplit
 set number
 set cursorline
 set nocursorcolumn
-
 
 " Whitespace characters settings
 " refs:
@@ -91,10 +72,6 @@ autocmd FileType help wincmd L
 " Use system clipboard
 set clipboard+=unnamedplus
 
-" Wildmenu
-" set wildmenu
-" set wildmode=list:full
-
 " Mouse support
 " Useful for things like resizing windows
 if has('mouse')
@@ -123,12 +100,10 @@ set grepformat=%f:%l:%c:%m
 " likely a different one than last time).
 " Copied from defaults.vim)
 " See :h restore-cursor
-let g:test=0
-autocmd BufReadPost let g:test=1
-autocmd VimEnter * echo "hello world"
-  " \ :echom "test"
+" TODO: There seems to be a bug where this happens for git commits too, so
+" disabling this for now.
+" autocmd VimEnter *
   " \ if line("'\"") >= 1 && line("'\"") <= line("$") " && &ft != 'gitcommit'
-  " \ |   exe '!ls' | echo "test"
   " " \ |   exe "normal! g`\""
   " \ | endif
 
@@ -293,18 +268,15 @@ if exists('*minpac#init')
   " call minpac#add('chaoren/vim-wordmotion')
   " CamelCaseWord->followed_by_snake_case
 
-  " Fuzzy finding with FZF
-  " refs:
-  " - https://github.com/junegunn/fzf
-  " - https://github.com/junegunn/fzf.vim
-  " Source FZF from the homebrew install
-  set rtp+=/usr/local/opt/fzf
-  let g:fzf_preview_window = ''
-  call minpac#add('junegunn/fzf.vim')
-  " Using FZF
-  nnoremap <silent> <leader>p :Files<CR>
-  nnoremap <silent> <leader>b :Buffers<CR>
-  nnoremap <silent> <leader>f :Rg<CR>
+   " Fuzzy finding with vim-picker
+   call minpac#add('srstevenson/vim-picker')
+   nnoremap <silent> <leader>p :PickerEdit<CR>
+   " rg -g !.git/ --files --hidden
+   let g:picker_custom_find_executable = 'rg'
+   let g:picker_custom_find_flags = '-g !.git/ --files --hidden --color never'
+   let g:picker_selector_executable = 'fzf'
+   let g:picker_selector_flags = '--layout=reverse'
+   let g:picker_height = 14
 
   " Rainbow Parentheses
   " There are many different plugins out there for rainbow parentheses, this one is the most
@@ -337,7 +309,6 @@ if exists('*minpac#init')
   let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
-  let g:ale_linter_aliases = {'typescriptreact': 'typescript'}
   let g:ale_javascript_eslint_suppress_missing_config = 1
   let g:ale_prolog_swipl_timeout = 10
   nmap <silent> [W <Plug>(ale_first)
@@ -374,9 +345,11 @@ if exists('*minpac#init')
   " HTML
   call minpac#add('https://notabug.org/jorgesumle/vim-html-syntax')
   let g:html_no_rendering = 1
-
+  " Misc HTML Templating Lanugages
   " Handlebars
   call minpac#add('mustache/vim-mustache-handlebars')
+  " EJS
+  call minpac#add('briancollins/vim-jst')
 
   " CSS, Less, Sass
   call minpac#add('JulesWang/css.vim')

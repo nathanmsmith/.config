@@ -46,7 +46,7 @@ abbr --add --global mb 'make build'
 
 # Vim
 abbr --add v 'nvim'
-abbr --add n 'fzf | xargs nvim'
+abbr --add n 'nvim'
 
 # Git
 # Mainly inspired by https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet#git
