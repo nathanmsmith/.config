@@ -1,7 +1,5 @@
 #!/usr/local/bin/fish
 
-rm $HOME/.config/fish/fish_variables
-
 alias config "cd ~/.config"
 alias ls "exa"
 # alias macchanger 'openssl rand -hex 6 | sed "s/\(..\)/\1:/g; s/.$//" | xargs sudo ifconfig en0 ether'
@@ -60,7 +58,7 @@ abbr --add gi 'git ignore'
 abbr --add ginit 'git init'
 abbr --add gad 'git add .'
 abbr --add ga. 'git add .'
-abbr --add gsts 'git status'
+abbr --add gst 'git status'
 abbr --add gbr 'git branch'
 abbr --add gcl 'git clone'
 abbr --add gco 'git checkout'
@@ -128,15 +126,3 @@ set -U FZF_DEFAULT_COMMAND 'rg -g !.git/ --files --hidden'
 
 # XDG CONFIG
 set -U XDG_CONFIG_HOME $HOME/.config
-
-# PATH settings
-# GNU utils
-set -Ua fish_user_paths /usr/local/opt/{coreutils,findutils,grep,gnu-sed,gnu-time,make,gnu-units}/libexec/gnubin
-# Curl
-set -Ua fish_user_paths /usr/local/opt/curl/bin
-# Use installed LLVM tools
-set -Ua fish_user_paths /usr/local/opt/llvm/bin
-# Python
-set -Ua fish_user_paths "/usr/local/opt/python@3.8/bin"
-# Ruby
-set -Ua fish_user_paths /usr/local/lib/ruby/gems/2.7.0/bin /usr/local/opt/ruby/bin
