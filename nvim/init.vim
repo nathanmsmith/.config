@@ -15,7 +15,7 @@
 let mapleader = " "
 
 " Color Defaults
-set background=dark
+" set background=dark
 set termguicolors
 
 " Searching
