@@ -11,11 +11,11 @@
 " set guicursor=a:blinkon100
 :au VimLeave,VimSuspend * set guicursor=a:ver25-blinkon1
 
-" Map leader
+" Map leader to space
 let mapleader = " "
 
 " Color Defaults
-set background=dark
+" set background=dark
 set termguicolors
 
 " Searching
@@ -33,6 +33,9 @@ set inccommand=nosplit
 set number
 set cursorline
 set nocursorcolumn
+
+" Don't redraw for macros
+set lazyredraw
 
 " Whitespace characters settings
 " refs:
@@ -490,6 +493,8 @@ if exists('*minpac#init')
   call minpac#add('kshenoy/vim-signature')
 
   call minpac#add('tpope/vim-fireplace', {'type': 'opt'})
+
+  call minpac#add('tpope/vim-rsi')
 
 else
   colorscheme elflord
