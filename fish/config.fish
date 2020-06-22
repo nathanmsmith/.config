@@ -90,8 +90,7 @@ if status --is-login
   # Rust tools XDG compatibility
   # set -gx CARGO_HOME "$XDG_DATA_HOME"/cargo
   # set -gx RUSTUP_HOME "$XDG_DATA_HOME"/rustup
-
-  # set -gx PATH $PATH $CARGO_HOME/bin
+  set -gx PATH $PATH $CARGO_HOME/bin
 
   # Io specific settings
   # set -gx EERIEDIR ~/.eerie
