@@ -7,25 +7,9 @@ fish/secrets.fish
 fish/completions
 fish/fish_variables
 nvim/pack
-nvim/autoload
 nvim/.netrwhist
 karabiner/assets
 /fish/datadog.fish
 /hub
 
-# Fisher
-/fisher
-/fish/functions/__fzfcmd.fish
-/fish/functions/__fzf_reverse_isearch.fish
-/fish/functions/__fzf_parse_commandline.fish
-/fish/functions/__fzf_open.fish
-/fish/functions/__fzf_get_dir.fish
-/fish/functions/__fzf_find_file.fish
-/fish/functions/__fzf_complete.fish
-/fish/functions/__fzf_complete_preview.fish
-/fish/functions/__fzf_cd.fish
-/karabiner/automatic_backups
-/fish/conf.d/
-
-vim-lsp.log
 aerc/aerc.conf
