@@ -35,8 +35,10 @@ hs.hotkey.bind({"cmd", "alt"}, "V", function() hs.eventtap.keyStrokes(hs.pastebo
 -- Inspired by https://github.com/Hammerspoon/Spoons/blob/master/Source/HighSierraiTunesMediaFix.spoon/init.lua
 function mediaKeyCallback(event)
   local delete = false
-
   local data = event:systemKey()
+  if data["key"] == "PLAY" then
+    delete = true
+  end
 
   if data["down"] == false or data["repeat"] == true then
     if data["key"] == "PLAY" then
@@ -54,7 +56,7 @@ function mediaKeyCallback(event)
   return delete, nil
 end
 
-hs.eventtap.new({hs.eventtap.event.types.NSSystemDefined}, mediaKeyCallback)
+hs.eventtap.new({hs.eventtap.event.types.NSSystemDefined}, mediaKeyCallback):start()
 
 -- Window Hints
 hs.hints.hintChars = {'a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', 's'}
@@ -176,3 +178,10 @@ spoon.URLDispatcher.url_patterns = {
 }
 spoon.URLDispatcher.default_handler = Chrome
 spoon.URLDispatcher:start()
+
+-- Eject drives on sleep
+hs.loadSpoon("EjectMenu")
+spoon.EjectMenu.never_eject = {"Keybase"}
+spoon.EjectMenu.notify = true
+spoon.EjectMenu.show_in_menubar = false
+spoon.EjectMenu:start()
