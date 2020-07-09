@@ -159,7 +159,7 @@ spoon.URLDispatcher.url_patterns = {
   {"https?://notion.so", Notion},
   {"https?://www.notion.so", Notion},
 }
-spoon.URLDispatcher.default_handler = Firefox
+spoon.URLDispatcher.default_handler = Chrome
 spoon.URLDispatcher:start()
 
 -- Eject drives on sleep
@@ -168,3 +168,17 @@ spoon.EjectMenu.never_eject = {"Keybase"}
 spoon.EjectMenu.notify = true
 spoon.EjectMenu.show_in_menubar = false
 spoon.EjectMenu:start()
+
+-- Dark Mode
+darkmode = require "darkmode"
+darkmode.addHandler(function(isDarkMode)
+  local prevApplication = hs.application.frontmostApplication()
+  -- Activate Notion, toggle dark mode
+  local notion = hs.application.get("Notion")
+  if notion ~= nil then
+    notion:activate()
+    hs.eventtap.keyStroke({"cmd", "shift"}, "l")
+  end
+  -- Restore prevApplication
+  prevApplication:activate()
+end)
