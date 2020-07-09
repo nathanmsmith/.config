@@ -103,32 +103,10 @@ k:bind({}, "right", function()
   hs.grid.pushWindowRight(win)
 end)
 
--- CTRL: shrink windows
-k:bind({"ctrl"}, "up", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.resizeWindowShorter(win)
-end)
-k:bind({"ctrl"}, "down", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowDown(win)
-  hs.grid.resizeWindowShorter(win)
-end)
-k:bind({"ctrl"}, "left", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.resizeWindowThinner(win)
-end)
-k:bind({"ctrl"}, "right", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowRight(win)
-  hs.grid.resizeWindowThinner(win)
-end)
-
--- OPTION: grow windows
+-- OPTION: grow/shrink windows
 k:bind({"alt"}, "up", function()
   local win = hs.window.focusedWindow()
-  hs.grid.pushWindowUp(win)
-  hs.grid.pushWindowUp(win)
-  hs.grid.resizeWindowTaller(win)
+  hs.grid.resizeWindowShorter(win)
 end)
 k:bind({"alt"}, "down", function()
   local win = hs.window.focusedWindow()
@@ -136,9 +114,7 @@ k:bind({"alt"}, "down", function()
 end)
 k:bind({"alt"}, "left", function()
   local win = hs.window.focusedWindow()
-  hs.grid.pushWindowLeft(win)
-  hs.grid.pushWindowLeft(win)
-  hs.grid.resizeWindowWider(win)
+  hs.grid.resizeWindowThinner(win)
 end)
 k:bind({"alt"}, "right", function()
   local win = hs.window.focusedWindow()
@@ -171,12 +147,19 @@ k:bind({}, 'escape', function() k:exit() end)
 -- URL Dispatcher
 hs.loadSpoon("URLDispatcher")
 local Zoom = "us.zoom.xos"
+local Reeder = "com.reederapp.macOS"
 local Chrome = "com.google.Chrome"
+local Firefox = "org.mozilla.firefox"
+local Notion = "notion.id"
 spoon.URLDispatcher.url_patterns = {
+  -- Open Zoom links directly in Zoom
   {"https?://zoom.us/j/", Zoom},
-  {"https?://%w+.zoom.us/j/", Zoom}
+  {"https?://%w+.zoom.us/j/", Zoom},
+  -- Open Notion links in Notion
+  {"https?://notion.so", Notion},
+  {"https?://www.notion.so", Notion},
 }
-spoon.URLDispatcher.default_handler = Chrome
+spoon.URLDispatcher.default_handler = Firefox
 spoon.URLDispatcher:start()
 
 -- Eject drives on sleep
