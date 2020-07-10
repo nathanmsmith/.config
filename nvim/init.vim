@@ -321,7 +321,7 @@ if exists('*minpac#init')
   nmap gr <Plug>(ale_find_references)
 
   " vim-test
-  call minpac#add('janko-m/vim-test')
+  call minpac#add('vim-test/vim-test')
   let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
   let g:test#javascript#jest#executable = 'yarn test'
   nnoremap <leader>t :TestNearest<cr>
@@ -467,20 +467,6 @@ if exists('*minpac#init')
 
   call minpac#add('ap/vim-css-color')
 
-  call minpac#add('neovim/nvim-lsp')
-  packadd nvim-lsp
-  lua require'nvim_lsp'.tsserver.setup{}
-  lua require'nvim_lsp'.pyls.setup{}
-  lua require'nvim_lsp'.solargraph.setup{}
-  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
-  " nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-  nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-  nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-
   call minpac#add('christoomey/vim-tmux-navigator')
   autocmd VimResized * :wincmd =
 
@@ -496,6 +482,28 @@ if exists('*minpac#init')
 
   call minpac#add('tpope/vim-rsi')
 
+  call minpac#add('chaoren/vim-wordmotion')
+  let g:wordmotion_spaces = '_-.'
+
+  call minpac#add('wellle/targets.vim')
+
+  call minpac#add('prabirshrestha/asyncomplete.vim')
+  call minpac#add('prabirshrestha/vim-lsp')
+  call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+  call minpac#add('mattn/vim-lsp-settings')
+  let g:lsp_signs_enabled = 1         " enable signs
+  let g:lsp_diagnostics_enabled = 1
+
+  " Getting no results with echos or floats
+  " let g:lsp_diagnostics_echo_delay = 0
+  " let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+  " let g:lsp_diagnostics_float_cursor = 1
+  " let g:lsp_diagnostics_float_delay = 0
+  let g:lsp_virtual_text_enabled = 1
+  let g:lsp_virtual_text_prefix = "  ‣ "
+  let g:lsp_highlight_references_enabled = 0
+  let g:lsp_fold_enabled = 0
+
 else
   colorscheme elflord
 endif
@@ -509,3 +517,25 @@ set colorcolumn=+1
 
 " Add current directory to path
 set path+=.,,
+
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gt <plug>(lsp-type-definition)
+  nmap <buffer> <leader>rn <plug>(lsp-rename)
+  nmap <buffer> [g <Plug>(lsp-previous-diagnostic)
+  nmap <buffer> ]g <Plug>(lsp-next-diagnostic)
+  nmap <buffer> gh <plug>(lsp-hover)
+
+  " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
