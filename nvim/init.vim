@@ -504,6 +504,8 @@ if exists('*minpac#init')
   let g:lsp_highlight_references_enabled = 0
   let g:lsp_fold_enabled = 0
 
+  call minpac#add('ludovicchabant/vim-gutentags')
+
 else
   colorscheme elflord
 endif
