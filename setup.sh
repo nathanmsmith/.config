@@ -48,6 +48,11 @@ echo "Setting keyboard settings..."
 defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string "com.apple.keylayout.Dvorak"
 echo "Keyboard set. ⌨"
 
+# Hammerspoon
+echo "Setting Hammerspoon settings..."
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+echo "Hammerspoon set."
+
 # Finder
 # ------
 echo "Setting Finder settings..."
