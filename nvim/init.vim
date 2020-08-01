@@ -487,24 +487,47 @@ if exists('*minpac#init')
 
   call minpac#add('wellle/targets.vim')
 
-  call minpac#add('prabirshrestha/asyncomplete.vim')
-  call minpac#add('prabirshrestha/vim-lsp')
-  call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
-  call minpac#add('mattn/vim-lsp-settings')
-  let g:lsp_signs_enabled = 1         " enable signs
-  let g:lsp_diagnostics_enabled = 1
+  " call minpac#add('prabirshrestha/asyncomplete.vim')
+  " call minpac#add('prabirshrestha/vim-lsp')
+  " call minpac#add('prabirshrestha/asyncomplete-lsp.vim')
+  " call minpac#add('mattn/vim-lsp-settings')
+  " let g:lsp_signs_enabled = 1         " enable signs
+  " let g:lsp_diagnostics_enabled = 1
 
-  " Getting no results with echos or floats
-  " let g:lsp_diagnostics_echo_delay = 0
-  " let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
-  " let g:lsp_diagnostics_float_cursor = 1
-  " let g:lsp_diagnostics_float_delay = 0
-  let g:lsp_virtual_text_enabled = 1
-  let g:lsp_virtual_text_prefix = "  ‣ "
-  let g:lsp_highlight_references_enabled = 0
-  let g:lsp_fold_enabled = 0
+  " " Getting no results with echos or floats
+  " " let g:lsp_diagnostics_echo_delay = 0
+  " " let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
+  " " let g:lsp_diagnostics_float_cursor = 1
+  " " let g:lsp_diagnostics_float_delay = 0
+  " let g:lsp_virtual_text_enabled = 1
+  " let g:lsp_virtual_text_prefix = "  ‣ "
+  " let g:lsp_highlight_references_enabled = 0
+  " let g:lsp_fold_enabled = 0
 
-  call minpac#add('ludovicchabant/vim-gutentags')
+  call minpac#add('ludovicchabant/vim-gutentags',  {'rev': '31c0ead'})
+  let g:gutentags_ctags_exclude = [
+        \  '*.git', '*.svn', '*.hg',
+        \  'cache', 'build', 'dist', 'bin', 'node_modules', 'bower_components',
+        \  '*-lock.json',  '*.lock',
+        \  '*.min.*',
+        \  '*.bak',
+        \  '*.zip',
+        \  '*.pyc',
+        \  '*.class',
+        \  '*.sln',
+        \  '*.csproj', '*.csproj.user',
+        \  '*.tmp',
+        \  '*.cache',
+        \  '*.vscode',
+        \  '*.pdb',
+        \  '*.exe', '*.dll', '*.bin',
+        \  '*.mp3', '*.ogg', '*.flac',
+        \  '*.swp', '*.swo',
+        \  '.DS_Store', '*.plist',
+        \  '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png', '*.svg',
+        \  '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+        \  '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx', '*.xls',
+        \]
 
 else
   colorscheme elflord

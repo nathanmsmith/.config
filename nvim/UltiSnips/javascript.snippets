@@ -66,6 +66,12 @@ snippet expd
 export default $0
 endsnippet
 
+snippet reduce "array.reduce(() => ...)" w
+reduce((${1:accumulator}, ${2:currentValue}) => {
+	${0}
+})
+endsnippet
+
 # React
 # https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
 
@@ -114,4 +120,12 @@ endsnippet
 
 snippet te "Jest expect.toEqual statement"
 expect($1).toEqual($0)
+endsnippet
+
+snippet sort "sort array" i
+sort()
+endsnippet
+
+snippet sortn "sort array numerically" i
+sort((a, b) => a - b)
 endsnippet
