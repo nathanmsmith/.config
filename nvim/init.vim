@@ -1,5 +1,5 @@
 "  Nathan Smith's vim configuration
-   
+
 "  Overarching Philosophy:
 " 1. Prefer the defaults
 " 2. Extend functionality where needed
@@ -14,44 +14,19 @@ source $HOME/.config/nvim/config/editing.vim
 source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/languages.vim
 source $HOME/.config/nvim/config/navigation.vim
+
+" LSP config, in lua
+lua require("lsp")
+
 source $HOME/.config/nvim/config/statusline.vim
+
+
+ech
+
+
 
 
 "  " Handle swap files better
 "  " call minpac#add('gioele/vim-autoswap')
 "  " let g:autoswap_detect_tmux = 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"

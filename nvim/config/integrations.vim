@@ -52,6 +52,9 @@ endif
 " Diff Mode
 set diffopt+=vertical
 
+" Git
+call minpac#add('tpope/vim-fugitive')
+call minpac#add('tpope/vim-rhubarb')
 
 " Unix utilities
 call minpac#add('tpope/vim-eunuch')
@@ -81,3 +84,25 @@ nmap <silent> ]W <Plug>(ale_last)
 nmap gh <Plug>(ale_hover)
 nmap gd <Plug>(ale_go_to_definition)
 nmap gr <Plug>(ale_find_references)
+
+call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
+packadd nvim-lsp
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+
+set completeopt+=menuone,noselect,noinsert
+call minpac#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
+packadd lsp-status.nvim
+" function! OpenCompletion()
+"     if !pumvisible() && ((v:char >= 'a' && v:char <= 'z') || (v:char >= 'A' && v:char <= 'Z'))
+"         call feedkeys("\<C-x>\<C-o>", "n")
+"     endif
+" endfunction
+" autocmd InsertCharPre * call OpenCompletion()

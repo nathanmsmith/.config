@@ -45,6 +45,9 @@ call minpac#add('maxmellon/vim-jsx-pretty')
 " TypeScript
 call minpac#add('HerringtonDarkholme/yats.vim')
 
+" Svelte
+call minpac#add('evanleck/vim-svelte')
+
 " JSON
 call minpac#add('elzr/vim-json')
 " TOML
