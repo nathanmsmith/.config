@@ -81,15 +81,12 @@ nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
 nmap <silent> ]W <Plug>(ale_last)
-nmap gh <Plug>(ale_hover)
-nmap gd <Plug>(ale_go_to_definition)
-nmap gr <Plug>(ale_find_references)
 
 call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
 packadd nvim-lsp
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
@@ -97,12 +94,22 @@ nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
 nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
 
-set completeopt+=menuone,noselect,noinsert
 call minpac#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
 packadd lsp-status.nvim
-" function! OpenCompletion()
-"     if !pumvisible() && ((v:char >= 'a' && v:char <= 'z') || (v:char >= 'A' && v:char <= 'Z'))
-"         call feedkeys("\<C-x>\<C-o>", "n")
-"     endif
-" endfunction
-" autocmd InsertCharPre * call OpenCompletion()
+
+call minpac#add('nvim-lua/diagnostic-nvim', {'type': 'opt'})
+packadd diagnostic-nvim
+call minpac#add('nvim-lua/completion-nvim', {'type': 'opt'})
+packadd completion-nvim
+
+let g:diagnostic_insert_delay = 1
+" Complete parentheses for functions
+let g:completion_enable_auto_paren = 1
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+let g:completion_enable_snippet = 'UltiSnips'
+" Show errors after 1 second
+set updatetime=1000
+autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
