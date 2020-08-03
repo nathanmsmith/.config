@@ -1,8 +1,5 @@
 #!/usr/local/bin/fish
 
-alias config "cd ~/.config"
-alias ls "exa"
-# alias macchanger 'openssl rand -hex 6 | sed "s/\(..\)/\1:/g; s/.$//" | xargs sudo ifconfig en0 ether'
 
 # Abbreviations
 # See https://github.com/fish-shell/fish-shell/issues/1976#issuecomment-168698602
