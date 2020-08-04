@@ -66,7 +66,9 @@ set foldlevelstart=99
 "  " \}
 "
 " Show colors for hex codes
-"  call minpac#add('ap/vim-css-color')
+call minpac#add('norcalli/nvim-colorizer.lua')
+packadd nvim-colorizer.lua
+lua require 'colorizer'.setup(nil, { css = true; })
 
 " Highlight yanks
 call minpac#add('machakann/vim-highlightedyank')
