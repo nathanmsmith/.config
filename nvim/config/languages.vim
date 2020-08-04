@@ -55,6 +55,7 @@ call minpac#add('cespare/vim-toml')
 
 
 call minpac#add('lervag/vimtex')
+let g:tex_flavor = 'latex'
 let g:tex_conceal = 0
 
 " GraphQL
