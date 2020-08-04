@@ -2,6 +2,8 @@ local lsp_status = require('lsp-status')
 local diagnostic = require('diagnostic')
 local completion = require('completion')
 local nvim_lsp = require('nvim_lsp')
+local configs = require('nvim_lsp/configs')
+local util = require('nvim_lsp/util')
 
 local on_attach = function(client, bufnr)
   lsp_status.on_attach(client, bufnr)
@@ -35,6 +37,44 @@ nvim_lsp.vimls.setup{
   capabilities = lsp_status.capabilities
 }
 nvim_lsp.tsserver.setup{
+  on_attach = on_attach,
+  capabilities = lsp_status.capabilities
+}
+nvim_lsp.html.setup{
+  on_attach = on_attach,
+  capabilities = lsp_status.capabilities
+}
+
+local server_name = "svelte_lsp"
+local bin_name = "svelteserver"
+
+local installer = util.npm_installer {
+  server_name = server_name,
+  packages = {"svelte-language-server"},
+  binaries = {bin_name}
+}
+
+
+configs[server_name] = {
+  default_config = {
+    cmd = {bin_name, "--stdio"};
+    filetypes = {"svelte"};
+    root_dir = util.root_pattern("package.json", "tsconfig.json", ".git");
+   -- docs = {
+   --   description = [[
+   --   https://github.com/theia-ide/typescript-language-server
+   --   `typescript-language-server` can be installed via `:LspInstall tsserver` or by yourself with `npm`:
+   --   ```sh
+   --   npm install -g typescript-language-server
+   --   ```
+   --   ]];
+   --   default_config = {
+   --     root_dir = [[root_pattern("package.json", "tsconfig.json", ".git")]];
+   --   };
+   -- };
+ };
+}
+nvim_lsp.svelte_lsp.setup{
   on_attach = on_attach,
   capabilities = lsp_status.capabilities
 }
