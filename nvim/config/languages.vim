@@ -54,9 +54,8 @@ call minpac#add('elzr/vim-json')
 call minpac#add('cespare/vim-toml')
 
 
-call minpac#add('lervag/vimtex')
-let g:tex_flavor = 'latex'
-let g:tex_conceal = 0
+" call minpac#add('lervag/vimtex')
+" let g:tex_conceal = 0
 
 " GraphQL
 call minpac#add('jparise/vim-graphql')
@@ -67,6 +66,10 @@ call minpac#add('vim-ruby/vim-ruby')
 " Ruby on Rails
 call minpac#add('tpope/vim-rails')
 call minpac#add('tpope/vim-endwise')
+call minpac#add('tpope/vim-rake')
+call minpac#add('tpope/vim-bundler')
+
+call minpac#add('nelstrom/vim-textobj-rubyblock')
 
 " Rust
 call minpac#add('rust-lang/rust.vim')

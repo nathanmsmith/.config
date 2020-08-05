@@ -5,8 +5,10 @@ let s:uname = trim(system("uname -s"))
 
 " Set Python paths
 if s:uname == "Darwin"
-  let g:python_host_prog = "/usr/local/bin/python"
-  let g:python3_host_prog = "/usr/local/opt/python@3.8/bin/python3"
+  let g:python_host_prog = "/usr/bin/python"
+  let g:python3_host_prog = "/usr/local/bin/python3"
+  " let g:python_host_prog = "/usr/local/bin/python"
+  " let g:python3_host_prog = "/usr/local/opt/python@3.8/bin/python3"
 endif
 
 " Open images in an image viewer (probably Preview)
@@ -84,15 +86,27 @@ nmap <silent> ]W <Plug>(ale_last)
 
 call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
 packadd nvim-lsp
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+
+function! s:b_lsp()
+  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+  nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+  nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+  setlocal omnifunc=v:lua.vim.lsp.omnifunc
+  " Show errors after 1 second
+  set updatetime=1000
+endfunction
+
+augroup lsp
+  autocmd!
+  autocmd FileType vim,ruby call s:b_lsp()
+  autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+augroup END
 
 call minpac#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
 packadd lsp-status.nvim
@@ -110,6 +124,3 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 let g:completion_enable_snippet = 'UltiSnips'
-" Show errors after 1 second
-set updatetime=1000
-autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
