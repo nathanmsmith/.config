@@ -5,6 +5,9 @@
 call minpac#add('nathunsmitty/night-owl.vim')
 colorscheme night-owl
 
+" Resize windows on move
+autocmd VimResized * :wincmd =
+
 " Reset the cursor on exit
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
