@@ -44,16 +44,30 @@ nvim_lsp.html.setup{
   on_attach = on_attach,
   capabilities = lsp_status.capabilities
 }
+nvim_lsp.cssls.setup{
+  on_attach = on_attach,
+  capabilities = lsp_status.capabilities,
+  settings = {
+    css = {
+      validate = false
+    },
+    less = {
+      validate = true
+    },
+    scss = {
+      validate = true
+    }
+  }
+}
 
 local server_name = "svelte_lsp"
 local bin_name = "svelteserver"
 
-local installer = util.npm_installer {
-  server_name = server_name,
-  packages = {"svelte-language-server"},
-  binaries = {bin_name}
-}
-
+-- local installer = util.npm_installer {
+--   server_name = server_name,
+--   packages = {"svelte-language-server"},
+--   binaries = {bin_name}
+-- }
 
 configs[server_name] = {
   default_config = {
