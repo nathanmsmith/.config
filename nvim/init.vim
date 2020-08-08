@@ -15,9 +15,6 @@ source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/languages.vim
 source $HOME/.config/nvim/config/navigation.vim
 
-" LSP config, in lua
-lua require("lsp")
-
 source $HOME/.config/nvim/config/statusline.vim
 
 

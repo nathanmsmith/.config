@@ -88,6 +88,9 @@ call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
 packadd nvim-lsp
 
 function! s:b_lsp()
+  " LSP config, in lua
+  lua require("lsp")
+
   nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
   nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
@@ -104,8 +107,8 @@ endfunction
 
 augroup lsp
   autocmd!
-  autocmd FileType vim,ruby call s:b_lsp()
-  autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
+  autocmd FileType vim,ruby,html,css,rust,python,c call s:b_lsp()
+  " autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
 augroup END
 
 call minpac#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
