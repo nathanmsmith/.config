@@ -16,8 +16,6 @@ cd .config
 
 ## fish
 
-Plugin manager: fisher
-
 ### Changing shell to fish
 
 ```
