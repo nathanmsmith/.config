@@ -96,3 +96,7 @@ nvim_lsp.rust_analyzer.setup{
   on_attach = on_attach,
   capabilities = lsp_status.capabilities
 }
+nvim_lsp.elixirls.setup{
+  on_attach = on_attach,
+  capabilities = lsp_status.capabilities
+}

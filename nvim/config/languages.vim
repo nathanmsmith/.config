@@ -76,8 +76,6 @@ call minpac#add('rust-lang/rust.vim')
 " Scala
 call minpac#add('derekwyatt/vim-scala')
 let g:scala_scaladoc_indent = 1
-" Erlang
-call minpac#add('vim-erlang/vim-erlang-runtime')
 " Avro
 call minpac#add('gurpreetatwal/vim-avro')
 
@@ -94,3 +92,8 @@ let g:go_highlight_function_calls = 1
 " Python
 call minpac#add('vim-python/python-syntax')
 let g:python_highlight_all = 1
+
+" Erlang
+call minpac#add('vim-erlang/vim-erlang-runtime')
+" Elixir
+call minpac#add('elixir-editors/vim-elixir')

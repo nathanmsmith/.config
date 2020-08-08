@@ -18,9 +18,6 @@ source $HOME/.config/nvim/config/navigation.vim
 source $HOME/.config/nvim/config/statusline.vim
 
 
-ech
-
-
 
 
 "  " Handle swap files better

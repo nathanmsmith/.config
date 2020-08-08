@@ -87,12 +87,9 @@ nmap <silent> ]W <Plug>(ale_last)
 call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
 packadd nvim-lsp
 
-function! s:b_lsp()
-  " LSP config, in lua
-  lua require("lsp")
+function! LspInitialize()
 
-  nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
   nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
   nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
@@ -105,23 +102,20 @@ function! s:b_lsp()
   set updatetime=1000
 endfunction
 
-augroup lsp
-  autocmd!
-  autocmd FileType vim,ruby,html,css,rust,python,c call s:b_lsp()
-  " autocmd CursorHold * lua vim.lsp.util.show_line_diagnostics()
-augroup END
-
 call minpac#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
-packadd lsp-status.nvim
-
 call minpac#add('nvim-lua/diagnostic-nvim', {'type': 'opt'})
-packadd diagnostic-nvim
 call minpac#add('nvim-lua/completion-nvim', {'type': 'opt'})
+packadd lsp-status.nvim
+packadd diagnostic-nvim
 packadd completion-nvim
+" LSP config, in lua
+lua require("lsp")
 
 let g:diagnostic_insert_delay = 1
 " Complete parentheses for functions
 let g:completion_enable_auto_paren = 1
+" Work with endwise
+let g:completion_confirm_key = "\<C-y>"
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
