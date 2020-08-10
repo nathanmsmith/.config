@@ -88,7 +88,6 @@ call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
 packadd nvim-lsp
 
 function! LspInitialize()
-
   nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
   nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>

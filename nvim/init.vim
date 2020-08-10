@@ -17,6 +17,10 @@ source $HOME/.config/nvim/config/navigation.vim
 
 source $HOME/.config/nvim/config/statusline.vim
 
+call minpac#add('nvim-treesitter/nvim-treesitter')
+packadd nvim-treesitter
+lua require("treesitter")
+
 
 " From Learn VimScript the Hard Way, Ch 4
 " :imap <c-u> <esc>viw~i
