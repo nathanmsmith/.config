@@ -73,12 +73,13 @@ nnoremap <leader>a :TestSuite<cr>
 " Linter support
 " ALE
 call minpac#add('dense-analysis/ale')
+" let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \}
 let g:ale_javascript_eslint_suppress_missing_config = 1
-let g:ale_prolog_swipl_timeout = 10
+" let g:ale_prolog_swipl_timeout = 10
 nmap <silent> [W <Plug>(ale_first)
 nmap <silent> [w <Plug>(ale_previous)
 nmap <silent> ]w <Plug>(ale_next)
@@ -87,22 +88,8 @@ nmap <silent> ]W <Plug>(ale_last)
 call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
 packadd nvim-lsp
 
-function! LspInitialize()
-  nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> gh     <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-  nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-  nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
-  nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
-  setlocal omnifunc=v:lua.vim.lsp.omnifunc
-  " Show errors after 1 second
-  set updatetime=1000
-endfunction
-
 call minpac#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
-call minpac#add('nvim-lua/diagnostic-nvim', {'type': 'opt'})
+call minpac#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
 call minpac#add('nvim-lua/completion-nvim', {'type': 'opt'})
 packadd lsp-status.nvim
 packadd diagnostic-nvim
@@ -110,7 +97,12 @@ packadd completion-nvim
 " LSP config, in lua
 lua require("lsp")
 
+setlocal omnifunc=v:lua.vim.lsp.omnifunc
+" Show errors after 1 second
+set updatetime=1000
 let g:diagnostic_insert_delay = 1
+let g:diagnostic_show_sign = 1
+let g:diagnostic_enable_virtual_text = 1
 " Complete parentheses for functions
 let g:completion_enable_auto_paren = 1
 " Work with endwise

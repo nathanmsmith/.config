@@ -10,4 +10,7 @@ if status --is-login
   set -x PATH /usr/local/lib/ruby/gems/2.7.0/bin /usr/local/opt/ruby/bin $PATH
   # Rust
   set -x PATH $HOME/.cargo/bin $PATH
+  # Go
+  set -x GOPATH $HOME/Developer/go
+  set -x PATH $GOPATH/bin $PATH
 end

@@ -37,7 +37,8 @@ iabbrev adn and
 nnoremap H ^
 nnoremap L $
 
-
+" let g:diagnostic_ale = 1
+let g:diagnostic_enable_ale = 1
 
 "  " Handle swap files better
 "  " call minpac#add('gioele/vim-autoswap')
