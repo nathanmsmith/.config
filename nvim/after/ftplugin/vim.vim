@@ -4,5 +4,3 @@ set commentstring=\"\ %s
 setlocal omnifunc=v:lua.vim.lsp.omnifunc
 " Linters
 let b:ale_linters = ['vint']
-
-call LspInitialize()
