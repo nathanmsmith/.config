@@ -1,3 +1,11 @@
+snippet pa "package" b
+package $0
+endsnippet
+
+snippet return "return" b
+return $0;
+endsnippet
+
 snippet ( "Parenthesis" i
 ($0);
 endsnippet
@@ -6,7 +14,7 @@ snippet sout "System.out.println" b
 System.out.println($0);
 endsnippet
 
-snippet switch
+snippet switch "Switch"
 switch (${VISUAL}${1:expression}) {
 	case "${VISUAL}${2:case}":
 		${3}
@@ -21,4 +29,31 @@ snippet case "case 'xyz': ... break"
 case "${VISUAL}${1:case}":
 	${VISUAL}$0
 	break;
+endsnippet
+
+snippet desc "Test Suite" b
+@RunWith(JUnit4.class)
+public class {$1:ModuleToTest}Test extends $2TestBase {
+	$0
+}
+endsnippet
+
+snippet test "test" b
+public void test{$1:Functionality}() {
+	$0
+}
+endsnippet
+
+# Uppsala-specific
+
+snippet dreadmaker "Maker"
+package com.stripe.terminal.terminal.server.api.dreadnought.dreadnoughtservice.maker;
+
+import com.goindex.proto.api.dreadnought.DreadnoughtService.${1:Request/Response to make};
+
+public class $1Maker {
+	public static $1 from(${2:Param to make from}) {
+		return $1.newBuilder().set${3:ValueToSet}($4).build();
+	}
+}
 endsnippet
