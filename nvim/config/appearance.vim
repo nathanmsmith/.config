@@ -70,11 +70,9 @@ set foldlevelstart=99
 "
 " Show colors for hex codes
 call minpac#add('norcalli/nvim-colorizer.lua')
-packadd nvim-colorizer.lua
-lua require 'colorizer'.setup(nil, { css = true; })
 
 " Highlight yanks
-call minpac#add('machakann/vim-highlightedyank')
+au TextYankPost * silent! lua vim.highlight.on_yank {timeout=1000}
 
 " Show marks in gutter
 call minpac#add('kshenoy/vim-signature')
