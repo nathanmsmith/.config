@@ -1,0 +1,10 @@
+-- App Selection
+hs.hotkey.bind({"ctrl", "cmd"}, "t", function()
+  hs.application.launchOrFocus("Kitty")
+end)
+hs.hotkey.bind({"ctrl", "cmd"}, "c", function()
+  hs.application.launchOrFocus("Google Chrome")
+end)
+hs.hotkey.bind({"ctrl", "cmd"}, "d", function()
+  hs.application.launchOrFocus("Dash")
+end)
