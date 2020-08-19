@@ -7,8 +7,10 @@ closeWindowsOnQuit = hs.hotkey.bind({"cmd"}, "q", function()
   end
   chrome:kill()
 end)
+closeWindowsOnQuit:disable()
 
 
 hs.window.filter.new("Google Chrome")
     :subscribe(hs.window.filter.windowFocused,function() closeWindowsOnQuit:enable() end)
     :subscribe(hs.window.filter.windowUnfocused,function() closeWindowsOnQuit:disable() end)
+    :subscribe(hs.window.filter.windowDestroyed,function() closeWindowsOnQuit:disable() end)
