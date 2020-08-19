@@ -176,3 +176,5 @@ spoon.URLDispatcher.url_patterns = {
 }
 spoon.URLDispatcher.default_handler = Chrome
 spoon.URLDispatcher:start()
+
+spaces = require("hs._asm.undocumented.spaces")
