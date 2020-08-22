@@ -17,9 +17,9 @@ source $HOME/.config/nvim/config/navigation.vim
 
 source $HOME/.config/nvim/config/statusline.vim
 
-call minpac#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
-packadd nvim-treesitter
-lua require("treesitter")
+" call minpac#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
+" packadd nvim-treesitter
+" lua require("treesitter")
 
 
 

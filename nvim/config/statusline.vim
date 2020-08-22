@@ -41,6 +41,6 @@ set statusline+=\ %{FugitiveStatusline()}
 set statusline+=\ %{LspStatus()}
 set statusline+=\ %{gutentags#statusline()}
 set statusline+=%=
-set statusline+=%{TreeSitter()}
+" set statusline+=%{TreeSitter()}
 set statusline+=\ %{SyntaxItem()}
 set statusline+=\ %y
