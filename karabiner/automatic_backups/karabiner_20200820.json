@@ -40,35 +40,6 @@
                                 "type": "basic"
                             }
                         ]
-                    },
-                    {
-                        "description": "Set upper button to back and lower to forward",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "pointing_button": "button6"
-                                },
-                                "to": {
-                                    "key_code": "hyphen",
-                                    "modifiers": [
-                                        "left_gui"
-                                    ]
-                                },
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "pointing_button": "button4"
-                                },
-                                "to": {
-                                    "key_code": "equal_sign",
-                                    "modifiers": [
-                                        "left_gui"
-                                    ]
-                                },
-                                "type": "basic"
-                            }
-                        ]
                     }
                 ]
             },
@@ -223,49 +194,6 @@
                     },
                     "ignore": false,
                     "manipulate_caps_lock_led": false,
-                    "simple_modifications": []
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": false,
-                        "is_pointing_device": true,
-                        "product_id": 401,
-                        "vendor_id": 6780
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": false,
-                    "simple_modifications": [
-                        {
-                            "from": {
-                                "pointing_button": "button2"
-                            },
-                            "to": {
-                                "key_code": "2"
-                            }
-                        },
-                        {
-                            "from": {
-                                "pointing_button": "button3"
-                            },
-                            "to": {
-                                "pointing_button": "button2"
-                            }
-                        }
-                    ]
-                },
-                {
-                    "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": [],
-                    "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": false,
-                        "product_id": 635,
-                        "vendor_id": 1452
-                    },
-                    "ignore": false,
-                    "manipulate_caps_lock_led": true,
                     "simple_modifications": []
                 }
             ],
