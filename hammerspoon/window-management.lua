@@ -3,43 +3,61 @@
 -- Set animation duration
 hs.window.animationDuration = 0
 
+ignoreApps = {"iStat Menus Status", "Fantastical Helper"}
+centerApps = {"System Preferences", "Dictionary"}
 halfApps = {"Dash", "Soulver"}
+secondaryApps = {"Spotify", "Slack"}
 
 appWatcher = hs.application.watcher.new(function(appName, eventType, app)
-  if eventType == hs.application.watcher.deactivated then
-    prevApp = appName
-  elseif eventType == hs.application.watcher.activated then
+  print(appName)
+  if eventType == hs.application.watcher.activated then
+    if hs.fnutils.contains(ignoreApps, appName) then
+      return
+    end
+
+    if hs.fnutils.contains(centerApps, appName) then
+      local window = hs.window.find(appName)
+      window:centerOnScreen()
+      return
+    end
+
     local layout = hs.layout.maximized
-    -- currentWindow = hs.window.frontmostWindow()
-    local windows = hs.window.orderedWindows()
-    print(hs.inspect.inspect(windows))
-    if appName == "Dash" then
-      local prevWindow = windows[2]
-      print(hs.inspect.inspect(prevWindow))
+
+    if hs.fnutils.contains(halfApps, appName) then
+      local appWindows = app:allWindows()
+      local allWindows = hs.window.orderedWindows()
+      local filteredWindows = hs.fnutils.filter(allWindows, function(window)
+        return not hs.fnutils.contains(appWindows, window)
+      end)
+      print(hs.inspect.inspect(filteredWindows))
+
+      local prevWindow = filteredWindows[1]
+
+      print(hs.inspect.inspect(windows))
+      print(prevWindow)
       prevWindow:move(hs.layout.left50)
       layout = hs.layout.right50
     end
 
     local win = app:mainWindow()
+
+    if hs.fnutils.contains(secondaryApps, appName) and #hs.screen.allScreens() > 1 then
+      local secondaryScreen = hs.screen("Color LCD")
+      win:moveToScreen(secondaryScreen, false, true)
+    end
+
     if win ~= nil then
       win:move(layout)
     end
+
+
   end
 end)
+appWatcherEnabled = true
 appWatcher:start()
-appWatcher:stop()
-
 
 hs.grid.setMargins({0, 0})
 hs.grid.setGrid('24x18')
-
--- k=hs.hotkey.modal.new({"alt"}, "tab")
--- function k:entered()
---   hs.alert.show("Entered window mode", _, _, 0)
--- end
--- function k:exited()
---   hs.alert.show("Exited window mode", _, _, 0)
--- end
 
 function temorarilyDisableAppWatcher()
   appWatcher:stop()
@@ -48,34 +66,57 @@ function temorarilyDisableAppWatcher()
   end)
 end
 
-mod = {"alt"}
+mod = {"alt", "cmd"}
 
-hs.hotkey.bind(mod, "m", function()
+-- Left/Right Navigation
+-- By app (lowercase)
+hs.hotkey.bind({"alt"}, "h", function()
   local win = hs.window.focusedWindow()
-  win:move(hs.layout.maximized)
-  hs.grid.snap(win)
+  win:focusWindowWest(nil, true)
+end)
+
+hs.hotkey.bind({"alt"}, "l", function()
+  local win = hs.window.focusedWindow()
+  win:focusWindowEast(nil, true)
+end)
+
+-- By screen (uppercase)
+-- hs.hotkey.bind({"alt", "shift"}, "h", function()
+--   local win = hs.window.focusedWindow()
+--   win:focusWindowWest(nil, true)
+-- end)
+
+-- hs.hotkey.bind({"alt"}, "l", function()
+--   local win = hs.window.focusedWindow()
+--   win:focusWindowEast(nil, true)
+-- end)
+
+
+-- Create a vertical split
+hs.hotkey.bind({"alt"}, "v", function()
+  local windows = hs.window.orderedWindows()
+  local currentWindow = windows[1]
+  local prevWindow = windows[2]
+  currentWindow:move(hs.layout.left50)
+  prevWindow:move(hs.layout.right50)
   temorarilyDisableAppWatcher()
 end)
 
-hs.hotkey.bind(mod, "h", function()
-  local win = hs.window.focusedWindow()
-  win:move(hs.layout.left50)
-  hs.grid.snap(win)
-  temorarilyDisableAppWatcher()
+-- Fullscreen
+hs.hotkey.bind({"alt"}, "f", function()
+  local window = hs.window.focusedWindow()
+  window:maximize(true)
 end)
 
-hs.hotkey.bind(mod, "l", function()
-  local win = hs.window.focusedWindow()
-  win:move(hs.layout.right50)
-  hs.grid.snap(win)
-  temorarilyDisableAppWatcher()
-end)
-
+-- Toggle Watcher
 hs.hotkey.bind(mod, "w", function()
-  appWatcher:stop()
-end)
-hs.hotkey.bind({"alt", "shift"}, "w", function()
-  appWatcher:start()
+  if appWatcherEnabled then
+    appWatcherEnabled = false
+    appWatcher:stop()
+  else
+    appWatcherEnabled = true
+    appWatcher:start()
+  end
 end)
 
 -- TODO: H 75/25
