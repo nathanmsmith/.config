@@ -1,102 +1,82 @@
+-- spaces = require("hs._asm.undocumented.spaces")
 -- Modal window management
 -- Set animation duration
 hs.window.animationDuration = 0
+
+halfApps = {"Dash", "Soulver"}
+
+appWatcher = hs.application.watcher.new(function(appName, eventType, app)
+  if eventType == hs.application.watcher.deactivated then
+    prevApp = appName
+  elseif eventType == hs.application.watcher.activated then
+    local layout = hs.layout.maximized
+    -- currentWindow = hs.window.frontmostWindow()
+    local windows = hs.window.orderedWindows()
+    print(hs.inspect.inspect(windows))
+    if appName == "Dash" then
+      local prevWindow = windows[2]
+      print(hs.inspect.inspect(prevWindow))
+      prevWindow:move(hs.layout.left50)
+      layout = hs.layout.right50
+    end
+
+    local win = app:mainWindow()
+    if win ~= nil then
+      win:move(layout)
+    end
+  end
+end)
+appWatcher:start()
+appWatcher:stop()
+
+
 hs.grid.setMargins({0, 0})
 hs.grid.setGrid('24x18')
 
-k=hs.hotkey.modal.new({"alt"}, "tab")
-function k:entered()
-  hs.alert.show("Entered window mode", _, _, 0)
-end
-function k:exited()
-  hs.alert.show("Exited window mode", _, _, 0)
+-- k=hs.hotkey.modal.new({"alt"}, "tab")
+-- function k:entered()
+--   hs.alert.show("Entered window mode", _, _, 0)
+-- end
+-- function k:exited()
+--   hs.alert.show("Exited window mode", _, _, 0)
+-- end
+
+function temorarilyDisableAppWatcher()
+  appWatcher:stop()
+  hs.timer.doAfter(60, function()
+    appWatcher:start()
+  end)
 end
 
+mod = {"alt"}
 
-k:bind({}, "space", function()
+hs.hotkey.bind(mod, "m", function()
   local win = hs.window.focusedWindow()
   win:move(hs.layout.maximized)
   hs.grid.snap(win)
+  temorarilyDisableAppWatcher()
 end)
 
-k:bind({}, "up", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowUp(win)
-end)
-k:bind({}, "down", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowDown(win)
-end)
-k:bind({}, "left", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowLeft(win)
-end)
-k:bind({}, "right", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowRight(win)
-end)
-
--- CTRL: shrink windows
-k:bind({"ctrl"}, "up", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.resizeWindowShorter(win)
-end)
-k:bind({"ctrl"}, "down", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowDown(win)
-  hs.grid.resizeWindowShorter(win)
-end)
-k:bind({"ctrl"}, "left", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.resizeWindowThinner(win)
-end)
-k:bind({"ctrl"}, "right", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowRight(win)
-  hs.grid.resizeWindowThinner(win)
-end)
-
--- OPTION: grow windows
-k:bind({"alt"}, "up", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowUp(win)
-  hs.grid.pushWindowUp(win)
-  hs.grid.resizeWindowTaller(win)
-end)
-k:bind({"alt"}, "down", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.resizeWindowTaller(win)
-end)
-k:bind({"alt"}, "left", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.pushWindowLeft(win)
-  hs.grid.pushWindowLeft(win)
-  hs.grid.resizeWindowWider(win)
-end)
-k:bind({"alt"}, "right", function()
-  local win = hs.window.focusedWindow()
-  hs.grid.resizeWindowWider(win)
-end)
-
-k:bind({"cmd"}, "up", function()
-  local win = hs.window.focusedWindow()
-  win:move({0,0,1,0.5})
-  hs.grid.snap(win)
-end)
-k:bind({"cmd"}, "down", function()
-  local win = hs.window.focusedWindow()
-  win:move({0,0.5,1,0.5})
-  hs.grid.snap(win)
-end)
-k:bind({"cmd"}, "left", function()
+hs.hotkey.bind(mod, "h", function()
   local win = hs.window.focusedWindow()
   win:move(hs.layout.left50)
   hs.grid.snap(win)
+  temorarilyDisableAppWatcher()
 end)
-k:bind({"cmd"}, "right", function()
+
+hs.hotkey.bind(mod, "l", function()
   local win = hs.window.focusedWindow()
   win:move(hs.layout.right50)
   hs.grid.snap(win)
+  temorarilyDisableAppWatcher()
 end)
 
-k:bind({}, 'escape', function() k:exit() end)
+hs.hotkey.bind(mod, "w", function()
+  appWatcher:stop()
+end)
+hs.hotkey.bind({"alt", "shift"}, "w", function()
+  appWatcher:start()
+end)
+
+-- TODO: H 75/25
+--       L 25/75
