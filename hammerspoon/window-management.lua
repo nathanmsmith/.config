@@ -60,10 +60,12 @@ hs.grid.setMargins({0, 0})
 hs.grid.setGrid('24x18')
 
 function temorarilyDisableAppWatcher()
-  appWatcher:stop()
-  hs.timer.doAfter(60, function()
-    appWatcher:start()
-  end)
+  if appWatcherEnabled then
+    appWatcher:stop()
+    hs.timer.doAfter(60, function()
+      appWatcher:start()
+    end)
+  end
 end
 
 mod = {"alt", "cmd"}
@@ -109,7 +111,16 @@ hs.hotkey.bind({"alt"}, "f", function()
 end)
 
 -- Toggle Watcher
-hs.hotkey.bind(mod, "w", function()
+appWatcherIcon = hs.menubar.new()
+function setAppWatcherIcon(state)
+  if state then
+    appWatcherIcon:setTitle("AUTO")
+  else
+    appWatcherIcon:setTitle("DISABLED")
+  end
+end
+
+function toggleAppWatcher()
   if appWatcherEnabled then
     appWatcherEnabled = false
     appWatcher:stop()
@@ -117,7 +128,17 @@ hs.hotkey.bind(mod, "w", function()
     appWatcherEnabled = true
     appWatcher:start()
   end
-end)
+  setAppWatcherIcon(appWatcherEnabled)
+end
+
+hs.hotkey.bind({"alt"}, "w", toggleAppWatcher)
+
+if appWatcherIcon then
+  appWatcherIcon:setClickCallback(toggleAppWatcher)
+  setAppWatcherIcon(appWatcherEnabled)
+end
+
+
 
 -- TODO: H 75/25
 --       L 25/75
