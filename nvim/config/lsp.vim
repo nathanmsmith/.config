@@ -1,16 +1,20 @@
-call minpac#add('neovim/nvim-lsp', {'type': 'opt'})
+call minpac#add('neovim/nvim-lspconfig', {'type': 'opt'})
 call minpac#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
 call minpac#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
 call minpac#add('nvim-lua/completion-nvim', {'type': 'opt'})
 
+command! LSPHover <cmd>lua vim.lsp.buf.hover()<CR>
+
 function InitializeLSP()
-  packadd nvim-lsp
+  packadd nvim-lspconfig
   packadd lsp-status.nvim
   packadd diagnostic-nvim
   packadd completion-nvim
   " LSP config, in lua
   lua require("lsp")
   setlocal omnifunc=v:lua.vim.lsp.omnifunc
+  edit!
+  echo "LSP Initialized"
 endfunction
 
 " Show errors after 1 second

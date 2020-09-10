@@ -5,6 +5,8 @@
 " 2. Extend functionality where needed
 " 3. Change functionality only when it doesn't make sense
 
+let g:is_treesitter_initialized = 0
+
 " Put plugin managment first, as it handles install minpac for later files
 source $HOME/.config/nvim/config/plugin-management.vim
 source $HOME/.config/nvim/config/appearance.vim

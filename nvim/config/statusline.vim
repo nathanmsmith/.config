@@ -15,7 +15,11 @@ function! LspStatus() abort
 endfunction
 
 function TreeSitter() abort
-  return luaeval("require('nvim-treesitter').statusline() or ''")
+  if g:is_treesitter_initialized
+    return luaeval("require('nvim-treesitter').statusline() or ''")
+  else
+    return ''
+  endif
 endfunction
 
 function! LinterStatus() abort
@@ -39,8 +43,8 @@ set statusline+=%f
 set statusline+=%m
 set statusline+=\ %{FugitiveStatusline()}
 set statusline+=\ %{LspStatus()}
-set statusline+=\ %{gutentags#statusline()}
+" set statusline+=\ %{gutentags#statusline()}
 set statusline+=%=
-" set statusline+=%{TreeSitter()}
+set statusline+=%{TreeSitter()}
 set statusline+=\ %{SyntaxItem()}
 set statusline+=\ %y
