@@ -19,15 +19,25 @@ let g:picker_selector_flags = '--layout=reverse'
 let g:picker_height = 14
 
 " NERDTree
-call minpac#add('scrooloose/nerdtree')
-call minpac#add('Xuyuanp/nerdtree-git-plugin')
-" s for sidebar
-map <leader>s :NERDTreeFind<CR>
-" m conflicts with vim-signature
-let NERDTreeMapMenu='n'
-let g:NERDTreeAutoDeleteBuffer = 1
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeIgnore=['.DS_Store$', '.git/$']
+" call minpac#add('scrooloose/nerdtree')
+" call minpac#add('Xuyuanp/nerdtree-git-plugin')
+" " s for sidebar
+" map <leader>s :NERDTreeFind<CR>
+" " m conflicts with vim-signature
+" let NERDTreeMapMenu='n'
+" let g:NERDTreeAutoDeleteBuffer = 1
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" let NERDTreeIgnore=['.DS_Store$', '.git/$']
+call minpac#add('kyazdani42/nvim-web-devicons')
+call minpac#add('kyazdani42/nvim-tree.lua')
+let g:lua_tree_auto_close = 1
+let g:lua_tree_ignore = ['.DS_Store', '.git', '.cache']
+let g:lua_tree_git_hl = 1
+let g:lua_tree_show_icons = {
+    \ 'git': 0,
+    \ 'folders': 0,
+    \ 'files': 0,
+    \}
 
 " More sensible window splits
 set splitbelow

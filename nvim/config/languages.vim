@@ -64,12 +64,11 @@ call minpac#add('jparise/vim-graphql')
 " Ruby
 call minpac#add('vim-ruby/vim-ruby')
 " Ruby on Rails
-call minpac#add('tpope/vim-rails')
-call minpac#add('tpope/vim-endwise')
-call minpac#add('tpope/vim-rake')
-call minpac#add('tpope/vim-bundler')
-
-call minpac#add('nelstrom/vim-textobj-rubyblock')
+call minpac#add('tpope/vim-rails', {'type': 'opt'})
+call minpac#add('tpope/vim-endwise', {'type': 'opt'})
+call minpac#add('tpope/vim-rake', {'type': 'opt'})
+call minpac#add('tpope/vim-bundler', {'type': 'opt'})
+call minpac#add('nelstrom/vim-textobj-rubyblock', {'type': 'opt'})
 
 " Rust
 call minpac#add('rust-lang/rust.vim')

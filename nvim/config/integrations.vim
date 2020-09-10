@@ -1,20 +1,13 @@
 " integrations.vim
 " Configuration for interactions with external programs
 
-let s:uname = trim(system("uname -s"))
 
 " Set Python paths
-if s:uname == "Darwin"
-  let g:python_host_prog = "/usr/bin/python"
-  let g:python3_host_prog = "/usr/local/bin/python3"
-  " let g:python_host_prog = "/usr/local/bin/python"
-  " let g:python3_host_prog = "/usr/local/opt/python@3.8/bin/python3"
-endif
+let g:python_host_prog = "/usr/bin/python"
+let g:python3_host_prog = "/usr/local/bin/python3"
 
 " Open images in an image viewer (probably Preview)
-if s:uname == "Darwin"
-  autocmd BufEnter *.png,*.jpg,*.gif exec "silent !open ".expand("%") | :bw
-endif
+autocmd BufEnter *.png,*.jpg,*.gif exec "silent !open ".expand("%") | :bw
 
 " ctags integration with gutentags
 call minpac#add('ludovicchabant/vim-gutentags',  {'rev': '31c0ead'})
