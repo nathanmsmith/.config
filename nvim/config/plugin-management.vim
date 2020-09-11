@@ -82,7 +82,6 @@ function! PackagerInit() abort
   call packager#add('nelstrom/vim-textobj-rubyblock', {'type': 'opt'})
   " Rust
   call packager#add('rust-lang/rust.vim')
-  " Go
   " Python
   call packager#add('vim-python/python-syntax')
   let g:python_highlight_all = 1
