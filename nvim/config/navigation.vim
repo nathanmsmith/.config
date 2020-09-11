@@ -3,14 +3,12 @@
 
 " Faster file switching with alternates
 " Also integrates with vim-test
-call minpac#add('tpope/vim-projectionist')
 lua require("projectionist")
 
 " Fuzzy Finding
 " I've found it to be faster that the default fzf plugin.
 " fzf is much better than selecta, fzy, etc. though
 " ripgrep has the fastest search
-call minpac#add('srstevenson/vim-picker')
 nnoremap <silent> <leader>p :PickerEdit<CR>
 let g:picker_custom_find_executable = 'rg'
 let g:picker_custom_find_flags = '-g !.git/ --files --hidden --color never'
@@ -19,17 +17,8 @@ let g:picker_selector_flags = '--layout=reverse'
 let g:picker_height = 14
 
 " NERDTree
-" call minpac#add('scrooloose/nerdtree')
-" call minpac#add('Xuyuanp/nerdtree-git-plugin')
-" " s for sidebar
-" map <leader>s :NERDTreeFind<CR>
-" " m conflicts with vim-signature
-" let NERDTreeMapMenu='n'
-" let g:NERDTreeAutoDeleteBuffer = 1
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" let NERDTreeIgnore=['.DS_Store$', '.git/$']
-call minpac#add('kyazdani42/nvim-web-devicons')
-call minpac#add('kyazdani42/nvim-tree.lua')
+" call minpac#add('kyazdani42/nvim-web-devicons')
+map <leader>s :LuaTreeToggle<CR>
 let g:lua_tree_auto_close = 1
 let g:lua_tree_ignore = ['.DS_Store', '.git', '.cache']
 let g:lua_tree_git_hl = 1

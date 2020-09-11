@@ -4,6 +4,10 @@
 " Map leader to space
 let mapleader = " "
 
+" Better beginning/end line navigation
+nnoremap H ^
+nnoremap L $
+
 " Use system clipboard
 set clipboard+=unnamedplus
 
@@ -43,7 +47,6 @@ set smartcase
 " Clear search buffer on return
 nnoremap <silent> <CR> :nohlsearch<CR>
 " Search selection is visual mode
-call minpac#add('nelstrom/vim-visual-star-search')
 
 "" Replacing
 set inccommand=nosplit
@@ -52,19 +55,6 @@ set inccommand=nosplit
 " make Y consistent with C and D.
 nnoremap Y y$
 
-" Tim Pope plugins that should be defaults
-call minpac#add('tpope/vim-commentary')
-call minpac#add('tpope/vim-surround')
-call minpac#add('tpope/vim-repeat')
-call minpac#add('tpope/vim-unimpaired')
-" Helpful character metadata on `ga` 😍
-call minpac#add('tpope/vim-characterize')
-" Ctrl-a, ctrl-x for dates, times, etc.
-call minpac#add('tpope/vim-speeddating')
-" Add readline bindings for command line mode
-call minpac#add('tpope/vim-rsi')
-" Substitution and Coercion
-call minpac#add('tpope/vim-abolish')
 " Let's call it PascalCase, not MixedCase
 nmap crp crm
 " Also kebabcase
@@ -73,17 +63,11 @@ nmap cr- crk
 
 
 " Change definition of word
-call minpac#add('chaoren/vim-wordmotion')
 let g:wordmotion_spaces = ''
 
 " Additional Text Objects
-call minpac#add('kana/vim-textobj-user')
-call minpac#add('kana/vim-textobj-entire')
-call minpac#add('wellle/targets.vim')
 
 " Snippets
-call minpac#add('SirVer/ultisnips')
-call minpac#add('adriaanzon/vim-emmet-ultisnips')
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', 'UltiSnips']
