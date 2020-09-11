@@ -47,16 +47,7 @@ endif
 " Diff Mode
 set diffopt+=vertical
 
-" Git
-call minpac#add('tpope/vim-fugitive')
-call minpac#add('tpope/vim-rhubarb')
-
-" Unix utilities
-call minpac#add('tpope/vim-eunuch')
-
-
 " Testing with vim-test
-call minpac#add('vim-test/vim-test')
 let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
 let g:test#javascript#jest#executable = 'yarn test'
 nnoremap <leader>t :TestNearest<cr>
@@ -65,7 +56,6 @@ nnoremap <leader>a :TestSuite<cr>
 
 " Linter support
 " ALE
-call minpac#add('dense-analysis/ale')
 let g:ale_disable_lsp = 1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {

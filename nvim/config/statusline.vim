@@ -15,11 +15,7 @@ function! LspStatus() abort
 endfunction
 
 function TreeSitter() abort
-  if g:is_treesitter_initialized
-    return luaeval("require('nvim-treesitter').statusline() or ''")
-  else
-    return ''
-  endif
+  return luaeval("require('nvim-treesitter').statusline() or ''")
 endfunction
 
 function! LinterStatus() abort

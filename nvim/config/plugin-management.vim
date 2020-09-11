@@ -1,20 +1,102 @@
 " Plugins
-" Package manager: Minpac, https://github.com/k-takata/minpac
-" ref: Modern Vim, tip 6
-try
-  packadd minpac
-  " Easy to use commands
-  command! PacInstall source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
-  command! PacClean source $MYVIMRC | call minpac#clean()
-  command! PacStatus source $MYVIMRC | call minpac#status()
-catch
-  fun! InstallPlug() " Bootstrap plugin manager on new systems. Copied from https://github.com/justinmk/config/blob/master/.config/nvim/init.vim#L19
-    exe '!git clone https://github.com/k-takata/minpac.git ' stdpath('config').'/pack/minpac/opt/minpac'
-    " call minpac#update()
-  endfun
-endtry
+" Package manager: vim-packager, https://github.com/kristijanhusak/vim-packager
 
-if exists('*minpac#init')
-  call minpac#init()
-  call minpac#add('k-takata/minpac', {'type': 'opt'})
-end
+function! PackagerInit() abort
+  packadd vim-packager
+  call packager#init()
+  call packager#local('~/Developer/night-owl.vim')
+  call packager#add('airblade/vim-gitgutter')
+  call packager#add('kshenoy/vim-signature')
+  call packager#add('norcalli/nvim-colorizer.lua', {'type': 'opt'})
+  call packager#add('junegunn/vim-peekaboo')
+  call packager#add('nelstrom/vim-visual-star-search')
+  call packager#add('tpope/vim-commentary')
+  call packager#add('tpope/vim-surround')
+  call packager#add('tpope/vim-repeat')
+  call packager#add('tpope/vim-unimpaired')
+  " Helpful character metadata on `ga` 😍
+  call packager#add('tpope/vim-characterize')
+  " Ctrl-a, ctrl-x for dates, times, etc.
+  call packager#add('tpope/vim-speeddating')
+  " Add readline bindings for command line mode
+  call packager#add('tpope/vim-rsi')
+  " Substitution and Coercion
+  call packager#add('tpope/vim-abolish')
+  call packager#add('chaoren/vim-wordmotion')
+  call packager#add('kana/vim-textobj-user')
+  call packager#add('kana/vim-textobj-entire')
+  call packager#add('wellle/targets.vim')
+  call packager#add('SirVer/ultisnips')
+  call packager#add('adriaanzon/vim-emmet-ultisnips')
+  call packager#add('tpope/vim-fugitive')
+  call packager#add('tpope/vim-rhubarb')
+  " Git
+  call packager#add('tpope/vim-fugitive')
+  call packager#add('tpope/vim-rhubarb')
+  " Unix utilities
+  call packager#add('tpope/vim-eunuch')
+  call packager#add('vim-test/vim-test')
+  call packager#add('dense-analysis/ale')
+  call packager#add('tpope/vim-projectionist')
+  call packager#add('srstevenson/vim-picker')
+  call packager#add('kyazdani42/nvim-tree.lua')
+  call packager#add('neovim/nvim-lspconfig', {'type': 'opt'})
+  call packager#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
+  call packager#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
+  call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})
+  call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
+
+  call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
+  " Syntax highlighting for github's hub tool
+  call packager#add('jez/vim-github-hub')
+  " Fish
+  call packager#add('dag/vim-fish')
+  " Handlebars
+  call packager#add('mustache/vim-mustache-handlebars')
+  " EJS
+  call packager#add('briancollins/vim-jst')
+  " CSS, Less, Sass
+  call packager#add('cakebaker/scss-syntax.vim')
+  call packager#add('groenewege/vim-less')
+  " JavaScript
+  call packager#add('pangloss/vim-javascript')
+  call packager#add('styled-components/vim-styled-components', {'branch': 'main'})
+  call packager#add('maxmellon/vim-jsx-pretty')
+  " TypeScript
+  call packager#add('HerringtonDarkholme/yats.vim')
+  " Svelte
+  call packager#add('evanleck/vim-svelte')
+  " JSON
+  call packager#add('elzr/vim-json')
+  " TOML
+  call packager#add('cespare/vim-toml')
+  " GraphQL
+  call packager#add('jparise/vim-graphql')
+  " Ruby
+  call packager#add('vim-ruby/vim-ruby')
+  " Ruby on Rails
+  call packager#add('tpope/vim-rails', {'type': 'opt'})
+  call packager#add('tpope/vim-endwise', {'type': 'opt'})
+  call packager#add('tpope/vim-rake', {'type': 'opt'})
+  call packager#add('tpope/vim-bundler', {'type': 'opt'})
+  call packager#add('nelstrom/vim-textobj-rubyblock', {'type': 'opt'})
+  " Rust
+  call packager#add('rust-lang/rust.vim')
+  " Go
+  " Python
+  call packager#add('vim-python/python-syntax')
+  let g:python_highlight_all = 1
+  " Elixir
+  call packager#add('elixir-editors/vim-elixir')
+endfunction
+
+
+command! PackagerInstall call PackagerInit() | call packager#install()
+command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'force_hooks': '<bang>' })
+command! PackagerClean call PackagerInit() | call packager#clean()
+command! PackagerStatus call PackagerInit() | call packager#status()
+
+augroup packager_filetype
+  autocmd!
+  autocmd FileType go packadd vim-go
+augroup END

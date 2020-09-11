@@ -13,35 +13,11 @@ source $HOME/.config/nvim/config/appearance.vim
 source $HOME/.config/nvim/config/custom-commands.vim
 source $HOME/.config/nvim/config/editing.vim
 source $HOME/.config/nvim/config/integrations.vim
-source $HOME/.config/nvim/config/languages.vim
+" source $HOME/.config/nvim/config/languages.vim
 source $HOME/.config/nvim/config/navigation.vim
 source $HOME/.config/nvim/config/lsp.vim
 source $HOME/.config/nvim/config/treesitter.vim
 source $HOME/.config/nvim/config/statusline.vim
 
-
-"" From Learn VimScript the Hard Way, Ch 4
-"" :imap <c-u> <esc>viw~i
-"" :imap <c-U> <esc>viW~i
-"" :nmap <c-u> <esc>viw~
-"" :nmap <c-U> <esc>viw~
-""
-"nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-"nnoremap <leader>rv :source $MYVIMRC<cr>
-
-"" Handle common typos
-"iabbrev adn and
-
 "nnoremap H ^
 "nnoremap L $
-
-"let g:diagnostic_enable_ale = 1
-
-""  " Handle swap files better
-""  " call minpac#add('gioele/vim-autoswap')
-""  " let g:autoswap_detect_tmux = 1
-""
-""
-
-"packadd nvim-colorizer.lua
-"lua require 'colorizer'.setup(nil, { css = true; })
