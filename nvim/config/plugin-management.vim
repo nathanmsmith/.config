@@ -4,6 +4,7 @@
 function! PackagerInit() abort
   packadd vim-packager
   call packager#init()
+  call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
   call packager#local('~/Developer/night-owl.vim')
   call packager#add('airblade/vim-gitgutter')
   call packager#add('kshenoy/vim-signature')
@@ -14,7 +15,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-surround')
   call packager#add('tpope/vim-repeat')
   call packager#add('tpope/vim-unimpaired')
-  " Helpful character metadata on `ga` 😍
+  " Helpful character metadata on `ga`
   call packager#add('tpope/vim-characterize')
   " Ctrl-a, ctrl-x for dates, times, etc.
   call packager#add('tpope/vim-speeddating')
@@ -39,11 +40,13 @@ function! PackagerInit() abort
   call packager#add('dense-analysis/ale')
   call packager#add('tpope/vim-projectionist')
   call packager#add('srstevenson/vim-picker')
-  call packager#add('kyazdani42/nvim-tree.lua')
+  call packager#add('kyazdani42/nvim-web-devicons', {'type': 'opt'})
+  call packager#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
   call packager#add('neovim/nvim-lspconfig', {'type': 'opt'})
   call packager#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
   call packager#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
   call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})
+  call packager#add('steelsojka/completion-buffers', {"type": "opt"})
   call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
 
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
@@ -84,7 +87,6 @@ function! PackagerInit() abort
   call packager#add('rust-lang/rust.vim')
   " Python
   call packager#add('vim-python/python-syntax')
-  let g:python_highlight_all = 1
   " Elixir
   call packager#add('elixir-editors/vim-elixir')
 endfunction

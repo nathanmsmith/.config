@@ -16,16 +16,17 @@ let g:picker_selector_executable = 'fzf'
 let g:picker_selector_flags = '--layout=reverse'
 let g:picker_height = 14
 
-" NERDTree
-" call minpac#add('kyazdani42/nvim-web-devicons')
+" Tree
+packadd nvim-web-devicons
+packadd nvim-tree.lua
 map <leader>s :LuaTreeToggle<CR>
 let g:lua_tree_auto_close = 1
 let g:lua_tree_ignore = ['.DS_Store', '.git', '.cache']
 let g:lua_tree_git_hl = 1
 let g:lua_tree_show_icons = {
-    \ 'git': 0,
-    \ 'folders': 0,
-    \ 'files': 0,
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
     \}
 
 " More sensible window splits

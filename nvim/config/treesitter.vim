@@ -1,2 +1,2 @@
-packadd! nvim-treesitter
+packadd nvim-treesitter
 lua require("treesitter")

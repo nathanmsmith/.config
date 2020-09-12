@@ -13,6 +13,7 @@ source $HOME/.config/nvim/config/editing.vim
 source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/languages.vim
 source $HOME/.config/nvim/config/navigation.vim
+source $HOME/.config/nvim/config/completion.vim
 source $HOME/.config/nvim/config/lsp.vim
 source $HOME/.config/nvim/config/treesitter.vim
 source $HOME/.config/nvim/config/statusline.vim
