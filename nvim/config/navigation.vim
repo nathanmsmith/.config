@@ -20,6 +20,7 @@ let g:picker_height = 14
 packadd nvim-web-devicons
 packadd nvim-tree.lua
 map <leader>s :LuaTreeToggle<CR>
+let g:lua_tree_follow = 1
 let g:lua_tree_auto_close = 1
 let g:lua_tree_ignore = ['.DS_Store', '.git', '.cache']
 let g:lua_tree_git_hl = 1
