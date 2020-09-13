@@ -1,3 +1,5 @@
+hs.window.animationDuration = 0
+
 hs.loadSpoon("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
 
@@ -9,15 +11,15 @@ u = require('urls')
 f = require('focus')
 w = require('window-management')
 
--- VimMode
-local VimMode = hs.loadSpoon('VimMode')
-local vim = VimMode:new()
+-- -- VimMode
+-- local VimMode = hs.loadSpoon('VimMode')
+-- local vim = VimMode:new()
 
-vim
-  :disableForApp('Code')
-  :disableForApp('iTerm')
-  :disableForApp('iTerm 2')
-  :disableForApp('kitty')
-  :disableForApp('zoom.us')
-  :enterWithSequence('jk', 160)
-  :shouldDimScreenInNormalMode(false)
+-- vim
+--   :disableForApp('Code')
+--   :disableForApp('iTerm')
+--   :disableForApp('iTerm 2')
+--   :disableForApp('kitty')
+--   :disableForApp('zoom.us')
+--   :enterWithSequence('jk', 160)
+--   :shouldDimScreenInNormalMode(false)

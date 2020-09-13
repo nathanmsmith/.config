@@ -1,7 +1,9 @@
 # Fish mode prompt doesn't play nicely with having a newline before the prompt, see
 # https://github.com/fish-shell/fish-shell/issues/4746
 # Since fish updates the cursor, that's good enough for me to determine mode.
-function fish_mode_prompt; end
+function fish_mode_prompt;
+  echo ''
+end
 
 # A more fully featured mode prompt, if I ever want to go back to it:
 # function fish_mode_prompt

@@ -48,6 +48,7 @@ function! PackagerInit() abort
   call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})
   call packager#add('steelsojka/completion-buffers', {"type": "opt"})
   call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
+  call packager#add('stsewd/gx-extended.vim')
 
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
   " Syntax highlighting for github's hub tool
