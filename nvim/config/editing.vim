@@ -2,11 +2,10 @@
 " Settings involving editing files
 
 " Map leader to space
-let mapleader = " "
+let mapleader = ' '
 
-" Better beginning/end line navigation
-" nnoremap H ^
-" nnoremap L $
+" Disable swapfiles
+set noswapfile
 
 " Use system clipboard
 set clipboard+=unnamedplus
