@@ -105,7 +105,7 @@ hs.hotkey.bind({"alt"}, "v", function()
 end)
 
 -- Fullscreen
-hs.hotkey.bind({"alt"}, "m", function()
+hs.hotkey.bind({"alt"}, "f", function()
   local window = hs.window.focusedWindow()
   window:maximize(true)
 end)
