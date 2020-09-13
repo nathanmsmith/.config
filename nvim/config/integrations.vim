@@ -6,9 +6,6 @@
 let g:python_host_prog = "/usr/bin/python"
 let g:python3_host_prog = "/usr/local/bin/python3"
 
-" Open images in an image viewer (probably Preview)
-autocmd BufEnter *.png,*.jpg,*.gif exec "silent !open ".expand("%") | :bw
-
 " ctags integration with gutentags
 " call minpac#add('ludovicchabant/vim-gutentags',  {'rev': '31c0ead'})
 " let g:gutentags_ctags_executable_ruby = 'ripper-tags'

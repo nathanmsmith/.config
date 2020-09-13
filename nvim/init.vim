@@ -17,3 +17,4 @@ source $HOME/.config/nvim/config/completion.vim
 source $HOME/.config/nvim/config/lsp.vim
 source $HOME/.config/nvim/config/treesitter.vim
 source $HOME/.config/nvim/config/statusline.vim
+source $HOME/.config/nvim/config/autocommands.vim

@@ -1,6 +1,6 @@
 -- local lsp_status = require('lsp-status')
 local diagnostic = require('diagnostic')
-local completion = require('completion')
+-- local completion = require('completion')
 local nvim_lsp = require('nvim_lsp')
 local configs = require('nvim_lsp/configs')
 local util = require('nvim_lsp/util')
@@ -8,7 +8,7 @@ local util = require('nvim_lsp/util')
 local on_attach = function(client, bufnr)
   -- lsp_status.on_attach(client, bufnr)
   diagnostic.on_attach(client, bufnr)
-  completion.on_attach(client, bufnr)
+  -- completion.on_attach(client, bufnr)
 
   -- Keybindings for LSPs
   vim.fn.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
@@ -42,9 +42,22 @@ nvim_lsp.pyls.setup{
   on_attach = on_attach,
   -- capabilities = lsp_status.capabilities
 }
-nvim_lsp.sumneko_lua.setup{
-  on_attach = on_attach,
-}
+-- nvim_lsp.sumneko_lua.setup{
+--   settings = {
+--     Lua = {
+--       runtime = { version = "LuaJIT", path = vim.split(package.path, ';'), },
+--       completion = { keywordSnippet = "Disable", },
+--       diagnostics = { enable = true, globals = {"vim", "describe", "it", "before_each", "after_each"}},
+--       workspace = {
+--         library = {
+--           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
+--           [vim.fn.expand("~/build/neovim/src/nvim/lua")] = true,
+--         },
+--       },
+--     },
+--   },
+--   on_attach = on_attach,
+-- }
 nvim_lsp.vimls.setup{
   on_attach = on_attach,
   -- capabilities = lsp_status.capabilities

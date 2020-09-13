@@ -1,9 +1,6 @@
 packadd completion-nvim
 packadd completion-buffers
 
- " let ftToIgnore = ['markdown', 'text']
-" autocmd BufEnter * lua require'completion'.on_attach()
-
  " Complete parentheses for functions
 let g:completion_enable_auto_paren = 1
 let g:completion_auto_change_source = 1

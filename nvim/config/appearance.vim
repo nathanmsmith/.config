@@ -4,15 +4,6 @@
 " Color Scheme
 colorscheme night-owl
 
-" Resize windows on move
-autocmd VimResized * :wincmd =
-
-" Reset the cursor on exit
-" See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
-" and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
-" set guicursor=a:blinkon100
-:au VimLeave,VimSuspend * set guicursor=a:ver25-blinkon1
-
 " Use true colors
 set termguicolors
 
@@ -47,9 +38,6 @@ set lazyredraw
 " See https://github.com/w0rp/ale/issues/1829
 " Don't set foldmethod=syntax
 set foldlevelstart=99
-
-" Highlight yanks
-au TextYankPost * silent! lua vim.highlight.on_yank {timeout=1000}
 
 " Show clipboards and macros
 let g:peekaboo_delay = 500

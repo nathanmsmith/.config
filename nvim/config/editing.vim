@@ -5,8 +5,8 @@
 let mapleader = " "
 
 " Better beginning/end line navigation
-nnoremap H ^
-nnoremap L $
+" nnoremap H ^
+" nnoremap L $
 
 " Use system clipboard
 set clipboard+=unnamedplus
