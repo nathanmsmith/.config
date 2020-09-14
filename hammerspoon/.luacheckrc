@@ -1,1 +1,1 @@
-read_globals = {"hs", "spoon"}
+globals = {"hs", "spoon"}
