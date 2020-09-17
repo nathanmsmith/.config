@@ -42,7 +42,7 @@ function! PackagerInit() abort
   call packager#add('srstevenson/vim-picker')
   call packager#add('kyazdani42/nvim-web-devicons', {'type': 'opt'})
   call packager#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
-  call packager#add('neovim/nvim-lspconfig', {'type': 'opt'})
+  call packager#local('~/Developer/vim-packages/nvim-lspconfig', {'type': 'opt'})
   call packager#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
   call packager#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
   call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})

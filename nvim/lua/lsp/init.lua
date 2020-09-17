@@ -114,6 +114,11 @@ configs[server_name] = {
    -- };
  };
 }
+
+nvim_lsp.sorbet.setup{
+  on_attach = on_attach,
+  -- capabilities = lsp_status.capabilities
+}
 nvim_lsp.svelte_lsp.setup{
   on_attach = on_attach,
   -- capabilities = lsp_status.capabilities
