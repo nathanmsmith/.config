@@ -69,3 +69,5 @@
 	smtpuser = natedub@fastmail.com
 	smtpencryption = tls
 	smtpserverport = 587
+[init]
+	defaultBranch = main
