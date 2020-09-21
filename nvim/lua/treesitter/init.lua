@@ -8,15 +8,21 @@ require'nvim-treesitter.configs'.setup {
       ["css.class"] = "cssClassName"
     },
   },
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false -- Whether the query persists across vim sessions
+  },
   ensure_installed = {
     "query",
     "html",
     "css",
     -- "javascript",
     "typescript", "tsx",
+    "lua",
     -- "python",
     -- "go",
-    -- "lua",
     -- "c", "cpp"
   },
 }

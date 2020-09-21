@@ -2,6 +2,7 @@
 " Package manager: vim-packager, https://github.com/kristijanhusak/vim-packager
 
 function! PackagerInit() abort
+  source $MYVIMRC
   packadd vim-packager
   call packager#init()
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
@@ -42,13 +43,15 @@ function! PackagerInit() abort
   call packager#add('srstevenson/vim-picker')
   call packager#add('kyazdani42/nvim-web-devicons', {'type': 'opt'})
   call packager#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
+  call packager#add('stsewd/gx-extended.vim')
   call packager#local('~/Developer/vim-packages/nvim-lspconfig', {'type': 'opt'})
   call packager#add('nvim-lua/lsp-status.nvim', {'type': 'opt'})
   call packager#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
   call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})
   call packager#add('steelsojka/completion-buffers', {"type": "opt"})
+  " Treesitter
   call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
-  call packager#add('stsewd/gx-extended.vim')
+  call packager#add('nvim-treesitter/playground', {'type': 'opt'})
 
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
   " Syntax highlighting for github's hub tool
@@ -80,7 +83,7 @@ function! PackagerInit() abort
   call packager#add('vim-ruby/vim-ruby')
   " Ruby on Rails
   call packager#add('tpope/vim-rails', {'type': 'opt'})
-  call packager#add('tpope/vim-endwise', {'type': 'opt'})
+  call packager#add('tpope/vim-endwise')
   call packager#add('tpope/vim-rake', {'type': 'opt'})
   call packager#add('tpope/vim-bundler', {'type': 'opt'})
   call packager#add('nelstrom/vim-textobj-rubyblock', {'type': 'opt'})

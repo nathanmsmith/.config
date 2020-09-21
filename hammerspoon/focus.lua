@@ -1,12 +1,15 @@
 -- App Selection
+hs.hotkey.bind({"ctrl", "cmd"}, "f", function()
+  hs.application.launchOrFocus("Finder")
+end)
 hs.hotkey.bind({"ctrl", "cmd"}, "t", function()
   hs.application.launchOrFocus("Kitty")
 end)
-hs.hotkey.bind({"ctrl", "cmd"}, "b", function()
-  hs.application.launchOrFocus("Safari Technology Preview")
-end)
 hs.hotkey.bind({"ctrl", "cmd"}, "d", function()
   hs.application.launchOrFocus("Dash")
+end)
+hs.hotkey.bind({"ctrl", "cmd"}, "b", function()
+  hs.application.launchOrFocus("Safari")
 end)
 -- m for "music"
 hs.hotkey.bind({"ctrl", "cmd"}, "m", function()
