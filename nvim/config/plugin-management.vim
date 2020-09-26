@@ -2,7 +2,6 @@
 " Package manager: vim-packager, https://github.com/kristijanhusak/vim-packager
 
 function! PackagerInit() abort
-  source $MYVIMRC
   packadd vim-packager
   call packager#init()
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
