@@ -71,7 +71,7 @@ function! PackagerInit() abort
   call packager#add('styled-components/vim-styled-components', {'branch': 'main'})
   call packager#add('maxmellon/vim-jsx-pretty')
   " TypeScript
-  call packager#add('HerringtonDarkholme/yats.vim')
+  " call packager#add('HerringtonDarkholme/yats.vim')
   " Svelte
   call packager#add('evanleck/vim-svelte')
   " JSON
@@ -87,7 +87,6 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-endwise')
   call packager#add('tpope/vim-rake', {'type': 'opt'})
   call packager#add('tpope/vim-bundler', {'type': 'opt'})
-  " call packager#add('nelstrom/vim-textobj-rubyblock', {'type': 'opt'})
   " Rust
   call packager#add('rust-lang/rust.vim')
   " Python
