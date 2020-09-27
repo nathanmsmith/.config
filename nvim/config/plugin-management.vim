@@ -87,7 +87,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-endwise')
   call packager#add('tpope/vim-rake', {'type': 'opt'})
   call packager#add('tpope/vim-bundler', {'type': 'opt'})
-  call packager#add('nelstrom/vim-textobj-rubyblock', {'type': 'opt'})
+  " call packager#add('nelstrom/vim-textobj-rubyblock', {'type': 'opt'})
   " Rust
   call packager#add('rust-lang/rust.vim')
   " Python
