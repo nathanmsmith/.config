@@ -54,7 +54,7 @@ function! PackagerInit() abort
   call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
   call packager#add('nvim-treesitter/playground', {'type': 'opt'})
 
-  call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries', 'type': 'opt' })
+  call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries'})
   " Syntax highlighting for github's hub tool
   call packager#add('jez/vim-github-hub')
   " Fish
@@ -101,7 +101,7 @@ command! -bang PackagerUpdate call PackagerInit() | call packager#update({ 'forc
 command! PackagerClean call PackagerInit() | call packager#clean()
 command! PackagerStatus call PackagerInit() | call packager#status()
 
-augroup packager_filetype
-  autocmd!
-  autocmd FileType go packadd vim-go
-augroup END
+" augroup packager_filetype
+"   autocmd!
+"   autocmd FileType go packadd vim-go
+" augroup END
