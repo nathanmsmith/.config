@@ -82,6 +82,7 @@ nvim_lsp.sorbet.setup{
 nvim_lsp.svelte_lsp.setup{
   on_attach = on_attach,
 }
+-- nvim_lsp.rls.setup{
 nvim_lsp.rust_analyzer.setup{
   on_attach = on_attach,
 }

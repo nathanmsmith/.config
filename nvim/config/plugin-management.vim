@@ -52,6 +52,7 @@ function! PackagerInit() abort
 
   " Treesitter
   call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
+  call packager#add('nvim-treesitter/nvim-treesitter-textobjects', {'type': 'opt'})
   call packager#add('nvim-treesitter/playground', {'type': 'opt'})
 
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries'})
