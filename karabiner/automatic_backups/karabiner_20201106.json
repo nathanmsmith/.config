@@ -40,6 +40,35 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Set upper button to back and lower to forward",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "pointing_button": "button6"
+                                },
+                                "to": {
+                                    "key_code": "hyphen",
+                                    "modifiers": [
+                                        "left_gui"
+                                    ]
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "pointing_button": "button4"
+                                },
+                                "to": {
+                                    "key_code": "equal_sign",
+                                    "modifiers": [
+                                        "left_gui"
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
