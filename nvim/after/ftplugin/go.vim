@@ -15,11 +15,9 @@ highlight link goBuiltins Keyword
 let g:go_list_height = 0
 let g:go_fmt_fail_silently = 1
 
-" Let vim-go handle running "go fmt" on save
-let b:ale_linters = ["gobuild", "golangci-lint"]
-let g:ale_go_golangci_lint_package = 1
-let g:ale_go_golangci_lint_options = ''
-let b:ale_fixers = []
-let g:go_fmt_command = "goimports"
+let b:ale_linters = ["golangci-lint", "goimports"]
+let b:ale_go_golangci_lint_package = 1
+let b:ale_go_golangci_lint_options = '--fast'
+let b:ale_fixers = ["goimports"]
 
 " nnoremap <buffer> gh :GoInfo<cr>

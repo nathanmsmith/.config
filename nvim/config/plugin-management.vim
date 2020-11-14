@@ -55,7 +55,7 @@ function! PackagerInit() abort
   call packager#add('nvim-treesitter/nvim-treesitter-textobjects', {'type': 'opt'})
   call packager#add('nvim-treesitter/playground', {'type': 'opt'})
 
-  call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries'})
+  " call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries'})
   " Syntax highlighting for github's hub tool
   call packager#add('jez/vim-github-hub')
   " Fish
@@ -84,10 +84,10 @@ function! PackagerInit() abort
   " Ruby
   call packager#add('vim-ruby/vim-ruby')
   " Ruby on Rails
-  call packager#add('tpope/vim-rails', {'type': 'opt'})
+  call packager#add('tpope/vim-rails')
   call packager#add('tpope/vim-endwise')
-  call packager#add('tpope/vim-rake', {'type': 'opt'})
-  call packager#add('tpope/vim-bundler', {'type': 'opt'})
+  call packager#add('tpope/vim-rake')
+  call packager#add('tpope/vim-bundler')
   " Rust
   call packager#add('rust-lang/rust.vim')
   " Python
