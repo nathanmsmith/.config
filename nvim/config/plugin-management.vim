@@ -45,7 +45,7 @@ function! PackagerInit() abort
   call packager#add('stsewd/gx-extended.vim')
   " LSP
   call packager#local('~/Developer/vim-packages/nvim-lspconfig', {'type': 'opt'})
-  call packager#add('nathunsmitty/diagnostic-nvim', {'type': 'opt'})
+  call packager#add('nathunsmitty/nvim-ale-diagnostic', {'type': 'opt'})
   call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})
   call packager#add('steelsojka/completion-buffers', {'type': 'opt'})
   call packager#add('tjdevries/nlua.nvim', {'type': 'opt'})

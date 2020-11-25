@@ -1,11 +1,17 @@
-local diagnostic = require('diagnostic')
 local nvim_lsp = require('nvim_lsp')
 local configs = require('nvim_lsp/configs')
 local util = require('nvim_lsp/util')
 
-local on_attach = function(client, bufnr)
-  diagnostic.on_attach(client, bufnr)
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = false,
+    virtual_text = false,
+    signs = true,
+    update_in_insert = false,
+  }
+)
 
+local on_attach = function(client, bufnr)
   -- Keybindings for LSPs
   vim.fn.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", {noremap = true, silent = true})
   vim.fn.nvim_set_keymap("n", "gh", "<cmd>lua vim.lsp.buf.hover()<CR>", {noremap = true, silent = true})
@@ -61,19 +67,19 @@ configs[server_name] = {
     cmd = {bin_name, "--stdio"};
     filetypes = {"svelte"};
     root_dir = util.root_pattern("package.json", "tsconfig.json", ".git");
-   -- docs = {
-   --   description = [[
-   --   https://github.com/theia-ide/typescript-language-server
-   --   `typescript-language-server` can be installed via `:LspInstall tsserver` or by yourself with `npm`:
-   --   ```sh
-   --   npm install -g typescript-language-server
-   --   ```
-   --   ]];
-   --   default_config = {
-   --     root_dir = [[root_pattern("package.json", "tsconfig.json", ".git")]];
-   --   };
-   -- };
- };
+    -- docs = {
+    --   description = [[
+    --   https://github.com/theia-ide/typescript-language-server
+    --   `typescript-language-server` can be installed via `:LspInstall tsserver` or by yourself with `npm`:
+    --   ```sh
+    --   npm install -g typescript-language-server
+    --   ```
+    --   ]];
+    --   default_config = {
+    --     root_dir = [[root_pattern("package.json", "tsconfig.json", ".git")]];
+    --   };
+    -- };
+  };
 }
 
 nvim_lsp.sorbet.setup{
