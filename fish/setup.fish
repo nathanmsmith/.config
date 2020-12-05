@@ -37,7 +37,7 @@ abbr --add gob 'go build'
 
 # Ruby
 # Rails
-abbr --add ra 'rails'
+abbr --add r 'rails'
 
 # Make
 abbr --add m 'make'

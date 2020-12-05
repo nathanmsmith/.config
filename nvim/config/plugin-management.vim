@@ -36,13 +36,18 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-rhubarb')
   " Unix utilities
   call packager#add('tpope/vim-eunuch')
+  " Enhance netrw
+  call packager#add('tpope/vim-vinegar')
+
   call packager#add('vim-test/vim-test')
   call packager#add('dense-analysis/ale')
   call packager#add('tpope/vim-projectionist')
   call packager#add('srstevenson/vim-picker')
-  call packager#add('kyazdani42/nvim-web-devicons', {'type': 'opt'})
-  call packager#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
-  call packager#add('stsewd/gx-extended.vim')
+
+
+  " call packager#add('kyazdani42/nvim-web-devicons', {'type': 'opt'})
+  " call packager#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
+  " call packager#add('stsewd/gx-extended.vim')
   " LSP
   call packager#local('~/Developer/vim-packages/nvim-lspconfig', {'type': 'opt'})
   call packager#add('nathunsmitty/nvim-ale-diagnostic', {'type': 'opt'})
@@ -51,9 +56,9 @@ function! PackagerInit() abort
   call packager#add('tjdevries/nlua.nvim', {'type': 'opt'})
 
   " Treesitter
-  call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
-  call packager#add('nvim-treesitter/nvim-treesitter-textobjects', {'type': 'opt'})
-  call packager#add('nvim-treesitter/playground', {'type': 'opt'})
+  " call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
+  " call packager#add('nvim-treesitter/nvim-treesitter-textobjects', {'type': 'opt'})
+  " call packager#add('nvim-treesitter/playground', {'type': 'opt'})
 
   " call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries'})
   " Syntax highlighting for github's hub tool
