@@ -1,3 +1,0 @@
-[filesystem "nathans-mac.lan|Oracle Corporation|14.0.1|/dev/disk1s1"]
-	timestampResolution = 7000 nanoseconds
-	minRacyThreshold = 0 nanoseconds
