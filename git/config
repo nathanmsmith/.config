@@ -1,8 +1,7 @@
 [alias]
 
 [alias]
-  # https://aj.codes/post/branch-agnostic-git-aliases/
-	default-branch = "!git symbolic-ref HEAD | cut -f3 -d/"
+  main-branch = town main-branch
 	continue = town continue
 	hack = town hack
 	kill = town kill
@@ -15,6 +14,7 @@
 	sync = town sync
 	discard = !git clean -df && git checkout -- .
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi > .gitignore"
+	append = town append
 [credential]
 	helper = osxkeychain
 [commit]
