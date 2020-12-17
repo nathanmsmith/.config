@@ -120,7 +120,6 @@ set -U SAM_CLI_TELEMETRY 0
 set -U HOMEBREW_NO_INSECURE_REDIRECT 1
 set -U HOMEBREW_CASK_OPTS --require-sha
 set -U HOMEBREW_NO_ANALYTICS 1
-set -U HB_CNF_HANDLER '/usr/local/Homebrew/Library/Taps/homebrew/homebrew-command-not-found/handler.fish'
 # FZF
 set -U FZF_DEFAULT_COMMAND 'rg -g !.git/ --files --hidden'
 

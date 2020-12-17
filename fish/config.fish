@@ -19,11 +19,6 @@ if status --is-login; and status --is-interactive
   # Go
   set -x GOPATH $HOME/Developer/go
   set -x PATH $GOPATH/bin $PATH
-
-  # https://github.com/Homebrew/homebrew-command-not-found
-  if test -f $HB_CNF_HANDLER
-     source $HB_CNF_HANDLER
-  end
 end
 
 status --is-interactive; and source (rbenv init -|psub)
