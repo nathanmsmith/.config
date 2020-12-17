@@ -4,10 +4,12 @@ packadd completion-buffers
  " Complete parentheses for functions
 let g:completion_enable_auto_paren = 1
 let g:completion_auto_change_source = 1
-let g:completion_chain_complete_list = [
-    \{'complete_items': ['lsp']},
-    \{'complete_items': ['buffers']}
-\]
+" let g:completion_chain_complete_list = [
+"     \{'complete_items': ['lsp']},
+"     \{'complete_items': ['buffers']}
+" \]
+
+let g:completion_trigger_keyword_length = 3
 
 " Complete parentheses for functions
 let g:completion_enable_auto_paren = 1
