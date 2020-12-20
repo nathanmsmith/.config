@@ -1,22 +1,35 @@
 -- Caffeine
-caffeine = hs.menubar.new()
+caffeineMenubarItem = hs.menubar.new()
+
+-- Set the icon of the menubar.
 function setCaffeineDisplay(state)
   if state then
-    caffeine:setIcon("images/active.pdf")
+    caffeineMenubarItem:setIcon("images/active.pdf")
   else
-    caffeine:setIcon("images/inactive.pdf")
+    caffeineMenubarItem:setIcon("images/inactive.pdf")
   end
 end
 
-function caffeineClicked()
+-- Click the menubar icon, which toggles the caffeine state and menubar icon.
+function menubarClicked()
   setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 end
 
+-- Turns the caffeine state to off.
+function caffeineOff()
+  hs.caffeinate.set("displayIdle", false, true)
+  setCaffeineDisplay(false)
+end
+
+-- Introduce url event for toggling caffeine state.
 hs.urlevent.bind("caffeine-toggle", function()
   setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 end)
 
-if caffeine then
-  caffeine:setClickCallback(caffeineClicked)
+if caffeineMenubarItem then
+  -- Initialize callback
+  caffeineMenubarItem:setClickCallback(menubarClicked)
+
+  -- Initialize display to current displayIdle value
   setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end

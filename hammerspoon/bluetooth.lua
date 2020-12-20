@@ -12,14 +12,3 @@ function bluetooth(power)
   local t = hs.task.new("/usr/local/bin/blueutil", checkBluetoothResult, {"--power", power})
   t:start()
 end
-
-function f(event)
-  if event == hs.caffeinate.watcher.systemWillSleep then
-    bluetooth("off")
-  elseif event == hs.caffeinate.watcher.screensDidWake then
-    bluetooth("on")
-  end
-end
-
-bluetoothWatcher = hs.caffeinate.watcher.new(f)
-bluetoothWatcher:start()
