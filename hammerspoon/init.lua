@@ -4,8 +4,8 @@ hs.loadSpoon("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
 
 -- Variable names, no they aren't garbage collected
-b = require('bluetooth')
 c = require('caffeine')
+b = require('sleep-watcher')
 p = require('paste')
 -- u = require('urls')
 f = require('focus')

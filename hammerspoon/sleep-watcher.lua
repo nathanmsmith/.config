@@ -16,6 +16,10 @@ end
 function f(event)
   if event == hs.caffeinate.watcher.systemWillSleep then
     bluetooth("off")
+
+    -- Display keeping displays on when sleep happens.
+    -- This means if the computer wakes up, it can go back to sleep.
+    caffeineOff()
   elseif event == hs.caffeinate.watcher.screensDidWake then
     bluetooth("on")
   end
