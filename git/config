@@ -18,12 +18,12 @@
 [credential]
 	helper = osxkeychain
 [commit]
-	; gpgsign = true
+	gpgsign = true
 	verbose = 2
 [user]
 	name = Nathan Smith
 	email = nathan@nathansmith.io
-	; signingkey = 3B9BA490BA8CCFE7
+	signingkey = 3B9BA490BA8CCFE7
 [core]
 	editor = nvim
 	pager = diff-so-fancy | less --tabs=4 -RFX
