@@ -11,11 +11,6 @@ tap "homebrew/core"
 tap "homebrew/livecheck"
 tap "homebrew/services"
 tap "universal-ctags/universal-ctags"
-cask "adoptopenjdk8"
-brew "apache-spark"
-brew "openssl@1.1"
-brew "readline"
-brew "python@3.8", link: false
 brew "awscli"
 brew "bash"
 brew "bat"
@@ -154,7 +149,6 @@ cask "reikey"
 cask "safari-technology-preview"
 cask "scroll-reverser"
 cask "sequel-pro"
-cask "setapp"
 cask "signal"
 cask "sketch"
 cask "soulver"
@@ -195,8 +189,4 @@ mas "Reeder", id: 1449412482
 mas "Slack", id: 803453959
 mas "Streaks", id: 1493327990
 mas "Things", id: 904280696
-mas "Tictoc", id: 412307572
-mas "Trello", id: 1278508951
-mas "Tweetbot", id: 557168941
-mas "Ulysses", id: 1225570693
 mas "Xcode", id: 497799835

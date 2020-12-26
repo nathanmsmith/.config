@@ -1,6 +1,5 @@
 #!/usr/local/bin/fish
 
-
 # Abbreviations
 # See https://github.com/fish-shell/fish-shell/issues/1976#issuecomment-168698602
 # if not set -q abbr_initialized
@@ -21,8 +20,6 @@ abbr --add rd 'rm -r'
 
 # Homebrew --global
 abbr --add b 'brew'
-abbr --add bc 'brew cask'
-abbr --add bci 'brew cask info'
 abbr --add bs 'brew search'
 abbr --add bi 'brew info'
 abbr --add binst 'brew install'

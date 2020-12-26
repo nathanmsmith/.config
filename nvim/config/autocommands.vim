@@ -27,5 +27,8 @@ augroup END
 " Reset the cursor on exit
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
-" set guicursor=a:blinkon100
-" :au VimLeave,VimSuspend * set guicursor=a:ver25-blinkon1
+set guicursor=a:blinkon100
+augroup cursor
+  autocmd!
+  au VimLeave,VimSuspend * set guicursor=a:ver25-blinkon1
+augroup END

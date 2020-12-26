@@ -5,7 +5,7 @@ function! PackagerInit() abort
   packadd vim-packager
   call packager#init()
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
-  call packager#local('~/Developer/night-owl.vim')
+  call packager#local('~/Developer/vim-packages/night-owl.vim')
   call packager#add('airblade/vim-gitgutter')
   call packager#add('kshenoy/vim-signature')
   call packager#add('norcalli/nvim-colorizer.lua', {'type': 'opt'})
