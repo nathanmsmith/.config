@@ -45,20 +45,17 @@ function! PackagerInit() abort
   call packager#add('srstevenson/vim-picker')
 
 
-  " call packager#add('kyazdani42/nvim-web-devicons', {'type': 'opt'})
-  " call packager#add('kyazdani42/nvim-tree.lua', {'type': 'opt'})
-  " call packager#add('stsewd/gx-extended.vim')
   " LSP
-  call packager#local('~/Developer/vim-packages/nvim-lspconfig', {'type': 'opt'})
+  call packager#add('neovim/nvim-lspconfig', {'type': 'opt'})
   call packager#local('~/Developer/vim-packages/nvim-ale-diagnostic', {'type': 'opt'})
   call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})
   call packager#add('steelsojka/completion-buffers', {'type': 'opt'})
   call packager#add('tjdevries/nlua.nvim', {'type': 'opt'})
 
   " Treesitter
-  " call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
-  " call packager#add('nvim-treesitter/nvim-treesitter-textobjects', {'type': 'opt'})
-  " call packager#add('nvim-treesitter/playground', {'type': 'opt'})
+  call packager#add('nvim-treesitter/nvim-treesitter', {'type': 'opt'})
+  call packager#add('nvim-treesitter/nvim-treesitter-textobjects', {'type': 'opt'})
+  call packager#add('nvim-treesitter/playground', {'type': 'opt'})
 
   call packager#add('fatih/vim-go', { 'do': ':GoInstallBinaries'})
   " Syntax highlighting for github's hub tool
