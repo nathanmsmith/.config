@@ -13,10 +13,11 @@ hs.hotkey.bind({"ctrl", "cmd"}, "b", function()
 end)
 -- m for "music"
 hs.hotkey.bind({"ctrl", "cmd"}, "m", function()
-  hs.application.launchOrFocus("Spotify")
+  hs.application.launchOrFocus("Music")
 end)
-hs.hotkey.bind({"ctrl", "cmd"}, "s", function()
-  hs.application.launchOrFocus("Slack")
+-- c for "chat"
+hs.hotkey.bind({"ctrl", "cmd"}, "c", function()
+  hs.application.launchOrFocus("Messages")
 end)
 
 -- Hints

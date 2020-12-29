@@ -6,11 +6,12 @@
 lua require("projectionist")
 
 " Fuzzy Finding
-" I've found it to be faster that the default fzf plugin.
+" I've found vim-picker to be faster that the default fzf plugin.
 " fzf is much better than selecta, fzy, etc. though
-" ripgrep has the fastest search
-let g:picker_custom_find_executable = 'rg'
-let g:picker_custom_find_flags = '-g !.git/ --files --hidden --color never'
+" fd has the fastest file search compared to find, ripgrep, etc.
+
+" let g:picker_custom_find_executable = 'fd'
+" let g:picker_custom_find_flags = '-g !.git/ --files --hidden --color never'
 let g:picker_selector_executable = 'fzf'
 let g:picker_selector_flags = '--layout=reverse --tiebreak=index'
 let g:picker_height = 14
@@ -28,20 +29,6 @@ function! g:FzfFilesSource()
 endfunction
 
 nnoremap <silent> <leader>p :call picker#File(g:FzfFilesSource(), 'edit')<CR>
-
-" Tree
-" packadd nvim-web-devicons
-" packadd nvim-tree.lua
-" map <leader>s :LuaTreeToggle<CR>
-" let g:lua_tree_follow = 1
-" let g:lua_tree_auto_close = 1
-" let g:lua_tree_ignore = ['.DS_Store', '.git', '.cache']
-" let g:lua_tree_git_hl = 1
-" let g:lua_tree_show_icons = {
-"     \ 'git': 1,
-"     \ 'folders': 1,
-"     \ 'files': 1,
-    " \}
 
 " More sensible window splits
 set splitbelow

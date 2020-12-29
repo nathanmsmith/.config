@@ -44,5 +44,7 @@ let g:peekaboo_delay = 500
 let g:peekaboo_compact = 1
 
 " Colorize
-packadd nvim-colorizer.lua
-lua require 'colorizer'.setup(nil, { css = true; })
+if has('nvim')
+  packadd nvim-colorizer.lua
+  lua require 'colorizer'.setup(nil, { css = true; })
+endif
