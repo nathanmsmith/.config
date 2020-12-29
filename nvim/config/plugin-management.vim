@@ -23,17 +23,21 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-rsi')
   " Substitution and Coercion
   call packager#add('tpope/vim-abolish')
+
+  " Text object modifications and extensions
   call packager#add('chaoren/vim-wordmotion')
+  call packager#add('wellle/targets.vim')
   call packager#add('kana/vim-textobj-user')
   call packager#add('kana/vim-textobj-entire')
-  call packager#add('wellle/targets.vim')
+  call packager#add('nelstrom/vim-textobj-rubyblock')
+  call packager#add('whatyouhide/vim-textobj-xmlattr')
+
+  " Snippets
   call packager#add('SirVer/ultisnips')
 
   " Completion
   call packager#add('ervandew/supertab')
 
-  call packager#add('tpope/vim-fugitive')
-  call packager#add('tpope/vim-rhubarb')
   " Git
   call packager#add('tpope/vim-fugitive')
   call packager#add('tpope/vim-rhubarb')
@@ -51,8 +55,6 @@ function! PackagerInit() abort
   " LSP
   call packager#add('neovim/nvim-lspconfig', {'type': 'opt'})
   call packager#local('~/Developer/vim-packages/nvim-ale-diagnostic', {'type': 'opt'})
-  call packager#add('nvim-lua/completion-nvim', {'type': 'opt'})
-  call packager#add('steelsojka/completion-buffers', {'type': 'opt'})
   call packager#add('tjdevries/nlua.nvim', {'type': 'opt'})
 
   " Treesitter
@@ -86,9 +88,8 @@ function! PackagerInit() abort
   call packager#add('cespare/vim-toml')
   " GraphQL
   call packager#add('jparise/vim-graphql')
-  " Ruby
+  " Ruby/Rails
   call packager#add('vim-ruby/vim-ruby')
-  " Ruby on Rails
   call packager#add('tpope/vim-rails')
   call packager#add('tpope/vim-endwise')
   call packager#add('tpope/vim-rake')
