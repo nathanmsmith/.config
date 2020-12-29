@@ -23,9 +23,9 @@ local on_attach = function(client, bufnr)
   vim.fn.nvim_set_keymap("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", {noremap = true, silent = true})
 end
 
--- lspconfig.tsserver.setup{
---   on_attach = on_attach,
--- }
+lspconfig.tsserver.setup{
+  on_attach = on_attach,
+}
 lspconfig.html.setup{
   on_attach = on_attach,
 }

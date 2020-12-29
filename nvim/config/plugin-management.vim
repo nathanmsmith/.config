@@ -28,7 +28,10 @@ function! PackagerInit() abort
   call packager#add('kana/vim-textobj-entire')
   call packager#add('wellle/targets.vim')
   call packager#add('SirVer/ultisnips')
-  call packager#add('adriaanzon/vim-emmet-ultisnips')
+
+  " Completion
+  call packager#add('ervandew/supertab.git')
+
   call packager#add('tpope/vim-fugitive')
   call packager#add('tpope/vim-rhubarb')
   " Git

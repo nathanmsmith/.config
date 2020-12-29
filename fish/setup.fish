@@ -35,6 +35,8 @@ abbr --add gob 'go build'
 # Ruby
 # Rails
 abbr --add r 'rails'
+abbr --add be 'bundle exec'
+abbr --add ber 'bundle exec rails'
 
 # Make
 abbr --add m 'make'
