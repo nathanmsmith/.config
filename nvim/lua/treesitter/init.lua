@@ -52,12 +52,5 @@ require'nvim-treesitter.configs'.setup {
     "query",
     "html",
     "css",
-    -- "javascript",
-    "typescript", "tsx",
-    "lua",
-    "ruby",
-    "python",
-    "go",
-    "c", "cpp"
   },
 }

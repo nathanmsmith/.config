@@ -1,11 +1,11 @@
 " https://vi.stackexchange.com/questions/4488/how-do-i-define-an-autocommand-to-work-on-all-files-excepted-a-certain-filetype
 let ftToIgnore = ['markdown', 'text']
 
-augroup completion
-  autocmd!
-  " Enable completion for most buffers
-  autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | lua require'completion'.on_attach()
-augroup END
+" augroup completion
+"   autocmd!
+"   " Enable completion for most buffers
+"   autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | lua require'completion'.on_attach()
+" augroup END
 
 augroup windows
   " Resize windows on move
@@ -28,4 +28,7 @@ augroup END
 " See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 " and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
 " set guicursor=a:blinkon100
-" :au VimLeave,VimSuspend * set guicursor=a:ver25-blinkon1
+augroup cursor
+  autocmd!
+  au VimLeave,VimSuspend * set guicursor=a:ver25-blinkon1
+augroup END

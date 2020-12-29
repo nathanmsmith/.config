@@ -66,14 +66,6 @@ let g:wordmotion_spaces = ''
 
 " Additional Text Objects
 
-" Snippets
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsUsePythonVersion = 3
-let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', 'UltiSnips']
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
 
 "  " call minpac#add('tmsvg/pear-tree')
 "  let g:pear_tree_smart_openers = 0
