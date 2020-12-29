@@ -61,3 +61,13 @@ nmap cr- crk
 
 " Change definition of word
 let g:wordmotion_spaces = ''
+
+augroup editing
+  " Highlight yanks
+  au TextYankPost * silent! lua vim.highlight.on_yank {timeout=1000}
+augroup END
+
+augroup external
+  " Open images in an image viewer (probably Preview)
+  autocmd BufEnter *.png,*.jpg,*.gif exec "silent !open ".expand("%") | :bw
+augroup END

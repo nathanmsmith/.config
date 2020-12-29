@@ -17,7 +17,6 @@ source $HOME/.config/nvim/config/statusline.vim
 
 " Custom commands
 source $HOME/.config/nvim/config/custom-commands.vim
-source $HOME/.config/nvim/config/autocommands.vim
 
 " Various feature extensions
 source $HOME/.config/nvim/config/integrations.vim
