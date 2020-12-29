@@ -59,39 +59,15 @@ nmap crp crm
 " Also kebabcase
 nmap cr- crk
 
-
-
 " Change definition of word
 let g:wordmotion_spaces = ''
 
-" Additional Text Objects
+augroup editing
+  " Highlight yanks
+  au TextYankPost * silent! lua vim.highlight.on_yank {timeout=1000}
+augroup END
 
-
-"  " call minpac#add('tmsvg/pear-tree')
-"  let g:pear_tree_smart_openers = 0
-"  let g:pear_tree_smart_closers = 0
-"  let g:pear_tree_smart_backspace = 0
-
-
-
-"  call minpac#add('andrewradev/splitjoin.vim')
-"  call minpac#add('AndrewRadev/tagalong.vim')
-
-
-
-
-"  call minpac#add('tommcdo/vim-exchange')
-"
-"
-"" When editing a file, always jump to the last known cursor position.
-"" Don't do it when the position is invalid, when inside an event handler
-"" (happens when dropping a file on gvim) and for a commit message (it's
-"" likely a different one than last time).
-"" Copied from defaults.vim)
-"" See :h restore-cursor
-"" TODO: There seems to be a bug where this happens for git commits too, so
-"" disabling this for now.
-"" autocmd VimEnter *
-"  " \ if line("'\"") >= 1 && line("'\"") <= line("$") " && &ft != 'gitcommit'
-"  " " \ |   exe "normal! g`\""
-"  " \ | endif
+augroup external
+  " Open images in an image viewer (probably Preview)
+  autocmd BufEnter *.png,*.jpg,*.gif exec "silent !open ".expand("%") | :bw
+augroup END

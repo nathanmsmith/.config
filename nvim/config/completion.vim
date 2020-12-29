@@ -1,8 +1,20 @@
 " Vim-native completion
-" set complete=".,w,b,u"
-" set completeopt=longest,menuone
-" TODO: move this to only attach on lsp languages
-set omnifunc=v:lua.vim.lsp.omnifunc
+
+if has('nvim-0.5')
+  set omnifunc=v:lua.vim.lsp.omnifunc
+end
+
+" Ignore tags for completion by default
+set complete-=t
+set completeopt=menu
+
+" Use enter to select completion
+let g:SuperTabCrMapping = 1
+
+" Use context completion. See *supertab-defaultcompletion*.
+" Chaining unfortunately doesn't work with v:lua
+let g:SuperTabDefaultCompletionType = 'context'
+
 
 " Snippets
 let g:UltiSnipsEditSplit="vertical"
