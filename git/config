@@ -44,8 +44,6 @@
 	keepBackup = false
 [mergetool "nvimdiff"]
 	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
-[color]
-	ui = true
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
@@ -75,3 +73,5 @@
 	smtpserverport = 587
 [init]
 	defaultBranch = main
+[git-town]
+	ship-delete-remote-branch = false
