@@ -6,7 +6,6 @@ packadd nvim-ale-diagnostic
 packadd nlua.nvim
 " LSP config, in lua
 lua require("lsp")
-setlocal omnifunc=v:lua.vim.lsp.omnifunc
 
 " Show errors after 1 second
 set updatetime=1000

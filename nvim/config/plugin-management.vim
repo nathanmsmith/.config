@@ -30,7 +30,7 @@ function! PackagerInit() abort
   call packager#add('SirVer/ultisnips')
 
   " Completion
-  call packager#add('ervandew/supertab.git')
+  call packager#add('ervandew/supertab')
 
   call packager#add('tpope/vim-fugitive')
   call packager#add('tpope/vim-rhubarb')

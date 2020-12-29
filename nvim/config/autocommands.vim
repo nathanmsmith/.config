@@ -1,12 +1,6 @@
 " https://vi.stackexchange.com/questions/4488/how-do-i-define-an-autocommand-to-work-on-all-files-excepted-a-certain-filetype
 let ftToIgnore = ['markdown', 'text']
 
-" augroup completion
-"   autocmd!
-"   " Enable completion for most buffers
-"   autocmd BufWritePre * if index(ftToIgnore, &ft) < 0 | lua require'completion'.on_attach()
-" augroup END
-
 augroup windows
   " Resize windows on move
   autocmd VimResized * :wincmd =
