@@ -17,6 +17,8 @@ if status --is-login; and status --is-interactive
   # Ruby
   # set -x PATH /opt/homebrew/lib/ruby/gems/2.7.0/bin /opt/homebrew/opt/ruby/bin $PATH
   set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=/opt/homebrew/opt/openssl@1.1 --with-readline-dir=/opt/homebrew/opt/readline"
+  set -gx LDFLAGS "-L/opt/homebrew/opt/ruby/lib"
+  set -gx CPPFLAGS "-I/opt/homebrew/opt/ruby/include"
   # Rust
   set -x PATH $HOME/.cargo/bin $PATH
   # Go

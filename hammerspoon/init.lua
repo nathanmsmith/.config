@@ -12,10 +12,10 @@ f = require('focus')
 w = require('window-management')
 
 -- EjectMenu
-hs.loadSpoon("EjectMenu")
-spoon.EjectMenu.show_in_menubar = false
-spoon.EjectMenu.notify = true
-spoon.EjectMenu:start()
+-- hs.loadSpoon("EjectMenu")
+-- spoon.EjectMenu.show_in_menubar = false
+-- spoon.EjectMenu.notify = true
+-- spoon.EjectMenu:start()
 
 -- Handle various willSleep/didWake actions.
 -- Uses functions from caffeine and bluetooth modules.

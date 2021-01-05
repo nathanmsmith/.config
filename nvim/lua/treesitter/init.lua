@@ -52,5 +52,6 @@ require'nvim-treesitter.configs'.setup {
     "query",
     "html",
     "css",
+    "typescript",
   },
 }
