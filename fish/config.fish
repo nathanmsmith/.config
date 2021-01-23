@@ -12,6 +12,9 @@ if status --is-login; and status --is-interactive
   # Curl
   set -x PATH /opt/homebrew/opt/curl/bin $PATH
 
+  # Use python 3.8
+  # set -x PATH /opt/homebrew/opt/python@3.8/bin $PATH
+
   # Use installed LLVM tools
   # set -x PATH /opt/homebrew/opt/llvm/bin $PATH
   # Ruby

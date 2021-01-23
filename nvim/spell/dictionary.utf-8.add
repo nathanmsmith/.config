@@ -41,3 +41,5 @@ RSync
 rsync
 SEASnet
 defaultLambdaName/!
+DFA
+NFA

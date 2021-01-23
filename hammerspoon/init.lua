@@ -5,7 +5,7 @@ spoon.ReloadConfiguration:start()
 
 -- Variable names, no they aren't garbage collected
 c = require('caffeine')
-b = require('bluetooth')
+-- b = require('bluetooth')
 p = require('paste')
 -- u = require('urls')
 f = require('focus')
@@ -21,13 +21,13 @@ w = require('window-management')
 -- Uses functions from caffeine and bluetooth modules.
 function onSleepWatcher(event)
   if event == hs.caffeinate.watcher.systemWillSleep then
-    bluetooth("off")
+    -- bluetooth("off")
 
     -- Display keeping displays on when sleep happens.
     -- This means if the computer wakes up, it can go back to sleep.
     caffeineOff()
   elseif event == hs.caffeinate.watcher.screensDidWake then
-    bluetooth("on")
+    -- bluetooth("on")
   end
 end
 
