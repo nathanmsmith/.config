@@ -47,3 +47,8 @@ lspconfig.cssls.setup{
 lspconfig.gopls.setup{
   on_attach = on_attach,
 }
+
+lspconfig.sorbet.setup{
+  cmd = { "bin/sorbet-darwin", "--lsp" },
+  on_attach = on_attach,
+}
