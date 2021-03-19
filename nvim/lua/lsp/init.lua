@@ -48,6 +48,6 @@ lspconfig.gopls.setup{
 }
 
 lspconfig.sorbet.setup{
-  cmd = { "bin/sorbet-darwin", "--lsp" },
+  cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
   on_attach = on_attach,
 }

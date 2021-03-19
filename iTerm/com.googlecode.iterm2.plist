@@ -3932,6 +3932,8 @@
 	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
+	<key>OpenFileInNewWindows</key>
+	<false/>
 	<key>OptionClickMovesCursor</key>
 	<true/>
 	<key>PasteSpecialChunkDelay</key>
@@ -3979,8 +3981,6 @@
 			<string>kNextWindowPointerAction</string>
 		</dict>
 	</dict>
-	<key>PreventEscapeSequenceFromClearingHistory</key>
-	<false/>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>PromptOnQuit</key>

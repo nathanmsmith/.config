@@ -79,7 +79,7 @@ function! PackagerInit() abort
   call packager#add('styled-components/vim-styled-components', {'branch': 'main'})
   call packager#add('maxmellon/vim-jsx-pretty')
   " TypeScript
-  " call packager#add('HerringtonDarkholme/yats.vim')
+  call packager#add('HerringtonDarkholme/yats.vim')
   " Svelte
   call packager#add('evanleck/vim-svelte')
   " JSON
