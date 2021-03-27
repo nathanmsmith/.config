@@ -1,4 +1,4 @@
-#!/usr/local/bin/fish
+#!/opt/homebrew/bin/fish
 
 # Abbreviations
 # See https://github.com/fish-shell/fish-shell/issues/1976#issuecomment-168698602
@@ -124,3 +124,5 @@ set -U FZF_DEFAULT_COMMAND 'rg -g !.git/ --files --hidden'
 
 # XDG CONFIG
 set -U XDG_CONFIG_HOME $HOME/.config
+# IRB
+set -U IRBRC "$XDG_CONFIG_HOME"/irb/irbrc

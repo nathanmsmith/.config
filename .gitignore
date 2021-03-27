@@ -14,4 +14,6 @@ karabiner/assets
 
 aerc/accounts.conf
 iterm2
+
 gh/hosts.yml
+gh/state.yml
