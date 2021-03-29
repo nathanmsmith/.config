@@ -6,7 +6,13 @@ function! PackagerInit() abort
   call packager#init()
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
   call packager#local('~/Developer/vim-packages/night-owl.vim')
+
+  " Git
+  call packager#add('tpope/vim-fugitive')
+  call packager#add('tpope/vim-rhubarb')
   call packager#add('airblade/vim-gitgutter')
+  call packager#add('whiteinge/diffconflicts')
+
   call packager#add('kshenoy/vim-signature')
   call packager#add('norcalli/nvim-colorizer.lua', {'type': 'opt'})
   call packager#add('junegunn/vim-peekaboo')
@@ -38,9 +44,6 @@ function! PackagerInit() abort
   " Completion
   call packager#add('ervandew/supertab')
 
-  " Git
-  call packager#add('tpope/vim-fugitive')
-  call packager#add('tpope/vim-rhubarb')
   " Unix utilities
   call packager#add('tpope/vim-eunuch')
   " Enhance netrw

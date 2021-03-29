@@ -39,11 +39,12 @@
 [difftool]
 	prompt = false
 [merge]
-	tool = nvimdiff
+	tool = diffconflicts
 [mergetool]
 	keepBackup = false
-[mergetool "nvimdiff"]
-	cmd = nvim -f -c \"Gdiffsplit!\" \"$MERGED\"
+[mergetool "diffconflicts"]
+	cmd = nvim -c DiffConflicts \"$MERGED\" \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	trustExitCode = true
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
