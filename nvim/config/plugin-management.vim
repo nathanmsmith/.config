@@ -13,10 +13,18 @@ function! PackagerInit() abort
   call packager#add('airblade/vim-gitgutter')
   call packager#add('whiteinge/diffconflicts')
 
+  " Marks
   call packager#add('kshenoy/vim-signature')
+
+  " ctags
+  call packager#add('ludovicchabant/vim-gutentags')
+
+
   call packager#add('norcalli/nvim-colorizer.lua', {'type': 'opt'})
   call packager#add('junegunn/vim-peekaboo')
   call packager#add('nelstrom/vim-visual-star-search')
+
+  " Tim Pope Essentials
   call packager#add('tpope/vim-commentary')
   call packager#add('tpope/vim-surround')
   call packager#add('tpope/vim-repeat')
@@ -103,6 +111,8 @@ function! PackagerInit() abort
   call packager#add('vim-python/python-syntax')
   " Elixir
   call packager#add('elixir-editors/vim-elixir')
+  " Terraform
+  call packager#add('hashivim/vim-terraform')
 endfunction
 
 

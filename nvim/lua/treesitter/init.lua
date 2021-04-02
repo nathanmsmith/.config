@@ -10,7 +10,8 @@ require'nvim-treesitter.configs'.setup {
     disable = { "lua" },
   },
   indent = {
-    enable = true
+    enable = true,
+    disable = { "cpp" },
   },
   playground = {
     enable = true,
@@ -56,5 +57,6 @@ require'nvim-treesitter.configs'.setup {
     "html",
     "css",
     "typescript",
+    "cpp",
   },
 }

@@ -16,7 +16,7 @@ if status --is-login; and status --is-interactive
   # set -x PATH /opt/homebrew/opt/python@3.8/bin $PATH
 
   # Use installed LLVM tools
-  # set -x PATH /opt/homebrew/opt/llvm/bin $PATH
+  set -x PATH /opt/homebrew/opt/llvm/bin $PATH
   # Ruby
   # set -x PATH /opt/homebrew/lib/ruby/gems/2.7.0/bin /opt/homebrew/opt/ruby/bin $PATH
   set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=/opt/homebrew/opt/openssl@1.1 --with-readline-dir=/opt/homebrew/opt/readline"

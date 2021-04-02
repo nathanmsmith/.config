@@ -85,13 +85,11 @@ abbr --add gdc 'git discard'
 abbr --add gs 'git sync'
 abbr --add gsta 'git stash'
 abbr --add gstaa 'git stash --all'
-abbr --add gl 'git log'
+abbr --add gl 'git log --graph'
 abbr --add gnpr 'git new-pull-request'
 
 abbr --add gmt 'git mergetool'
 abbr --add gdt 'git difftool'
-
-abbr --add gnpr 'git new-pull-request'
 
 # Yarn
 abbr --add yn 'yarn'
