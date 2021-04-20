@@ -62,6 +62,20 @@ nmap cr- crk
 " Change definition of word
 let g:wordmotion_spaces = ''
 
+" Git conflict markers
+" Unimpaired does this [n and ]n (and d[n, d]n)
+let g:conflict_marker_enable_mappings = 0
+" disable the default highlight group
+let g:conflict_marker_highlight_group = ''
+" Include text after begin and end markers
+let g:conflict_marker_begin = '^<<<<<<< .*$'
+let g:conflict_marker_end   = '^>>>>>>> .*$'
+highlight ConflictMarkerBegin guibg=#2f7366
+highlight ConflictMarkerOurs guibg=#2e5049
+highlight ConflictMarkerTheirs guibg=#344f69
+highlight ConflictMarkerEnd guibg=#2f628e
+highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
+
 augroup editing
   " Highlight yanks
   au TextYankPost * silent! lua vim.highlight.on_yank {timeout=1000}

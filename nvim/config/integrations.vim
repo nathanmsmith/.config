@@ -6,11 +6,11 @@ let g:python_host_prog = "python"
 let g:python3_host_prog = "python3"
 
 " ctags integration with gutentags
-" call minpac#add('ludovicchabant/vim-gutentags',  {'rev': '31c0ead'})
 " let g:gutentags_ctags_executable_ruby = 'ripper-tags'
-let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git', 'vim']
+let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git', 'vim', 'conf']
 let g:gutentags_ctags_exclude = [
       \  '*.git', '*.svn', '*.hg',
+      \  '*.conf',
       \  'cache', 'build', 'dist', 'bin', 'node_modules', 'bower_components',
       \  '*-lock.json',  '*.lock',
       \  '*.min.*',

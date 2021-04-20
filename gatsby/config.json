@@ -7,6 +7,7 @@
 		"packageManager": "yarn"
 	},
 	"feedback": {
-		"firstCheckDate": 1617213780458
+		"firstCheckDate": 1617213780458,
+		"sevenDayFeedbackDate": 1618015921480
 	}
 }

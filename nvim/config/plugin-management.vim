@@ -11,7 +11,7 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-fugitive')
   call packager#add('tpope/vim-rhubarb')
   call packager#add('airblade/vim-gitgutter')
-  call packager#add('whiteinge/diffconflicts')
+  call packager#add('rhysd/conflict-marker.vim')
 
   " Marks
   call packager#add('kshenoy/vim-signature')
@@ -113,6 +113,8 @@ function! PackagerInit() abort
   call packager#add('elixir-editors/vim-elixir')
   " Terraform
   call packager#add('hashivim/vim-terraform')
+  " Nginx
+  call packager#add('chr4/nginx.vim')
 endfunction
 
 
