@@ -6,7 +6,7 @@ if status --is-login; and status --is-interactive
 
   # PATH settings
   # Use ARM native programs if they exist, but prefer intel versions (for compatibility)
-  set -x PATH /opt/homebrew/bin /usr/local/bin  $PATH
+  set -x PATH /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin  $PATH
   # GNU utils
   set -x PATH /opt/homebrew/opt/{coreutils,findutils,gnu-time,gnu-units}/libexec/gnubin $PATH
   # Curl
