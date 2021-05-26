@@ -62,6 +62,8 @@ function! PackagerInit() abort
   call packager#add('tpope/vim-projectionist')
   call packager#add('srstevenson/vim-picker')
 
+  call packager#add('AndrewRadev/splitjoin.vim')
+
 
   " LSP
   call packager#add('neovim/nvim-lspconfig', {'type': 'opt'})

@@ -78,3 +78,5 @@
 	ship-delete-remote-branch = false
 [format]
 	pretty = format:%C(auto)%h %d%Creset %s%n%Cgreen%ad%Creset %aN <%aE>%n
+[log]
+	date = local

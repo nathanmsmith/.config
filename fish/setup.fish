@@ -112,15 +112,18 @@ set -U fish_greeting
 # Application configuration
 # -------------------------
 # AWS SAM
-set -U SAM_CLI_TELEMETRY 0
+set -Ux SAM_CLI_TELEMETRY 0
 # Homebrew
-set -U HOMEBREW_NO_INSECURE_REDIRECT 1
-set -U HOMEBREW_CASK_OPTS --require-sha
-set -U HOMEBREW_NO_ANALYTICS 1
+set -Ux HOMEBREW_NO_INSECURE_REDIRECT 1
+set -Ux HOMEBREW_CASK_OPTS --require-sha
+set -Ux HOMEBREW_NO_ANALYTICS 1
 # FZF
-set -U FZF_DEFAULT_COMMAND 'rg -g !.git/ --files --hidden'
+set -Ux FZF_DEFAULT_COMMAND 'rg -g !.git/ --files --hidden'
 
 # XDG CONFIG
-set -U XDG_CONFIG_HOME $HOME/.config
+set -Ux XDG_CONFIG_HOME $HOME/.config
 # IRB
-set -U IRBRC "$XDG_CONFIG_HOME"/irb/irbrc
+set -Ux IRBRC "$XDG_CONFIG_HOME"/irb/irbrc
+
+# For Rails projects so that they don't get confused locally
+set -Ux DD_TRACE_ENABLED false

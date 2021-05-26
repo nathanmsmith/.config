@@ -9,7 +9,7 @@ hs.hotkey.bind({"ctrl", "cmd"}, "d", function()
   hs.application.launchOrFocus("Dash")
 end)
 hs.hotkey.bind({"ctrl", "cmd"}, "b", function()
-  hs.application.launchOrFocus("Safari")
+  hs.application.launchOrFocus("Firefox")
 end)
 -- m for "music"
 hs.hotkey.bind({"ctrl", "cmd"}, "m", function()

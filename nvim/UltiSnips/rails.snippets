@@ -1,1 +1,5 @@
 extends ruby
+
+snippet sa "SubjectArea format thing" b
+$1 = T.must SubjectArea.find_by(code: '$1')
+endsnippet
