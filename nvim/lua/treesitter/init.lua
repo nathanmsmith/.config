@@ -58,5 +58,7 @@ require'nvim-treesitter.configs'.setup {
     "css",
     "typescript",
     "cpp",
+    "ruby",
+    "fish",
   },
 }

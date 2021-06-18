@@ -1,9 +1,6 @@
 command! LspHover lua vim.lsp.buf.hover()<CR>
 command! LspDisable lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>
 
-packadd nvim-lspconfig
-packadd nvim-ale-diagnostic
-packadd nlua.nvim
 " LSP config, in lua
 lua require("lsp")
 

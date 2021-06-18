@@ -7,8 +7,8 @@
 
 " Put plugin managment first, as it handles installing vim-packager for later files
 " Interesting bits: use vim-packager, only called in functions
-" lua require('plugins')
-source $HOME/.config/nvim/config/plugin-management.vim
+lua require('plugins')
+" source $HOME/.config/nvim/config/plugin-management.vim
 
 " Mostly vanilla Vim style tweaks
 source $HOME/.config/nvim/config/appearance.vim
@@ -27,7 +27,5 @@ source $HOME/.config/nvim/config/searching.vim
 source $HOME/.config/nvim/config/completion.vim
 
 " Beta features
-if has('nvim-0.5')
-  source $HOME/.config/nvim/config/lsp.vim
-  source $HOME/.config/nvim/config/treesitter.vim
-end
+source $HOME/.config/nvim/config/lsp.vim
+" source $HOME/.config/nvim/config/treesitter.vim

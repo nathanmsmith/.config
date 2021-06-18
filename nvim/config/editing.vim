@@ -59,9 +59,6 @@ nmap crp crm
 " Also kebabcase
 nmap cr- crk
 
-" Change definition of word
-let g:wordmotion_spaces = ''
-
 " Git conflict markers
 " Unimpaired does this [n and ]n (and d[n, d]n)
 let g:conflict_marker_enable_mappings = 0

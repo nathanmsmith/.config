@@ -5,7 +5,7 @@ function! PackagerInit() abort
   packadd vim-packager
   call packager#init()
   call packager#add('kristijanhusak/vim-packager', { 'type': 'opt' })
-  call packager#local('~/Developer/vim-packages/night-owl.vim')
+  call packager#local()
 
   " Git
   call packager#add('tpope/vim-fugitive')
