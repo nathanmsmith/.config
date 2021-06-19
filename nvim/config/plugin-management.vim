@@ -47,7 +47,7 @@ function! PackagerInit() abort
   call packager#add('whatyouhide/vim-textobj-xmlattr')
 
   " Snippets
-  call packager#add('SirVer/ultisnips')
+  call packager#add('')
 
   " Completion
   call packager#add('ervandew/supertab')

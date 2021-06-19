@@ -16,8 +16,6 @@ return require('packer').startup(function()
   -- Color theme
   use '~/Developer/vim-packages/night-owl.vim'
 
-  -- Colors
-
   -- Git
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
@@ -35,6 +33,12 @@ return require('packer').startup(function()
   use 'tpope/vim-abolish'
   use 'AndrewRadev/splitjoin.vim'
 
+  -- Completion
+  use 'hrsh7th/nvim-compe'
+
+  -- Snippets
+  use 'SirVer/ultisnips'
+
   -- Tim Pope Extensions
   use 'tpope/vim-eunuch'
   use 'tpope/vim-vinegar'
@@ -43,16 +47,19 @@ return require('packer').startup(function()
   use 'kshenoy/vim-signature'
 
   -- Show Buffers
-  use { 'norcalli/nvim-colorizer.lua', opt = true }
   use 'junegunn/vim-peekaboo'
+
+  -- Search selection with *
   use 'nelstrom/vim-visual-star-search'
+
+  -- Highlight colors
+  use 'norcalli/nvim-colorizer.lua'
 
   -- Text object modifications and extensions
   use 'chaoren/vim-wordmotion'
   use 'wellle/targets.vim'
   use 'kana/vim-textobj-user'
   use 'kana/vim-textobj-entire'
-  use 'nelstrom/vim-textobj-rubyblock'
   use 'whatyouhide/vim-textobj-xmlattr'
 
   -- Testing
@@ -89,20 +96,19 @@ return require('packer').startup(function()
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    ft = ts_filetypes,
-    config = function() require("treesitter") end,
+    -- ft = ts_filetypes,
+    -- config = function() require("treesitter") end,
   }
   use {
     'nvim-treesitter/nvim-treesitter-textobjects',
-    ft = ts_filetypes,
+    -- ft = ts_filetypes,
   }
   use {
     'nvim-treesitter/playground',
-    ft = ts_filetypes,
+    -- ft = ts_filetypes,
   }
 
   -- Ruby
-  use 'vim-ruby/vim-ruby'
   use 'tpope/vim-rails'
   use 'tpope/vim-endwise'
   use 'tpope/vim-rake'

@@ -1,13 +1,17 @@
 .DS_Store
 yarn/
 configstore/
+
 fish/fishd.*
 fish/fish_variables
 fish/secrets.fish
 fish/completions
 fish/fish_variables
+
 nvim/pack
 nvim/.netrwhist
+nvim/plugin
+
 karabiner/assets
 /fish/datadog.fish
 /hub

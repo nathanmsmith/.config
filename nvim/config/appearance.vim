@@ -45,7 +45,6 @@ let g:peekaboo_compact = 1
 
 " Colorize
 if has('nvim')
-  packadd nvim-colorizer.lua
   lua require 'colorizer'.setup(nil, { css = true; })
 endif
 
