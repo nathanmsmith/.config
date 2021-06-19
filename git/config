@@ -26,8 +26,6 @@
 	signingkey = 3B9BA490BA8CCFE7
 [core]
 	editor = nvim
-	pager = diff-so-fancy | less --tabs=4 -RFX
-	; hooksPath = ~/.config/git/hooks
 [pull]
 	rebase = true
 [fetch]
@@ -80,3 +78,18 @@
 	pretty = format:%C(auto)%h %d%Creset %s%n%Cgreen%ad%Creset %aN <%aE>%n
 [log]
 	date = local
+[pager]
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  features = side-by-side line-numbers decorations theme night-owlish
+  syntax-theme = night-owlish
+  whitespace-error-style = 22 reverse
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
