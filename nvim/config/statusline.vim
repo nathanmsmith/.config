@@ -14,9 +14,9 @@ function! LspStatus() abort
   return ''
 endfunction
 
-" function TreeSitter() abort
-"   return luaeval("require('nvim-treesitter').statusline() or ''")
-" endfunction
+function TreeSitter() abort
+  return luaeval("require('nvim-treesitter').statusline() or ''")
+endfunction
 
 function! LinterStatus() abort
   let l:counts = ale#statusline#Count(bufnr(''))
@@ -41,6 +41,6 @@ set statusline+=\ %{FugitiveStatusline()}
 set statusline+=\ %{LspStatus()}
 " set statusline+=\ %{gutentags#statusline()}
 set statusline+=%=
-" set statusline+=%{TreeSitter()}
+set statusline+=%{TreeSitter()}
 set statusline+=\ %{SyntaxItem()}
 set statusline+=\ %y

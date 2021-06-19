@@ -20,7 +20,6 @@ return require('packer').startup(function()
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'airblade/vim-gitgutter'
-  use 'rhysd/conflict-marker.vim'
 
   -- Editing nicities
   use 'tpope/vim-commentary'
@@ -31,6 +30,7 @@ return require('packer').startup(function()
   use 'tpope/vim-speeddating'
   use 'tpope/vim-rsi'
   use 'tpope/vim-abolish'
+  use 'tpope/vim-sleuth'
   use 'AndrewRadev/splitjoin.vim'
 
   -- Completion

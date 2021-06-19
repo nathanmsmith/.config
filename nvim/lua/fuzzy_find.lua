@@ -5,8 +5,8 @@ require('telescope').setup {
         ["<esc>"] = require('telescope.actions').close,
       }
     },
-    generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
-    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+    -- generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
+    -- file_sorter =  require'telescope.sorters'.get_fzy_sorter,
 
     -- Theme
     sorting_strategy = "ascending",
