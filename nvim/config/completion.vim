@@ -1,8 +1,6 @@
 " Vim-native completion
 
-if has('nvim-0.5')
-  set omnifunc=v:lua.vim.lsp.omnifunc
-end
+set omnifunc=v:lua.vim.lsp.omnifunc
 
 " Ignore tags for completion by default
 set complete-=t
@@ -14,7 +12,6 @@ let g:SuperTabCrMapping = 1
 " Use context completion. See *supertab-defaultcompletion*.
 " Chaining unfortunately doesn't work with v:lua
 let g:SuperTabDefaultCompletionType = 'context'
-
 
 " Snippets
 let g:UltiSnipsEditSplit="vertical"

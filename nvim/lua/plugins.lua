@@ -42,7 +42,10 @@ return require('packer').startup(function()
   use 'AndrewRadev/splitjoin.vim'
 
   -- Completion
-  use 'hrsh7th/nvim-compe'
+  -- TODO: nvim-compe is cool and hip, but doesn't seem to work great with Ultisnips.
+  -- I could be missing something...
+  -- use 'hrsh7th/nvim-compe'
+  use 'ervandew/supertab'
 
   -- Snippets
   use 'SirVer/ultisnips'
@@ -121,6 +124,9 @@ return require('packer').startup(function()
   use 'tpope/vim-endwise'
   use 'tpope/vim-rake'
   use 'tpope/vim-bundler'
+
+  -- Go
+  use { 'fatih/vim-go', run = ':GoUpdateBinaries' }
 
   -- Terraform
   use 'hashivim/vim-terraform'

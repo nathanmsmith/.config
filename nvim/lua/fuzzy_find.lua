@@ -7,6 +7,7 @@ require('telescope').setup {
     },
     -- generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
     -- file_sorter =  require'telescope.sorters'.get_fzy_sorter,
+    file_ignore_patterns = {".git"},
 
     -- Theme
     sorting_strategy = "ascending",

@@ -8,7 +8,7 @@
 " Put plugin managment first, as it handles installing vim-packager for later files
 " Interesting bits: use vim-packager, only called in functions
 lua require('plugins')
-lua require('completion')
+" lua require('completion')
 " source $HOME/.config/nvim/config/plugin-management.vim
 
 " Mostly vanilla Vim style tweaks
@@ -25,7 +25,7 @@ source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/linting.vim
 source $HOME/.config/nvim/config/testing.vim
 source $HOME/.config/nvim/config/searching.vim
-" source $HOME/.config/nvim/config/completion.vim
+source $HOME/.config/nvim/config/completion.vim
 
 lua require('fuzzy_find')
 

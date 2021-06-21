@@ -12,6 +12,7 @@ nvim/pack
 nvim/.netrwhist
 nvim/plugin
 
+karabiner/automatic_backups
 karabiner/assets
 /fish/datadog.fish
 /hub
