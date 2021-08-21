@@ -10,19 +10,19 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Run PackerCompile on save
-vim.api.nvim_exec([[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost plugins.lua PackerCompile
-  augroup end
-]], false)
+-- vim.api.nvim_exec([[
+--   augroup Packer
+--     autocmd!
+--     autocmd BufWritePost plugins.lua PackerCompile
+--   augroup end
+-- ]], false)
 
 return require('packer').startup(function()
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
   -- Color theme
-  use '~/Developer/vim-packages/night-owl.vim'
+  use 'nathunsmitty/night-owl.vim'
 
   -- Git
   use 'tpope/vim-fugitive'
@@ -103,21 +103,21 @@ return require('packer').startup(function()
   }
 
   -- Treesitter
-  ts_filetypes = {'html', 'css', 'typescript', 'ruby'}
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    -- ft = ts_filetypes,
-    -- config = function() require("treesitter") end,
-  }
-  use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    -- ft = ts_filetypes,
-  }
-  use {
-    'nvim-treesitter/playground',
-    -- ft = ts_filetypes,
-  }
+  -- ts_filetypes = {'html', 'css', 'typescript', 'ruby'}
+  -- use {
+  --   'nvim-treesitter/nvim-treesitter',
+  --   run = ':TSUpdate',
+  --   -- ft = ts_filetypes,
+  --   -- config = function() require("treesitter") end,
+  -- }
+  -- use {
+  --   'nvim-treesitter/nvim-treesitter-textobjects',
+  --   -- ft = ts_filetypes,
+  -- }
+  -- use {
+  --   'nvim-treesitter/playground',
+  --   -- ft = ts_filetypes,
+  -- }
 
   -- Ruby
   use 'tpope/vim-rails'
@@ -130,5 +130,8 @@ return require('packer').startup(function()
 
   -- Terraform
   use 'hashivim/vim-terraform'
+
+  -- Fish
+  use 'blankname/vim-fish'
 
 end)

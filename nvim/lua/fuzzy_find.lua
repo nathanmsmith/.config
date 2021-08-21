@@ -14,9 +14,17 @@ require('telescope').setup {
     layout_strategy = "center",
     results_title = false,
     preview_title = "Preview",
-    preview_cutoff = 1, -- Preview should always show (unless previewer = false)
-    width = 80,
-    results_height = 15,
+    layout_config = {
+      preview_cutoff = 1, -- Preview should always show (unless previewer = false)
+
+      width = function(_, max_columns, _)
+        return math.min(max_columns - 3, 80)
+      end,
+
+      height = function(_, _, max_lines)
+        return math.min(max_lines - 4, 15)
+      end,
+    },
     borderchars = {
       { "─", "│", "─", "│", "╭", "╮", "╯", "╰"},
       prompt = {"─", "│", " ", "│", "╭", "╮", "│", "│"},

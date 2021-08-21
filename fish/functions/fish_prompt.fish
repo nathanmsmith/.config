@@ -21,7 +21,7 @@ function _git_status -d "Writes the current git status, if there is one."
   end
 
   echo -s (set_color normal) " on "
-  set -l dirty (command git status --porcelain ^/dev/null)
+  set -l dirty (command git status --porcelain)
   if test -z "$dirty"
     set_color --bold green
   else
@@ -29,7 +29,7 @@ function _git_status -d "Writes the current git status, if there is one."
   end
   echo -s "$branch_name" (set_color normal)
 
-  set -l unpushed_changes (git cherry -v ^/dev/null)
+  set -l unpushed_changes (command git cherry -v)
   if test -z "$unpushed_changes"
     return
   end
