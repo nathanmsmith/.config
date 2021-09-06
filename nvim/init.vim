@@ -32,3 +32,4 @@ lua require('fuzzy_find')
 " Beta features
 source $HOME/.config/nvim/config/lsp.vim
 " lua require('treesitter')
+"
