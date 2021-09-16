@@ -22,7 +22,7 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   -- Color theme
-  use 'nathunsmitty/night-owl.vim'
+  use 'nathanmsmith/night-owl.vim'
 
   -- Git
   use 'tpope/vim-fugitive'
@@ -91,29 +91,30 @@ return require('packer').startup(function()
   }
 
   -- LSP Support
-  lsp_filetypes = {'html', 'css', 'typescript', 'go', 'ruby'}
+  -- lsp_filetypes = {'html', 'css', 'typescript', 'go', 'ruby'}
   use {
     'neovim/nvim-lspconfig',
     -- ft = lsp_filetypes,
     -- config = function() require("lsp") end,
   }
   use {
-    'nathunsmitty/nvim-ale-diagnostic',
+    'nathanmsmith/nvim-ale-diagnostic',
     -- ft = lsp_filetypes,
   }
 
   -- Treesitter
-  -- ts_filetypes = {'html', 'css', 'typescript', 'ruby'}
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter',
-  --   run = ':TSUpdate',
-  --   -- ft = ts_filetypes,
-  --   -- config = function() require("treesitter") end,
-  -- }
-  -- use {
-  --   'nvim-treesitter/nvim-treesitter-textobjects',
-  --   -- ft = ts_filetypes,
-  -- }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    -- ft = ts_filetypes,
+    config = function() require("treesitter") end,
+    branch = '0.5-compat',
+  }
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    branch = '0.5-compat',
+    -- ft = ts_filetypes,
+  }
   -- use {
   --   'nvim-treesitter/playground',
   --   -- ft = ts_filetypes,
@@ -133,5 +134,8 @@ return require('packer').startup(function()
 
   -- Fish
   use 'blankname/vim-fish'
+
+  -- Handlebars
+  use 'mustache/vim-mustache-handlebars'
 
 end)
