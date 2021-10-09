@@ -10,12 +10,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 -- Run PackerCompile on save
--- vim.api.nvim_exec([[
---   augroup Packer
---     autocmd!
---     autocmd BufWritePost plugins.lua PackerCompile
---   augroup end
--- ]], false)
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])
 
 return require('packer').startup(function()
   -- Packer can manage itself

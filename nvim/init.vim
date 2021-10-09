@@ -5,8 +5,7 @@
 " 2. Extend functionality where needed
 " 3. Change functionality only when it doesn't make sense
 
-" Put plugin managment first, as it handles installing vim-packager for later files
-" Interesting bits: use vim-packager, only called in functions
+" Put plugin managment first, as it handles installing packer.nvim for later files
 lua require('plugins')
 " lua require('completion')
 " source $HOME/.config/nvim/config/plugin-management.vim
