@@ -98,6 +98,7 @@ return require('packer').startup(function()
     -- ft = lsp_filetypes,
     -- config = function() require("lsp") end,
   }
+  use { 'kabouzeid/nvim-lspinstall' }
   use {
     'nathanmsmith/nvim-ale-diagnostic',
     -- ft = lsp_filetypes,

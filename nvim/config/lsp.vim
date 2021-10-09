@@ -1,5 +1,8 @@
 command! LspHover lua vim.lsp.buf.hover()<CR>
 command! LspDisable lua vim.lsp.stop_client(vim.lsp.get_active_clients())<CR>
+command! LspInstalled lua print(vim.inspect(require('lspinstall').installed_servers()))<CR>
+
+
 
 " LSP config, in lua
 lua require("lsp")

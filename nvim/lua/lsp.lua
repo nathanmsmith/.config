@@ -1,4 +1,5 @@
 local lspconfig = require('lspconfig')
+local lspinstall = require('lspinstall')
 require("nvim-ale-diagnostic")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
@@ -22,36 +23,17 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_set_keymap("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", {noremap = true, silent = true})
 end
 
-lspconfig.tsserver.setup{
-  on_attach = on_attach,
-}
-lspconfig.html.setup{
-  on_attach = on_attach,
-}
-lspconfig.cssls.setup{
-  on_attach = on_attach,
-  settings = {
-    css = {
-      validate = false
-    },
-    less = {
-      validate = true
-    },
-    scss = {
-      validate = true
+local function setup_servers()
+  lspinstall.setup()
+  local servers = lspinstall.installed_servers()
+  for _, server in pairs(servers) do
+    lspconfig[server].setup{
+      on_attach = on_attach
     }
-  }
-}
+  end
+end
 
-lspconfig.gopls.setup{
-  on_attach = on_attach,
-}
-
-lspconfig.sorbet.setup{
-  cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
-  on_attach = on_attach,
-}
-
--- lspconfig.clangd.setup{
---   on_attach = on_attach,
--- }
+lspinstall.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
