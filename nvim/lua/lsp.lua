@@ -2,8 +2,6 @@ local lspconfig = require("lspconfig")
 local lspinstall = require("lspinstall")
 local null_ls = require("null-ls")
 
-local hello = "hello"
-
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = true,
   signs = true,
@@ -18,7 +16,21 @@ require("trouble").setup({
 
 -- null-ls setup
 null_ls.config({
-  sources = { null_ls.builtins.formatting.stylua },
+  sources = {
+    -- All
+    null_ls.builtins.formatting.trim_whitespace,
+
+    -- Lua
+    null_ls.builtins.formatting.stylua,
+
+    -- Ruby
+    null_ls.builtins.diagnostics.rubocop,
+    null_ls.builtins.formatting.rubocop,
+
+    -- JavaScript, etc.
+    null_ls.builtins.diagnostics.eslint_d,
+    null_ls.builtins.formatting.prettier,
+  },
 })
 
 -- Define signs
@@ -81,6 +93,13 @@ local lua_config = {
     },
   },
 }
+local typescript_config = {
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+  end,
+}
 
 local function setup_servers()
   lspinstall.setup()
@@ -88,6 +107,8 @@ local function setup_servers()
   for _, server in pairs(servers) do
     if server == "lua" then
       lspconfig[server].setup(lua_config)
+    elseif server == "typescript" then
+      lspconfig[server].setup(typescript_config)
     else
       lspconfig[server].setup(default_config)
     end
