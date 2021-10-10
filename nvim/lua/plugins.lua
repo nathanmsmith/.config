@@ -1,12 +1,7 @@
 -- Bootstrap Packer
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-
-if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({'git', 'clone', 'https://github.com/wbthomason/packer.nvim', install_path})
-  execute 'packadd packer.nvim'
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  packer_bootstrap = vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 -- Run PackerCompile on save
@@ -17,7 +12,7 @@ vim.cmd([[
   augroup end
 ]])
 
-return require('packer').startup(function()
+return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
@@ -83,14 +78,6 @@ return require('packer').startup(function()
   }
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-  -- Linting
-  use {
-    'w0rp/ale',
-    -- ft = {'sh', 'zsh', 'bash', 'c', 'cpp', 'cmake', 'html', 'markdown', 'racket', 'vim', 'tex'},
-    -- cmd = 'ALEEnable',
-    -- config = 'vim.cmd[[ALEEnable]]'
-  }
-
   -- LSP Support
   -- lsp_filetypes = {'html', 'css', 'typescript', 'go', 'ruby'}
   use {
@@ -99,10 +86,16 @@ return require('packer').startup(function()
     -- config = function() require("lsp") end,
   }
   use { 'kabouzeid/nvim-lspinstall' }
-  use {
-    'nathanmsmith/nvim-ale-diagnostic',
-    -- ft = lsp_filetypes,
-  }
+
+  -- Linting/Diagnostics
+  use({ "jose-elias-alvarez/null-ls.nvim",
+    requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
+  })
+  use { "folke/trouble.nvim" }
+  -- use {
+  --   'nathanmsmith/nvim-ale-diagnostic',
+  --   -- ft = lsp_filetypes,
+  -- }
 
   -- Treesitter
   use {
@@ -140,4 +133,8 @@ return require('packer').startup(function()
   -- Handlebars
   use 'mustache/vim-mustache-handlebars'
 
+  -- Automatically set up your configuration after cloning packer.nvim
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end)
