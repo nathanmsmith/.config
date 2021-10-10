@@ -93,7 +93,7 @@ local lua_config = {
     },
   },
 }
-local typescript_config = {
+local no_format_config = {
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = false
@@ -107,8 +107,8 @@ local function setup_servers()
   for _, server in pairs(servers) do
     if server == "lua" then
       lspconfig[server].setup(lua_config)
-    elseif server == "typescript" then
-      lspconfig[server].setup(typescript_config)
+    elseif server == "typescript" or server == "html" then
+      lspconfig[server].setup(no_format_config)
     else
       lspconfig[server].setup(default_config)
     end
