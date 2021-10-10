@@ -65,3 +65,6 @@ augroup cursor
   autocmd!
   autocmd VimLeave,VimSuspend * set guicursor=a:ver25-blinkon1
 augroup END
+
+" Diff Mode
+set diffopt+=vertical

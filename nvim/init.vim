@@ -18,15 +18,13 @@ source $HOME/.config/nvim/config/statusline.vim
 source $HOME/.config/nvim/config/custom-commands.vim
 
 " Various feature extensions
-source $HOME/.config/nvim/config/integrations.vim
 source $HOME/.config/nvim/config/linting.vim
 source $HOME/.config/nvim/config/testing.vim
 source $HOME/.config/nvim/config/searching.vim
 source $HOME/.config/nvim/config/completion.vim
 
 lua require('fuzzy_find')
+source $HOME/.config/nvim/config/lsp.vim
 
 " Beta features
-source $HOME/.config/nvim/config/lsp.vim
 lua require('treesitter')
-"

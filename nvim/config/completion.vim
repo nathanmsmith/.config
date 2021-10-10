@@ -14,6 +14,8 @@ let g:SuperTabCrMapping = 1
 let g:SuperTabDefaultCompletionType = 'context'
 
 " Snippets
+let g:python_host_prog = "python"
+let g:python3_host_prog = "python3"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', 'UltiSnips']
