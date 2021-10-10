@@ -23,15 +23,54 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_set_keymap("n", "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", {noremap = true, silent = true})
 end
 
+local default_config = {
+  on_attach = on_attach
+}
+
+-- Source: https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#sumneko_lua
+-- local sumneko_root_path = vim.fn.stdpath("data").."/lspinstall/lua/"
+-- local sumneko_binary = sumneko_root_path.."/sumneko-lua-language-server"
+
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+local lua_config = {
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 local function setup_servers()
   lspinstall.setup()
   local servers = lspinstall.installed_servers()
   for _, server in pairs(servers) do
-    lspconfig[server].setup{
-      on_attach = on_attach
-    }
+    if (server == 'lua') then
+      lspconfig[server].setup(lua_config)
+    else
+      lspconfig[server].setup(default_config)
+    end
   end
 end
+setup_servers()
 
 lspinstall.post_install_hook = function ()
   setup_servers() -- reload installed servers
