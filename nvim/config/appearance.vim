@@ -30,6 +30,7 @@ set nocursorcolumn
 
 " Always draw gutter for gitgutter, signify, etc.
 set signcolumn=yes
+let g:gitgutter_sign_priority = 9
 
 " Don't redraw for macros
 set lazyredraw
