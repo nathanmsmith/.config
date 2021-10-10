@@ -115,6 +115,8 @@ local function setup_servers()
   end
 
   -- Other servers
+  lspconfig.sorbet.setup(default_config)
+
   lspconfig["null-ls"].setup({
     on_attach = function(client)
       if client.resolved_capabilities.document_formatting then

@@ -123,6 +123,7 @@ return require("packer").startup(function(use)
   -- }
 
   -- Ruby
+  use("vim-ruby/vim-ruby")
   use("tpope/vim-rails")
   use("tpope/vim-endwise")
   use("tpope/vim-rake")
