@@ -1,11 +1,11 @@
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   highlight = {
     enable = true,
     custom_captures = {
       ["css.prop"] = "cssProp",
       ["css.tag"] = "cssTagName",
       ["css.constant"] = "Constant",
-      ["css.class"] = "cssClassName"
+      ["css.class"] = "cssClassName",
     },
     disable = { "lua" },
   },
@@ -16,7 +16,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     disable = {},
     updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false -- Whether the query persists across vim sessions
+    persist_queries = false, -- Whether the query persists across vim sessions
   },
   textobjects = {
     move = {
@@ -48,8 +48,8 @@ require'nvim-treesitter.configs'.setup {
         ["ic"] = "@class.inner",
         ["ar"] = "@block.outer",
         ["ir"] = "@block.inner",
-      }
-    }
+      },
+    },
   },
   ensure_installed = {
     "query",
@@ -57,11 +57,14 @@ require'nvim-treesitter.configs'.setup {
     "html",
     "css",
     "javascript",
-    "typescript", "tsx",
-    "go", "gomod",
-    "c", "cpp",
+    "typescript",
+    "tsx",
+    "go",
+    "gomod",
+    "c",
+    "cpp",
     "java",
     "ruby",
     "python",
   },
-}
+})

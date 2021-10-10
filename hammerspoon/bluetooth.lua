@@ -1,5 +1,5 @@
 -- from https://gist.github.com/ysimonson/fea48ee8a68ed2cbac12473e87134f58
-require "string"
+require("string")
 
 function checkBluetoothResult(rc, stderr, stderr)
   if rc ~= 0 then
@@ -9,6 +9,6 @@ end
 
 function bluetooth(power)
   print("Setting bluetooth to " .. power)
-  local t = hs.task.new("/usr/local/bin/blueutil", checkBluetoothResult, {"--power", power})
+  local t = hs.task.new("/usr/local/bin/blueutil", checkBluetoothResult, { "--power", power })
   t:start()
 end

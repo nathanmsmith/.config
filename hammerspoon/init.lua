@@ -4,12 +4,12 @@ hs.loadSpoon("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
 
 -- Variable names, no they aren't garbage collected
-c = require('caffeine')
+c = require("caffeine")
 -- b = require('bluetooth')
-p = require('paste')
+p = require("paste")
 -- u = require('urls')
-f = require('focus')
-w = require('window-management')
+f = require("focus")
+w = require("window-management")
 
 -- Handle various willSleep/didWake actions.
 -- Uses functions from caffeine and bluetooth modules.

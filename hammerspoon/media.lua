@@ -21,4 +21,4 @@ function mediaKeyCallback(event)
   return delete, nil
 end
 
-hs.eventtap.new({hs.eventtap.event.types.NSSystemDefined}, mediaKeyCallback)
+hs.eventtap.new({ hs.eventtap.event.types.NSSystemDefined }, mediaKeyCallback)
