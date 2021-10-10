@@ -7,8 +7,6 @@
 
 " Put plugin managment first, as it handles installing packer.nvim for later files
 lua require('plugins')
-" lua require('completion')
-" source $HOME/.config/nvim/config/plugin-management.vim
 
 " Mostly vanilla Vim style tweaks
 source $HOME/.config/nvim/config/appearance.vim
