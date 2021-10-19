@@ -92,7 +92,7 @@ return require("packer").startup(function(use)
     -- ft = lsp_filetypes,
     -- config = function() require("lsp") end,
   })
-  use({ "kabouzeid/nvim-lspinstall" })
+  use({ "williamboman/nvim-lsp-installer" })
 
   -- Linting/Diagnostics
   use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" } })

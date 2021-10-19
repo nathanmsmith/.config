@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-local lspinstall = require("lspinstall")
+local lsp_installer = require("nvim-lsp-installer")
 local null_ls = require("null-ls")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -101,33 +101,33 @@ local no_format_config = {
   end,
 }
 
-local function setup_servers()
-  lspinstall.setup()
-  local servers = lspinstall.installed_servers()
-  for _, server in pairs(servers) do
-    if server == "lua" then
-      lspconfig[server].setup(lua_config)
-    elseif server == "typescript" or server == "html" then
-      lspconfig[server].setup(no_format_config)
-    else
-      lspconfig[server].setup(default_config)
-    end
+lsp_installer.settings({
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    }
+  },
+  allow_federated_servers = true,
+})
+lsp_installer.on_server_ready(function(server)
+  if server.name == "sumneko_lua" then
+    server:setup(lua_config)
+  elseif server.name == "tsserver" or server.name == "html"  then
+    server:setup(no_format_config)
+  else
+    server:setup(default_config)
   end
+  vim.cmd [[ do User LspAttachBuffers ]]
+end)
 
-  -- Other servers
-  lspconfig.sorbet.setup(default_config)
-
-  lspconfig["null-ls"].setup({
-    on_attach = function(client)
-      if client.resolved_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-      end
-    end,
-  })
-end
-setup_servers()
-
-lspinstall.post_install_hook = function()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+-- Non LspInstall server setup
+lspconfig.sorbet.setup(default_config)
+lspconfig["null-ls"].setup({
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    end
+  end,
+})
