@@ -35,6 +35,3 @@ Temporary Items
 # ctags
 tags
 
-# Stripe
-nvim/config/stripe.vim
-nvim/lua/stripe.lua
