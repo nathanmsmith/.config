@@ -140,6 +140,8 @@ return require("packer").startup(function(use)
 
   -- Handlebars
   use("mustache/vim-mustache-handlebars")
+  -- testing
+  use("justinmk/vim-sneak")
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
