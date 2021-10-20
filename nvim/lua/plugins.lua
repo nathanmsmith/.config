@@ -93,6 +93,8 @@ return require("packer").startup(function(use)
     -- config = function() require("lsp") end,
   })
   use({ "williamboman/nvim-lsp-installer" })
+  -- Rust extras
+  -- use({ "simrat39/rust-tools.nvim" })
 
   -- Linting/Diagnostics
   use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" } })
@@ -129,9 +131,6 @@ return require("packer").startup(function(use)
   use("tpope/vim-rake")
   use("tpope/vim-bundler")
 
-  -- Go
-  use({ "fatih/vim-go", run = ":GoUpdateBinaries" })
-
   -- Terraform
   use("hashivim/vim-terraform")
 
@@ -140,6 +139,9 @@ return require("packer").startup(function(use)
 
   -- Handlebars
   use("mustache/vim-mustache-handlebars")
+  -- TOML
+  use("cespare/vim-toml")
+
   -- testing
   use("justinmk/vim-sneak")
 
