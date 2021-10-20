@@ -24,7 +24,7 @@ return require("packer").startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Color theme
-  use("~/Developer/vim-packages/night-owl.vim")
+  use("nathanmsmith/night-owl.vim")
 
   -- Git
   use("tpope/vim-fugitive")
