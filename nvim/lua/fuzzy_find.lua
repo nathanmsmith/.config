@@ -5,9 +5,7 @@ require("telescope").setup({
         ["<esc>"] = require("telescope.actions").close,
       },
     },
-    -- generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
-    -- file_sorter =  require'telescope.sorters'.get_fzy_sorter,
-    file_ignore_patterns = { ".git" },
+    file_ignore_patterns = { ".git$" },
 
     -- Theme
     sorting_strategy = "ascending",
@@ -57,7 +55,13 @@ vim.api.nvim_set_keymap(
 )
 vim.api.nvim_set_keymap(
   "n",
-  "<leader>g",
+  "<leader>P",
+  [[<cmd>lua require('telescope.builtin').find_files({no_ignore = true})<cr>]],
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>f",
   [[<cmd>lua require('telescope.builtin').live_grep()<cr>]],
   { noremap = true, silent = true }
 )
