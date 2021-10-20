@@ -144,9 +144,6 @@ return require("packer").startup(function(use)
   -- TOML
   use("cespare/vim-toml")
 
-  -- testing
-  use("justinmk/vim-sneak")
-
   if helpers.isModuleAvailable("stripe") then
     require("stripe").loadPlugins(use)
   end
