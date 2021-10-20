@@ -1,3 +1,5 @@
+#!/usr/bin/env fish
+
 # Abbreviations
 # See https://github.com/fish-shell/fish-shell/issues/1976#issuecomment-168698602
 # if not set -q abbr_initialized
@@ -115,8 +117,11 @@ set -Ux SAM_CLI_TELEMETRY 0
 set -Ux HOMEBREW_NO_INSECURE_REDIRECT 1
 set -Ux HOMEBREW_CASK_OPTS --require-sha
 set -Ux HOMEBREW_NO_ANALYTICS 1
+set -Ux HOMEBREW_NO_AUTO_UPDATE 1
+
 # FZF
 set -Ux FZF_DEFAULT_COMMAND 'rg -g !.git/ --files --hidden'
+set -Ux FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
 
 # XDG CONFIG
 set -Ux XDG_CONFIG_HOME $HOME/.config

@@ -1,3 +1,4 @@
+local helpers = require('custom-helpers')
 local lspconfig = require("lspconfig")
 local lsp_installer = require("nvim-lsp-installer")
 local null_ls = require("null-ls")
@@ -21,7 +22,7 @@ null_ls.config({
     null_ls.builtins.formatting.trim_whitespace,
 
     -- Lua
-    null_ls.builtins.formatting.stylua,
+    -- null_ls.builtins.formatting.stylua,
 
     -- Rust
     -- (Rustfmt not needed, auto handled by rust_analyzer)
@@ -127,7 +128,11 @@ lsp_installer.on_server_ready(function(server)
 end)
 
 -- Non LspInstall server setup
-lspconfig.sorbet.setup(default_config)
+if helpers.isModuleAvailable("stripe") then
+  require("stripe").initSorbet()
+else
+  lspconfig.sorbet.setup(default_config)
+end
 lspconfig["null-ls"].setup({
   on_attach = function(client)
     if client.resolved_capabilities.document_formatting then

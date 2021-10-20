@@ -8,6 +8,12 @@
 " Put plugin managment first, as it handles installing packer.nvim for later files
 lua require('plugins')
 
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
 " Mostly vanilla Vim style tweaks
 source $HOME/.config/nvim/config/appearance.vim
 source $HOME/.config/nvim/config/navigation.vim
@@ -25,6 +31,7 @@ source $HOME/.config/nvim/config/completion.vim
 
 lua require('fuzzy_find')
 source $HOME/.config/nvim/config/lsp.vim
+call SourceIfExists('~/.config/nvim/config/stripe.vim')
 
 " Beta features
 lua require('treesitter')
