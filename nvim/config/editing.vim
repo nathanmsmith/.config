@@ -85,3 +85,6 @@ augroup external
   " Open images in an image viewer (probably Preview)
   autocmd BufEnter *.png,*.jpg,*.gif exec "silent !open ".expand("%") | :bw
 augroup END
+
+" Wordmotion spaces
+let g:wordmotion_spaces = ['\w\@<=-\w\@=', '\w\@<=_\w\@=', '\.', ':']
