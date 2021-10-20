@@ -53,7 +53,6 @@ require("nvim-treesitter.configs").setup({
   },
   ensure_installed = {
     "query",
-    "fish",
     "html",
     "css",
     "javascript",
@@ -66,5 +65,6 @@ require("nvim-treesitter.configs").setup({
     "java",
     "ruby",
     "python",
+    "rust",
   },
 })
