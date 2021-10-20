@@ -23,6 +23,10 @@ null_ls.config({
     -- Lua
     null_ls.builtins.formatting.stylua,
 
+    -- Rust
+    -- (Rustfmt not needed, auto handled by rust_analyzer)
+    -- null_ls.builtins.formatting.rustfmt,
+
     -- Ruby
     null_ls.builtins.diagnostics.rubocop,
     null_ls.builtins.formatting.rubocop,
@@ -106,20 +110,20 @@ lsp_installer.settings({
     icons = {
       server_installed = "✓",
       server_pending = "➜",
-      server_uninstalled = "✗"
-    }
+      server_uninstalled = "✗",
+    },
   },
   allow_federated_servers = true,
 })
 lsp_installer.on_server_ready(function(server)
   if server.name == "sumneko_lua" then
     server:setup(lua_config)
-  elseif server.name == "tsserver" or server.name == "html"  then
+  elseif server.name == "tsserver" or server.name == "html" then
     server:setup(no_format_config)
   else
     server:setup(default_config)
   end
-  vim.cmd [[ do User LspAttachBuffers ]]
+  vim.cmd([[ do User LspAttachBuffers ]])
 end)
 
 -- Non LspInstall server setup
