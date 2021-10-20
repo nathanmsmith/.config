@@ -1,5 +1,3 @@
-#!/opt/homebrew/bin/fish
-
 # Abbreviations
 # See https://github.com/fish-shell/fish-shell/issues/1976#issuecomment-168698602
 # if not set -q abbr_initialized
