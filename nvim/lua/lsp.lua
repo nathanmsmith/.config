@@ -15,29 +15,6 @@ require("trouble").setup({
   use_lsp_diagnostic_signs = true,
 })
 
--- null-ls setup
-null_ls.config({
-  sources = {
-    -- All
-    null_ls.builtins.formatting.trim_whitespace,
-
-    -- Lua
-    -- null_ls.builtins.formatting.stylua,
-
-    -- Rust
-    -- (Rustfmt not needed, auto handled by rust_analyzer)
-    -- null_ls.builtins.formatting.rustfmt,
-
-    -- Ruby
-    null_ls.builtins.diagnostics.rubocop,
-    null_ls.builtins.formatting.rubocop,
-
-    -- JavaScript, etc.
-    null_ls.builtins.diagnostics.eslint_d,
-    null_ls.builtins.formatting.prettier,
-  },
-})
-
 -- Define signs
 local signs = { Error = ">>", Warn = "--", Hint = "?", Info = "i" }
 for type, icon in pairs(signs) do
@@ -129,9 +106,35 @@ end)
 
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then
-  require("stripe").initSorbet()
+  local stripe = require("stripe")
+  stripe.initSorbet(on_attach)
+  stripe.initFlow(on_attach)
+  stripe.initLinters()
 else
   lspconfig.sorbet.setup(default_config)
+
+  -- null-ls config
+  null_ls.config({
+    sources = {
+      -- All
+      null_ls.builtins.formatting.trim_whitespace,
+
+      -- Lua
+      null_ls.builtins.formatting.stylua,
+
+      -- Rust
+      -- (Rustfmt not needed, auto handled by rust_analyzer)
+      -- null_ls.builtins.formatting.rustfmt,
+
+      -- Ruby
+      null_ls.builtins.diagnostics.rubocop,
+      null_ls.builtins.formatting.rubocop,
+
+      -- JavaScript, etc.
+      null_ls.builtins.diagnostics.eslint_d,
+      null_ls.builtins.formatting.prettierd,
+    },
+  })
 end
 lspconfig["null-ls"].setup({
   on_attach = function(client)
