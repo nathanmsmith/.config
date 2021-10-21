@@ -119,6 +119,12 @@ set -Ux HOMEBREW_CASK_OPTS --require-sha
 set -Ux HOMEBREW_NO_ANALYTICS 1
 set -Ux HOMEBREW_NO_AUTO_UPDATE 1
 
+# Prettierd
+set -Ux PRETTIERD_LOCAL_PRETTIER_ONLY 1
+
+# Go
+set -Ux GOPATH $HOME/Developer/go
+
 # FZF
 set -Ux FZF_DEFAULT_COMMAND 'rg -g !.git/ --files --hidden'
 set -Ux FZF_DEFAULT_OPTS '--height 40% --layout=reverse --border'
@@ -130,3 +136,7 @@ set -Ux IRBRC "$XDG_CONFIG_HOME"/irb/irbrc
 
 # For Rails projects so that they don't get confused locally
 set -Ux DD_TRACE_ENABLED false
+
+if test -e ~/.config/fish/stripe-setup.fish
+  source ~/.config/fish/stripe-setup.fish
+end

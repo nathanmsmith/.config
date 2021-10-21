@@ -19,15 +19,22 @@ if status --is-login; and status --is-interactive
   set -x PATH /opt/homebrew/opt/llvm/bin $PATH
   # Ruby
   # set -x PATH /opt/homebrew/lib/ruby/gems/2.7.0/bin /opt/homebrew/opt/ruby/bin $PATH
-  set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=/opt/homebrew/opt/openssl@1.1 --with-readline-dir=/opt/homebrew/opt/readline"
+  # set -x RUBY_CONFIGURE_OPTS "--with-openssl-dir=/opt/homebrew/opt/openssl@1.1 --with-readline-dir=/opt/homebrew/opt/readline"
 
   # set -gx LDFLAGS "-L/opt/homebrew/opt/ruby/lib"
   # set -gx CPPFLAGS "-I/opt/homebrew/opt/ruby/include"
+
   # Rust
-  set -x PATH $HOME/.cargo/bin $PATH
+  set -x PATH $CARGO_HOME/bin $PATH
+
   # Go
-  set -x GOPATH $HOME/Developer/go
   set -x PATH $GOPATH/bin $PATH
+
+  if test -e ~/.config/fish/stripe-config.fish
+    source ~/.config/fish/stripe-config.fish
+  end
 end
 
 status --is-interactive; and source (rbenv init -|psub)
+status --is-interactive; and source (nodenv init -|psub)
+test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
