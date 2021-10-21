@@ -43,6 +43,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-rsi")
   use("tpope/vim-abolish")
   use("tpope/vim-sleuth")
+  use("tpope/vim-projectionist")
   use("AndrewRadev/splitjoin.vim")
 
   -- Completion
