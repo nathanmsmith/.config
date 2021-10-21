@@ -11,7 +11,7 @@ let g:SuperTabCrMapping = 1
 
 " Use context completion. See *supertab-defaultcompletion*.
 " Chaining unfortunately doesn't work with v:lua
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+" let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
 
 " Snippets
 let g:python_host_prog = "python"
