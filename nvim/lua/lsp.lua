@@ -1,4 +1,4 @@
-local helpers = require('custom-helpers')
+local helpers = require("custom-helpers")
 local lspconfig = require("lspconfig")
 local lsp_installer = require("nvim-lsp-installer")
 local null_ls = require("null-ls")
@@ -128,7 +128,9 @@ else
 
       -- Ruby
       null_ls.builtins.diagnostics.rubocop,
-      null_ls.builtins.formatting.rubocop,
+      null_ls.builtins.formatting.rubocop.with({
+        args = { "--auto-correct-all", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
+      }),
 
       -- JavaScript, etc.
       null_ls.builtins.diagnostics.eslint_d,
