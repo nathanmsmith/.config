@@ -44,7 +44,7 @@ set nospell
 set ignorecase
 set smartcase
 " Clear search buffer on return
-nnoremap <silent> <CR> :nohlsearch<CR>
+" nnoremap <silent> <CR> :nohlsearch<CR>
 " Search selection is visual mode
 
 "" Replacing
