@@ -1,4 +1,4 @@
-local helpers = require('custom-helpers')
+local helpers = require("custom-helpers")
 
 -- Bootstrap Packer
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -58,6 +58,9 @@ return require("packer").startup(function(use)
   -- Tim Pope Extensions
   use("tpope/vim-eunuch")
   use("tpope/vim-vinegar")
+
+  -- Autohide search highlighting on move
+  use("romainl/vim-cool")
 
   -- Show Marks
   use("kshenoy/vim-signature")
