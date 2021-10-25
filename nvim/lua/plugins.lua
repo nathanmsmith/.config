@@ -129,10 +129,7 @@ return require("packer").startup(function(use)
 
   -- Ruby
   use("vim-ruby/vim-ruby")
-  use("tpope/vim-rails")
   use("tpope/vim-endwise")
-  use("tpope/vim-rake")
-  use("tpope/vim-bundler")
 
   -- Terraform
   use("hashivim/vim-terraform")
@@ -147,6 +144,10 @@ return require("packer").startup(function(use)
 
   if helpers.isModuleAvailable("stripe") then
     require("stripe").loadPlugins(use)
+  else
+    use("tpope/vim-rails")
+    use("tpope/vim-rake")
+    use("tpope/vim-bundler")
   end
 
   -- Automatically set up your configuration after cloning packer.nvim
