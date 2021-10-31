@@ -125,6 +125,7 @@ return require("packer").startup(function(use)
     branch = "0.5-compat",
     -- ft = ts_filetypes,
   })
+  use("JoosepAlviste/nvim-ts-context-commentstring")
   -- use {
   --   'nvim-treesitter/playground',
   --   -- ft = ts_filetypes,

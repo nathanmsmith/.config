@@ -99,6 +99,14 @@ lsp_installer.on_server_ready(function(server)
     server:setup(lua_config)
   elseif server.name == "tsserver" or server.name == "html" or server.name == "jsonls" then
     server:setup(no_format_config)
+  elseif server.name == "cssls" then
+    server:setup({
+      settings = {
+        css = {
+          validate = false,
+        },
+      },
+    })
   else
     server:setup(default_config)
   end
