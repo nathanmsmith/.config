@@ -38,6 +38,7 @@ local on_attach = function(client, bufnr)
     noremap = true,
     silent = true,
   })
+  vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 end
 
 local default_config = {
@@ -96,7 +97,7 @@ lsp_installer.settings({
 lsp_installer.on_server_ready(function(server)
   if server.name == "sumneko_lua" then
     server:setup(lua_config)
-  elseif server.name == "tsserver" or server.name == "html" then
+  elseif server.name == "tsserver" or server.name == "html" or server.name == "jsonls" then
     server:setup(no_format_config)
   else
     server:setup(default_config)

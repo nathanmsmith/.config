@@ -1,7 +1,4 @@
 " Vim-native completion
-
-set omnifunc=v:lua.vim.lsp.omnifunc
-
 " Ignore tags for completion by default
 set complete-=t
 set completeopt=menu
@@ -12,6 +9,7 @@ let g:SuperTabCrMapping = 1
 " Use context completion. See *supertab-defaultcompletion*.
 " Chaining unfortunately doesn't work with v:lua
 " let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+let g:SuperTabDefaultCompletionType = "context"
 
 " Snippets
 let g:python_host_prog = "python"
