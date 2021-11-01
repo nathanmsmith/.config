@@ -46,6 +46,18 @@ return require("packer").startup(function(use)
   use("tpope/vim-projectionist")
   use("AndrewRadev/splitjoin.vim")
 
+  -- Suggestions
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      require("which-key").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  })
+
   -- Completion
   -- TODO: nvim-compe is cool and hip, but doesn't seem to work great with Ultisnips.
   -- I could be missing something...
@@ -126,10 +138,10 @@ return require("packer").startup(function(use)
     -- ft = ts_filetypes,
   })
   use("JoosepAlviste/nvim-ts-context-commentstring")
-  -- use {
-  --   'nvim-treesitter/playground',
+  use {
+    'nvim-treesitter/playground',
   --   -- ft = ts_filetypes,
-  -- }
+  }
 
   -- Ruby
   use("vim-ruby/vim-ruby")
