@@ -99,4 +99,4 @@
 	extendedRegexp = true
 [help]
 	# Automatically correct and execute mistyped commands such as `git stauts`
-	autocorrect = 1
+	autocorrect = prompt

@@ -115,26 +115,7 @@ end)
 
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then
-  require("lspconfig_stripe")
-  lspconfig.payserver_flow.setup(default_config)
-  lspconfig.payserver_sorbet.setup(default_config)
-
-  local nullls_stripe = require('lspconfig_stripe/null_ls')
-  null_ls.config({
-    sources = {
-      -- All
-      null_ls.builtins.formatting.trim_whitespace,
-
-      -- Ruby
-      nullls_stripe.diagnostics.rubocop,
-
-      -- JavaScript, etc.
-      nullls_stripe.diagnostics.eslint_d,
-      nullls_stripe.formatting.eslint_d,
-      nullls_stripe.formatting.prettierd,
-    },
-  })
-
+  require("stripe").initServers(no_format_config.on_attach)
 else
   lspconfig.sorbet.setup(default_config)
 
