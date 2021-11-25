@@ -118,6 +118,7 @@ if helpers.isModuleAvailable("stripe") then
   require("stripe").initServers(no_format_config.on_attach)
 else
   lspconfig.sorbet.setup(default_config)
+  lspconfig.gopls.setup(no_format_config)
 
   -- null-ls config
   null_ls.config({
@@ -127,6 +128,9 @@ else
 
       -- Lua
       null_ls.builtins.formatting.stylua,
+
+      -- Go
+      null_ls.builtins.formatting.goimports,
 
       -- Rust
       -- (Rustfmt not needed, auto handled by rust_analyzer)

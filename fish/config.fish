@@ -29,6 +29,7 @@ if status --is-login; and status --is-interactive
   set -x PATH $CARGO_HOME/bin $PATH
 
   # Go
+  set -x GOPATH $HOME/Developer/go
   set -x PATH $GOPATH/bin $PATH
 
   if test -e ~/.config/fish/stripe-config.fish
