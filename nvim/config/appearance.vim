@@ -40,10 +40,6 @@ set lazyredraw
 " Don't set foldmethod=syntax
 set foldlevelstart=99
 
-" Show clipboards and macros
-let g:peekaboo_delay = 500
-let g:peekaboo_compact = 1
-
 " Colorize
 if has('nvim')
   lua require 'colorizer'.setup(nil, { css = true; })

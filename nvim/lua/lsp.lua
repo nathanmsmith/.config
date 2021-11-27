@@ -3,6 +3,11 @@ local lspconfig = require("lspconfig")
 local lsp_installer = require("nvim-lsp-installer")
 local null_ls = require("null-ls")
 
+vim.lsp.set_log_level("debug")
+
+local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = true,
   signs = true,
@@ -42,6 +47,7 @@ local on_attach = function(client, bufnr)
 end
 
 local default_config = {
+  capabilities = capabilities,
   on_attach = on_attach,
 }
 
@@ -53,6 +59,7 @@ local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 local lua_config = {
+  capabilities = capabilities,
   on_attach = on_attach,
   settings = {
     Lua = {
@@ -77,6 +84,7 @@ local lua_config = {
   },
 }
 local no_format_config = {
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = false
@@ -117,6 +125,8 @@ end)
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initServers(no_format_config.on_attach)
 else
+  lspconfig.html.setup(no_format_config)
+  lspconfig.cssls.setup(no_format_config)
   lspconfig.sorbet.setup(default_config)
   lspconfig.gopls.setup(no_format_config)
 

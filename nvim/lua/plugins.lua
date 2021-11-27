@@ -50,19 +50,23 @@ return require("packer").startup(function(use)
   use({
     "folke/which-key.nvim",
     config = function()
-      require("which-key").setup {
+      require("which-key").setup({
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
-      }
-    end
+      })
+    end,
   })
 
   -- Completion
-  -- TODO: nvim-compe is cool and hip, but doesn't seem to work great with Ultisnips.
-  -- I could be missing something...
-  -- use 'hrsh7th/nvim-compe'
-  use("ervandew/supertab")
+  use("hrsh7th/cmp-nvim-lsp")
+  use("hrsh7th/cmp-buffer")
+  use("hrsh7th/cmp-path")
+  use("hrsh7th/cmp-cmdline")
+  use("quangnguyen30192/cmp-nvim-ultisnips")
+  use("hrsh7th/nvim-cmp")
+  use("onsails/lspkind-nvim")
+  -- use("ervandew/supertab")
 
   -- Snippets
   use("SirVer/ultisnips")
@@ -76,9 +80,6 @@ return require("packer").startup(function(use)
 
   -- Show Marks
   use("kshenoy/vim-signature")
-
-  -- Show Buffers
-  use("junegunn/vim-peekaboo")
 
   -- Search selection with *
   use("nelstrom/vim-visual-star-search")
@@ -138,14 +139,14 @@ return require("packer").startup(function(use)
     -- ft = ts_filetypes,
   })
   use("JoosepAlviste/nvim-ts-context-commentstring")
-  use {
-    'nvim-treesitter/playground',
-  --   -- ft = ts_filetypes,
-  }
+  use({
+    "nvim-treesitter/playground",
+    --   -- ft = ts_filetypes,
+  })
 
   -- Ruby
   use("vim-ruby/vim-ruby")
-  use("tpope/vim-endwise")
+  -- use("tpope/vim-endwise")
 
   -- Terraform
   use("hashivim/vim-terraform")
