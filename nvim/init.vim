@@ -25,7 +25,6 @@ source $HOME/.config/nvim/config/custom-commands.vim
 
 " Various feature extensions
 set shell=/usr/bin/env\ bash
-source $HOME/.config/nvim/config/linting.vim
 source $HOME/.config/nvim/config/testing.vim
 source $HOME/.config/nvim/config/searching.vim
 source $HOME/.config/nvim/config/completion.vim

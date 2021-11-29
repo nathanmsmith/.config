@@ -39,6 +39,9 @@ vim.api.nvim_set_var("projectionist_heuristics", {
       ["type"] = "source",
     },
   },
+  ["*.css"] = {
+    ["type"] = "css",
+  },
   ["*.c|*.h|*.cpp|*.hpp"] = {
     ["*.c"] = { ["alternate"] = { "{}.h" } },
     ["*.cpp"] = { ["alternate"] = { "{}.h", "{}.hpp" } },
