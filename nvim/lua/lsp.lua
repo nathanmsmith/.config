@@ -141,6 +141,7 @@ else
 
       -- Go
       null_ls.builtins.formatting.goimports,
+      null_ls.builtins.diagnostics.golangci_lint,
 
       -- Rust
       -- (Rustfmt not needed, auto handled by rust_analyzer)
