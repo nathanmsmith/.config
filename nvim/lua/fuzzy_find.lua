@@ -7,6 +7,8 @@ require("telescope").setup({
     },
     file_ignore_patterns = { "^.git/" },
 
+    path_display = {shorten = { len = 2, exclude = {1, 2, -1} }, truncate = 3},
+    -- path_display.truncate = 3,
     -- Theme
     sorting_strategy = "ascending",
     layout_strategy = "center",

@@ -7,7 +7,6 @@ require("nvim-treesitter.configs").setup({
       ["css.constant"] = "Constant",
       ["css.class"] = "cssClassName",
     },
-    disable = { "lua" },
   },
   indent = {
     enable = true,

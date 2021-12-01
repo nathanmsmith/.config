@@ -127,21 +127,16 @@ return require("packer").startup(function(use)
   use({
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
-    -- ft = ts_filetypes,
     config = function()
       require("treesitter")
     end,
-    branch = "0.5-compat",
   })
   use({
     "nvim-treesitter/nvim-treesitter-textobjects",
-    branch = "0.5-compat",
-    -- ft = ts_filetypes,
   })
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use({
     "nvim-treesitter/playground",
-    --   -- ft = ts_filetypes,
   })
 
   -- Ruby
