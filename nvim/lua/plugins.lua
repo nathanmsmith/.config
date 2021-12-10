@@ -139,6 +139,9 @@ return require("packer").startup(function(use)
     "nvim-treesitter/playground",
   })
 
+  -- Better use of %
+  use("andymass/vim-matchup")
+
   -- Ruby
   use("vim-ruby/vim-ruby")
   -- use("tpope/vim-endwise")

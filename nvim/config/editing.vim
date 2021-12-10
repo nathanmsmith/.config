@@ -88,3 +88,6 @@ augroup END
 
 " Wordmotion spaces
 let g:wordmotion_spaces = ['\w\@<=-\w\@=', '\w\@<=_\w\@=', '\.', ':']
+
+" cs%, etc
+let g:matchup_surround_enabled = 1

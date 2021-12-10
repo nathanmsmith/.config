@@ -11,6 +11,9 @@ require("nvim-treesitter.configs").setup({
   indent = {
     enable = true,
   },
+  matchup = {
+    enable = true,              -- mandatory, false will disable the whole extension
+  },
   context_commentstring = {
     enable = true,
   },
