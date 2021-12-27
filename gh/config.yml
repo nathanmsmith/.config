@@ -9,3 +9,4 @@ pager: less
 # Aliases allow you to create nicknames for gh commands
 aliases:
     co: pr checkout
+http_unix_socket: /Users/nms/.stripeproxy

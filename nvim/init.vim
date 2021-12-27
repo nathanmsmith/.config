@@ -22,6 +22,8 @@ source $HOME/.config/nvim/config/navigation.vim
 source $HOME/.config/nvim/config/editing.vim
 source $HOME/.config/nvim/config/statusline.vim
 
+let g:netrw_localrmdir='rm -r'
+
 " Custom commands
 source $HOME/.config/nvim/config/custom-commands.vim
 

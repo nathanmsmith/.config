@@ -17,7 +17,7 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "m", function()
 end)
 -- c for "chat"
 hs.hotkey.bind({ "ctrl", "cmd" }, "c", function()
-  hs.application.launchOrFocus("Messages")
+  hs.application.launchOrFocus("Slack")
 end)
 
 -- Hints
