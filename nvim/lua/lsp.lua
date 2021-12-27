@@ -17,7 +17,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
 
 require("trouble").setup({
   icons = false,
-  use_lsp_diagnostic_signs = true,
+  use_diagnostic_signs = true,
 })
 
 -- Define signs
@@ -131,7 +131,7 @@ else
   lspconfig.gopls.setup(no_format_config)
 
   -- null-ls config
-  null_ls.config({
+  null_ls.setup({
     sources = {
       -- All
       null_ls.builtins.formatting.trim_whitespace,
