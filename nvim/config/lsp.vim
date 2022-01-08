@@ -5,9 +5,9 @@ command! LspInstalled lua print(vim.inspect(require('lspinstall').installed_serv
 " LSP config, in lua
 lua require("lsp")
 
-nmap <silent> [w :lua vim.lsp.diagnostic.goto_prev()<CR>
-nmap <silent> ]w :lua vim.lsp.diagnostic.goto_next()<CR>
-autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+nmap <silent> [w :lua vim.diagnostic.goto_prev()<CR>
+nmap <silent> ]w :lua vim.diagnostic.goto_next()<CR>
+autocmd CursorHold * lua vim.diagnostic.open_float({source = "if_many"})
 
 " Show errors after 1 second
 set updatetime=1000
