@@ -126,12 +126,25 @@ if helpers.isModuleAvailable("stripe") then
   require("stripe").initServers(no_format_config.on_attach)
 else
   lspconfig.html.setup(no_format_config)
-  lspconfig.cssls.setup(no_format_config)
+  lspconfig.cssls.setup({
+    capabilities = capabilities,
+    on_attach = function(client, bufnr)
+      on_attach(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+    end,
+    settings = {
+      css = {
+        validate = false,
+      },
+    },
+  })
   lspconfig.sorbet.setup(default_config)
   lspconfig.gopls.setup(no_format_config)
 
   -- null-ls config
   null_ls.setup({
+    debug = true,
     sources = {
       -- All
       null_ls.builtins.formatting.trim_whitespace,
