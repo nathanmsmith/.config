@@ -105,10 +105,18 @@ lsp_installer.settings({
 lsp_installer.on_server_ready(function(server)
   if server.name == "sumneko_lua" then
     server:setup(lua_config)
-  elseif server.name == "tsserver" or server.name == "html" or server.name == "jsonls" then
+  elseif server.name == "tsserver" or server.name == "jsonls" then
+    server:setup(no_format_config)
+  elseif server.name == "html" then
     server:setup(no_format_config)
   elseif server.name == "cssls" then
     server:setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+      end,
       settings = {
         css = {
           validate = false,
@@ -125,26 +133,18 @@ end)
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initServers(no_format_config.on_attach)
 else
-  lspconfig.html.setup(no_format_config)
-  lspconfig.cssls.setup({
-    capabilities = capabilities,
-    on_attach = function(client, bufnr)
-      on_attach(client, bufnr)
-      client.resolved_capabilities.document_formatting = false
-      client.resolved_capabilities.document_range_formatting = false
-    end,
-    settings = {
-      css = {
-        validate = false,
-      },
-    },
-  })
+  -- lspconfig.html.setup(no_format_config)
   lspconfig.sorbet.setup(default_config)
   lspconfig.gopls.setup(no_format_config)
 
   -- null-ls config
   null_ls.setup({
     debug = true,
+    on_attach = function(client)
+      if client.resolved_capabilities.document_formatting then
+        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
+      end
+    end,
     sources = {
       -- All
       null_ls.builtins.formatting.trim_whitespace,
@@ -160,6 +160,24 @@ else
       -- (Rustfmt not needed, auto handled by rust_analyzer)
       -- null_ls.builtins.formatting.rustfmt,
 
+      -- local conditional = function(fn)
+      --     local utils = require("null-ls.utils").make_conditional_utils()
+      --     return fn(utils)
+      -- end
+
+      -- null_ls.setup({
+      --     sources = {
+      --         conditional(function(utils)
+      --             return utils.root_has_file("Gemfile")
+      --                     and null_ls.builtins.formatting.rubocop.with({
+      --                         command = "bundle",
+      --                         args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.formatting.rubocop._opts.args),
+      --                     })
+      --                 or null_ls.builtins.formatting.rubocop
+      --         end),
+      --     },
+      -- })
+
       -- Ruby
       null_ls.builtins.diagnostics.rubocop,
       null_ls.builtins.formatting.rubocop.with({
@@ -167,15 +185,10 @@ else
       }),
 
       -- JavaScript, etc.
-      null_ls.builtins.diagnostics.eslint_d,
-      null_ls.builtins.formatting.prettierd,
+      -- null_ls.builtins.diagnostics.eslint_d,
+      null_ls.builtins.formatting.prettier.with({
+        only_local = "node_modules/.bin",
+      }),
     },
   })
 end
-lspconfig["null-ls"].setup({
-  on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    end
-  end,
-})
