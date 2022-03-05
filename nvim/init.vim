@@ -33,6 +33,23 @@ source $HOME/.config/nvim/config/testing.vim
 source $HOME/.config/nvim/config/searching.vim
 source $HOME/.config/nvim/config/completion.vim
 
+lua require('globals')
+
+if !exists('*SaveAndExec')
+  function! SaveAndExec() abort
+    if &filetype == 'vim'
+      :silent! write
+      :source %
+    elseif &filetype == 'lua'
+      :silent! write
+      :luafile %
+    endif
+    return
+  endfunction
+end
+" Execute this file
+nnoremap <leader>x :call SaveAndExec()<CR>
+
 lua require('fuzzy_find')
 source $HOME/.config/nvim/config/lsp.vim
 call SourceIfExists('~/.config/nvim/config/stripe.vim')
