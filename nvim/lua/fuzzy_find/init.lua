@@ -1,5 +1,6 @@
 require("telescope").setup({
   defaults = {
+    file_sorter = require("fuzzy_find.custom").frecency_sorter,
     mappings = {
       i = {
         ["<esc>"] = require("telescope.actions").close,
@@ -46,12 +47,13 @@ require("telescope").setup({
   },
 })
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("frecency")
 
 --Add leader shortcuts
 vim.api.nvim_set_keymap(
   "n",
   "<leader>p",
-  [[<cmd>lua require('telescope_custom').project_files()<cr>]],
+  [[<cmd>lua require('fuzzy_find.custom').project_files()<cr>]],
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
