@@ -27,6 +27,8 @@ gatsby/sites/
 
 .netrwhist
 
+stripe/
+
 # Stripe
 nvim/config/stripe.vim
 nvim/lua/stripe.lua
