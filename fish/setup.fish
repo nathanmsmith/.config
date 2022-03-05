@@ -111,6 +111,7 @@ set -U fish_greeting
 
 # Application configuration
 # -------------------------
+set -Ux EDITOR nvim
 # AWS SAM
 set -Ux SAM_CLI_TELEMETRY 0
 # Homebrew

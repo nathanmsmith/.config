@@ -36,3 +36,6 @@ set path+=.,,
 " map F <Plug>Sneak_F
 " map t <Plug>Sneak_t
 " map T <Plug>Sneak_T
+
+" hide files in netrw
+let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'

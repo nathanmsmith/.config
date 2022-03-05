@@ -7,8 +7,6 @@ require("telescope").setup({
     },
     file_ignore_patterns = { "^.git/" },
 
-    -- path_display = {shorten = { len = 2, exclude = {1, 2, -1} }, truncate = 3},
-    -- path_display.truncate = 3,
     -- Theme
     sorting_strategy = "ascending",
     layout_strategy = "center",
@@ -35,6 +33,7 @@ require("telescope").setup({
   pickers = {
     find_files = {
       hidden = true,
+      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
     },
   },
   extensions = {
@@ -52,7 +51,7 @@ require("telescope").load_extension("fzf")
 vim.api.nvim_set_keymap(
   "n",
   "<leader>p",
-  [[<cmd>lua require('telescope.builtin').find_files()<cr>]],
+  [[<cmd>lua require('telescope_custom').project_files()<cr>]],
   { noremap = true, silent = true }
 )
 vim.api.nvim_set_keymap(
