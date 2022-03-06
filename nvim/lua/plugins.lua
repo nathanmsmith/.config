@@ -143,6 +143,9 @@ return require("packer").startup(function(use)
     "nvim-treesitter/playground",
   })
 
+  -- Maximize current split
+  use("szw/vim-maximizer")
+
   -- Better use of %
   use("andymass/vim-matchup")
 
