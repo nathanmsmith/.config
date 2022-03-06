@@ -49,8 +49,6 @@ augroup windows
   autocmd!
   " Evenly resize windows on terminal screen change.
   autocmd VimResized * :wincmd =
-  " Split help windows vertically, on the right.
-  autocmd FileType help wincmd L
 augroup END
 
 " Reset the cursor on exit
