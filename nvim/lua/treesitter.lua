@@ -8,11 +8,12 @@ require("nvim-treesitter.configs").setup({
       ["css.class"] = "cssClassName",
     },
   },
+  autotag = { enable = true },
   indent = {
     enable = true,
   },
   matchup = {
-    enable = true,              -- mandatory, false will disable the whole extension
+    enable = true, -- mandatory, false will disable the whole extension
   },
   context_commentstring = {
     enable = true,

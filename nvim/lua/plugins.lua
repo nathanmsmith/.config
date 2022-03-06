@@ -139,6 +139,7 @@ return require("packer").startup(function(use)
     "nvim-treesitter/nvim-treesitter-textobjects",
   })
   use("JoosepAlviste/nvim-ts-context-commentstring")
+  use("windwp/nvim-ts-autotag")
   use({
     "nvim-treesitter/playground",
   })
@@ -151,7 +152,6 @@ return require("packer").startup(function(use)
 
   -- Ruby
   use("vim-ruby/vim-ruby")
-  -- use("tpope/vim-endwise")
 
   -- Terraform
   use("hashivim/vim-terraform")
