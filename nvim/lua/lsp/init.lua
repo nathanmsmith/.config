@@ -1,7 +1,6 @@
 local helpers = require("custom-helpers")
 local lspconfig = require("lspconfig")
 local lsp_installer = require("nvim-lsp-installer")
-local null_ls = require("null-ls")
 
 vim.lsp.set_log_level("debug")
 
@@ -12,7 +11,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagn
   virtual_text = true,
   signs = true,
   underline = true,
-  update_in_insert = true,
+  update_in_insert = false,
 })
 
 require("trouble").setup({
@@ -138,57 +137,5 @@ else
   lspconfig.gopls.setup(no_format_config)
 
   -- null-ls config
-  null_ls.setup({
-    debug = true,
-    on_attach = function(client)
-      if client.resolved_capabilities.document_formatting then
-        vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 2000)")
-      end
-    end,
-    sources = {
-      -- All
-      null_ls.builtins.formatting.trim_whitespace,
-
-      -- Lua
-      null_ls.builtins.formatting.stylua,
-
-      -- Go
-      null_ls.builtins.formatting.goimports,
-      null_ls.builtins.diagnostics.golangci_lint,
-
-      -- Rust
-      -- (Rustfmt not needed, auto handled by rust_analyzer)
-      -- null_ls.builtins.formatting.rustfmt,
-
-      -- local conditional = function(fn)
-      --     local utils = require("null-ls.utils").make_conditional_utils()
-      --     return fn(utils)
-      -- end
-
-      -- null_ls.setup({
-      --     sources = {
-      --         conditional(function(utils)
-      --             return utils.root_has_file("Gemfile")
-      --                     and null_ls.builtins.formatting.rubocop.with({
-      --                         command = "bundle",
-      --                         args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.formatting.rubocop._opts.args),
-      --                     })
-      --                 or null_ls.builtins.formatting.rubocop
-      --         end),
-      --     },
-      -- })
-
-      -- Ruby
-      null_ls.builtins.diagnostics.rubocop,
-      null_ls.builtins.formatting.rubocop.with({
-        args = { "--auto-correct-all", "-f", "quiet", "--stderr", "--stdin", "$FILENAME" },
-      }),
-
-      -- JavaScript, etc.
-      -- null_ls.builtins.diagnostics.eslint_d,
-      null_ls.builtins.formatting.prettier.with({
-        only_local = "node_modules/.bin",
-      }),
-    },
-  })
+  require('lsp.null_ls')
 end
