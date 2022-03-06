@@ -92,3 +92,7 @@ let g:wordmotion_spaces = ['\w\@<=-\w\@=', '\w\@<=_\w\@=', '\.', ':']
 " cs%, etc
 let g:matchup_surround_enabled = 1
 let g:matchup_matchparen_offscreen = {}
+
+" Use persistent undo history.
+ set undodir=~/.local/share/nvim/
+ set undofile
