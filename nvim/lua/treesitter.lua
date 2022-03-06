@@ -9,9 +9,8 @@ require("nvim-treesitter.configs").setup({
     },
   },
   autotag = { enable = true },
-  indent = {
-    enable = true,
-  },
+  indent = { enable = true },
+  endwise = { enable = true },
   matchup = {
     enable = true, -- mandatory, false will disable the whole extension
   },
