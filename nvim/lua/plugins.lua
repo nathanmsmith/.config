@@ -32,6 +32,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-fugitive")
   use("tpope/vim-rhubarb")
   use("airblade/vim-gitgutter")
+  use("rhysd/conflict-marker.vim")
 
   -- Editing nicities
   use("tpope/vim-commentary")
