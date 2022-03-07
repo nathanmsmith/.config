@@ -16,8 +16,10 @@ set clipboard+=unnamedplus
 " - http://vimcasts.org/episodes/show-invisibles/
 " View tabs as 2 spaces wide
 set tabstop=2
-" Ident by 2:
+" Ident by 2
 set shiftwidth=2
+" Round identations: https://vimtricks.com/p/ensuring-aligned-indentation/
+set shiftround
 " Use spaces instead of tabs
 set expandtab
 " Tab to the current indent level
