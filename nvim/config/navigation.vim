@@ -18,7 +18,7 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 " maximize current split or return to previous
 nnoremap <C-W>m :MaximizerToggle<CR>
-nmap <C-M> <C-W>m
+nnoremap <C-M> :MaximizerToggle<CR>
 
 " Buffers
 " ref: http://vimcasts.org/episodes/working-with-buffers/
