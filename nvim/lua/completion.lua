@@ -1,5 +1,4 @@
 local cmp = require("cmp")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
@@ -14,7 +13,6 @@ local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 cmp.setup({
   completion = {
     autocomplete = false,
