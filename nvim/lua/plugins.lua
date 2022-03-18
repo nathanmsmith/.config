@@ -137,7 +137,6 @@ return require("packer").startup(function(use)
   })
   use("JoosepAlviste/nvim-ts-context-commentstring")
   use("windwp/nvim-ts-autotag")
-  use("windwp/nvim-autopairs")
   use("RRethy/nvim-treesitter-endwise")
 
   use({

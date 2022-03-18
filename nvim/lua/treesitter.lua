@@ -73,7 +73,3 @@ require("nvim-treesitter.configs").setup({
     "rust",
   },
 })
-
-require("nvim-autopairs").setup({
-  check_ts = true,
-})
