@@ -1,8 +1,3 @@
-local ext = require("telescope._extensions")
-local builtins = require("telescope.builtin")
-local frecency_db = require("telescope._extensions.frecency.db_client")
-local fzf = ext.manager.fzf
-
 local M = {}
 
 M.project_files = function()

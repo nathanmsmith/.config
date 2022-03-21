@@ -16,9 +16,11 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+
+let g:maximizer_set_default_mapping = 0
 " maximize current split or return to previous
 nnoremap <C-W>m :MaximizerToggle<CR>
-nnoremap <C-M> :MaximizerToggle<CR>
 
 " Buffers
 " ref: http://vimcasts.org/episodes/working-with-buffers/
@@ -41,4 +43,4 @@ set path+=.,,
 " map T <Plug>Sneak_T
 
 " hide files in netrw
-let g:netrw_list_hide= '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'
+let g:netrw_list_hide = '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'

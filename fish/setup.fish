@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env /opt/homebrew/bin/fish
 
 # Abbreviations
 # See https://github.com/fish-shell/fish-shell/issues/1976#issuecomment-168698602
@@ -111,6 +111,13 @@ set -U fish_greeting
 
 # Application configuration
 # -------------------------
+# Path
+fish_add_path -P /opt/homebrew/bin /opt/homebrew/sbin /usr/local/bin
+fish_add_path -P /opt/homebrew/opt/{coreutils,findutils,gnu-time,gnu-units}/libexec/gnubin
+fish_add_path -P /opt/homebrew/opt/curl/bin
+fish_add_path -P /opt/homebrew/opt/llvm/bin
+fish_add_path -P $HOME/.rbenv/bin
+
 set -Ux EDITOR nvim
 # AWS SAM
 set -Ux SAM_CLI_TELEMETRY 0

@@ -5,7 +5,7 @@ require("telescope").setup({
         ["<esc>"] = require("telescope.actions").close,
       },
     },
-    file_ignore_patterns = { "^.git/" },
+    file_ignore_patterns = { "^.git/", ".DS_Store" },
 
     -- Theme
     sorting_strategy = "ascending",
