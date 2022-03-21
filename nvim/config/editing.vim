@@ -93,3 +93,6 @@ let g:matchup_matchparen_offscreen = {}
 " Use persistent undo history.
  set undodir=~/.local/share/nvim/
  set undofile
+
+" Don't lose track of edits
+set nohidden
