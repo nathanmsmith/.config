@@ -1,0 +1,151 @@
+# Vanilla JavaScript
+
+snippet fun "Function declaration"
+function ${1:functionName}(${2}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet if "if statement"
+if (${1:true}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if-else statement"
+if (${1:true}) {
+	${VISUAL}$0
+} else {
+	${2}
+}
+endsnippet
+
+snippet switch
+switch (${VISUAL}${1:expression}) {
+	case '${VISUAL}${2:case}':
+		${3}
+		break
+	${0}
+	default:
+		${4}
+}
+endsnippet
+
+snippet case "case 'xyz': ... break"
+case '${VISUAL}${1:case}':
+	${VISUAL}$0
+	break
+endsnippet
+
+snippet cl "console.log"
+console.log($0)
+endsnippet
+
+snippet cll "console.log with label"
+console.log('$1:', $1)
+endsnippet
+
+# Imports/Exports
+snippet imp "import xyz from 'xyz'"
+import ${1} from '${2:$1}'
+endsnippet
+
+snippet imps "import * as xyz from 'xyz'"
+import * as ${1} from '${2:$1}'
+endsnippet
+
+snippet impm "import { member } from 'xyz'"
+import { ${1} } from '${2:$1}'
+endsnippet
+
+snippet exp
+export {$0}
+endsnippet
+
+snippet expd
+export default $0
+endsnippet
+
+snippet reduce "array.reduce(() => ...)" w
+reduce((${1:accumulator}, ${2:currentValue}) => {
+	${0}
+})
+endsnippet
+
+snippet cla
+class ${1} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet clax
+class ${1} extends ${2} {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet clac
+class ${1} {
+	constructor(${2}) {
+		${0:${VISUAL}}
+	}
+}
+endsnippet
+
+# React
+# https://marketplace.visualstudio.com/items?itemName=xabikos.ReactSnippets
+
+
+# Storybook
+snippet sb "Storybook"
+import * as React from 'react'
+import * as Sb from '../../stories/storybook'
+
+const load = () => {
+	Sb.storiesOf('$1', module)
+		.add('$2', () => $3)
+		$0
+}
+
+export default load
+endsnippet
+
+# Jest
+snippet desc "Jest describe block" b
+describe('${1:Name of the group}', () => {
+	$0
+})
+endsnippet
+
+snippet it "Jest it block" b
+it('${1:should }', () => {
+	$0
+})
+endsnippet
+
+
+snippet test "Jest test block" b
+test('${1:test name}', () => {
+	$0
+})
+endsnippet
+
+snippet exp "Jest expect statement" b
+expect($0)
+endsnippet
+
+snippet tb "Jest expect.toBe statement"
+expect($1).toBe($0)
+endsnippet
+
+snippet te "Jest expect.toEqual statement"
+expect($1).toEqual($0)
+endsnippet
+
+snippet sort "sort array" i
+sort()
+endsnippet
+
+snippet sortn "sort array numerically" i
+sort((a, b) => a - b)
+endsnippet

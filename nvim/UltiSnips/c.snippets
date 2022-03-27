@@ -1,0 +1,19 @@
+snippet main "main() (main)"
+int main(int argc, char *argv[])
+{
+	${VISUAL}$0
+	return 0;
+}
+endsnippet
+
+snippet pf "printf"
+printf("$0\n");
+endsnippet
+
+snippet pfl "printf with label"
+printf("$1: ${0:$d}\n", $1);
+endsnippet
+
+snippet inc "include"
+#include <$0>
+endsnippet
