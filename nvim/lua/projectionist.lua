@@ -39,15 +39,13 @@ vim.api.nvim_set_var("projectionist_heuristics", {
       ["type"] = "source",
     },
   },
-  ["*.ts|*.tsx"] = {
-    ["*.test.ts|*.test.tsx"] = {
-      ["alternate"] = { "{}.tsx", "{}.ts" },
-      ["type"] = "test",
-    },
-    ["*.ts|*.tsx"] = {
-      ["alternate"] = { "{}.test.tsx", "{}.test.ts" },
-      ["type"] = "source",
-    },
+  ["*.test.tsx"] = {
+    ["alternate"] =  "{}.tsx",
+    ["type"] = "test",
+  },
+  ["*.tsx"] = {
+    ["alternate"] = "{}.test.tsx" ,
+    ["type"] = "source",
   },
   ["*.css"] = {
     ["type"] = "css",

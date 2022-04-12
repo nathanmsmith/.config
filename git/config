@@ -10,9 +10,12 @@
 	repo = town repo
 	ship = town ship
 	sync = town sync
+	append = town append
 	discard = !git clean -df && git checkout -- .
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi > .gitignore"
-	append = town append
+  remote-fetch = "!rf() { git config --add remote.origin.fetch +refs/heads/$1:refs/remotes/origin/$1; git fetch origin +$1:refs/remotes/origin/$1; }; rf"
+  remote-purge = "!rp() { git config --unset remote.origin.fetch \".*$1.*\"; git update-ref -d refs/remotes/origin/$1; }; rp"
+
 [credential]
 	helper = osxkeychain
 [commit]

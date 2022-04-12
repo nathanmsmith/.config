@@ -69,3 +69,11 @@ endsnippet
 snippet te "RSpec expect to equal"
 expect($1).to eq($0)
 endsnippet
+
+snippet as "assert" b
+assert($0)
+endsnippet
+
+snippet ase "assert equal" b
+assert_equal(${1:expected}, ${0:actual})
+endsnippet

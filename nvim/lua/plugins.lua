@@ -118,6 +118,7 @@ return require("packer").startup(function(use)
 
   -- Linting/Diagnostics
   use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" } })
+  use({ "jose-elias-alvarez/nvim-lsp-ts-utils", requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" } })
   use({ "folke/trouble.nvim" })
   -- use {
   --   'nathanmsmith/nvim-ale-diagnostic',
