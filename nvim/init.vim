@@ -56,5 +56,5 @@ lua require('fuzzy_find')
 source $HOME/.config/nvim/config/lsp.vim
 call SourceIfExists('~/.config/nvim/config/stripe.vim')
 
-" Beta features
 lua require('treesitter')
+lua require('git')

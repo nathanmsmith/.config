@@ -14,12 +14,12 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 -- Run PackerCompile on save
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
+local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  command = "source <afile> | PackerCompile",
+  group = packer_group,
+  pattern = "init.lua",
+})
 
 return require("packer").startup(function(use)
   -- Packer can manage itself
@@ -34,8 +34,8 @@ return require("packer").startup(function(use)
   -- Git
   use("tpope/vim-fugitive")
   use("tpope/vim-rhubarb")
-  use("airblade/vim-gitgutter")
   use("rhysd/conflict-marker.vim")
+  use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
   -- Editing nicities
   use("tpope/vim-commentary")
