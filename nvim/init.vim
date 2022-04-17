@@ -5,6 +5,8 @@
 " 2. Extend functionality where needed
 " 3. Change functionality only when it doesn't make sense
 
+lua require('impatient')
+
 let g:loaded_matchit = 1
 
 " Put plugin managment first, as it handles installing packer.nvim for later files
