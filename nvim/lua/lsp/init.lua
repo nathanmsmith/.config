@@ -27,6 +27,7 @@ for type, icon in pairs(signs) do
 end
 
 local on_attach = function(client, bufnr)
+  local opts = { buffer = bufnr }
   -- Keybindings for LSPs
   vim.api.nvim_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
   vim.api.nvim_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", { noremap = true, silent = true })
@@ -42,6 +43,7 @@ local on_attach = function(client, bufnr)
     noremap = true,
     silent = true,
   })
+
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 end
 
@@ -137,5 +139,5 @@ else
   lspconfig.gopls.setup(no_format_config)
 
   -- null-ls config
-  require('lsp.null_ls')
+  require("lsp.null_ls")
 end
