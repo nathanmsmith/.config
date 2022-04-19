@@ -125,6 +125,7 @@ return require("packer").startup(function(use)
   -- Linting/Diagnostics
   use("mfussenegger/nvim-lint")
   use({ "folke/trouble.nvim" })
+  use({"lukas-reineke/lsp-format.nvim"})
   -- use {
   --   'nathanmsmith/nvim-ale-diagnostic',
   --   -- ft = lsp_filetypes,

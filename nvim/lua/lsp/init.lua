@@ -130,6 +130,8 @@ lsp_installer.on_server_ready(function(server)
   vim.cmd([[ do User LspAttachBuffers ]])
 end)
 
+require("lsp-format").setup {}
+
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initServers(no_format_config.on_attach)
