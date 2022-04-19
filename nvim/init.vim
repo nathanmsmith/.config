@@ -57,5 +57,6 @@ source $HOME/.config/nvim/config/lsp.vim
 call SourceIfExists('~/.config/nvim/config/stripe.vim')
 
 lua require('diagnostic')
+lua require('formatting')
 lua require('treesitter')
 lua require('git')
