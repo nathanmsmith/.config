@@ -10,3 +10,5 @@ pager: less
 aliases:
     co: pr checkout
 # http_unix_socket: /Users/nms/.stripeproxy
+
+http_unix_socket: /Users/nms/.stripeproxy

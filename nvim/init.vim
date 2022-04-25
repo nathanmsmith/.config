@@ -60,3 +60,9 @@ lua require('diagnostic')
 lua require('formatting')
 lua require('treesitter')
 lua require('git')
+
+augroup TrimTrailingWhiteSpace
+  au!
+  au BufWritePre * %s/\s\+$//e
+  au BufWritePre * %s/\n\+\%$//e
+augroup END
