@@ -19,7 +19,7 @@ function! SourceIfExists(file)
 endfunction
 
 " Mostly vanilla Vim style tweaks
-source $HOME/.config/nvim/config/appearance.vim
+lua require('appearance')
 source $HOME/.config/nvim/config/navigation.vim
 source $HOME/.config/nvim/config/editing.vim
 source $HOME/.config/nvim/config/statusline.vim

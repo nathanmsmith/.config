@@ -72,5 +72,6 @@ require("nvim-treesitter.configs").setup({
     "ruby",
     "python",
     "rust",
+    "json"
   },
 })
