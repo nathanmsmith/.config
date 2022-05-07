@@ -1,10 +1,6 @@
 " navigation.vim
 " Settings to make navigating files, windows, tabs, etc. easier
 
-" Faster file switching with alternates
-" Also integrates with vim-test
-lua require("projectionist")
-
 " More sensible window splits
 set splitbelow
 set splitright
@@ -35,12 +31,6 @@ end
 
 " Add current directory to path (for `gf`)
 set path+=.,,
-
-" Sneak remappings for single character
-" map f <Plug>Sneak_f
-" map F <Plug>Sneak_F
-" map t <Plug>Sneak_t
-" map T <Plug>Sneak_T
 
 " hide files in netrw
 let g:netrw_list_hide = '.*\.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^\.\.\=/\=$'

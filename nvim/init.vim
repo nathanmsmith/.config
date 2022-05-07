@@ -19,7 +19,10 @@ function! SourceIfExists(file)
 endfunction
 
 " Mostly vanilla Vim style tweaks
-lua require('appearance')
+lua require('vanilla')
+" Faster file switching with alternates
+" Also integrates with vim-test
+lua require("projectionist")
 source $HOME/.config/nvim/config/navigation.vim
 source $HOME/.config/nvim/config/editing.vim
 source $HOME/.config/nvim/config/statusline.vim
