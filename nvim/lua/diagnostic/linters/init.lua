@@ -1,5 +1,7 @@
 require("diagnostic.linters.rubocop")
+require("diagnostic.linters.swiftlint")
 require("lint").linters_by_ft = {
-  ruby = { "rubocop" },
   lua = { "luacheck" },
+  ruby = { "rubocop" },
+  swift = { "swiftlint" },
 }
