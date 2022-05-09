@@ -56,7 +56,7 @@ end
 nnoremap <leader>x :call SaveAndExec()<CR>
 
 lua require('fuzzy_find')
-source $HOME/.config/nvim/config/lsp.vim
+lua require('lsp')
 call SourceIfExists('~/.config/nvim/config/stripe.vim')
 
 lua require('diagnostic')
