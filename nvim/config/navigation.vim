@@ -1,18 +1,6 @@
 " navigation.vim
 " Settings to make navigating files, windows, tabs, etc. easier
 
-" More sensible window splits
-set splitbelow
-set splitright
-
-" Easier split navigation
-" https://thoughtbot.com/blog/vim-splits-move-faster-and-more-naturally
-" ref: http://vimcasts.org/episodes/working-with-windows/
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
 
 let g:maximizer_set_default_mapping = 0
 " maximize current split or return to previous
