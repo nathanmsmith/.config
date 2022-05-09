@@ -1,14 +1,28 @@
-local servers = {
-	"html",
-	"cssls",
-	"tailwindcss",
-	"tsserver",
-	"eslint",
+local M = {}
 
-	"jsonls",
-	"yamlls",
+M.installable = {
+  "html",
+  "cssls",
+  "tailwindcss",
+  "tsserver",
+  "eslint",
 
-	"vimls",
-	"sumneko_lua",
+  "jsonls",
+  "yamlls",
+
+  "vimls",
+  "sumneko_lua",
 }
-return servers
+
+M.basic = {
+  "html",
+  "cssls",
+  "tailwindcss",
+  "tsserver",
+  "eslint",
+  "jsonls",
+  "yamlls",
+  "vimls",
+}
+
+return M
