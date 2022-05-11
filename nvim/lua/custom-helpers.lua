@@ -15,4 +15,8 @@ function M.isModuleAvailable(name)
 	end
 end
 
+function M.inDir(name)
+  return vim.fn.getcwd():find(name, 1, true)
+end
+
 return M

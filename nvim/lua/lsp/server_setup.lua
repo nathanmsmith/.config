@@ -1,3 +1,4 @@
+local helpers = require("custom-helpers")
 local lspconfig = require("lspconfig")
 local servers = require("lsp.servers")
 local capabilities = require("lsp.capabilities")
@@ -13,3 +14,9 @@ end
 -- Advance server setup
 require("lsp.lua_server")
 require("lsp.sourcekit")
+require("lsp.sorbet")
+
+-- Non LspInstall server setup
+if helpers.isModuleAvailable("stripe") then
+  require("stripe").initServers()
+end

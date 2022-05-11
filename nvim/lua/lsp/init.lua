@@ -1,4 +1,3 @@
-local helpers = require("custom-helpers")
 local lsp_installer = require("nvim-lsp-installer")
 local servers = require("lsp.servers")
 
@@ -15,9 +14,4 @@ lsp_installer.setup({
   allow_federated_servers = true,
 })
 
--- Non LspInstall server setup
-if helpers.isModuleAvailable("stripe") then
-  require("stripe").initServers()
-else
-  require("lsp.server_setup")
-end
+require("lsp.server_setup")
