@@ -3,6 +3,7 @@ require("impatient")
 require("plugins")
 
 require("vanilla")
+require("statusline")
 require("projectionist")
 require("fuzzy_find")
 require("lsp")

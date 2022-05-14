@@ -1,4 +1,8 @@
+local lsp_status = require("lsp-status")
+
 local on_attach = function(client, bufnr)
+  lsp_status.on_attach(client)
+
   local opts = { buffer = bufnr }
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
