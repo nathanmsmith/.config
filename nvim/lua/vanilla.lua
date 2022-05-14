@@ -7,12 +7,12 @@ vim.wo.number = true
 -- Show whitespace
 vim.o.list = true
 vim.opt.listchars = {
-	tab = "▸ ",
-	extends = "❯",
-	precedes = "❮",
-	trail = "·",
-	nbsp = "·",
-	space = "·",
+  tab = "▸ ",
+  extends = "❯",
+  precedes = "❮",
+  trail = "·",
+  nbsp = "·",
+  space = "·",
 }
 
 -- Highlight the column after 'textwidth'
@@ -50,11 +50,13 @@ vim.api.nvim_create_autocmd("VimResized", { command = "wincmd =", group = resize
 -- and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
 local cursor_group = vim.api.nvim_create_augroup("Cursor", { clear = true })
 vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
-	callback = function()
-		vim.o.guicursor = "a:ver25-blinkon1"
-	end,
-	group = cursor_group,
-	pattern = "*",
+  callback = function()
+    vim.o.guicursor = "a:ver25-blinkon1"
+    -- Round identations: https://vimtricks.com/p/ensuring-aligned-indentation/
+    vim.opt.shiftround = true
+  end,
+  group = cursor_group,
+  pattern = "*",
 })
 
 -- More sensible window splits
@@ -75,3 +77,59 @@ vim.keymap.set("n", "<C-W>m", "<Cmd>MaximizerToggle<CR>", { silent = true })
 -- https://neovim.io/news/2022/04#distinguishing-modifier-keys
 -- https://sw.kovidgoyal.net/kitty/keyboard-protocol/
 -- vim.keymap.set('n', '<C-M>', '<Cmd>MaximizerToggle<CR>', {silent = true})
+
+-- Remap space as leader key
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Searching
+-- Case insensitive by default, case sensitive with an uppercase char
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
+-- Don't lose track of edits
+vim.g.nohidden = true
+
+--Enable mouse mode
+vim.o.mouse = "a"
+
+-- Highlight on yank
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({ timeout = 1000 })
+  end,
+  group = highlight_group,
+  pattern = "*",
+})
+
+-- Disable swapfiles
+vim.opt.swapfile = false
+
+-- Use system clipboard
+vim.opt.clipboard = "unnamedplus"
+
+-- Whitespace characters settings
+-- refs:
+-- - http://vimcasts.org/episodes/tabs-and-spaces/
+-- - http://vimcasts.org/episodes/show-invisibles/
+-- View tabs as 2 spaces wide
+vim.opt.tabstop = 2
+-- Ident by 2
+vim.opt.shiftwidth = 2
+-- Use spaces instead of tabs
+vim.opt.expandtab = true
+-- Tab to the current indent level
+vim.opt.smarttab = true
+-- Autoindent new lines
+vim.opt.autoindent = true
+-- Round identations: https://vimtricks.com/p/ensuring-aligned-indentation/
+vim.opt.shiftround = true
+
+-- Use persistent undo history.
+vim.opt.undodir = "~/.local/share/nvim/"
+vim.opt.undofile = true
+
+-- hide files in netrw
+vim.g.netrw_list_hide = ".*.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^..=/=$"
