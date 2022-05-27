@@ -52,7 +52,15 @@ return require("packer").startup(function(use)
   use("tpope/vim-commentary")
   use("tpope/vim-surround")
   use("tpope/vim-repeat")
-  use("tpope/vim-unimpaired")
+  use({
+    "tpope/vim-unimpaired",
+    config = function()
+      -- Let's call it PascalCase, not MixedCase
+      vim.keymap.set("n", "crp", "crm", { remap = true })
+      -- Also kebabcase
+      vim.keymap.set("n", "cr-", "crk", { remap = true })
+    end,
+  })
   use("tpope/vim-characterize")
   use("tpope/vim-speeddating")
   use("tpope/vim-rsi")

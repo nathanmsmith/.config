@@ -89,7 +89,10 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Don't lose track of edits
-vim.g.nohidden = true
+vim.g.hidden = false
+
+-- Replacing
+vim.opt.inccommand = "nosplit"
 
 --Enable mouse mode
 vim.o.mouse = "a"
@@ -127,9 +130,32 @@ vim.opt.autoindent = true
 -- Round identations: https://vimtricks.com/p/ensuring-aligned-indentation/
 vim.opt.shiftround = true
 
+-- Global substitution by default
+vim.opt.gdefault = true
+
 -- Use persistent undo history.
-vim.opt.undodir = "~/.local/share/nvim/"
+-- Default home is $XDG_DATA_HOME/nvim/undo/
 vim.opt.undofile = true
 
 -- hide files in netrw
 vim.g.netrw_list_hide = ".*.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^..=/=$"
+
+-- Spell Checking
+-- refs:
+-- - http://vimcasts.org/episodes/spell-checking/
+-- Spell file location
+vim.opt.spellfile = "$HOME/.config/nvim/spell/dictionary.utf-8.add"
+vim.opt.spelllang = "en_us"
+vim.opt.spell = false
+
+-- make Y consistent with C and D.
+vim.keymap.set("n", "Y", "y$")
+
+-- Open images in an image viewer (probably Preview)
+-- TODO: Not working
+-- local external_files_group = vim.api.nvim_create_augroup("ExternalOpener", { clear = true })
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   command = 'exec "silent !open ".expand("%") | :bw',
+--   group = external_files_group,
+--   pattern = { "*.png", "*.jpg", "*.gif" },
+-- })

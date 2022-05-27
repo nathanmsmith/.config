@@ -1,9 +1,13 @@
-vim.opt.laststatus = 3
+vim.opt.laststatus = 2
 
 local lsp_status = require("lsp-status")
 lsp_status.config({
   current_function = false,
   show_filename = false,
+  indicator_errors = "E",
+  indicator_warnings = "W",
+  indicator_info = "I",
+  indicator_hint = "H",
   indicator_ok = "LSP",
   status_symbol = "",
   indicator_separator = "",
