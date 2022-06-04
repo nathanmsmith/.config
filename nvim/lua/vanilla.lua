@@ -159,3 +159,14 @@ vim.keymap.set("n", "Y", "y$")
 --   group = external_files_group,
 --   pattern = { "*.png", "*.jpg", "*.gif" },
 -- })
+--
+
+vim.g.netrw_localrmdir = "rm -r"
+
+-- TODO: convert to lua
+-- set shell=/usr/bin/env\ bash
+-- augroup TrimTrailingWhiteSpace
+--   au!
+--   au BufWritePre * %s/\s\+$//e
+--   au BufWritePre * %s/\n\+\%$//e
+-- augroup END

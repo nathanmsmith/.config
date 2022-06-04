@@ -10,3 +10,28 @@ command! Finder !open "%:p:h"
 
 " Edit a file in the same directory
 cabbr <expr> %% expand('%:p:h')
+
+
+function! SourceIfExists(file)
+  if filereadable(expand(a:file))
+    exe 'source' a:file
+  endif
+endfunction
+
+lua require('globals')
+
+if !exists('*SaveAndExec')
+  function! SaveAndExec() abort
+    if &filetype == 'vim'
+      :silent! write
+      :source %
+    elseif &filetype == 'lua'
+      :silent! write
+      :luafile %
+    endif
+    return
+  endfunction
+end
+" Execute this file
+nnoremap <leader>x :call SaveAndExec()<CR>
+call SourceIfExists('~/.config/nvim/config/stripe.vim')
