@@ -165,8 +165,13 @@ vim.g.netrw_localrmdir = "rm -r"
 
 -- TODO: convert to lua
 -- set shell=/usr/bin/env\ bash
--- augroup TrimTrailingWhiteSpace
---   au!
---   au BufWritePre * %s/\s\+$//e
---   au BufWritePre * %s/\n\+\%$//e
--- augroup END
+
+local trailing_whitespace_group = vim.api.nvim_create_augroup("TrimTrailingWhiteSpace", { clear = true })
+vim.api.nvim_create_autocmd(
+  "BufWritePre",
+  { command = "%s/\\s\\+$//e", group = trailing_whitespace_group, pattern = "*" }
+)
+vim.api.nvim_create_autocmd(
+  "BufWritePre",
+  { command = "%s/\\n\\+%$//e", group = trailing_whitespace_group, pattern = "*" }
+)
