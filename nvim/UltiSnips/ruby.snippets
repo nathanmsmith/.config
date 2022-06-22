@@ -4,6 +4,10 @@ require 'pry'; binding.pry
 endsnippet
 
 # Sorbet
+snippet let "Define a variable" b
+$1 = T.let($2, $3)
+endsnippet
+
 snippet tsig "extend T::Sig" b
 extend T::Sig
 endsnippet
