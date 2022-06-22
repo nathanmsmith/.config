@@ -7,6 +7,7 @@ require("statusline")
 require("projectionist")
 require("fuzzy_find")
 require("lsp")
+require("completion")
 
 require("diagnostic")
 require("formatting")

@@ -1,9 +1,8 @@
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
--- TODO: convert to lua
--- set complete-=t
--- set completeopt=menu
+vim.o.complete = ".,w,b,u"
+vim.o.completeopt = "menu"
 
 vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
 vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
