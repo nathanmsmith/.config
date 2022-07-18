@@ -21,5 +21,7 @@ if status --is-login; and status --is-interactive
     source (nodenv init -|psub)
   end
 
+  # starship init fish | source
   test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
 end
+

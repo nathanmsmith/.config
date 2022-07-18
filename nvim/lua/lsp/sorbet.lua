@@ -1,5 +1,6 @@
 local capabilities = require("lsp.capabilities")
 local on_attach = require("lsp.on_attach")
+local helpers = require("custom-helpers")
 
 -- Ignore sorbet autogen directories
 do
@@ -24,7 +25,9 @@ do
   end
 end
 
-require("lspconfig").sorbet.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
+if not helpers.isModuleAvailable("stripe") then
+  require("lspconfig").sorbet.setup({
+    capabilities = capabilities,
+    on_attach = on_attach,
+  })
+end

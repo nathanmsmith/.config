@@ -98,8 +98,12 @@ return require("packer").startup(function(use)
       vim.g.python3_host_prog = "python3"
       vim.g.UltiSnipsEditSplit = "vertical"
       vim.g.UltiSnipsUsePythonVersion = 3
-      vim.g.UltiSnipsSnippetDirectories = { "$HOME/.config/nvim/UltiSnips", "Ultisnips" }
-      -- let g:UltiSnipsSnippetDirectories=[$HOME.'/.config/nvim/UltiSnips', 'UltiSnips']
+
+      -- if helpers.isModuleAvailable("stripe") then
+      vim.g.UltiSnipsSnippetDirectories = { "$HOME/.config/nvim/UltiSnips", "Ultisnips", "$HOME/stripe/stripe-config/nvim/UltiSnips" }
+      -- else
+      --   vim.g.UltiSnipsSnippetDirectories = { "$HOME/.config/nvim/UltiSnips", "Ultisnips"}
+      -- end
     end,
   })
 
