@@ -175,3 +175,6 @@ vim.api.nvim_create_autocmd(
   "BufWritePre",
   { command = "%s/\\n\\+%$//e", group = trailing_whitespace_group, pattern = "*" }
 )
+
+vim.o.grepprg = "rg --vimgrep --no-heading --smart-case"
+vim.o.grepformat = "%f:%l:%c:%m"
