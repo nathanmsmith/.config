@@ -47,7 +47,7 @@ hs.hotkey.bind({ "alt", "shift" }, "l", function()
   window:maximize(true)
 end)
 
-function createSplit(layout1, layout2)
+function CreateSplit(layout1, layout2)
   local windows = hs.window.orderedWindows()
   local currentWindow = windows[1]
   log.i("Current window: " .. hs.inspect.inspect(currentWindow))
@@ -63,7 +63,7 @@ end
 -- Create a vertical split
 hs.hotkey.bind({ "alt" }, "v", function()
   log.i("Vertical split")
-  createSplit(hs.layout.left50, hs.layout.right50)
+  CreateSplit(hs.layout.left50, hs.layout.right50)
 end)
 
 -- Create a horizontal split
@@ -71,7 +71,7 @@ hs.hotkey.bind({ "alt" }, "w", function()
   log.i("Horizontal split")
   local bottom50 = geometry.rect(0, 0.5, 1, 1)
   local top50 = geometry.rect(0, 0, 1, 0.5)
-  createSplit(top50, bottom50)
+  CreateSplit(top50, bottom50)
 end)
 
 -- Fullscreen

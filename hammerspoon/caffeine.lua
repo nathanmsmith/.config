@@ -1,35 +1,44 @@
 -- Caffeine
-caffeineMenubarItem = hs.menubar.new()
+CaffeineMenubarItem = hs.menubar.new()
 
 -- Set the icon of the menubar.
-function setCaffeineDisplay(state)
+function SetCaffeineDisplay(state)
   if state then
-    caffeineMenubarItem:setIcon("images/active.pdf")
+    CaffeineMenubarItem:setIcon("images/active.pdf")
   else
-    caffeineMenubarItem:setIcon("images/inactive.pdf")
+    CaffeineMenubarItem:setIcon("images/inactive.pdf")
   end
 end
 
 -- Click the menubar icon, which toggles the caffeine state and menubar icon.
-function menubarClicked()
-  setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+function MenubarClicked()
+  SetCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 end
 
 -- Turns the caffeine state to off.
-function caffeineOff()
+function CaffeineOff()
   hs.caffeinate.set("displayIdle", false, true)
-  setCaffeineDisplay(false)
+  SetCaffeineDisplay(false)
 end
 
 -- Introduce url event for toggling caffeine state.
 hs.urlevent.bind("caffeine-toggle", function()
-  setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+  SetCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
 end)
 
-if caffeineMenubarItem then
+if CaffeineMenubarItem then
   -- Initialize callback
-  caffeineMenubarItem:setClickCallback(menubarClicked)
+  CaffeineMenubarItem:setClickCallback(MenubarClicked)
 
   -- Initialize display to current displayIdle value
-  setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+  SetCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
+
+function OnSleepWatcher(event)
+  if event == hs.caffeinate.watcher.systemWillSleep then
+    CaffeineOff()
+  end
+end
+
+SleepWatcher = hs.caffeinate.watcher.new(OnSleepWatcher)
+SleepWatcher:start()
