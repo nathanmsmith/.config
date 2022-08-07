@@ -5,7 +5,7 @@ end
 local rubocop_severities = {
   info = vim.diagnostic.severity.INFO,
   refactor = vim.diagnostic.severity.HINT,
-  convention = vim.diagnostic.severity.WARN,
+  convention = vim.diagnostic.severity.HINT,
   warning = vim.diagnostic.severity.WARN,
   error = vim.diagnostic.severity.ERROR,
   fatal = vim.diagnostic.severity.ERROR,
@@ -19,10 +19,14 @@ require("lint").linters.rubocop = {
   ignore_exitcode = true, -- set this to true if the linter exits with a code != 0 and that's considered normal.
   env = nil, -- custom environment table to use with the external process. Note that this replaces the *entire* environment, it is not additive.
   parser = function(output, bufnr)
-    local rubocop_output = vim.json.decode(output)
+    local ok, rubocop_output = pcall(vim.json.decode, output)
+    if not ok then
+      return {}
+    end
     if vim.tbl_isempty(rubocop_output) then
       return {}
     end
+
     local offenses = rubocop_output.files[1].offenses
     local diagnostics = {}
     for _, offense in pairs(offenses) do
@@ -34,6 +38,7 @@ require("lint").linters.rubocop = {
         end_col = l.last_column - 1,
         message = offense.message,
         severity = rubocop_severities[offense.severity],
+        code = offense.cop_name,
         source = "Rubocop",
       })
     end
