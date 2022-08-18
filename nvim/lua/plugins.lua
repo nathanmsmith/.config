@@ -100,7 +100,8 @@ return require("packer").startup(function(use)
       vim.g.UltiSnipsUsePythonVersion = 3
 
       -- if helpers.isModuleAvailable("stripe") then
-      vim.g.UltiSnipsSnippetDirectories = { "$HOME/.config/nvim/UltiSnips", "Ultisnips", "$HOME/stripe/stripe-config/nvim/UltiSnips" }
+      vim.g.UltiSnipsSnippetDirectories =
+        { "$HOME/.config/nvim/UltiSnips", "Ultisnips", "$HOME/stripe/stripe-config/nvim/UltiSnips" }
       -- else
       --   vim.g.UltiSnipsSnippetDirectories = { "$HOME/.config/nvim/UltiSnips", "Ultisnips"}
       -- end
@@ -206,6 +207,12 @@ return require("packer").startup(function(use)
   use("blankname/vim-fish")
   use("mustache/vim-mustache-handlebars")
   use("cespare/vim-toml")
+  use({
+    "fatih/vim-go",
+    config = function()
+      vim.g.go_gopls_enabled = false
+    end,
+  })
 
   use("dstein64/vim-startuptime")
 
