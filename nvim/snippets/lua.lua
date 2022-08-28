@@ -11,9 +11,33 @@ local rep = require("luasnip.extras").rep
 
 local snippets, autosnippets = {}, {}
 
-local myFirstSnippet = s("hello", {
-  t("hello world"),
-})
-table.insert(snippets, myFirstSnippet)
+local function snip(context, nodes, opts)
+  local snippet = s(context, nodes, opts)
+  table.insert(snippets, snippet)
+end
+
+-- Basic lua features
+
+-- Neovim Specific
+snip(
+  { trig = "snip", dscr = "Add a new LuaSnip snippet" },
+  fmt("snip({}, {})", {
+    i(1, "trigger"),
+    i(2, "nodes"),
+  })
+)
+
+snip(
+  { trig = "use", dscr = "Add a new packer plugin entry" },
+  fmt("use({})", {
+    c(1, {
+       {t("\""), i(1, "github/link"), t("\"")},
+       fmt("{{ \"{}\", {} }}", {
+         i(1, "github/link"),
+         i(2, "config = function() ... end"),
+       })
+    }),
+  })
+)
 
 return snippets, autosnippets
