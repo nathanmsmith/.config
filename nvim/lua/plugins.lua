@@ -86,27 +86,12 @@ return require("packer").startup(function(use)
   use("hrsh7th/cmp-buffer")
   use("hrsh7th/cmp-path")
   use("hrsh7th/cmp-cmdline")
-  use("quangnguyen30192/cmp-nvim-ultisnips")
   use("hrsh7th/nvim-cmp")
   use("onsails/lspkind-nvim")
-  -- use("ervandew/supertab")
+  use("saadparwaiz1/cmp_luasnip")
 
   -- Snippets
-  use({
-    "SirVer/ultisnips",
-    config = function()
-      vim.g.python3_host_prog = "python3"
-      vim.g.UltiSnipsEditSplit = "vertical"
-      vim.g.UltiSnipsUsePythonVersion = 3
-
-      -- if helpers.isModuleAvailable("stripe") then
-      vim.g.UltiSnipsSnippetDirectories =
-        { "$HOME/.config/nvim/UltiSnips", "Ultisnips", "$HOME/stripe/stripe-config/nvim/UltiSnips" }
-      -- else
-      --   vim.g.UltiSnipsSnippetDirectories = { "$HOME/.config/nvim/UltiSnips", "Ultisnips"}
-      -- end
-    end,
-  })
+  use("L3MON4D3/LuaSnip")
 
   -- Tim Pope Extensions
   use("tpope/vim-eunuch")
