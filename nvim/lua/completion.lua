@@ -1,14 +1,10 @@
 local cmp = require("cmp")
+local luasnip = require("luasnip")
 local lspkind = require("lspkind")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 vim.o.complete = ".,w,b,u"
 vim.o.completeopt = "menu"
-
-vim.g.UltiSnipsExpandTrigger = "<Plug>(ultisnips_expand)"
-vim.g.UltiSnipsJumpForwardTrigger = "<Plug>(ultisnips_jump_forward)"
-vim.g.UltiSnipsJumpBackwardTrigger = "<Plug>(ultisnips_jump_backward)"
-vim.g.UltiSnipsListSnippets = "<c-x><c-s>"
-vim.g.UltiSnipsRemoveSelectModeMappings = 0
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -30,73 +26,37 @@ cmp.setup({
       menu = {
         buffer = "[Buffer]",
         nvim_lsp = "[LSP]",
-        ultisnips = "[Snippet]",
+        luasnip = "[Snippet]",
         path = "[Path]",
       },
     }),
   },
   snippet = {
     expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
   mapping = {
-    ["<Tab>"] = cmp.mapping({
-      -- c = function()
-      --   if cmp.visible() then
-      --     cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-      --   else
-      --     cmp.complete()
-      --   end
-      -- end,
-      i = function(fallback)
-        if cmp.get_selected_entry() == nil and vim.fn["UltiSnips#CanExpandSnippet"]() == 1 then
-          vim.api.nvim_feedkeys(t("<C-R>=UltiSnips#ExpandSnippet()<CR>"), "n", true)
-        elseif vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-          vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
-        elseif cmp.visible() then
-          cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-        elseif has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
-      end,
-      s = function(fallback)
-        if vim.fn["UltiSnips#CanJumpForwards"]() == 1 then
-          vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_forward)"), "m", true)
-        elseif has_words_before() then
-          cmp.complete()
-        else
-          fallback()
-        end
-      end,
-    }),
-    ["<S-Tab>"] = cmp.mapping({
-      -- c = function()
-      --   if cmp.visible() then
-      --     cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-      --   else
-      --     cmp.complete()
-      --   end
-      -- end,
-      i = function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-        elseif vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-          return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), "m", true)
-        else
-          fallback()
-        end
-      end,
-      s = function(fallback)
-        if vim.fn["UltiSnips#CanJumpBackwards"]() == 1 then
-          return vim.api.nvim_feedkeys(t("<Plug>(ultisnips_jump_backward)"), "m", true)
-        else
-          fallback()
-        end
-      end,
-    }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
     ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
     ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), { "i" }),
     ["<C-n>"] = cmp.mapping({
@@ -148,12 +108,16 @@ cmp.setup({
   },
   sources = cmp.config.sources({
     { name = "nvim_lsp" },
-    { name = "ultisnips" },
+    { name = "luasnip" },
     -- { name = "path" },
   }, {
     { name = "buffer" },
   }),
 })
+
+-- Autopairs support
+-- https://github.com/windwp/nvim-autopairs
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- -- Use buffer source for `/`.
 -- cmp.setup.cmdline("/", {
