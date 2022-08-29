@@ -93,6 +93,14 @@ return require("packer").startup(function(use)
   -- Snippets
   use("L3MON4D3/LuaSnip")
 
+  -- Autopair
+  use({
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup({})
+    end,
+  })
+
   -- Tim Pope Extensions
   use("tpope/vim-eunuch")
   use("tpope/vim-vinegar")

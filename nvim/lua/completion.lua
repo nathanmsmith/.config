@@ -1,6 +1,7 @@
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 vim.o.complete = ".,w,b,u"
 vim.o.completeopt = "menu"
@@ -113,6 +114,10 @@ cmp.setup({
     { name = "buffer" },
   }),
 })
+
+-- Autopairs support
+-- https://github.com/windwp/nvim-autopairs
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 -- -- Use buffer source for `/`.
 -- cmp.setup.cmdline("/", {
