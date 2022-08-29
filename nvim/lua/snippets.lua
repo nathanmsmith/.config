@@ -1,16 +1,16 @@
 require("luasnip").setup({
-  -- history = true,
+  history = true,
   -- update_events = "TextChanged,TextChangedI",
   -- enable_autosnippets = true,
 })
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
 local skeletons = require("skeletons")
 
--- Set choice toggle to <c-a>
+-- Set choice toggle to <c-e>
 vim.keymap.set(
   { "i", "s" },
-  "<c-a>",
-  "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<c-a>'",
+  "<c-e>",
+  "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<c-e>'",
   { silent = true, expr = true }
 )
 

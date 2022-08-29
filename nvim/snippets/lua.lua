@@ -8,15 +8,33 @@ local f = ls.function_node
 local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
+local create_snip = require("snippets-helpers").create_snip
 
 local snippets, autosnippets = {}, {}
-
-local function snip(context, nodes, opts)
-  local snippet = s(context, nodes, opts)
-  table.insert(snippets, snippet)
-end
+local snip = create_snip(snippets)
+local autosnip = create_snip(autosnippets)
 
 -- Basic lua features
+
+snip({trig = "local", dscr = "Declare local variable"},
+fmt("local {} = {}", {
+  i(1, "variable"),
+  i(0, "10"),
+})
+)
+
+snip({ trig = "for", dscr = "for loop" }, {
+  t("for "),
+  c(1, {
+    sn(nil, { i(1, "k"), t(", "), i(2, "v"), t(" in "), c(3, { t("pairs"), t("ipairs") }), t("("), i(4), t(")") }),
+    sn(nil, { i(1, "i"), t(" = "), i(2), t(", "), i(3) }),
+  }),
+  t({ " do", "\t" }),
+  i(0),
+  t({ "", "end" }),
+})
+
+-- TODO: function
 
 -- Neovim Specific
 snip(
