@@ -16,28 +16,20 @@ local function snip(context, nodes, opts)
   table.insert(snippets, snippet)
 end
 
+local function autosnip(context, nodes, opts)
+  local snippet = s(context, nodes, opts)
+  table.insert(autosnippets, snippet)
+end
+
 -- Basic lua features
 
--- Neovim Specific
-snip(
-  { trig = "snip", dscr = "Add a new LuaSnip snippet" },
-  fmt("snip({}, {})", {
-    i(1, "trigger"),
-    i(2, "nodes"),
-  })
-)
-
-snip(
-  { trig = "use", dscr = "Add a new packer plugin entry" },
-  fmt("use({})", {
-    c(1, {
-      { t('"'), i(1, "github/link"), t('"') },
-      fmt('{{ "{}", {} }}', {
-        i(1, "github/link"),
-        i(2, "config = function() ... end"),
-      }),
-    }),
-  })
-)
+-- Skeleton templates
+-- autosnip(
+-- 	{ trig = "__test", dscr = "Test skeleton template" },
+-- 	fmt("describe('{}', () => {{ {} }})", {
+-- 		i(1, "my module"),
+-- 		i(2, "..."),
+-- 	})
+-- )
 
 return snippets, autosnippets
