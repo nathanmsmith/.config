@@ -1,9 +1,14 @@
+local helpers = require("custom-helpers")
 require("luasnip").setup({
   history = true,
   -- update_events = "TextChanged,TextChangedI",
   -- enable_autosnippets = true,
 })
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
+if helpers.isModuleAvailable("stripe") then
+  require("stripe").initSnippets()
+end
+
 local skeletons = require("skeletons")
 
 -- Set choice toggle to <c-e>
