@@ -8,20 +8,18 @@ local f = ls.function_node
 local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
+local create_snip = require("snippets-helpers").create_snip
+local same = require("snippets-helpers").same
 
 local snippets, autosnippets = {}, {}
+local snip = create_snip(snippets)
+local autosnip = create_snip(autosnippets)
 
-local function snip(context, nodes, opts)
-  local snippet = s(context, nodes, opts)
-  table.insert(snippets, snippet)
-end
+-- Basic javascript features
 
-local function autosnip(context, nodes, opts)
-  local snippet = s(context, nodes, opts)
-  table.insert(autosnippets, snippet)
-end
-
--- Basic lua features
+-- console.log
+snip({ trig = "cl", dscr = "console.log()" }, fmt("console.log({})", { i(1) }))
+snip({ trig = "cll", dscr = "console.log() with label" }, fmt('console.log("{}: ", {})', { same(1), i(1) }))
 
 -- Skeleton templates
 -- autosnip(

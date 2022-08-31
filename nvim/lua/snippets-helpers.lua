@@ -19,4 +19,11 @@ M.create_snip = function(snippets)
   end
 end
 
+M.same = function(index)
+  return f(function(args)
+    return args[1][1]
+  end, {index})
+end
+
+
 return M
