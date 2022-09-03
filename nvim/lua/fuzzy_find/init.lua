@@ -48,6 +48,7 @@ require("telescope").setup({
 })
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
+require("telescope").load_extension("livegrep")
 
 --Add leader shortcuts
 -- vim.keymap.set("n", "<leader>p", require("fuzzy_find.custom").project_files, { silent = true })

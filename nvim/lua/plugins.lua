@@ -135,10 +135,14 @@ return require("packer").startup(function(use)
   -- File picking
   use({
     "nvim-telescope/telescope.nvim",
-    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
+    requires = { { "nvim-lua/plenary.nvim" } },
   })
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({ "nvim-telescope/telescope-ui-select.nvim" })
+  use({
+    "nathanmsmith/livegrep.nvim",
+    requires = { { "nvim-telescope/telescope.nvim" }, { "nvim-lua/plenary.nvim" } },
+  })
 
   -- LSP Support
   -- lsp_filetypes = {'html', 'css', 'typescript', 'go', 'ruby'}
