@@ -146,7 +146,9 @@ return require("packer").startup(function(use)
     -- ft = lsp_filetypes,
     -- config = function() require("lsp") end,
   })
-  use({ "williamboman/nvim-lsp-installer" })
+  use("williamboman/mason.nvim")
+  use("williamboman/mason-lspconfig.nvim")
+
   use({ "nvim-lua/lsp-status.nvim" })
   -- Rust extras
   -- use({ "simrat39/rust-tools.nvim" })

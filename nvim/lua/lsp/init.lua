@@ -1,9 +1,7 @@
-local lsp_installer = require("nvim-lsp-installer")
 local servers = require("lsp.servers")
 
 -- Installer config
-lsp_installer.setup({
-  ensure_installed = servers.installable,
+require("mason").setup({
   ui = {
     icons = {
       server_installed = "✓",
@@ -11,7 +9,9 @@ lsp_installer.setup({
       server_uninstalled = "✗",
     },
   },
-  allow_federated_servers = true,
+})
+require("mason-lspconfig").setup({
+  ensure_installed = servers.installable,
 })
 
 require("lsp.server_setup")
