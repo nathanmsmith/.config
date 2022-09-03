@@ -8,7 +8,7 @@ local f = ls.function_node
 local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
-local create_snip = require("snippets-helpers").create_snip
+local create_snip = require("snippets.helpers").create_snip
 
 local snippets, autosnippets = {}, {}
 local snip = create_snip(snippets)

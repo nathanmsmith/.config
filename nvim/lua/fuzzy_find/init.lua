@@ -43,12 +43,20 @@ require("telescope").setup({
       override_file_sorter = true,
       case_mode = "smart_case",
     },
+    -- ["ui-select"] = {}
   },
 })
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("ui-select")
 
 --Add leader shortcuts
-vim.keymap.set("n", "<leader>p", require("fuzzy_find.custom").project_files, { silent = true })
+-- vim.keymap.set("n", "<leader>p", require("fuzzy_find.custom").project_files, { silent = true })
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>p",
+  [[<cmd>lua require('telescope.builtin').find_files()<cr>]],
+  { noremap = true, silent = true }
+)
 vim.api.nvim_set_keymap(
   "n",
   "<leader>P",

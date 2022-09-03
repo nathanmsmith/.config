@@ -1,15 +1,17 @@
 local helpers = require("custom-helpers")
+local skeletons = require("skeletons")
 require("luasnip").setup({
   history = true,
   update_events = "TextChanged,TextChangedI",
   -- enable_autosnippets = true,
 })
-require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })
+
+local snippets_folder = vim.fn.stdpath("config") .. "/lua/snippets/filetypes"
+require("luasnip.loaders.from_lua").load({ paths = snippets_folder })
+
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initSnippets()
 end
-
-local skeletons = require("skeletons")
 
 -- Set choice toggle to <c-e>
 vim.keymap.set(
@@ -19,6 +21,15 @@ vim.keymap.set(
   { silent = true, expr = true }
 )
 
+vim.api.nvim_create_user_command("SnipEdit", function(opts)
+  require("luasnip.loaders").edit_snippet_files({
+    edit = function(file)
+      vim.cmd("vsplit " .. file)
+    end,
+  })
+end, { nargs = 0 })
+
+-- Skeletons
 local function expandSkeletonSnippet(language, skeleton)
   local snippet = skeletons[language][skeleton]
   if snippet == nil then
