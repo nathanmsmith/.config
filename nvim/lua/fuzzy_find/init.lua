@@ -1,54 +1,59 @@
-require("telescope").setup({
-  defaults = {
-    mappings = {
-      i = {
-        ["<esc>"] = require("telescope.actions").close,
+local helpers = require("custom-helpers")
+
+if helpers.isModuleAvailable("stripe") then
+  require("stripe").initFuzzyFind()
+else
+  require("telescope").setup({
+    defaults = {
+      mappings = {
+        i = {
+          ["<esc>"] = require("telescope.actions").close,
+        },
+      },
+      file_ignore_patterns = { "^.git/", ".DS_Store" },
+
+      -- Theme
+      sorting_strategy = "ascending",
+      layout_strategy = "center",
+      results_title = false,
+      preview_title = "Preview",
+      layout_config = {
+        preview_cutoff = 1, -- Preview should always show (unless previewer = false)
+
+        width = function(_, max_columns, _)
+          return math.min(max_columns - 3, 80)
+        end,
+
+        height = function(_, _, max_lines)
+          return math.min(max_lines - 4, 15)
+        end,
+      },
+      borderchars = {
+        { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+        prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
+        results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
+        preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       },
     },
-    file_ignore_patterns = { "^.git/", ".DS_Store" },
-
-    -- Theme
-    sorting_strategy = "ascending",
-    layout_strategy = "center",
-    results_title = false,
-    preview_title = "Preview",
-    layout_config = {
-      preview_cutoff = 1, -- Preview should always show (unless previewer = false)
-
-      width = function(_, max_columns, _)
-        return math.min(max_columns - 3, 80)
-      end,
-
-      height = function(_, _, max_lines)
-        return math.min(max_lines - 4, 15)
-      end,
+    pickers = {
+      find_files = {
+        hidden = true,
+        find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
+      },
     },
-    borderchars = {
-      { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      prompt = { "─", "│", " ", "│", "╭", "╮", "│", "│" },
-      results = { "─", "│", "─", "│", "├", "┤", "╯", "╰" },
-      preview = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+    extensions = {
+      fzf = {
+        fuzzy = true,
+        override_generic_sorter = true,
+        override_file_sorter = true,
+        case_mode = "smart_case",
+      },
+      livegrep = {},
     },
-  },
-  pickers = {
-    find_files = {
-      hidden = true,
-      find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
-    },
-  },
-  extensions = {
-    fzf = {
-      fuzzy = true,
-      override_generic_sorter = true,
-      override_file_sorter = true,
-      case_mode = "smart_case",
-    },
-    -- ["ui-select"] = {}
-  },
-})
+  })
+end
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
-require("telescope").load_extension("livegrep")
 
 --Add leader shortcuts
 -- vim.keymap.set("n", "<leader>p", require("fuzzy_find.custom").project_files, { silent = true })
