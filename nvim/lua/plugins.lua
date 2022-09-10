@@ -46,7 +46,10 @@ return require("packer").startup(function(use)
       vim.g.conflict_marker_end = "^>>>>>>> .*$"
     end,
   })
-  use({ "lewis6991/gitsigns.nvim", requires = { "nvim-lua/plenary.nvim" } })
+  use({
+    "lewis6991/gitsigns.nvim",
+    -- requires = { "nvim-lua/plenary.nvim" }
+  })
 
   -- Editing nicities
   use("tpope/vim-commentary")
