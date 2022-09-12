@@ -1,5 +1,27 @@
 local helpers = require("custom-helpers")
 
+-- Disable builtin plugins
+vim.g.loaded_gzip = 1
+vim.g.loaded_zip = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+
+vim.g.loaded_getscript = 1
+vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_vimball = 1
+vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_2html_plugin = 1
+
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_logiPat = 1
+vim.g.loaded_rrhelper = 1
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrwSettings = 1
+
 -- Bootstrap Packer
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
@@ -106,7 +128,28 @@ return require("packer").startup(function(use)
 
   -- Tim Pope Extensions
   use("tpope/vim-eunuch")
-  use("tpope/vim-vinegar")
+
+  -- File navigation
+  use({
+    "kyazdani42/nvim-tree.lua",
+    config = function()
+      require("nvim-tree").setup({
+        hijack_netrw = true,
+        view = {
+          mappings = {
+            list = {
+              { key = "<CR>", action = "edit_in_place" },
+            },
+          },
+        },
+        renderer = {
+          icons = { show = { file = false, folder = false } },
+        },
+      })
+      vim.keymap.set("n", "-", require("nvim-tree").open_replacing_current_buffer, {})
+    end,
+  })
+  -- use("tpope/vim-vinegar")
 
   -- Autohide search highlighting on move
   use("romainl/vim-cool")
