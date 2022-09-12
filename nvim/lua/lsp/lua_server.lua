@@ -49,7 +49,7 @@ end
 require("lspconfig").sumneko_lua.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
+    on_attach()(client, bufnr)
     local path = client.workspace_folders[1].name
 
     if string.match(path, ".config/hammerspoon") then

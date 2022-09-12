@@ -28,6 +28,6 @@ end
 if not helpers.isModuleAvailable("stripe") then
   require("lspconfig").sorbet.setup({
     capabilities = capabilities,
-    on_attach = on_attach,
+    on_attach = on_attach(),
   })
 end

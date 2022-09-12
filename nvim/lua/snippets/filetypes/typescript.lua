@@ -18,10 +18,6 @@ local autosnip = create_snip(autosnippets)
 
 -- Basic javascript features
 
--- console.log
-snip({ trig = "cl", dscr = "console.log()" }, fmt("console.log({})", { i(1) }))
-snip({ trig = "cll", dscr = "console.log() with label" }, fmt('console.log("{}: ", {})', { same(1), i(1) }))
-
 -- Skeleton templates
 -- autosnip(
 -- 	{ trig = "__test", dscr = "Test skeleton template" },
