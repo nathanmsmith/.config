@@ -142,9 +142,9 @@ return require("packer").startup(function(use)
             },
           },
         },
-        renderer = {
-          icons = { show = { file = false, folder = false } },
-        },
+        -- renderer = {
+        --   icons = { show = { file = false, folder = false } },
+        -- },
       })
       vim.keymap.set("n", "-", require("nvim-tree").open_replacing_current_buffer, {})
     end,

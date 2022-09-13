@@ -15,32 +15,32 @@ local snip = create_snip(snippets)
 -- local autosnip = create_snip(autosnippets)
 
 snip({
-  trig = "frozen",
-  dscr = "Frozen string literal",
+	trig = "frozen",
+	dscr = "Frozen string literal",
 }, t("# frozen_string_literal: true"))
 
 snip({
-  trig = "req",
-  dscr = "require",
+	trig = "req",
+	dscr = "require",
 }, fmt("require '{}'", { i(1) }))
 snip({
-  trig = "reqr",
-  dscr = "require relative",
+	trig = "reqr",
+	dscr = "require relative",
 }, fmt("require_relative '{}'", { i(1) }))
 
 -- Logic Control
 local case = fmt(
-  [[
+	[[
 case {}
 when {}
   {}
 end
 ]],
-  { i(1), i(2), i(0) }
+	{ i(1), i(2), i(0) }
 )
 snip({
-  trig = "case",
-  dscr = "case/switch statement",
+	trig = "case",
+	dscr = "case/switch statement",
 }, case)
 -- snip({
 --   trig = "switch",
@@ -51,8 +51,8 @@ snip({
 snip({ trig = "let", dscr = "Sorbet: define a variable" }, fmt("{} = T.let({}, {})", { i(1), i(2), i(3) }))
 snip({ trig = "tsig", dscr = "Sorbet: extend T::Sig" }, t("extend T::Sig"))
 snip(
-  { trig = "sig", dscr = "Sorbet: add function signature" },
-  fmt([[sig {{ params({}).returns({}) }}]], { i(1, "param: Type"), i(2, "Type") })
+	{ trig = "sig", dscr = "Sorbet: add function signature" },
+	fmt([[sig {{ params({}).returns({}) }}]], { i(1, "param: Type"), i(2, "Type") })
 )
 
 -- snippet prop "Structure prop" b
@@ -83,19 +83,19 @@ snip(
 -- endsnippet
 
 -- Debugging
-snip({ trig = "pry", dscr = "Insert pry breakpoint" }, t("require 'pry'; binding.pry"))
+snip({ trig = "pry", dscr = "Insert pry breakpoint" }, t("binding.pry"))
 
 -- Testing
 snip(
-  { trig = "it", dscr = "Testing: it statement" },
-  fmt(
-    [[
+	{ trig = "it", dscr = "Testing: it statement" },
+	fmt(
+		[[
 it "{}" do
   {}
 end
   ]],
-    { i(1, "does something"), i(0, "# TODO: implement") }
-  )
+		{ i(1, "does something"), i(0, "# TODO: implement") }
+	)
 )
 
 return snippets, autosnippets
