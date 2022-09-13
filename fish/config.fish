@@ -16,9 +16,11 @@ if status --is-login; and status --is-interactive
   set -x GOPATH $HOME/Developer/go
   set -x PATH $GOPATH/bin $PATH
 
+  # Node
+  source (nodenv init -|psub)
+
   if test -e ~/.config/fish/stripe-config.fish
     source ~/.config/fish/stripe-config.fish
-    source (nodenv init -|psub)
   end
 
   # starship init fish | source

@@ -12,6 +12,7 @@ for _, lsp in ipairs(servers.basic) do
 end
 
 -- Advance server setup
+require("lsp.emmet")
 require("lsp.lua_server")
 require("lsp.sourcekit")
 require("lsp.sorbet")
