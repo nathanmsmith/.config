@@ -15,32 +15,32 @@ local snip = create_snip(snippets)
 -- local autosnip = create_snip(autosnippets)
 
 snip({
-	trig = "frozen",
-	dscr = "Frozen string literal",
+  trig = "frozen",
+  dscr = "Frozen string literal",
 }, t("# frozen_string_literal: true"))
 
 snip({
-	trig = "req",
-	dscr = "require",
+  trig = "req",
+  dscr = "require",
 }, fmt("require '{}'", { i(1) }))
 snip({
-	trig = "reqr",
-	dscr = "require relative",
+  trig = "reqr",
+  dscr = "require relative",
 }, fmt("require_relative '{}'", { i(1) }))
 
 -- Logic Control
 local case = fmt(
-	[[
+  [[
 case {}
 when {}
   {}
 end
 ]],
-	{ i(1), i(2), i(0) }
+  { i(1), i(2), i(0) }
 )
 snip({
-	trig = "case",
-	dscr = "case/switch statement",
+  trig = "case",
+  dscr = "case/switch statement",
 }, case)
 -- snip({
 --   trig = "switch",
@@ -51,51 +51,40 @@ snip({
 snip({ trig = "let", dscr = "Sorbet: define a variable" }, fmt("{} = T.let({}, {})", { i(1), i(2), i(3) }))
 snip({ trig = "tsig", dscr = "Sorbet: extend T::Sig" }, t("extend T::Sig"))
 snip(
-	{ trig = "sig", dscr = "Sorbet: add function signature" },
-	fmt([[sig {{ params({}).returns({}) }}]], { i(1, "param: Type"), i(2, "Type") })
+  { trig = "sig", dscr = "Sorbet: add function signature" },
+  fmt([[sig {{ params({}).returns({}) }}]], { i(1, "param: Type"), i(2, "Type") })
 )
-
--- snippet prop "Structure prop" b
--- prop :${1:Field}, ${0:Type}
--- endsnippet
-
--- snippet const "Structure const prop" b
--- const :${1:Field}, ${0:Type}
--- endsnippet
-
--- snippet struct "structure" b
--- class ${1:MyStruct} < T::Struct
--- 	$0
--- end
--- endsnippet
-
--- snippet enum "enum" b
--- class ${1:MyEnum} < T::Enum
--- 	enums do
--- 		${2:Value} = new
--- 		$0
--- 	end
--- end
--- endsnippet
-
--- snippet tnil "T.nilable()"
--- T.nilable($0)
--- endsnippet
+snip({ trig = "prop", dscr = "Sorbet: structure prop" }, fmt([[prop :{}, {}]], {i(1, "Field"), i(2, "Type")}))
+snip({ trig = "const", dscr = "Sorbet: structure const prop" }, fmt([[const :{}, {}]], {i(1, "Field"), i(2, "Type")}))
+snip({ trig = "struct", dscr = "Sorbet: structure" }, fmt([[
+class {} < T::Struct
+  {}
+end
+]], {i(1, "MyStruct"), i(0)}))
+snip({ trig = "enum", dscr = "Sorbet: enum" }, fmt([[
+class {} < T::Struct
+  enums do
+    {} = new
+    {}
+  end
+end
+]], {i(1, "MyEnum"), i(2, "Value"), i(0)}))
+snip({trig = "tnil", dscr = "T.nilable()"}, fmt([[T.nilable({})]], {i(0)}))
 
 -- Debugging
 snip({ trig = "pry", dscr = "Insert pry breakpoint" }, t("binding.pry"))
 
 -- Testing
 snip(
-	{ trig = "it", dscr = "Testing: it statement" },
-	fmt(
-		[[
+  { trig = "it", dscr = "Testing: it statement" },
+  fmt(
+    [[
 it "{}" do
   {}
 end
   ]],
-		{ i(1, "does something"), i(0, "# TODO: implement") }
-	)
+    { i(1, "does something"), i(0, "# TODO: implement") }
+  )
 )
 
 return snippets, autosnippets

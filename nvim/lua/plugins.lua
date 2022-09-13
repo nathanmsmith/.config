@@ -142,14 +142,13 @@ return require("packer").startup(function(use)
             },
           },
         },
-        -- renderer = {
-        --   icons = { show = { file = false, folder = false } },
-        -- },
+        renderer = {
+          icons = { show = { file = false, folder = false, folder_arrow = false } },
+        },
       })
       vim.keymap.set("n", "-", require("nvim-tree").open_replacing_current_buffer, {})
     end,
   })
-  -- use("tpope/vim-vinegar")
 
   -- Autohide search highlighting on move
   use("romainl/vim-cool")
