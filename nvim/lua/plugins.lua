@@ -134,7 +134,7 @@ return require("packer").startup(function(use)
     "kyazdani42/nvim-tree.lua",
     config = function()
       require("nvim-tree").setup({
-        hijack_netrw = true,
+        disable_netrw = true,
         view = {
           mappings = {
             list = {
@@ -142,13 +142,27 @@ return require("packer").startup(function(use)
             },
           },
         },
+        actions = {
+          expand_all = {
+            max_folder_discovery = 5,
+          },
+          change_dir = {
+            enable = false,
+          },
+          open_file = {
+            resize_window = false,
+            window_picker = { enable = false },
+          },
+        },
         renderer = {
+          add_trailing = true,
           icons = { show = { file = false, folder = false, folder_arrow = false } },
         },
       })
       vim.keymap.set("n", "-", require("nvim-tree").open_replacing_current_buffer, {})
     end,
   })
+  use("stsewd/gx-extended.vim")
 
   -- Autohide search highlighting on move
   use("romainl/vim-cool")
