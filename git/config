@@ -23,7 +23,7 @@
 	verbose = 2
 [user]
 	name = Nathan Smith
-	email = nathan@nathansmith.io
+	email = nms@stripe.com
 	signingkey = 3B9BA490BA8CCFE7
 [core]
 	editor = nvim

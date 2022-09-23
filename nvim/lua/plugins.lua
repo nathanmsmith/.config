@@ -130,38 +130,39 @@ return require("packer").startup(function(use)
   use("tpope/vim-eunuch")
 
   -- File navigation
-  use({
-    "kyazdani42/nvim-tree.lua",
-    config = function()
-      require("nvim-tree").setup({
-        disable_netrw = true,
-        view = {
-          mappings = {
-            list = {
-              { key = "<CR>", action = "edit_in_place" },
-            },
-          },
-        },
-        actions = {
-          expand_all = {
-            max_folder_discovery = 5,
-          },
-          change_dir = {
-            enable = false,
-          },
-          open_file = {
-            resize_window = false,
-            window_picker = { enable = false },
-          },
-        },
-        renderer = {
-          add_trailing = true,
-          icons = { show = { file = false, folder = false, folder_arrow = false } },
-        },
-      })
-      vim.keymap.set("n", "-", require("nvim-tree").open_replacing_current_buffer, {})
-    end,
-  })
+  use("justinmk/vim-dirvish")
+  -- use({
+  --   "kyazdani42/nvim-tree.lua",
+  --   config = function()
+  --     require("nvim-tree").setup({
+  --       disable_netrw = true,
+  --       view = {
+  --         mappings = {
+  --           list = {
+  --             { key = "<CR>", action = "edit_in_place" },
+  --           },
+  --         },
+  --       },
+  --       actions = {
+  --         expand_all = {
+  --           max_folder_discovery = 5,
+  --         },
+  --         change_dir = {
+  --           enable = false,
+  --         },
+  --         open_file = {
+  --           resize_window = false,
+  --           window_picker = { enable = false },
+  --         },
+  --       },
+  --       renderer = {
+  --         add_trailing = true,
+  --         icons = { show = { file = false, folder = false, folder_arrow = false } },
+  --       },
+  --     })
+  --     vim.keymap.set("n", "-", require("nvim-tree").open_replacing_current_buffer, {})
+  --   end,
+  -- })
   use("stsewd/gx-extended.vim")
 
   -- Autohide search highlighting on move

@@ -135,7 +135,7 @@ vim.opt.gdefault = true
 
 -- Use persistent undo history.
 -- Default home is $XDG_DATA_HOME/nvim/undo/
-vim.opt.undofile = true
+-- vim.opt.undofile = true
 
 -- hide files in netrw
 vim.g.netrw_list_hide = ".*.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^..=/=$"

@@ -7,46 +7,6 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until script has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Install Command Line Tools
-echo "Installing macOS Command Line Tools..."
-xcode-select --install
-echo "✅ CLT installed."
-
-# Install Homebrew (brew.sh)
-echo "Installing Homebrew..."
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-echo "✅ Homebrew installed."
-
-# Install packages via Homebrew
-echo "Installing packages via Homebrew..."
-brew bundle
-echo "✅ Packages installed."
-
-# Setting shell to fish
-echo "Setting default shell to fish..."
-echo /usr/local/bin/fish >> /etc/shells
-chsh -s /usr/local/bin/fish
-echo "✅ Shell set. 🐟"
-
-# Clone .config!
-echo "Cloning .config dir..."
-cd ~
-git clone https://github.com/nathunsmitty/.config
-cd .config
-echo "✅ Cloned."
-
-# Link symlinks
-echo "Linking espanso config..."
-ln -s espanso/ /Users/nathan/Library/Preferences/espanso
-echo "Linked."
-echo "Linking tmux config..."
-ln -s tmux/tmux.conf ~/.tmux.conf
-echo "Linked."
-
-# Keyboard
-echo "Setting keyboard settings..."
-defaults write com.apple.HIToolbox AppleCurrentKeyboardLayoutInputSourceID -string "com.apple.keylayout.Dvorak"
-echo "Keyboard set. ⌨"
 
 # Hammerspoon
 echo "Setting Hammerspoon settings..."

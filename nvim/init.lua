@@ -1,4 +1,4 @@
-require("impatient")
+-- require("impatient")
 -- Put plugin managment first, as it handles installing packer.nvim for later files
 require("plugins")
 require("vanilla")

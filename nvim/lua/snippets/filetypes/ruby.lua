@@ -54,27 +54,50 @@ snip(
   { trig = "sig", dscr = "Sorbet: add function signature" },
   fmt([[sig {{ params({}).returns({}) }}]], { i(1, "param: Type"), i(2, "Type") })
 )
-snip({ trig = "prop", dscr = "Sorbet: structure prop" }, fmt([[prop :{}, {}]], {i(1, "Field"), i(2, "Type")}))
-snip({ trig = "const", dscr = "Sorbet: structure const prop" }, fmt([[const :{}, {}]], {i(1, "Field"), i(2, "Type")}))
-snip({ trig = "struct", dscr = "Sorbet: structure" }, fmt([[
+snip({ trig = "prop", dscr = "Sorbet: structure prop" }, fmt([[prop :{}, {}]], { i(1, "Field"), i(2, "Type") }))
+snip({ trig = "const", dscr = "Sorbet: structure const prop" }, fmt([[const :{}, {}]], { i(1, "Field"), i(2, "Type") }))
+snip(
+  { trig = "struct", dscr = "Sorbet: structure" },
+  fmt(
+    [[
 class {} < T::Struct
   {}
 end
-]], {i(1, "MyStruct"), i(0)}))
-snip({ trig = "enum", dscr = "Sorbet: enum" }, fmt([[
+]],
+    { i(1, "MyStruct"), i(0) }
+  )
+)
+snip(
+  { trig = "enum", dscr = "Sorbet: enum" },
+  fmt(
+    [[
 class {} < T::Struct
   enums do
     {} = new
     {}
   end
 end
-]], {i(1, "MyEnum"), i(2, "Value"), i(0)}))
-snip({trig = "tnil", dscr = "T.nilable()"}, fmt([[T.nilable({})]], {i(0)}))
+]],
+    { i(1, "MyEnum"), i(2, "Value"), i(0) }
+  )
+)
+snip({ trig = "tnil", dscr = "T.nilable()" }, fmt([[T.nilable({})]], { i(0) }))
 
 -- Debugging
 snip({ trig = "pry", dscr = "Insert pry breakpoint" }, t("binding.pry"))
 
 -- Testing
+snip(
+  { trig = "desc", dscr = "Testing: describe statement" },
+  fmt(
+    [[
+describe "{}" do
+  {}
+end
+  ]],
+    { i(1, "my thing"), i(0, "it 'does something'") }
+  )
+)
 snip(
   { trig = "it", dscr = "Testing: it statement" },
   fmt(

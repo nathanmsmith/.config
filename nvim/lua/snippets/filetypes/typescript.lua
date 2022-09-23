@@ -11,8 +11,8 @@ local rep = require("luasnip.extras").rep
 local create_snip = require("snippets.helpers").create_snip
 local same = require("snippets.helpers").same
 
-local javascript_snippets = require("snippets.filetypes.javascript")[1]
-local snippets, autosnippets = vim.deepcopy(javascript_snippets), {}
+local javascript_snippets, javascript_autosnippets = require("snippets.filetypes.javascript")[1]
+local snippets, autosnippets = vim.deepcopy(javascript_snippets), vim.deepcopy(javascript_autosnippets)
 local snip = create_snip(snippets)
 local autosnip = create_snip(autosnippets)
 

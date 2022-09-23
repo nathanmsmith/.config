@@ -5,14 +5,18 @@ local capabilities = require("lsp.capabilities")
 local on_attach = require("lsp.on_attach")
 
 for _, lsp in ipairs(servers.basic) do
-  lspconfig[lsp].setup({
-    on_attach = on_attach(),
-    capabilities = capabilities,
-  })
+  if helpers.isModuleAvailable("stripe") and lsp == "tailwindcss" then
+    -- do nothing
+  else
+    lspconfig[lsp].setup({
+      on_attach = on_attach(),
+      capabilities = capabilities,
+    })
+  end
 end
 
 -- Advance server setup
-require("lsp.emmet")
+-- require("lsp.emmet")
 require("lsp.lua_server")
 require("lsp.sourcekit")
 require("lsp.sorbet")

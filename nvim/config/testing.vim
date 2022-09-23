@@ -2,7 +2,7 @@
 let g:test#javascript#jest#file_pattern = '\v(__tests__/.*|(spec|test|unit))\.(js|jsx|coffee|ts|tsx|iced)$'
 let g:test#javascript#jest#executable = 'yarn test'
 
-let g:iterm_command = '/usr/local/bin/python3 ~/.config/iTerm/Scripts/run-test.py'
+let g:iterm_command = '/opt/homebrew/bin/python3 ~/.config/iTerm/Scripts/run-test.py'
 let g:kitty_command = '~/.config/nvim/test/kitty_runner'
 
 function! TermStrategy(cmd)

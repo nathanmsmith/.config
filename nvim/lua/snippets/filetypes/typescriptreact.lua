@@ -1,4 +1,4 @@
-local typescript_snippets = require("snippets.filetypes.typescript")[1]
-local snippets, autosnippets = vim.deepcopy(typescript_snippets), {}
+local typescript_snippets, typescript_autosnippets = require("snippets.filetypes.typescript")[1]
+local snippets, autosnippets = vim.deepcopy(typescript_snippets), vim.deepcopy(typescript_autosnippets)
 
 return snippets, autosnippets
