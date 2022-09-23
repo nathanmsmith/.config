@@ -130,7 +130,35 @@ return require("packer").startup(function(use)
   use("tpope/vim-eunuch")
 
   -- File navigation
-  use("justinmk/vim-dirvish")
+  use({
+    "tamago324/lir.nvim",
+    config = function()
+      local actions = require("lir.actions")
+      vim.api.nvim_set_keymap("n", "-", [[<Cmd>execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
+      require("lir").setup({
+        show_hidden_files = true,
+        devicons_enable = false,
+        hide_cursor = true,
+        mappings = {
+          ["<CR>"] = actions.edit,
+          ["-"] = actions.up,
+
+          ["<C-s>"] = actions.split,
+          ["<C-v>"] = actions.vsplit,
+          ["<C-t>"] = actions.tabedit,
+
+          ["q"] = actions.quit,
+
+          ["d"] = actions.mkdir,
+          ["N"] = actions.newfile,
+          ["R"] = actions.rename,
+          ["Y"] = actions.yank_path,
+          ["."] = actions.toggle_show_hidden,
+          ["D"] = actions.delete,
+        },
+      })
+    end,
+  })
   -- use({
   --   "kyazdani42/nvim-tree.lua",
   --   config = function()
