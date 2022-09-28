@@ -150,7 +150,7 @@ return require("packer").startup(function(use)
           ["q"] = actions.quit,
 
           ["d"] = actions.mkdir,
-          ["N"] = actions.newfile,
+          ["%"] = actions.newfile,
           ["R"] = actions.rename,
           ["Y"] = actions.yank_path,
           ["."] = actions.toggle_show_hidden,
