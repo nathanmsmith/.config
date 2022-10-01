@@ -21,11 +21,11 @@ let g:test#custom_strategies = {
       \ 'kitty_new_tab': function('KittyStrategy')
       \ }
 
-if executable('kitty')
-  let g:test#strategy = 'kitty_new_tab'
-else
-  let g:test#strategy = 'iterm3'
-endif
+" if executable('kitty')
+"   let g:test#strategy = 'kitty_new_tab'
+" else
+let g:test#strategy = 'iterm3'
+" endif
 
 nnoremap <silent> <leader>t :TestNearest<CR>
 nnoremap <silent> <leader>T :TestFile<CR>
