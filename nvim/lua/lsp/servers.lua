@@ -7,12 +7,11 @@ M.installable = {
   "tailwindcss",
   "tsserver",
   "eslint",
-
   "jsonls",
   "yamlls",
-
   "vimls",
   "sumneko_lua",
+  "gopls",
 }
 
 M.basic = {
@@ -24,6 +23,7 @@ M.basic = {
   "jsonls",
   "yamlls",
   "vimls",
+  "gopls",
 }
 
 return M
