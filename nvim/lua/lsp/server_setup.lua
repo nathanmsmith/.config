@@ -9,7 +9,7 @@ for _, lsp in ipairs(servers.basic) do
     -- do nothing
   else
     lspconfig[lsp].setup({
-      on_attach = on_attach(),
+      on_attach = on_attach,
       capabilities = capabilities,
     })
   end
