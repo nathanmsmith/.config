@@ -199,9 +199,6 @@ return require("packer").startup(function(use)
   -- Show Marks
   use("kshenoy/vim-signature")
 
-  -- Search selection with *
-  use("nelstrom/vim-visual-star-search")
-
   -- Highlight colors
   use("norcalli/nvim-colorizer.lua")
 

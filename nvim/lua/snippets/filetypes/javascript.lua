@@ -21,6 +21,30 @@ local autosnip = create_snip(autosnippets)
 snip({ trig = "cl", dscr = "console.log()" }, fmt("console.log({})", { i(1) }))
 snip({ trig = "cll", dscr = "console.log() with label" }, fmt('console.log("{}: ", {})', { same(1), i(1) }))
 
+-- testing
+snip(
+  { trig = "desc", dscr = "describe" },
+  fmt(
+    [[
+describe({}, () => {{
+  {}
+}})
+]],
+    { i(1, "MyThing"), i(0) }
+  )
+)
+snip(
+  { trig = "it"   , dscr = "it" },
+  fmt(
+    [[
+it('{}', () => {{
+  {}
+}})
+]],
+    { i(1, "does something"), i(0) }
+  )
+)
+
 -- Skeleton templates
 -- autosnip(
 -- 	{ trig = "__test", dscr = "Test skeleton template" },
