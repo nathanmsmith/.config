@@ -1,7 +1,7 @@
 local helpers = require("custom-helpers")
 local skeletons = require("skeletons")
 require("luasnip").setup({
-  history = true,
+  history = false,
   update_events = "TextChanged,TextChangedI",
   -- enable_autosnippets = true,
 })

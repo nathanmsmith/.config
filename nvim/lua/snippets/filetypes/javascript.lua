@@ -9,7 +9,6 @@ local sn = ls.snippet_node
 local fmt = require("luasnip.extras.fmt").fmt
 local rep = require("luasnip.extras").rep
 local create_snip = require("snippets.helpers").create_snip
-local same = require("snippets.helpers").same
 
 local snippets, autosnippets = {}, {}
 local snip = create_snip(snippets)
@@ -18,15 +17,15 @@ local autosnip = create_snip(autosnippets)
 -- Basic javascript features
 
 -- console.log
-snip({ trig = "cl", dscr = "console.log()" }, fmt("console.log({})", { i(1) }))
-snip({ trig = "cll", dscr = "console.log() with label" }, fmt('console.log("{}: ", {})', { same(1), i(1) }))
+snip({ trig = "cl", dscr = "console.log()" }, fmt("console.log({})", { i(0) }))
+snip({ trig = "cll", dscr = "console.log() with label" }, fmt('console.log("{}: ", {})', { rep(1), i(1) }))
 
 -- testing
 snip(
   { trig = "desc", dscr = "describe" },
   fmt(
     [[
-describe({}, () => {{
+describe('{}', () => {{
   {}
 }})
 ]],
@@ -34,7 +33,7 @@ describe({}, () => {{
   )
 )
 snip(
-  { trig = "it"   , dscr = "it" },
+  { trig = "it", dscr = "it" },
   fmt(
     [[
 it('{}', () => {{

@@ -109,5 +109,16 @@ end
     { i(1, "does something"), i(0, "# TODO: implement") }
   )
 )
+snip(
+  { trig = "before", dscr = "Testing: before statement" },
+  fmt(
+    [[
+before do
+  {}
+end
+  ]],
+    { i(0, "# TODO: implement") }
+  )
+)
 
 return snippets, autosnippets
