@@ -93,6 +93,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-sleuth")
   use("tpope/vim-projectionist")
   use("AndrewRadev/splitjoin.vim")
+  use("AndrewRadev/switch.vim")
 
   -- Suggestions
   use({
