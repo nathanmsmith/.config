@@ -1,4 +1,4 @@
--- require("impatient")
+require("impatient")
 -- Put plugin managment first, as it handles installing packer.nvim for later files
 require("plugins")
 require("vanilla")
@@ -16,4 +16,5 @@ require("git")
 vim.cmd([[
   source ~/.config/nvim/config/testing.vim
   source ~/.config/nvim/config/custom-commands.vim
+  :command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 ]])
