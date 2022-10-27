@@ -16,7 +16,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*",
 })
 -- vim.api.nvim_create_autocmd("BufWritePre", {
-
 --   command = "let w:wv = winsaveview() | %s/\\s\\+$//e | call winrestview(w:wv)",
 --   group = format_group,
 --   pattern = "*",

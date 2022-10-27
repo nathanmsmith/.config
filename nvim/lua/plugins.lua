@@ -242,8 +242,6 @@ return require("packer").startup(function(use)
 
   -- Formatting
   use("mhartington/formatter.nvim")
-  use("lukas-reineke/lsp-format.nvim")
-  use("jose-elias-alvarez/null-ls.nvim")
 
   -- Linting/Diagnostics
   use("mfussenegger/nvim-lint")

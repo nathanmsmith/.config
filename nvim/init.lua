@@ -9,7 +9,7 @@ require("lsp")
 require("completion")
 require("snippets")
 require("diagnostic")
--- require("formatting")
+require("formatting")
 require("treesitter")
 require("git")
 

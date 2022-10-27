@@ -28,6 +28,19 @@ snip({
   dscr = "require relative",
 }, fmt("require_relative '{}'", { i(1) }))
 
+-- Classes, Functions, Modules, etc.
+snip(
+  { trig = "def", dscr = "function definition" },
+  fmt(
+    [[
+def {}
+  {}
+end
+]],
+    { i(1), i(0) }
+  )
+)
+
 -- Logic Control
 local case = fmt(
   [[
