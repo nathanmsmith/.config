@@ -40,9 +40,10 @@ snip({ trig = "for", dscr = "for loop" }, {
 -- Neovim Specific
 snip(
   { trig = "snip", dscr = "Add a new LuaSnip snippet" },
-  fmt("snip({}, {})", {
+  fmt([[snip({{ trig = "{}", dscr = "{}"}}, {})]], {
     i(1, "trigger"),
-    i(2, "nodes"),
+    i(2, "description"),
+    i(0, "nodes"),
   })
 )
 
