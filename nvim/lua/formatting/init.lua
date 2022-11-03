@@ -10,13 +10,7 @@ local format_group = vim.api.nvim_create_augroup("Format", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
   callback = function()
     vim.api.nvim_command("FormatWrite")
-    vim.lsp.buf.format()
   end,
   group = format_group,
   pattern = "*",
 })
--- vim.api.nvim_create_autocmd("BufWritePre", {
---   command = "let w:wv = winsaveview() | %s/\\s\\+$//e | call winrestview(w:wv)",
---   group = format_group,
---   pattern = "*",
--- })

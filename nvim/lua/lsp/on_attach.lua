@@ -1,29 +1,7 @@
 local lsp_status = require("lsp-status")
 
--- local lsp_formatting = function(bufnr)
---   vim.lsp.buf.format({
---     filter = function(client)
---       return client.name == "null-ls" or client.name == "payserver_sorbet"
---     end,
---     bufnr = bufnr,
---   })
--- end
-
--- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 local on_attach = function(client, bufnr)
-  lsp_status.on_attach(client)
-
-  --   if client.supports_method("textDocument/formatting") then
-  --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-  --     vim.api.nvim_create_autocmd("BufWritePre", {
-  --       group = augroup,
-  --       buffer = bufnr,
-  --       callback = function()
-  --         lsp_formatting(bufnr)
-  --       end,
-  --     })
-  --   end
+  -- lsp_status.on_attach(client)
 
   local opts = { buffer = bufnr }
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
