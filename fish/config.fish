@@ -13,7 +13,6 @@ if status --is-login; and status --is-interactive
   set -x PATH $CARGO_HOME/bin $PATH
 
   # Go
-  set -x GOPATH $HOME/Developer/go
   set -x PATH $GOPATH/bin $PATH
 
   set -x PATH /opt/homebrew/opt/python/libexec/bin $PATH
