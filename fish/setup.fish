@@ -119,6 +119,8 @@ fish_add_path /opt/homebrew/opt/curl/bin
 fish_add_path /opt/homebrew/opt/llvm/bin
 fish_add_path $HOME/.rbenv/bin
 fish_add_path $PYENV_ROOT/bin
+fish_add_path $CARGO_HOME/bin
+fish_add_path /opt/homebrew/opt/python/libexec/bin
 
 set -Ux EDITOR nvim
 # AWS SAM
@@ -134,6 +136,7 @@ set -Ux PRETTIERD_LOCAL_PRETTIER_ONLY 1
 
 # Go
 set -Ux GOPATH $HOME/Developer/go
+fish_add_path $GOPATH/bin
 
 # FZF
 set -Ux FZF_DEFAULT_COMMAND 'rg -g !.git/ --files --hidden'
