@@ -9,6 +9,7 @@ lsp_format.setup({
 local on_attach = function(client, bufnr)
   lsp_status.on_attach(client)
   lsp_format.on_attach(client)
+  require("fidget").setup()
 
   local opts = { buffer = bufnr }
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
