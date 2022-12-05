@@ -8,6 +8,8 @@ else
       mappings = {
         i = {
           ["<esc>"] = require("telescope.actions").close,
+          ["<C-u>"] = false,
+          ["<C-d>"] = false,
         },
       },
       file_ignore_patterns = { "^.git/", ".DS_Store" },
@@ -54,61 +56,16 @@ end
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
 
---Add leader shortcuts
--- vim.keymap.set("n", "<leader>p", require("fuzzy_find.custom").project_files, { silent = true })
-vim.api.nvim_set_keymap(
+vim.keymap.set("n", "<leader>p", require("telescope.builtin").find_files, { desc = "Search Files" })
+vim.keymap.set("n", "<leader>h", require("telescope.builtin").help_tags, { desc = "Search [H]elp" })
+vim.keymap.set("n", "<leader>w", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
+vim.keymap.set("n", "<leader>f", require("telescope.builtin").live_grep, { desc = "[F]ind by Grep" })
+vim.keymap.set("n", "<leader>d", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+vim.keymap.set("n", "<leader>b", require("telescope.builtin").buffers, { desc = "Find existing [B]uffers" })
+vim.keymap.set(
   "n",
-  "<leader>p",
-  [[<cmd>lua require('telescope.builtin').find_files()<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>P",
-  [[<cmd>lua require('telescope.builtin').find_files({no_ignore = true})<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>f",
-  [[<cmd>lua require('telescope.builtin').live_grep()<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>b",
-  [[<cmd>lua require('telescope.builtin').buffers()<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>h",
-  [[<cmd>lua require('telescope.builtin').help_tags()<cr>]],
-  { noremap = true, silent = true }
-)
-
--- Git
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>gc",
-  [[<cmd>lua require('telescope.builtin').git_commits()<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>gb",
-  [[<cmd>lua require('telescope.builtin').git_branches()<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>gs",
-  [[<cmd>lua require('telescope.builtin').git_status()<cr>]],
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>gp",
-  [[<cmd>lua require('telescope.builtin').git_bcommits()<cr>]],
-  { noremap = true, silent = true }
+  "<leader>/",
+  require("telescope.builtin").current_buffer_fuzzy_find,
+  { desc = "[/] Fuzzily search in current buffer]" }
 )

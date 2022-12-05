@@ -1,5 +1,7 @@
 local servers = require("lsp.servers")
 
+require("fidget").setup()
+
 -- Installer config
 require("mason").setup({
   ui = {

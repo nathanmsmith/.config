@@ -1,15 +1,9 @@
 require("nvim-treesitter.configs").setup({
-  highlight = {
-    enable = true,
-    custom_captures = {
-      ["css.prop"] = "cssProp",
-      ["css.tag"] = "cssTagName",
-      ["css.constant"] = "Constant",
-      ["css.class"] = "cssClassName",
-    },
-  },
-  autotag = { enable = true },
+  highlight = { enable = true },
   indent = { enable = true },
+
+  -- Plugin config
+  autotag = { enable = true },
   endwise = { enable = true },
   matchup = {
     enable = true,
@@ -25,8 +19,24 @@ require("nvim-treesitter.configs").setup({
     persist_queries = false, -- Whether the query persists across vim sessions
   },
   textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        -- You can use the capture groups defined in textobjects.scm
+        ["aa"] = "@parameter.outer",
+        ["ia"] = "@parameter.inner",
+        ["af"] = "@function.outer",
+        ["if"] = "@function.inner",
+        ["ac"] = "@class.outer",
+        ["ic"] = "@class.inner",
+        ["ar"] = "@block.outer",
+        ["ir"] = "@block.inner",
+      },
+    },
     move = {
       enable = true,
+      set_jumps = true,
       goto_next_start = {
         ["]m"] = "@function.outer",
         ["]]"] = "@class.outer",
@@ -44,16 +54,13 @@ require("nvim-treesitter.configs").setup({
         ["[]"] = "@class.outer",
       },
     },
-    select = {
+    swap = {
       enable = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["ar"] = "@block.outer",
-        ["ir"] = "@block.inner",
+      swap_next = {
+        ["<leader>a"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>A"] = "@parameter.inner",
       },
     },
   },
