@@ -1,2 +1,4 @@
-let b:ale_fixers = ['prettier']
 setlocal spell
+setlocal wrap
+setlocal linebreak
+setlocal nolist

@@ -1,7 +1,14 @@
 local lsp_status = require("lsp-status")
+local lsp_format = require("lsp-format")
+lsp_format.setup({
+  typescript = { exclude = { "tsserver" } },
+  typescriptreact = { exclude = { "tsserver" } },
+  ruby = { order = { "null-ls", "payserver_sorbet" } },
+})
 
 local on_attach = function(client, bufnr)
-  -- lsp_status.on_attach(client)
+  lsp_status.on_attach(client)
+  lsp_format.on_attach(client)
 
   local opts = { buffer = bufnr }
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
