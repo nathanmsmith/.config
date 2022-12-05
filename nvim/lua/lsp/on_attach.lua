@@ -1,4 +1,3 @@
-local lsp_status = require("lsp-status")
 local lsp_format = require("lsp-format")
 lsp_format.setup({
   typescript = { exclude = { "tsserver" } },
@@ -7,7 +6,6 @@ lsp_format.setup({
 })
 
 local on_attach = function(client, bufnr)
-  lsp_status.on_attach(client)
   lsp_format.on_attach(client)
   local nmap = function(keys, func, desc)
     if desc then
