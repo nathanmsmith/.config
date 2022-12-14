@@ -1,10 +1,9 @@
+pcall(require, "impatient")
 -- Put plugin managment first, as it handles installing packer.nvim for later files
 local is_bootstrap = require("plugins")
 if is_bootstrap then
   return
 end
-
-require("impatient")
 
 require("vanilla")
 require("statusline")
