@@ -1,12 +1,18 @@
-local lsp_format = require("lsp-format")
-lsp_format.setup({
-  typescript = { exclude = { "tsserver" } },
-  typescriptreact = { exclude = { "tsserver" } },
-  ruby = { order = { "null-ls", "payserver_sorbet" } },
-})
+local helpers = require("custom-helpers")
+if helpers.isModuleAvailable("stripe") then
+  local lsp_format = require("lsp-format")
+  lsp_format.setup({
+    typescript = { exclude = { "tsserver" } },
+    typescriptreact = { exclude = { "tsserver" } },
+    ruby = { order = { "null-ls", "payserver_sorbet" } },
+  })
+end
 
 local on_attach = function(client, bufnr)
-  lsp_format.on_attach(client)
+  if helpers.isModuleAvailable("stripe") then
+    lsp_format.on_attach(client)
+  end
+
   local nmap = function(keys, func, desc)
     if desc then
       desc = "LSP: " .. desc

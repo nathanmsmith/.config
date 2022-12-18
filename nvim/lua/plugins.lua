@@ -24,15 +24,11 @@ vim.g.loaded_netrwSettings = 1
 
 -- Bootstrap Packer
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local is_bootstrap = false
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  packer_bootstrap = vim.fn.system({
-    "git",
-    "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  })
+  is_bootstrap = true
+  vim.fn.execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+  vim.cmd([[packadd packer.nvim]])
 end
 
 -- Run PackerCompile on save
@@ -43,7 +39,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "plugins.lua",
 })
 
-return require("packer").startup(function(use)
+require("packer").startup(function(use)
   -- Packer can manage itself
   use("wbthomason/packer.nvim")
 
@@ -52,6 +48,34 @@ return require("packer").startup(function(use)
 
   -- Color theme
   use("nathanmsmith/night-owl.vim")
+
+  -- LSP Configuration & Plugins
+  use({
+    "neovim/nvim-lspconfig",
+    requires = {
+      -- Automatically install LSPs to stdpath for neovim
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      -- Useful status updates for LSP
+      "j-hui/fidget.nvim",
+    },
+  })
+
+  -- Treesitter
+  use({
+    "nvim-treesitter/nvim-treesitter",
+    run = function()
+      pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+    end,
+  })
+  use({ -- Additional text objects via treesitter
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+  })
+  use("JoosepAlviste/nvim-ts-context-commentstring")
+  use("windwp/nvim-ts-autotag")
+  use("RRethy/nvim-treesitter-endwise")
+  use("nvim-treesitter/playground")
 
   -- Git
   use("tpope/vim-fugitive")
@@ -70,7 +94,7 @@ return require("packer").startup(function(use)
   })
   use({
     "lewis6991/gitsigns.nvim",
-    -- requires = { "nvim-lua/plenary.nvim" }
+    requires = { "nvim-lua/plenary.nvim" },
   })
 
   -- Editing nicities
@@ -138,6 +162,7 @@ return require("packer").startup(function(use)
       vim.api.nvim_set_keymap("n", "-", [[<Cmd>execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
       require("lir").setup({
         show_hidden_files = true,
+        -- ignore = { "node_modules" },
         devicons_enable = false,
         hide_cursor = true,
         mappings = {
@@ -160,38 +185,6 @@ return require("packer").startup(function(use)
       })
     end,
   })
-  -- use({
-  --   "kyazdani42/nvim-tree.lua",
-  --   config = function()
-  --     require("nvim-tree").setup({
-  --       disable_netrw = true,
-  --       view = {
-  --         mappings = {
-  --           list = {
-  --             { key = "<CR>", action = "edit_in_place" },
-  --           },
-  --         },
-  --       },
-  --       actions = {
-  --         expand_all = {
-  --           max_folder_discovery = 5,
-  --         },
-  --         change_dir = {
-  --           enable = false,
-  --         },
-  --         open_file = {
-  --           resize_window = false,
-  --           window_picker = { enable = false },
-  --         },
-  --       },
-  --       renderer = {
-  --         add_trailing = true,
-  --         icons = { show = { file = false, folder = false, folder_arrow = false } },
-  --       },
-  --     })
-  --     vim.keymap.set("n", "-", require("nvim-tree").open_replacing_current_buffer, {})
-  --   end,
-  -- })
   use("stsewd/gx-extended.vim")
 
   -- Autohide search highlighting on move
@@ -226,20 +219,6 @@ return require("packer").startup(function(use)
   use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
   use({ "nvim-telescope/telescope-ui-select.nvim" })
 
-  -- LSP Support
-  -- lsp_filetypes = {'html', 'css', 'typescript', 'go', 'ruby'}
-  use({
-    "neovim/nvim-lspconfig",
-    -- ft = lsp_filetypes,
-    -- config = function() require("lsp") end,
-  })
-  use("williamboman/mason.nvim")
-  use("williamboman/mason-lspconfig.nvim")
-
-  use("j-hui/fidget.nvim")
-  -- Rust extras
-  -- use({ "simrat39/rust-tools.nvim" })
-
   -- Formatting
   use("mhartington/formatter.nvim")
 
@@ -252,23 +231,6 @@ return require("packer").startup(function(use)
   -- }
 
   -- Treesitter
-  use({
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-    config = function()
-      require("treesitter")
-    end,
-  })
-  use({
-    "nvim-treesitter/nvim-treesitter-textobjects",
-  })
-  use("JoosepAlviste/nvim-ts-context-commentstring")
-  use("windwp/nvim-ts-autotag")
-  use("RRethy/nvim-treesitter-endwise")
-
-  use({
-    "nvim-treesitter/playground",
-  })
 
   -- Maximize current split
   use("szw/vim-maximizer")
@@ -306,7 +268,18 @@ return require("packer").startup(function(use)
   end
 
   -- Automatically set up your configuration after cloning packer.nvim
-  if packer_bootstrap then
+  if is_bootstrap then
     require("packer").sync()
   end
 end)
+
+if is_bootstrap then
+  print("==================================")
+  print("    Plugins are being installed")
+  print("    Wait until Packer completes,")
+  print("       then restart nvim")
+  print("==================================")
+  return true
+end
+
+return false
