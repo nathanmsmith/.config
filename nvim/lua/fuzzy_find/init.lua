@@ -58,6 +58,7 @@ require("telescope").load_extension("ui-select")
 
 vim.keymap.set("n", "<leader>p", require("telescope.builtin").find_files, { desc = "Search Files" })
 vim.keymap.set("n", "<leader>h", require("telescope.builtin").help_tags, { desc = "Search [H]elp" })
+vim.keymap.set("n", "<leader>k", require("telescope.builtin").help_tags, { desc = "Search [K]eymaps" })
 vim.keymap.set("n", "<leader>w", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
 vim.keymap.set("n", "<leader>f", require("telescope.builtin").live_grep, { desc = "[F]ind by Grep" })
 vim.keymap.set("n", "<leader>d", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })

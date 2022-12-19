@@ -1,0 +1,15 @@
+nvim
+config
+treesitter
+lsp
+statusline
+formatter
+rbenv
+tmp
+txt
+SimpleCov
+simplecov
+github
+ENV
+ucla
+edu

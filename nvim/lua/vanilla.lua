@@ -144,9 +144,9 @@ vim.g.netrw_list_hide = ".*.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^..=/=
 -- refs:
 -- - http://vimcasts.org/episodes/spell-checking/
 -- Spell file location
-vim.opt.spellfile = "$HOME/.config/nvim/spell/dictionary.utf-8.add"
+-- vim.opt.spellfile = "$HOME/.config/nvim/spell/dictionary.utf-8.add"
 vim.opt.spelllang = "en_us"
-vim.opt.spell = false
+vim.opt.spell = true
 
 -- make Y consistent with C and D.
 vim.keymap.set("n", "Y", "y$")

@@ -58,6 +58,10 @@ require("packer").startup(function(use)
       "williamboman/mason-lspconfig.nvim",
       -- Useful status updates for LSP
       "j-hui/fidget.nvim",
+      -- Treat formatters as LSPs
+      "jose-elias-alvarez/null-ls.nvim",
+      -- Auto-format LSP changes on save
+      "lukas-reineke/lsp-format.nvim",
     },
   })
 
