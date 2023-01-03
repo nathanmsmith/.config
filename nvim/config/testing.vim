@@ -6,6 +6,7 @@ let g:iterm_command = '/opt/homebrew/bin/python3 ~/.config/iTerm/Scripts/run-tes
 let g:kitty_command = '~/.config/nvim/test/kitty_runner'
 
 function! TermStrategy(cmd)
+  echo a:cmd
   let cmd = join([g:iterm_command, shellescape(a:cmd)])
   execute 'silent !'.cmd
 endfunction

@@ -147,6 +147,7 @@ vim.g.netrw_list_hide = ".*.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^..=/=
 -- vim.opt.spellfile = "$HOME/.config/nvim/spell/dictionary.utf-8.add"
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
+vim.opt.spelloptions = "camel"
 
 -- make Y consistent with C and D.
 vim.keymap.set("n", "Y", "y$")

@@ -10,8 +10,8 @@ spoon.ReloadConfiguration:start()
 -- Variable names, no they aren't garbage collected
 C = require("caffeine")
 P = require("paste")
+U = require("urls")
 F = require("focus")
--- U = require("urls")
 W = require("window-management")
 
 -- Handle various willSleep/didWake actions.

@@ -160,13 +160,13 @@ require("packer").startup(function(use)
 
   -- File navigation
   use({
-    "tamago324/lir.nvim",
+    "/Users/nathan/Developer/vim packages/lir.nvim",
     config = function()
       local actions = require("lir.actions")
       vim.api.nvim_set_keymap("n", "-", [[<Cmd>execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
       require("lir").setup({
         show_hidden_files = true,
-        -- ignore = { "node_modules" },
+        ignore = { ".DS_Store", "node_modules" },
         devicons_enable = false,
         hide_cursor = true,
         mappings = {
