@@ -15,9 +15,10 @@ for _, lsp in ipairs(servers.basic) do
   end
 end
 
--- Advance server setup
+-- Advanced server setup
 -- require("lsp.emmet")
 require("lsp.lua_server")
+require("lsp.null_ls")
 
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then
@@ -25,5 +26,4 @@ if helpers.isModuleAvailable("stripe") then
 else
   require("lsp.sourcekit")
   require("lsp.sorbet")
-  require("lsp.null_ls")
 end
