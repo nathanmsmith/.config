@@ -160,7 +160,7 @@ require("packer").startup(function(use)
 
   -- File navigation
   use({
-    "/Users/nathan/Developer/vim packages/lir.nvim",
+    "tamago324/lir.nvim",
     config = function()
       local actions = require("lir.actions")
       vim.api.nvim_set_keymap("n", "-", [[<Cmd>execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })

@@ -137,9 +137,6 @@ vim.opt.gdefault = true
 -- Default home is $XDG_DATA_HOME/nvim/undo/
 -- vim.opt.undofile = true
 
--- hide files in netrw
-vim.g.netrw_list_hide = ".*.swp$,.DS_Store,*/tmp/*,*.so,*.swp,*.zip,*.git,^..=/=$"
-
 -- Spell Checking
 -- refs:
 -- - http://vimcasts.org/episodes/spell-checking/
@@ -179,3 +176,14 @@ vim.api.nvim_create_autocmd(
 
 vim.o.grepprg = "rg --vimgrep --no-heading --smart-case"
 vim.o.grepformat = "%f:%l:%c:%m"
+
+-- Preserve file location before exit
+vim.api.nvim_create_autocmd("BufReadPost", {
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local lcount = vim.api.nvim_buf_line_count(0)
+    if mark[1] > 0 and mark[1] <= lcount then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
+})
