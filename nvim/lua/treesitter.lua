@@ -76,13 +76,13 @@ require("nvim-treesitter.configs").setup({
     "go",
     "gomod",
     "c",
-    "cpp",
+    -- "cpp",
     "java",
     "ruby",
     "python",
-    "rust",
     "json",
-    "swift",
+    -- "rust",
+    -- "swift",
   },
 })
 
