@@ -10,7 +10,7 @@ spoon.ReloadConfiguration:start()
 -- Variable names, no they aren't garbage collected
 C = require("caffeine")
 P = require("paste")
-U = require("urls")
+-- U = require("urls")
 F = require("focus")
 W = require("window-management")
 
