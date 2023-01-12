@@ -62,6 +62,8 @@ require("packer").startup(function(use)
       "jose-elias-alvarez/null-ls.nvim",
       -- Auto-format LSP changes on save
       "lukas-reineke/lsp-format.nvim",
+      -- Nice LSP settings for Neovim
+      "folke/neodev.nvim",
     },
   })
 

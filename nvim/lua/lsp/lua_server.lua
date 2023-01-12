@@ -1,26 +1,7 @@
 local capabilities = require("lsp.capabilities")
 local on_attach = require("lsp.on_attach")
 
-local neovim_settings = {
-  Lua = {
-    runtime = {
-      -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-      version = "LuaJIT",
-    },
-    diagnostics = {
-      -- Get the language server to recognize the `vim` global
-      globals = { "vim" },
-    },
-    workspace = {
-      -- Make the server aware of Neovim runtime files
-      library = vim.api.nvim_get_runtime_file("", true),
-    },
-    -- Do not send telemetry data containing a randomized but unique identifier
-    telemetry = {
-      enable = false,
-    },
-  },
-}
+require("neodev").setup({})
 
 local function create_hs_config()
   -- Source: https://www.reddit.com/r/neovim/comments/pla7bv/since_everyone_is_getting_more_familiar_with_lua/
@@ -40,6 +21,9 @@ local function create_hs_config()
             string.format("%s/.config/hammerspoon/Spoons/EmmyLua.spoon/annotations", os.getenv("HOME")),
           },
         },
+        telemetry = {
+          enable = false,
+        },
       },
     },
   }
@@ -54,11 +38,15 @@ require("lspconfig").sumneko_lua.setup({
 
     if string.match(path, ".config/hammerspoon") then
       client.config.settings = create_hs_config()
-    elseif string.match(path, ".config/nvim") then
-      client.config.settings = neovim_settings
+      client.notify("workspace/didChangeConfiguration")
     end
 
-    client.notify("workspace/didChangeConfiguration")
     return true
   end,
+  settings = {
+    Lua = {
+      workspace = { checkThirdParty = false },
+      telemetry = { enable = false },
+    },
+  },
 })
