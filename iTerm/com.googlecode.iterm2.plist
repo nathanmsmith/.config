@@ -6,6 +6,8 @@
 	<true/>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>AutoHideTmuxClientSession</key>
+	<false/>
 	<key>BracketedPasteMode</key>
 	<true/>
 	<key>ClosingTmuxTabKillsTmuxWindows</key>
