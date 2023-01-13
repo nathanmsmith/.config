@@ -37,3 +37,8 @@ tags
 
 # gh
 gh/
+
+fish/conf.d/stripe-abbrs-mac.fish
+fish/conf.d/stripe-abbrs.fish
+fish/functions/pay-remote-dev.fish
+hammerspoon/stripe.lua
