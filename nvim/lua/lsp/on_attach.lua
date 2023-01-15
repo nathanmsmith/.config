@@ -1,4 +1,3 @@
-local helpers = require("custom-helpers")
 local lsp_format = require("lsp-format")
 lsp_format.setup({
   typescript = { exclude = { "tsserver" } },
