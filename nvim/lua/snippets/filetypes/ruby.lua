@@ -36,7 +36,7 @@ snip(
 def {}
   {}
 end
-]]   ,
+]],
     { i(1), i(0) }
   )
 )
@@ -47,7 +47,7 @@ snip(
 class {}
   {}
 end
-]]   ,
+]],
     { i(1), i(0) }
   )
 )
@@ -58,7 +58,7 @@ snip(
 module {}
   {}
 end
-]]   ,
+]],
     { i(1), i(0) }
   )
 )
@@ -70,7 +70,7 @@ case {}
 when {}
   {}
 end
-]] ,
+]],
   { i(1), i(2), i(0) }
 )
 snip({
@@ -98,7 +98,7 @@ snip(
 class {} < T::Struct
   {}
 end
-]]   ,
+]],
     { i(1, "MyStruct"), i(0) }
   )
 )
@@ -112,14 +112,15 @@ class {} < T::Struct
     {}
   end
 end
-]]   ,
+]],
     { i(1, "MyEnum"), i(2, "Value"), i(0) }
   )
 )
 snip({ trig = "tnil", dscr = "T.nilable()" }, fmt([[T.nilable({})]], { i(0) }))
 
 -- Debugging
-snip({ trig = "pry", dscr = "Insert pry breakpoint" }, t("binding.pry"))
+snip({ trig = "dbg", dscr = "Insert breakpoint" }, t("debugger"))
+snip({ trig = "debug", dscr = "Insert breakpoint" }, t("debugger"))
 
 -- Testing
 snip(
@@ -129,7 +130,7 @@ snip(
 describe "{}" do
   {}
 end
-  ]] ,
+  ]],
     { i(1, "my thing"), i(0, "it 'does something'") }
   )
 )
@@ -140,7 +141,7 @@ snip(
 it "{}" do
   {}
 end
-  ]] ,
+  ]],
     { i(1, "does something"), i(0, "# TODO: implement") }
   )
 )
@@ -151,7 +152,7 @@ snip(
 before do
   {}
 end
-  ]] ,
+  ]],
     { i(0, "# TODO: implement") }
   )
 )
