@@ -16,6 +16,6 @@ if status --is-login; and status --is-interactive
     source ~/.config/fish/stripe-config.fish
   end
 
+  fish_add_path ~/.local/share/nvim/mason/bin/
   test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
 end
-

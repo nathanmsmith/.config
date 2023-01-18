@@ -15,5 +15,11 @@ require("mason").setup({
 require("mason-lspconfig").setup({
   ensure_installed = servers.installable,
 })
+require("mason-tool-installer").setup({
+  ensure_installed = {
+    "stylua",
+    "prettierd",
+  },
+})
 
 require("lsp.server_setup")
