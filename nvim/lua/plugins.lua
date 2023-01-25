@@ -245,6 +245,7 @@ require("packer").startup({
 
     -- Testing
     use("vim-test/vim-test")
+    use("preservim/vimux")
 
     -- File picking
     use({
