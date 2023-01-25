@@ -7,7 +7,12 @@ vim.g["test#custom_strategies"] = {
     vim.fn.execute("silent !" .. full_command)
   end,
 }
-vim.g["test#strategy"] = "iterm"
+
+if vim.fn.exists("$TMUX") then
+  vim.g["test#strategy"] = "vimux"
+else
+  vim.g["test#strategy"] = "iterm"
+end
 
 vim.keymap.set("n", "<leader>t", ":TestNearest<CR>", { silent = true, desc = "Run nearest [t]est" })
 vim.keymap.set("n", "<leader>T", ":TestFile<CR>", { silent = true, desc = "Run file [T]ests" })
