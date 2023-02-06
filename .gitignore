@@ -36,6 +36,11 @@ fish/functions/pay-remote-ssh.fish
 fish/functions/stripe-config.fish
 fish/stripe-config.fish
 fish/stripe-setup.fish
+fish/conf.d/stripe-abbrs-mac.fish
+fish/conf.d/stripe-abbrs.fish
+fish/functions/pay-remote-dev.fish
+fish/functions/pay-remote-new.fish
+hammerspoon/stripe.lua
 dbalatero/
 
 op/
