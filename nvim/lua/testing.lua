@@ -9,7 +9,7 @@ vim.g["test#custom_strategies"] = {
 }
 
 vim.g["VimuxRunnerType"] = "window"
-vim.g["VimuxRunnerName"] = "Tests"
+-- vim.g["VimuxRunnerName"] = "tests"
 vim.g["test#preserve_screen"] = 1
 
 if vim.fn.exists("$TMUX") then
