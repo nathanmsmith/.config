@@ -30,7 +30,7 @@ local function create_hs_config()
 end
 
 -- Source: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
-require("lspconfig").sumneko_lua.setup({
+require("lspconfig").lua_ls.setup({
   capabilities = capabilities,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)

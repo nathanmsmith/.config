@@ -10,7 +10,7 @@ M.installable = {
   "jsonls",
   "yamlls",
   "vimls",
-  "sumneko_lua",
+  "lua_ls",
   "gopls",
 }
 
