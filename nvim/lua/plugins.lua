@@ -124,8 +124,15 @@ require("packer").startup({
     use("tpope/vim-abolish")
     use("tpope/vim-sleuth")
     use("tpope/vim-projectionist")
-    use("AndrewRadev/splitjoin.vim")
-    use("AndrewRadev/switch.vim")
+
+    use({
+      "ckolkey/ts-node-action",
+      requires = { "nvim-treesitter" },
+      config = function()
+        require("ts-node-action").setup({})
+        vim.keymap.set({ "n" }, "gs", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
+      end,
+    })
 
     -- Suggestions
     use({
