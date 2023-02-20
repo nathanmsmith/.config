@@ -82,7 +82,7 @@ require("nvim-treesitter.configs").setup({
     "ruby",
     "python",
     "json",
-    "vim",
+    -- "vim",
     -- "rust",
     -- "swift",
   },
