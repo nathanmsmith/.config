@@ -1,8 +1,23 @@
+*~
+.\#*
+\#*
+
+# compiled files
+*.pyc
+*.pyo
+*.o
+*.a
+*.so
+
+# vim tmp files
+*.swp
+*.swo
+*.swx
+
 .ignore
 .projections.json
 .idea
 .gradle/
-
 
 # macOS things
 # General
