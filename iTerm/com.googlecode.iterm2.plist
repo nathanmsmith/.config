@@ -22,10 +22,6 @@
 	<string>tmux</string>
 	<key>ConvertDosNewlines</key>
 	<true/>
-	<key>Coprocess MRU</key>
-	<array>
-		<string>/usr/local/bin/sudolikeaboss</string>
-	</array>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Night Owl</key>
@@ -3573,6 +3569,8 @@
 	<real>0.10000000000000001</real>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>4</integer>
+	<key>TmuxSyncClipboard</key>
+	<true/>
 	<key>UseMetal</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
