@@ -10,13 +10,15 @@ vim.g["test#custom_strategies"] = {
 
 vim.g["VimuxRunnerType"] = "window"
 -- vim.g["VimuxRunnerName"] = "tests"
-vim.g["test#preserve_screen"] = 1
+-- vim.g["test#preserve_screen"] = 1
 
-if vim.fn.exists("$TMUX") then
-  vim.g["test#strategy"] = "vimux"
-else
-  vim.g["test#strategy"] = "iterm"
-end
+vim.g["test#strategy"] = "iterm"
+
+-- if vim.fn.exists("$TMUX") then
+--   vim.g["test#strategy"] = "vimux"
+-- else
+--   vim.g["test#strategy"] = "iterm"
+-- end
 
 vim.keymap.set("n", "<leader>t", ":TestNearest<CR>", { silent = true, desc = "Run nearest [t]est" })
 vim.keymap.set("n", "<leader>T", ":TestFile<CR>", { silent = true, desc = "Run file [T]ests" })
