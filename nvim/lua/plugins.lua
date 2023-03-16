@@ -168,7 +168,7 @@ require("packer").startup({
         end
 
         local function paste()
-          require("osc52").paste()
+          return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
         end
 
         -- Only change the clipboard if we're in a SSH session
