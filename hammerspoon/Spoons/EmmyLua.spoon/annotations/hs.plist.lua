@@ -15,14 +15,15 @@ hs.plist = M
 --  * The contents of the plist as a Lua table
 function M.read(filepath, ...) end
 
--- Interpretes a property list file within a string into a table.
+-- Interprets a property list file within a string into a table.
 --
 -- Parameters:
---  * value - The contents of the property list as a string
+--  * value  - The contents of the property list as a string
+--  * binary - an optional boolean, specifying whether the value should be treated as raw binary (true) or as an UTF8 encoded string (false). If you do not provide this argument, the function will attempt to auto-detect the type.
 --
 -- Returns:
 --  * The contents of the property list as a Lua table or `nil` if an error occurs
-function M.readString(value, ...) end
+function M.readString(value, binary, ...) end
 
 -- Writes a Property List file
 --
@@ -43,4 +44,14 @@ function M.readString(value, ...) end
 --  * You should be careful when reading a plist, modifying and writing it - Hammerspoon may not be able to preserve all of the datatypes via Lua
 ---@return boolean
 function M.write(filepath, data, binary, ...) end
+
+-- Interprets a property list file within a string into a table.
+--
+-- Parameters:
+--  * data - A Lua table containing the data to write into a plist string
+--  * binary - an optional boolean, default false, specifying that the resulting string should be encoded as a binary plist.
+--
+-- Returns:
+--  * A string representing the data as a plist or nil if there was a problem with the date or serialization.
+function M.writeString(data, binary, ...) end
 

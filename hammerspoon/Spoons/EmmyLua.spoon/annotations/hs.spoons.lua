@@ -67,7 +67,7 @@ function M.list() end
 --
 -- Returns:
 --  * The full directory path where the template was created, or `nil` if there was an error.
-function M.newSpoon(name, basedir, metadata, ...) end
+function M.newSpoon(name, basedir, metadata, template, ...) end
 
 -- Return full path of an object within a spoon directory, given its partial path.
 --
@@ -103,5 +103,5 @@ function M.scriptPath(n) end
 --
 -- Returns:
 --  * `true` if the spoon was loaded, `nil` otherwise
-function M.use(name, arg, ...) end
+function M.use(name, arg, noerror, ...) end
 

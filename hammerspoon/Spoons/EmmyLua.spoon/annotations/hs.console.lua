@@ -72,10 +72,10 @@ function M.clearConsole() end
 -- Get or set the color that commands displayed in the Hammerspoon console are displayed with.
 --
 -- Parameters:
--- * color - an optional table containing color keys as described in `hs.drawing.color`
+--  * color - an optional table containing color keys as described in `hs.drawing.color`
 --
 -- Returns:
--- * the current color setting as a table
+--  * the current color setting as a table
 --
 -- Notes:
 --  * See the `hs.drawing.color` entry in the Dash documentation, or type `help.hs.drawing.color` in the Hammerspoon console to get more information on how to specify a color.
@@ -85,10 +85,10 @@ function M.consoleCommandColor(color, ...) end
 -- Get or set the font used in the Hammerspoon console.
 --
 -- Parameters:
--- * font - an optional string or table describing the font to use in the console. If a string is specified, then the default system font size will be used.  If a table is specified, it should contain a `name` key-value pair and a `size` key-value pair describing the font to be used.
+--  * font - an optional string or table describing the font to use in the console. If a string is specified, then the default system font size will be used.  If a table is specified, it should contain a `name` key-value pair and a `size` key-value pair describing the font to be used.
 --
 -- Returns:
--- * the current font setting as a table containing a `name` key and a `size` key.
+--  * the current font setting as a table containing a `name` key and a `size` key.
 --
 -- Notes:
 --  * See the `hs.drawing.color` entry in the Dash documentation, or type `help.hs.drawing.color` in the Hammerspoon console to get more information on how to specify a color.
@@ -98,10 +98,10 @@ function M.consoleFont(font, ...) end
 -- Get or set the color that regular output displayed in the Hammerspoon console is displayed with.
 --
 -- Parameters:
--- * color - an optional table containing color keys as described in `hs.drawing.color`
+--  * color - an optional table containing color keys as described in `hs.drawing.color`
 --
 -- Returns:
--- * the current color setting as a table
+--  * the current color setting as a table
 --
 -- Notes:
 --  * See the `hs.drawing.color` entry in the Dash documentation, or type `help.hs.drawing.color` in the Hammerspoon console to get more information on how to specify a color.
@@ -111,10 +111,10 @@ function M.consolePrintColor(color, ...) end
 -- Get or set the color that function results displayed in the Hammerspoon console are displayed with.
 --
 -- Parameters:
--- * color - an optional table containing color keys as described in `hs.drawing.color`
+--  * color - an optional table containing color keys as described in `hs.drawing.color`
 --
 -- Returns:
--- * the current color setting as a table
+--  * the current color setting as a table
 --
 -- Notes:
 --  * See the `hs.drawing.color` entry in the Dash documentation, or type `help.hs.drawing.color` in the Hammerspoon console to get more information on how to specify a color.
@@ -160,7 +160,7 @@ M.defaultToolbar = nil
 --  * If the text of the console is retrieved as a string, no color or style information in the console output is retrieved - only the raw text.
 function M.getConsole(styled, ...) end
 
--- Get the Hammerspoon console history as an array.
+-- Get the Hammerspoon console command history as an array.
 --
 -- Parameters:
 --  * None
@@ -182,10 +182,10 @@ function M.hswindow() end
 -- Get or set the color for the background of the Hammerspoon Console's input field.
 --
 -- Parameters:
--- * color - an optional table containing color keys as described in `hs.drawing.color`
+--  * color - an optional table containing color keys as described in `hs.drawing.color`
 --
 -- Returns:
--- * the current color setting as a table
+--  * the current color setting as a table
 --
 -- Notes:
 --  * See the `hs.drawing.color` entry in the Dash documentation, or type `help.hs.drawing.color` in the Hammerspoon console to get more information on how to specify a color.
@@ -203,13 +203,27 @@ function M.inputBackgroundColor(color, ...) end
 --  * see the notes for `hs.drawing.windowLevels`
 function M.level(theLevel, ...) end
 
+-- Get or set the max length of the Hammerspoon console's scrollback history.
+--
+-- Parameters:
+--  * length - an optional number containing the maximum size in bytes of the Hammerspoon console history.
+--
+-- Returns:
+--  * the current maximum size of the console history
+--
+-- Notes:
+--  * A length value of zero will allow the history to grow infinitely
+--  * The default console history is 100,000 characters
+---@return number
+function M.maxOutputHistory(length, ...) end
+
 -- Get or set the color for the background of the Hammerspoon Console's output view.
 --
 -- Parameters:
--- * color - an optional table containing color keys as described in `hs.drawing.color`
+--  * color - an optional table containing color keys as described in `hs.drawing.color`
 --
 -- Returns:
--- * the current color setting as a table
+--  * the current color setting as a table
 --
 -- Notes:
 --  * See the `hs.drawing.color` entry in the Dash documentation, or type `help.hs.drawing.color` in the Hammerspoon console to get more information on how to specify a color.
@@ -246,7 +260,7 @@ function M.printStyledtext(...) end
 --  * You can specify the console content as a string or as an `hs.styledtext` object in either userdata or table format.
 function M.setConsole(styledText, ...) end
 
--- Set the Hammerspoon console history to the items specified in the given array.
+-- Set the Hammerspoon console command history to the items specified in the given array.
 --
 -- Parameters:
 --  * array - the list of commands to set the Hammerspoon console history to.
@@ -297,15 +311,15 @@ function M.titleVisibility(state, ...) end
 --  * this method is a convenience wrapper for the `hs.webview.toolbar.attachToolbar` function.
 --
 --  * If the toolbar is currently attached to another window when this function is called, it will be detached from the original window and attached to the console.
-function M.toolbar(toolbar_or_nil, ...) end
+function M.toolbar(toolbar, ...) end
 
 -- Get or set the color for the background of the Hammerspoon Console's window.
 --
 -- Parameters:
--- * color - an optional table containing color keys as described in `hs.drawing.color`
+--  * color - an optional table containing color keys as described in `hs.drawing.color`
 --
 -- Returns:
--- * the current color setting as a table
+--  * the current color setting as a table
 --
 -- Notes:
 --  * See the `hs.drawing.color` entry in the Dash documentation, or type `help.hs.drawing.color` in the Hammerspoon console to get more information on how to specify a color.

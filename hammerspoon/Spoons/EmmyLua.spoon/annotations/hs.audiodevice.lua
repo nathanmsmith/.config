@@ -110,6 +110,15 @@ function M:currentInputDataSource() end
 ---@return hs.audiodevice.datasource
 function M:currentOutputDataSource() end
 
+-- Get the currently selected sound effect device
+--
+-- Parameters:
+--  * None
+--
+-- Returns:
+--  * An hs.audiodevice object, or nil if no suitable device could be found
+function M.defaultEffectDevice() end
+
 -- Get the currently selected audio input device
 --
 -- Parameters:
@@ -203,7 +212,16 @@ function M:inputMuted() end
 --  * The return value will be a floating point number
 function M:inputVolume() end
 
--- Determins if an audio device is an input device
+-- Check if the audio device is in use
+--
+-- Parameters:
+--  * None
+--
+-- Returns:
+--  * True if the audio device is in use, False if not. nil if an error occurred.
+function M:inUse() end
+
+-- Determines if an audio device is an input device
 --
 -- Parameters:
 --  * None
@@ -213,7 +231,7 @@ function M:inputVolume() end
 ---@return boolean
 function M:isInputDevice() end
 
--- Determins if an audio device is an output device
+-- Determines if an audio device is an output device
 --
 -- Parameters:
 --  * None
@@ -287,6 +305,16 @@ function M:outputVolume() end
 ---@return boolean
 function M:setBalance(level, ...) end
 
+-- Selects this device as the audio output device for system sound effects
+--
+-- Parameters:
+--  * None
+--
+-- Returns:
+--  * True if the audio device was successfully selected, otherwise false.
+---@return boolean
+function M:setDefaultEffectDevice() end
+
 -- Selects this device as the system's audio input device
 --
 -- Parameters:
@@ -339,7 +367,7 @@ function M:setInputVolume(level, ...) end
 --  * True if the device's mutedness state was set, or False if it does not support muting
 --
 -- Notes:
---  * If a device is capable of both input and output, this method will prefer the output. See `:inputSetMuted()` and `:outputSetMuted()` for specific variants.
+--  * If a device is capable of both input and output, this method will prefer the output. See `:setInputMuted()` and `:setOutputMuted()` for specific variants.
 ---@return boolean
 function M:setMuted(state, ...) end
 
@@ -443,6 +471,7 @@ function M:volume() end
 --    * jack - Jack sense state changed (usually this means headphones were plugged/unplugged)
 --    * span - Stereo pan changed
 --    * diff - Device configuration changed (if you are caching audio device properties, this event indicates you should flush your cache)
+--    * gone - The device's "in use" status changed (ie another app started using the device, or stopped using it)
 --   * A string containing the scope of the event. Possible values are:
 --    * glob - This is a global event pertaining to the whole device
 --    * inpt - This is an event pertaining only to the input functions of the device

@@ -16,6 +16,15 @@
 local M = {}
 hs.serial = M
 
+-- Returns a table of currently connected serial ports details, organised by port name.
+--
+-- Parameters:
+--  * None
+--
+-- Returns:
+--  * A table containing the IOKit details of any connected serial ports, organised by port name.
+function M.availablePortDetails() end
+
 -- Returns a table of currently connected serial ports names.
 --
 -- Parameters:
@@ -62,7 +71,7 @@ function M:baudRate(value, allowNonStandardBaudRates, ...) end
 --    * `callbackType` - A string containing "opened", "closed", "received", "removed" or "error".
 --    * `message` - If the `callbackType` is "received", then this will be the data received as a string. If the `callbackType` is "error", this will be the error message as a string.
 --    * `hexadecimalString` - If the `callbackType` is "received", then this will be the data received as a hexadecimal string.
-function M:callback(callbackFn_or_nil, ...) end
+function M:callback(callbackFn, ...) end
 
 -- Closes the serial port.
 --
@@ -86,7 +95,7 @@ function M:dataBits(value, ...) end
 -- A callback that's triggered when a serial port is added or removed from the system.
 --
 -- Parameters:
---  * callbackFn - the callback function to trigger.
+--  * callbackFn - the callback function to trigger, or nil to remove the current callback
 --
 -- Returns:
 --  * None
@@ -95,6 +104,19 @@ function M:dataBits(value, ...) end
 --  * The callback function should expect 1 argument and should not return anything:
 --    * `devices` - A table containing the names of any serial ports connected as strings.
 function M.deviceCallback(callbackFn, ...) end
+
+-- Gets or sets the state of the serial port's DTR (Data Terminal Ready) pin.
+--
+-- Parameters:
+--  * value - An optional boolean.
+--
+-- Returns:
+--  * If a value is specified, then this method returns the serial port object. Otherwise this method returns a boolean.
+--
+-- Notes:
+--  * The default value is `false`.
+--  * Setting this to `true` is most likely required for Arduino devices prior to opening the serial port.
+function M:dtr(value, ...) end
 
 -- Gets whether or not a serial port is open.
 --
@@ -122,7 +144,7 @@ function M:name() end
 --  * portName - A string containing the port name.
 --
 -- Returns:
---  * An `hs.serial` object or `nil` if an error occured.
+--  * An `hs.serial` object or `nil` if an error occurred.
 --
 -- Notes:
 --  * A valid port name can be found by checking `hs.serial.availablePortNames()`.
@@ -134,7 +156,7 @@ function M.newFromName(portName, ...) end
 --  * path - A string containing the path (i.e. "/dev/cu.usbserial").
 --
 -- Returns:
---  * An `hs.serial` object or `nil` if an error occured.
+--  * An `hs.serial` object or `nil` if an error occurred.
 --
 -- Notes:
 --  * A valid port name can be found by checking `hs.serial.availablePortPaths()`.
@@ -168,6 +190,19 @@ function M:parity(value, ...) end
 ---@return string
 function M:path() end
 
+-- Gets or sets the state of the serial port's RTS (Request to Send) pin.
+--
+-- Parameters:
+--  * value - An optional boolean.
+--
+-- Returns:
+--  * If a value is specified, then this method returns the serial port object. Otherwise this method returns a boolean.
+--
+-- Notes:
+--  * The default value is `false`.
+--  * Setting this to `true` is most likely required for Arduino devices prior to opening the serial port.
+function M:rts(value, ...) end
+
 -- Sends data via a serial port.
 --
 -- Parameters:
@@ -184,6 +219,8 @@ function M:sendData(value, ...) end
 --
 -- Returns:
 --  * If a value is specified, then this method returns the serial port object. Otherwise this method returns a boolean.
+--
+-- Notes:
 --  * The default value is `false`.
 function M:shouldEchoReceivedData(value, ...) end
 
@@ -194,6 +231,8 @@ function M:shouldEchoReceivedData(value, ...) end
 --
 -- Returns:
 --  * If a value is specified, then this method returns the serial port object. Otherwise this method returns the number of stop bits as a number.
+--
+-- Notes:
 --  * The default value is 1.
 function M:stopBits(value, ...) end
 
@@ -204,6 +243,8 @@ function M:stopBits(value, ...) end
 --
 -- Returns:
 --  * If a value is specified, then this method returns the serial port object. Otherwise this method returns a boolean.
+--
+-- Notes:
 --  * The default value is `false`.
 function M:usesDTRDSRFlowControl(value, ...) end
 
@@ -214,6 +255,8 @@ function M:usesDTRDSRFlowControl(value, ...) end
 --
 -- Returns:
 --  * If a value is specified, then this method returns the serial port object. Otherwise this method returns a boolean.
+--
+-- Notes:
 --  * The default value is `false`.
 function M:usesRTSCTSFlowControl(value, ...) end
 

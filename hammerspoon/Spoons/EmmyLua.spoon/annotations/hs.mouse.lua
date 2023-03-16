@@ -34,6 +34,19 @@
 local M = {}
 hs.mouse = M
 
+-- Get or set the absolute co-ordinates of the mouse pointer
+--
+-- Parameters:
+--  * An optional point table containing the absolute x and y co-ordinates to move the mouse pointer to
+--
+-- Returns:
+--  * A point table containing the absolute x and y co-ordinates of the mouse pointer
+--
+-- Notes:
+--  * If no parameters are supplied, the current position will be returned. If a point table parameter is supplied, the mouse pointer position will be set and the new co-ordinates returned
+---@return hs.geometry
+function M.absolutePosition(point, ...) end
+
 -- Gets the total number of mice connected to your system.
 --
 -- Parameters:
@@ -48,27 +61,27 @@ hs.mouse = M
 ---@return number
 function M.count(includeInternal, ...) end
 
--- Gets the absolute co-ordinates of the mouse pointer
+-- Gets the identifier of the current mouse cursor type.
 --
 -- Parameters:
 --  * None
 --
 -- Returns:
---  * A point-table containing the absolute x and y co-ordinates of the mouse pointer
+--  * A string.
 --
 -- Notes:
---  * The co-ordinates returned by this function are in relation to the full size of your desktop. If you have multiple monitors, the desktop is a large virtual rectangle that contains them all (e.g. if you have two 1920x1080 monitors and the mouse is in the middle of the second monitor, the returned table would be `{ x=2879, y=540 }`)
---  * Multiple monitors of different sizes can cause the co-ordinates of some areas of the desktop to be negative. This is perfectly normal. 0,0 in the co-ordinates of the desktop is the top left of the primary monitor
----@return hs.geometry
-function M.getAbsolutePosition() end
+--  * Possible values include: arrowCursor, contextualMenuCursor, closedHandCursor, crosshairCursor, disappearingItemCursor, dragCopyCursor, dragLinkCursor, IBeamCursor, operationNotAllowedCursor, pointingHandCursor, resizeDownCursor, resizeLeftCursor, resizeLeftRightCursor, resizeRightCursor, resizeUpCursor, resizeUpDownCursor, IBeamCursorForVerticalLayout or unknown if the cursor type cannot be determined.
+--  * This function can also return daVinciResolveHorizontalArrows, when hovering over mouse-draggable text-boxes in DaVinci Resolve. This is determined using the "hotspot" value of the cursor.
+---@return string
+function M.currentCursorType() end
 
 -- Returns a table containing the current mouse buttons being pressed *at this instant*.
 --
 -- Parameters:
---  None
+--  * None
 --
 -- Returns:
---  * Returns an array containing indicies starting from 1 up to the highest numbered button currently being pressed where the index is `true` if the button is currently pressed or `false` if it is not.
+--  * Returns an array containing indices starting from 1 up to the highest numbered button currently being pressed where the index is `true` if the button is currently pressed or `false` if it is not.
 --  * Special hash tag synonyms for `left` (button 1), `right` (button 2), and `middle` (button 3) are also set to true if these buttons are currently being pressed.
 --
 -- Notes:
@@ -91,7 +104,7 @@ function M.getCurrentScreen() end
 --  * None
 --
 -- Returns:
---  * A point-table containing the relative x and y co-ordinates of the mouse pointer, or nil if an error occured
+--  * A point-table containing the relative x and y co-ordinates of the mouse pointer, or nil if an error occurred
 --
 -- Notes:
 --  * The co-ordinates returned by this function are relative to the top left pixel of the screen the mouse is on (see `hs.mouse.getAbsolutePosition` if you need the location in the full desktop space)
@@ -109,7 +122,7 @@ function M.getRelativePosition() end
 --  * This function leverages code from [ManyMouse](http://icculus.org/manymouse/).
 function M.names() end
 
--- Gets the system-wide direction of scolling
+-- Gets the system-wide direction of scrolling
 --
 -- Parameters:
 --  * None
@@ -118,18 +131,6 @@ function M.names() end
 --  * A string, either "natural" or "normal"
 ---@return string
 function M.scrollDirection() end
-
--- Sets the absolute co-ordinates of the mouse pointer
---
--- Parameters:
---  * point - A point-table containing the absolute x and y co-ordinates to move the mouse pointer to
---
--- Returns:
---  * None
---
--- Notes:
---  * The co-ordinates given to this function must be in relation to the full size of your desktop. See the notes for `hs.mouse.getAbsolutePosition` for more information
-function M.setAbsolutePosition(point, ...) end
 
 -- Sets the co-ordinates of the mouse pointer, relative to a screen
 --
@@ -144,14 +145,16 @@ function M.setRelativePosition(point, screen, ...) end
 -- Gets/Sets the current system mouse tracking speed setting
 --
 -- Parameters:
---  * speed - An optional number containing the new tracking speed to set. If this is ommitted, the current setting is returned
+--  * speed - An optional number containing the new tracking speed to set. If this is omitted, the current setting is returned
 --
 -- Returns:
---  * A number (currently between 0.0 and 3.0) indicating the current tracking speed setting for mice, or -1 if an error occurred
+--  * A number indicating the current tracking speed setting for mice
 --
 -- Notes:
 --  * This is represented in the System Preferences as the "Tracking speed" setting for mice
---  * Note that not all values will work, they should map to the steps defined in the System Preferences app
+--  * Note that not all values will work, they should map to the steps defined in the System Preferences app, which are:
+--    * 0.0, 0.125, 0.5, 0.6875, 0.875, 1.0, 1.5, 2.0, 2.5, 3.0
+--  * Note that changes to this value will not be noticed immediately by macOS
 ---@return number
 function M.trackingSpeed(speed, ...) end
 

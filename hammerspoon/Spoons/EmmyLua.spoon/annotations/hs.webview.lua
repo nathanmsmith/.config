@@ -107,7 +107,7 @@ function M:asHSWindow() end
 --  * this method is a convenience wrapper for the `hs.webview.toolbar.attachToolbar` function.
 --
 --  * If the toolbarObject is currently attached to another window when this method is called, it will be detached from the original window and attached to the webview.  If you wish to attach the same toolbar to multiple webviews, see `hs.webview.toolbar:copy`.
-function M:attachedToolbar(toolbar_or_nil, ...) end
+function M:attachedToolbar(toolbar, ...) end
 
 -- Get or set the window behavior settings for the webview object.
 --
@@ -252,7 +252,7 @@ function M:evaluateJavaScript(script, callback, ...) end
 -- Get or set whether or not invalid SSL server certificates that are approved by the ssl callback function are accepted as valid for browsing with the webview.
 --
 -- Parameters:
--- * `flag` - an optional boolean, default false, specifying whether or not an invalid SSL server certificate should be  accepted if it is approved by the ssl callback function.
+--  * `flag` - an optional boolean, default false, specifying whether or not an invalid SSL server certificate should be  accepted if it is approved by the ssl callback function.
 --
 -- Returns:
 --  * If a value is provided, then this method returns the webview object; otherwise the current value
@@ -384,7 +384,7 @@ function M:isVisible() end
 --  * see the notes for `hs.drawing.windowLevels`
 function M:level(theLevel, ...) end
 
--- Returns a boolean value indicating whether or not the vebview is still loading content.
+-- Returns a boolean value indicating whether or not the webview is still loading content.
 --
 -- Parameters:
 --  * None
@@ -406,7 +406,7 @@ function M:magnification(value, ...) end
 -- Sets a callback for tracking a webview's navigation process.
 --
 -- Parameters:
---  * `fn` - the function to be called when the navigation status of a webview cahnges.  To disable the callback function, explicitly specify nil.  The function should expect 3 or 4 arguments and may optionally return 1.  The function arguments are defined as follows:
+--  * `fn` - the function to be called when the navigation status of a webview changes.  To disable the callback function, explicitly specify nil.  The function should expect 3 or 4 arguments and may optionally return 1.  The function arguments are defined as follows:
 --    * `action`  - a string indicating the webview's current status.  It will be one of the following:
 --      * `didStartProvisionalNavigation`                    - a request or action to change the contents of the main frame has occurred
 --      * `didReceiveServerRedirectForProvisionalNavigation` - a server redirect was received for the main frame
@@ -418,7 +418,7 @@ function M:magnification(value, ...) end
 --    * `navID`   - a navigation identifier which can be used to link this event back to a specific request made by a `hs.webview:url`, `hs.webview:html`, or `hs.webview:reload` method.
 --    * `error`   - a table which will only be provided when `action` is equal to `didFailNavigation` or `didFailProvisionalNavigation`.  If provided, it will contain at leas some of the following keys, possibly others as well:
 --      * `code`        - a numerical value indicating the type of error code.  This will mostly be of use to developers or in debugging and may be removed in the future.
---      * `domain`      - a string indcating the error domain of the error.  This will mostly be of use to developers or in debugging and may be removed in the future.
+--      * `domain`      - a string indicating the error domain of the error.  This will mostly be of use to developers or in debugging and may be removed in the future.
 --      * `description` - a string describing the condition or problem that has occurred.
 --      * `reason`      - if available, more information about what may have caused the problem to occur.
 --
@@ -446,14 +446,11 @@ function M:navigationID() end
 -- Parameters:
 --  * `rect` - a rectangle specifying where the webviewObject should be displayed.
 --  * `preferencesTable` - an optional table which can include one of more of the following keys:
---   * `javaEnabled`                           - java is enabled (default false)
 --   * `javaScriptEnabled`                     - JavaScript is enabled (default true)
 --   * `javaScriptCanOpenWindowsAutomatically` - can JavaScript open windows without user intervention (default true)
 --   * `minimumFontSize`                       - minimum font size (default 0.0)
---   * `plugInsEnabled`                        - plug-ins are enabled (default false)
 --   * `developerExtrasEnabled`                - include "Inspect Element" in the context menu
 --   * `suppressesIncrementalRendering`        - suppresses content rendering until fully loaded into memory (default false)
---
 --   * The following additional preferences may also be set under OS X 10.11 or later (they will be ignored with a warning printed if used under OS X 10.10):
 --     * `applicationName`                       - a string specifying an application name to be listed at the end of the browser's USER-AGENT header.  Note that this is only appended to the default user agent string; if you set a custom one with [hs.webview:userAgent](#userAgent), this value is ignored.
 --     * `allowsAirPlay`                         - a boolean specifying whether media playback within the webview can play through AirPlay devices.
@@ -474,15 +471,15 @@ function M.new(rect, preferencesTable, userContentController, ...) end
 -- Create a webviewObject with some presets common to an interactive web browser.
 --
 -- Parameters:
---  * The parameters are the same as for [hs.webview.new](#new) -- check there for more details
---    * `rect`                  - a rectangle specifying where the webviewObject should be displayed.
---    * `preferencesTable`      - an optional table which specifies special settings for the webview object.
---    * `userContentController` - an optional `hs.webview.usercontent` object to provide script injection and JavaScript messaging with Hammerspoon from the webview.
+--  * `rect`                  - a rectangle specifying where the webviewObject should be displayed.
+--  * `preferencesTable`      - an optional table which specifies special settings for the webview object.
+--  * `userContentController` - an optional `hs.webview.usercontent` object to provide script injection and JavaScript messaging with Hammerspoon from the webview.
 --
 -- Returns:
 --  * The webview object
 --
 -- Notes:
+--  * The parameters are the same as for [hs.webview.new](#new) -- check there for more details
 --  * This constructor is just a short-hand for `hs.webview.new(...):allowTextEntry(true):allowGestures(true):windowStyle(15)`, which specifies a webview with a title bar, title bar buttons (zoom, close, minimize), and allows form entry and gesture support for previous and next pages.
 --
 -- * See [hs.webview.new](#new) and the following for more details:
@@ -501,7 +498,7 @@ function M.newBrowser(rect, preferencesTable, userContentController, ...) end
 --  * The webview object
 --
 -- Notes:
---  * If the webview object and webview2 are not at the same presentation level, this method will will move the webview object as close to the desired relationship without changing the webview object's presentation level. See [hs.webview.level](#level).
+--  * If the webview object and webview2 are not at the same presentation level, this method will move the webview object as close to the desired relationship without changing the webview object's presentation level. See [hs.webview.level](#level).
 function M:orderAbove(webview2, ...) end
 
 -- Moves webview object below webview2, or all webview objects in the same presentation level, if webview2 is not given.
@@ -513,7 +510,7 @@ function M:orderAbove(webview2, ...) end
 --  * The webview object
 --
 -- Notes:
---  * If the webview object and webview2 are not at the same presentation level, this method will will move the webview object as close to the desired relationship without changing the webview object's presentation level. See [hs.webview.level](#level).
+--  * If the webview object and webview2 are not at the same presentation level, this method will move the webview object as close to the desired relationship without changing the webview object's presentation level. See [hs.webview.level](#level).
 function M:orderBelow(webview2, ...) end
 
 -- Get the parent webview object for the calling webview object, or nil if the webview has no parent.
@@ -529,7 +526,6 @@ function M:parent() end
 --
 -- Parameters:
 --  * `fn` - the function to be called to approve or deny web navigation activity.  To disable the callback function, explicitly specify nil.  The callback function will accept three or four arguments and must return 1 argument which will determine if the action is approved or denied.  The first argument will specify the type of policy request and will determine the second and third arguments as follows:
---
 --    * `navigationAction`: This applies to any connection to a server or service which supplies content for the webview and occurs before any connection has actually been made.
 --      * the second argument will be the webview this request originates from.
 --      * the third argument will be a table about the navigation action requested and may contain any of the following keys:
@@ -542,7 +538,6 @@ function M:parent() end
 --        * `modifierFlags`  - a table containing keys for the keyboard modifiers which were pressed when the navigation generating this policy request was generated.
 --        * `navigationType` - a string indicating how the navigation was requested: `linkActivated`, `formSubmitted`, `backForward`, `reload`, `formResubmitted`, or `other`
 --    * The callback function should return `true` if the navigation should proceed or false if it should be denied.
---
 --    * `navigationResponse`: This applies to any connection to a server or service which supplies content for the webview and occurs after the connection has been made but before it has been rendered in the webview.
 --      * the second argument will be the webview this request originates from.
 --      * the third argument will be a table about the response received and may contain any of the following keys:
@@ -558,7 +553,6 @@ function M:parent() end
 --          * `statusCodeDescription` - a localized description of the response code
 --          * `allHeaderFields`       - a table containing the header fields and values provided in the response
 --    * The callback function should return `true` if the navigation should proceed or false if it should be denied.
---
 --    * `newWindow`: This applies to any request to create a new window from a webview.  This includes JavaScript, the user selecting "Open in a new window", etc.
 --      * the second argument will be the new webview this request is generating.
 --      * the third argument will be a table about the navigation action requested.  See the description above for `navigationAction` for details about this parameter.
@@ -572,7 +566,6 @@ function M:parent() end
 --        * `h`                   - The height coordinate of the new window.
 --        * `w`                   - The width coordinate of the new window.
 --    * The callback function should return `true` if the new window should be created or false if it should not.
---
 --    * `authenticationChallenge`:  This applies to a web page which requires a log in credential for HTTPBasic or HTTPDigest authentication.
 --      * the second argument will be the webview this request originates from.
 --      * the third argument will be a table containing the challenge details and may contain any of the following keys:
@@ -684,7 +677,6 @@ function M:size(size, ...) end
 --
 -- Parameters:
 --  * `fn` - the function to be called to examine the SSL certificate to determine if an exception should be granted.  To disable the callback function, explicitly specify nil.  The callback function will accept two arguments and must return 1 argument which will determine if the action is approved or denied.  The first argument will be the webview this request originates from.  The second argument will be a table containing the protection space details and may include the following keys:
---
 --    * `port`                       - the port of the server with which communication for this request is occurring
 --    * `receivesCredentialSecurely` - a boolean value indicating whether or not the credential can be sent to the server securely
 --    * `authenticationMethod`       - a string indicating the authentication type, in this case "serverTrust".
@@ -701,12 +693,11 @@ function M:size(size, ...) end
 --        * `type`            - a description of the data type for this value
 --        * `value`           - the value
 --
---  * The callback function should return true if an exception should be granted for this certificate or false if it should be rejected.
---
 -- Returns:
 --  * The webview object
 --
 -- Notes:
+--  * The callback function should return true if an exception should be granted for this certificate or false if it should be rejected.
 --  * even if this callback returns `true`, the certificate will only be granted an exception if [hs.webview:examineInvalidCertificates](#examineInvalidCertificates) has also been set to `true`.
 --  * once an invalid certificate has been granted an exception, the exception will remain in effect until the webview object is deleted.
 --  * the callback is only invoked for invalid certificates -- if a certificate is valid, or once an exception has been granted, the callback will not (no longer) be called for that certificate.
@@ -725,7 +716,7 @@ function M:sslCallback(fn) end
 -- Notes:
 --  * this method does not stop the loading of the primary content for the page at the specified URL
 --  * if [hs.webview:loading](#loading) would return true, this method does nothing -- see notes:
---    * The documentation from Apple is unclear and experimentation has shown that if this method is applied before the content of the specified URL has loaded, it can cause the webview to lock up; however it appears to stop the loading of addiional resources specified for the content (external script files, external style files, AJAX queries, etc.) and should be used in this context.
+--    * The documentation from Apple is unclear and experimentation has shown that if this method is applied before the content of the specified URL has loaded, it can cause the webview to lock up; however it appears to stop the loading of additional resources specified for the content (external script files, external style files, AJAX queries, etc.) and should be used in this context.
 function M:stopLoading() end
 
 -- Get the title of the page displayed in the webview.
@@ -851,16 +842,13 @@ function M:userAgent(agent, ...) end
 --
 -- Parameters:
 --  * `fn` - the function to be called when the webview window is moved or closed. Specify an explicit nil to clear the current callback.  The function should expect 2 or 3 arguments and return none.  The arguments will be one of the following:
---
 --    * "closing", webview - specifies that the webview window is being closed, either by the user or with the [hs.webview:delete](#delete) method.
 --      * `action`  - in this case "closing", specifying that the webview window is being closed
 --      * `webview` - the webview that is being closed
---
 --    * "focusChange", webview, state - indicates that the webview window has either become or stopped being the focused window
 --      * `action`  - in this case "focusChange", specifying that the webview window is being closed
 --      * `webview` - the webview that is being closed
 --      * `state`   - a boolean, true if the webview has become the focused window, or false if it has lost focus
---
 --    * "frameChange", webview, frame - indicates that the webview window has been moved or resized
 --      * `action`  - in this case "focusChange", specifying that the webview window is being closed
 --      * `webview` - the webview that is being closed

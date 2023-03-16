@@ -31,6 +31,7 @@ hs.urlevent = M
 --  * The callback function should accept two parameters:
 --   * eventName - A string containing the name of the event
 --   * params - A table containing key/value string pairs containing any URL parameters that were specified in the URL
+--   * senderPID - An integer containing the PID of the sending application, if available (otherwise -1)
 --  * Given the URL `hammerspoon://doThingA?value=1` The event name is `doThingA` and the callback's `params` argument will be a table containing `{["value"] = "1"}`
 function M.bind(eventName, callback, ...) end
 
@@ -61,7 +62,19 @@ function M.getDefaultHandler(scheme, ...) end
 --   * host - A string containing the host requested (e.g. "www.hammerspoon.org")
 --   * params - A table containing the key/value pairs of all the URL parameters
 --   * fullURL - A string containing the full, original URL
+--   * senderPID - An integer containing the PID of the application that opened the URL, if available (otherwise -1)
 M.httpCallback = nil
+
+-- A function that should handle mailto: URL events
+--
+-- Notes:
+--  * The function should handle four arguments:
+--   * scheme - A string containing the URI scheme (i.e. "mailto")
+--   * host - A string containing the host requested (typically nil)
+--   * params - A table containing the key/value pairs of all the URL parameters, typically empty
+--   * fullURL - A string containing the full, original URI
+--   * senderPID - An integer containing the PID of the application that opened the URI, if available (otherwise -1)
+M.mailtoCallback = nil
 
 -- Opens a URL with the default application
 --

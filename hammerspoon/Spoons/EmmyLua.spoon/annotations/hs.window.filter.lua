@@ -5,7 +5,7 @@
 --
 -- Warning: this module is still somewhat experimental.
 -- Should you encounter any issues, please feel free to report them on https://github.com/Hammerspoon/hammerspoon/issues
--- or #hammerspoon on irc.freenode.net
+-- or #hammerspoon on irc.libera.chat.
 --
 -- Windowfilters monitor all windows as they're created, closed, moved etc., and select some (or none) among these windows
 -- according to specific filtering rules. These filtering rules are app-specific, i.e. they start off by selecting all windows
@@ -79,6 +79,9 @@ M.allowedWindowRoles = nil
 --  * windowfilter - an `hs.window.filter` object to copy
 --  * logname - (optional) name of the `hs.logger` instance for the new windowfilter; if omitted, the class logger will be used
 --  * loglevel - (optional) log level for the `hs.logger` instance for the new windowfilter
+--
+-- Returns:
+--  * An `hs.window.filter` object
 ---@return hs.window.filter
 function M.copy(windowfilter, logname, loglevel, ...) end
 
@@ -436,7 +439,7 @@ function M:setCurrentSpace(val, ...) end
 -- Set the default filtering rules to be used for apps without app-specific rules
 --
 -- Parameters:
---   * filter - see `hs.window.filter:setAppFilter`
+--  * filter - see `hs.window.filter:setAppFilter`
 --
 -- Returns:
 --  * the `hs.window.filter` object for method chaining
@@ -452,7 +455,7 @@ function M:setDefaultFilter(filter, ...) end
 --      and `hs.window.filter:rejectApp()`
 --    - if the *value* is a table, it must contain the accept/reject rules for the app *as key/value pairs*; valid keys
 --      and values are described in `hs.window.filter:setAppFilter()`
---    - the key can be one of the special strings `"default"` and `"override"`, which will will set the default and override
+--    - the key can be one of the special strings `"default"` and `"override"`, which will set the default and override
 --      filter respectively
 --    - the key can be the special string `"sortOrder"`; the value must be one of the `sortBy...` constants as per
 --      `hs.window.filter:setSortOrder()`
@@ -461,7 +464,7 @@ function M:setDefaultFilter(filter, ...) end
 --  * the `hs.window.filter` object for method chaining
 --
 -- Notes:
---  * every filter definition in `filters` will overwrite the pre-existing one for the relevant application, if present;
+--  * every filter definition in `filters` will overwrite the preexisting one for the relevant application, if present;
 --    this also applies to the special default and override filters, if included
 ---@return hs.window.filter
 function M:setFilters(filters, ...) end
@@ -469,7 +472,7 @@ function M:setFilters(filters, ...) end
 -- Set overriding filtering rules that will be applied for all apps before any app-specific rules
 --
 -- Parameters:
---   * filter - see `hs.window.filter:setAppFilter`
+--  * filter - see `hs.window.filter:setAppFilter`
 --
 -- Returns:
 --  * the `hs.window.filter` object for method chaining
@@ -506,7 +509,7 @@ function M:setScreens(screens, ...) end
 -- Sets the sort order for this windowfilter's `:getWindows()` method
 --
 -- Parameters:
---   * sortOrder - one of the `hs.window.filter.sortBy...` constants
+--  * sortOrder - one of the `hs.window.filter.sortBy...` constants
 --
 -- Returns:
 --  * the `hs.window.filter` object for method chaining
@@ -553,17 +556,6 @@ function M:subscribe(event, fn, immediate, ...) end
 
 -- Callback to inform all windowfilters that the user initiated a switch to a (numbered) Mission Control Space.
 --
--- See `hs.window.filter.forceRefreshOnSpaceChange` for an overview of Spaces limitations in Hammerspoon. If you
--- often (or always) change Space via the "numbered" Mission Control keyboard shortcuts (by default, `ctrl-1` etc.), you
--- can call this function from your `init.lua` when intercepting these shortcuts; for example:
--- ```
--- hs.hotkey.bind('ctrl','1',nil,function()hs.window.filter.switchedToSpace(1)end)
--- hs.hotkey.bind('ctrl','2',nil,function()hs.window.filter.switchedToSpace(2)end)
--- -- etc.
--- ```
--- Using this callback results in slightly better performance than setting `forceRefreshOnSpaceChange` to `true`, since
--- already visited Spaces are remembered and no refreshing is necessary when switching back to those.
---
 -- Parameters:
 --  * space - the Space number the user is switching to
 --
@@ -574,6 +566,13 @@ function M:subscribe(event, fn, immediate, ...) end
 --  * Only use this function if "Displays have separate Spaces" and "Automatically rearrange Spaces" are OFF in System Preferences>Mission Control
 --  * Calling this function will set `hs.window.filter.forceRefreshOnSpaceChange` to `false`
 --  * If you defined one or more Spaces-aware windowfilters (i.e. when the `currentSpace` field of a filter is present), windows need refreshing at every space change anyway, so using this callback will not result in improved performance
+--  * See `hs.window.filter.forceRefreshOnSpaceChange` for an overview of Spaces limitations in Hammerspoon. If you often (or always) change Space via the "numbered" Mission Control keyboard shortcuts (by default, `ctrl-1` etc.), you can call this function from your `init.lua` when intercepting these shortcuts; for example:
+--  ```
+--  hs.hotkey.bind('ctrl','1',nil,function()hs.window.filter.switchedToSpace(1)end)
+--  hs.hotkey.bind('ctrl','2',nil,function()hs.window.filter.switchedToSpace(2)end)
+--  -- etc.
+--  ```
+-- * Using this callback results in slightly better performance than setting `forceRefreshOnSpaceChange` to `true`, since already visited Spaces are remembered and no refreshing is necessary when switching back to those.
 function M.switchedToSpace(space, ...) end
 
 -- Removes one or more event subscriptions

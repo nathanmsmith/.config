@@ -48,7 +48,7 @@ function M.get(key, ...) end
 --
 -- Notes:
 --  * Use `ipairs(hs.settings.getKeys())` to iterate over all available settings
---  * Use `hs.settings.getKeys()["someKey"]` to test for the existance of a particular key
+--  * Use `hs.settings.getKeys()["someKey"]` to test for the existence of a particular key
 function M.getKeys() end
 
 -- Saves a setting with common datatypes
@@ -61,12 +61,12 @@ function M.getKeys() end
 --    * boolean
 --    * nil
 --    * table (which may contain any of the same valid datatypes)
---  * if no value is provided, it is assumed to be nil
 --
 -- Returns:
 --  * None
 --
 -- Notes:
+--  * If no val parameter is provided, it is assumed to be nil
 --  * This function cannot set dates or raw data types, see `hs.settings.setDate()` and `hs.settings.setData()`
 --  * Assigning a nil value is equivalent to clearing the value with `hs.settings.clear`
 function M.set(key, val, ...) end
@@ -106,7 +106,6 @@ function M.setDate(key, val, ...) end
 --
 -- Notes:
 --  * the identifier is required so that multiple callbacks for the same key can be registered by separate modules; it's value doesn't affect what is being watched but does need to be unique between multiple watchers of the same key.
---
 --  * Does not work with keys that include a period (.) in the key name because KVO uses dot notation to specify a sequence of properties.  If you know of a way to escape periods so that they are watchable as NSUSerDefault key names, please file an issue and share!
-function M.watchKey(identifier, key, fn_or_nil, ...) end
+function M.watchKey(identifier, key, fn, ...) end
 

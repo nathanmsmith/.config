@@ -6,7 +6,7 @@
 local M = {}
 hs.axuielement.observer = M
 
--- Registers the specified notification for the specified accesibility element with the observer.
+-- Registers the specified notification for the specified accessibility element with the observer.
 --
 -- Parameters:
 --  * `element`      - the `hs.axuielement` representing an accessibility element of the application the observer was created for.
@@ -24,7 +24,7 @@ function M:addWatcher(element, notification, ...) end
 -- Get or set the callback for the observer.
 --
 -- Parameters:
---  * `fn` - a function, or an explicit nil to remove, specifying the callback to the observer will invoke when the assigned elements generate notifications.
+--  * `fn` - a function, or an explicit nil to remove, specifying the callback function the observer will invoke when the assigned elements generate notifications.
 --
 -- Returns:
 --  * If an argument is provided, the observerObject; otherwise the current value.
@@ -35,7 +35,7 @@ function M:addWatcher(element, notification, ...) end
 --    * the `hs.axuielement` object for the accessibility element which generated the notification
 --    * a string specifying the specific notification which was received
 --    * a table containing key-value pairs with more information about the notification, if the element and notification type provide it. Commonly this will be an empty table indicating that no additional detail was provided.
-function M:callback(fn_or_nil, ...) end
+function M:callback(fn) end
 
 -- Returns true or false indicating whether the observer is currently watching for notifications and generating callbacks.
 --
@@ -114,6 +114,6 @@ function M:stop() end
 --
 -- Notes:
 --  * If an element is specified, then the table returned will contain a list of strings specifying the specific notifications that the observer is watching that element for.
---  * If no argument is specified, then the table will contain key-value pairs in which each key will be an `hs.axuielement` that is being observed and the corresponding value will be a table containing a list of strings specifying the specific notifications that the observer is watching for from from that element.
+--  * If no argument is specified, then the table will contain key-value pairs in which each key will be an `hs.axuielement` that is being observed and the corresponding value will be a table containing a list of strings specifying the specific notifications that the observer is watching for from that element.
 function M:watching(element, ...) end
 

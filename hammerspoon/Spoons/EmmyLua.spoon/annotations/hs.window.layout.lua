@@ -4,7 +4,7 @@
 -- **WARNING**: EXPERIMENTAL MODULE. DO **NOT** USE IN PRODUCTION.
 -- This module is *for testing purposes only*. It can undergo breaking API changes or *go away entirely* **at any point and without notice**.
 -- (Should you encounter any issues, please feel free to report them on https://github.com/Hammerspoon/hammerspoon/issues
--- or #hammerspoon on irc.freenode.net)
+-- or #hammerspoon on irc.libera.chat)
 --
 -- Window management
 --
@@ -27,7 +27,7 @@
 --   windows are "consumed" and are excluded from the window pool for subsequent commands in this rule, and from subsequent rules
 -- * a **selector**, describing the sort order used to pick the first *maxn* windows from the window pool for this command;
 --   it can be one of `focused` (pick *maxn* most recently focused windows), `frontmost` (pick the recent focused window if its
---   application is frontmost applicaion, otherwise the command will be skipped), `newest` (most recently created), `oldest`
+--   application is frontmost application, otherwise the command will be skipped), `newest` (most recently created), `oldest`
 --   (least recently created), or `closest` (pick the *maxn* windows that are closest to the destination rect); if omitted,
 --   defaults to `closest` for move, tile and fit, and `newest` for everything else
 -- * an `hs.geometry` *size* (only valid for tile and fit) indicating the desired optimal aspect ratio for the tiled windows;
@@ -173,36 +173,28 @@ M.screensChangedDelay = nil
 
 -- Determines the screen configuration that permits applying this windowlayout
 --
--- With this method you can define different windowlayouts for different screen configurations
--- (as per System Preferences->Displays->Arrangement).
--- For example, suppose you define two "graphics design work" windowlayouts, one for "desk with dual monitors"
--- and one for "laptop only mode":
--- * "passive mode" use: you call `:apply()` on *both* on your chosen hotkey (via `hs.hotkey:bind()`), but
---   only the appropriate layout for the current arrangement will be applied
--- * "active mode" use: you just call `:start()` on both windowlayouts; as you switch between workplaces
---   (by attaching or detaching external screens) the correct layout "kicks in"
---   automatically - this is in effect a convenience wrapper that calls `:pause()` on the no longer relevant
---   layout, and `:resume()` on the appropriate one, at every screen configuration change
---
 -- Parameters:
 --  * screens - a map, where each *key* must be a valid "hint" for `hs.screen.find()`, and the corresponding
 --    value can be:
 --    * `true` - the screen must be currently present (attached and enabled)
 --    * `false` - the screen must be currently absent
 --    * an `hs.geometry` point (or constructor argument) - the screen must be present and in this specific
---      position in the current arragement (as per `hs.screen:position()`)
+--      position in the current arrangement (as per `hs.screen:position()`)
 --
 -- Returns:
 --  * the `hs.window.layout` object
 --
 -- Notes:
---  * if `screens` is `nil`, any previous screen configuration is removed, and this windowlayout will be always allowed
---  * for "active" windowlayouts, call this method *before* calling `hs.window.layout:start()`
---  * by using `hs.geometry` size objects as hints you can define separate layouts for the same physical
---    screen at different resolutions
+--  * If `screens` is `nil`, any previous screen configuration is removed, and this windowlayout will be always allowed
+--  * For "active" windowlayouts, call this method *before* calling `hs.window.layout:start()`
+--  * By using `hs.geometry` size objects as hints you can define separate layouts for the same physical screen at different resolutions
+--  * With this method you can define different windowlayouts for different screen configurations (as per System Preferences->Displays->Arrangement).
+--  * For example, suppose you define two "graphics design work" windowlayouts, one for "desk with dual monitors" and one for "laptop only mode":
+--    * "passive mode" use: you call `:apply()` on *both* on your chosen hotkey (via `hs.hotkey:bind()`), but only the appropriate layout for the current arrangement will be applied
+--    * "active mode" use: you just call `:start()` on both windowlayouts; as you switch between workplaces (by attaching or detaching external screens) the correct layout "kicks in" automatically - this is in effect a convenience wrapper that calls `:pause()` on the no longer relevant layout, and `:resume()` on the appropriate one, at every screen configuration change
 --
--- Usage:
--- ```
+-- Examples:
+-- ```lua
 -- local laptop_layout,desk_layout=... -- define your layouts
 -- -- just the laptop screen:
 -- laptop_layout:setScreenConfiguration{['Color LCD']='0,0',dell=false,['3840x2160']=false}:start()
@@ -216,12 +208,6 @@ function M:setScreenConfiguration(screens, ...) end
 
 -- Puts a windowlayout instance in "active mode"
 --
--- When in active mode, a windowlayout instance will constantly monitor the windowfilters for its rules,
--- by subscribing to all the relevant events. As soon as any change is detected (e.g. when you drag a window,
--- switch focus, open or close apps/windows, etc.) the relative rule will be automatically re-applied.
--- In other words, the rules you defined will remain enforced all the time, instead of waiting for manual
--- intervention via `hs.window.layout:apply()`.
---
 -- Parameters:
 --  * None
 --
@@ -229,9 +215,8 @@ function M:setScreenConfiguration(screens, ...) end
 --  * the `hs.window.layout` object
 --
 -- Notes:
---  * if a screen configuration is defined for this windowfilter, and currently not satisfied, this
---    windowfilter will be put in "active mode" but will remain paused until the screen configuration
---    requirements are met
+--  * If a screen configuration is defined for this windowfilter, and currently not satisfied, this windowfilter will be put in "active mode" but will remain paused until the screen configuration requirements are met
+--  * When in active mode, a windowlayout instance will constantly monitor the windowfilters for its rules, by subscribing to all the relevant events. As soon as any change is detected (e.g. when you drag a window, switch focus, open or close apps/windows, etc.) the relative rule will be automatically re-applied. In other words, the rules you defined will remain enforced all the time, instead of waiting for manual intervention via `hs.window.layout:apply()`.
 ---@return hs.window.layout
 function M:start() end
 

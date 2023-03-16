@@ -42,10 +42,10 @@ function M.adjustWindow(fn, window, ...) end
 -- Gets the cell describing a window
 --
 -- Parameters:
--- * an `hs.window` object to get the cell of
+--  * an `hs.window` object to get the cell of
 --
 -- Returns:
--- * a cell object (i.e. an `hs.geometry` rect), or nil if an error occurred
+--  * a cell object (i.e. an `hs.geometry` rect), or nil if an error occurred
 function M.get(win, ...) end
 
 -- Gets the `hs.geometry` rect for a cell on a particular screen
@@ -87,7 +87,6 @@ function M.getGrid(screen, ...) end
 function M.getGridFrame(screen, ...) end
 
 -- Hides the grid, if visible, and exits the modal resizing mode.
--- Call this function if you need to make sure the modal is exited without waiting for the user to press `esc`.
 --
 -- Parameters:
 --  * None
@@ -96,6 +95,7 @@ function M.getGridFrame(screen, ...) end
 --  * None
 --
 -- Notes:
+--  * Call this function if you need to make sure the modal is exited without waiting for the user to press `esc`.
 --  * If an exit callback was provided when invoking the modal interface, calling `.hide()` will call it
 function M.hide() end
 
@@ -251,12 +251,12 @@ function M.set(win, cell, screen, ...) end
 --    custom grid frame.
 --
 -- Returns:
---   * the `hs.grid` module for method chaining
+--  * the `hs.grid` module for method chaining
 --
--- Usage:
--- hs.grid.setGrid('5x3','Color LCD') -- sets the grid to 5x3 for any screen named "Color LCD"
--- hs.grid.setGrid('8x5','1920x1080') -- sets the grid to 8x5 for all screens with a 1920x1080 resolution
--- hs.grid.setGrid'4x4' -- sets the default grid to 4x4
+-- Examples:
+--  * hs.grid.setGrid('5x3','Color LCD') -- sets the grid to 5x3 for any screen named "Color LCD"
+--  * hs.grid.setGrid('8x5','1920x1080') -- sets the grid to 8x5 for all screens with a 1920x1080 resolution
+--  * hs.grid.setGrid'4x4' -- sets the default grid to 4x4
 ---@return hs.grid
 function M.setGrid(grid, screen, frame, ...) end
 
@@ -271,17 +271,16 @@ function M.setGrid(grid, screen, frame, ...) end
 function M.setMargins(margins, ...) end
 
 -- Shows the grid and starts the modal interactive resizing process for the focused or frontmost window.
--- In most cases this function should be invoked via `hs.hotkey.bind` with some keyboard shortcut.
 --
 -- Parameters:
 --  * exitedCallback - (optional) a function that will be called after the user dismisses the modal interface
---  * multipleWindows - (optional) if `true`, the resizing grid won't automatically go away after selecting the desired cells
---    for the frontmost window; instead, it'll switch to the next window
+--  * multipleWindows - (optional) if `true`, the resizing grid won't automatically go away after selecting the desired cells for the frontmost window; instead, it'll switch to the next window
 --
 -- Returns:
 --  * None
 --
 -- Notes:
+--  * In most cases this function should be invoked via `hs.hotkey.bind` with some keyboard shortcut.
 --  * In the modal interface, press the arrow keys to jump to adjacent screens; spacebar to maximize/unmaximize; esc to quit without any effect
 --  * Pressing `tab` or `shift-tab` in the modal interface will cycle to the next or previous window; if `multipleWindows`
 --    is false or omitted, the first press will just enable the multiple windows behaviour
@@ -302,7 +301,9 @@ function M.snap(win, ...) end
 
 -- Toggles the grid and modal resizing mode - see `hs.grid.show()` and `hs.grid.hide()`
 --
--- Parameters: see `hs.grid.show()`
+-- Parameters:
+--  * exitedCallback - (optional) a function that will be called after the user dismisses the modal interface
+--  * multipleWindows - (optional) if `true`, the resizing grid won't automatically go away after selecting the desired cells for the frontmost window; instead, it'll switch to the next window
 --
 -- Returns:
 --  * None
@@ -311,7 +312,7 @@ function M.toggleShow(exitedCallback, multipleWindows, ...) end
 -- Allows customization of the modal resizing grid user interface
 --
 -- This table contains variables that you can change to customize the look of the modal resizing grid.
--- The default values are shown in the right hand side of the assignements below.
+-- The default values are shown in the right hand side of the assignments below.
 --
 -- To represent color values, you can use:
 --  * a table {red=redN, green=greenN, blue=blueN, alpha=alphaN}

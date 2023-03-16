@@ -59,7 +59,7 @@ hs.webview.toolbar = M
 --   * `priority`     - an integer value used to determine toolbar item order and which items are displayed or put into the overflow menu when the number of items in the toolbar exceed the width of the window in which the toolbar is attached. Some example values are provided in the [hs.webview.toolbar.itemPriorities](#itemPriorities) table. If a toolbar item is in a group, it's priority is ignored and the item group is ordered by the item group's priority.
 --   * `searchfield`  - a boolean (default false) specifying whether or not this toolbar item is a search field. If true, the following additional keys are allowed:
 --     * `searchHistory`                - an array (table) of strings, specifying previous searches to automatically include in the search field menu, if `searchPredefinedMenuTitle` is not false
---     * `searchHistoryAutosaveName`    - a string specifying the key name to save search history with in the application deafults (accessible through `hs.settings`). If this value is set, search history will be maintained through restarts of Hammerspoon.
+--     * `searchHistoryAutosaveName`    - a string specifying the key name to save search history with in the application defaults (accessible through `hs.settings`). If this value is set, search history will be maintained through restarts of Hammerspoon.
 --     * `searchHistoryLimit`           - the maximum number of items to store in the search field history.
 --     * `searchPredefinedMenuTitle`    - a string or boolean specifying how a predefined list of search field "response" should be included in the search field menu. If this item is `true`, this list of items specified for `searchPredefinedSearches` will be displayed in a submenu with the title "Predefined Searches". If this item is a string, the list of items will be displayed in a submenu with the title specified by this string value. If this item is `false`, then the search field menu will only contain the items specified in `searchPredefinedSearches` and no search history will be included in the menu.
 --     * `searchPredefinedSearches`     - an array (table) of strings specifying the items to be listed in the predefined search submenu. If set to false, any existing menu will be removed and the search field menu will be reset to the default.
@@ -83,10 +83,12 @@ function M:allowedItems() end
 -- Get or attach/detach a toolbar to the webview, chooser, or console.
 --
 -- Parameters:
---  * if no arguments are present, this function returns the current toolbarObject for the Hammerspoon console, or nil if one is not attached.
---  * if one argument is provided and it is a toolbarObject or nil, this function will attach or detach a toolbarObject to/from the Hammerspoon console.
---  * if one argument is provided and it is an hs.webview or hs.chooser object, this function will return the current toolbarObject for the object, or nil if one is not attached.
---  * if two arguments are provided and the first is an hs.webview or hs.chooser object and the second is a toolbarObject or nil, this function will attach or detach a toolbarObject to/from the object.
+--  * obj1 - An optional toolbarObject
+--  * obj2 - An optional toolbarObject
+--   * if no arguments are present, this function returns the current toolbarObject for the Hammerspoon console, or nil if one is not attached.
+--   * if one argument is provided and it is a toolbarObject or nil, this function will attach or detach a toolbarObject to/from the Hammerspoon console.
+--   * if one argument is provided and it is an hs.webview or hs.chooser object, this function will return the current toolbarObject for the object, or nil if one is not attached.
+--   * if two arguments are provided and the first is an hs.webview or hs.chooser object and the second is a toolbarObject or nil, this function will attach or detach a toolbarObject to/from the object.
 --
 -- Returns:
 --  * if the function is used to attach/detach a toolbar, then the first object provided (the target) will be returned ; if this function is used to get the current toolbar object for a webview, chooser, or console, then the toolbarObject or nil will be returned.
@@ -306,7 +308,6 @@ function M:notifyOnChange(bool, ...) end
 --
 -- Parameters:
 --  * `index` - the numerical position of the toolbar item to remove.
---      or
 --  * `identifier` - the identifier of the toolbar item to remove, if currently active in the toolbar
 --
 -- Returns:
@@ -365,16 +366,15 @@ function M:separator(bool, ...) end
 -- Sets or removes the global callback function for the toolbar.
 --
 -- Parameters:
---  * fn - a function to set as the global callback for the toolbar, or nil to remove the global callback.
+--  * fn - a function to set as the global callback for the toolbar, or nil to remove the global callback. The function should expect three (four, if the item is a `searchfield` or `notifyOnChange` is true) arguments and return none: the toolbar object, "console" or the webview/chooser object the toolbar is attached to, and the toolbar item identifier that was clicked.
 --
---  The function should expect three (four, if the item is a `searchfield` or `notifyOnChange` is true) arguments and return none: the toolbar object, "console" or the webview/chooser object the toolbar is attached to, and the toolbar item identifier that was clicked.
 -- Returns:
 --  * the toolbar object.
 --
 -- Notes:
 --  * the global callback function is invoked for a toolbar button item that does not have a specific function assigned directly to it.
 --  * if [hs.webview.toolbar:notifyOnChange](#notifyOnChange) is set to true, then this callback function will also be invoked when a toolbar item is added or removed from the toolbar either programmatically with [hs.webview.toolbar:insertItem](#insertItem) and [hs.webview.toolbar:removeItem](#removeItem) or under user control with [hs.webview.toolbar:customizePanel](#customizePanel) and the callback function will receive a string of "add" or "remove" as a fourth argument.
-function M:setCallback(fn_or_nil, ...) end
+function M:setCallback(fn) end
 
 -- Get or set the toolbar's size.
 --
@@ -391,6 +391,23 @@ function M:sizeMode(size, ...) end
 --  * NSToolbarSpaceItem         - represents a space approximately the size of a toolbar item
 --  * NSToolbarFlexibleSpaceItem - represents a space that stretches to fill available space in the toolbar
 M.systemToolbarItems = nil
+
+-- Get or set the toolbar's style.
+--
+-- Parameters:
+--  * style - an optional string to set the style of the toolbar to "automatic", "expanded", "preference", "unified", or "unifiedCompact".
+--
+-- Returns:
+--  * if an argument is provided, returns the toolbar object; otherwise returns the current value
+--
+-- Notes:
+--  * This is only available for macOS 11.0+. Will return `nil` if getting on an earlier version of macOS.
+--  * `automatic` - A style indicating that the system determines the toolbar’s appearance and location.
+--  * `expanded` - A style indicating that the toolbar appears below the window title.
+--  * `preference` - A style indicating that the toolbar appears below the window title with toolbar items centered in the toolbar.
+--  * `unified` - A style indicating that the toolbar appears next to the window title.
+--  * `unifiedCompact` - A style indicating that the toolbar appears next to the window title and with reduced margins to allow more focus on the window’s contents.
+function M:toolbarStyle(style, ...) end
 
 -- Checks to see is a toolbar name is already in use
 --

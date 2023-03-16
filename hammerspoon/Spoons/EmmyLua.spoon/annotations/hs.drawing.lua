@@ -105,10 +105,10 @@ function M:clickCallbackActivating(_false, ...) end
 --
 -- Notes:
 --  * This method can be used to specify the area of the display where this drawing should be visible.  If any portion of the drawing extends beyond this rectangle, the image is clipped so that only the portion within this rectangle is visible.
---  * The rectangle defined by this method is independant of the drawing's actual frame -- if you move the drawing with [hs.drawing:setFrame](#setFrame) or [hs.drawing:setTopLeft](#setTopLeft), this rectangle retains its current value.
+--  * The rectangle defined by this method is independent of the drawing's actual frame -- if you move the drawing with [hs.drawing:setFrame](#setFrame) or [hs.drawing:setTopLeft](#setTopLeft), this rectangle retains its current value.
 --
 --  * This method does not work for image objects at present.
-function M:clippingRectangle(rect_or_nil, ...) end
+function M:clippingRectangle(rect, ...) end
 
 -- Returns a table containing the default font, size, color, and paragraphStyle used by `hs.drawing` for text drawing objects.
 --
@@ -200,27 +200,7 @@ function M:getStyledText() end
 --
 -- Parameters:
 --  * styledTextObject - an object created with the hs.styledtext module or its table representation (see `hs.styledtext`).
---
---  The following simplified style format is supported for use with `hs.drawing:setText` and `hs.drawing.setTextStyle`.
---
---  * theText   - the text which is to be displayed.
---  * textStyle - a table containing one or more of the following keys to set for the text of the drawing object (if textStyle is nil or missing, the `hs.drawing` defaults are used):
---    * font      - the name of the font to use (default: the system font)
---    * size      - the font point size to use (default: 27.0)
---    * color     - ignored, but accepted for compatibility with `hs.drawing:setTextStyle()`
---    * alignment - a string of one of the following indicating the texts alignment within the drawing objects frame:
---      * "left"      - the text is visually left aligned.
---      * "right"     - the text is visually right aligned.
---      * "center"    - the text is visually center aligned.
---      * "justified" - the text is justified
---      * "natural"   - (default) the natural alignment of the text’s script
---    * lineBreak - a string of one of the following indicating how to wrap text which exceeds the drawing object's frame:
---      * "wordWrap"       - (default) wrap at word boundaries, unless the word itself doesn’t fit on a single line
---      * "charWrap"       - wrap before the first character that doesn’t fit
---      * "clip"           - do not draw past the edge of the drawing object frame
---      * "truncateHead"   - the line is displayed so that the end fits in the frame and the missing text at the beginning of the line is indicated by an ellipsis
---      * "truncateTail"   - the line is displayed so that the beginning fits in the frame and the missing text at the end of the line is indicated by an ellipsis
---      * "truncateMiddle" - the line is displayed so that the beginning and end fit in the frame and the missing text in the middle is indicated by an ellipsis
+--  * textStyle - an optional table containing one or more of the following keys to set for the text of the drawing object (if textStyle is nil or missing, the `hs.drawing` defaults are used):
 --
 -- Returns:
 --  * sizeTable - a table containing the Height and Width necessary to fully display the text drawing object, or nil if an error occurred
@@ -229,6 +209,25 @@ function M:getStyledText() end
 --  * This function assumes the default values specified for any key which is not included in the provided textStyle.
 --  * The size returned is an approximation and may return a width that is off by about 4 points.  Use the returned size as a minimum starting point. Sometimes using the "clip" or "truncateMiddle" lineBreak modes or "justified" alignment will fit, but its safest to add in your own buffer if you have the space in your layout.
 --  * Multi-line text (separated by a newline or return) is supported.  The height will be for the multiple lines and the width returned will be for the longest line.
+--  * The following simplified style format is supported for use with `hs.drawing:setText` and `hs.drawing.setTextStyle`.
+--   * theText   - the text which is to be displayed.
+--   * textStyle - a table containing one or more of the following keys to set for the text of the drawing object (if textStyle is nil or missing, the `hs.drawing` defaults are used):
+--     * font      - the name of the font to use (default: the system font)
+--     * size      - the font point size to use (default: 27.0)
+--     * color     - ignored, but accepted for compatibility with `hs.drawing:setTextStyle()`
+--     * alignment - a string of one of the following indicating the texts alignment within the drawing objects frame:
+--       * "left"      - the text is visually left aligned.
+--       * "right"     - the text is visually right aligned.
+--       * "center"    - the text is visually center aligned.
+--       * "justified" - the text is justified
+--       * "natural"   - (default) the natural alignment of the text’s script
+--     * lineBreak - a string of one of the following indicating how to wrap text which exceeds the drawing object's frame:
+--       * "wordWrap"       - (default) wrap at word boundaries, unless the word itself doesn’t fit on a single line
+--       * "charWrap"       - wrap before the first character that doesn’t fit
+--       * "clip"           - do not draw past the edge of the drawing object frame
+--       * "truncateHead"   - the line is displayed so that the end fits in the frame and the missing text at the beginning of the line is indicated by an ellipsis
+--       * "truncateTail"   - the line is displayed so that the beginning fits in the frame and the missing text at the end of the line is indicated by an ellipsis
+--       * "truncateMiddle" - the line is displayed so that the beginning and end fit in the frame and the missing text in the middle is indicated by an ellipsis
 function M.getTextDrawingSize(styledTextObject_or_theText, textStyle, ...) end
 
 -- Hides the drawing object
@@ -309,7 +308,7 @@ function M:imageFrame(type, ...) end
 --    * shrinkToFit         - shrink the image, preserving the aspect ratio, to fit the drawing frame only if the image is larger than the drawing frame.
 --    * scaleToFit          - shrink or expand the image to fully fill the drawing frame.  This does not preserve the aspect ratio.
 --    * none                - perform no scaling or resizing of the image.
---    * scalePropertionally - shrink or expand the image to fully fill the drawing frame, preserving the aspect ration.
+--    * scaleProportionally - shrink or expand the image to fully fill the drawing frame, preserving the aspect ration.
 --
 -- Returns:
 --  * If a setting value is provided, the drawing object is returned; if no argument is provided, the current setting is returned.

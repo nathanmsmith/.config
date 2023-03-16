@@ -20,7 +20,7 @@ hs.watchable = M
 --
 -- Notes:
 --  * see [hs.watchable.watch](#watch) for a description of the arguments the callback function should expect.
-function M:callback(fn_or_nil, ...) end
+function M:callback(fn) end
 
 -- Externally change the value of the key-value pair being watched by the watchableObject
 --

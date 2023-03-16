@@ -125,7 +125,7 @@ function M.linkLocal() end
 -- Notes:
 --  * The callback function will be invoked each time the status for the given reachability object changes.  The callback function should expect 2 arguments, the reachability object itself and a numeric representation of the reachability flags, and should not return anything.
 --  * This method just sets the callback function.  You can start or stop the watcher with [hs.network.reachability:start](#start) or [hs.network.reachability:stop](#stop)
-function M:setCallback(function_or_nil, ...) end
+function M:setCallback(fn, ...) end
 
 -- Starts watching the reachability object for changes and invokes the callback function (if any) when a change occurs.
 --

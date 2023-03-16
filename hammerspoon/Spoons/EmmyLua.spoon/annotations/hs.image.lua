@@ -14,6 +14,21 @@ hs.image = M
 ---@type table
 M.additionalImageNames = {}
 
+-- Creates a new bitmap representation of the image and returns it as a new hs.image object
+--
+-- Parameters:
+--  * `size` - an optional table specifying the height and width the image should be scaled to in the bitmap. The size is specified as table with `h` and `w` keys set. Defaults to the size of the source image object.
+--  * `gray` - an optional boolean, default false, specifying whether or not the bitmap should be converted to grayscale (true) or left as RGB color (false).
+--
+-- Returns:
+--  * a new hs.image object
+--
+-- Notes:
+--  * a bitmap representation of an image is rendered at the specific size specified (or inherited) when it is generated -- if you later scale it to a different size, the bitmap will be scaled as larger or smaller pixels rather than smoothly.
+--
+--  * this method may be useful when preparing images for other devices (e.g. `hs.streamdeck`).
+function M:bitmapRepresentation(size, gray, ...) end
+
 -- Reads the color of the pixel at the specified location.
 --
 -- Parameters:
@@ -45,7 +60,7 @@ function M:croppedCopy(rectangle, ...) end
 --
 -- Parameters:
 --  * scale - an optional boolean, default false, which indicates that the image size (which macOS represents as points) should be scaled to pixels.  For images that have Retina scale representations, this may result in an encoded image which is scaled down from the original source.
---  * type  - optional case-insensitive string paramater specifying the bitmap image type for the encoded string (default PNG)
+--  * type  - optional case-insensitive string parameter specifying the bitmap image type for the encoded string (default PNG)
 --    * PNG  - save in Portable Network Graphics (PNG) format
 --    * TIFF - save in Tagged Image File Format (TIFF) format
 --    * BMP  - save in Windows bitmap image (BMP) format
@@ -114,7 +129,7 @@ function M.imageFromAppBundle(bundleID, ...) end
 --      * antialias - a boolean indicating whether or not the shape should be antialiased (defaults to true)
 --
 -- Returns:
---  * An `hs.image` object, or nil if an error occured
+--  * An `hs.image` object, or nil if an error occurred
 --
 -- Notes:
 --  * To use the ASCII diagram image support, see https://github.com/cparnot/ASCIImage and http://cocoamine.net/blog/2015/03/20/replacing-photoshop-with-nsstring
@@ -167,7 +182,7 @@ function M.imageFromName(string, ...) end
 --  * path - A string containing the path to an image file on disk
 --
 -- Returns:
---  * An `hs.image` object, or nil if an error occured
+--  * An `hs.image` object, or nil if an error occurred
 function M.imageFromPath(path, ...) end
 
 -- Creates an `hs.image` object from the contents of the specified URL.
@@ -200,7 +215,7 @@ function M:name(name, ...) end
 -- Parameters:
 --  * filename - the path and name of the file to save.
 --  * scale    - an optional boolean, default false, which indicates that the image size (which macOS represents as points) should be scaled to pixels.  For images that have Retina scale representations, this may result in a saved image which is scaled down from the original source.
---  * filetype - optional case-insensitive string paramater specifying the file type to save (default PNG)
+--  * filetype - optional case-insensitive string parameter specifying the file type to save (default PNG)
 --    * PNG  - save in Portable Network Graphics (PNG) format
 --    * TIFF - save in Tagged Image File Format (TIFF) format
 --    * BMP  - save in Windows bitmap image (BMP) format
@@ -241,7 +256,7 @@ function M:setName(Name, ...) end
 --  * This method is included for backwards compatibility and is considered deprecated.  It is equivalent to `hs.image:copy():size(size, [absolute])`.
 function M:setSize(size, absolute, ...) end
 
--- Get or set the size of the image represented byt he hs.image object.
+-- Get or set the size of the image represented by the hs.image object.
 --
 -- Parameters:
 --  * `size`     - an optional table with 'h' and 'w' keys specifying the size for the image.
@@ -274,4 +289,15 @@ M.systemImageNames = {}
 --  * Template images consist of black and clear colors (and an alpha channel). Template images are not intended to be used as standalone images and are usually mixed with other content to create the desired final appearance.
 --  * Images with this flag set to true usually appear lighter than they would with this flag set to false.
 function M:template(state, ...) end
+
+-- Converts an image to an ASCII representation of the image in the form of a string.
+--
+-- Parameters:
+--  * width - An optional width in pixels (defaults to image width if nothing supplied).
+--  * height - An optional height in pixels (defaults to image height if nothing supplied).
+--
+-- Returns:
+--  * A string.
+---@return string
+function M:toASCII(width, height, ...) end
 

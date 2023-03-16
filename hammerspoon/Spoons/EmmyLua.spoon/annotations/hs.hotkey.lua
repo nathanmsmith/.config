@@ -32,7 +32,7 @@ M.alertDuration = nil
 ---@return boolean
 function M.assignable(mods, key, ...) end
 
--- Creates a hotkey and enables it immediately
+-- Creates a new hotkey and enables it immediately
 --
 -- Parameters:
 --  * mods - A table or a string containing (as elements, or as substrings with any separator) the keyboard modifiers required,
@@ -42,16 +42,23 @@ function M.assignable(mods, key, ...) end
 --    * "alt", "option" or "⌥"
 --    * "shift" or "⇧"
 --  * key - A string containing the name of a keyboard key (as found in [hs.keycodes.map](hs.keycodes.html#map) ), or a raw keycode number
---  * message - A string containing a message to be displayed via `hs.alert()` when the hotkey has been triggered, or nil for no alert
+--  * message - (optional) A string containing a message to be displayed via `hs.alert()` when the hotkey has been
+--    triggered; if omitted, no alert will be shown
 --  * pressedfn - A function that will be called when the hotkey has been pressed, or nil
 --  * releasedfn - A function that will be called when the hotkey has been released, or nil
 --  * repeatfn - A function that will be called when a pressed hotkey is repeating, or nil
 --
 -- Returns:
---  * A new `hs.hotkey` object for method chaining
+--  * A new `hs.hotkey` object or nil if the hotkey could not be enabled
 --
 -- Notes:
 --  * This function is just a wrapper that performs `hs.hotkey.new(...):enable()`
+--  * You can create multiple `hs.hotkey` objects for the same keyboard combination, but only one can be active
+--    at any given time - see `hs.hotkey:enable()`
+--  * If `message` is the empty string `""`, the alert will just show the triggered keyboard combination
+--  * If you don't want any alert, you must *actually* omit the `message` parameter; a `nil` in 3rd position
+--    will be interpreted as a missing `pressedfn`
+--  * You must pass at least one of `pressedfn`, `releasedfn` or `repeatfn`; to delete a hotkey, use `hs.hotkey:delete()`
 ---@return hs.hotkey
 function M.bind(mods, key, message, pressedfn, releasedfn, repeatfn, ...) end
 
@@ -177,8 +184,7 @@ function M.getHotkeys() end
 ---@return hs.hotkey
 function M.new(mods, key, message, pressedfn, releasedfn, repeatfn, ...) end
 
--- Creates (and enables) a hotkey that shows all currently active hotkeys (i.e. enabled and not "shadowed"
--- in the current context) while pressed
+-- Creates (and enables) a hotkey that shows all currently active hotkeys (i.e. enabled and not "shadowed" in the current context) while pressed
 --
 -- Parameters:
 --  * mods - A table or a string containing (as elements, or as substrings with any separator) the keyboard modifiers required,
@@ -207,8 +213,8 @@ function M.showHotkeys(mods, key, ...) end
 --
 -- Returns:
 --  * if the hotkey combination is in use by a system function, returns a table containing the following keys:
---    * keycode - the numberic keycode for the hotkey
---    * mods    - a numeric representation of the modifier flags for the htokey
+--    * keycode - the numeric keycode for the hotkey
+--    * mods    - a numeric representation of the modifier flags for the hotkey
 --    * enabled - a boolean indicating whether or not the key is currently enabled
 --  * if the hotkey combination is not in use by the operating system, returns the boolean value `false`
 --

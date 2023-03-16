@@ -10,8 +10,7 @@
 local M = {}
 hs.screen = M
 
--- Transforms from the absolute coordinate space used by OSX/Hammerspoon to the screen's local
--- coordinate space, where `0,0` is at the screen's top left corner
+-- Transforms from the absolute coordinate space used by OSX/Hammerspoon to the screen's local coordinate space, where `0,0` is at the screen's top left corner
 --
 -- Parameters:
 --  * geom - an hs.geometry point or rect, or arguments to construct one
@@ -54,9 +53,11 @@ function M.allScreens() end
 --   * w - A number containing the width of the screen mode in points
 --   * h - A number containing the height of the screen mode in points
 --   * scale - A number containing the scaling factor of the screen mode (typically `1` for a native mode, `2` for a HiDPI mode)
+--   * freq - A number containing the vertical refresh rate in Hz
+--   * depth - A number containing the bit depth of the display mode
 --
 -- Notes:
---  * Only 32-bit colour modes are returned. If you really need to know about 16-bit modes, please file an Issue on GitHub
+--  * Prior to 0.9.83, only 32-bit colour modes would be returned, but now all colour depths are returned. This has necessitated changing the naming of the modes in the returned table.
 --  * "points" are not necessarily the same as pixels, because they take the scale factor into account (e.g. "1440x900@2x" is a 2880x1800 screen resolution, with a scaling factor of 2, i.e. with HiDPI pixel-doubled rendering enabled), however, they are far more useful to work with than native pixel modes, when a Retina screen is involved. For non-retina screens, points and pixels are equivalent.
 function M:availableModes() end
 
@@ -70,7 +71,9 @@ function M:availableModes() end
 --   * w - A number containing the width of the screen mode in points
 --   * h - A number containing the height of the screen mode in points
 --   * scale - A number containing the scaling factor of the screen mode (typically `1` for a native mode, `2` for a HiDPI mode)
---   * desc - A string containing a representation of the mode as used in `hs.screen:availableModes()` - e.g. "1920x1080@2x"
+--   * freq - A number containing the vertical refresh rate in Hz
+--   * depth - A number containing the bit depth
+--   * desc - A string containing a representation of the mode as used in `hs.screen:availableModes()` - e.g. "1920x1080@2x 60Hz 4bpp"
 function M:currentMode() end
 
 -- Gets/Sets the desktop background image for a screen
@@ -101,12 +104,13 @@ function M:desktopImageURL(imageURL, ...) end
 --  * one or more hs.screen objects that match the supplied search criterion, or `nil` if none found
 --
 -- Notes:
---  * for convenience you call call this as `hs.screen(hint)`
+--  * for convenience you call this as `hs.screen(hint)`
 --
 -- Example:
 -- ```lua
 -- hs.screen(724562417) --> Color LCD - by id
 -- hs.screen'Dell'      --> DELL U2414M - by name
+-- hs.screen'Built%-in' --> Built-in Retina Display, note the % to escape the hyphen repetition character
 -- hs.screen'0,0'       --> PHL BDM4065 - by position, same as hs.screen.primaryScreen()
 -- hs.screen{x=-1,y=0}  --> DELL U2414M - by position, screen to the immediate left of the primary screen
 -- hs.screen'3840x2160' --> PHL BDM4065 - by screen resolution
@@ -179,6 +183,15 @@ function M.getForceToGray() end
 --   * blue
 function M:getGamma() end
 
+-- Gets a table of information about an `hs.screen` object
+--
+-- Parameters:
+--  * None
+--
+-- Returns:
+--  *  A table containing various information, or nil if an error occurred.
+function M:getInfo() end
+
 -- Gets the screen's InvertedPolarity setting
 --
 -- Parameters:
@@ -209,8 +222,7 @@ function M:getUUID() end
 ---@return number
 function M:id() end
 
--- Transforms from the screen's local coordinate space, where `0,0` is at the screen's top left corner,
--- to the absolute coordinate space used by OSX/Hammerspoon
+-- Transforms from the screen's local coordinate space, where `0,0` is at the screen's top left corner, to the absolute coordinate space used by OSX/Hammerspoon
 --
 -- Parameters:
 --  * geom - an hs.geometry point or rect, or arguments to construct one
@@ -229,6 +241,27 @@ function M:localToAbsolute(geom, ...) end
 --  * An `hs.screen` object
 ---@return hs.screen
 function M.mainScreen() end
+
+-- Make this screen mirror another
+--
+-- Parameters:
+--  * aScreen - an hs.screen object you wish to mirror
+--  * permanent - an optional bool, true if this should be configured permanently, false if it should apply just for this login session. Defaults to false.
+--
+-- Returns:
+--  * true if the operation succeeded, otherwise false
+---@return boolean
+function M:mirrorOf(aScreen, permanent, ...) end
+
+-- Stops this screen mirroring another
+--
+-- Parameters:
+--  * permanent - an optional bool, true if this should be configured permanently, false if it should apply just for this login session. Defaults to false.
+--
+-- Returns:
+--  * true if the operation succeeded, otherwise false
+---@return boolean
+function M:mirrorStop(permanent, ...) end
 
 -- Returns the preferred name for the screen set by the manufacturer
 --
@@ -368,6 +401,8 @@ function M.setInvertedPolarity(InvertedPolarity, ...) end
 --  * width - A number containing the width in points of the new mode
 --  * height - A number containing the height in points of the new mode
 --  * scale - A number containing the scaling factor of the new mode (typically 1 for native pixel resolutions, 2 for HiDPI/Retina resolutions)
+--  * frequency - A number containing the vertical refresh rate, in Hertz of the new mode
+--  * depth - A number containing the bit depth of the new mode
 --
 -- Returns:
 --  * A boolean, true if the requested mode was set, otherwise false
@@ -375,7 +410,7 @@ function M.setInvertedPolarity(InvertedPolarity, ...) end
 -- Notes:
 --  * The available widths/heights/scales can be seen in the output of `hs.screen:availableModes()`, however, it should be noted that the CoreGraphics subsystem seems to list more modes for a given screen than it is actually prepared to set, so you may find that seemingly valid modes still return false. It is not currently understood why this is so!
 ---@return boolean
-function M:setMode(width, height, scale, ...) end
+function M:setMode(width, height, scale, frequency, depth, ...) end
 
 -- Sets the origin of a screen in the global display coordinate space. The origin of the main or primary display is (0,0). The new origin is placed as close as possible to the requested location, without overlapping or leaving a gap between displays. If you use this function to change the origin of a mirrored display, the display may be removed from the mirroring set.
 --
@@ -433,35 +468,35 @@ M.strictScreenInDirection = nil
 -- Gets the first screen to the east of this one, ordered by proximity to its center or a specified point.
 --
 -- Parameters:
---   * from - An `hs.geometry.rect` or `hs.geometry.point` object; if omitted, the geometric center of this screen will be used
---   * strict - If `true`, disregard screens that lie completely above or below this one (alternatively, set `hs.screen.strictScreenInDirection`)
+--  * from - An `hs.geometry.rect` or `hs.geometry.point` object; if omitted, the geometric center of this screen will be used
+--  * strict - If `true`, disregard screens that lie completely above or below this one (alternatively, set `hs.screen.strictScreenInDirection`)
 --
 -- Returns:
 --   * An `hs.screen` object, or `nil` if not found
 ---@return hs.screen
-function M:toEast() end
+function M:toEast(from, strict, ...) end
 
 -- Gets the first screen to the north of this one, ordered by proximity to its center or a specified point.
 --
 -- Parameters:
---   * from - An `hs.geometry.rect` or `hs.geometry.point` object; if omitted, the geometric center of this screen will be used
---   * strict - If `true`, disregard screens that lie completely to the left or to the right of this one (alternatively, set `hs.screen.strictScreenInDirection`)
+--  * from - An `hs.geometry.rect` or `hs.geometry.point` object; if omitted, the geometric center of this screen will be used
+--  * strict - If `true`, disregard screens that lie completely to the left or to the right of this one (alternatively, set `hs.screen.strictScreenInDirection`)
 --
 -- Returns:
 --   * An `hs.screen` object, or `nil` if not found
 ---@return hs.screen
-function M:toNorth() end
+function M:toNorth(from, strict, ...) end
 
 -- Gets the first screen to the south of this one, ordered by proximity to its center or a specified point.
 --
 -- Parameters:
---   * from - An `hs.geometry.rect` or `hs.geometry.point` object; if omitted, the geometric center of this screen will be used
---   * strict - If `true`, disregard screens that lie completely to the left or to the right of this one (alternatively, set `hs.screen.strictScreenInDirection`)
+--  * from - An `hs.geometry.rect` or `hs.geometry.point` object; if omitted, the geometric center of this screen will be used
+--  * strict - If `true`, disregard screens that lie completely to the left or to the right of this one (alternatively, set `hs.screen.strictScreenInDirection`)
 --
 -- Returns:
 --   * An `hs.screen` object, or `nil` if not found
 ---@return hs.screen
-function M:toSouth() end
+function M:toSouth(from, strict, ...) end
 
 -- Returns the unit rect of a given rect, relative to this screen
 --
@@ -478,11 +513,11 @@ function M:toUnitRect(rect, ...) end
 -- Gets the first screen to the west of this one, ordered by proximity to its center or a specified point.
 --
 -- Parameters:
---   * from - An `hs.geometry.rect` or `hs.geometry.point` object; if omitted, the geometric center of this screen will be used
---   * strict - If `true`, disregard screens that lie completely above or below this one (alternatively, set `hs.screen.strictScreenInDirection`)
+--  * from - An `hs.geometry.rect` or `hs.geometry.point` object; if omitted, the geometric center of this screen will be used
+--  * strict - If `true`, disregard screens that lie completely above or below this one (alternatively, set `hs.screen.strictScreenInDirection`)
 --
 -- Returns:
 --   * An `hs.screen` object, or `nil` if not found
 ---@return hs.screen
-function M:toWest() end
+function M:toWest(from, strict, ...) end
 

@@ -100,6 +100,8 @@ function M:additionalActivationAction() end
 -- Notes:
 --  * This does not affect the return value of `hs.notify:presented()` -- that will still reflect the decision of the Notification Center
 --  * Examples of why the users Notification Center would choose not to display a notification would be if Hammerspoon is the currently focussed application, being attached to a projector, or the user having set Do Not Disturb.
+--
+--  * if the notification was not created by this module, this method will return nil
 function M:alwaysPresent(alwaysPresent, ...) end
 
 -- Get or set whether an alert notification should always show an alternate action menu.
@@ -110,7 +112,7 @@ function M:alwaysPresent(alwaysPresent, ...) end
 -- Returns:
 --  * The notification object, if an argument is present; otherwise the current value.
 --
--- Note:
+-- Notes:
 --  * This method has no effect unless the user has set Hammerspoon notifications to `Alert` in the Notification Center pane of System Preferences.
 --  * [hs.notify:additionalActions](#additionalActions) must also be used for this method to have any effect.
 --  * **WARNING:** This method uses a private API. It could break at any time. Please file an issue if it does.
@@ -124,9 +126,11 @@ function M:alwaysShowAdditionalActions(state, ...) end
 -- Returns:
 --  * The notification object, if shouldWithdraw is present; otherwise the current setting.
 --
--- Note:
+-- Notes:
 --  * This method has no effect if the user has set Hammerspoon notifications to `Alert` in the Notification Center pane of System Preferences: clicking on either the action or other button will clear the notification automatically.
 --  * If a notification which was created before your last reload (or restart) of Hammerspoon and is clicked upon before hs.notify has been loaded into memory, this setting will not be honored because the initial application delegate is not aware of this option and is set to automatically withdraw all notifications which are acted upon.
+--
+--  * if the notification was not created by this module, this method will return nil
 function M:autoWithdraw(shouldWithdraw, ...) end
 
 -- Get or set a notification's content image.
@@ -195,6 +199,8 @@ function M.deliveredNotifications() end
 --
 -- Notes:
 --  * This tag should correspond to a function in [hs.notify.registry](#registry) and can be used to either add a replacement with `hs.notify.register(...)` or remove it with `hs.notify.unregister(...)`
+--
+--  * if the notification was not created by this module, this method will return nil
 function M:getFunctionTag() end
 
 -- Get or set the presence of an action button in a notification
@@ -217,7 +223,7 @@ function M:hasActionButton(hasButton, ...) end
 -- Returns:
 --  * The notification object, if an argument is present; otherwise the current value
 --
--- Note:
+-- Notes:
 --  * This method has no effect unless the user has set Hammerspoon notifications to `Alert` in the Notification Center pane of System Preferences.
 --  * [hs.notify:hasActionButton](#hasActionButton) must also be true or the "Reply" button will not be displayed.
 --  * If this is set to true, the action button will be "Reply" even if you have set another one with [hs.notify:actionButtonTitle](#actionButtonTitle).
@@ -236,27 +242,25 @@ function M:informativeText(informativeText, ...) end
 --
 -- Parameters:
 --  * fn - An optional function or function-tag, which will be called when the user interacts with notifications. The notification object will be passed as an argument to the function. If you leave this parameter out or specify nil, then no callback will be attached to the notification.
---  * attributes - An optional table for applying attributes to the notification. Possible keys are:
---
---   * alwaysPresent   - see [hs.notify:alwaysPresent](#alwaysPresent)
---   * autoWithdraw    - see [hs.notify:autoWithdraw](#autoWithdraw)
---   * contentImage    - see [hs.notify:contentImage](#contentImage)
---   * informativeText - see [hs.notify:informativeText](#informativeText)
---   * soundName       - see [hs.notify:soundName](#soundName)
---   * subTitle        - see [hs.notify:subTitle](#subTitle)
---   * title           - see [hs.notify:title](#title)
---   * setIdImage      - see [hs.notify:setIdImage](#setIdImage) -- note the border will automatically be set to false if assigned as an attribute in this table.
---
---  The following can also be set, but will only have an apparent effect on the notification when the user has set Hammerspoon's notification style to "Alert" in the Notification Center panel of System Preferences:
---
---   * actionButtonTitle           - see [hs.notify:actionButtonTitle](#actionButtonTitle)
---   * hasActionButton             - see [hs.notify:hasActionButton](#hasActionButton)
---   * otherButtonTitle            - see [hs.notify:otherButtonTitle](#otherButtonTitle)
---   * additionalActions           - see [hs.notify:additionalActions](#additionalActions)
---   * hasReplyButton              - see [hs.notify:hasReplyButton](#hasReplyButton)
---   * responsePlaceholder         - see [hs.notify:responsePlaceholder](#responsePlaceholder)
---   * alwaysShowAdditionalActions - see [hs.notify:alwaysShowAdditionalActions](#alwaysShowAdditionalActions)
---   * withdrawAfter               - see [hs.notify:withdrawAfter](#withdrawAfter)
+--  * attributes - An optional table for applying attributes to the notification.
+--   * Possible keys are:
+--    * alwaysPresent   - see [hs.notify:alwaysPresent](#alwaysPresent)
+--    * autoWithdraw    - see [hs.notify:autoWithdraw](#autoWithdraw)
+--    * contentImage    - see [hs.notify:contentImage](#contentImage)
+--    * informativeText - see [hs.notify:informativeText](#informativeText)
+--    * soundName       - see [hs.notify:soundName](#soundName)
+--    * subTitle        - see [hs.notify:subTitle](#subTitle)
+--    * title           - see [hs.notify:title](#title)
+--    * setIdImage      - see [hs.notify:setIdImage](#setIdImage) -- note the border will automatically be set to false if assigned as an attribute in this table.
+--   * The following can also be set, but will only have an apparent effect on the notification when the user has set Hammerspoon's notification style to "Alert" in the Notification Center panel of System Preferences:
+--    * actionButtonTitle           - see [hs.notify:actionButtonTitle](#actionButtonTitle)
+--    * hasActionButton             - see [hs.notify:hasActionButton](#hasActionButton)
+--    * otherButtonTitle            - see [hs.notify:otherButtonTitle](#otherButtonTitle)
+--    * additionalActions           - see [hs.notify:additionalActions](#additionalActions)
+--    * hasReplyButton              - see [hs.notify:hasReplyButton](#hasReplyButton)
+--    * responsePlaceholder         - see [hs.notify:responsePlaceholder](#responsePlaceholder)
+--    * alwaysShowAdditionalActions - see [hs.notify:alwaysShowAdditionalActions](#alwaysShowAdditionalActions)
+--    * withdrawAfter               - see [hs.notify:withdrawAfter](#withdrawAfter)
 --
 -- Returns:
 --  * A notification object
@@ -313,21 +317,6 @@ function M.register(tag, fn, ...) end
 --  * See [hs.notify.warnAboutMissingFunctionTag](#warnAboutMissingFunctionTag) for determining the behavior when a notification attempts to perform a callback to a function tag which is not present in this table. This occurrence is most common with notifications which are acted upon by the user after Hammerspoon has been reloaded.
 ---@type table
 M.registry = {}
-
--- This is a no-op included for backwards compatibility.
---
--- Parameters:
---  * None
---
--- Returns:
---  * The notification object
---
--- Notes:
---  * This is no longer required during garbage collection as function tags can be re-established after a reload.
---  * The proper way to release a notifications callback is to remove its tag from the [hs.notify.registry](#registry) with [hs.notify.unregister](#unregister).
---  * This is included for backwards compatibility.
----@return hs.notify
-function M:release() end
 
 -- Get the users input from an alert type notification with a reply button.
 --
@@ -467,7 +456,8 @@ function M:title(titleText, ...) end
 -- Unregisters a function callback so that it is no longer available as a callback when notifications corresponding to the specified entry are interacted with.
 --
 -- Parameters:
---  * id or tag - the numerical id provided by [hs.notify.register](#register) or string tag representing the callback function to be removed
+--  * id - the numerical id provided by [hs.notify.register](#register)
+--  * tag - a string tag representing the callback function to be removed
 --
 -- Returns:
 --  * None
@@ -499,20 +489,24 @@ M.warnAboutMissingFunctionTag = nil
 --
 -- Returns:
 --  * The notification object
+--  * This method allows you to unlock a dispatched notification so that it can be modified and resent.
+--  * if the notification was not created by this module, it will still be withdrawn if possible
 ---@return hs.notify
 function M:withdraw() end
 
 -- Get or set the number of seconds after which to automatically withdraw a notification
 --
--- Paramters:
+-- Parameters:
 --  * seconds - An optional number, default 5, of seconds after which to withdraw a notification. A value of 0 will not withdraw a notification automatically
 --
 -- Returns:
 --  * The notification object, if an argument is present; otherwise the current value.
 --
--- Note:
+-- Notes:
 --  * While this setting applies to both Banner and Alert styles of notifications, it is functionally meaningless for Banner styles
 --  * A value of 0 will disable auto-withdrawal
+--
+--  * if the notification was not created by this module, this method will return nil
 function M:withdrawAfter(seconds, ...) end
 
 -- Withdraw all delivered notifications from Hammerspoon

@@ -3,7 +3,7 @@
 
 -- A different approach to drawing in Hammerspoon
 --
--- `hs.drawing` approaches graphical images as independant primitives, each "shape" being a separate drawing object based on the core primitives: ellipse, rectangle, point, line, text, etc.  This model works well with graphical elements that are expected to be managed individually and don't have complex clipping interactions, but does not scale well when more complex combinations or groups of drawing elements need to be moved or manipulated as a group, and only allows for simple inclusionary clipping regions.
+-- `hs.drawing` approaches graphical images as independent primitives, each "shape" being a separate drawing object based on the core primitives: ellipse, rectangle, point, line, text, etc.  This model works well with graphical elements that are expected to be managed individually and don't have complex clipping interactions, but does not scale well when more complex combinations or groups of drawing elements need to be moved or manipulated as a group, and only allows for simple inclusionary clipping regions.
 --
 -- This module works by designating a canvas and then assigning a series of graphical primitives to the canvas.  Included in this assignment list are rules about how the individual elements interact with each other within the canvas (compositing and clipping rules), and direct modification of the canvas itself (move, resize, etc.) causes all of the assigned elements to be adjusted as a group.
 --
@@ -19,7 +19,7 @@ hs.canvas = M
 -- Get or set the accessibility subrole returned by `hs.canvas` objects.
 --
 -- Parameters:
---  * `subrole` - an optional string or explicit nil wihch specifies what accessibility subrole value should be returned when canvas objects are queried through the macOS accessibility framework. See Notes for a discussion of how this value is interpreted. Defaults to `nil`.
+--  * `subrole` - an optional string or explicit nil which specifies what accessibility subrole value should be returned when canvas objects are queried through the macOS accessibility framework. See Notes for a discussion of how this value is interpreted. Defaults to `nil`.
 --
 -- Returns:
 --  * If an argument is specified, returns the canvasObject; otherwise returns the current value.
@@ -28,12 +28,12 @@ hs.canvas = M
 --  * Most people will probably not need to use this method; See [hs.canvas.useCustomAccessibilitySubrole](#useCustomAccessibilitySubrole) for a discussion as to why this method may be of use when Hammerspoon is being controlled through the accessibility framework by other applications.
 --
 --  * If a non empty string is specified as the argument to this method, the string will be returned whenever the canvas object's containing window is queried for its accessibility subrole.
---  * The other possible values depend upon the value registerd with [hs.canvas.useCustomAccessibilitySubrole](#useCustomAccessibilitySubrole):
+--  * The other possible values depend upon the value registered with [hs.canvas.useCustomAccessibilitySubrole](#useCustomAccessibilitySubrole):
 --    * If `useCustomAccessibilitySubrole` is set to true (the default):
---      * If an explicit `nil` (the default) is specified fror this method, the string returned when the canvas object's accessibility is queried will be the default macOS subrole for the canvas's window with the string ".Hammerspoon` appended to it.
+--      * If an explicit `nil` (the default) is specified for this method, the string returned when the canvas object's accessibility is queried will be the default macOS subrole for the canvas's window with the string ".Hammerspoon` appended to it.
 --      * If the empty string is specified (e.g. `""`), then the default macOS subrole for the canvas's window will be returned.
 --    * If `useCustomAccessibilitySubrole` is set to false:
---      * If an explicit `nil` (the default) is specified fror this method, then the default macOS subrole for the canvas's window will be returned.
+--      * If an explicit `nil` (the default) is specified for this method, then the default macOS subrole for the canvas's window will be returned.
 --      * If the empty string is specified (e.g. `""`), the string returned when the canvas object's accessibility is queried will be the default macOS subrole for the canvas's window with the string ".Hammerspoon` appended to it.
 function M:_accessibilitySubrole(subrole, ...) end
 
@@ -73,6 +73,7 @@ function M:assignElement(elementTable, index, ...) end
 
 -- Canvas Element Attributes
 --
+-- Notes:
 -- * `type` - specifies the type of canvas element the table represents. This attribute has no default and must be specified for each element in the canvas array. Valid type strings are:
 --   * `arc`           - an arc inscribed on a circle, defined by `radius`, `center`, `startAngle`, and `endAngle`.
 --   * `canvas`        - an independent canvas object, displayed as an element within the specified frame. Defined by `canvas` and `frame`.
@@ -100,7 +101,7 @@ function M:assignElement(elementTable, index, ...) end
 --   * `arcRadii`            - Default `true`. Used by the `arc` and `ellipticalArc` types to specify whether or not line segments from the element's center to the start and end angles should be included in the element's visible portion.  This affects whether the object's stroke is a pie-shape or an arc with a chord from the start angle to the end angle.
 --   * `arcClockwise`        - Default `true`.  Used by the `arc` and `ellipticalArc` types to specify whether the arc should be drawn from the start angle to the end angle in a clockwise (true) direction or in a counter-clockwise (false) direction.
 --   * `canvas`                - Defaults to nil. A separate canvas object which is to be displayed as an element in this canvas.  The object must not currently belong to a visible window.  Assign nil to this property to release a previously assigned object for use elsewhere as an element or on its own.
---   * `canvasAlpha`           - Default `1.0`.  Specifies the alpha value to apply to the independant canvas element.
+--   * `canvasAlpha`           - Default `1.0`.  Specifies the alpha value to apply to the independent canvas element.
 --   * `compositeRule`       - A string, default "sourceOver", specifying how this element should be combined with earlier elements of the canvas.  See [hs.canvas.compositeTypes](#compositeTypes) for a list of valid strings and their descriptions.
 --   * `center`              - Default `{ x = "50%", y = "50%" }`.  Used by the `circle` and `arc` types to specify the center of the canvas element.  The `x` and `y` fields can be specified as numbers or as a string. When specified as a string, the value is treated as a percentage of the canvas size.  See the section on [percentages](#percentages) for more information.
 --   * `clipToPath`          - Default `false`.   Specifies whether the clipping regions should be temporarily limited to the element's shape while rendering this element or not.  This can be used to produce crisper edges, as seen with `hs.drawing` but reduces stroke width granularity for widths less than 1.0 and causes occasional "missing" lines with the `segments` element type. Ignored for the `canvas`, `image`, `point`, and `text` types.
@@ -127,7 +128,7 @@ function M:assignElement(elementTable, index, ...) end
 --   * `imageAlignment`      - Default "center". A string specifying the alignment of the image within the canvas element's frame.  Valid values for this attribute are "center", "bottom", "topLeft", "bottomLeft", "bottomRight", "left", "right", "top", and "topRight".
 --   * `imageAnimationFrame` - Default `0`. An integer specifying the image frame to display when the image is from an animated GIF.  This attribute is ignored for other image types.  May be specified as a negative integer indicating that the image frame should be calculated from the last frame and calculated backwards (i.e. specifying `-1` selects the last frame for the GIF.)
 --   * `imageAnimates`       - Default `false`. A boolean specifying whether or not an animated GIF should be animated or if only a single frame should be shown.  Ignored for other image types.
---   * `imageScaling`        - Default "scalePropertionally".  A string specifying how the image should be scaled within the canvas element's frame.  Valid values for this attribute are:
+--   * `imageScaling`        - Default "scaleProportionally".  A string specifying how the image should be scaled within the canvas element's frame.  Valid values for this attribute are:
 --     * `scaleToFit`          - shrink the image, preserving the aspect ratio, to fit the drawing frame only if the image is larger than the drawing frame.
 --     * `shrinkToFit`         - shrink or expand the image to fully fill the drawing frame.  This does not preserve the aspect ratio.
 --     * `none`                - perform no scaling or resizing of the image.
@@ -136,7 +137,7 @@ function M:assignElement(elementTable, index, ...) end
 --   * `padding`             - Default `0.0`. When an element specifies position information by percentage (i.e. as a string), the actual frame used for calculating position values is inset from the canvas frame on all sides by this amount. If you are using shadows with your elements, the shadow position is not included in the element's size and position specification; this attribute can be used to provide extra space for the shadow to be fully rendered within the canvas.
 --   * `radius`              - Default "50%". Used by the `arc` and `circle` types to specify the radius of the circle for the element. May be specified as a string or a number.  When specified as a string, the value is treated as a percentage of the canvas size.  See the section on [percentages](#percentages) for more information.
 --   * `reversePath`         - Default `false`.  Specifies drawing direction for the canvas element.  By default, canvas elements are drawn from the point nearest the origin (top left corner) in a clockwise direction.  Setting this to true causes the element to be drawn in a counter-clockwise direction. This will mostly affect fill and stroke dash patterns, but can also be used with clipping regions to create cut-outs.  Ignored for `canvas`, `image`, and `text` types.
---   * `roundedRectRadii`    - Default `{ xRadis = 0.0, yRadius = 0.0 }`.
+--   * `roundedRectRadii`    - Default `{ xRadius = 0.0, yRadius = 0.0 }`.
 --   * `shadow`              - Default `{ blurRadius = 5.0, color = { alpha = 1/3 }, offset = { h = -5.0, w = 5.0 } }`.  Specifies the shadow blurring, color, and offset to be added to an element which has `withShadow` set to true.
 --   * `startAngle`          - Default `0.0`. Used by the `arc` and `ellipticalArc` to specify the starting angle position for the inscribed arc.
 --   * `strokeCapStyle`      - Default "butt". A string which specifies the shape of the endpoints of an open path when stroked.  Primarily noticeable for lines rendered with the `segments` type.  Valid values for this attribute are "butt", "round", and "square".
@@ -153,7 +154,7 @@ function M:assignElement(elementTable, index, ...) end
 --     * `justified` - the text is justified
 --     * `natural`   - the natural alignment of the text’s script
 --   * `textColor`           - Default `{ white = 1.0 }`.  Specifies the color to use when displaying the `text` element type, if the text is specified as a string.  This field is ignored if the text is specified as an `hs.styledtext` object.
---   * `textFont`            - Defaults to the default system font.  A string specifying the name of thefont to use when displaying the `text` element type, if the text is specified as a string.  This field is ignored if the text is specified as an `hs.styledtext` object.
+--   * `textFont`            - Defaults to the default system font.  A string specifying the name of the font to use when displaying the `text` element type, if the text is specified as a string.  This field is ignored if the text is specified as an `hs.styledtext` object.
 --   * `textLineBreak`       - Default `wordWrap`. A string specifying how to wrap text which exceeds the canvas element's frame for an element of type `text`.  This field is ignored if the text is specified as an `hs.styledtext` object.  Valid values for this attribute are:
 --     * `wordWrap`       - wrap at word boundaries, unless the word itself doesn’t fit on a single line
 --     * `charWrap`       - wrap before the first character that doesn’t fit
@@ -315,10 +316,10 @@ M.compositeTypes = {}
 --  * a copy of the canvas
 --
 -- Notes:
---  * The copy of the canvas will be identical in all respectes except:
+--  * The copy of the canvas will be identical in all respects except:
 --    * The new canvas will not have a callback function assigned, even if the original canvas does.
 --    * The new canvas will not initially be visible, even if the original is.
---  * The new canvas is an independant entity -- any subsequent changes to either canvas will not be reflected in the other canvas.
+--  * The new canvas is an independent entity -- any subsequent changes to either canvas will not be reflected in the other canvas.
 --
 --  * This method allows you to display a canvas in multiple places or use it as a canvas element multiple times.
 function M:copy() end
@@ -347,21 +348,6 @@ function M.defaultTextStyle() end
 --  * This method is automatically called during garbage collection, notably during a Hammerspoon termination or reload, with a fade time of 0.
 function M:delete(fadeOutTime, ...) end
 
--- Tells the OS X window server to pause updating the physical displays for a short while.
---
--- Parameters:
---  * None
---
--- Returns:
---  * None
---
--- Notes:
---  * This method can be used to allow multiple changes which are being made to the users display appear as if they all occur simultaneously by holding off on updating the screen on the regular schedule.
---  * This method should always be balanced with a call to [hs.canvas.enableScreenUpdates](#enableScreenUpdates) when your updates have been completed.  Failure to do so will be logged in the system logs.
---
---  * The window server will only allow you to pause updates for up to 1 second.  This prevents a rogue or hung process from locking the system`s display completely.  Updates will be resumed when [hs.canvas.enableScreenUpdates](#enableScreenUpdates) is encountered or after 1 second, whichever comes first.
-function M.disableScreenUpdates() end
-
 -- Sets or remove a callback for accepting dragging and dropping items onto the canvas.
 --
 -- Parameters:
@@ -388,7 +374,7 @@ function M.disableScreenUpdates() end
 --
 --  * A canvas object can only accept drag-and-drop items when its window level is at [hs.canvas.windowLevels.dragging](#windowLevels) or lower.
 --  * a canvas object can only accept drag-and-drop items when it accepts mouse events.  You must define a [hs.canvas:mouseCallback](#mouseCallback) function, even if it is only a placeholder, e.g. `hs.canvas:mouseCallback(function() end)`
-function M:draggingCallback(fn_or_nil, ...) end
+function M:draggingCallback(fn) end
 
 -- Get or set the attribute `key` for the canvas element at the specified index.
 --
@@ -447,21 +433,6 @@ function M:elementKeys(index, optional, ...) end
 -- Notes:
 --  * This is primarily for debugging purposes and may be removed in the future.
 function M.elementSpec() end
-
--- Tells the OS X window server to resume updating the physical displays after a previous pause.
---
--- Parameters:
---  * None
---
--- Returns:
---  * None
---
--- Notes:
---  * In conjunction with [hs.canvas.disableScreenUpdates](#disableScreenUpdates), this method can be used to allow multiple changes which are being made to the users display appear as if they all occur simultaneously by holding off on updating the screen on the regular schedule.
---  * This method should always be preceded by a call to [hs.canvas.disableScreenUpdates](#disableScreenUpdates).  Failure to do so will be logged in the system logs.
---
---  * The window server will only allow you to pause updates for up to 1 second.  This prevents a rogue or hung process from locking the system`s display completely.  Updates will be resumed when this function is encountered  or after 1 second, whichever comes first.
-function M.enableScreenUpdates() end
 
 -- Get or set the frame of the canvasObject.
 --
@@ -631,6 +602,7 @@ function M.new(rect, ...) end
 
 -- An array-like method for accessing the attributes for the canvas element at the specified index
 --
+-- Notes:
 -- Metamethods are assigned to the canvas object so that you can refer to individual elements of the canvas as if the canvas object was an array.  Each element is represented by a table of key-value pairs, where each key represents an attribute for that element.  Valid index numbers range from 1 to [hs.canvas:elementCount()](#elementCount) when getting an element or getting or setting one of its attributes, and from 1 to [hs.canvas:elementCount()](#elementCount) + 1 when assign an element table to an index in the canvas.  For example:
 --
 -- ~~~lua
@@ -674,7 +646,7 @@ M.object = {}
 --  * The canvas object
 --
 -- Notes:
---  * If the canvas object and canvas2 are not at the same presentation level, this method will will move the canvas object as close to the desired relationship as possible without changing the canvas object's presentation level. See [hs.canvas.level](#level).
+--  * If the canvas object and canvas2 are not at the same presentation level, this method will move the canvas object as close to the desired relationship as possible without changing the canvas object's presentation level. See [hs.canvas.level](#level).
 function M:orderAbove(canvas2, ...) end
 
 -- Moves canvas object below canvas2, or all canvas objects in the same presentation level, if canvas2 is not given.
@@ -686,11 +658,12 @@ function M:orderAbove(canvas2, ...) end
 --  * The canvas object
 --
 -- Notes:
---  * If the canvas object and canvas2 are not at the same presentation level, this method will will move the canvas object as close to the desired relationship as possible without changing the canvas object's presentation level. See [hs.canvas.level](#level).
+--  * If the canvas object and canvas2 are not at the same presentation level, this method will move the canvas object as close to the desired relationship as possible without changing the canvas object's presentation level. See [hs.canvas.level](#level).
 function M:orderBelow(canvas2, ...) end
 
 -- Canvas attributes which specify the location and size of canvas elements can be specified with an absolute position or as a percentage of the canvas size.
 --
+-- Notes:
 -- Percentages may be assigned to the following attributes:
 --  * `frame`       - the frame used by the `rectangle`, `oval`, `ellipticalArc`, `text`, and `image` types.  The `x` and `w` fields will be a percentage of the canvas's width, and the `y` and `h` fields will be a percentage of the canvas's height.
 --  * `center`      - the center point for the `circle` and `arc` types.  The `x` field will be a percentage of the canvas's width and the `y` field will be a percentage of the canvas's height.
@@ -802,7 +775,7 @@ function M:topLeft(point, ...) end
 --  * An example use for this method would be to change the canvas's origin point { x = 0, y = 0 } from the lower left corner of the canvas to somewhere else, like the middle of the canvas.
 function M:transformation(matrix, ...) end
 
--- Get or set whether or not canvas objects use a custom accessibility subrole for the contaning system window.
+-- Get or set whether or not canvas objects use a custom accessibility subrole for the containing system window.
 --
 -- Parameters:
 --  * `state` - an optional boolean, default true, specifying whether or not canvas containers should use a custom accessibility subrole.
@@ -811,7 +784,7 @@ function M:transformation(matrix, ...) end
 --  * the current, possibly changed, value as a boolean
 --
 -- Notes:
---  * Under some conditions, it has been observed that Hammerspoon's `hs.window.filter` module will misidentify Canvas and Drawing objects as windows of the Hammerspoon application that it should consider when evaluating its filters. To eliminate this, `hs.canvas` objects (and previously `hs.drawing` objects, which are now deprecated and pass through to `hs.canvas`) were given a nonstandard accessibilty subrole to prevent them from being included. This has caused some issues with third party tools, like Yabai, which also use the accessibility subroles for determining what actions it may take with Hammerspoon windows.
+--  * Under some conditions, it has been observed that Hammerspoon's `hs.window.filter` module will misidentify Canvas and Drawing objects as windows of the Hammerspoon application that it should consider when evaluating its filters. To eliminate this, `hs.canvas` objects (and previously `hs.drawing` objects, which are now deprecated and pass through to `hs.canvas`) were given a nonstandard accessibility subrole to prevent them from being included. This has caused some issues with third party tools, like Yabai, which also use the accessibility subroles for determining what actions it may take with Hammerspoon windows.
 --
 --  * By passing `false` to this function, all canvas objects will revert to specifying the standard subrole for the containing windows by default and should work as expected with third party tools. Note that this may cause issues or slowdowns if you are also using `hs.window.filter`; a more permanent solution is being considered.
 --
@@ -843,7 +816,7 @@ function M:wantsLayer(flag, ...) end
 -- * `transient`                 - The window floats in Spaces and is hidden by Exposé. This is the default behavior if windowLevel is not equal to NSNormalWindowLevel.
 -- * `stationary`                - The window is unaffected by Exposé; it stays visible and stationary, like the desktop window.
 --
--- The following have no effect on `hs.canvas` or `hs.drawing` objects, but are included for completness and are expected to be used by future additions.
+-- The following have no effect on `hs.canvas` or `hs.drawing` objects, but are included for completeness and are expected to be used by future additions.
 --
 -- Only one of these may be active at a time:
 --

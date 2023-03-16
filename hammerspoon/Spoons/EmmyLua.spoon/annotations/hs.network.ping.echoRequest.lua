@@ -204,7 +204,7 @@ function M:sendPayload(payload, ...) end
 --        * the ICMP type does not match an ICMP Echo Reply
 --        * When using IPv6, this is especially common because IPv6 uses ICMP for network management functions like Router Advertisement and Neighbor Discovery.
 --      * In general, it is reasonably safe to ignore these messages, unless you are having problems receiving anything else, in which case it could indicate problems on your network that need addressing.
-function M:setCallback(fn_or_nil, ...) end
+function M:setCallback(fn) end
 
 -- Start the echoRequestObject by resolving the server's address and start listening for ICMP Echo Reply packets.
 --

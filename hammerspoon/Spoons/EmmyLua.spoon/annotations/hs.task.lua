@@ -32,7 +32,7 @@ function M:closeInput() end
 -- Returns:
 --  * a table of the environment variables for the task where each key is the environment variable name.
 --
--- Note:
+-- Notes:
 --  * if you have not yet set an environment table with the `hs.task:setEnvironment` method, this method will return a copy of the Hammerspoon environment table, as this is what the task will inherit by default.
 function M:environment() end
 
@@ -143,7 +143,7 @@ function M:setCallback(fn) end
 -- Returns:
 --  * The hs.task object, or false if the table was not set (usually because the task is already running or has completed)
 --
--- Note:
+-- Notes:
 --  * If you do not set an environment table with this method, the task will inherit the environment variables of the Hammerspoon application.  Set this to an empty table if you wish for no variables to be set for the task.
 ---@return hs.task
 function M:setEnvironment(environment, ...) end
@@ -158,7 +158,7 @@ function M:setEnvironment(environment, ...) end
 --
 -- Notes:
 --  * This method can be called before the task has been started, to prepare some input for it (particularly if it is not a streaming task)
---  * If this method is called multiple times, any input that has not been passed to the task already, is discarded (for streaming tasks, the data is generally consumed very quickly, but for now there is no way to syncronise this)
+--  * If this method is called multiple times, any input that has not been passed to the task already, is discarded (for streaming tasks, the data is generally consumed very quickly, but for now there is no way to synchronize this)
 ---@return hs.task
 function M:setInput(inputData, ...) end
 

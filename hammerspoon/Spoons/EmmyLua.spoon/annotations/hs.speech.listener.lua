@@ -86,7 +86,7 @@ function M.new(title, ...) end
 -- Notes:
 --  * Possible string values for the command spoken are set with the `hs.speech.listener:commands` method.
 --  * Removing the callback does not disable the speech recognizer, but it does make it of limited use, other than to provide a list in the Dictation Commands window.  To disable the recognizer, use the `hs.speech.listener:stop` or `hs.speech.listener:delete` methods.
-function M:setCallback(fn_or_nil, ...) end
+function M:setCallback(fn) end
 
 -- Make the speech recognizer active.
 --

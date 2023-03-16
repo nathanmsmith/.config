@@ -171,7 +171,7 @@ function M:sent() end
 ---@return string
 function M:server() end
 
--- Set or remoce the callback function for the pingObject.
+-- Set or remove the callback function for the pingObject.
 --
 -- Parameters:
 --  * `fn` - the function to set as the callback, or nil if you wish use the default callback.
@@ -183,7 +183,7 @@ function M:server() end
 --  * Because the ping process begins immediately upon creation with the [hs.network.ping.ping](#ping) constructor, it is preferable to assign the callback with the constructor itself.
 --  * This method is provided as a means of changing the callback based on other events (a change in the current network or location, perhaps.)
 --  * If you truly wish to create a pingObject with no callback, you will need to do something like `hs.network.ping.ping(...):setCallback(function() end)`.
-function M:setCallback(fn_or_nil, ...) end
+function M:setCallback(fn) end
 
 -- Returns a string containing summary information about the ping process.
 --
@@ -200,7 +200,7 @@ function M:setCallback(fn_or_nil, ...) end
 -- 5 packets transmitted, 5 packets received, 0.0 packet loss
 -- round-trip min/avg/max = 2.282/4.133/4.926 ms
 -- ~~~
---  * The numer of packets received will match the number that has currently been sent, not necessarily the value returned by [hs.network.ping:count](#count).
+--  * The number of packets received will match the number that has currently been sent, not necessarily the value returned by [hs.network.ping:count](#count).
 ---@return string
 function M:summary() end
 

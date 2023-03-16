@@ -9,7 +9,7 @@
 -- > // across thread or process boundaries, just for passing a position to an
 -- > // API that works with positions as opaque objects.
 --
--- This submodule allows Lua to represent these as userdata which can be passed in to parameterized attributes for the appliction from which they were retrieved. Examples are expected to be added to the Hammerspoon wiki soon.
+-- This submodule allows Lua to represent these as userdata which can be passed in to parameterized attributes for the application from which they were retrieved. Examples are expected to be added to the Hammerspoon wiki soon.
 --
 -- As this submodule utilizes private and undocumented functions in the HIServices framework, if you receive an error using any of these functions or methods indicating an undefined CF function (the function or method will return nil and a string of the format "CF function AX... undefined"), please make sure to include the output of the following in any issue you submit to the Hammerspoon github page (enter these into the Hammerspoon console):
 --
@@ -22,7 +22,7 @@ hs.axuielement.axtextmarker = M
 
 -- Returns a table of the AXTextMarker and AXTextMarkerRange functions that have been discovered and are used within this module.
 --
--- Paramters:
+-- Parameters:
 --  * None
 --
 -- Returns:
@@ -30,31 +30,28 @@ hs.axuielement.axtextmarker = M
 --
 -- Notes:
 --  * the functions are defined within the HIServices framework which is part of the ApplicationServices framework, so it is expected that the necessary functions will always be available; however, if you ever receive an error message from a function or method within this submodule of the form "CF function AX... undefined", please see the submodule heading documentation for a description of the information, including that which this function provides, that should be included in any error report you submit.
---
--- * This is for debugging purposes and is not expected to be used often.
+--  * This is for debugging purposes and is not expected to be used often.
 function M._functionCheck() end
 
 -- Returns a string containing the opaque binary data contained within the axTextMarkerObject
 --
--- Paramters:
+-- Parameters:
 --  * None
 --
 -- Returns:
 --  *  a string containing the opaque binary data contained within the axTextMarkerObject
 --
 -- Notes:
---  * the string will likely contain invalid UTF8 code sequences or unprintable ascii values; to see the data in decimal or hexidecimal form you can use:
---
+--  * the string will likely contain invalid UTF8 code sequences or unprintable ascii values; to see the data in decimal or hexadecimal form you can use:
 --     string.byte(hs.axuielement.axtextmarker:bytes(), 1, hs.axuielement.axtextmarker:length())
 --     -- or
 --     hs.utf8.hexDump(hs.axuielement.axtextmarker:bytes())
---
 --  * As the data is application specific, it is unlikely that you will use this method often; it is included primarily for testing and debugging purposes.
 function M:bytes() end
 
 -- Returns the ending marker for an axTextMarkerRangeObject
 --
--- Paramters:
+-- Parameters:
 --  * None
 --
 -- Returns:
@@ -63,7 +60,7 @@ function M:endMarker() end
 
 -- Returns an integer specifying the number of bytes in the data portion of the axTextMarkerObject.
 --
--- Paramters:
+-- Parameters:
 --  * None
 --
 -- Returns:
@@ -95,9 +92,8 @@ function M.newMarker(string, ...) end
 --  * a new axTextMarkerRangeObject or nil and a string description if there was an error
 --
 -- Notes:
---  * this constructor can be used to create a range from axTextMarkerObjects obtained from an application to specify a new range for a paramterized attribute. As a simple example (it is hoped that more will be added to the Hammerspoon wiki shortly):
---
---     ```
+--  * this constructor can be used to create a range from axTextMarkerObjects obtained from an application to specify a new range for a parameterized attribute. As a simple example (it is hoped that more will be added to the Hammerspoon wiki shortly):
+--     ```lua
 --     s = hs.axuielement.applicationElement(hs.application("Safari"))
 --     -- for a window displaying the DuckDuckGo main search page, this gets the
 --     -- primary display area. Other pages may vary and you should build your
@@ -106,15 +102,13 @@ function M.newMarker(string, ...) end
 --     start = c("AXStartTextMarker") -- get the text marker for the start of this element
 --     ending = c("AXNextLineEndTextMarkerForTextMarker", start) -- get the next end of line marker
 --     print(c("AXStringForTextMarkerRange", hs.axuielement.axtextmarker.newRange(start, ending)))
---     -- outputs "Privacy, simplified." to the Hammerspoon console
---     ```
---
+--     -- outputs "Privacy, simplified." to the Hammerspoon console```
 --  * The specific attributes and parameterized attributes supported by a given application differ and can be discovered with the `hs.axuielement:getAttributeNames` and `hs.axuielement:getParameterizedAttributeNames` methods.
 function M.newRange(startMarker, endMarker, ...) end
 
 -- Returns the starting marker for an axTextMarkerRangeObject
 --
--- Paramters:
+-- Parameters:
 --  * None
 --
 -- Returns:

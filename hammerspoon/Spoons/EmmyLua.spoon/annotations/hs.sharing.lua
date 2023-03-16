@@ -70,7 +70,7 @@ M.builtinSharingServices = {}
 -- Set or clear the callback for the sharingObject.
 --
 -- Parameters:
---  * a function, or nil, to set or remove the callback for the sharingObject
+--  * fn - A function, or nil, to set or remove the callback for the sharingObject
 --
 -- Returns:
 --  * the sharingObject
@@ -84,7 +84,7 @@ M.builtinSharingServices = {}
 --      * "willShare" - the sharing service is about to start sharing the items; occurs before sharing actually begins
 --    * an array (table) containing the items being shared; if the message is "didFail" or "didShare", the items may be in a different order or converted to a different internal type to facilitate sharing.
 --    * if the message is "didFail", the fourth argument will be a localized description of the error that occurred.
-function M:callback(function_or_nil, ...) end
+function M:callback(fn) end
 
 -- Returns a boolean specifying whether or not all of the items specified can be shared with the sharing service represented by the sharingObject.
 --

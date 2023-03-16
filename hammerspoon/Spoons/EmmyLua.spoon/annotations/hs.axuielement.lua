@@ -10,8 +10,8 @@
 -- Getting and Setting Attribute values:
 --  * `object.attribute` is a shortcut for `object:attributeValue(attribute)`
 --  * `object.attribute = value` is a shortcut for `object:setAttributeValue(attribute, value)`
---    * If detecting accessiblity errors that may occur is necessary, you must use the formal methods [hs.axuielement:attributeValue](#attributeValue) and [hs.axuielement:setAttributeValue](#setAttributeValue)
---    * Note that setting an attribute value is not guaranteeed to work with either method:
+--    * If detecting accessibility errors that may occur is necessary, you must use the formal methods [hs.axuielement:attributeValue](#attributeValue) and [hs.axuielement:setAttributeValue](#setAttributeValue)
+--    * Note that setting an attribute value is not guaranteed to work with either method:
 --      * internal logic within the receiving application may decline to accept the newly assigned value
 --      * an accessibility error may occur
 --      * the element may not be settable (surprisingly this does not return an error, even when [hs.axuielement:isAttributeSettable](#isAttributeSettable) returns false for the attribute specified)
@@ -19,7 +19,7 @@
 --
 -- Iteration over Attributes:
 --  * `for k,v in pairs(object) do ... end` is a shortcut for `for k,_ in ipairs(object:attributeNames()) do local v = object:attributeValue(k) ; ... end` or `for k,v in pairs(object:allAttributeValues()) do ... end` (though see note below)
---     * If detecting accessiblity errors that may occur is necessary, you must use one of the formal approaches [hs.axuielement:allAttributeValues](#allAttributeValues) or [hs.axuielement:attributeNames](#attributeNames) and [hs.axuielement:attributeValue](#attributeValue)
+--     * If detecting accessibility errors that may occur is necessary, you must use one of the formal approaches [hs.axuielement:allAttributeValues](#allAttributeValues) or [hs.axuielement:attributeNames](#attributeNames) and [hs.axuielement:attributeValue](#attributeValue)
 --    * By default, [hs.axuielement:allAttributeValues](#allAttributeValues) will not include key-value pairs for which the attribute (key) exists for the element but has no assigned value (nil) at the present time. This is because the value of `nil` prevents the key from being retained in the table returned. See [hs.axuielement:allAttributeValues](#allAttributeValues) for details and a workaround.
 --
 -- Iteration over Child Elements (AXChildren):
@@ -27,7 +27,7 @@
 --    * Note that `object:attributeValue("AXChildren")` *may* return nil if the object does not have the `AXChildren` attribute; the shortcut does not have this limitation.
 --  * `#object` is a shortcut for `#object:attributeValue("AXChildren")`
 --  * `object[i]` is a shortcut for `object:attributeValue("AXChildren")[i]`
---    * If detecting accessiblity errors that may occur is necessary, you must use the formal method [hs.axuielement:attributeValue](#attributeValue) to get the "AXChildren" attribute.
+--    * If detecting accessibility errors that may occur is necessary, you must use the formal method [hs.axuielement:attributeValue](#attributeValue) to get the "AXChildren" attribute.
 --
 -- Actions ([hs.axuielement:actionNames](#actionNames)):
 --  * `object:do<action>()` is a shortcut for `object:performAction(action)`
@@ -124,7 +124,7 @@ function M.applicationElement(applicationObject, ...) end
 --  * an axuielementObject for the application specified, or nil if it cannot be determined
 function M.applicationElementForPID(pid, ...) end
 
--- If the element referes to an application, return an `hs.application` object for the element.
+-- If the element refers to an application, return an `hs.application` object for the element.
 --
 -- Parameters:
 --  * None
@@ -137,7 +137,7 @@ function M.applicationElementForPID(pid, ...) end
 ---@return hs.application
 function M:asHSApplication() end
 
--- If the element referes to a window, return an `hs.window` object for the element.
+-- If the element refers to a window, return an `hs.window` object for the element.
 --
 -- Parameters:
 --  * None
@@ -200,9 +200,20 @@ function M:attributeValueCount(attribute, ...) end
 --
 -- Notes:
 -- * The format of the `results` table passed to the callback for this method is primarily for debugging and exploratory purposes and may not be arranged for easy programatic evaluation.
---
 --  * This method is syntactic sugar for `hs.axuielement:elementSearch(callback, { objectOnly = false, asTree = true, [depth = depth], [includeParents = withParents] })`. Please refer to [hs.axuielement:elementSearch](#elementSearch) for details about the returned object and callback arguments.
 function M:buildTree(callback, depth, withParents, ...) end
+
+-- Returns a table containing only those immediate children of the element that perform the specified role.
+--
+-- Parameters:
+--  * `role` - a string specifying the role that the returned children must perform. Example values can be found in [hs.axuielement.roles](#roles).
+--
+-- Returns:
+--  * a table containing zero or more axuielementObjects.
+--
+-- Notes:
+--  * only the immediate children of the object are searched.
+function M:childrenWithRole(role, ...) end
 
 -- Return a duplicate userdata reference to the Accessibility object.
 --
@@ -216,15 +227,15 @@ function M:copy() end
 -- Returns the accessibility object at the specified position on the screen. The top-left corner of the primary screen is 0, 0.
 --
 -- Parameters:
---  * `x`, `y`     - the x and y coordinates of the screen location to test, provided as separate parameters
---  * `pointTable` - the x and y coordinates of the screen location to test, provided as a point-table, like the one returned by `hs.mouse.getAbsolutePosition`. A point-table is a table with key-value pairs for keys `x` and `y`.
+--  * `x` - the x coordinate of the screen location to test. If this parameter is provided, then the `y` parameter must also be provided and the `pointTable` parameter must not be provided.
+--  * `y` - the y coordinate of the screen location to test. This parameter is required if the `x` parameter is provided.
+--  * `pointTable` - the x and y coordinates of the screen location to test provided as a point-table, like the one returned by `hs.mouse.getAbsolutePosition` (a point-table is a table with key-value pairs for keys `x` and `y`). If this parameter is provided, then separate `x` and `y` parameters must not also be present.
 --
 -- Returns:
 --  * an axuielementObject for the object at the specified coordinates, or nil and an error string if no object could be identified or an accessibility error occurred
 --
 -- Notes:
 --  * This method can only be called on an axuielementObject that represents an application or the system-wide element (see [hs.axuielement.systemWideElement](#systemWideElement)).
---
 --  * This function does hit-testing based on window z-order (that is, layering). If one window is on top of another window, the returned accessibility object comes from whichever window is topmost at the specified location.
 --  * If this method is called on an axuielementObject representing an application, the search is restricted to the application.
 --  * If this method is called on an axuielementObject representing the system-wide element, the search is not restricted to any particular application.  See [hs.axuielement.systemElementAtPosition](#systemElementAtPosition).
@@ -238,11 +249,10 @@ function M:elementAtPosition(x, y_or_pointTable, ...) end
 --  * `namedModifiers` - an optional table specifying key-value pairs that further modify or control the search. This table may contain 0 or more of the following keys:
 --    * `count`          - an optional integer, default `math.huge`, specifying the maximum number of matches to collect before ending the search and invoking the callback. You can continue the search to find additional elements by invoking `elementSearchObject:next()` (described below in the `Returns` section) on the return value of this method, or on the results argument passed to the callback.
 --    * `depth`          - an optional integer, default `math.huge`, specifying the maximum number of steps (descendants) from the initial accessibility element the search should visit. If you know that your desired element(s) are relatively close to your starting element, setting this to a lower value can significantly speed up the search.
---
 --    * The following are also recognized, but may impact the speed of the search, the responsiveness of Hammerspoon, or the format of the results in ways that limit further filtering and are not recommended except when you know that you require them:
 --      * `asTree`         - an optional boolean, default false, and ignored if `criteria` is specified and non-empty, `objectOnly` is true, or `count` is specified. This modifier specifies whether the search results should return as an array table of tables containing each element's details (false) or as a tree where in which the root node details are the key-value pairs of the returned table and descendant elements are likewise described in subtables attached to the attribute name they belong to (true). This format is primarily for debugging and exploratory purposes and may not be arranged for easy programatic evaluation.
 --      * `includeParents` - a boolean, default false, specifying whether or not parent attributes (`AXParent` and `AXTopLevelUIElement`) should be examined during the search. Note that in most cases, setting this value to true will end up traversing the entire Accessibility structure for the target application and may significantly slow down the search.
---      * `noCallback`     - an optional boolean, default false, and ignored if `callback` is not also nil, allowing you to specify nil as the callback when set to true. This feature requires setting this named argumennt to true *and* specifying the callback field as nil because starting a query from an element with a lot of descendants **WILL** block Hammerspoon and slow down the responsiveness of your computer (I've seen blocking for over 5 minutes in extreme cases) and should be used *only* when you know you are starting from close to the end of the element heirarchy.
+--      * `noCallback`     - an optional boolean, default false, and ignored if `callback` is not also nil, allowing you to specify nil as the callback when set to true. This feature requires setting this named argument to true *and* specifying the callback field as nil because starting a query from an element with a lot of descendants **WILL** block Hammerspoon and slow down the responsiveness of your computer (I've seen blocking for over 5 minutes in extreme cases) and should be used *only* when you know you are starting from close to the end of the element hierarchy.
 --      * `objectOnly`     - an optional boolean, default true, specifying whether each result in the final table will be the accessibility element discovered (true) or a table containing details about the element include the attribute names, actions, etc. for the element (false). This latter format is primarily for debugging and exploratory purposes and may not be arranged for easy programatic evaluation.
 --
 -- Returns:
@@ -250,28 +260,24 @@ function M:elementAtPosition(x, y_or_pointTable, ...) end
 --    * `elementSearchObject:cancel([reason])` - cancels the current search and invokes the callback with the partial results already collected. If you specify `reason`, the `msg` argument for the callback will be `** <reason>`; otherwise it will be "** cancelled".
 --    * `elementSearchObject:isRunning()`      - returns true if the search is currently ongoing or false if it has completed or been cancelled.
 --    * `elementSearchObject:matched()`        - returns an integer specifying the number of elements which have already been found that meet the specified criteria function.
---    * `elementSearchObject:runTime()`        - returns an integer specifying the number of seconds spent performing this search. Note that this is *not* an accurate measure of how much time a given search will always take because the time will be greatly affected by how much other activity is occurring within Hammerspoon and on the users computer. Resuming a cancelled search or a search which invoked the callback because it reached `count` items with the `next` method (descibed below) will cause this number to begin increasing again to provide a cumulative total of time spent performing the search; time between when the callback is invoked and the `next` method is invoked is not included.
+--    * `elementSearchObject:runTime()`        - returns an integer specifying the number of seconds spent performing this search. Note that this is *not* an accurate measure of how much time a given search will always take because the time will be greatly affected by how much other activity is occurring within Hammerspoon and on the users computer. Resuming a cancelled search or a search which invoked the callback because it reached `count` items with the `next` method (described below) will cause this number to begin increasing again to provide a cumulative total of time spent performing the search; time between when the callback is invoked and the `next` method is invoked is not included.
 --    * `elementSearchObject:visited()`        - returns an integer specifying the number of elements which have been examined during the search so far.
---
 --    * If `asTree` is false or not specified, the following additional methods will be available:
 --      * `elementSearchObject:filter(criteria, [callback]) -> filterObject`
 --        * returns a new table containing elements in the search results that match the specified criteria.
 --          * `criteria`  - a required function which should accept one argument (the current element being examined) and return true if it should be included in the results or false if it should be rejected. See [hs.axuielement.searchCriteriaFunction](#searchCriteriaFunction) to create a search function that uses [hs.axuielement:matchesCriteria](#matchesCriteria) for evaluation.
 --          * `callback`  - an optional callback which should expect two arguments and return none. If a callback is specified, the callback will receive two arguments, a msg indicating how the callback ended (the message format matches the style defined for this method) and the filterObject which contains the matching elements.
 --        * The filterObject returned by this method and passed to the callback, if defined, will support the following methods as defined here: `cancel`, `filter`, `isRunning`, `matched`, `runTime`, and `visited`.
---      * `elementSearchObject:next()` - if the search was cancelled or reached the count of matches specified, this method will continue the search where it left off. The elementSearchObject returned when the callback is next invoked will have up to `count` items added to the existing results (calls to `next` are cummulative for the total results captured in the elementSearchObject). The third ardument to the callback will be the number of items *added* to the search results, not the number of items *in* the search results.
+--      * `elementSearchObject:next()` - if the search was cancelled or reached the count of matches specified, this method will continue the search where it left off. The elementSearchObject returned when the callback is next invoked will have up to `count` items added to the existing results (calls to `next` are cumulative for the total results captured in the elementSearchObject). The third argument to the callback will be the number of items *added* to the search results, not the number of items *in* the search results.
 --
 -- Notes:
 --  * This method utilizes coroutines to keep Hammerspoon responsive, but may be slow to complete if `includeParents` is true, if you do not specify `depth`, or if you start from an element that has a lot of descendants (e.g. the application element for a web browser). This is dependent entirely upon how many active accessibility elements the target application defines and where you begin your search and cannot reliably be determined up front, so you may need to experiment to find the best balance for your specific requirements.
---
--- * The search performed is a breadth-first search, so in general earlier elements in the results table will be "closer" in the Accessibility hierarchy to the starting point than later elements.
---
--- * The `elementSearchObject` returned by this method and the results passed in as the second argument to the callback function are the same object -- you can use either one in your code depending upon which makes the most sense. Results that match the criteria function are added to the `elementSearchObject` as they are found, so if you examine the object/table returned by this method and determine that you have located the element or elements you require before the callback has been invoked, you can safely invoke the cancel method to end the search early.
---
--- * If `objectsOnly` is specified as false, it may take some time after `cancel` is invoked for the mapping of element attribute tables to the descendant elements in the results set -- this is a by product of the need to iterate through the results to match up all of the instances of each element to it's attribute table.
---
--- * [hs.axuielement:allDescendantElements](#allDescendantElements) is syntactic sugar for `hs.axuielement:elementSearch(callback, { [includeParents = withParents] })`
--- * [hs.axuielement:buildTree](#buildTree) is syntactic sugar for `hs.axuielement:elementSearch(callback, { objectOnly = false, asTree = true, [depth = depth], [includeParents = withParents] })`
+--  * The search performed is a breadth-first search, so in general earlier elements in the results table will be "closer" in the Accessibility hierarchy to the starting point than later elements.
+--  * The `elementSearchObject` returned by this method and the results passed in as the second argument to the callback function are the same object -- you can use either one in your code depending upon which makes the most sense. Results that match the criteria function are added to the `elementSearchObject` as they are found, so if you examine the object/table returned by this method and determine that you have located the element or elements you require before the callback has been invoked, you can safely invoke the cancel method to end the search early.
+--    * The exception to this is when `asTree` is true and `objectsOnly` is false and the search criteria is nil -- see [hs.axuielement:buildTree](#buildTree). In this case, the results passed to the callback will be equal to `elementSearchObject[1]`.
+--  * If `objectsOnly` is specified as false, it may take some time after `cancel` is invoked for the mapping of element attribute tables to the descendant elements in the results set -- this is a by product of the need to iterate through the results to match up all of the instances of each element to it's attribute table.
+--  * [hs.axuielement:allDescendantElements](#allDescendantElements) is syntactic sugar for `hs.axuielement:elementSearch(callback, { [includeParents = withParents] })`
+--  * [hs.axuielement:buildTree](#buildTree) is syntactic sugar for `hs.axuielement:elementSearch(callback, { objectOnly = false, asTree = true, [depth = depth], [includeParents = withParents] })`
 function M:elementSearch(callback, criteria, namedModifiers, ...) end
 
 -- Returns whether the specified accessibility object's attribute can be modified.
@@ -306,25 +312,29 @@ function M:isValid() end
 -- Notes:
 --  * the `criteria` argument must be one of the following:
 --    * a single string, specifying the value the element's AXRole attribute must equal for a positive match
---
 --    * an array table of strings specifying a list of possible values the element's AXRole attribute can equal for a positive match
---
 --    * a table of key-value pairs specifying a more complex criteria. The table should be defined as follows:
 --      * one or more of the following must be specified (though all specified must match):
 --        * `attribute`              -- a string, or table of strings, specifying attributes that the element must support.
 --        * `action`                 -- a string, or table of strings, specifying actions that the element must be able to perform.
 --        * `parameterizedAttribute` -- a string, or table of strings, specifying parametrized attributes that the element must support.
---
---      * if the `attribute` key is specified, you can use one of the the following to specify a specific value the attribute must equal for a positive match. No more than one of these should be provided. If neither are present, then only the existence of the attributes specified by `attribute` are required.
---        * `value`                  -- a value, or table of values, that a specifeid attribute must equal. If it's a table, then only one of the values has to match the attribute value for a positive match. Note that if you specify more than one attribute with the `attribute` key, you must provide at least one value for each attribute in this table (order does not matter, but the match will fail if any atrribute does not match at least one value provided).
+--      * if the `attribute` key is specified, you can use one of the following to specify a specific value the attribute must equal for a positive match. No more than one of these should be provided. If neither are present, then only the existence of the attributes specified by `attribute` are required.
+--        * `value`                  -- a value, or table of values, that a specified attribute must equal. If it's a table, then only one of the values has to match the attribute value for a positive match. Note that if you specify more than one attribute with the `attribute` key, you must provide at least one value for each attribute in this table (order does not matter, but the match will fail if any attribute does not match at least one value provided).
+--          * when specifying a value which is itself a table with keys (e.g. frame, size, url, color, etc.) then you *must* provide the value or values as a table of tables, e.g. `{ { y = 22 } }`.
+--            * only those keys which are specified within the value are checked for equality (or pattern matching). Values which are present in the attribute's value but are not specified in the comparison value are ignored (i.e. the previous example of `y = 22` would only check the `y` component of an AXFrame attribute -- the `x`, `h`, and `w` values would be ignored).
+--            * For value components which are numeric, e.g. `22` in the previous example, the default comparison is equality. You may change this with the `comparison` key described below in the optional keys.
+--            * For possible keys when trying to match a color, see the documentation for `hs.drawing.color`.
+--            * For possible keys when trying to match a URL, use `url = <string>` and/or `filePath = <string>`. The string for the specified table key will be compared in accordance with the `pattern` optional key described below.
+--          * when specifying a value which is itself a table of values (e.g. a list of axuielementObjects) you *must* provide the value or values as a table of tables, e.g. `{ { obj1, obj2 } }`.
+--            * Order of the elements provided in the comparison value does not matter -- this only tests for existence within the attributes value.
+--            * The test is for inclusion only -- the attribute's value may contain other elements as well, but must contain those specified within the comparison value.
 --        * `nilValue`               -- a boolean, specifying that the attributes must not have an assigned value (true) or may be assigned any value except nil (false). If the `value` key is specified, this key is ignored. Note that this applies to *all* of the attributes specified with the `attribute` key.
---
 --      * the following are optional keys and are not required:
 --        * `pattern`                -- a boolean, default false, specifying whether string matches for attribute values should be evaluated with `string.match` (true) or as exact matches (false). See the Lua manual, section 6.4.1 (`help.lua._man._6_4_1` in the Hammerspoon console). If the `value` key is not set, than this key is ignored.
 --        * `invert`                 -- a boolean, default false, specifying inverted logic for the criteria result --- if this is true and the criteria matches, evaluate criteria as false; otherwise evaluate as true.
+--        * `comparison`             -- a string, default "==", specifying the comparison to be used when comparing numeric values. Possible comparison strings are: "==" for equality, "<" for less than, "<=" for less than or equal to, ">" for greater than, ">=" for greater than or equal to, or "~=" for not equal to.
 --
 --    * an array table of one or more key-value tables as described immediately above; the element must be a positive match for all of the individual criteria tables specified (logical AND).
---
 --  * This method is used by [hs.axuielement.searchCriteriaFunction](#searchCriteriaFunction) to create criteria functions compatible with [hs.axuielement:elementSearch](#elementSearch).
 ---@return boolean
 function M:matchesCriteria(criteria, ...) end
@@ -351,10 +361,8 @@ function M:parameterizedAttributeNames() end
 -- Notes:
 --  * this table is provided for reference only and is not intended to be comprehensive.
 --  * you can view the contents of this table from the Hammerspoon console by typing in `hs.axuielement.parameterizedAttributes`
---
 --  * Parameterized attributes are attributes that take an argument when querying the element. There is very little documentation available for most of these and application developers can implement their own for which we may never be able to get any documentation. This table contains parameterized attribute names that are defined within the Apple documentation and a few others that have been discovered.
---
---  * Documentation covering what has been discovered through experimentation about paramterized attributes is planned and should be added to the Hammerspoon wiki shortly after this module becomes part of a formal release.
+--  * Documentation covering what has been discovered through experimentation about parameterized attributes is planned and should be added to the Hammerspoon wiki shortly after this module becomes part of a formal release.
 ---@type table
 M.parameterizedAttributes = {}
 
@@ -362,7 +370,7 @@ M.parameterizedAttributes = {}
 --
 -- Parameters:
 --  * `attribute` - the name of the attribute, as specified by [hs.axuielement:parameterizedAttributeNames](#parameterizedAttributeNames).
---  * `parameter` - the parameter required by the paramaterized attribute.
+--  * `parameter` - the parameter required by the parameterized attribute.
 --
 -- Returns:
 --  * the current value of the parameterized attribute, nil if the parameterized attribute has no value, or nil and an error string if an accessibility error occurred
@@ -381,7 +389,6 @@ function M:parameterizedAttributeValue(attribute, parameter, ...) end
 --
 -- Notes:
 --  * this object will always exist as the last element in the table (e.g. at `table[#table]`) with its most immediate parent at `#table - 1`, etc. until the rootmost object for this element is reached at index position 1.
---
 --  * an axuielement object representing an application or the system wide object is its own rootmost object and will return a table containing only itself (i.e. `#table` will equal 1)
 function M:path() end
 
@@ -451,8 +458,7 @@ function M:setAttributeValue(attribute, value, ...) end
 --
 -- Notes:
 --  * To change the global timeout affecting all queries on elements which do not have a specific timeout set, use this method on the systemwide element (see [hs.axuielement.systemWideElement](#systemWideElement).
---  * Changing the timeout value for an axuielement object only changes the value for that specific element -- other axuieleement objects that may refer to the identical accessibiity item are not affected.
---
+--  * Changing the timeout value for an axuielement object only changes the value for that specific element -- other axuieleement objects that may refer to the identical accessibility item are not affected.
 --  * Setting the value to 0.0 resets the timeout -- if applied to the `systemWideElement`, the global default will be reset to its default value; if applied to another axuielement object, the timeout will be reset to the current global value as applied to the systemWideElement.
 function M:setTimeout(value, ...) end
 
@@ -475,15 +481,15 @@ M.subroles = {}
 -- Returns the accessibility object at the specified position on the screen. The top-left corner of the primary screen is 0, 0.
 --
 -- Parameters:
---  * `x`, `y`     - the x and y coordinates of the screen location to test, provided as separate parameters
---  * `pointTable` - the x and y coordinates of the screen location to test, provided as a point-table, like the one returned by `hs.mouse.getAbsolutePosition`. A point-table is a table with key-value pairs for keys `x` and `y`.
+--  * `x` - the x coordinate of the screen location to test. If this parameter is provided, then the `y` parameter must also be provided and the `pointTable` parameter must not be provided.
+--  * `y` - the y coordinate of the screen location to test. This parameter is required if the `x` parameter is provided.
+--  * `pointTable` - the x and y coordinates of the screen location to test provided as a point-table, like the one returned by `hs.mouse.getAbsolutePosition` (a point-table is a table with key-value pairs for keys `x` and `y`). If this parameter is provided, then separate `x` and `y` parameters must not also be present.
 --
 -- Returns:
 --  * an axuielementObject for the object at the specified coordinates, or nil if no object could be identified.
 --
 -- Notes:
 --  * See also [hs.axuielement:elementAtPosition](#elementAtPosition) -- this function is a shortcut for `hs.axuielement.systemWideElement():elementAtPosition(...)`.
---
 --  * This function does hit-testing based on window z-order (that is, layering). If one window is on top of another window, the returned accessibility object comes from whichever window is topmost at the specified location.
 function M.systemElementAtPosition(x, y_or_pointTable, ...) end
 

@@ -26,21 +26,21 @@ hs.eventtap = M
 --     * _raw - a numeric representation of the numeric representation of all of the keyboard/modifier flags.
 --
 -- Notes:
---  * This is an instantaneous poll of the current keyboard modifiers for the most recently used keyboard, not a callback.  This is useful primarily in conjuction with other modules, such as `hs.menubar`, when a callback is already in progress or waiting for an event callback is not practical or possible.
+--  * This is an instantaneous poll of the current keyboard modifiers for the most recently used keyboard, not a callback.  This is useful primarily in conjunction with other modules, such as `hs.menubar`, when a callback is already in progress or waiting for an event callback is not practical or possible.
 --  * the numeric value returned is useful if you need to detect device dependent flags or flags which we normally ignore because they are not present (or are accessible another way) on most keyboards.
 function M.checkKeyboardModifiers(raw, ...) end
 
 -- Returns a table containing the current mouse buttons being pressed *at this instant*.
 --
 -- Parameters:
---  None
+--  * None
 --
 -- Returns:
---  * Returns an array containing indicies starting from 1 up to the highest numbered button currently being pressed where the index is `true` if the button is currently pressed or `false` if it is not.
+--  * Returns an array containing indices starting from 1 up to the highest numbered button currently being pressed where the index is `true` if the button is currently pressed or `false` if it is not.
 --  * Special hash tag synonyms for `left` (button 1), `right` (button 2), and `middle` (button 3) are also set to true if these buttons are currently being pressed.
 --
 -- Notes:
---  * This is an instantaneous poll of the current mouse buttons, not a callback.  This is useful primarily in conjuction with other modules, such as `hs.menubar`, when a callback is already in progress or waiting for an event callback is not practical or possible.
+--  * This is an instantaneous poll of the current mouse buttons, not a callback.  This is useful primarily in conjunction with other modules, such as `hs.menubar`, when a callback is already in progress or waiting for an event callback is not practical or possible.
 function M.checkMouseButtons() end
 
 -- Returns the system-wide setting for the delay between two clicks, to register a double click event
@@ -103,27 +103,28 @@ function M.keyRepeatInterval() end
 --  * modifiers - A table containing the keyboard modifiers to apply ("fn", "ctrl", "alt", "cmd", "shift", or their Unicode equivalents)
 --  * character - A string containing a character to be emitted
 --  * delay - An optional delay (in microseconds) between key down and up event. Defaults to 200000 (i.e. 200ms)
+--  * application - An optional hs.application object to send the keystroke to
 --
 -- Returns:
 --  * None
 --
 -- Notes:
 --  * This function is ideal for sending single keystrokes with a modifier applied (e.g. sending ⌘-v to paste, with `hs.eventtap.keyStroke({"cmd"}, "v")`). If you want to emit multiple keystrokes for typing strings of text, see `hs.eventtap.keyStrokes()`
---
 --  * Note that invoking this function with a table (empty or otherwise) for the `modifiers` argument will force the release of any modifier keys which have been explicitly created by [hs.eventtap.event.newKeyEvent](#newKeyEvent) and posted that are still in the "down" state. An explicit `nil` for this argument will not (i.e. the keystroke will inherit any currently "down" modifiers)
-function M.keyStroke(modifiers, character, delay, ...) end
+function M.keyStroke(modifiers, character, delay, application, ...) end
 
 -- Generates and emits keystroke events for the supplied text
 --
 -- Parameters:
 --  * text - A string containing the text to be typed
+--  * application - An optional hs.application object to send the keystrokes to
 --
 -- Returns:
 --  * None
 --
 -- Notes:
 --  * If you want to send a single keystroke with keyboard modifiers (e.g. sending ⌘-v to paste), see `hs.eventtap.keyStroke()`
-function M.keyStrokes(text, ...) end
+function M.keyStrokes(text, application, ...) end
 
 -- Generates a left mouse click event at the specified point
 --
@@ -177,7 +178,6 @@ function M.new(types, fn, ...) end
 --
 -- Notes:
 --  * This is a wrapper around `hs.eventtap.event.newMouseEvent` that sends `otherMouseDown` and `otherMouseUp` events)
---
 --  * macOS recognizes up to 32 distinct mouse buttons, though few mouse devices have more than 3.  The left mouse button corresponds to button number 0 and the right mouse button corresponds to 1;  distinct events are used for these mouse buttons, so you should use `hs.eventtap.leftClick` and `hs.eventtap.rightClick` respectively.  All other mouse buttons are coalesced into the `otherMouse` events and are distinguished by specifying the specific button with the `mouseEventButtonNumber` property, which this function does for you.
 --  * The specific purpose of mouse buttons greater than 2 varies by hardware and application (typically they are not present on a mouse and have no effect in an application)
 function M.otherClick(point, delay, button, ...) end

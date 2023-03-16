@@ -12,7 +12,7 @@ hs.chooser = M
 -- Get or attach/detach a toolbar to/from the chooser.
 --
 -- Parameters:
---  * `toolbar` - if an `hs.webview.toolbar` object is specified, it will be attached to the chooser.  If an explicit nil is specified, the current toolbar will be removed from the chooser.
+--  * `toolbar` - An `hs.webview.toolbar` object to be attached to the chooser. If `nil` is supplied, the current toolbar will be removed
 --
 -- Returns:
 --  * if a toolbarObject or explicit nil is specified, returns the hs.chooser object; otherwise returns the current toolbarObject or nil, if no toolbar is attached to the chooser.
@@ -22,7 +22,7 @@ hs.chooser = M
 --
 --  * If the toolbarObject is currently attached to another window when this method is called, it will be detached from the original window and attached to the chooser.  If you wish to attach the same toolbar to multiple chooser objects, see `hs.webview.toolbar:copy`.
 ---@return hs.chooser
-function M:attachedToolbar(toolbar_or_nil, ...) end
+function M:attachedToolbar(toolbar, ...) end
 
 -- Sets the background of the chooser between light and dark
 --
@@ -67,7 +67,7 @@ function M:cancel() end
 --  * If you're using a hs.styledtext object for text or subText choices, make sure you specify a color, otherwise your text could appear transparent depending on the bgDark setting.
 --
 -- Example:
---  ```
+--  ```lua
 -- local choices = {
 --  {
 --   ["text"] = "First Choice",
@@ -82,8 +82,7 @@ function M:cancel() end
 --    ["subText"] = "What a lot of choosing there is going on here!",
 --    ["uuid"] = "III3"
 --  },
--- }
---  ```
+-- }```
 ---@return hs.chooser
 function M:choices(choices, ...) end
 
@@ -95,6 +94,19 @@ function M:choices(choices, ...) end
 -- Returns:
 --  * None
 function M:delete() end
+
+-- Gets/Sets whether the chooser should run the callback on a query when it does not match any on the list
+--
+-- Parameters:
+--  * enableDefaultForQuery - An optional boolean, true to return query string, false to not. If this parameter is omitted, the current configuration value will be returned
+--
+-- Returns:
+--  * the `hs.chooser` object if a value was set, or a boolean if no parameter was passed
+--
+-- Notes:
+--  * This should be used before a chooser has been displayed
+---@return hs.chooser
+function M:enableDefaultForQuery() end
 
 -- Sets the foreground color of the chooser
 --

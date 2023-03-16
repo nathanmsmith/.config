@@ -16,9 +16,11 @@ hs.http = M
 --   * A string containing the response body
 --   * A table containing the response headers
 --
+-- Returns:
+--  * None
+--
 -- Notes:
 --  * If authentication is required in order to download the request, the required credentials must be specified as part of the URL (e.g. "http://user:password@host.com/"). If authentication fails, or credentials are missing, the connection will attempt to continue without credentials.
---
 --  * If the request fails, the callback function's first parameter will be negative and the second parameter will contain an error message. The third parameter will be nil
 function M.asyncGet(url, headers, callback, ...) end
 
@@ -33,11 +35,32 @@ function M.asyncGet(url, headers, callback, ...) end
 --   * A string containing the response body
 --   * A table containing the response headers
 --
+-- Returns:
+--  * None
+--
 -- Notes:
 --  * If authentication is required in order to download the request, the required credentials must be specified as part of the URL (e.g. "http://user:password@host.com/"). If authentication fails, or credentials are missing, the connection will attempt to continue without credentials.
---
 --  * If the request fails, the callback function's first parameter will be negative and the second parameter will contain an error message. The third parameter will be nil
 function M.asyncPost(url, data, headers, callback, ...) end
+
+-- Sends an HTTP PUT request asynchronously
+--
+-- Parameters:
+--  * url - A string containing the URL to submit to
+--  * data - A string containing the request body, or nil to send no body
+--  * headers - A table containing string keys and values representing the request headers, or nil to add no headers
+--  * callback - A function to be called when the request succeeds or fails. The function will be passed three parameters:
+--   * A number containing the HTTP response status
+--   * A string containing the response body
+--   * A table containing the response headers
+--
+-- Returns:
+--  * None
+--
+-- Notes:
+--  * If authentication is required in order to download the request, the required credentials must be specified as part of the URL (e.g. "http://user:password@host.com/"). If authentication fails, or credentials are missing, the connection will attempt to continue without credentials.
+--  * If the request fails, the callback function's first parameter will be negative and the second parameter will contain an error message. The third parameter will be nil
+function M.asyncPut(url, data, headers, callback, ...) end
 
 -- Convert all recognized HTML Entities in the `inString` to appropriate UTF8 byte sequences and returns the converted text.
 --
@@ -64,6 +87,7 @@ function M.convertHtmlEntities(inString, ...) end
 --   * body - A string containing the body of the response
 --   * headers - A table containing the HTTP headers of the response
 --  * cachePolicy - An optional string containing the cache policy ("protocolCachePolicy", "ignoreLocalCache", "ignoreLocalAndRemoteCache", "returnCacheOrLoad", "returnCacheDontLoad" or "reloadRevalidatingCache"). Defaults to `protocolCachePolicy`.
+--  * enableRedirect - An optional boolean to indicate whether to redirect the http request. Defaults to true.
 --
 -- Returns:
 --  * None
@@ -71,7 +95,8 @@ function M.convertHtmlEntities(inString, ...) end
 -- Notes:
 --  * If authentication is required in order to download the request, the required credentials must be specified as part of the URL (e.g. "http://user:password@host.com/"). If authentication fails, or credentials are missing, the connection will attempt to continue without credentials.
 --  * If the Content-Type response header begins `text/` then the response body return value is a UTF8 string. Any other content type passes the response body, unaltered, as a stream of bytes.
-function M.doAsyncRequest(url, method, data, headers, callback, cachePolicy, ...) end
+--  * If enableRedirect is set to true, response body will be empty string. Http body will be dropped even though response has the body. This seems the limitation of 'connection:willSendRequest:redirectResponse' method.
+function M.doAsyncRequest(url, method, data, headers, callback, cachePolicy_or_enableRedirect, ...) end
 
 -- Creates an HTTP request and executes it synchronously
 --
@@ -110,7 +135,7 @@ function M.encodeForQuery(string, ...) end
 
 -- Sends an HTTP GET request to a URL
 --
--- Parameters
+-- Parameters:
 --  * url - A string containing the URL to retrieve
 --  * headers - A table containing string keys and values representing the request headers, or nil to add no headers
 --
@@ -121,7 +146,6 @@ function M.encodeForQuery(string, ...) end
 --
 -- Notes:
 --  * If authentication is required in order to download the request, the required credentials must be specified as part of the URL (e.g. "http://user:password@host.com/"). If authentication fails, or credentials are missing, the connection will attempt to continue without credentials.
---
 --  * This function is synchronous and will therefore block all other Lua execution while the request is in progress, you are encouraged to use the asynchronous functions
 --  * If you attempt to connect to a local Hammerspoon server created with `hs.httpserver`, then Hammerspoon will block until the connection times out (60 seconds), return a failed result due to the timeout, and then the `hs.httpserver` callback function will be invoked (so any side effects of the function will occur, but it's results will be lost).  Use [hs.http.asyncGet](#asyncGet) to avoid this.
 function M.get(url, headers, ...) end
@@ -142,7 +166,7 @@ M.htmlEntities = {}
 
 -- Sends an HTTP POST request to a URL
 --
--- Parameters
+-- Parameters:
 --  * url - A string containing the URL to submit to
 --  * data - A string containing the request body, or nil to send no body
 --  * headers - A table containing string keys and values representing the request headers, or nil to add no headers
@@ -154,10 +178,27 @@ M.htmlEntities = {}
 --
 -- Notes:
 --  * If authentication is required in order to download the request, the required credentials must be specified as part of the URL (e.g. "http://user:password@host.com/"). If authentication fails, or credentials are missing, the connection will attempt to continue without credentials.
---
 --  * This function is synchronous and will therefore block all other Lua execution while the request is in progress, you are encouraged to use the asynchronous functions
 --  * If you attempt to connect to a local Hammerspoon server created with `hs.httpserver`, then Hammerspoon will block until the connection times out (60 seconds), return a failed result due to the timeout, and then the `hs.httpserver` callback function will be invoked (so any side effects of the function will occur, but it's results will be lost).  Use [hs.http.asyncPost](#asyncPost) to avoid this.
 function M.post(url, data, headers, ...) end
+
+-- Sends an HTTP PUT request to a URL
+--
+-- Parameters:
+--  * url - A string containing the URL to submit to
+--  * data - A string containing the request body, or nil to send no body
+--  * headers - A table containing string keys and values representing the request headers, or nil to add no headers
+--
+-- Returns:
+--  * A number containing the HTTP response status
+--  * A string containing the response body
+--  * A table containing the response headers
+--
+-- Notes:
+--  * If authentication is required in order to download the request, the required credentials must be specified as part of the URL (e.g. "http://user:password@host.com/"). If authentication fails, or credentials are missing, the connection will attempt to continue without credentials.
+--  * This function is synchronous and will therefore block all other Lua execution while the request is in progress, you are encouraged to use the asynchronous functions
+--  * If you attempt to connect to a local Hammerspoon server created with `hs.httpserver`, then Hammerspoon will block until the connection times out (60 seconds), return a failed result due to the timeout, and then the `hs.httpserver` callback function will be invoked (so any side effects of the function will occur, but it's results will be lost).  Use [hs.http.asyncPost](#asyncPost) to avoid this.
+function M.put(url, data, headers, ...) end
 
 -- Registers an HTML Entity with the specified Unicode codepoint which can later referenced in your code as `hs.http.htmlEntity[entity]` for convenience and readability.
 --
@@ -242,7 +283,7 @@ function M.registerEntity(entity, codepoint, ...) end
 --    * a missing key (e.g. '=value') will be represented as { "" = value }
 --    * a missing value (e.g. 'key=') will be represented as { key = "" }
 --    * a missing value with no = (e.g. 'key') will be represented as { key }
---    * a missing key and value (e.g. '=') will be represente as { "" = "" }
+--    * a missing key and value (e.g. '=') will be represented as { "" = "" }
 --    * an empty query item (e.g. a query ending in '&' or a query containing && between two other query items) will be represented as { "" }
 --
 --  * At present Hammerspoon does not provide a way to represent a URL as a true Objective-C object within the OS X API.  This affects the following keys:
