@@ -10,7 +10,7 @@ vim.g["test#custom_strategies"] = {
 
 vim.g["VimuxRunnerType"] = "window"
 -- vim.g["VimuxRunnerName"] = "tests"
--- vim.g["test#preserve_screen"] = 1
+vim.g["test#preserve_screen"] = 1
 
 if os.getenv("TMUX") then
   vim.g["test#strategy"] = "vimux"
