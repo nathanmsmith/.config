@@ -10,6 +10,8 @@
 	<true/>
 	<key>BracketedPasteMode</key>
 	<true/>
+	<key>CheckTestRelease</key>
+	<true/>
 	<key>ClosingTmuxTabKillsTmuxWindows</key>
 	<true/>
 	<key>ClosingTmuxTabKillsTmuxWindows_selection</key>
@@ -1580,7 +1582,7 @@
 			<key>Send Code When Idle</key>
 			<false/>
 			<key>Set Local Environment Vars</key>
-			<integer>2</integer>
+			<integer>1</integer>
 			<key>Shortcut</key>
 			<string></string>
 			<key>Show Mark Indicators</key>

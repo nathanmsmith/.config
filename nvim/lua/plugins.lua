@@ -161,22 +161,29 @@ require("packer").startup({
     use({
       "ojroques/nvim-osc52",
       config = function()
-        -- Make copy/paste work over ssh
-        -- Use the '+' register, so copy to clipboard would be `"+yy`
-        local function copy(lines, _)
-          require("osc52").copy(table.concat(lines, "\n"))
-        end
+        -- -- Make copy/paste work over ssh
+        -- -- Use the '+' register, so copy to clipboard would be `"+yy`
+        -- local function copy(lines, _)
+        --   require("osc52").copy(table.concat(lines, "\n"))
+        -- end
 
-        local function paste()
-          return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
-        end
+        -- local function paste()
+        --   return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
+        -- end
 
         -- Only change the clipboard if we're in a SSH session
         if os.getenv("SSH_CLIENT") then
           vim.g.clipboard = {
-            name = "osc52",
-            copy = { ["+"] = copy, ["*"] = copy },
-            paste = { ["+"] = paste, ["*"] = paste },
+            name = "tmux",
+            copy = {
+              ["+"] = { "tmux", "load-buffer", "-" },
+              ["*"] = { "tmux", "load-buffer", "-" },
+            },
+            paste = {
+              ["+"] = { "tmux", "save-buffer", "-" },
+              ["*"] = { "tmux", "save-buffer", "-" },
+            },
+            cache_enabled = 1,
           }
         end
       end,
