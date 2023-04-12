@@ -2,7 +2,7 @@ local lsp_format = require("lsp-format")
 lsp_format.setup({
   typescript = { exclude = { "tsserver" } },
   typescriptreact = { exclude = { "tsserver" } },
-  ruby = { order = { "null-ls", "payserver_sorbet" } },
+  ruby = { order = { "null-ls", "payserver_sorbet" }, sync = true },
 })
 
 local on_attach = function(client, bufnr)
