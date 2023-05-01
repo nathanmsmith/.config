@@ -17,9 +17,15 @@ else
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.trim_newlines,
       null_ls.builtins.formatting.trim_whitespace,
+      -- I don't really like fish_indent, it uses 4 spaces instead of 2.
+      -- null_ls.builtins.formatting.fish_indent,
 
       -- Linters
       null_ls.builtins.diagnostics.golangci_lint,
+      null_ls.builtins.diagnostics.fish,
+      null_ls.builtins.diagnostics.swiftlint,
+      null_ls.builtins.diagnostics.rubocop,
+      null_ls.builtins.diagnostics.luacheck,
     },
     on_attach = on_attach,
   })

@@ -27,19 +27,3 @@ require("trouble").setup({
   icons = false,
   use_diagnostic_signs = true,
 })
-
-local helpers = require("custom-helpers")
-
-if helpers.isModuleAvailable("stripe") then
-  require("stripe").initLinters()
-else
-  require("diagnostic.linters")
-end
-
-local lint_group = vim.api.nvim_create_augroup("Lint", { clear = true })
-vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-  group = lint_group,
-})
