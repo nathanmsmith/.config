@@ -42,6 +42,12 @@ else
         hidden = true,
         find_command = { "fd", "--type", "f", "--strip-cwd-prefix" },
       },
+      live_grep = {
+        additional_args = {
+          "--smart-case",
+          "--hidden",
+        },
+      },
     },
     extensions = {
       fzf = {
