@@ -157,31 +157,6 @@ require("packer").startup({
     use("onsails/lspkind-nvim")
     use("saadparwaiz1/cmp_luasnip")
 
-    -- Copy/paste over SSH
-    use({
-      "ojroques/nvim-osc52",
-      config = function()
-        -- Make copy/paste work over ssh
-        -- Use the '+' register, so copy to clipboard would be `"+yy`
-        local function copy(lines, _)
-          require("osc52").copy(table.concat(lines, "\n"))
-        end
-
-        local function paste()
-          return { vim.fn.split(vim.fn.getreg(""), "\n"), vim.fn.getregtype("") }
-        end
-
-        -- Only change the clipboard if we're in a SSH session
-        if os.getenv("SSH_CLIENT") then
-          vim.g.clipboard = {
-            name = "osc52",
-            copy = { ["+"] = copy, ["*"] = copy },
-            paste = { ["+"] = paste, ["*"] = paste },
-          }
-        end
-      end,
-    })
-
     -- Snippets
     use("L3MON4D3/LuaSnip")
 

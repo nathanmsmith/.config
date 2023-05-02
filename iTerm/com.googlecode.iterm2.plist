@@ -3576,7 +3576,7 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>4</integer>
 	<key>TmuxSyncClipboard</key>
-	<true/>
+	<false/>
 	<key>UseMetal</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
