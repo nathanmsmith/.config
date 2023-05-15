@@ -28,7 +28,7 @@ snip(
 describe('{}', () => {{
   {}
 }})
-]],
+]]   ,
     { i(1, "MyThing"), i(0) }
   )
 )
@@ -39,10 +39,12 @@ snip(
 it('{}', () => {{
   {}
 }})
-]],
+]]   ,
     { i(1, "does something"), i(0) }
   )
 )
+snip({ trig = "tb", dscr = "to be" }, fmt("expect({}).toBe({})", {i(1, "thing"), i(0, "other thing")}))
+snip({ trig = "te", dscr = "to equal" }, fmt("expect({}).toEqual({})", {i(1, "thing"), i(0, "other thing")}))
 
 -- Skeleton templates
 -- autosnip(
