@@ -9,15 +9,6 @@ if helpers.isModuleAvailable("stripe") then
 end
 
 -- Installer config
-require("mason").setup({
-  ui = {
-    icons = {
-      server_installed = "✓",
-      server_pending = "➜",
-      server_uninstalled = "✗",
-    },
-  },
-})
 require("mason-lspconfig").setup({
   ensure_installed = installable_servers,
 })

@@ -1,11 +1,9 @@
-pcall(require, "impatient")
+-- Remap space as leader key
+vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
--- Put plugin management first, as it handles installing packer.nvim for later files
-local is_bootstrap = require("plugins")
-if is_bootstrap then
-  return
-end
-
+require("plugins")
 require("vanilla")
 require("statusline")
 require("projectionist")

@@ -78,11 +78,6 @@ vim.keymap.set("n", "<C-W>m", "<Cmd>MaximizerToggle<CR>", { silent = true })
 -- https://sw.kovidgoyal.net/kitty/keyboard-protocol/
 -- vim.keymap.set('n', '<C-M>', '<Cmd>MaximizerToggle<CR>', {silent = true})
 
--- Remap space as leader key
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Searching
 -- Case insensitive by default, case sensitive with an uppercase char
 vim.o.ignorecase = true
