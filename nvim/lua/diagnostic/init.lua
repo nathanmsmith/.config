@@ -21,9 +21,3 @@ end
 -- Keymaps
 vim.keymap.set("n", "[w", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]w", vim.diagnostic.goto_next)
-
--- Setup Trouble for project navigation
-require("trouble").setup({
-  icons = false,
-  use_diagnostic_signs = true,
-})
