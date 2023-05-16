@@ -8,6 +8,7 @@ require("luasnip").setup({
 
 local snippets_folder = vim.fn.stdpath("config") .. "/lua/snippets/filetypes"
 require("luasnip.loaders.from_lua").load({ paths = snippets_folder })
+require("luasnip.loaders.from_snipmate").lazy_load()
 
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initSnippets()

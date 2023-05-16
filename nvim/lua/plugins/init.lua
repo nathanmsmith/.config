@@ -119,7 +119,14 @@ return {
   "saadparwaiz1/cmp_luasnip",
 
   -- Snippets
-  "L3MON4D3/LuaSnip",
+  {
+    "L3MON4D3/LuaSnip",
+    config = function()
+      vim.api.nvim_create_user_command("SnippetsEdit", function()
+        require("luasnip.loaders").edit_snippet_files()
+      end, { desc = "Edit Snippet files" })
+    end,
+  },
 
   -- Autopair
   {
