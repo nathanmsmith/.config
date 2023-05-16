@@ -39,7 +39,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    build = ":TSUpdate",
+    -- build = ":TSUpdate",
   },
   "JoosepAlviste/nvim-ts-context-commentstring",
   "windwp/nvim-ts-autotag",
