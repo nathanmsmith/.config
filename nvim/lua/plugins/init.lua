@@ -221,11 +221,7 @@ return {
   },
   { "nvim-telescope/telescope-ui-select.nvim" },
 
-  -- Formatting
-  "mhartington/formatter.nvim",
-
-  -- Linting/Diagnostics
-  "mfussenegger/nvim-lint",
+  -- Diagnostics
   {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
