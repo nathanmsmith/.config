@@ -141,33 +141,10 @@ return {
 
   -- File navigation
   {
-    "tamago324/lir.nvim",
+    "stevearc/oil.nvim",
     config = function()
-      local actions = require("lir.actions")
-      vim.api.nvim_set_keymap("n", "-", [[<Cmd>execute 'e ' .. expand('%:p:h')<CR>]], { noremap = true })
-      require("lir").setup({
-        show_hidden_files = true,
-        ignore = { ".DS_Store", "node_modules" },
-        devicons_enable = false,
-        hide_cursor = true,
-        mappings = {
-          ["<CR>"] = actions.edit,
-          ["-"] = actions.up,
-
-          ["<C-s>"] = actions.split,
-          ["<C-v>"] = actions.vsplit,
-          ["<C-t>"] = actions.tabedit,
-
-          ["q"] = actions.quit,
-
-          ["d"] = actions.mkdir,
-          ["%"] = actions.newfile,
-          ["R"] = actions.rename,
-          ["Y"] = actions.yank_path,
-          ["."] = actions.toggle_show_hidden,
-          ["D"] = actions.delete,
-        },
-      })
+      require("oil").setup()
+      vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
     end,
   },
   "stsewd/gx-extended.vim",
