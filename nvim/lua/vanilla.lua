@@ -38,9 +38,6 @@ vim.o.lazyredraw = true
 -- Diff Mode
 vim.opt.diffopt:append("internal")
 
--- Highlight colors
--- require("colorizer").setup(nil, { css = true })
-
 -- Evenly resize windows on screen change
 local resize_group = vim.api.nvim_create_augroup("WindowWatcher", { clear = true })
 vim.api.nvim_create_autocmd("VimResized", { command = "wincmd =", group = resize_group, pattern = "*" })

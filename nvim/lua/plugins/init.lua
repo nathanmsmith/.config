@@ -155,9 +155,6 @@ return {
   -- Show Marks
   "kshenoy/vim-signature",
 
-  -- Highlight colors
-  "norcalli/nvim-colorizer.lua",
-
   -- Text object modifications and extensions
   {
     "chaoren/vim-wordmotion",
