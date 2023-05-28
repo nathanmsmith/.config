@@ -21,7 +21,7 @@ cmp.setup({
   },
   formatting = {
     format = lspkind.cmp_format({
-      with_text = false,
+      mode = "text",
       maxwidth = 50,
       menu = {
         buffer = "[Buffer]",
