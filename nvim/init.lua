@@ -43,10 +43,6 @@ require("lsp")
 require("completion")
 require("snippets")
 
--- (12/17/22) Right now, the formatting experience provided by null-ls and lsp-format beats that of formatter.nvim.
--- I'm keeping around my old formatting config in case that changes in the future.
--- I've had no problems with nvim-lint; I'm only using null-ls for formatting.
--- require("formatting")
 require("diagnostic")
 
 require("treesitter")
