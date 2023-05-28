@@ -39,7 +39,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    -- build = ":TSUpdate",
+    build = ":TSUpdate",
   },
   "JoosepAlviste/nvim-ts-context-commentstring",
   "windwp/nvim-ts-autotag",
@@ -228,8 +228,8 @@ return {
     opts = { use_diagnostic_signs = true, icons = false },
     keys = {
       { "<leader>xx", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xl", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
-      { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
+      { "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
+      { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
     },
   },
 
