@@ -228,8 +228,8 @@ return {
     opts = { use_diagnostic_signs = true, icons = false },
     keys = {
       { "<leader>xx", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>xl", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
+      { "<leader>xl", "<cmd>TroubleToggle loclist<cr>",               desc = "Location List (Trouble)" },
+      { "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",              desc = "Quickfix List (Trouble)" },
     },
   },
 
@@ -259,12 +259,4 @@ return {
   },
 
   "dstein64/vim-startuptime",
-
-  -- if helpers.isModuleAvailable("stripe") then
-  --   require("stripe").loadPlugins(use)
-  -- else
-  --   "tpope/vim-rails"
-  --   "tpope/vim-rake"
-  --   "tpope/vim-bundler"
-  -- end
 }
