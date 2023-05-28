@@ -3,6 +3,7 @@ lsp_format.setup({
   typescript = { exclude = { "tsserver" } },
   typescriptreact = { exclude = { "tsserver" } },
   ruby = { order = { "null-ls", "payserver_sorbet" }, sync = true },
+  lua = { exclued = "lua_ls" },
 })
 
 local on_attach = function(client, bufnr)

@@ -189,19 +189,26 @@ return {
     end,
   },
 
-  "wellle/targets.vim",
   {
-    "whatyouhide/vim-textobj-xmlattr",
-    dependencies = {
-      "kana/vim-textobj-user",
-    },
+    "echasnovski/mini.ai",
+    version = "*",
+    config = function()
+      require("mini.ai").setup({
+        custom_textobjects = {
+          -- Replicate the "entire" object from https://github.com/kana/vim-textobj-entire
+          e = function()
+            local from = { line = 1, col = 1 }
+            local to = {
+              line = vim.fn.line("$"),
+              col = math.max(vim.fn.getline("$"):len(), 1),
+            }
+            return { from = from, to = to }
+          end,
+        },
+      })
+    end,
   },
-  {
-    "kana/vim-textobj-entire",
-    dependencies = {
-      "kana/vim-textobj-user",
-    },
-  },
+  { "echasnovski/mini.splitjoin", version = "*", config = true },
 
   -- Testing
   "vim-test/vim-test",
