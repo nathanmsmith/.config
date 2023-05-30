@@ -34,7 +34,6 @@ local get_highest_error_severity = function()
   end
 end
 
--- Keymaps
 vim.keymap.set("n", "[w", function()
   vim.diagnostic.goto_prev({
     severity = get_highest_error_severity(),
