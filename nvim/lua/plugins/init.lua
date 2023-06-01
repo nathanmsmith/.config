@@ -143,7 +143,17 @@ return {
   {
     "stevearc/oil.nvim",
     config = function()
-      require("oil").setup()
+      require("oil").setup({
+        keymaps = {
+          ["<C-h>"] = false,
+          ["<C-l>"] = false,
+          ["<C-s>"] = false,
+          ["<C-t>"] = false,
+          ["<C-p>"] = false,
+          ["<C-c>"] = false,
+          ["<C-r>"] = "actions.refresh",
+        },
+      })
       vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
     end,
   },
