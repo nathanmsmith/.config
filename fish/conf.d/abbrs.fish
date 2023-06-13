@@ -1,11 +1,29 @@
+# Abbreviations
+# abbrs are no longer universal, so no need for a check
+
+abbr --add cfg config
+abbr --add o open
+abbr --add o. 'open .'
+
 # ls/exa
-abbr --add l 'ls'
+abbr --add l ls
 abbr --add la 'ls -a'
 abbr --add ll 'ls -lh --header'
 abbr --add lla 'ls -lha --header'
 
 abbr --add md 'mkdir -p'
 abbr --add rd 'rm -r'
+
+# Homebrew
+abbr --add b brew
+abbr --add bs 'brew search'
+abbr --add bi 'brew info'
+abbr --add binst 'brew install'
+
+# Ruby + Rails
+abbr --add r rails
+abbr --add be 'bundle exec'
+abbr --add ber 'bundle exec rails'
 
 # Go
 abbr --add got 'go test'
@@ -14,16 +32,16 @@ abbr --add gor 'go run'
 abbr --add gob 'go build'
 
 # Make
-abbr --add m 'make'
+abbr --add m make
 abbr --add mb 'make build'
 
 # Vim
-abbr --add v 'nvim'
-abbr --add n 'nvim'
+abbr --add v nvim
+abbr --add n nvim
 
 # Git
 # Mainly inspired by https://github.com/robbyrussell/oh-my-zsh/wiki/Cheatsheet#git
-abbr --add g 'git'
+abbr --add g git
 abbr --add ga 'git add'
 abbr --add gi 'git ignore'
 abbr --add ginit 'git init'
@@ -67,7 +85,7 @@ abbr --add gmt 'git mergetool'
 abbr --add gdt 'git difftool'
 
 # Yarn
-abbr --add yn 'yarn'
+abbr --add yn yarn
 abbr --add yns 'yarn start'
 abbr --add ynt 'yarn test'
 abbr --add ynb 'yarn build'
