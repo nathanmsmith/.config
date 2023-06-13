@@ -12,6 +12,7 @@ M.installable = {
   "vimls",
   "lua_ls",
   "gopls",
+  "pyright",
 }
 
 M.basic = {
@@ -24,6 +25,7 @@ M.basic = {
   "yamlls",
   "vimls",
   "gopls",
+  "pyright",
 }
 
 return M

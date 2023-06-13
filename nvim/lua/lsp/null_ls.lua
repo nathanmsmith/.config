@@ -26,6 +26,7 @@ else
       null_ls.builtins.diagnostics.swiftlint,
       null_ls.builtins.diagnostics.rubocop,
       null_ls.builtins.diagnostics.luacheck,
+      null_ls.builtins.diagnostics.flake8,
     },
     on_attach = on_attach,
   })
