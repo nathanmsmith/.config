@@ -1,4 +1,4 @@
-if set -q PATH_INITIALIZED
+if set -q PATH_INITIALIZED; and test (uname) = Darwin
     set -Ux PYENV_ROOT $HOME/.pyenv
     set -Ux GOPATH $HOME/Developer/go
 
@@ -13,5 +13,5 @@ if set -q PATH_INITIALIZED
     fish_add_path $GOPATH/bin
     fish_add_path ~/.local/share/nvim/mason/bin/
 
-    set -U PATH_INITIALIZED 1
+    set -Ux PATH_INITIALIZED 1
 end
