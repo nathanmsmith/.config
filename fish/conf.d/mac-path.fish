@@ -13,5 +13,8 @@ if set -q PATH_INITIALIZED; and test (uname) = Darwin
     fish_add_path $GOPATH/bin
     fish_add_path ~/.local/share/nvim/mason/bin/
 
+    source (rbenv init -|psub)
+    source (nodenv init -|psub)
+
     set -Ux PATH_INITIALIZED 1
 end
