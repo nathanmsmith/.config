@@ -153,6 +153,9 @@ return {
           ["<C-c>"] = false,
           ["<C-r>"] = "actions.refresh",
         },
+        view_options = {
+          show_hidden = true,
+        },
       })
       vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
     end,
