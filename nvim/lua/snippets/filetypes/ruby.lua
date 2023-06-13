@@ -122,39 +122,4 @@ snip({ trig = "tnil", dscr = "T.nilable()" }, fmt([[T.nilable({})]], { i(0) }))
 snip({ trig = "dbg", dscr = "Insert breakpoint" }, t("debugger"))
 snip({ trig = "debug", dscr = "Insert breakpoint" }, t("debugger"))
 
--- Testing
-snip(
-  { trig = "desc", dscr = "Testing: describe statement" },
-  fmt(
-    [[
-describe "{}" do
-  {}
-end
-  ]],
-    { i(1, "my thing"), i(0, "it 'does something'") }
-  )
-)
-snip(
-  { trig = "it", dscr = "Testing: it statement" },
-  fmt(
-    [[
-it "{}" do
-  {}
-end
-  ]],
-    { i(1, "does something"), i(0, "# TODO: implement") }
-  )
-)
-snip(
-  { trig = "before", dscr = "Testing: before statement" },
-  fmt(
-    [[
-before do
-  {}
-end
-  ]],
-    { i(0, "# TODO: implement") }
-  )
-)
-
 return snippets, autosnippets

@@ -1,0 +1,11 @@
+snippet .
+	class="${1}"
+snippet #
+	id="${1}"
+
+snippet a
+	<a href="${1:#}">${0:$1}</a>
+snippet a.
+	<a class="${1}" href="${2:#}">${0:$1}</a>
+snippet a#
+	<a id="${1}" href="${2:#}">${0:$1}</a>

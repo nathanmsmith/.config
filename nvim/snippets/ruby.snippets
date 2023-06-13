@@ -1,0 +1,30 @@
+snippet case
+	case ${1:object}
+	when $2
+		${0}
+	end
+snippet when
+	when $1
+		${0:${VISUAL}}
+snippet def
+	def ${1:method_name}
+		${0}
+	end
+snippet defm
+	def ${1:method}
+		@$1 ||= ${0}
+	end
+
+# Testing
+snippet desc "Testing: describe statement"
+	describe "${1:my thing}" do
+		${0:it "does something"}
+	end
+snippet it "Testing: it statement"
+	it "${1:does something}" do
+		${0:# TODO: implement}
+	end
+snippet before "Testing: before statement"
+	before do
+		${0:# TODO: test setup}
+	end
