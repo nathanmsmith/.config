@@ -4,12 +4,6 @@ if status --is-login; and status --is-interactive
     set fish_cursor_replace_one underscore blink
     set fish_cursor_visual block
 
-    # Ruby
-    source (rbenv init -|psub)
-
-    # Node
-    source (nodenv init -|psub)
-
     if test -e ~/.config/fish/stripe-config.fish
         source ~/.config/fish/stripe-config.fish
     end
@@ -24,6 +18,11 @@ if status --is-login; and status --is-interactive
     fish_add_path /opt/homebrew/opt/python/libexec/bin
     fish_add_path ~/.local/share/nvim/mason/bin/
 
+    # Ruby
+    source (rbenv init -|psub)
+
+    # Node
+    source (nodenv init -|psub)
 
     test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
 end
