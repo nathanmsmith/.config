@@ -23,7 +23,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       -- Useful status updates for LSP
-      "j-hui/fidget.nvim",
+      { "j-hui/fidget.nvim", tag = "legacy" },
       -- Treat formatters as LSPs
       "jose-elias-alvarez/null-ls.nvim",
       -- Auto-format LSP changes on save
