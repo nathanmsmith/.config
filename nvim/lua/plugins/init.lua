@@ -1,3 +1,5 @@
+local helpers = require("custom-helpers")
+
 return {
   -- Color theme
   "nathanmsmith/night-owl.vim",
@@ -155,6 +157,9 @@ return {
         },
         view_options = {
           show_hidden = true,
+          is_always_hidden = function(name, bufnr)
+            return helpers.contains({ ".DS_Store" }, name)
+          end,
         },
       })
       vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
