@@ -19,4 +19,14 @@ function M.inDir(name)
   return vim.fn.getcwd():find(name, 1, true)
 end
 
+function M.contains(table, val)
+  for index, value in ipairs(table) do
+    if value == val then
+      return true
+    end
+  end
+
+  return false
+end
+
 return M
