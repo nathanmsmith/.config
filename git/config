@@ -27,7 +27,6 @@
 	signingkey = 3B9BA490BA8CCFE7
 [core]
 	editor = nvim
-	excludesFile = "$XDG_CONFIG_HOME/git/ignore"
 [push]
 	default = simple
 	autoSetupRemote = true
