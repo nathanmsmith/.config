@@ -1,5 +1,11 @@
 local M = {}
 
+M.tools = {
+  "stylua",
+  "prettierd",
+  "flake8",
+}
+
 M.installable = {
   "html",
   "emmet_ls",

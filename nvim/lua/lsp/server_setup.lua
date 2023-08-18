@@ -1,18 +1,18 @@
 local helpers = require("custom-helpers")
 local lspconfig = require("lspconfig")
-local servers = require("lsp.servers")
 local capabilities = require("lsp.capabilities")
 local on_attach = require("lsp.on_attach")
 
-for _, lsp in ipairs(servers.basic) do
-  if helpers.isModuleAvailable("stripe") and lsp == "tailwindcss" then
-    -- do nothing
-  else
-    lspconfig[lsp].setup({
-      on_attach = on_attach,
-      capabilities = capabilities,
-    })
-  end
+local basic_servers = require("lsp.servers").basic
+if helpers.isModuleAvailable("stripe") then
+  basic_servers = require("stripe").basicServers()
+end
+
+for _, lsp in ipairs(basic_servers) do
+  lspconfig[lsp].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+  })
 end
 
 -- Advanced server setup
