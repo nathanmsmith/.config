@@ -18,10 +18,10 @@ end
 -- Advanced server setup
 -- require("lsp.emmet")
 require("lsp.lua_server")
-require("lsp.null_ls")
 
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then
+  require("stripe").initNullLs()
   require("stripe").initServers()
 else
   require("lsp.sourcekit")

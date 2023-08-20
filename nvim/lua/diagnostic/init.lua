@@ -1,3 +1,5 @@
+local helpers = require("custom-helpers")
+
 -- Settings
 -- vim.diagnostic.config({
 --   virtual_text = true,
@@ -48,3 +50,18 @@ vim.keymap.set("n", "]w", function()
     float = true,
   })
 end)
+
+if helpers.isModuleAvailable("stripe") then
+  require("stripe").initLinters()
+else
+  require("diagnostic.linters")
+end
+
+local lint_group = vim.api.nvim_create_augroup("Lint", { clear = true })
+vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+  desc = "Rerun linters when buffer changes",
+  group = lint_group,
+  callback = function()
+    require("lint").try_lint()
+  end,
+})

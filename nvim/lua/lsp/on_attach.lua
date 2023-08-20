@@ -1,13 +1,13 @@
-local lsp_format = require("lsp-format")
-lsp_format.setup({
-  typescript = { exclude = { "tsserver" } },
-  typescriptreact = { exclude = { "tsserver" } },
-  ruby = { order = { "null-ls", "payserver_sorbet" }, sync = true },
-  lua = { exclued = "lua_ls" },
-})
+-- local lsp_format = require("lsp-format")
+-- lsp_format.setup({
+--   typescript = { exclude = { "tsserver" } },
+--   typescriptreact = { exclude = { "tsserver" } },
+--   ruby = { order = { "null-ls", "payserver_sorbet" }, sync = true },
+--   lua = { exclued = "lua_ls" },
+-- })
 
 local on_attach = function(client, bufnr)
-  lsp_format.on_attach(client)
+  -- lsp_format.on_attach(client)
   client.server_capabilities.semanticTokensProvider = nil
 
   local nmap = function(keys, func, desc)

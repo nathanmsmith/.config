@@ -16,7 +16,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
 require("lazy").setup("plugins", {
   performance = {
     rtp = {
@@ -42,9 +41,8 @@ require("fuzzy_find")
 require("lsp")
 require("completion")
 require("snippets")
-
+require("formatting")
 require("diagnostic")
-
 require("treesitter")
 require("git")
 require("testing")

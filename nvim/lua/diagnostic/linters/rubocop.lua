@@ -20,10 +20,7 @@ require("lint").linters.rubocop = {
   env = nil, -- custom environment table to use with the external process. Note that this replaces the *entire* environment, it is not additive.
   parser = function(output, bufnr)
     local ok, rubocop_output = pcall(vim.json.decode, output)
-    if not ok then
-      return {}
-    end
-    if vim.tbl_isempty(rubocop_output) then
+    if not ok or rubocop_output == nil or vim.tbl_isempty(rubocop_output) then
       return {}
     end
 
