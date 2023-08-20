@@ -8,5 +8,8 @@ if status --is-login; and status --is-interactive
         source ~/.config/fish/stripe-config.fish
     end
 
+    source (rbenv init -|psub)
+    source (nodenv init -|psub)
+
     test -e {$HOME}/.iterm2_shell_integration.fish; and source {$HOME}/.iterm2_shell_integration.fish
 end
