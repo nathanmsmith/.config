@@ -1,19 +1,17 @@
-local prettier = require("formatting.prettier")
-local stylua = require("formatting.stylua")
 local rubocop = require("formatting.rubocop")
 
 require("formatter").setup({
   filetype = {
-    typescript = { prettier },
-    javascript = { prettier },
-    typescriptreact = { prettier },
-    javascriptreact = { prettier },
-    html = { prettier },
-    css = { prettier },
-    json = { prettier },
-    yaml = { prettier },
-    markdown = { prettier },
-    lua = { stylua },
+    typescript = { require("formatter.filetypes.typescript").prettierd },
+    javascript = { require("formatter.filetypes.javascript").prettierd },
+    typescriptreact = { require("formatter.filetypes.typescriptreact").prettierd },
+    javascriptreact = { require("formatter.filetypes.javascriptreact").prettierd },
+    html = { require("formatter.filetypes.html").prettierd },
+    css = { require("formatter.filetypes.css").prettierd },
+    json = { require("formatter.filetypes.json").prettierd },
+    yaml = { require("formatter.filetypes.yaml").prettierd },
+    markdown = { require("formatter.filetypes.markdown").prettierd },
+    lua = { require("formatter.filetypes.lua").stylua },
     ruby = { rubocop },
     ["*"] = {
       require("formatter.filetypes.any").remove_trailing_whitespace,

@@ -1,8 +1,6 @@
 local helpers = require("custom-helpers")
 
-if helpers.isModuleAvailable("stripe") then
-  -- require("stripe").initFormatters()
-else
+if not helpers.isModuleAvailable("stripe") then
   require("formatting.setup")
 
   local format_group = vim.api.nvim_create_augroup("Format", { clear = true })
