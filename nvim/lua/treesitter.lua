@@ -10,6 +10,12 @@ require("nvim-treesitter.configs").setup({
   },
   context_commentstring = {
     enable = true,
+    commentary_integration = {
+      Commentary = "gc",
+      CommentaryLine = "gcc",
+      ChangeCommentary = "cgc",
+      CommentaryUndo = "gcu",
+    },
   },
   playground = {
     enable = true,
@@ -64,6 +70,8 @@ require("nvim-treesitter.configs").setup({
     -- },
   },
   auto_install = true,
+  sync_install = false,
+  ignore_install = {},
   ensure_installed = {
     "bash",
     "c",
