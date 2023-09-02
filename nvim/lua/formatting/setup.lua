@@ -1,6 +1,8 @@
 local rubocop = require("formatting.rubocop")
 
 require("formatter").setup({
+  logging = true,
+  log_level = vim.log.levels.DEBUG,
   filetype = {
     typescript = { require("formatter.filetypes.typescript").prettierd },
     javascript = { require("formatter.filetypes.javascript").prettierd },
