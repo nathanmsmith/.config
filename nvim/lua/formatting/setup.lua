@@ -15,8 +15,8 @@ require("formatter").setup({
     markdown = { require("formatter.filetypes.markdown").prettierd },
     lua = { require("formatter.filetypes.lua").stylua },
     ruby = { rubocop },
-    ["*"] = {
-      require("formatter.filetypes.any").remove_trailing_whitespace,
-    },
+    -- ["*"] = {
+    --   require("formatter.filetypes.any").remove_trailing_whitespace,
+    -- },
   },
 })
