@@ -2,7 +2,15 @@ local helpers = require("custom-helpers")
 
 return {
   -- Color theme
-  "nathanmsmith/night-owl.vim",
+  -- "nathanmsmith/night-owl.vim",
+  {
+    "oxfist/night-owl.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme("night-owl")
+    end,
+  },
 
   -- LSP Configuration & Plugins
   {
