@@ -1,4 +1,4 @@
 # Defined in - @ line 1
-function ls --wraps=exa --description 'alias ls exa'
-    exa $argv
+function ls --wraps=eza --description 'alias ls eza'
+    eza $argv
 end

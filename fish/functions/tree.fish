@@ -1,3 +1,3 @@
-function tree --wraps='exa --tree -I node_modules|__pycache__' --description 'tree, with some default folders to ignore'
-    command exa --tree -I "node_modules|__pycache__" $argv
+function tree --wraps='eza --tree -I node_modules|__pycache__' --description 'tree, with some default folders to ignore'
+    command eza --tree -I "node_modules|__pycache__" $argv
 end

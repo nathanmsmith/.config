@@ -5,7 +5,7 @@ abbr --add cfg config
 abbr --add o open
 abbr --add o. 'open .'
 
-# ls/exa
+# ls/eza
 abbr --add l ls
 abbr --add la 'ls -a'
 abbr --add ll 'ls -lh --header'
