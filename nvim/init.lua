@@ -1,3 +1,5 @@
+local helpers = require("custom-helpers")
+
 -- Remap space as leader key
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
@@ -31,6 +33,10 @@ require("lazy").setup("plugins", {
         "zipPlugin",
       },
     },
+  },
+  change_detection = {
+    enabled = not helpers.isModuleAvailable("stripe"),
+    notify = true,
   },
 })
 
