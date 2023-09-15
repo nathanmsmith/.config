@@ -1,7 +1,7 @@
 local helpers = require("custom-helpers")
 
 if helpers.isModuleAvailable("stripe") then
-  -- TODO: load stripe formatting config
+  require("stripe").initFormatters()
 else
   -- Common formatters
   local prettier = { { "prettierd", "prettier" } }

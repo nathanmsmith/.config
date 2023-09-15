@@ -21,7 +21,6 @@ require("lsp.lua_server")
 
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then
-  require("stripe").initNullLs()
   require("stripe").initServers()
 else
   require("lsp.sourcekit")
