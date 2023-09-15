@@ -1,33 +1,30 @@
 local helpers = require("custom-helpers")
 
-if not helpers.isModuleAvailable("stripe") then
-  require("formatting.setup")
-  local M = {
-    enabled = true,
-  }
+if helpers.isModuleAvailable("stripe") then
+  -- TODO: load stripe formatting config
+else
+  -- Common formatters
+  local prettier = { { "prettierd", "prettier" } }
 
-  local format_group = vim.api.nvim_create_augroup("Format", { clear = true })
-  vim.api.nvim_create_autocmd("BufWritePost", {
-    callback = function()
-      if M.enabled then
-        vim.api.nvim_command("FormatWrite")
-      end
-    end,
-    group = format_group,
-    pattern = "*",
+  require("conform").setup({
+    formatters_by_ft = {
+      lua = { "stylua" },
+      python = { "isort", "black" },
+      ruby = { "rubocop" },
+      javascript = prettier,
+      typescript = prettier,
+      javascriptreact = prettier,
+      typescriptreact = prettier,
+      html = prettier,
+      json = prettier,
+      jsonc = prettier,
+      graphql = prettier,
+      go = { "goimports", "gofmt" },
+    },
+    format_on_save = {
+      -- These options will be passed to conform.format()
+      timeout_ms = 500,
+      lsp_fallback = true,
+    },
   })
-
-  M.toggle = function()
-    M.enabled = not M.enabled
-  end
-  M.enable = function()
-    M.enabled = true
-  end
-  M.disable = function()
-    M.enabled = false
-  end
-
-  vim.api.nvim_create_user_command("FormatToggle", M.toggle, {})
-  vim.api.nvim_create_user_command("FormatDisable", M.disable, {})
-  vim.api.nvim_create_user_command("FormatEnable", M.enable, {})
 end

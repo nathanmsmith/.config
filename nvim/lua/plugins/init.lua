@@ -39,6 +39,15 @@ return {
     },
   },
 
+  -- Linting
+  { "mfussenegger/nvim-lint" },
+  -- Formatting
+  -- { "mhartington/formatter.nvim" },
+  {
+    "stevearc/conform.nvim",
+    opts = {},
+  },
+
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
