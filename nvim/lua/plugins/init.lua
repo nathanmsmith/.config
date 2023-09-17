@@ -102,6 +102,22 @@ return {
   "tpope/vim-projectionist",
 
   {
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      vim.keymap.set({ "n" }, "ma", require("harpoon.mark").add_file, { desc = "Add mark (Harpoon)" })
+      vim.keymap.set({ "n" }, "ml", require("harpoon.ui").toggle_quick_menu, { desc = "List marks (Harpoon)" })
+      for i = 1, 20 do
+        vim.keymap.set({ "n" }, "m" .. i, function()
+          require("harpoon.ui").nav_file(i)
+        end, { desc = "List marks (Harpoon)" })
+      end
+    end,
+  },
+
+  {
     "ckolkey/ts-node-action",
     dependencies = { "nvim-treesitter" },
     config = function()
@@ -184,7 +200,7 @@ return {
   "romainl/vim-cool",
 
   -- Show Marks
-  "kshenoy/vim-signature",
+  -- "kshenoy/vim-signature",
 
   -- Text object modifications and extensions
   {
