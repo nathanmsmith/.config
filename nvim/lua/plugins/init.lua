@@ -269,6 +269,7 @@ return {
       vim.g.go_gopls_enabled = false
     end,
   },
+  "bazelbuild/vim-ft-bzl",
 
   "dstein64/vim-startuptime",
 }
