@@ -1,11 +1,11 @@
-return {
-  "tpope/vim-rails",
-  "tpope/vim-rake",
-  "tpope/vim-bundler",
+local helpers = require("custom-helpers")
 
-  -- Linting
-  { "mfussenegger/nvim-lint" },
-
-  -- Formatting
-  { "mhartington/formatter.nvim" },
-}
+if helpers.isModuleAvailable("stripe") then
+  return {}
+else
+  return {
+    "tpope/vim-rails",
+    "tpope/vim-rake",
+    "tpope/vim-bundler",
+  }
+end
