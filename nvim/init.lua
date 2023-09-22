@@ -42,7 +42,9 @@ require("lazy").setup("plugins", {
 
 require("vanilla")
 require("statusline")
-require("projectionist")
+if not helpers.isModuleAvailable("stripe") then
+  require("projectionist")
+end
 require("fuzzy_find")
 require("lsp")
 require("completion")
