@@ -7,6 +7,7 @@ else
   local prettier = { { "prettierd", "prettier" } }
 
   require("conform").setup({
+    log_level = vim.log.levels.INFO,
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
