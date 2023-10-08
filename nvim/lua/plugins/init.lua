@@ -108,7 +108,7 @@ return {
     },
     config = function()
       vim.keymap.set({ "n" }, "ma", require("harpoon.mark").add_file, { desc = "Add mark (Harpoon)" })
-      vim.keymap.set({ "n" }, "ml", require("harpoon.ui").toggle_quick_menu, { desc = "List marks (Harpoon)" })
+      vim.keymap.set({ "n" }, "ml", require("telescope").extensions.harpoon.marks, { desc = "List marks (Harpoon)" })
       for i = 1, 20 do
         vim.keymap.set({ "n" }, "m" .. i, function()
           require("harpoon.ui").nav_file(i)
@@ -173,6 +173,7 @@ return {
   -- File navigation
   {
     "stevearc/oil.nvim",
+    commit = "956d7fc89b0bd1f9ea6515ca10c1e2a293e4d8fd",
     config = function()
       require("oil").setup({
         keymaps = {
