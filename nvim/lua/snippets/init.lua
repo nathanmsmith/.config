@@ -44,30 +44,30 @@ local function expandSkeletonSnippet(language, skeleton)
   vim.api.nvim_command("normal! " .. esc .. "gg")
 end
 
-local function insertSkeleton()
-  local filename = vim.fn.expand("%")
+-- local function insertSkeleton()
+--   local filename = vim.fn.expand("%")
 
-  -- " Abort on non-empty buffer or extant file
-  if not (vim.fn.line("$") == 1 and vim.fn.getline("$") == "") or vim.fn.filereadable(filename) == 1 then
-    return
-  end
+--   -- " Abort on non-empty buffer or extant file
+--   if not (vim.fn.line("$") == 1 and vim.fn.getline("$") == "") or vim.fn.filereadable(filename) == 1 then
+--     return
+--   end
 
-  if vim.fn.empty("b:projectionist") == 0 then
-    local results = vim.fn["projectionist#query"]("skeleton")
-    for _, tuple in ipairs(results) do -- Table iteration.
-      local skeleton = tuple[2]
-      expandSkeletonSnippet(vim.bo.filetype, skeleton)
-      break
-    end
-  end
-end
+--   if vim.fn.empty("b:projectionist") == 0 then
+--     local results = vim.fn["projectionist#query"]("skeleton")
+--     for _, tuple in ipairs(results) do -- Table iteration.
+--       local skeleton = tuple[2]
+--       expandSkeletonSnippet(vim.bo.filetype, skeleton)
+--       break
+--     end
+--   end
+-- end
 
-local group = vim.api.nvim_create_augroup("Skeletons", { clear = true })
-vim.api.nvim_create_autocmd("User ProjectionistActivate", {
-  callback = insertSkeleton,
-  group = group,
-  pattern = "*",
-})
+-- local group = vim.api.nvim_create_augroup("Skeletons", { clear = true })
+-- vim.api.nvim_create_autocmd("User ProjectionistActivate", {
+--   callback = insertSkeleton,
+--   group = group,
+--   pattern = "*",
+-- })
 
 -- https://github.com/L3MON4D3/LuaSnip/issues/258
 vim.api.nvim_create_autocmd("InsertLeave", {
