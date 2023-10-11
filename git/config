@@ -19,7 +19,7 @@
 [credential]
 	helper = osxkeychain
 [commit]
-	gpgsign = true
+	; gpgsign = true
 	verbose = 2
 [user]
 	name = Nathan Smith
