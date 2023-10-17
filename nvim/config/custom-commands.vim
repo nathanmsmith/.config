@@ -33,5 +33,5 @@ if !exists('*SaveAndExec')
   endfunction
 end
 " Execute this file
-nnoremap <leader>x :call SaveAndExec()<CR>
+" nnoremap <leader>x :call SaveAndExec()<CR>
 call SourceIfExists('~/.config/nvim/config/stripe.vim')
