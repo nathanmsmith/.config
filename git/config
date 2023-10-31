@@ -34,10 +34,6 @@
 	rebase = true
 [fetch]
 	prune = true
-[merge "ours"]
-	# Dummy merge strategy,
-	# see https://git-scm.com/book/en/v2/Customizing-Git-Git-Attributes#_merge_strategies
-	driver = true
 [difftool]
 	prompt = false
 [merge]
