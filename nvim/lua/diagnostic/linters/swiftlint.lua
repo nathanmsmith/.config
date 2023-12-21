@@ -31,6 +31,7 @@ require("lint").linters.swiftlint = {
         col = 0,
         message = offense.reason,
         severity = swiftlint_severities[offense.severity],
+        code = offense.rule_id,
         source = "swiftlint",
       })
     end

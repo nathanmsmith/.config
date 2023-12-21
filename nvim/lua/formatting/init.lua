@@ -21,6 +21,7 @@ else
       jsonc = prettier,
       graphql = prettier,
       go = { "goimports", "gofmt" },
+      swift = { "swiftformat" },
     },
     format_on_save = {
       -- These options will be passed to conform.format()
