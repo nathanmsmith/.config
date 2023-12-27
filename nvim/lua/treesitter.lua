@@ -1,3 +1,12 @@
+require("ts_context_commentstring").setup({
+  commentary_integration = {
+    Commentary = "gc",
+    CommentaryLine = "gcc",
+    ChangeCommentary = "cgc",
+    CommentaryUndo = "gcu",
+  },
+})
+
 require("nvim-treesitter.configs").setup({
   highlight = { enable = true },
   indent = { enable = true },
@@ -7,15 +16,6 @@ require("nvim-treesitter.configs").setup({
   matchup = {
     enable = true,
     disable_virtual_text = true,
-  },
-  context_commentstring = {
-    enable = true,
-    commentary_integration = {
-      Commentary = "gc",
-      CommentaryLine = "gcc",
-      ChangeCommentary = "cgc",
-      CommentaryUndo = "gcu",
-    },
   },
   playground = {
     enable = true,
@@ -86,6 +86,7 @@ require("nvim-treesitter.configs").setup({
     "python",
     "query",
     "regex",
+    "swift",
     "tsx",
     "typescript",
     "vim",

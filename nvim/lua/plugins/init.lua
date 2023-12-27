@@ -107,12 +107,15 @@ return {
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      vim.keymap.set({ "n" }, "ma", require("harpoon.mark").add_file, { desc = "Add mark (Harpoon)" })
+      vim.keymap.set({ "n" }, "ma", function()
+        require("harpoon.mark").add_file()
+        print("Mark added")
+      end, { desc = "Add mark (Harpoon)" })
       vim.keymap.set({ "n" }, "ml", require("telescope").extensions.harpoon.marks, { desc = "List marks (Harpoon)" })
-      for i = 1, 20 do
+      for i = 1, 9 do
         vim.keymap.set({ "n" }, "m" .. i, function()
           require("harpoon.ui").nav_file(i)
-        end, { desc = "List marks (Harpoon)" })
+        end, { desc = "Navigate to mark " .. i })
       end
     end,
   },
