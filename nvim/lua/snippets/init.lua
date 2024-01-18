@@ -31,18 +31,18 @@ vim.api.nvim_create_user_command("SnipEdit", function(opts)
 end, { nargs = 0 })
 
 -- Skeletons
-local function expandSkeletonSnippet(language, skeleton)
-  local snippet = skeletons[language][skeleton]
-  if snippet == nil then
-    return
-  end
+-- local function expandSkeletonSnippet(language, skeleton)
+--   local snippet = skeletons[language][skeleton]
+--   if snippet == nil then
+--     return
+--   end
 
-  vim.o.eventignore = "all"
-  require("luasnip").snip_expand(snippet)
-  vim.o.eventignore = ""
-  local esc = vim.api.nvim_replace_termcodes("<ESC>", true, true, true)
-  vim.api.nvim_command("normal! " .. esc .. "gg")
-end
+--   vim.o.eventignore = "all"
+--   require("luasnip").snip_expand(snippet)
+--   vim.o.eventignore = ""
+--   local esc = vim.api.nvim_replace_termcodes("<ESC>", true, true, true)
+--   vim.api.nvim_command("normal! " .. esc .. "gg")
+-- end
 
 -- local function insertSkeleton()
 --   local filename = vim.fn.expand("%")
@@ -70,10 +70,12 @@ end
 -- })
 
 -- https://github.com/L3MON4D3/LuaSnip/issues/258
-vim.api.nvim_create_autocmd("InsertLeave", {
+vim.api.nvim_create_autocmd("ModeChanged", {
+  pattern = "*",
   callback = function()
     if
-      require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+      ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
+      and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
       and not require("luasnip").session.jump_active
     then
       require("luasnip").unlink_current()
