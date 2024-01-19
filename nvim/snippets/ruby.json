@@ -1,153 +1,264 @@
 {
-    "Exception block": {
-        "prefix": "begin",
-        "body": ["begin", "\t$1", "rescue ${2:StandardError} => ${3:exception}", "\t$0", "end"]
-    },
-    "Class definition": {
-        "prefix": "class",
-        "body": ["class ${1:ClassName}", "\t$0", "end"]
-    },
-    "if": {
-        "prefix": "if",
-        "body": ["if ${1:test}", "\t$0", "end"]
-    },
-    "if else": {
-        "prefix": "ife",
-        "body": ["if ${1:test}", "\t$2", "else", "\t$0", "end"]
-    },
-    "if elsif": {
-        "prefix": "ifei",
-        "body": ["if ${1:test}", "\t$2", "elsif ${3:test}", "\t$0", "end"]
-    },
-    "if elsif else": {
-        "prefix": "ifee",
-        "body": ["if ${1:test}", "\t$2", "elsif ${3:test}", "\t$4", "else", "\t$0", "end"]
-    },
-    "case": {
-        "prefix": "case",
-        "body": [
-            "case ${1:test}",
-            "when $2",
-            "\t$3",
-            "when $4",
-            "\t$5",
-            "else",
-            "\t$6",
-            "end"
-        ]
-    },
-    "Module definition": {
-        "prefix": "module",
-        "body": ["module ${1:ModuleName}", "\t$0", "end"]
-    },
-    "unless": {
-        "prefix": "unless",
-        "body": ["unless ${1:test}", "\t$0", "end"]
-    },
-    "method definition": {
-        "prefix": "def",
-        "body": ["def ${1:method_name}", "\t$0", "end"]
-    },
-    "class method definition": {
-        "prefix": "defs",
-        "body": ["def self.${1:method_name}", "\t$0", "end"]
-    },
-    "initialize method definition": {
-        "prefix": "definit",
-        "body": ["def initialize(${1:args})", "\t$0", "end"]
-    },
-    "Insert do … end block": {
-        "prefix": "do",
-        "body": ["do", "\t$0", "end"]
-    },
-    "Insert do |variable| … end block": {
-        "prefix": "dop",
-        "body": ["do |${1:variable}|", "\t$0", "end"]
-    },
-    "Insert inline block with variable": {
-        "prefix": "b",
-        "body": "{ |${1:variable}| $2 }"
-    },
-    "Insert frozen literal string": {
-        "prefix": "frozen",
-        "body": ["# frozen_string_literal: true", "", "", ""]
-    },
-    "Insert require": {
-        "prefix": "req",
-        "body": "require '${1}'$0"
-    },
-    "Insert attr_reader": {
-        "prefix": "r",
-        "body": "attr_reader :${0:attr_names}"
-    },
-    "Insert attr_writer": {
-        "prefix": "w",
-        "body": "attr_writer :${0:attr_names}"
-    },
-    "Insert attr_accessor": {
-        "prefix": "rw",
-        "body": "attr_accessor :${0:attr_names}"
-    },
-    "Insert inctance variable cache": {
-        "prefix": "ivc",
-        "body": "@${1:variable_name} ||= ${0:cached_value}"
-    },
-    "Insert each with inline block": {
-        "prefix": "ea",
-        "body": "each { |${1:e}| $0 }"
-    },
-    "Insert each with multiline block": {
-        "prefix": "ead",
-        "body": ["each do |${1:e}|", "\t$0", "end"]
-    },
-    "Insert each with index inline block": {
-        "prefix": "eawi",
-        "body": "each_with_index { |${1:e}, ${2:i}| $0 }"
-    },
-    "Insert each with index multiline block": {
-        "prefix": "eawid",
-        "body": ["each_with_index do |${1:e}, ${2:i}|", "\t$0", "end"]
-    },
-    "Insert reduce inline block": {
-        "prefix": "red",
-        "body": "reduce(${1:init}) { |${2:memo}, ${3:obj}| $0 }"
-    },
-    "Insert reduce multiline block": {
-        "prefix": "redd",
-        "body": ["reduce(${1:init}) do |${2:memo}, ${3:obj}|", "\t$0", "end"]
-    },
-    "Insert map inline block": {
-        "prefix": "map",
-        "body": "map { |${1:e}| $0 }"
-    },
-    "Insert map multiline block": {
-        "prefix": "mapd",
-        "body": ["map do |${1:e}|", "\t$0", "end"]
-    },
-    "Insert key: value": {
-        "prefix": ":",
-        "body": "${1:key}: ${2:value}"
-    },
-    "Insert debug call": {
-        "prefix": "debug",
-        "body": "debugger"
-    },
-
-    // Testing
-    "Describe block": {
-        "prefix": "descm",
-        "body": [
-            "describe '${1:#method}' do",
-            "\t${0:pending 'Not implemented'}",
-            "end"
-        ]
-    },
-    "Before block": {
-        "prefix": "bef",
-        "body": ["before do", "\t$0", "end"]
-    },
-    "It block": {
-        "prefix": "it",
-        "body": ["it '${1:spec_name}' do", "\t$0", "end"]
-    }
+  "Class definition": {
+    "body": [
+      "class ${1:ClassName}",
+      "\t$0",
+      "end"
+    ],
+    "description": "Define a class",
+    "prefix": "class"
+  },
+  "Exception block": {
+    "body": [
+      "begin",
+      "\t$1",
+      "rescue ${2:StandardError} => ${3:exception}",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "begin"
+  },
+  "Insert attr_accessor": {
+    "body": "attr_accessor :${0:attr_names}",
+    "prefix": "rw"
+  },
+  "Insert attr_reader": {
+    "body": "attr_reader :${0:attr_names}",
+    "prefix": "r"
+  },
+  "Insert attr_writer": {
+    "body": "attr_writer :${0:attr_names}",
+    "prefix": "w"
+  },
+  "Insert debug call": {
+    "body": "require 'debug'; debugger",
+    "prefix": "debug"
+  },
+  "Insert do |variable| … end block": {
+    "body": [
+      "do |${1:variable}|",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "dop"
+  },
+  "Insert do … end block": {
+    "body": [
+      "do",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "do"
+  },
+  "Insert each with index inline block": {
+    "body": "each_with_index { |${1:e}, ${2:i}| $0 }",
+    "prefix": "eawi"
+  },
+  "Insert each with index multiline block": {
+    "body": [
+      "each_with_index do |${1:e}, ${2:i}|",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "eawid"
+  },
+  "Insert each with inline block": {
+    "body": "each { |${1:e}| $0 }",
+    "prefix": "ea"
+  },
+  "Insert each with multiline block": {
+    "body": [
+      "each do |${1:e}|",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "ead"
+  },
+  "Insert frozen literal string": {
+    "body": [
+      "# frozen_string_literal: true",
+      "",
+      "",
+      ""
+    ],
+    "prefix": "frozen"
+  },
+  "Insert inctance variable cache": {
+    "body": "@${1:variable_name} ||= ${0:cached_value}",
+    "prefix": "ivc"
+  },
+  "Insert inline block with variable": {
+    "body": "{ |${1:variable}| $2 }",
+    "prefix": "b"
+  },
+  "Insert key: value": {
+    "body": "${1:key}: ${2:value}",
+    "prefix": ":"
+  },
+  "Insert map inline block": {
+    "body": "map { |${1:e}| $0 }",
+    "prefix": "map"
+  },
+  "Insert map multiline block": {
+    "body": [
+      "map do |${1:e}|",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "mapd"
+  },
+  "Insert reduce inline block": {
+    "body": "reduce(${1:init}) { |${2:mem}, ${3:var}| $0 }",
+    "prefix": "red"
+  },
+  "Insert reduce multiline block": {
+    "body": [
+      "reduce(${1:init}) do |${2:mem}, ${3:var}|",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "redd"
+  },
+  "Insert require": {
+    "body": "require '${1}'$0",
+    "prefix": "req"
+  },
+  "Module definition": {
+    "body": [
+      "module ${1:ModuleName}",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "module"
+  },
+  "case": {
+    "body": [
+      "case ${1:test}",
+      "when $2",
+      "\t$3",
+      "when $4",
+      "\t$5",
+      "else",
+      "\t$6",
+      "end"
+    ],
+    "prefix": "case"
+  },
+  "class method definition": {
+    "body": [
+      "def self.${1:method_name}",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "defs"
+  },
+  "for loop": {
+    "body": [
+      "for ${1:value} in ${2:enumerable} do",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "for"
+  },
+  "if": {
+    "body": [
+      "if ${1:test}",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "if"
+  },
+  "if else": {
+    "body": [
+      "if ${1:test}",
+      "\t$2",
+      "else",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "ife"
+  },
+  "if elsif": {
+    "body": [
+      "if ${1:test}",
+      "\t$2",
+      "elsif ${3:test}",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "ifei"
+  },
+  "if elsif else": {
+    "body": [
+      "if ${1:test}",
+      "\t$2",
+      "elsif ${3:test}",
+      "\t$4",
+      "else",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "ifee"
+  },
+  "initialize method definition": {
+    "body": [
+      "def initialize(${1:args})",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "definit"
+  },
+  "method definition": {
+    "body": [
+      "def ${1:method_name}",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "def"
+  },
+  "testing: assert_equal": {
+    "body": "assert_equal(${1:expected}, ${0:actual})",
+    "description": "testing: assert_equal",
+    "prefix": "ae"
+  },
+  "testing: assert_nil": {
+    "body": "assert_nil(${0:nil value})",
+    "description": "testing: assert_nil",
+    "prefix": "an"
+  },
+  "testing: before": {
+    "body": [
+      "before do",
+      "\t$0",
+      "end"
+    ],
+    "description": "testing: before block",
+    "prefix": "bef"
+  },
+  "testing: describe": {
+    "body": [
+      "describe '${1:my thing}' do",
+      "\t${0:pending 'Not implemented'}",
+      "end"
+    ],
+    "description": "testing: describe block",
+    "prefix": "desc"
+  },
+  "testing: it": {
+    "body": [
+      "it '${1:does something}' do",
+      "\t$0",
+      "end"
+    ],
+    "desc": "Testing: It statement",
+    "prefix": "it"
+  },
+  "unless": {
+    "body": [
+      "unless ${1:test}",
+      "\t$0",
+      "end"
+    ],
+    "prefix": "unless"
+  }
 }
