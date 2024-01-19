@@ -1,0 +1,14 @@
+{
+  "contributes": {
+    "snippets": [
+      {
+        "language": [
+          "lua"
+        ],
+        "path": "./lua.json"
+      }
+    ]
+  },
+  "description": "A package.json for VSCode style snippets",
+  "name": "nathan's snippets"
+}

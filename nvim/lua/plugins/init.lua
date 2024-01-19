@@ -155,11 +155,13 @@ return {
   -- Snippets
   {
     "L3MON4D3/LuaSnip",
-    config = function()
-      vim.api.nvim_create_user_command("SnippetsEdit", function()
-        require("luasnip.loaders").edit_snippet_files()
-      end, { desc = "Edit Snippet files" })
-    end,
+    version = "v2.*",
+    build = "make install_jsregexp",
+    -- config = function()
+    --   vim.api.nvim_create_user_command("SnippetsEdit", function()
+    --     require("luasnip.loaders").edit_snippet_files()
+    --   end, { desc = "Edit Snippet files" })
+    -- end,
   },
   {
     "chrisgrieser/nvim-scissors",

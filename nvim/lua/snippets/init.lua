@@ -22,13 +22,12 @@ vim.keymap.set(
   { silent = true, expr = true }
 )
 
-vim.api.nvim_create_user_command("SnipEdit", function(opts)
-  require("luasnip.loaders").edit_snippet_files({
-    edit = function(file)
-      vim.cmd("vsplit " .. file)
-    end,
-  })
-end, { nargs = 0 })
+vim.keymap.set("n", "<leader>se", function()
+  require("scissors").editSnippet()
+end)
+vim.keymap.set({ "n", "x" }, "<leader>sa", function()
+  require("scissors").addNewSnippet()
+end)
 
 -- Skeletons
 -- local function expandSkeletonSnippet(language, skeleton)
