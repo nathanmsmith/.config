@@ -12,6 +12,14 @@
           "ruby"
         ],
         "path": "./ruby.json"
+      },
+      {
+        "language": ["typescript", "typescriptreact"],
+        "path": "./javascript/typescript.json"
+      },
+      {
+        "language": ["typescriptreact"],
+        "path": "./javascript/react-typescript.json"
       }
     ]
   },
