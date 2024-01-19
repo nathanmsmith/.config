@@ -1,5 +1,5 @@
 {
-  "req": {
+  "require": {
     "body": "require(\"${1:module}\")",
     "description": "Require module",
     "prefix": "req"
