@@ -12,6 +12,9 @@ end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "d", function()
   hs.application.launchOrFocus("Dash")
 end)
+hs.hotkey.bind({ "ctrl", "cmd" }, "p", function()
+  hs.application.launchOrFocus("Preview")
+end)
 -- Browser:
 -- Focus Chrome if running
 -- else, focus Firefox
