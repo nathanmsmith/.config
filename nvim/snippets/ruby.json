@@ -152,6 +152,15 @@
     ],
     "prefix": "defs"
   },
+  "desc": {
+    "body": [
+      "describe \"${1:my thing}\" do",
+      "\t${0:pending \"Not implemented\"}",
+      "end"
+    ],
+    "description": "testing: describe block",
+    "prefix": "desc"
+  },
   "for loop": {
     "body": [
       "for ${1:value} in ${2:enumerable} do",
@@ -208,6 +217,15 @@
     ],
     "prefix": "definit"
   },
+  "it": {
+    "body": [
+      "it \"${1:does something}\" do",
+      "\t$0",
+      "end"
+    ],
+    "desc": "Testing: It statement",
+    "prefix": "it"
+  },
   "method definition": {
     "body": [
       "def ${1:method_name}",
@@ -234,24 +252,6 @@
     ],
     "description": "testing: before block",
     "prefix": "bef"
-  },
-  "testing: describe": {
-    "body": [
-      "describe '${1:my thing}' do",
-      "\t${0:pending 'Not implemented'}",
-      "end"
-    ],
-    "description": "testing: describe block",
-    "prefix": "desc"
-  },
-  "testing: it": {
-    "body": [
-      "it '${1:does something}' do",
-      "\t$0",
-      "end"
-    ],
-    "desc": "Testing: It statement",
-    "prefix": "it"
   },
   "unless": {
     "body": [

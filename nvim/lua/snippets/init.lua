@@ -24,10 +24,10 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<leader>se", function()
   require("scissors").editSnippet()
-end)
+end, { desc = "Edit snippets" })
 vim.keymap.set({ "n", "x" }, "<leader>sa", function()
   require("scissors").addNewSnippet()
-end)
+end, { desc = "Add a snippet" })
 
 -- Skeletons
 -- local function expandSkeletonSnippet(language, skeleton)
