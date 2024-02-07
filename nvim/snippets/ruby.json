@@ -222,6 +222,18 @@
     "desc": "Testing: It statement",
     "prefix": "it"
   },
+  "const": {
+    "body": "const :${1:property}, ${2:Type}",
+    "prefix": "const"
+  },
+   "struct": {
+    "body": [
+      "class ${1:MyStruct} < T::Struct",
+      "  $0",
+      "end"
+    ],
+    "prefix": "struct"
+  },
   "method definition": {
     "body": [
       "def ${1:method_name}",
