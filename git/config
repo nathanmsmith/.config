@@ -73,9 +73,9 @@
 [init]
 	defaultBranch = main
 [git-town]
-	ship-delete-remote-branch = false
 	sync-perennial-strategy = rebase
 	sync-feature-strategy = rebase
+	ship-delete-tracking-branch = false
 [format]
 	pretty = format:%C(auto)%h %d%Creset %s%n%Cgreen%ad%Creset %aN <%aE>%n
 [log]
