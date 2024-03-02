@@ -3,41 +3,6 @@ local helpers = require("custom-helpers")
 return {
   -- Color theme
   "nathanmsmith/night-owl.vim",
-  -- {
-  --   "oxfist/night-owl.nvim",
-  --   lazy = false,
-  --   priority = 1000,
-  --   config = function()
-  --     vim.cmd.colorscheme("night-owl")
-  --   end,
-  -- },
-
-  -- LSP Configuration & Plugins
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      {
-        "williamboman/mason.nvim",
-        opts = {
-          ui = {
-            icons = {
-              server_installed = "✓",
-              server_pending = "➜",
-              server_uninstalled = "✗",
-            },
-          },
-        },
-        config = true,
-      },
-      "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
-      -- Useful status updates for LSP
-      { "j-hui/fidget.nvim", tag = "legacy" },
-      -- Nice LSP settings for Neovim
-      "folke/neodev.nvim",
-    },
-  },
 
   -- Linting
   { "mfussenegger/nvim-lint" },
@@ -60,26 +25,6 @@ return {
   "windwp/nvim-ts-autotag",
   "RRethy/nvim-treesitter-endwise",
   "nvim-treesitter/playground",
-
-  -- Git
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
-  {
-    "rhysd/conflict-marker.vim",
-    config = function()
-      -- Unimpaired does this [n and ]n (and d[n, d]n)
-      vim.g.conflict_marker_enable_mappings = false
-      -- disable the default highlight group
-      vim.g.conflict_marker_highlight_group = ""
-      -- Include text after begin and end markers
-      vim.g.conflict_marker_begin = "^<<<<<<< .*$"
-      vim.g.conflict_marker_end = "^>>>>>>> .*$"
-    end,
-  },
-  {
-    "lewis6991/gitsigns.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
 
   -- Editing nicities
   "tpope/vim-commentary",
@@ -132,14 +77,11 @@ return {
   -- Suggestions
   {
     "folke/which-key.nvim",
+    event = "VeryLazy",
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 200
-      require("which-key").setup({
-        -- your configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
-      })
+      require("which-key").setup({})
     end,
   },
 
