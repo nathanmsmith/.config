@@ -1,9 +1,4 @@
-local capabilities = require("lsp.capabilities")
-local on_attach = require("lsp.on_attach")
-
 require("lspconfig").sourcekit.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
   cmd = {
     "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp",
   },

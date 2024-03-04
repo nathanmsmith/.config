@@ -57,7 +57,7 @@ if not helpers.isModuleAvailable("stripe") then
   require("projectionist")
 end
 require("fuzzy_find")
-require("lsp")
+-- require("lsp")
 require("completion")
 require("snippets")
 require("formatting")
