@@ -35,8 +35,40 @@ return {
   "tpope/vim-speeddating",
   "tpope/vim-rsi",
   "tpope/vim-abolish",
-  "tpope/vim-projectionist",
   "tpope/vim-eunuch",
+
+  -- "tpope/vim-projectionist",
+  {
+    "rgroli/other.nvim",
+    config = function()
+      require("other-nvim").setup({
+        mappings = {
+          "rails",
+          "golang",
+          {
+            {
+              pattern = "(.*).rb$",
+              context = "test",
+              target = "%1_test.go",
+            },
+            {
+              pattern = "(.*)_test.go$",
+              context = "implementation",
+              target = "%1.go",
+            },
+          },
+        },
+      })
+
+      vim.cmd([[
+        command! -nargs=* A lua require('other-nvim').open(<f-args>)
+        command! -nargs=* AT lua require('other-nvim').openTabNew(<f-args>)
+        command! -nargs=* AS lua require('other-nvim').openSplit(<f-args>)
+        command! -nargs=* AV lua require('other-nvim').openVSplit(<f-args>)
+        command! -nargs=* AC lua require('other-nvim').clear(<f-args>)
+      ]])
+    end,
+  },
 
   {
     "ThePrimeagen/harpoon",
