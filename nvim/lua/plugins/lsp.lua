@@ -20,7 +20,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       -- Useful status updates for LSP
-      { "j-hui/fidget.nvim", tag = "legacy" },
+      { "j-hui/fidget.nvim", opts = {} },
       -- Nice LSP settings for Neovim
       "folke/neodev.nvim",
     },
