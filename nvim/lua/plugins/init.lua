@@ -35,7 +35,6 @@ return {
   "tpope/vim-speeddating",
   "tpope/vim-rsi",
   "tpope/vim-abolish",
-  "tpope/vim-sleuth",
   "tpope/vim-projectionist",
   "tpope/vim-eunuch",
 
