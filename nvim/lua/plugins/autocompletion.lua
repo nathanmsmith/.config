@@ -29,4 +29,15 @@ return {
       require("snippets")
     end,
   },
+  {
+    "chrisgrieser/nvim-scissors",
+    dependencies = "nvim-telescope/telescope.nvim",
+    opts = {
+      snippetDir = vim.fn.stdpath("config") .. "/snippets",
+      telescope = {
+        alsoSearchSnippetBody = true,
+      },
+      jsonFormatter = "jq",
+    },
+  },
 }

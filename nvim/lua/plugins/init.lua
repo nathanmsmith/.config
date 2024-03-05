@@ -85,53 +85,6 @@ return {
     end,
   },
 
-  -- Completion
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
-  "hrsh7th/nvim-cmp",
-  "onsails/lspkind-nvim",
-  "saadparwaiz1/cmp_luasnip",
-
-  -- Snippets
-  {
-    "L3MON4D3/LuaSnip",
-    version = "v2.*",
-    build = "make install_jsregexp",
-    -- config = function()
-    --   vim.api.nvim_create_user_command("SnippetsEdit", function()
-    --     require("luasnip.loaders").edit_snippet_files()
-    --   end, { desc = "Edit Snippet files" })
-    -- end,
-  },
-  {
-    "chrisgrieser/nvim-scissors",
-    dependencies = "nvim-telescope/telescope.nvim",
-    opts = {
-      snippetDir = vim.fn.stdpath("config") .. "/snippets",
-      -- editSnippetPopup = {
-      --   height = 0.4, -- relative to the window, number between 0 and 1
-      --   width = 0.6,
-      --   border = "rounded",
-      --   keymaps = {
-      --     cancel = "q",
-      --     saveChanges = "<CR>", -- alternatively, can also use `:w`
-      --     goBackToSearch = "<BS>",
-      --     deleteSnippet = "<C-BS>",
-      --     duplicateSnippet = "<C-d>",
-      --     openInFile = "<C-o>",
-      --     insertNextToken = "<C-t>", -- insert & normal mode
-      --     jumpBetweenBodyAndPrefix = "<C-Tab>", -- insert & normal mode
-      --   },
-      -- },
-      telescope = {
-        alsoSearchSnippetBody = true,
-      },
-      jsonFormatter = "jq",
-    },
-  },
-
   -- Autopair
   {
     "windwp/nvim-autopairs",
