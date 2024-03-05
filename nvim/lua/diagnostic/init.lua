@@ -1,12 +1,12 @@
 local helpers = require("custom-helpers")
 
 -- Settings
--- vim.diagnostic.config({
---   virtual_text = true,
---   signs = true,
---   underline = true,
---   update_in_insert = false,
--- })
+vim.diagnostic.config({
+  float = {
+    -- Always show the source of a diagnostic message in the floating window
+    source = true,
+  },
+})
 
 -- Define signs
 local signs = {

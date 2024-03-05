@@ -1,6 +1,3 @@
-local capabilities = require("lsp.capabilities")
-local on_attach = require("lsp.on_attach")
-
 require("neodev").setup({})
 
 local function create_hs_config()
@@ -31,9 +28,7 @@ end
 
 -- Source: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
 require("lspconfig").lua_ls.setup({
-  capabilities = capabilities,
   on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
     local path = client.workspace_folders[1].name
 
     if string.match(path, ".config/hammerspoon") then

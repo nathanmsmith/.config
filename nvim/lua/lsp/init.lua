@@ -1,8 +1,6 @@
 local helpers = require("custom-helpers")
 local servers = require("lsp.servers")
 
-require("fidget").setup()
-
 local installable_servers = servers.installable
 local installable_tools = servers.tools
 if helpers.isModuleAvailable("stripe") then

@@ -1,7 +1,5 @@
 local helpers = require("custom-helpers")
 local lspconfig = require("lspconfig")
-local capabilities = require("lsp.capabilities")
-local on_attach = require("lsp.on_attach")
 
 local basic_servers = require("lsp.servers").basic
 if helpers.isModuleAvailable("stripe") then
@@ -9,10 +7,7 @@ if helpers.isModuleAvailable("stripe") then
 end
 
 for _, lsp in ipairs(basic_servers) do
-  lspconfig[lsp].setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-  })
+  lspconfig[lsp].setup({})
 end
 
 -- Advanced server setup
