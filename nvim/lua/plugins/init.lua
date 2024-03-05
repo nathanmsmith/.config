@@ -14,17 +14,6 @@ return {
   },
 
   -- Treesitter
-  {
-    "nvim-treesitter/nvim-treesitter",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-    },
-    build = ":TSUpdate",
-  },
-  "JoosepAlviste/nvim-ts-context-commentstring",
-  "windwp/nvim-ts-autotag",
-  "RRethy/nvim-treesitter-endwise",
-  "nvim-treesitter/playground",
 
   -- Editing nicities
   "tpope/vim-commentary",
@@ -232,28 +221,6 @@ return {
   -- Maximize current split
   "szw/vim-maximizer",
 
-  -- Better use of %
-  {
-    "andymass/vim-matchup",
-    config = function()
-      vim.g.matchup_surround_enabled = true
-      vim.g.matchup_matchparen_offscreen = {}
-    end,
-  },
-
-  -- Languages
-  "vim-ruby/vim-ruby",
-  "hashivim/vim-terraform",
-  "blankname/vim-fish",
-  "mustache/vim-mustache-handlebars",
-  "cespare/vim-toml",
-  {
-    "fatih/vim-go",
-    config = function()
-      vim.g.go_gopls_enabled = false
-    end,
-  },
-  "bazelbuild/vim-ft-bzl",
-
+  -- Profiling
   "dstein64/vim-startuptime",
 }

@@ -58,7 +58,6 @@ if not helpers.isModuleAvailable("stripe") then
 end
 require("formatting")
 require("diagnostic")
-require("treesitter")
 require("testing")
 
 vim.cmd([[

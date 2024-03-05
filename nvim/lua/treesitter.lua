@@ -16,6 +16,7 @@ require("nvim-treesitter.configs").setup({
   matchup = {
     enable = true,
     disable_virtual_text = true,
+    include_match_words = false,
   },
   playground = {
     enable = true,
@@ -81,8 +82,6 @@ require("nvim-treesitter.configs").setup({
     "lua",
     "luadoc",
     "luap",
-    -- "markdown",
-    -- "markdown_inline",
     "python",
     "query",
     "regex",
