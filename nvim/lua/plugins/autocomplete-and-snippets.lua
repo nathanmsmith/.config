@@ -29,6 +29,11 @@ return {
       require("snippets")
     end,
   },
+  -- Autopair
+  {
+    "windwp/nvim-autopairs",
+    opts = {},
+  },
   {
     "chrisgrieser/nvim-scissors",
     dependencies = "nvim-telescope/telescope.nvim",

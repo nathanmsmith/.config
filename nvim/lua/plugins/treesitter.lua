@@ -22,4 +22,14 @@ return {
       vim.g.matchup_matchparen_offscreen = {}
     end,
   },
+
+  -- gs
+  {
+    "ckolkey/ts-node-action",
+    dependencies = { "nvim-treesitter" },
+    config = function()
+      require("ts-node-action").setup({})
+      vim.keymap.set({ "n" }, "gs", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
+    end,
+  },
 }

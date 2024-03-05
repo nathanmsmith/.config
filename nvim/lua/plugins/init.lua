@@ -7,17 +7,10 @@ return {
   -- Linting
   { "mfussenegger/nvim-lint" },
   -- Formatting
-  -- { "mhartington/formatter.nvim" },
-  {
-    "stevearc/conform.nvim",
-    opts = {},
-  },
-
-  -- Treesitter
+  { "stevearc/conform.nvim", opts = {} },
 
   -- Editing nicities
   "tpope/vim-commentary",
-  "tpope/vim-surround",
   "tpope/vim-repeat",
   {
     "tpope/vim-unimpaired",
@@ -34,6 +27,7 @@ return {
   "tpope/vim-abolish",
   "tpope/vim-sleuth",
   "tpope/vim-projectionist",
+  "tpope/vim-eunuch",
 
   {
     "ThePrimeagen/harpoon",
@@ -54,15 +48,6 @@ return {
     end,
   },
 
-  {
-    "ckolkey/ts-node-action",
-    dependencies = { "nvim-treesitter" },
-    config = function()
-      require("ts-node-action").setup({})
-      vim.keymap.set({ "n" }, "gs", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
-    end,
-  },
-
   -- Suggestions
   {
     "folke/which-key.nvim",
@@ -74,21 +59,9 @@ return {
     end,
   },
 
-  -- Autopair
-  {
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup({})
-    end,
-  },
-
-  -- Tim Pope Extensions
-  "tpope/vim-eunuch",
-
   -- File navigation
   {
     "stevearc/oil.nvim",
-    commit = "956d7fc89b0bd1f9ea6515ca10c1e2a293e4d8fd",
     config = function()
       require("oil").setup({
         keymaps = {
@@ -145,25 +118,40 @@ return {
       })
     end,
   },
-  { "echasnovski/mini.splitjoin", version = "*", config = true },
+  { "echasnovski/mini.splitjoin", version = "*", opts = {} },
+  {
+    "echasnovski/mini.surround",
+    version = "*",
+    config = function()
+      require("mini.surround").setup({
+        mappings = {
+          add = "ys",
+          delete = "ds",
+          find = "",
+          find_left = "",
+          highlight = "",
+          replace = "cs",
+          update_n_lines = "",
+
+          -- Add this only if you don't want to use extended mappings
+          suffix_last = "",
+          suffix_next = "",
+        },
+        search_method = "cover_or_next",
+      })
+
+      -- Remap adding surrounding to Visual mode selection
+      vim.keymap.del("x", "ys")
+      vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
+
+      -- Make special mapping for "add surrounding for line"
+      vim.keymap.set("n", "yss", "ys_", { remap = true })
+    end,
+  },
 
   -- Testing
   "vim-test/vim-test",
   "preservim/vimux",
-
-  -- File picking
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { { "nvim-lua/plenary.nvim" } },
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
-    cond = function()
-      return vim.fn.executable("make") == 1
-    end,
-  },
-  { "nvim-telescope/telescope-ui-select.nvim" },
 
   -- Diagnostics
   {
