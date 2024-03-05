@@ -1,5 +1,3 @@
-require("neodev").setup({})
-
 local function create_hs_config()
   -- Source: https://www.reddit.com/r/neovim/comments/pla7bv/since_everyone_is_getting_more_familiar_with_lua/
   local hs_version = vim.fn.system("hs -c _VERSION"):gsub("[\n\r]", "")
