@@ -2,15 +2,25 @@ local helpers = require("custom-helpers")
 
 return {
   -- Color theme
-  "nathanmsmith/night-owl.vim",
+  {
+    "nathanmsmith/night-owl.vim",
+    lazy = false, -- Make sure we load this during startup
+    priority = 1000, -- Make sure to load this before all the other start plugins
+    config = function()
+      -- Load the colorscheme here
+      vim.cmd.colorscheme("night-owl")
+    end,
+  },
 
   -- Linting
   { "mfussenegger/nvim-lint" },
   -- Formatting
   { "stevearc/conform.nvim", opts = {} },
 
+  -- Comment easily
+  { "numToStr/Comment.nvim", opts = {} },
+
   -- Editing nicities
-  "tpope/vim-commentary",
   "tpope/vim-repeat",
   {
     "tpope/vim-unimpaired",
@@ -204,6 +214,14 @@ return {
         desc = "Next trouble/quickfix item",
       },
     },
+  },
+
+  -- TODO: test
+  {
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { signs = false },
   },
 
   -- Maximize current split

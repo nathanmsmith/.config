@@ -1,4 +1,3 @@
-vim.cmd([[colorscheme night-owl]])
 vim.o.termguicolors = true
 
 -- Show line numbers
