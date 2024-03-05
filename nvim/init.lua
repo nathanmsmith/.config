@@ -58,8 +58,6 @@ if not helpers.isModuleAvailable("stripe") then
 end
 require("fuzzy_find")
 -- require("lsp")
-require("completion")
-require("snippets")
 require("formatting")
 require("diagnostic")
 require("treesitter")
