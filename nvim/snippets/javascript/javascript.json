@@ -1,1 +1,28 @@
-{"cl":{"body":"console.log($0)","description":"console.log()","prefix":"cl"},"it":{"body":["it('{$1:does something}', () => {","  $0","})"],"prefix":"it"},"cll":{"body":"console.log('$1: ', $1)","description":"console.log() with label","prefix":"cll"},"desc":{"body":["describe('$1', () => {","\t$0","})"],"prefix":"desc"}}
+{
+  "cl": {
+    "body": "console.log($0)",
+    "description": "console.log()",
+    "prefix": "cl"
+  },
+  "cll": {
+    "body": "console.log('$1: ', $1)",
+    "description": "console.log() with label",
+    "prefix": "cll"
+  },
+  "desc": {
+    "body": [
+      "describe('$1', () => {",
+      "\t$0",
+      "})"
+    ],
+    "prefix": "desc"
+  },
+  "it": {
+    "body": [
+      "it('{$1:does something}', () => {",
+      "  $0",
+      "})"
+    ],
+    "prefix": "it"
+  }
+}
