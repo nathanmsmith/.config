@@ -39,5 +39,13 @@ return {
       },
       jsonFormatter = "jq",
     },
+    config = function()
+      vim.api.nvim_create_user_command("SnippetEdit", function()
+        require("scissors").editSnippet()
+      end, { desc = "Edit snippets" })
+      vim.api.nvim_create_user_command("SnippetAdd", function()
+        require("scissors").addNewSnippet()
+      end, { desc = "Add a snippet" })
+    end,
   },
 }

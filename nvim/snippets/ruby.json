@@ -91,10 +91,6 @@
     "body": "{ |${1:variable}| $2 }",
     "prefix": "b"
   },
-  "Insert key: value": {
-    "body": "${1:key}: ${2:value}",
-    "prefix": ":"
-  },
   "Insert map inline block": {
     "body": "map { |${1:e}| $0 }",
     "prefix": "map"

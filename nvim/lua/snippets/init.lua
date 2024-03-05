@@ -22,13 +22,6 @@ vim.keymap.set(
   { silent = true, expr = true }
 )
 
-vim.keymap.set("n", "<leader>se", function()
-  require("scissors").editSnippet()
-end, { desc = "Edit snippets" })
-vim.keymap.set({ "n", "x" }, "<leader>sa", function()
-  require("scissors").addNewSnippet()
-end, { desc = "Add a snippet" })
-
 -- Skeletons
 -- local function expandSkeletonSnippet(language, skeleton)
 --   local snippet = skeletons[language][skeleton]
