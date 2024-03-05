@@ -24,8 +24,12 @@ local function create_hs_config()
   }
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
 -- Source: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
 require("lspconfig").lua_ls.setup({
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     local path = client.workspace_folders[1].name
 
