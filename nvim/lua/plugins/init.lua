@@ -76,7 +76,7 @@ return {
         view_options = {
           show_hidden = true,
           is_always_hidden = function(name, bufnr)
-            return helpers.contains({ ".DS_Store" }, name)
+            return helpers.contains({ ".DS_Store", ".." }, name)
           end,
         },
       })
