@@ -20,7 +20,7 @@
   "it": {
     "body": [
       "it('{$1:does something}', () => {",
-      "  $0",
+      "\t$0",
       "})"
     ],
     "prefix": "it"
