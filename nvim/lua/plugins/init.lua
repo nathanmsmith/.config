@@ -18,10 +18,7 @@ return {
   { "stevearc/conform.nvim", opts = {} },
 
   -- Comment easily
-  {
-    "numToStr/Comment.nvim",
-    opts = { pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook() },
-  },
+  "tpope/vim-commentary",
 
   -- Editing nicities
   "tpope/vim-repeat",
