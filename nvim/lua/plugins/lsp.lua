@@ -34,6 +34,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {
       settings = {
+        separate_diagnostic_server = false,
         tsserver_max_memory = 8192,
       },
     },
