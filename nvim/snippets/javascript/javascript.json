@@ -11,7 +11,7 @@
   },
   "desc": {
     "body": [
-      "describe('$1', () => {",
+      "describe('${1:my thing}', () => {",
       "\t$0",
       "})"
     ],
@@ -19,7 +19,7 @@
   },
   "it": {
     "body": [
-      "it('{$1:does something}', () => {",
+      "it('${1:does something}', () => {",
       "\t$0",
       "})"
     ],
