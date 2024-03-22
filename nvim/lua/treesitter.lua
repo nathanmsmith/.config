@@ -73,7 +73,13 @@ require("nvim-treesitter.configs").setup({
   },
   auto_install = true,
   sync_install = false,
-  ignore_install = {},
+  ignore_install = {
+    "git_config",
+    "git_rebase",
+    "gitattributes",
+    "gitcommit",
+    "gitignore",
+  },
   ensure_installed = {
     "bash",
     "c",
