@@ -18,6 +18,10 @@
         "path": "./javascript/javascript.json"
       },
       {
+        "language": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+        "path": "./javascript/react-testing-library.json"
+      },
+      {
         "language": ["typescript", "typescriptreact"],
         "path": "./javascript/typescript.json"
       },

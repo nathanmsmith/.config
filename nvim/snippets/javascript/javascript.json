@@ -1,3 +1,4 @@
+// vim: ft=jsonc
 {
   "cl": {
     "body": "console.log($0)",
@@ -8,21 +9,5 @@
     "body": "console.log('$1: ', $1)",
     "description": "console.log() with label",
     "prefix": "cll"
-  },
-  "desc": {
-    "body": [
-      "describe('${1:my thing}', () => {",
-      "\t$0",
-      "})"
-    ],
-    "prefix": "desc"
-  },
-  "it": {
-    "body": [
-      "it('${1:does something}', () => {",
-      "\t$0",
-      "})"
-    ],
-    "prefix": "it"
   }
 }
