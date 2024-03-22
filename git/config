@@ -41,7 +41,7 @@
 [mergetool]
 	keepBackup = false
 [mergetool "diffconflicts"]
-	cmd = nvim \"$MERGED\" #  \"$BASE\" \"$LOCAL\" \"$REMOTE\"
+	cmd = nvim "$MERGED"
 	trustExitCode = true
 [color "diff-highlight"]
 	oldNormal = red bold
