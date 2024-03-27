@@ -2,4 +2,4 @@
 --asset-pipeline propshaft
 --skip-hotwire
 --javascript esbuild
---css postcss
+--css tailwind
