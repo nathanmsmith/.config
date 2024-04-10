@@ -155,26 +155,28 @@ vim.g.netrw_localrmdir = "rm -r"
 -- TODO: convert to lua
 -- set shell=/usr/bin/env\ bash
 
-local trailing_whitespace_group = vim.api.nvim_create_augroup("TrimTrailingWhiteSpace", { clear = true })
-vim.api.nvim_create_autocmd(
-  "BufWritePre",
-  { command = "%s/\\s\\+$//e", group = trailing_whitespace_group, pattern = "*" }
-)
-vim.api.nvim_create_autocmd(
-  "BufWritePre",
-  { command = "%s/\\n\\+%$//e", group = trailing_whitespace_group, pattern = "*" }
-)
+-- local trailing_whitespace_group = vim.api.nvim_create_augroup("TrimTrailingWhiteSpace", { clear = true })
+-- vim.api.nvim_create_autocmd(
+--   "BufWritePre",
+--   { command = "%s/\\s\\+$//e", group = trailing_whitespace_group, pattern = "*" }
+-- )
+-- vim.api.nvim_create_autocmd(
+--   "BufWritePre",
+--   { command = "%s/\\n\\+%$//e", group = trailing_whitespace_group, pattern = "*" }
+-- )
 
 vim.o.grepprg = "rg --vimgrep --no-heading --smart-case"
 vim.o.grepformat = "%f:%l:%c:%m"
 
 -- Preserve file location before exit
-vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
-})
+-- local location_group = vim.api.nvim_create_augroup("CursorPosition", { clear = true })
+-- vim.api.nvim_create_autocmd("BufReadPost", {
+--   group = location_group,
+--   callback = function()
+--     local mark = vim.api.nvim_buf_get_mark(0, '"')
+--     local lcount = vim.api.nvim_buf_line_count(0)
+--     if mark[1] > 0 and mark[1] <= lcount then
+--       pcall(vim.api.nvim_win_set_cursor, 0, mark)
+--     end
+--   end,
+-- })

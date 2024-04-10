@@ -225,7 +225,4 @@ return {
 
   -- Maximize current split
   "szw/vim-maximizer",
-
-  -- Profiling
-  "dstein64/vim-startuptime",
 }

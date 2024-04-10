@@ -55,10 +55,28 @@ require("statusline")
 -- `helpers.isModuleAvailable("stripe")` is how I check to see if work files are present, i.e., I'm on a work machine.
 if not helpers.isModuleAvailable("stripe") then
   require("projectionist")
+else
+  vim.g.projectionist_heuristics = {
+    -- pay-server
+    [".pay.yaml"] = {
+      ["*__package.rb"] = {
+        ["type"] = "package",
+      },
+    },
+  }
+  require("stripe-projectionist").addPayserverProjections()
 end
 require("formatting")
 require("diagnostic")
 require("testing")
+
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+  pattern = "*",
+  group = vim.api.nvim_create_augroup("nathan test", {}),
+  callback = function()
+    print("bufreadpost on " .. vim.fn.expand("%"))
+  end,
+})
 
 vim.cmd([[
   source ~/.config/nvim/config/custom-commands.vim
