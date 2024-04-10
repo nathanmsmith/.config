@@ -45,18 +45,10 @@ return {
         mappings = {
           "rails",
           "golang",
-          {
-            {
-              pattern = "(.*).rb$",
-              context = "test",
-              target = "%1_test.go",
-            },
-            {
-              pattern = "(.*)_test.go$",
-              context = "implementation",
-              target = "%1.go",
-            },
-          },
+        },
+        style = {
+          border = "double",
+          width = 0.95,
         },
       })
 
