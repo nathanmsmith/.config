@@ -1,17 +1,6 @@
 local helpers = require("custom-helpers")
 
 return {
-  -- Color theme
-  {
-    "nathanmsmith/night-owl.vim",
-    lazy = false, -- Make sure we load this during startup
-    priority = 1000, -- Make sure to load this before all the other start plugins
-    config = function()
-      -- Load the colorscheme here
-      vim.cmd.colorscheme("night-owl")
-    end,
-  },
-
   -- Linting
   { "mfussenegger/nvim-lint" },
   -- Formatting

@@ -1,6 +1,8 @@
 -- Welcome! 👋
 -- This is my config for Neovim.
 
+require("colorscheme")
+
 local helpers = require("custom-helpers")
 
 -- Remap space as leader key
