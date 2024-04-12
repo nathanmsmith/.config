@@ -55,6 +55,8 @@ require("statusline")
 -- `helpers.isModuleAvailable("stripe")` is how I check to see if work files are present, i.e., I'm on a work machine.
 if not helpers.isModuleAvailable("stripe") then
   require("projectionist")
+else
+  require("stripe-projectionist").addPayserverProjections()
 end
 require("formatting")
 require("diagnostic")

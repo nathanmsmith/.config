@@ -1,14 +1,4 @@
 vim.api.nvim_set_var("projectionist_heuristics", {
-  -- ["*.rb"] = {
-  --   ["lib/*.rb"] = {
-  --     ["alternate"] = "spec/{}_spec.rb",
-  --     ["type"] = "source",
-  --   },
-  --   ["spec/*_spec.rb"] = {
-  --     ["alternate"] = "lib/{}.rb",
-  --     ["type"] = "test",
-  --   },
-  -- },
   ["*.go"] = {
     ["*.go"] = {
       ["alternate"] = "{}_test.go",
@@ -29,7 +19,8 @@ vim.api.nvim_set_var("projectionist_heuristics", {
       ["type"] = "test",
     },
   },
-  ["*.js|*.jsx"] = {
+  -- JS/TS projects
+  ["package.json"] = {
     ["*.test.js|*.test.jsx"] = {
       ["alternate"] = { "{}.jsx", "{}.js" },
       ["type"] = "test",
@@ -38,14 +29,14 @@ vim.api.nvim_set_var("projectionist_heuristics", {
       ["alternate"] = { "{}.test.jsx", "{}.test.js" },
       ["type"] = "source",
     },
-  },
-  ["*.test.tsx"] = {
-    ["alternate"] = "{}.tsx",
-    ["type"] = "test",
-  },
-  ["*.tsx"] = {
-    ["alternate"] = "{}.test.tsx",
-    ["type"] = "source",
+    ["*.test.tsx"] = {
+      ["alternate"] = "{}.tsx",
+      ["type"] = "test",
+    },
+    ["*.tsx"] = {
+      ["alternate"] = "{}.test.tsx",
+      ["type"] = "source",
+    },
   },
   ["*.css"] = {
     ["type"] = "css",
