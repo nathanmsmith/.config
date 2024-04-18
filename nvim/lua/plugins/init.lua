@@ -216,5 +216,11 @@ return {
   "szw/vim-maximizer",
 
   -- Profiling
-  "dstein64/vim-startuptime",
+  -- "dstein64/vim-startuptime",
+
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
