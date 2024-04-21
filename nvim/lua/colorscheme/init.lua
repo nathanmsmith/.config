@@ -367,10 +367,10 @@ hl("DiagnosticError", { link = "Error" })
 hl("DiagnosticWarn", { fg = palette.orange })
 hl("DiagnosticInfo", { fg = palette.blue })
 hl("DiagnosticHint", { fg = palette.blue })
-hl("DiagnosticUnderlineError", { link = "Error", undercurl = true })
-hl("DiagnosticUnderlineWarn", { link = "DiagnosticWarn", undercurl = true })
-hl("DiagnosticUnderlineInfo", { link = "DiagnosticInfo", undercurl = true })
-hl("DiagnosticUnderlineHint", { link = "DiagnosticHint", undercurl = true })
+hl("DiagnosticUnderlineError", { sp = palette.error, undercurl = true })
+hl("DiagnosticUnderlineWarn", { sp = palette.orange, undercurl = true })
+hl("DiagnosticUnderlineInfo", { sp = palette.blue, undercurl = true })
+hl("DiagnosticUnderlineHint", { sp = palette.blue, undercurl = true })
 
 -- flash.nvim
 

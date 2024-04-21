@@ -179,6 +179,10 @@
     "branch": "master",
     "commit": "dcbfe065297d31823561ba787f51056c147aa682"
   },
+  "vim-bundler": {
+    "branch": "master",
+    "commit": "c261509e78fc8dc55ad1fcf3cd7cdde49f35435c"
+  },
   "vim-characterize": {
     "branch": "master",
     "commit": "7fc5b75e7a9e46676cf736b56d99dd32004ff3d6"
@@ -210,6 +214,14 @@
   "vim-projectionist": {
     "branch": "master",
     "commit": "729f3630a4c19e52e1fd825802d2a1659daeaf48"
+  },
+  "vim-rails": {
+    "branch": "master",
+    "commit": "8972461e64c7c4bf049f2f86ea1bc571e8077b55"
+  },
+  "vim-rake": {
+    "branch": "master",
+    "commit": "af4ee966f5479fa89e60be067b6183f6addf9e4e"
   },
   "vim-repeat": {
     "branch": "master",
