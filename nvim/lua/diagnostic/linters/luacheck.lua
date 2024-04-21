@@ -11,7 +11,7 @@ return {
   stdin = true,
   args = { "--formatter", "plain", "--codes", "--ranges", "-" },
   ignore_exitcode = true,
-  cwd = require("lspconfig.util").root_pattern(".luacheckrc"),
+  cwd = require("lspconfig.util").root_pattern(".luacheckrc")(vim.api.nvim_buf_get_name(0)),
   parser = require("lint.parser").from_pattern(
     pattern,
     groups,
