@@ -19,6 +19,9 @@ cmp.setup({
   completion = {
     autocomplete = false,
   },
+  experimental = {
+    ghost_text = true,
+  },
   formatting = {
     format = lspkind.cmp_format({
       mode = "text",
@@ -107,9 +110,10 @@ cmp.setup({
     }),
   },
   sources = cmp.config.sources({
+    -- { name = "cmp-nvim-lsp-signature-help" },
     { name = "luasnip" },
     { name = "nvim_lsp" },
-    { name = "copilot" },
+    -- { name = "copilot" },
     { name = "buffer" },
   }),
 })

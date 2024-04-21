@@ -94,8 +94,10 @@ local palette = {
   magenta6 = "#f6bbe533",
 }
 
-local function hl(name, def)
-  vim.api.nvim_set_hl(0, name, def)
+--- @param name string
+--- @param val? table<string, any>
+local function hl(name, val)
+  vim.api.nvim_set_hl(0, name, val)
 end
 
 vim.cmd([[
@@ -335,24 +337,6 @@ hi pythonBuiltinFunc guifg=#addb67
 hi link rubyModuleName Normal
 hi link rubyClassName ClassName
 hi rubyBlockParameterList guifg=#addb67
-
-" nvim LSP diagnostic
-" hi DiagnosticsDefaultError guifg=#EF5350
-" hi DiagnosticsDefaultWarn guifg=#F78C6C
-" hi DiagnosticsDefaultInfo guifg=#82aaff
-" hi DiagnosticsDefaultHint guifg=#82aaff
-
-" hi DiagnosticsUnderlineError guifg=#EF5350 gui=undercurl
-" hi DiagnosticsUnderlineWarn guifg=#F78C6C gui=undercurl
-" hi DiagnosticsUnderlineInfo guifg=#82aaff gui=undercurl
-" hi DiagnosticsUnderlineHint guifg=#82aaff gui=undercurl
-
-" Conflict markers: https://github.com/rhysd/conflict-marker.vim
-highlight ConflictMarkerBegin guibg=#567f9a
-highlight ConflictMarkerOurs guibg=#1f4055
-highlight ConflictMarkerTheirs guibg=#0f1f3f
-highlight ConflictMarkerEnd guibg=#2b2a5e
-highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
 ]])
 
 hl("Normal", { fg = palette.fg, bg = palette.bg })
@@ -372,8 +356,7 @@ hl("DiagnosticUnderlineWarn", { sp = palette.orange, undercurl = true })
 hl("DiagnosticUnderlineInfo", { sp = palette.blue, undercurl = true })
 hl("DiagnosticUnderlineHint", { sp = palette.blue, undercurl = true })
 
--- flash.nvim
-
+-- flash.nvim (https://github.com/folke/flash.nvim)
 -- hl("FlashBackdrop", {link = "Comment"})
 hl("FlashMatch", { fg = palette.red, bg = palette.none })
 hl("FlashCurrent", { fg = palette.red, bg = palette.none })
@@ -381,3 +364,10 @@ hl("FlashLabel", { fg = palette.red, bg = palette.none })
 hl("FlashPrompt", { fg = palette.red, bg = palette.none })
 hl("FlashPromptIcon", { fg = palette.red, bg = palette.none })
 hl("FlashCursor", { fg = palette.green, bg = palette.none })
+
+-- conflict-marker.vim (https://github.com/rhysd/conflict-marker.vim)
+hl("ConflictMarkerBegin", { bg = "#567f9a" })
+hl("ConflictMarkerOurs", { bg = "#1f4055" })
+hl("ConflictMarkerTheirs", { bg = "#0f1f3f" })
+hl("ConflictMarkerEnd", { bg = "#2b2a5e" })
+hl("ConflictMarkerCommonAncestorsHunk", { bg = "#754a81" })

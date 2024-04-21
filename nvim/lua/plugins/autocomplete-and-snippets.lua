@@ -29,6 +29,16 @@ return {
       require("snippets")
     end,
   },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {
+      floating_window = false,
+      hint_prefix = "",
+      -- TODO: Enable this for nvim 0.10
+      -- hint_inline = function() return false end,  -- should the hint be inline(nvim 0.10 only)?  default false
+    },
+  },
   -- Autopair
   {
     "windwp/nvim-autopairs",

@@ -1,7 +1,7 @@
 {
   "LuaSnip": {
     "branch": "master",
-    "commit": "03c8e67eb7293c404845b3982db895d59c0d1538"
+    "commit": "72eea98b1900013e0cb214f29b898c8d91564930"
   },
   "cmp-buffer": {
     "branch": "main",
@@ -54,6 +54,10 @@
   "lazy.nvim": {
     "branch": "main",
     "commit": "31ddbea7c10b6920c9077b66c97951ca8682d5c8"
+  },
+  "lsp_signature.nvim": {
+    "branch": "master",
+    "commit": "c6aeb2f1d2538bbdfdaab1664d9d4c3c75aa9db8"
   },
   "lspkind-nvim": {
     "branch": "master",
@@ -117,7 +121,7 @@
   },
   "nvim-treesitter": {
     "branch": "master",
-    "commit": "ea4f6d5175812a3f48302d638a766bc18fcbb04a"
+    "commit": "9b1c2096e0b353ab44bc5fb242306dde50761109"
   },
   "nvim-treesitter-endwise": {
     "branch": "master",
@@ -137,7 +141,7 @@
   },
   "oil.nvim": {
     "branch": "master",
-    "commit": "1f05774e1c2dbc1940104b5c950d5c7b65ec6e0b"
+    "commit": "f41a0f24c009f71c6f112fce9c1f5d6c1f31847e"
   },
   "playground": {
     "branch": "master",
@@ -161,7 +165,7 @@
   },
   "todo-comments.nvim": {
     "branch": "main",
-    "commit": "4a6737a8d70fe1ac55c64dfa47fcb189ca431872"
+    "commit": "a7e39ae9e74f2c8c6dc4eea6d40c3971ae84752d"
   },
   "trouble.nvim": {
     "branch": "main",
