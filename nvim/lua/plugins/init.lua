@@ -229,6 +229,10 @@ return {
     opts = {
       modes = {
         search = { enabled = false },
+        char = {
+          enabled = true,
+          multi_line = false,
+        },
       },
     },
   },

@@ -41,6 +41,10 @@ vim.opt.diffopt:append("internal")
 local resize_group = vim.api.nvim_create_augroup("WindowWatcher", { clear = true })
 vim.api.nvim_create_autocmd("VimResized", { command = "wincmd =", group = resize_group, pattern = "*" })
 
+-- Set cursor, see :h guicursor
+vim.o.guicursor =
+  "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+
 -- Reset the cursor on exit
 -- See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
 -- and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim

@@ -360,6 +360,8 @@ hl("LineNr", { fg = palette.line_number_fg, bg = palette.none })
 
 hl("Error", { fg = palette.error, bg = palette.none })
 
+hl("Cursor", { fg = palette.cursor_fg, bg = palette.cursor_bg })
+
 -- Diagnostics
 hl("DiagnosticError", { link = "Error" })
 hl("DiagnosticWarn", { fg = palette.orange })
@@ -369,3 +371,13 @@ hl("DiagnosticUnderlineError", { link = "Error", undercurl = true })
 hl("DiagnosticUnderlineWarn", { link = "DiagnosticWarn", undercurl = true })
 hl("DiagnosticUnderlineInfo", { link = "DiagnosticInfo", undercurl = true })
 hl("DiagnosticUnderlineHint", { link = "DiagnosticHint", undercurl = true })
+
+-- flash.nvim
+
+-- hl("FlashBackdrop", {link = "Comment"})
+hl("FlashMatch", { fg = palette.red, bg = palette.none })
+hl("FlashCurrent", { fg = palette.red, bg = palette.none })
+hl("FlashLabel", { fg = palette.red, bg = palette.none })
+hl("FlashPrompt", { fg = palette.red, bg = palette.none })
+hl("FlashPromptIcon", { fg = palette.red, bg = palette.none })
+hl("FlashCursor", { fg = palette.green, bg = palette.none })
