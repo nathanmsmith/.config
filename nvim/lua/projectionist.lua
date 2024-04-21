@@ -19,6 +19,58 @@ vim.api.nvim_set_var("projectionist_heuristics", {
       ["type"] = "test",
     },
   },
+
+  -- Rails project
+  ["config.ru"] = {
+    -- Misc files
+    ["config/routes.rb"] = {
+      ["type"] = "routes",
+    },
+    ["config/deploy.yml"] = {
+      ["type"] = "deploy",
+    },
+
+    -- Models
+    ["app/models/*.rb"] = {
+      ["type"] = "model",
+      ["alternate"] = "test/models/{}_test.rb",
+    },
+    ["test/models/*_test.rb"] = {
+      ["type"] = "test",
+      ["alternate"] = "app/models/{}.rb",
+    },
+
+    ["app/views/*.json.jbuilder"] = {
+      ["type"] = "builder",
+      ["alternate"] = "app/controllers/{dirname}_controller.rb",
+    },
+    ["app/views/*.html.erb"] = {
+      ["type"] = "view",
+      ["alternate"] = "app/controllers/{dirname}_controller.rb",
+    },
+
+    -- Controllers
+    ["app/controllers/*_controller.rb"] = {
+      ["type"] = "controller",
+      ["alternate"] = "test/controllers/{}_controller_test.rb",
+      ["related"] = {
+        "app/models/{singular}.rb",
+        "app/views/{}/index.html.erb",
+        "app/views/{}/new.html.erb",
+        "app/views/{}/show.html.erb",
+        "app/views/{}/edit.html.erb",
+      },
+    },
+    ["test/controllers/*_controller_test.rb"] = {
+      ["type"] = "test",
+      ["alternate"] = "app/controllers/{}_controller.rb",
+    },
+
+    ["app/javascript/*.js"] = {
+      ["type"] = "javascript",
+    },
+  },
+
   -- JS/TS projects
   ["package.json"] = {
     ["*.test.js|*.test.jsx"] = {
