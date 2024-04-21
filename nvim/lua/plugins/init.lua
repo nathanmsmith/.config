@@ -204,12 +204,17 @@ return {
     },
   },
 
-  -- TODO: test
   {
     "folke/todo-comments.nvim",
     event = "VimEnter",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = { signs = false },
+    opts = {
+      signs = false,
+      highlight = {
+        keyword = "fg",
+      },
+      -- TODO: Get keywords like "TODO" and "FIXME" to underline
+    },
   },
 
   -- Maximize current split
@@ -233,7 +238,7 @@ return {
   {
     "NvChad/nvim-colorizer.lua",
     opts = {
-      -- TODO:: make these options filetype-specific
+      -- TODO: make these options filetype-specific
       user_default_options = {
         RGB = true, -- #RGB hex codes
         RRGGBB = true, -- #RRGGBB hex codes

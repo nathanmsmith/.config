@@ -1,4 +1,5 @@
 local palette = {
+  none = "NONE",
   fg = "#d6deeb",
   bg = "#021727",
   folded_bg = "#092135",
@@ -15,7 +16,7 @@ local palette = {
   match_paren = "#1e364a",
   search_blue = "#063e5d",
   incremental_search_blue = "#2E485C",
-  error_red = "#ef5350",
+  error = "#ef5350",
   word_highlight = "#33384d",
   word_highlight_write = "#2f3350",
   changed = "#a2bffc",
@@ -26,7 +27,6 @@ local palette = {
   nvim_tree_indent_marker = "#585858",
   tab_active_bg = "#0b2942",
   tab_inactive_bg = "#01111d",
-  title = "#82b1ff",
   parameter = "#d7dbe0",
   string_delimiter = "#d9f5dd",
   dark = "#010d18",
@@ -185,7 +185,6 @@ hi Type guifg=#addb67 ctermfg=149 gui=NONE cterm=NONE
 hi StorageClass guifg=#c792ea
 hi Structure guifg=#c792ea
 
-hi Error guifg=#EF5350 guibg=NONE
 hi Todo guifg=#EF5350 guibg=NONE
 
 hi SpellBad guifg=#EF5350 gui=undercurl
@@ -338,15 +337,15 @@ hi link rubyClassName ClassName
 hi rubyBlockParameterList guifg=#addb67
 
 " nvim LSP diagnostic
-hi LspDiagnosticsDefaultError guifg=#EF5350
-hi LspDiagnosticsDefaultWarning guifg=#F78C6C
-hi LspDiagnosticsDefaultInformation guifg=#82aaff
-hi LspDiagnosticsDefaultHint guifg=#82aaff
+" hi DiagnosticsDefaultError guifg=#EF5350
+" hi DiagnosticsDefaultWarn guifg=#F78C6C
+" hi DiagnosticsDefaultInfo guifg=#82aaff
+" hi DiagnosticsDefaultHint guifg=#82aaff
 
-hi LspDiagnosticsUnderlineError guifg=#EF5350 gui=undercurl
-hi LspDiagnosticsUnderlineWarning guifg=#F78C6C gui=undercurl
-hi LspDiagnosticsUnderlineInformation guifg=#82aaff gui=undercurl
-hi LspDiagnosticsUnderlineHint guifg=#82aaff gui=undercurl
+" hi DiagnosticsUnderlineError guifg=#EF5350 gui=undercurl
+" hi DiagnosticsUnderlineWarn guifg=#F78C6C gui=undercurl
+" hi DiagnosticsUnderlineInfo guifg=#82aaff gui=undercurl
+" hi DiagnosticsUnderlineHint guifg=#82aaff gui=undercurl
 
 " Conflict markers: https://github.com/rhysd/conflict-marker.vim
 highlight ConflictMarkerBegin guibg=#567f9a
@@ -357,4 +356,16 @@ highlight ConflictMarkerCommonAncestorsHunk guibg=#754a81
 ]])
 
 hl("Normal", { fg = palette.fg, bg = palette.bg })
-hl("LineNr", { fg = palette.line_number_fg, bg = "NONE" })
+hl("LineNr", { fg = palette.line_number_fg, bg = palette.none })
+
+hl("Error", { fg = palette.error, bg = palette.none })
+
+-- Diagnostics
+hl("DiagnosticError", { link = "Error" })
+hl("DiagnosticWarn", { fg = palette.orange })
+hl("DiagnosticInfo", { fg = palette.blue })
+hl("DiagnosticHint", { fg = palette.blue })
+hl("DiagnosticUnderlineError", { link = "Error", undercurl = true })
+hl("DiagnosticUnderlineWarn", { link = "DiagnosticWarn", undercurl = true })
+hl("DiagnosticUnderlineInfo", { link = "DiagnosticInfo", undercurl = true })
+hl("DiagnosticUnderlineHint", { link = "DiagnosticHint", undercurl = true })
