@@ -200,85 +200,6 @@ hi Modifier guifg=#c792ea gui=italic
 " TODO: Operator mode?
 hi Operator guifg=#c792ea ctermfg=176 gui=NONE cterm=NONE
 
-" JavaScript
-hi jsStorageClass guifg=#82aaff ctermfg=111 gui=NONE cterm=NONE
-hi jsOperator guifg=#c792ea ctermfg=176 gui=NONE cterm=NONE
-hi jsArrowFunction guifg=#c792ea
-hi jsString guifg=#ecc48d ctermfg=222 gui=NONE cterm=NONE
-hi jsComment guifg=#637777 ctermfg=243 gui=italic cterm=italic
-hi jsFuncCall guifg=#82aaff gui=italic
-hi jsNumber guifg=#f78c6c ctermfg=209 gui=NONE cterm=NONE
-hi jsSpecial guifg=#f78c6c ctermfg=209 gui=NONE cterm=NONE
-hi jsObjectProp guifg=#7fdbca ctermfg=116 gui=NONE cterm=NONE
-hi jsOperatorKeyword guifg=#7fdbca ctermfg=116 gui=NONE cterm=NONE
-hi jsBooleanFalse guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-hi jsBooleanTrue guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-hi jsRegexpString guifg=#5ca7e4 ctermfg=74 gui=NONE cterm=NONE
-hi jsConditional guifg=#c792ea ctermfg=176 gui=NONE cterm=NONE
-hi link jsNull Constant
-hi link jsUndefined Constant
-hi jsReturn guifg=#c792ea ctermfg=176 gui=NONE cterm=NONE
-hi jsFuncName guifg=#82aaff ctermfg=111 gui=NONE cterm=NONE
-hi link jsParensError jsFuncParens
-hi link jsClassDefinition ClassName
-hi link jsThis Identifier
-hi link jsSuper Identifier
-hi jsImport guifg=#c792ea ctermfg=176 gui=italic cterm=italic
-hi jsFrom guifg=#c792ea ctermfg=176 gui=italic cterm=italic
-hi jsModuleAs guifg=#c792ea ctermfg=176 gui=italic cterm=italic
-hi jsExport guifg=#7fdbca ctermfg=116 gui=NONE cterm=NONE
-hi jsExportDefault guifg=#7fdbca ctermfg=116 gui=NONE cterm=NONE
-hi link jsExtendsKeyword Modifier
-hi javaScriptReserved guifg=#82aaff ctermfg=111 gui=NONE cterm=NONE
-hi javaScriptConditional guifg=#c792ea ctermfg=176 gui=NONE cterm=NONE
-hi javaScriptStringS guifg=#ecc48d ctermfg=222 gui=NONE cterm=NONE
-hi javaScriptBoolean guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-hi javaScriptLineComment guifg=#637777 ctermfg=243 gui=italic cterm=italic
-hi javaScriptSpecial guifg=#f78c6c ctermfg=209 gui=NONE cterm=NONE
-hi javaScriptFunction guifg=#82aaff ctermfg=111 gui=NONE cterm=NONE
-hi javaScriptStatement guifg=#c792ea ctermfg=176 gui=NONE cterm=NONE
-hi javaScriptException guifg=#addb67 ctermfg=149 gui=NONE cterm=NONE
-
-" TypeScript
-hi link typescriptClassName ClassName
-hi link typescriptClassHeritage ClassName
-hi link typescriptClassExtends Modifier
-hi link typescriptImport Modifier
-hi link typescriptExport Modifier
-hi link typescriptDefault Modifier
-hi link typescriptBOM Normal
-hi link typescriptCastKeyword Modifier
-hi typescriptArrowFunc guifg=#c792ea
-hi link typescriptFuncArg Normal
-hi link typescriptArrowFuncArg Normal
-hi link typescriptIdentifier Identifier
-hi typescriptTypeReference guifg=#ecc48d
-
-" JSX
-hi jsxComponentName guifg=#f78c6c
-hi jsxBraces guifg=#d3423e
-
-" CSS
-hi cssProp guifg=#7fdbca
-hi cssUnitDecorators guifg=#fbec9f
-" hi scssSelectorName guifg=#addb67 ctermfg=149 gui=NONE cterm=NONE
-hi cssTagName guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-hi cssClassName guifg=#addb67 ctermfg=149 gui=italic cterm=italic
-hi cssFunctionName guifg=#addb67
-" hi link cssClassNameDot cssClassName
-" hi cssBraces guifg=#d6deeb ctermfg=253 gui=NONE cterm=NONE
-" hi cssPositioningProp guifg=#7fdbca ctermfg=116 gui=NONE cterm=NONE
-" hi cssIEUIProp guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-" hi scssFunctionName guifg=#addb67 ctermfg=149 gui=NONE cterm=NONE
-" hi cssPositioningAttr guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-" hi cssTableAttr guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-" hi cssCommonAttr guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-" hi cssIncludeKeyword guifg=#7fdbca ctermfg=116 gui=NONE cterm=NONE
-" hi cssKeyFrameSelector guifg=#addb67 ctermfg=149 gui=NONE cterm=NONE
-" hi cssPseudoClassId guifg=#addb67 ctermfg=149 gui=italic cterm=italic
-" hi cssBorderAttr guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-" hi cssValueLength guifg=#f78c6c ctermfg=209 gui=NONE cterm=NONE
-" hi cssIdentifier guifg=#f4d554 ctermfg=221 gui=italic cterm=italic
 
 " Markdown
 hi markdownHeadingDelimiter guifg=#637777 ctermfg=243 gui=NONE cterm=NONE
@@ -289,29 +210,9 @@ hi mkdCodeEnd guifg=#d6deeb ctermfg=253 gui=NONE cterm=NONE
 hi mkdLinkDef guifg=#7fdbca ctermfg=116 gui=NONE cterm=NONE
 hi mkdCodeDelimiter guifg=#637777 ctermfg=243 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
 
-" HTML
-" https://notabug.org/jorgesumle/vim-html-syntax
-hi htmlTag guifg=#7fdbca
-hi htmlTagName guifg=#7fdbca
-hi htmlSpecialTagName guifg=#7fdbca
-hi htmlArg guifg=#addb67
-
-" Shell comment
-" TODO: can we remove?
-hi shComment guifg=#637777 ctermfg=243 guibg=#011627 ctermbg=233 gui=italic cterm=italic
-
-
 " Git commit top line
 " TODO: not sure if right color
 hi gitcommitSummary guifg=#d6deeb ctermfg=253 gui=NONE cterm=NONE
-
-" NERDTree Sidebar
-hi NERDTreeDir guifg=#5f7e97 ctermfg=66 gui=NONE cterm=NONE
-hi NERDTreeOpenable guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
-hi NERDTreeClosable guifg=#ecc48d ctermfg=222 gui=NONE cterm=NONE
-hi NERDTreeHelp guifg=#444444 ctermfg=238 gui=italic cterm=italic
-hi NERDTreeUp guifg=#637777 ctermfg=243 gui=NONE cterm=NONE
-hi NERDTreeDirSlash guifg=#637777 ctermfg=243 gui=NONE cterm=NONE
 
 " Git Gutter
 " See https://github.com/sdras/night-owl-vscode-theme/blob/c51978c52677fc8122206e10b60a053cdee0cf11/themes/Night%20Owl-color-theme.json#L110-L113
@@ -322,21 +223,6 @@ hi GitGutterDelete guifg=#EF5350 ctermfg=204 gui=NONE cterm=NONE
 hi GitGutterChangeDelete guifg=#e2b93d ctermfg=222 gui=NONE cterm=NONE
 
 " TODO: Diff Editor
-
-" C/C++
-hi cppModifier guifg=#c792ea gui=italic
-
-" Python
-" https://github.com/vim-python/python-syntax/blob/master/syntax/python.vim
-" Seems like there's not a lot that we can highlight, e.g., function calls and
-" class names
-hi pythonBuiltinFunc guifg=#addb67
-
-" Ruby
-" https://github.com/vim-ruby/vim-ruby
-hi link rubyModuleName Normal
-hi link rubyClassName ClassName
-hi rubyBlockParameterList guifg=#addb67
 ]])
 
 hl("Normal", { fg = palette.fg, bg = palette.bg })
