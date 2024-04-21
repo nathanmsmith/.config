@@ -2,6 +2,7 @@ local helpers = require("custom-helpers")
 
 -- Settings
 vim.diagnostic.config({
+  underline = true,
   float = {
     -- Always show the source of a diagnostic message in the floating window
     source = true,
