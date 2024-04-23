@@ -1,7 +1,7 @@
 local palette = {
   none = "NONE",
   fg = "#d6deeb",
-  bg = "#021727",
+  bg = "#011627",
   folded_bg = "#092135",
   cursor_fg = "#805a3e",
   cursor_bg = "#80a4c2",
@@ -57,7 +57,7 @@ local palette = {
   blue13 = "#072232",
   blue14 = "#273845",
   blue15 = "#169fff",
-  green = "#c5e478",
+  green = "#addb67",
   green2 = "#6CC85E",
   light_cyan = "#caece6",
   cyan = "#6ae9f0",
@@ -117,25 +117,11 @@ if exists("syntax_on")
 endif
 let g:colors_name="night-owl"
 
-" hi Normal guifg=#d6deeb ctermfg=253 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
-" hi LineNr guifg=#444444 ctermfg=238 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
-
-" TODO: https://github.com/neovim/neovim/issues/9800
-hi CursorLine guifg=NONE guibg=#112630 gui=NONE
-hi CursorLineNr guifg=#aaaaaa ctermfg=248 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
-hi ColorColumn guibg=#222222 ctermbg=235 gui=NONE cterm=NONE
-hi Directory guifg=#82aaff ctermfg=111 gui=NONE cterm=NONE
-hi Special guifg=#F78C6C gui=NONE
-hi Conceal guifg=#20395d guibg=NONE
-hi link Delimiter NONE
-
 
 hi DiffAdd guifg=#99b76d guibg=#121e3d gui=NONE
 hi DiffChange guifg=#d6deeb guibg=NONE gui=NONE cterm=NONE
 hi DiffDelete guifg=#EF5350 guibg=#221f3d
 hi DiffText guifg=#addb67 guibg=NONE gui=NONE cterm=NONE
-" hi diffAdded guifg=#addb67 ctermfg=149 gui=NONE cterm=NONE
-" hi diffRemoved guifg=#ff5874 ctermfg=204 gui=NONE cterm=NONE
 
 hi VertSplit guifg=#011627 guibg=NONE gui=NONE
 hi Folded guifg=#777777 ctermfg=243 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
@@ -154,47 +140,7 @@ hi EndOfBuffer guifg=#444444 ctermfg=238 guibg=#011627 ctermbg=233 gui=NONE cter
 hi MatchParen guifg=#ef5350 guibg=NONE gui=bold
 
 " Statusline
-hi StatusLine guifg=#011627 guibg=#5ca7e4
-hi StatusLineNC guifg=#011627 guibg=#5f7e97
-hi User1 guifg=#82aaff
-hi User2 guifg=#82aaff gui=italic
 
-" Text width colorcolumn
-hi ColorColumn guibg=#1F2330
-
-" Generic language highlighting
-" Comment
-" https://github.com/sdras/night-owl-vscode-theme/blob/master/themes/Night%20Owl-color-theme.json#L249-L255
-hi Comment guifg=#637777 ctermfg=243 gui=italic cterm=italic
-
-
-hi Constant guifg=#ff5874
-hi String guifg=#ecc48d
-hi Number guifg=#F78C6C
-hi Boolean guifg=#ff5874
-
-hi Identifier guifg=#7fdbca
-hi Function guifg=#82aaff guibg=NONE gui=italic
-hi FuncBuiltIn guifg=#addb67 gui=NONE
-
-hi Statement guifg=#c792ea
-hi Keyword guifg=#c792ea
-hi Exception guifg=#c792ea gui=italic
-
-hi PreProc guifg=#c792ea gui=italic
-
-hi Type guifg=#addb67 ctermfg=149 gui=NONE cterm=NONE
-hi StorageClass guifg=#c792ea
-hi Structure guifg=#c792ea
-
-hi Todo guifg=#EF5350 guibg=NONE
-
-hi SpellBad guifg=#EF5350 gui=undercurl
-
-
-" Custom Highlights
-hi ClassName guifg=#ecc48d
-hi Modifier guifg=#c792ea gui=italic
 
 
 " TODO: Operator mode?
@@ -214,14 +160,6 @@ hi mkdCodeDelimiter guifg=#637777 ctermfg=243 guibg=#011627 ctermbg=233 gui=NONE
 " TODO: not sure if right color
 hi gitcommitSummary guifg=#d6deeb ctermfg=253 gui=NONE cterm=NONE
 
-" Git Gutter
-" See https://github.com/sdras/night-owl-vscode-theme/blob/c51978c52677fc8122206e10b60a053cdee0cf11/themes/Night%20Owl-color-theme.json#L110-L113
-" https://github.com/airblade/vim-gitgutter
-hi GitGutterAdd guifg=#9CCC65 ctermfg=149 gui=NONE cterm=NONE
-hi GitGutterChange guifg=#e2b93d ctermfg=222 gui=NONE cterm=NONE
-hi GitGutterDelete guifg=#EF5350 ctermfg=204 gui=NONE cterm=NONE
-hi GitGutterChangeDelete guifg=#e2b93d ctermfg=222 gui=NONE cterm=NONE
-
 " TODO: Diff Editor
 ]])
 
@@ -231,6 +169,44 @@ hl("LineNr", { fg = palette.line_number_fg, bg = palette.none })
 hl("Error", { fg = palette.error, bg = palette.none })
 
 hl("Cursor", { fg = palette.cursor_fg, bg = palette.cursor_bg })
+
+-- Generic language highlighting
+-- https://github.com/sdras/night-owl-vscode-theme/blob/master/themes/Night%20Owl-color-theme.json#L249-L255
+hl("Comment", { fg = palette.dark_cyan, italic = true })
+hl("Constant", { fg = palette.red })
+hl("String", { fg = palette.light_orange })
+hl("Number", { fg = palette.orange })
+hl("Boolean", { fg = palette.red })
+hl("Identifier", { fg = palette.cyan2 })
+hl("Function", { fg = palette.blue, italic = true })
+hl("Identifier", { fg = palette.cyan2 })
+hl("FuncBuiltIn", { fg = palette.green })
+hl("Statement", { fg = palette.magenta })
+hl("Keyword", { fg = palette.magenta })
+hl("Exception", { fg = palette.magenta, italic = true })
+hl("PreProc", { fg = palette.magenta, italic = true })
+hl("Type", { fg = palette.green })
+hl("StorageClass", { fg = palette.magenta })
+hl("Structure", { fg = palette.magenta })
+hl("Todo", { fg = palette.red })
+hl("SpellBad", { fg = palette.red, undercurl = true })
+hl("ClassName", { fg = palette.light_orange })
+hl("Modifier", { fg = palette.magenta, italic = true })
+
+-- https://github.com/neovim/neovim/issues/9800
+hl("CursorLine", { bg = "#112630" })
+hl("CursorLineNr", { fg = "#aaaaaa", bg = "#112630" })
+hl("ColorColumn", { bg = "#222222" })
+hl("Directory", { fg = palette.blue })
+hl("Special", { fg = palette.orange })
+hl("Conceal", { fg = palette.ui_border2 })
+hl("Delimiter", { link = "NONE" })
+
+-- Statusline
+hl("StatusLine", { bg = palette.bg, fg = palette.blue })
+hl("StatusLineNC", { bg = palette.bg, fg = palette.ui_border })
+hl("User1", { fg = palette.blue })
+hl("User2", { fg = palette.blue, italic = true })
 
 -- Diagnostics
 hl("DiagnosticError", { link = "Error" })
@@ -257,3 +233,8 @@ hl("ConflictMarkerOurs", { bg = "#1f4055" })
 hl("ConflictMarkerTheirs", { bg = "#0f1f3f" })
 hl("ConflictMarkerEnd", { bg = "#2b2a5e" })
 hl("ConflictMarkerCommonAncestorsHunk", { bg = "#754a81" })
+
+-- gitsigns.nvim
+hl("GitSignsAdd", { fg = palette.sign_add })
+hl("GitSignsChange", { fg = palette.sign_change })
+hl("GitSignsDelete", { fg = palette.sign_delete })
