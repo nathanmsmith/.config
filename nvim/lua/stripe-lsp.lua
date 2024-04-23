@@ -1,1 +1,0 @@
-/Users/nms/stripe/stripe-config/nvim/lua/lsp.lua
