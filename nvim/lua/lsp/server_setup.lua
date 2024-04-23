@@ -3,7 +3,7 @@ local lspconfig = require("lspconfig")
 
 local basic_servers = require("lsp.servers").basic
 if helpers.isModuleAvailable("stripe") then
-  basic_servers = require("stripe").basicServers()
+  basic_servers = require("stripe-lsp").basicServers()
 end
 
 -- LSP servers and clients are able to communicate to each other what features they support.
@@ -23,7 +23,7 @@ require("lsp.lua_server")
 
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then
-  require("stripe").initServers()
+  require("stripe-lsp").initServers()
 else
   require("lsp.sourcekit")
   require("lsp.sorbet")

@@ -4,8 +4,8 @@ local servers = require("lsp.servers")
 local installable_servers = servers.installable
 local installable_tools = servers.tools
 if helpers.isModuleAvailable("stripe") then
-  installable_servers = require("stripe").installableServers()
-  installable_tools = require("stripe").installableTools()
+  installable_servers = require("stripe-lsp").installableServers()
+  installable_tools = require("stripe-lsp").installableTools()
 end
 
 -- Installer config

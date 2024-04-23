@@ -58,7 +58,7 @@ require("statusline")
 if not helpers.isModuleAvailable("stripe") then
   require("projectionist")
 else
-  require("stripe-projectionist").addPayserverProjections()
+  -- require("stripe-projectionist").addPayserverProjections()
 end
 require("formatting")
 require("diagnostic")
