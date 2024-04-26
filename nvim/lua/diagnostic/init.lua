@@ -58,10 +58,9 @@ else
   require("diagnostic.linters")
 end
 
-local lint_group = vim.api.nvim_create_augroup("Lint", { clear = true })
-vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost", "TextChanged", "TextChangedI" }, {
   desc = "Rerun linters when buffer changes",
-  group = lint_group,
+  group = vim.api.nvim_create_augroup("Lint", { clear = true }),
   callback = function()
     require("lint").try_lint()
   end,

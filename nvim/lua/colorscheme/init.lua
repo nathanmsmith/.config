@@ -117,50 +117,6 @@ if exists("syntax_on")
 endif
 let g:colors_name="night-owl"
 
-
-hi DiffAdd guifg=#99b76d guibg=#121e3d gui=NONE
-hi DiffChange guifg=#d6deeb guibg=NONE gui=NONE cterm=NONE
-hi DiffDelete guifg=#EF5350 guibg=#221f3d
-hi DiffText guifg=#addb67 guibg=NONE gui=NONE cterm=NONE
-
-hi VertSplit guifg=#011627 guibg=NONE gui=NONE
-hi Folded guifg=#777777 ctermfg=243 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
-hi FoldColumn guifg=#333333 ctermfg=236 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
-hi SignColumn guifg=NONE ctermfg=NONE guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
-hi IncSearch guifg=#eeeeee ctermfg=255 guibg=#ecc48d ctermbg=222 gui=NONE cterm=NONE
-hi NonText guifg=#444444 ctermfg=238 gui=NONE cterm=NONE
-hi PMenu guibg=#2d2c5d ctermbg=236 gui=NONE cterm=NONE
-hi PMenuSel guibg=#c792ea ctermbg=176 gui=NONE cterm=NONE
-hi Search guifg=#011627 ctermfg=233 guibg=#ecc48d ctermbg=222 gui=NONE cterm=NONE
-hi SpecialKey guifg=#ecc48d ctermfg=222 gui=NONE cterm=NONE
-hi Title guifg=#82aaff ctermfg=111 gui=bold cterm=bold
-hi Visual guifg=#d6deeb ctermfg=253 guibg=#2d2c5d ctermbg=236 gui=NONE cterm=NONE
-hi EndOfBuffer guifg=#444444 ctermfg=238 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
-
-hi MatchParen guifg=#ef5350 guibg=NONE gui=bold
-
-" Statusline
-
-
-
-" TODO: Operator mode?
-hi Operator guifg=#c792ea ctermfg=176 gui=NONE cterm=NONE
-
-
-" Markdown
-hi markdownHeadingDelimiter guifg=#637777 ctermfg=243 gui=NONE cterm=NONE
-hi markdownCodeDelimiter guifg=#ecc48d ctermfg=222 gui=NONE cterm=NONE
-hi markdownCode guifg=#aaaaaa ctermfg=248 gui=NONE cterm=NONE
-hi mkdCodeStart guifg=#d6deeb ctermfg=253 gui=NONE cterm=NONE
-hi mkdCodeEnd guifg=#d6deeb ctermfg=253 gui=NONE cterm=NONE
-hi mkdLinkDef guifg=#7fdbca ctermfg=116 gui=NONE cterm=NONE
-hi mkdCodeDelimiter guifg=#637777 ctermfg=243 guibg=#011627 ctermbg=233 gui=NONE cterm=NONE
-
-" Git commit top line
-" TODO: not sure if right color
-hi gitcommitSummary guifg=#d6deeb ctermfg=253 gui=NONE cterm=NONE
-
-" TODO: Diff Editor
 ]])
 
 hl("Normal", { fg = palette.fg, bg = palette.bg })
@@ -192,6 +148,8 @@ hl("Todo", { fg = palette.red })
 hl("SpellBad", { fg = palette.red, undercurl = true })
 hl("ClassName", { fg = palette.light_orange })
 hl("Modifier", { fg = palette.magenta, italic = true })
+hl("Operator", { fg = palette.magenta })
+hl("MatchParen", { fg = palette.red, bold = true })
 
 -- https://github.com/neovim/neovim/issues/9800
 hl("CursorLine", { bg = "#112630" })
@@ -201,6 +159,25 @@ hl("Directory", { fg = palette.blue })
 hl("Special", { fg = palette.orange })
 hl("Conceal", { fg = palette.ui_border2 })
 hl("Delimiter", { link = "NONE" })
+
+hl("DiffAdd", { fg = "#99b76d", bg = "#121e3d" })
+hl("DiffChange", { fg = palette.fg })
+hl("DiffDelete", { fg = palette.sign_delete, bg = "#221f3d" })
+hl("DiffText", { fg = palette.green })
+
+hl("VertSplit", { fg = palette.bg })
+hl("Folded", { fg = "#777777", bg = "#011627" })
+hl("FoldColumn", { fg = "#333333", bg = "#011627" })
+hl("SignColumn", { bg = "#011627" })
+hl("IncSearch", { fg = "#eeeeee", bg = palette.light_orange })
+hl("NonText", { fg = "#444444" })
+hl("PMenu", { bg = "#2d2c5d" })
+hl("PMenuSel", { bg = palette.magenta })
+hl("Search", { fg = "#011627", bg = palette.light_orange })
+hl("SpecialKey", { fg = palette.light_orange })
+hl("Title", { fg = palette.blue, bold = true })
+hl("Visual", { fg = palette.fg, bg = "#2d2c5d" })
+hl("EndOfBuffer", { fg = "#444444", bg = "#011627" })
 
 -- Statusline
 hl("StatusLine", { bg = palette.bg, fg = palette.blue })
