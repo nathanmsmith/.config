@@ -102,6 +102,8 @@ return {
     version = "*",
     config = function()
       require("mini.ai").setup({
+        n_lines = 1000,
+        search_method = "cover",
         custom_textobjects = {
           -- Replicate the "entire" object from https://github.com/kana/vim-textobj-entire
           e = function()
@@ -222,19 +224,15 @@ return {
 
   -- Profiling
   -- "dstein64/vim-startuptime",
-
+  --
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {
-      modes = {
-        search = { enabled = false },
-        char = {
-          enabled = true,
-          multi_line = false,
-        },
-      },
-    },
+    "jinh0/eyeliner.nvim",
+    config = function()
+      require("eyeliner").setup({
+        highlight_on_key = true,
+        dim = true,
+      })
+    end,
   },
 
   { "kevinhwang91/nvim-bqf", ft = "qf" },

@@ -197,12 +197,16 @@ hl("DiagnosticUnderlineHint", { sp = palette.blue, undercurl = true })
 
 -- flash.nvim (https://github.com/folke/flash.nvim)
 -- hl("FlashBackdrop", {link = "Comment"})
-hl("FlashMatch", { fg = palette.red, bg = palette.none })
-hl("FlashCurrent", { fg = palette.red, bg = palette.none })
-hl("FlashLabel", { fg = palette.red, bg = palette.none })
-hl("FlashPrompt", { fg = palette.red, bg = palette.none })
-hl("FlashPromptIcon", { fg = palette.red, bg = palette.none })
-hl("FlashCursor", { fg = palette.green, bg = palette.none })
+-- hl("FlashMatch", { fg = palette.red, bg = palette.none })
+-- hl("FlashCurrent", { fg = palette.red, bg = palette.none })
+-- hl("FlashLabel", { fg = palette.red, bg = palette.none })
+-- hl("FlashPrompt", { fg = palette.red, bg = palette.none })
+-- hl("FlashPromptIcon", { fg = palette.red, bg = palette.none })
+-- hl("FlashCursor", { fg = palette.green, bg = palette.none })
+
+-- eyeliner.nvim
+hl("EyelinerPrimary", { fg = palette.red, bold = true, underline = true })
+hl("EyelinerSecondary", { fg = palette.orange, underline = true })
 
 -- conflict-marker.vim (https://github.com/rhysd/conflict-marker.vim)
 hl("ConflictMarkerBegin", { bg = "#567f9a" })
