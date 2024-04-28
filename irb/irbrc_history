@@ -1,2 +1,3 @@
 Bank.find_each(&:save)
 quit
+quit
