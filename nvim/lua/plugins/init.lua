@@ -93,7 +93,7 @@ return {
   {
     "chaoren/vim-wordmotion",
     config = function()
-      vim.g.wordmotion_spaces = { "w@<=-w@=", "w@<=_w@=", ".", ":" }
+      -- vim.g.wordmotion_spaces = { "_", "-", "[", "]", "(", ")", "{", "}", "'", '"', ",", ".", "/" }
     end,
   },
 
