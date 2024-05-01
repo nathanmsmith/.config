@@ -139,6 +139,10 @@ return {
         after_words("\\[", alnum_with_graph),
         before_words("\\]", alnum_with_graph),
         after_words("\\]", alnum_with_graph),
+        before_words("{", alnum_with_graph),
+        after_words("{", alnum_with_graph),
+        before_words("}", alnum_with_graph),
+        after_words("}", alnum_with_graph),
       }
 
       -- vim.g.wordmotion_spaces = { "_", "-", "[", "]", "(", ")", "{", "}", "'", '"', ",", ".", "/" }
@@ -273,15 +277,6 @@ return {
   -- Profiling
   -- "dstein64/vim-startuptime",
   --
-  {
-    "jinh0/eyeliner.nvim",
-    config = function()
-      require("eyeliner").setup({
-        highlight_on_key = true,
-        dim = true,
-      })
-    end,
-  },
 
   { "kevinhwang91/nvim-bqf", ft = "qf" },
 
