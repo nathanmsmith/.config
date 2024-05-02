@@ -71,3 +71,7 @@ vim.cmd([[
 ]])
 
 -- TODO: test
+vim.keymap.set("n", "[t", ":tabprevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "]t", ":tabnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "[T", ":tabfirst<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "]T", ":tablast<CR>", { noremap = true, silent = true })
