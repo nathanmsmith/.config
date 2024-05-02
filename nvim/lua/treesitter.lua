@@ -12,7 +12,7 @@ require("nvim-treesitter.configs").setup({
   highlight = { enable = true },
   indent = { enable = true },
   -- Plugin config
-  autotag = { enable = true },
+  -- autotag = { enable = true },
   endwise = { enable = true },
   matchup = {
     enable = true,
