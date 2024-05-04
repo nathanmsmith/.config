@@ -1,7 +1,7 @@
 local helpers = require("custom-helpers")
 
 if helpers.isModuleAvailable("stripe") then
-  require("stripe").initFuzzyFind()
+  require("stripe-fuzzy_find").initFuzzyFind()
 else
   require("telescope").setup({
     defaults = {
