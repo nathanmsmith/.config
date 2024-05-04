@@ -185,6 +185,11 @@ hl("StatusLineNC", { bg = palette.bg, fg = palette.ui_border })
 hl("User1", { fg = palette.blue })
 hl("User2", { fg = palette.blue, italic = true })
 
+-- Tabline
+hl("TabLine", { bg = palette.bg, fg = "#aaaaaa" })
+hl("TabLineFill", { bg = palette.bg, fg = palette.ui_border })
+hl("TabLineSel", { bg = palette.bg, fg = palette.green })
+
 -- Diagnostics
 hl("DiagnosticError", { link = "Error" })
 hl("DiagnosticWarn", { fg = palette.orange })
