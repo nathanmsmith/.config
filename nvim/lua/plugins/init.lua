@@ -154,6 +154,8 @@ return {
         after_words("<", alnum_with_graph),
         before_words(">", alnum_with_graph),
         after_words(">", alnum_with_graph),
+        before_words("/", alnum_with_graph),
+        after_words("/", alnum_with_graph),
       }
 
       -- vim.g.wordmotion_spaces = { "_", "-", "[", "]", "(", ")", "{", "}", "'", '"', ",", ".", "/" }
