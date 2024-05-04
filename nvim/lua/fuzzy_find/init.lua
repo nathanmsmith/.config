@@ -59,6 +59,7 @@ else
     },
   })
 end
+
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
 require("telescope").load_extension("harpoon")
@@ -77,3 +78,7 @@ vim.keymap.set(
   require("telescope.builtin").current_buffer_fuzzy_find,
   { desc = "[/] Fuzzily search in current buffer]" }
 )
+
+if helpers.isModuleAvailable("stripe") then
+  require("stripe-fuzzy_find").initKeybinds()
+end
