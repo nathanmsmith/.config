@@ -55,10 +55,10 @@ require("statusline")
 
 -- I keep my work specific configuration in a private work repo and connect it via symlinks.
 -- `helpers.isModuleAvailable("stripe")` is how I check to see if work files are present, i.e., I'm on a work machine.
-if not helpers.isModuleAvailable("stripe") then
-  require("projectionist")
+if helpers.isModuleAvailable("stripe") then
+  require("stripe-projectionist").addPayserverProjections()
 else
-  -- require("stripe-projectionist").addPayserverProjections()
+  require("projectionist")
 end
 require("formatting")
 require("diagnostic")
@@ -69,9 +69,3 @@ vim.cmd([[
   :command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 
 ]])
-
--- TODO: test
-vim.keymap.set("n", "[t", ":tabprevious<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]t", ":tabnext<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "[T", ":tabfirst<CR>", { noremap = true, silent = true })
-vim.keymap.set("n", "]T", ":tablast<CR>", { noremap = true, silent = true })

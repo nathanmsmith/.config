@@ -144,18 +144,6 @@ vim.opt.spelloptions = "camel"
 -- make Y consistent with C and D.
 vim.keymap.set("n", "Y", "y$")
 
--- Open images in an image viewer (probably Preview)
--- TODO: Not working
--- local external_files_group = vim.api.nvim_create_augroup("ExternalOpener", { clear = true })
--- vim.api.nvim_create_autocmd("BufEnter", {
---   command = 'exec "silent !open ".expand("%") | :bw',
---   group = external_files_group,
---   pattern = { "*.png", "*.jpg", "*.gif" },
--- })
---
-
-vim.g.netrw_localrmdir = "rm -r"
-
 -- TODO: convert to lua
 -- set shell=/usr/bin/env\ bash
 
@@ -182,3 +170,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+
+-- Navigate around tabs easier.
+-- This overrides vim's default ctags navigation which is okay because who uses ctags anymore?
+vim.keymap.set("n", "[t", ":tabprevious<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "]t", ":tabnext<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "[T", ":tabfirst<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "]T", ":tablast<CR>", { noremap = true, silent = true })
