@@ -35,8 +35,9 @@ return {
     opts = {
       floating_window = false,
       hint_prefix = "",
-      -- TODO: Enable this for nvim 0.10
-      -- hint_inline = function() return false end,  -- should the hint be inline(nvim 0.10 only)?  default false
+      hint_inline = function()
+        return true
+      end,
     },
   },
   -- Autopair

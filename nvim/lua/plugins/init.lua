@@ -6,9 +6,6 @@ return {
   -- Formatting
   { "stevearc/conform.nvim", opts = {} },
 
-  -- Comment easily
-  "tpope/vim-commentary",
-
   -- Editing nicities
   "tpope/vim-repeat",
   {
@@ -82,7 +79,6 @@ return {
       vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
     end,
   },
-  "stsewd/gx-extended.vim",
 
   -- Autohide search highlighting on move
   "romainl/vim-cool",
