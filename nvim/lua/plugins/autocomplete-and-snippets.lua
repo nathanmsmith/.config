@@ -29,22 +29,23 @@ return {
       require("snippets")
     end,
   },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {
-      floating_window = false,
-      hint_prefix = "",
-      hint_inline = function()
-        return true
-      end,
-    },
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   -- event = "VeryLazy",
+  --   opts = {
+  --     floating_window = false,
+  --     hint_prefix = "",
+  --     hint_inline = function()
+  --       return "eol"
+  --     end,
+  --     hi_parameter = "Comment",
+  --   },
+  -- },
   -- Autopair
-  {
-    "windwp/nvim-autopairs",
-    opts = {},
-  },
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   opts = {},
+  -- },
   {
     "chrisgrieser/nvim-scissors",
     dependencies = "nvim-telescope/telescope.nvim",

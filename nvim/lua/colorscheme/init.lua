@@ -224,3 +224,5 @@ hl("ConflictMarkerCommonAncestorsHunk", { bg = "#754a81" })
 hl("GitSignsAdd", { fg = palette.sign_add })
 hl("GitSignsChange", { fg = palette.sign_change })
 hl("GitSignsDelete", { fg = palette.sign_delete })
+
+hl("LspSignatureActiveParameter", { link = "Comment" })
