@@ -1,7 +1,7 @@
 -- Welcome! 👋
 -- This is my config for Neovim.
 
-require("colorscheme")
+vim.cmd("colorscheme nightowl")
 
 local helpers = require("custom-helpers")
 
@@ -68,5 +68,4 @@ require("testing")
 vim.cmd([[
   source ~/.config/nvim/config/custom-commands.vim
   :command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
-
 ]])

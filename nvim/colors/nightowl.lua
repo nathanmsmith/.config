@@ -100,24 +100,11 @@ local function hl(name, val)
   vim.api.nvim_set_hl(0, name, val)
 end
 
-vim.cmd([[
-" ===============================================================
-" night-owl
-"
-" URL: https://github.com/haishanh/night-owl.vim
-" Author: Haishan
-" License: MIT
-" Last Change: 2019/12/18 10:28
-" ===============================================================
+vim.cmd("highlight clear")
 
-set background=dark
-hi clear
-if exists("syntax_on")
-  syntax reset
-endif
-let g:colors_name="night-owl"
-
-]])
+-- vim.opt.background = "dark"
+vim.g.colors_name = "nightowl"
+-- vim.opt.termguicolors = true
 
 hl("Normal", { fg = palette.fg, bg = palette.bg })
 hl("LineNr", { fg = palette.line_number_fg, bg = palette.none })
