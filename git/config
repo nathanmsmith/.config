@@ -15,6 +15,9 @@
 	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi > .gitignore"
   remote-fetch = "!rf() { git config --add remote.origin.fetch +refs/heads/$1:refs/remotes/origin/$1; git fetch origin +$1:refs/remotes/origin/$1; }; rf"
   remote-purge = "!rp() { git config --unset remote.origin.fetch \".*$1.*\"; git update-ref -d refs/remotes/origin/$1; }; rp"
+	diff-parent = town diff-parent
+	propose = town propose
+	set-parent = town set-parent
 
 [credential]
 	helper = osxkeychain
