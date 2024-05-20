@@ -59,3 +59,5 @@ gh/
 
 systemd/
 dev-runner/
+
+nvim/lazy-lock.json
