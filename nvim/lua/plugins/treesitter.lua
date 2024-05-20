@@ -6,7 +6,6 @@ return {
       "JoosepAlviste/nvim-ts-context-commentstring",
       "windwp/nvim-ts-autotag",
       "RRethy/nvim-treesitter-endwise",
-      "nvim-treesitter/playground",
     },
     build = ":TSUpdate",
     config = function()

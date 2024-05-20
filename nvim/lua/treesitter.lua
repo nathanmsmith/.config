@@ -19,12 +19,6 @@ require("nvim-treesitter.configs").setup({
     disable_virtual_text = true,
     include_match_words = false,
   },
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-  },
   textobjects = {
     select = {
       enable = true,
