@@ -238,19 +238,6 @@ return {
     },
   },
 
-  {
-    "folke/todo-comments.nvim",
-    event = "VimEnter",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      signs = false,
-      highlight = {
-        keyword = "fg",
-      },
-      -- TODO: Get keywords like "TODO" and "FIXME" to underline
-    },
-  },
-
   -- Maximize current split
   "szw/vim-maximizer",
 
