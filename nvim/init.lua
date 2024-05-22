@@ -27,6 +27,8 @@ if not vim.loop.fs_stat(lazypath) then
     lazypath,
   })
 end
+-- See: https://www.reddit.com/r/neovim/comments/1cvrilk/diagnosticwarning_after_upgrade_to_neovim_010/
+--- @diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", {
   performance = {
