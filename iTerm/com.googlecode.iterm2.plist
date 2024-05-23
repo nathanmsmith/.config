@@ -2105,6 +2105,8 @@
 	<false/>
 	<key>DimOnlyText</key>
 	<false/>
+	<key>DisableTmuxWindowResizing</key>
+	<true/>
 	<key>EnableAPIServer</key>
 	<true/>
 	<key>EscapeShellCharsWithBackslash</key>
@@ -4951,7 +4953,7 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>4</integer>
 	<key>TmuxSyncClipboard</key>
-	<false/>
+	<true/>
 	<key>UseMetal</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
