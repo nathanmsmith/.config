@@ -15,12 +15,12 @@ if helpers.isModuleAvailable("stripe") then
 end
 
 -- Set choice toggle to <c-e>
-vim.keymap.set(
-  { "i", "s" },
-  "<c-e>",
-  "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<c-e>'",
-  { silent = true, expr = true }
-)
+-- vim.keymap.set(
+--   { "i", "s" },
+--   "<c-e>",
+--   "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<c-e>'",
+--   { silent = true, expr = true }
+-- )
 
 -- Skeletons
 -- local function expandSkeletonSnippet(language, skeleton)
