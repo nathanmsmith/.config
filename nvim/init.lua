@@ -72,16 +72,16 @@ vim.cmd([[
   :command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 ]])
 
-if vim.env.TMUX then
-  vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = require("tmux_osc52").copy("+"),
-      ["*"] = require("tmux_osc52").copy("*"),
-    },
-    paste = {
-      ["+"] = require("tmux_osc52").paste("+"),
-      ["*"] = require("tmux_osc52").paste("*"),
-    },
-  }
-end
+-- if vim.env.TMUX then
+--   vim.g.clipboard = {
+--     name = "OSC 52",
+--     copy = {
+--       ["+"] = require("tmux_osc52").copy("+"),
+--       ["*"] = require("tmux_osc52").copy("*"),
+--     },
+--     paste = {
+--       ["+"] = require("tmux_osc52").paste("+"),
+--       ["*"] = require("tmux_osc52").paste("*"),
+--     },
+--   }
+-- end
