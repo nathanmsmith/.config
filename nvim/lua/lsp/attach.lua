@@ -2,6 +2,9 @@
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("lsp-attach", { clear = true }),
   callback = function(event)
+    --- @param keys string
+    --- @param func function
+    --- @param desc string
     local nmap = function(keys, func, desc)
       if desc then
         desc = "LSP: " .. desc
@@ -10,19 +13,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
       vim.keymap.set("n", keys, func, { buffer = event.buffer, desc = desc })
     end
 
-    nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-    nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
+    nmap("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+    nmap("gra", vim.lsp.buf.code_action, "[C]ode [A]ction")
+    nmap("grr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+    nmap("<C-s>", vim.lsp.buf.signature_help, "Signature Documentation")
+    nmap("gh", vim.lsp.buf.hover, "Hover Documentation")
     nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
     nmap("gD", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
     nmap("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-    nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
     nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
     nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
-
-    nmap("gh", vim.lsp.buf.hover, "Hover Documentation")
-    nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-    nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
 
     -- Lesser used LSP functionality
     nmap("<leader>D", vim.lsp.buf.declaration, "[G]oto [D]eclaration")

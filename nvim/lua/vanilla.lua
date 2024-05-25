@@ -1,5 +1,3 @@
-vim.o.termguicolors = true
-
 -- Show line numbers
 vim.wo.number = true
 
@@ -140,9 +138,6 @@ vim.opt.gdefault = true
 vim.opt.spelllang = "en_us"
 vim.opt.spell = true
 vim.opt.spelloptions = "camel"
-
--- make Y consistent with C and D.
-vim.keymap.set("n", "Y", "y$")
 
 -- TODO: convert to lua
 -- set shell=/usr/bin/env\ bash
