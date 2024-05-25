@@ -23,6 +23,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     nmap("gi", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
     nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
     nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+    nmap("<leader>ih", function()
+      vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, "Toggle [I]nlay [H]ints")
 
     -- Lesser used LSP functionality
     nmap("<leader>D", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
