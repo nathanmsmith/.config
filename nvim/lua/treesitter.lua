@@ -1,13 +1,3 @@
-require("ts_context_commentstring").setup({
-  enable_autocmd = false,
-  commentary_integration = {
-    Commentary = "gc",
-    CommentaryLine = "gcc",
-    ChangeCommentary = "cgc",
-    CommentaryUndo = "gcu",
-  },
-})
-
 require("nvim-treesitter.configs").setup({
   highlight = { enable = true },
   indent = { enable = true },
