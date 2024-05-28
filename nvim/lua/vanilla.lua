@@ -1,3 +1,6 @@
+-- True color always
+vim.o.termguicolors = true
+
 -- Show line numbers
 vim.wo.number = true
 
