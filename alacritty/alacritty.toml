@@ -5,6 +5,9 @@ normal = {family = "Dank Mono"}
 [cursor.style]
 blinking = "On"
 
+[window]
+option_as_alt = "Both"
+
 # Default colors
 [colors.primary]
 background = "#011627"
