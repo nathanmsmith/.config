@@ -27,4 +27,5 @@ if helpers.isModuleAvailable("stripe") then
 else
   require("lsp.sourcekit")
   require("lsp.sorbet")
+  -- require("lsp.ruby_lsp")
 end
