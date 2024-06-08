@@ -6,7 +6,15 @@ normal = {family = "Dank Mono"}
 blinking = "On"
 
 [window]
+# Pass alt key into Zellij
+# https://zellij.dev/documentation/faq.html#i-am-a-macos-user-how-can-i-use-the-alt-key
 option_as_alt = "Both"
+decorations = "Buttonless"
+dynamic_padding = false
+
+[window.padding]
+x = 10
+y = 10
 
 # Default colors
 [colors.primary]
@@ -37,8 +45,11 @@ background = "#1d3b53"
 
 # Selection colors
 [colors.selection]
-text = "#ffffff"
-background = "#0d486e"
+  text = "CellBackground"
+  background = "CellForeground"
+  # text = "#ffffff"
+  # background = "#0d486e"
+  # cursor = "CellForeground"
 
 # Normal colors
 [colors.normal]
