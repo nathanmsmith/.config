@@ -26,6 +26,8 @@
 	<string>tmux</string>
 	<key>ConvertDosNewlines</key>
 	<true/>
+	<key>ConvertItalicsToReverseVideoForTmux</key>
+	<false/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Night Owl</key>
