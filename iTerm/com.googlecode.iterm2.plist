@@ -2110,7 +2110,7 @@
 	<key>DimOnlyText</key>
 	<false/>
 	<key>DisableTmuxWindowResizing</key>
-	<true/>
+	<false/>
 	<key>EnableAPIServer</key>
 	<true/>
 	<key>EscapeShellCharsWithBackslash</key>
