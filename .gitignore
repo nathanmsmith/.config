@@ -61,3 +61,5 @@ systemd/
 dev-runner/
 
 nvim/lazy-lock.json
+
+Transmission Remote GUI/
