@@ -18,6 +18,7 @@
 	diff-parent = town diff-parent
 	propose = town propose
 	set-parent = town set-parent
+	undo = reset --soft HEAD^
 
 [credential]
 	helper = osxkeychain
