@@ -58,7 +58,6 @@ require("statusline")
 -- I keep my work specific configuration in a private work repo and connect it via symlinks.
 -- `helpers.isModuleAvailable("stripe")` is how I check to see if work files are present, i.e., I'm on a work machine.
 if helpers.isModuleAvailable("stripe") then
-  require("stripe-projectionist").addPayserverProjections()
   require("stripe").initClipboard()
 else
   require("projectionist")
