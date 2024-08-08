@@ -63,3 +63,5 @@ dev-runner/
 nvim/lazy-lock.json
 
 Transmission Remote GUI/
+
+irb/irbrc_history
