@@ -290,3 +290,7 @@ hl("@lsp.type.struct", { link = "Structure" })
 hl("@lsp.type.type", { link = "Type" })
 hl("@lsp.type.typeParameter", { link = "TypeDef" })
 hl("@lsp.type.variable", { link = "Identifier" })
+
+-- Trouble.nvim
+hl("TroubleNormal", { link = "Normal" })
+hl("TroubleNormalNC", { link = "Normal" })
