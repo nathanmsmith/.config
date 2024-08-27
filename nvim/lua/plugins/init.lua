@@ -23,7 +23,12 @@ return {
   "tpope/vim-abolish",
   "tpope/vim-projectionist",
   "tpope/vim-eunuch",
-  "tpope/vim-surround",
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
+  },
 
   {
     "ThePrimeagen/harpoon",
