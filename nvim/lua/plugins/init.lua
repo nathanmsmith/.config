@@ -200,8 +200,11 @@ return {
         n_lines = 1000,
         search_method = "cover",
         custom_textobjects = {
+          -- Disable brackets alias in favor of builtin block textobject
+          ["b"] = false,
+
           -- Replicate the "entire" object from https://github.com/kana/vim-textobj-entire
-          e = function()
+          ["e"] = function()
             local from = { line = 1, col = 1 }
             local to = {
               line = vim.fn.line("$"),
@@ -209,6 +212,10 @@ return {
             }
             return { from = from, to = to }
           end,
+
+          -- Tags, but allow dashes like <custom-tag>
+          -- ref: https://github.com/echasnovski/mini.ai/blob/main/lua/mini/ai.lua#L1114
+          ["t"] = { "<([%w-]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },
         },
       })
     end,
