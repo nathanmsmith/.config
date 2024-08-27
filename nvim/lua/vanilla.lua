@@ -4,6 +4,8 @@ vim.o.termguicolors = true
 -- Show line numbers
 vim.wo.number = true
 
+vim.opt.scrolloff = 20
+
 -- Show whitespace
 vim.o.list = true
 vim.opt.listchars = {
