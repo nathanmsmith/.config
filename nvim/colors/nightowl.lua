@@ -159,7 +159,6 @@ hl("SignColumn", { bg = "#011627" })
 hl("IncSearch", { fg = "#eeeeee", bg = palette.light_orange })
 hl("NonText", { fg = "#444444" })
 hl("PMenu", { bg = "#2d2c5d" })
-hl("NormalFloat", { bg = "#2d2c5d" })
 hl("PMenuSel", { bg = palette.magenta })
 hl("Search", { fg = "#011627", bg = palette.light_orange })
 hl("SpecialKey", { fg = palette.light_orange })
@@ -172,6 +171,10 @@ hl("StatusLine", { bg = palette.bg, fg = palette.blue })
 hl("StatusLineNC", { bg = palette.bg, fg = palette.ui_border })
 hl("User1", { fg = palette.blue })
 hl("User2", { fg = palette.blue, italic = true })
+
+-- Floats
+hl("NormalFloat", { bg = palette.bg })
+hl("FloatBorder", { link = "StatusLine" })
 
 -- Tabline
 hl("TabLine", { bg = palette.bg, fg = "#aaaaaa" })
@@ -297,7 +300,6 @@ hl("TroubleNormalNC", { link = "Normal" })
 
 -- nvim-bqf
 -- https://github.com/kevinhwang91/nvim-bqf?tab=readme-ov-file#highlight-groups
-hl("BqfPreviewBorder", { link = "StatusLine" })
 hl("BqfPreviewRange", { fg = palette.light_orange })
 -- hi default link BqfPreviewFloat Normal
 -- hi default link BqfPreviewBorder FloatBorder

@@ -57,6 +57,9 @@ return {
       vim.o.timeout = true
       vim.o.timeoutlen = 200
       require("which-key").setup({
+        win = {
+          border = "rounded",
+        },
         icons = {
           mappings = false,
           keys = {
