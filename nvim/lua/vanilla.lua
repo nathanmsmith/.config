@@ -40,27 +40,9 @@ vim.o.lazyredraw = true
 -- Diff Mode
 vim.opt.diffopt:append("internal")
 
--- Evenly resize windows on screen change
-local resize_group = vim.api.nvim_create_augroup("WindowWatcher", { clear = true })
-vim.api.nvim_create_autocmd("VimResized", { command = "wincmd =", group = resize_group, pattern = "*" })
-
 -- Set cursor, see :h guicursor
 vim.o.guicursor =
   "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
-
--- Reset the cursor on exit
--- See https://github.com/neovim/neovim/issues/4867#issuecomment-291249173
--- and https://github.com/neovim/neovim/wiki/FAQ#cursor-style-isnt-restored-after-exiting-nvim
-local cursor_group = vim.api.nvim_create_augroup("Cursor", { clear = true })
-vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
-  callback = function()
-    vim.o.guicursor = "a:ver25-blinkon1"
-    -- Round identations: https://vimtricks.com/p/ensuring-aligned-indentation/
-    vim.opt.shiftround = true
-  end,
-  group = cursor_group,
-  pattern = "*",
-})
 
 -- More sensible window splits
 vim.opt.splitbelow = true
@@ -94,16 +76,6 @@ vim.opt.inccommand = "nosplit"
 
 --Enable mouse mode
 vim.o.mouse = "a"
-
--- Highlight on yank
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-  callback = function()
-    vim.highlight.on_yank({ timeout = 1000 })
-  end,
-  group = highlight_group,
-  pattern = "*",
-})
 
 -- Disable swapfiles
 vim.opt.swapfile = false
@@ -147,29 +119,8 @@ vim.opt.spelloptions = "camel"
 -- TODO: convert to lua
 -- set shell=/usr/bin/env\ bash
 
-local trailing_whitespace_group = vim.api.nvim_create_augroup("TrimTrailingWhiteSpace", { clear = true })
-vim.api.nvim_create_autocmd(
-  "BufWritePre",
-  { command = "%s/\\s\\+$//e", group = trailing_whitespace_group, pattern = "*" }
-)
-vim.api.nvim_create_autocmd(
-  "BufWritePre",
-  { command = "%s/\\n\\+%$//e", group = trailing_whitespace_group, pattern = "*" }
-)
-
 vim.o.grepprg = "rg --vimgrep --no-heading --smart-case"
 vim.o.grepformat = "%f:%l:%c:%m"
-
--- Preserve file location before exit
-vim.api.nvim_create_autocmd("BufReadPost", {
-  callback = function()
-    local mark = vim.api.nvim_buf_get_mark(0, '"')
-    local lcount = vim.api.nvim_buf_line_count(0)
-    if mark[1] > 0 and mark[1] <= lcount then
-      pcall(vim.api.nvim_win_set_cursor, 0, mark)
-    end
-  end,
-})
 
 -- Navigate around tabs easier.
 -- This overrides vim's default ctags navigation which is okay because who uses ctags anymore?

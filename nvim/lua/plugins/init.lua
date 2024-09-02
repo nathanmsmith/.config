@@ -119,9 +119,6 @@ return {
     end,
   },
 
-  -- Autohide search highlighting on move
-  "romainl/vim-cool",
-
   -- Show Marks
   -- "kshenoy/vim-signature",
 

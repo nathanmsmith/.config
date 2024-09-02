@@ -53,6 +53,7 @@ require("lazy").setup("plugins", {
 })
 
 require("vanilla")
+require("autocmds")
 require("statusline")
 
 -- I keep my work specific configuration in a private work repo and connect it via symlinks.
