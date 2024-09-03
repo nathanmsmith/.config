@@ -237,20 +237,7 @@ return {
   -- Profiling
   -- "dstein64/vim-startuptime",
   --
-
-  {
-    "NvChad/nvim-colorizer.lua",
-    opts = {
-      -- TODO: make these options filetype-specific
-      user_default_options = {
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
-        names = false, -- "Name" codes like Blue or blue
-        RRGGBBAA = true, -- #RRGGBBAA hex codes
-        AARRGGBB = true, -- 0xAARRGGBB hex codes
-      },
-    },
-  },
+  { "brenoprata10/nvim-highlight-colors", opts = { render = "virtual", enable_tailwind = true } },
 
   {
     "m4xshen/hardtime.nvim",
