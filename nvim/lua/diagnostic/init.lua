@@ -6,6 +6,7 @@ vim.diagnostic.config({
   float = {
     -- Always show the source of a diagnostic message in the floating window
     source = true,
+    border = "single",
   },
 })
 

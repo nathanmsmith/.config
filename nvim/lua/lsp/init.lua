@@ -17,3 +17,4 @@ require("mason-tool-installer").setup({
 })
 
 require("lsp.server_setup")
+require("lsp.handlers")
