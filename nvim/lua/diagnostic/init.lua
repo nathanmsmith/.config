@@ -52,6 +52,9 @@ vim.keymap.set("n", "]w", function()
   })
 end)
 
+-- TODO: set
+-- lua vim.diagnostic.setloclist()<CR>
+
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initLinters()
 else
