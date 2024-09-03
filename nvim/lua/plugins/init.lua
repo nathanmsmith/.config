@@ -244,4 +244,11 @@ return {
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
   },
+
+  {
+    "onsails/diaglist.nvim",
+    config = function()
+      require("diaglist").init({})
+    end,
+  },
 }
