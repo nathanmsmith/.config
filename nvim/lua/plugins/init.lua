@@ -238,10 +238,4 @@ return {
   -- "dstein64/vim-startuptime",
   --
   { "brenoprata10/nvim-highlight-colors", opts = { render = "virtual", enable_tailwind = true } },
-
-  {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
 }
