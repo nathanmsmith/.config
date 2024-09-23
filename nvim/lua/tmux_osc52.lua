@@ -1,3 +1,5 @@
+-- UNUSED: Keeping around in case I want later
+--
 -- This is copied from Neovim core (as of 2024-05-22), with one notable exception --
 -- I've updated the OSC function to pass the commands through tmux directly to/from iTerm.
 --
