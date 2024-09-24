@@ -54,15 +54,40 @@ vim.keymap.set("n", "]w", function()
   })
 end)
 
--- TODO: Implement `:LspLoclist`
-vim.api.nvim_create_user_command("LspQuickfix", function(opts)
-  -- TODO: handle arguments like `:LspQuickfix Error`, `:LspQuickfix Warn`, `:LspQuickfix Info`, `:LspQuickfix Hint`
-  -- Have autocomplete for the arguments
-  local severity = { vim.diagnostic.severity.WARN, vim.diagnostic.severity.ERROR }
+local function my_command_complete(arg_lead, cmd_line, cursor_pos)
+  local completions = { "Error", "Warn", "Info", "Hint" }
 
-  -- TODO: fix this type error. Report bug to Neovim core?
-  vim.diagnostic.setqflist({ severity = severity })
-end, { desc = "", nargs = "?" })
+  -- Filter completions based on the current argument lead
+  return vim.tbl_filter(function(item)
+    return vim.startswith(item, arg_lead)
+  end, completions)
+end
+
+---Set the severity
+---@param severity_string string
+---@return vim.diagnostic.SeverityFilter
+local function set_severity(severity_string)
+  ---@type vim.diagnostic.SeverityFilter
+  local severity = { vim.diagnostic.severity.WARN, vim.diagnostic.severity.ERROR }
+  if severity_string:lower() == "error" then
+    severity = vim.diagnostic.severity.ERROR
+  elseif severity_string:lower() == "warn" then
+    severity = vim.diagnostic.severity.WARN
+  elseif severity_string:lower() == "info" then
+    severity = vim.diagnostic.severity.INFO
+  elseif severity_string:lower() == "hint" then
+    severity = vim.diagnostic.severity.HINT
+  end
+
+  return severity
+end
+
+vim.api.nvim_create_user_command("LspQuickfix", function(opts)
+  vim.diagnostic.setqflist({ severity = set_severity(opts.args) })
+end, { desc = "", nargs = "?", complete = my_command_complete })
+vim.api.nvim_create_user_command("LspLoclist", function(opts)
+  vim.diagnostic.setloclist({ severity = set_severity(opts.args) })
+end, { desc = "", nargs = "?", complete = my_command_complete })
 
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initLinters()
