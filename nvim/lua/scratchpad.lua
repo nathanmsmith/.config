@@ -26,6 +26,7 @@ vim.api.nvim_create_user_command("Lua", function(opts)
     -- Assume a range was given.
     -- TODO: handle multiple lines
     -- Use vim.region: https://github.com/neovim/neovim/pull/13896#issuecomment-1621702052
+    -- Use getregion over vim.region
     code_to_run = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)[1]
   end
 
