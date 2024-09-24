@@ -38,6 +38,7 @@ local get_highest_error_severity = function()
   end
 end
 
+-- TODO: get these to work with `ghgh`ing into a floating window
 vim.keymap.set("n", "[w", function()
   vim.diagnostic.goto_prev({
     severity = get_highest_error_severity(),
@@ -53,8 +54,15 @@ vim.keymap.set("n", "]w", function()
   })
 end)
 
--- TODO: set
--- lua vim.diagnostic.setloclist()<CR>
+-- TODO: Implement `:LspLoclist`
+vim.api.nvim_create_user_command("LspQuickfix", function(opts)
+  -- TODO: handle arguments like `:LspQuickfix Error`, `:LspQuickfix Warn`, `:LspQuickfix Info`, `:LspQuickfix Hint`
+  -- Have autocomplete for the arguments
+  local severity = { vim.diagnostic.severity.WARN, vim.diagnostic.severity.ERROR }
+
+  -- TODO: fix this type error. Report bug to Neovim core?
+  vim.diagnostic.setqflist({ severity = severity })
+end, { desc = "", nargs = "?" })
 
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initLinters()
