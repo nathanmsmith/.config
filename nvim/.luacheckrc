@@ -14,3 +14,5 @@ globals = {
   "vim.go",
   "vim.env",
 }
+
+max_line_length = false
