@@ -61,6 +61,4 @@ end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 --
 -- TODO: Neovim's telescope should grep all of help, not just search help tags
 --
--- TODO: disable Luacheck line length
---
 -- TODO: Syntax highlighting for gitcommit files?
