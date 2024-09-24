@@ -25,6 +25,7 @@ vim.api.nvim_create_user_command("Lua", function(opts)
   else
     -- Assume a range was given.
     -- TODO: handle multiple lines
+    -- Use vim.region: https://github.com/neovim/neovim/pull/13896#issuecomment-1621702052
     code_to_run = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)[1]
   end
 
@@ -36,6 +37,7 @@ vim.api.nvim_create_user_command("Lua", function(opts)
   -- Register 'l' for "Lua"
   vim.fn.setreg("l", result)
 end, { desc = "Run some arbitrary Lua code", nargs = "?", range = 2 })
+
 -- TODO: Open GitHub page for Neovim help page
 --   P1: Where are the help pages loaded for Neovim?
 --       Associate with Neovim GitHub page.
