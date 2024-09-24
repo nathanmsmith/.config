@@ -1,4 +1,67 @@
--- TODO: autocommand to reload scratchpad.lua on demand
+local scratchpath = vim.fn.stdpath("config") .. "/lua/scratchpad.lua"
+
+-- TODO: add type for _opts
+vim.api.nvim_create_user_command("Scratchpad", function(_opts)
+  vim.cmd("edit " .. scratchpath)
+end, { desc = "Open Scratchpad, a hot-reloading file. Try out ideas here.", nargs = 0 })
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = scratchpath,
+  group = vim.api.nvim_create_augroup("Scratchpad", { clear = true }),
+  callback = function()
+    vim.cmd("source " .. scratchpath)
+    vim.notify("Reloaded scratchpad 📝")
+  end,
+  desc = "Reload Lua files in Neovim config directory on save",
+})
+
+-- TODO: command to :lua print([VISUAL SELECTION])
+vim.api.nvim_create_user_command("Lua", function(opts)
+  -- TODO: It's Line 1 + Line 2 opts?
+  local result = vim.inspect(opts)
+  vim.notify(result)
+  -- vim.print(test)
+  -- Register 'l' for "Lua"
+  vim.fn.setreg("l", result)
+  -- TODO: put it in a register
+  --
+  -- with no visual selection
+  print({
+    args = "",
+    bang = false,
+    count = -1,
+    fargs = {},
+    line1 = 1,
+    line2 = 1,
+    mods = "",
+    name = "Lua",
+    range = 0,
+    reg = "",
+    smods = {
+      browse = false,
+      confirm = false,
+      emsg_silent = false,
+      hide = false,
+      horizontal = false,
+      keepalt = false,
+      keepjumps = false,
+      keepmarks = false,
+      keeppatterns = false,
+      lockmarks = false,
+      noautocmd = false,
+      noswapfile = false,
+      sandbox = false,
+      silent = false,
+      split = "",
+      tab = -1,
+      unsilent = false,
+      verbose = -1,
+      vertical = false,
+    },
+  })
+
+  print()
+end, { desc = "Open Scratchpad, a hot-reloading file. Try out ideas here.", nargs = 0, range = 2 })
 
 -- TODO: Open GitHub page for Neovim help page
 --   P1: Where are the help pages loaded for Neovim?

@@ -71,3 +71,5 @@ vim.cmd([[
   source ~/.config/nvim/config/custom-commands.vim
   :command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
 ]])
+
+require("scratchpad")
