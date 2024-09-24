@@ -26,4 +26,4 @@
 --
 -- TODO: disable Luacheck line length
 --
--- TODO:
+-- TODO: Syntax highlighting for gitcommit files?
