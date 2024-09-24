@@ -18,26 +18,24 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 -- TODO: command to :lua print([VISUAL SELECTION])
 vim.api.nvim_create_user_command("Lua", function(opts)
   local code_to_run
-  -- An argument was given
-  -- TODO: make this check more robust
-  if opts.args ~= "" then
-    code_to_run = opts.args
+  if opts.range ~= 0 then
+    -- Command was called with a range (visual selection or line range)
+    local start_pos = vim.fn.getpos("'<")
+    local end_pos = vim.fn.getpos("'>")
+    local lines = vim.fn.getregion(start_pos, end_pos)
+    code_to_run = table.concat(lines, "\n")
   else
-    -- Assume a range was given.
-    -- TODO: handle multiple lines
-    -- Use vim.region: https://github.com/neovim/neovim/pull/13896#issuecomment-1621702052
-    -- Use getregion over vim.region
-    code_to_run = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)[1]
+    -- Command was called without a range
+    code_to_run = opts.args
   end
 
-  print("Running: " .. code_to_run)
+  print("> " .. code_to_run)
   local result = loadstring("return " .. code_to_run)()
-  -- TODO: handle nil values
-  local stringified_result = tostring(result)
-  vim.notify(stringified_result)
+  local stringified_result = vim.inspect(result)
+  vim.notify("-> " .. stringified_result)
   -- Register 'l' for "Lua"
   vim.fn.setreg("l", result)
-end, { desc = "Run some arbitrary Lua code", nargs = "?", range = 2 })
+end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 
 -- TODO: Open GitHub page for Neovim help page
 --   P1: Where are the help pages loaded for Neovim?
