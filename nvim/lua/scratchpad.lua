@@ -62,3 +62,8 @@ end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 -- TODO: Neovim's telescope should grep all of help, not just search help tags
 --
 -- TODO: Syntax highlighting for gitcommit files?
+--
+--
+vim.api.nvim_create_user_command("Datapath", function(_opts)
+  vim.cmd("edit " .. vim.fn.stdpath("data"))
+end, { desc = "Open the datapath for Neovim", nargs = 0 })
