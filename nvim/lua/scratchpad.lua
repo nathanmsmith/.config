@@ -17,52 +17,25 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 -- TODO: command to :lua print([VISUAL SELECTION])
 vim.api.nvim_create_user_command("Lua", function(opts)
-  -- TODO: It's Line 1 + Line 2 opts?
-  local result = vim.inspect(opts)
-  vim.notify(result)
-  -- vim.print(test)
+  local code_to_run
+  -- An argument was given
+  -- TODO: make this check more robust
+  if opts.args ~= "" then
+    code_to_run = opts.args
+  else
+    -- Assume a range was given.
+    -- TODO: handle multiple lines
+    code_to_run = vim.api.nvim_buf_get_lines(0, opts.line1 - 1, opts.line2, false)[1]
+  end
+
+  print("Running: " .. code_to_run)
+  local result = loadstring("return " .. code_to_run)()
+  -- TODO: handle nil values
+  local stringified_result = tostring(result)
+  vim.notify(stringified_result)
   -- Register 'l' for "Lua"
   vim.fn.setreg("l", result)
-  -- TODO: put it in a register
-  --
-  -- with no visual selection
-  print({
-    args = "",
-    bang = false,
-    count = -1,
-    fargs = {},
-    line1 = 1,
-    line2 = 1,
-    mods = "",
-    name = "Lua",
-    range = 0,
-    reg = "",
-    smods = {
-      browse = false,
-      confirm = false,
-      emsg_silent = false,
-      hide = false,
-      horizontal = false,
-      keepalt = false,
-      keepjumps = false,
-      keepmarks = false,
-      keeppatterns = false,
-      lockmarks = false,
-      noautocmd = false,
-      noswapfile = false,
-      sandbox = false,
-      silent = false,
-      split = "",
-      tab = -1,
-      unsilent = false,
-      verbose = -1,
-      vertical = false,
-    },
-  })
-
-  print()
-end, { desc = "Open Scratchpad, a hot-reloading file. Try out ideas here.", nargs = 0, range = 2 })
-
+end, { desc = "Run some arbitrary Lua code", nargs = "?", range = 2 })
 -- TODO: Open GitHub page for Neovim help page
 --   P1: Where are the help pages loaded for Neovim?
 --       Associate with Neovim GitHub page.
