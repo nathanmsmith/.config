@@ -50,6 +50,9 @@ require("lazy").setup("plugins", {
     enabled = not helpers.isModuleAvailable("stripe"),
     notify = true,
   },
+  ui = {
+    border = "single",
+  },
 })
 
 require("vanilla")
