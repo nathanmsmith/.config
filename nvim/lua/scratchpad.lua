@@ -62,8 +62,6 @@ end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 --
 -- TODO: improve :FileName commpand. Replace pbcopy with Neovim buffers.
 --
--- TODO: command to open .local/share/nvim/ local dir
---
 -- TODO: Neovim's telescope should grep all of help, not just search help tags
 --
 -- TODO: Syntax highlighting for gitcommit files?
