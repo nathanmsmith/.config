@@ -1,8 +1,8 @@
 local scratchpath = vim.fn.stdpath("config") .. "/lua/scratchpad.lua"
 
--- TODO: add type for _opts
-vim.api.nvim_create_user_command("Scratchpad", function(_opts)
-  vim.cmd("edit " .. scratchpath)
+vim.api.nvim_create_user_command("Scratchpad", function()
+  vim.cmd("tabedit " .. scratchpath)
+  vim.cmd("tcd " .. vim.fn.stdpath("config"))
 end, { desc = "Open Scratchpad, a hot-reloading file. Try out ideas here.", nargs = 0 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
@@ -14,6 +14,11 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   end,
   desc = "Reload Lua files in Neovim config directory on save",
 })
+
+vim.api.nvim_create_user_command("Datapath", function()
+  vim.cmd("edit " .. vim.fn.stdpath("data"))
+  vim.cmd("tcd " .. vim.fn.stdpath("data"))
+end, { desc = "Open the datapath for Neovim", nargs = 0 })
 
 -- TODO: command to :lua print([VISUAL SELECTION])
 vim.api.nvim_create_user_command("Lua", function(opts)
@@ -64,6 +69,3 @@ end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 -- TODO: Syntax highlighting for gitcommit files?
 --
 --
-vim.api.nvim_create_user_command("Datapath", function(_opts)
-  vim.cmd("edit " .. vim.fn.stdpath("data"))
-end, { desc = "Open the datapath for Neovim", nargs = 0 })
