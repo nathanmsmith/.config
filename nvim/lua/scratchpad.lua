@@ -67,14 +67,12 @@ end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 --
 --
 
--- TODO: Replace fugitive's :GBrowse with a GitHub blame version.
 -- TODO: accept ranges
--- TODO: handle GiHub enterprise
 local Path = require("plenary.path")
 
--- TODO: add types
--- view = 'blame' or 'blob'
-local function open_github_url(view)
+--- @param view 'blame' | 'blob'
+--- @param action 'open' | 'copy'
+local function open_github_url(view, action)
   local repo_root = vim.fs.root(0, { ".git" })
   local relative_path = Path:new(vim.fn.expand("%:p")):make_relative(repo_root)
 
@@ -93,13 +91,36 @@ local function open_github_url(view)
   -- Construct the GitHub URL
   local github_url = string.format("%s/%s/%s/%s#L%d", repo_url, view, branch, relative_path, line_number)
 
-  vim.ui.open(github_url)
-  print("Opened GitHub URL: " .. github_url)
+  if action == "open" then
+    vim.ui.open(github_url)
+    vim.notify("Opened GitHub URL: " .. github_url)
+  else
+    vim.fn.setreg("+", github_url)
+    vim.notify("Copied: " .. github_url)
+  end
 end
 
-vim.api.nvim_create_user_command("GBrowse", function()
-  open_github_url("blob")
-end, { desc = "Open a file in GitHub", nargs = 0 })
-vim.api.nvim_create_user_command("GBlame", function()
-  open_github_url("blame")
-end, { desc = "Open a file in GitHub", nargs = 0 })
+vim.api.nvim_create_user_command(
+  "GBrowse",
+  ---@param opts vim.api.keyset.user_command
+  function(opts)
+    if opts.bang then
+      open_github_url("blob", "copy")
+    else
+      open_github_url("blob", "open")
+    end
+  end,
+  { desc = "Open a file in GitHub", nargs = 0, bang = true }
+)
+vim.api.nvim_create_user_command(
+  "GBlame",
+  ---@param opts vim.api.keyset.user_command
+  function(opts)
+    if opts.bang then
+      open_github_url("blame", "copy")
+    else
+      open_github_url("blame", "open")
+    end
+  end,
+  { desc = "Open a file in GitHub", nargs = 0, bang = true }
+)
