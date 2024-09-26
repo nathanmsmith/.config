@@ -8,6 +8,7 @@ return {
         "williamboman/mason.nvim",
         opts = {
           ui = {
+            border = "single",
             icons = {
               server_installed = "✓",
               server_pending = "➜",
