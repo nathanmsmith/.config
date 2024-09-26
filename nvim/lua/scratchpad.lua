@@ -71,33 +71,10 @@ end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 -- TODO: accept ranges
 -- TODO: handle GiHub enterprise
 local Path = require("plenary.path")
-vim.api.nvim_create_user_command("GBrowse", function()
-  local repo_root = vim.fs.root(0, { ".git" })
-  local relative_path = Path:new(vim.fn.expand("%:p")):make_relative(repo_root)
 
-  -- Get the current line number
-  local line_number = vim.fn.line(".")
-
-  -- Get the current branch name
-  local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD"):gsub("\n", "")
-
-  -- Get the repository name from the remote URL
-  local repo_url = vim.fn.system("git config --get remote.origin.url"):gsub("\n", "")
-  local repo_name = repo_url:match("github%.com[:/](.+)%.git$")
-
-  if not repo_name then
-    print("Error: Unable to determine GitHub repository.")
-    return
-  end
-
-  -- Construct the GitHub URL
-  local github_url =
-    string.format("https://github.com/%s/blob/%s/%s#L%d", repo_name, branch, relative_path, line_number)
-
-  vim.ui.open(github_url)
-  print("Opened GitHub URL: " .. github_url)
-end, { desc = "Open a file in GitHub", nargs = 0 })
-vim.api.nvim_create_user_command("GBlame", function()
+-- TODO: add types
+-- view = 'blame' or 'blob'
+local function open_github_url(view)
   local repo_root = vim.fs.root(0, { ".git" })
   local relative_path = Path:new(vim.fn.expand("%:p")):make_relative(repo_root)
 
@@ -114,8 +91,15 @@ vim.api.nvim_create_user_command("GBlame", function()
   -- TODO: better error handling for non-GitHub and GHE urls
 
   -- Construct the GitHub URL
-  local github_url = string.format("%s/blame/%s/%s#L%d", repo_url, branch, relative_path, line_number)
+  local github_url = string.format("%s/%s/%s/%s#L%d", repo_url, view, branch, relative_path, line_number)
 
   vim.ui.open(github_url)
   print("Opened GitHub URL: " .. github_url)
+end
+
+vim.api.nvim_create_user_command("GBrowse", function()
+  open_github_url("blob")
+end, { desc = "Open a file in GitHub", nargs = 0 })
+vim.api.nvim_create_user_command("GBlame", function()
+  open_github_url("blame")
 end, { desc = "Open a file in GitHub", nargs = 0 })

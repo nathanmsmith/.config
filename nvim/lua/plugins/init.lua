@@ -25,8 +25,6 @@ return {
   "tpope/vim-eunuch",
   {
     "kylechui/nvim-surround",
-    version = "*",
-    event = "VeryLazy",
     opts = {},
   },
 
