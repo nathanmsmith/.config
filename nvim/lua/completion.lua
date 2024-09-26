@@ -121,6 +121,7 @@ cmp.setup({
     -- { name = "cmp-nvim-lsp-signature-help" },
     { name = "luasnip" },
     { name = "nvim_lsp" },
+    { name = "lazydev" },
     -- { name = "copilot" },
     {
       name = "buffer",

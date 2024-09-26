@@ -53,8 +53,8 @@ end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 -- TODO: accept ranges
 local Path = require("plenary.path")
 
---- @param view 'blame' | 'blob'
---- @param action 'open' | 'copy'
+---@param view 'blame' | 'blob'
+---@param action 'open' | 'copy'
 local function open_github_url(view, action)
   local repo_root = vim.fs.root(0, { ".git" })
   local relative_path = Path:new(vim.fn.expand("%:p")):make_relative(repo_root)
