@@ -18,6 +18,8 @@ M.installable = {
   "lua_ls",
   "gopls",
   "pyright",
+  "docker_compose_language_service",
+  "dockerls",
 }
 
 M.basic = {
@@ -30,6 +32,8 @@ M.basic = {
   "vimls",
   "gopls",
   "pyright",
+  "docker_compose_language_service",
+  "dockerls",
 }
 
 return M
