@@ -62,7 +62,6 @@ end
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("ui-select")
-require("telescope").load_extension("harpoon")
 
 vim.keymap.set("n", "<leader>p", require("telescope.builtin").find_files, { desc = "Search Files" })
 vim.keymap.set("n", "<leader>h", require("telescope.builtin").help_tags, { desc = "Search [H]elp" })

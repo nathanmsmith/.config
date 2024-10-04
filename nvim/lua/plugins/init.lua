@@ -28,25 +28,6 @@ return {
     opts = {},
   },
 
-  {
-    "ThePrimeagen/harpoon",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      vim.keymap.set({ "n" }, "ma", function()
-        require("harpoon.mark").add_file()
-        print("Mark added")
-      end, { desc = "Add mark (Harpoon)" })
-      vim.keymap.set({ "n" }, "ml", require("telescope").extensions.harpoon.marks, { desc = "List marks (Harpoon)" })
-      for i = 1, 9 do
-        vim.keymap.set({ "n" }, "m" .. i, function()
-          require("harpoon.ui").nav_file(i)
-        end, { desc = "Navigate to mark " .. i })
-      end
-    end,
-  },
-
   -- Suggestions
   {
     "folke/which-key.nvim",
@@ -119,9 +100,6 @@ return {
       vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
     end,
   },
-
-  -- Show Marks
-  -- "kshenoy/vim-signature",
 
   -- Text object modifications and extensions
   {
