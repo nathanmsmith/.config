@@ -1,7 +1,5 @@
 -- Plugin configuration related to Git
 return {
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
   {
     "rhysd/conflict-marker.vim",
     config = function()
