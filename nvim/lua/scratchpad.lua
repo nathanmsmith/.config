@@ -72,7 +72,7 @@ local function open_github_url(args)
   local remote_origin_url = vim.fn.system("git config --get remote.origin.url")
   local clean_remote_origin_url = remote_origin_url:gsub("%.git", ""):gsub("%s", "")
 
-  local _, host, owner, repo = string.match(clean_remote_origin_url, "^(git@)?(.+):(.+)/(.+)$")
+  local host, owner, repo = string.match(clean_remote_origin_url, "^(.+):(.+)/(.+)$")
 
   if host == nil then
     host, owner, repo = string.match(clean_remote_origin_url, "^https?://(.+)/(.+)/(.+)$")
