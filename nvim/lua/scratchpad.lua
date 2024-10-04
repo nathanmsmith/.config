@@ -53,28 +53,40 @@ end, { desc = "Run some arbitrary Lua code", nargs = "?", range = true })
 -- TODO: accept ranges
 local Path = require("plenary.path")
 
----@param view 'blame' | 'blob'
----@param action 'open' | 'copy'
-local function open_github_url(view, action)
+---@class OpenGitHubUrlArgs
+---@field line1 integer # Start line number of the range
+---@field line2 integer # End line number of the range
+---@field view string # The view type (e.g., "blob", "tree")
+---@field action "open"|"copy" # Action to perform with the URL
+
+---@param args OpenGitHubUrlArgs
+---@return nil
+local function open_github_url(args)
   local repo_root = vim.fs.root(0, { ".git" })
   local relative_path = Path:new(vim.fn.expand("%:p")):make_relative(repo_root)
-
-  -- Get the current line number
-  local line_number = vim.fn.line(".")
 
   -- Get the current branch name
   local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD"):gsub("\n", "")
 
   -- Get the repository name from the remote URL
-  local repo_url = vim.fn.system("git config --get remote.origin.url"):gsub("\n", "")
-  repo_url = repo_url:gsub("%.git$", "")
+  local remote_origin_url = vim.fn.system("git config --get remote.origin.url")
+  local clean_remote_origin_url = remote_origin_url:gsub("%.git", ""):gsub("%s", "")
 
-  -- TODO: better error handling for non-GitHub and GHE urls
+  local _, host, owner, repo = string.match(clean_remote_origin_url, "^(git@)?(.+):(.+)/(.+)$")
 
-  -- Construct the GitHub URL
-  local github_url = string.format("%s/%s/%s/%s#L%d", repo_url, view, branch, relative_path, line_number)
+  if host == nil then
+    host, owner, repo = string.match(clean_remote_origin_url, "^https?://(.+)/(.+)/(.+)$")
+  end
 
-  if action == "open" then
+  local line_output = string.format("L%d-L%d", args.line1, args.line2)
+  if args.line1 == args.line2 then
+    line_output = string.format("L%d", args.line1)
+  end
+
+  local github_url =
+    string.format("https://%s/%s/%s/%s/%s/%s#%s", host, owner, repo, args.view, branch, relative_path, line_output)
+
+  if args.action == "open" then
     vim.ui.open(github_url)
     vim.notify("Opened GitHub URL: " .. github_url)
   else
@@ -97,27 +109,17 @@ end
 --          --       filepath: /opt/homebrew/Cellar/neovim/0.10.1/share/nvim/runtime/doc/ -> neovim/neovim github link (https://github.com/neovim/neovim/blame/master)
 --          --       filepath: ~/.local/share/nvim/lazy/{plugin}/doc/
 
-vim.api.nvim_create_user_command(
-  "GBrowse",
-  ---@param opts vim.api.keyset.user_command
-  function(opts)
-    if opts.bang then
-      open_github_url("blob", "copy")
-    else
-      open_github_url("blob", "open")
-    end
-  end,
-  { desc = "Open a file in GitHub", nargs = 0, bang = true }
-)
-vim.api.nvim_create_user_command(
-  "GBlame",
-  ---@param opts vim.api.keyset.user_command
-  function(opts)
-    if opts.bang then
-      open_github_url("blame", "copy")
-    else
-      open_github_url("blame", "open")
-    end
-  end,
-  { desc = "Open a file in GitHub", nargs = 0, bang = true }
-)
+vim.api.nvim_create_user_command("GBrowse", function(opts)
+  if opts.bang then
+    open_github_url({ view = "blob", action = "copy", line1 = opts.line1, line2 = opts.line2 })
+  else
+    open_github_url({ view = "blob", action = "open", line1 = opts.line1, line2 = opts.line2 })
+  end
+end, { desc = "Open a file in GitHub", nargs = 0, bang = true, range = true })
+vim.api.nvim_create_user_command("GBlame", function(opts)
+  if opts.bang then
+    open_github_url({ view = "blame", action = "copy", line1 = opts.line1, line2 = opts.line2 })
+  else
+    open_github_url({ view = "blame", action = "open", line1 = opts.line1, line2 = opts.line2 })
+  end
+end, { desc = "Open a file in GitHub", nargs = 0, bang = true, range = true })
