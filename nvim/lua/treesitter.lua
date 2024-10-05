@@ -63,6 +63,7 @@ require("nvim-treesitter.configs").setup({
     "gitattributes",
     "gitcommit",
     "gitignore",
+    "markdown",
   },
   ensure_installed = {
     "bash",
