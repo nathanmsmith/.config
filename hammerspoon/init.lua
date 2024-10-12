@@ -17,6 +17,8 @@ W = require("window-management")
 -- CLIP.log = hs.logger.new("ibooks-clipboard", "debug")
 -- CLIP.start()
 
+TH = require("things")
+
 -- local modules = {
 --   "ibooks-clipboard",
 -- }
