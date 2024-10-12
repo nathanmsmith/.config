@@ -13,7 +13,7 @@ return {
     config = function()
       local recall = require("recall")
 
-      recall.setup({})
+      recall.setup({ sign = "" })
 
       vim.keymap.set("n", "<leader>mm", recall.toggle, { noremap = true, silent = true })
       vim.keymap.set("n", "<leader>mn", recall.goto_next, { noremap = true, silent = true })
