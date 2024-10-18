@@ -3128,9 +3128,15 @@
 					<key>action</key>
 					<string>iTermHighlightLineTrigger</string>
 					<key>parameter</key>
-					<string>{p3#eaea33332323,#ffffff}</string>
+					<string>{p3#eaea33332323,}</string>
 					<key>regex</key>
-					<string>.*nathan test.*</string>
+					<string>^(?!›).*nathan test.*</string>
+				</dict>
+				<dict>
+					<key>action</key>
+					<string>BounceTrigger</string>
+					<key>regex</key>
+					<string>.*ERROR.*</string>
 				</dict>
 			</array>
 			<key>Unlimited Scrollback</key>
