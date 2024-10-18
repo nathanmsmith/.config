@@ -34,11 +34,11 @@ return {
     event = "VeryLazy",
     config = function()
       vim.o.timeout = true
-      vim.o.timeoutlen = 200
       require("which-key").setup({
         win = {
           border = "rounded",
         },
+        delay = 0,
         icons = {
           mappings = false,
           keys = {
