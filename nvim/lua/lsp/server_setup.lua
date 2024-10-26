@@ -20,6 +20,7 @@ end
 -- Advanced server setup
 -- require("lsp.emmet")
 require("lsp.lua_server")
+require("lsp.jsonls")
 
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then
