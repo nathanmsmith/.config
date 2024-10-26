@@ -1,5 +1,4 @@
 --database postgresql
---asset-pipeline propshaft
 --skip-hotwire
 --javascript esbuild
 --css tailwind
