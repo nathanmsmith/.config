@@ -5,7 +5,7 @@
         "language": [
           "lua"
         ],
-        "path": "./lua.json"
+        "path": "./lua.jsonc"
       },
       {
         "language": [
@@ -14,19 +14,34 @@
         "path": "./ruby.json"
       },
       {
-        "language": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
         "path": "./javascript/javascript.json"
       },
       {
-        "language": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+        "language": [
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact"
+        ],
         "path": "./javascript/react-testing-library.json"
       },
       {
-        "language": ["typescript", "typescriptreact"],
+        "language": [
+          "typescript",
+          "typescriptreact"
+        ],
         "path": "./javascript/typescript.json"
       },
       {
-        "language": ["typescriptreact"],
+        "language": [
+          "typescriptreact"
+        ],
         "path": "./javascript/react-typescript.json"
       }
     ]
