@@ -69,6 +69,7 @@ end
 require("formatting")
 require("diagnostic")
 require("testing")
+require("git")
 
 vim.cmd([[
   source ~/.config/nvim/config/custom-commands.vim
