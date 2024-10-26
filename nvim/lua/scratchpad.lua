@@ -5,11 +5,13 @@
 -- TODO: skeletons
 local cmp = require("cmp")
 
-vim.opt.completeopt = { "menu", "menuone", "noselect", "preview" }
-
 cmp.setup({
   completion = {
     autocomplete = false,
+    -- Weirdly, I don't get noinsert behavior when setting vim.opt.completeopt.
+    -- Not sure what's up with that!
+    -- vim.opt.completeopt = { "menu", "menuone", "noinsert", "preview" }
+    completeopt = "menu,menuone,noinsert",
   },
   experimental = {
     ghost_text = true,
@@ -18,7 +20,6 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   },
-
   sources = cmp.config.sources({
     { name = "luasnip" },
     { name = "nvim_lsp" },
@@ -40,7 +41,7 @@ cmp.setup({
   }),
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+      require("luasnip").lsp_expand(args.body)
     end,
   },
 
@@ -90,7 +91,7 @@ cmp.setup({
 
     -- Accept completion (ctrl-y)
     ["<CR>"] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
+      behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     }),
 
