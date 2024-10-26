@@ -81,6 +81,18 @@
     "prefix": "p",
     "body": ["print(${0})"]
   },
+  "print with label": {
+    "prefix": "pl",
+    "body": ["print(\"$1: \" .. $1})"]
+  },
+  "print vim.inspect": {
+    "prefix": "pvi",
+    "body": ["print(vim.inspect($0))"]
+  },
+  "print with label vim.inspect": {
+    "prefix": ["plvi", "pvil"],
+    "body": ["print(\"$1: \" .. vim.inspect($1)})"]
+  },
   "self": {
     "prefix": "self:",
     "body": ["function self:${1:methodName}($2)", "\t$0", "end"]

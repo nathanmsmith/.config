@@ -1,27 +1,60 @@
--- local helpers = require("custom-helpers")
--- local skeletons = require("skeletons")
--- require("luasnip").setup({
---   history = false,
---   update_events = { "TextChanged", "TextChangedI" },
---   -- enable_autosnippets = true,
--- })
---
--- -- local snippets_folder =
--- -- require("luasnip.loaders.from_lua").load({ paths = snippets_folder })
--- require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
---
--- if helpers.isModuleAvailable("stripe") then
---   require("stripe").initSnippets()
--- end
---
--- -- Set choice toggle to <c-e>
--- -- vim.keymap.set(
--- --   { "i", "s" },
--- --   "<c-e>",
--- --   "luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<c-e>'",
--- --   { silent = true, expr = true }
--- -- )
---
+local ls = require("luasnip")
+local helpers = require("custom-helpers")
+
+require("luasnip").setup({
+  -- Updates all placeholders if there are multiple (e.g., `plvi` snippet in Lua )
+  update_events = { "TextChanged", "TextChangedI" },
+})
+
+local active = function(filter)
+  filter = filter or {}
+  filter.direction = filter.direction or 1
+
+  if filter.direction == 1 then
+    return ls.expand_or_jumpable()
+  else
+    return ls.jumpable(filter.direction)
+  end
+end
+
+local jump = function(direction)
+  if direction == 1 then
+    if ls.expandable() then
+      return ls.expand_or_jump()
+    else
+      return ls.jumpable(1) and ls.jump(1)
+    end
+  else
+    return ls.jumpable(-1) and ls.jump(-1)
+  end
+end
+
+vim.keymap.set({ "i", "s" }, "<c-k>", function()
+  return active({ direction = 1 }) and jump(1)
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<c-j>", function()
+  return active({ direction = -1 }) and jump(-1)
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<C-l>", function()
+  if ls.choice_active() then
+    ls.change_choice(1)
+  end
+end, { silent = true })
+
+vim.keymap.set({ "i", "s" }, "<C-h>", function()
+  if ls.choice_active() then
+    ls.change_choice(-1)
+  end
+end, { silent = true })
+
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+
+if helpers.isModuleAvailable("stripe") then
+  require("stripe").initSnippets()
+end
+
 -- -- Skeletons
 -- -- local function expandSkeletonSnippet(language, skeleton)
 -- --   local snippet = skeletons[language][skeleton]
@@ -61,16 +94,3 @@
 -- --   pattern = "*",
 -- -- })
 --
--- -- https://github.com/L3MON4D3/LuaSnip/issues/258
--- vim.api.nvim_create_autocmd("ModeChanged", {
---   pattern = "*",
---   callback = function()
---     if
---       ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
---       and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
---       and not require("luasnip").session.jump_active
---     then
---       require("luasnip").unlink_current()
---     end
---   end,
--- })
