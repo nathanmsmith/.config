@@ -21,6 +21,7 @@ end
 -- require("lsp.emmet")
 require("lsp.lua_server")
 require("lsp.jsonls")
+require("lsp.yamlls")
 
 -- Non LspInstall server setup
 if helpers.isModuleAvailable("stripe") then

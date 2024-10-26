@@ -7,6 +7,12 @@ require("lspconfig").jsonls.setup({
   init_options = {
     provideFormatter = false,
   },
+  settings = {
+    json = {
+      schemas = require("schemastore").json.schemas(),
+      validate = { enable = true },
+    },
+  },
   handlers = {
     ["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
       print(vim.inspect(err))

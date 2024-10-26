@@ -27,7 +27,6 @@ M.basic = {
   "cssls",
   "tailwindcss",
   "eslint",
-  "yamlls",
   "vimls",
   "gopls",
   "pyright",
