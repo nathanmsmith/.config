@@ -11,7 +11,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
   group = vim.api.nvim_create_augroup("Scratchpad", { clear = true }),
   callback = function()
     vim.cmd("source " .. scratchpath)
-    vim.notify("Reloaded scratchpad 📝")
   end,
   desc = "Reload Lua files in Neovim config directory on save",
 })
