@@ -4,7 +4,7 @@ if helpers.isModuleAvailable("stripe") then
   require("stripe-formatting").initFormatters()
 else
   -- Common formatters
-  local prettier = { { "prettierd", "prettier" } }
+  local prettier = { "prettier" }
 
   require("conform").setup({
     formatters_by_ft = {
