@@ -54,7 +54,7 @@ return {
       telescope = {
         alsoSearchSnippetBody = true,
       },
-      jsonFormatter = "jq",
+      jsonFormatter = "none",
     },
     config = function()
       vim.api.nvim_create_user_command("SnippetEdit", function()

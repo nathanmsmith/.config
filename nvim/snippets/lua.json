@@ -5,27 +5,27 @@
     "description": "Require module"
   },
   "return": {
-    "prefix": "rt",
+    "prefix": "ret",
     "body": ["return $0"],
     "description": "return value"
   },
   "assigment": {
-    "prefix": "ll",
+    "prefix": "=",
     "body": ["local ${1:varName} = ${0:value}"],
     "description": "create a variable"
   },
   "local": {
-    "prefix": "l",
+    "prefix": "loc",
     "body": ["local ${0}"],
     "description": "create a variable"
   },
   "locreq": {
-    "prefix": "lreq",
+    "prefix": "locreq",
     "body": ["local ${1:var} = require(\"${2:module}\")"],
     "description": "Require module as a variable"
   },
   "class": {
-    "prefix": "cl",
+    "prefix": "class",
     "body": [
       "${1:className} = {}\n",
       "$1.${2:new} = function($3)",
@@ -66,12 +66,16 @@
     "description": "read file line by line"
   },
   "function": {
-    "prefix": "fu",
+    "prefix": "func",
     "body": ["function ${1:name}($2)", "\t${0:-- code}", "end"]
   },
   "inline-function": {
-    "prefix": "f=",
+    "prefix": "locfunc",
     "body": ["local ${1:name} = function($2)", "\t${0:-- code}", "end"]
+  },
+  "equals function": {
+    "prefix": "=func",
+    "body": ["${1:thing} = function($2)", "\t${0:-- code}", "end"]
   },
   "print": {
     "prefix": "p",
@@ -91,7 +95,7 @@
     "description": "Protect call a function"
   },
   "locpcall": {
-    "prefix": "lpca",
+    "prefix": "locpca",
     "body": ["local ${1:status}, ${2:err_or_value} = pcall(${3:function})"],
     "description": "Protect call a function as a variable"
   }

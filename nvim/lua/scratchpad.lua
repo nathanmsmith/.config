@@ -89,7 +89,7 @@ cmp.setup({
     }),
 
     -- Accept completion (ctrl-y)
-    ["<C-y>"] = cmp.mapping.confirm({
+    ["<CR>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Insert,
       select = true,
     }),
@@ -141,5 +141,8 @@ vim.keymap.set({ "i", "s" }, "<c-k>", function()
 end, { silent = true })
 
 vim.keymap.set({ "i", "s" }, "<c-j>", function()
+  print("c-j")
   return vim.snippet.active({ direction = -1 }) and vim.snippet.jump(-1)
 end, { silent = true })
+
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
