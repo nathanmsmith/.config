@@ -311,3 +311,6 @@ hl("BqfPreviewRange", { fg = palette.light_orange })
 -- hi default link BqfPreviewRange IncSearch
 -- hi default link BqfPreviewBufLabel BqfPreviewRange
 -- hi default BqfSign ctermfg=14 guifg=Cyan
+
+hl("LuasnipInsertNode", { fg = palette.blue })
+hl("LuasnipChoiceNode", { fg = palette.orange })

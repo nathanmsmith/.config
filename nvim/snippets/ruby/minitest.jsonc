@@ -1,0 +1,30 @@
+{
+  "describe block": {
+    "prefix": ["desc", "describe"],
+    "body": [
+      "describe '${1:#method}' do",
+      "\t${0:pending 'Not implemented'}",
+      "end",
+    ],
+  },
+  "before block": {
+    "prefix": ["bef", "before"],
+    "body": ["before do", "\t$0", "end"],
+  },
+  "it block": {
+    "prefix": "it",
+    "body": ["it \"${1:does something}\" do", "\t$0", "end"],
+  },
+  "assert": {
+    "prefix": "a",
+    "body": "assert($1, ${2:, \"${3:message}\")",
+  },
+  "assert_equal": {
+    "prefix": "ae",
+    "body": "assert_equal(${1:expected}, ${2:actual}${3:, '${4:message}'})",
+  },
+  // "assert_equal": {
+  //   "prefix": ["ae", "asse"],
+  //   "body": ["assert_equal(${1:expected}, ${2:actual})"],
+  // },
+}

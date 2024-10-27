@@ -11,7 +11,13 @@
         "language": [
           "ruby"
         ],
-        "path": "./ruby.json"
+        "path": "./ruby/ruby.jsonc"
+      },
+      {
+        "language": [
+          "ruby"
+        ],
+        "path": "./ruby/minitest.jsonc"
       },
       {
         "language": [

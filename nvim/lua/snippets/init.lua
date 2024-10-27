@@ -1,9 +1,18 @@
 local ls = require("luasnip")
+local types = require("luasnip.util.types")
 local helpers = require("custom-helpers")
 
 require("luasnip").setup({
   -- Updates all placeholders if there are multiple (e.g., `plvi` snippet in Lua )
   update_events = { "TextChanged", "TextChangedI" },
+  ext_opts = {
+    [types.choiceNode] = {
+      active = {
+        virt_text = { { "Choice (<c-h>, <c-l>)", "LuasnipChoiceNode" } },
+        hl_mode = "combine",
+      },
+    },
+  },
 })
 
 local active = function(filter)
@@ -29,6 +38,8 @@ local jump = function(direction)
   end
 end
 
+-- Stole these from TJ
+-- https://github.com/tjdevries/config.nvim/blob/e47e28da1da65f5aafbf8bd6431f628ad51d1f8f/lua/custom/snippets.lua#L6
 vim.keymap.set({ "i", "s" }, "<c-k>", function()
   return active({ direction = 1 }) and jump(1)
 end, { silent = true })
