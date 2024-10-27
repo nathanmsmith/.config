@@ -21,6 +21,18 @@
       },
       {
         "language": [
+          "ruby"
+        ],
+        "path": "./ruby/rake.jsonc"
+      },
+      {
+        "language": [
+          "ruby"
+        ],
+        "path": "./ruby/rails.jsonc"
+      },
+      {
+        "language": [
           "javascript",
           "javascriptreact",
           "typescript",
