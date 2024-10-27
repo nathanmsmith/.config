@@ -95,6 +95,10 @@
     "prefix": ["plvi", "pvil"],
     "body": ["print(\"$1: \" .. vim.inspect($1))"],
   },
+  "vim.inspect": {
+    "prefix": "vi",
+    "body": ["vim.inspect($0)"],
+  },
   "self": {
     "prefix": "self:",
     "body": ["function self:${1:methodName}($2)", "\t$0", "end"],
