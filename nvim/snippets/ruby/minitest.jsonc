@@ -15,6 +15,13 @@
     "prefix": "it",
     "body": ["it \"${1:does something}\" do", "\t$0", "end"],
   },
+
+  "flunk": {
+    "prefix": "fl",
+    "body": "flunk \"${1:message}\"",
+  },
+
+  // Assertions
   "assert": {
     "prefix": "a",
     "body": "assert($1, ${2:, \"${3:message}\")",
@@ -23,8 +30,54 @@
     "prefix": "ae",
     "body": "assert_equal(${1:expected}, ${2:actual}${3:, '${4:message}'})",
   },
-  // "assert_equal": {
-  //   "prefix": ["ae", "asse"],
-  //   "body": ["assert_equal(${1:expected}, ${2:actual})"],
-  // },
+  "assert nil": {
+    "prefix": "an",
+    "body": "assert_nil(${1:object}${2:, \"${3:message}\"})",
+  },
+  "assert includes": {
+    "prefix": "ai",
+    "body": "assert_includes(${1:collection}, ${2:object}${3:, \"${4:message}\"})",
+  },
+  "assert empty": {
+    "prefix": "aem",
+    "body": "assert_empty(${1:object}${2:, \"${3:message}\"})",
+  },
+  "assert match": {
+    "prefix": "am",
+    "body": "assert_match(${1:/expected_pattern/}, ${2:actual_string}${3:, \"${4:message}\"})",
+  },
+  "assert raises": {
+    "prefix": "ar",
+    "body": [
+      "assert_raises ${1:ExceptionClass} do",
+      "\t${2:# code that raises}",
+      "end",
+    ],
+  },
+
+  // Refutations
+  "refute": {
+    "prefix": "r",
+    "body": "refute($1, ${2:, \"${3:message}\")",
+  },
+  "refute_equal": {
+    "prefix": "re",
+    "body": "refute_equal(${1:expected}, ${2:actual}${3:, '${4:message}'})",
+  },
+  "refute nil": {
+    "prefix": "rn",
+    "body": "refute_nil(${1:object}${2:, \"${3:message}\"})",
+  },
+  "refute includes": {
+    "prefix": "ri",
+    "body": "refute_includes(${1:collection}, ${2:object}${3:, \"${4:message}\"})",
+  },
+  "refute empty": {
+    "prefix": "rem",
+    "body": "refute_empty(${1:object}${2:, \"${3:message}\"})",
+  },
+  "refute match": {
+    "prefix": "rm",
+    "body": "refute_match(${1:/expected_pattern/}, ${2:actual_string}${3:, \"${4:message}\"})",
+  },
 }
