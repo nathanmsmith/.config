@@ -34,9 +34,14 @@ return {
       require("lsp")
     end,
   },
+
+  -- TypeScript
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
   },
+  { "davidosomething/format-ts-errors.nvim" },
+
+  -- For JSON+YAML
   "b0o/schemastore.nvim",
 }
