@@ -214,6 +214,4 @@ return {
   -- "dstein64/vim-startuptime",
   --
   { "brenoprata10/nvim-highlight-colors", opts = { render = "virtual", enable_tailwind = true } },
-
-  "b0o/schemastore.nvim",
 }
