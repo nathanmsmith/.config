@@ -8,6 +8,16 @@ vim.diagnostic.config({
     source = true,
     border = "single",
   },
+
+  -- TODO: Implement background diagnostic coloring
+  -- signs = {
+  --   linehl = {
+  --     [vim.diagnostic.severity.ERROR] = "DiagnosticErrorLine",
+  --     [vim.diagnostic.severity.WARN] = "DiagnosticWarnLine",
+  --     [vim.diagnostic.severity.INFO] = "DiagnosticInfoLine",
+  --     [vim.diagnostic.severity.HINT] = "DiagnosticHintLine",
+  --   },
+  -- },
 })
 
 -- Define signs
