@@ -38,7 +38,7 @@
           "typescript",
           "typescriptreact"
         ],
-        "path": "./javascript/javascript.json"
+        "path": "./javascript/javascript.jsonc"
       },
       {
         "language": [

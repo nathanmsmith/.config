@@ -1,5 +1,5 @@
-// vim: ft=jsonc
 {
+  // Console.log
   "cl": {
     "body": "console.log($0)",
     "description": "console.log()",
