@@ -1,18 +1,10 @@
 {
   "desc": {
-    "body": [
-      "describe('${1:my thing}', () => {",
-      "\t$0",
-      "})"
-    ],
+    "body": ["describe('${1:my thing}', () => {", "\t$0", "})"],
     "prefix": "desc"
   },
   "it": {
-    "body": [
-      "it('${1:does something}', () => {",
-      "\t$0",
-      "})"
-    ],
+    "body": ["it('${1:does something}', () => {", "\t$0", "})"],
     "prefix": "it"
   },
   "screen.debug": {

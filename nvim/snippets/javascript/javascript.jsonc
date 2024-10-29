@@ -1,13 +1,66 @@
 {
+  // Conditionals
+  "if": {
+    "prefix": "if",
+    "body": ["if (${1:condition}) {", "\t$0", "}"],
+  },
+  "if else": {
+    "prefix": "ife",
+    "body": ["if (${1:condition}) {", "\t$2", "} else {", "\t$3", "}"],
+  },
+  "if elsif": {
+    "prefix": "ifei",
+    "body": [
+      "if (${1:condition}) {",
+      "\t$2",
+      "} else if (${3:second_condition}) {",
+      "\t$4",
+      "}",
+    ],
+  },
+  "if elsif else": {
+    "prefix": "ifee",
+    "body": [
+      "if (${1:condition}) {",
+      "\t$2",
+      "} else if (${3:second_condition}) {",
+      "\t$4",
+      "} else {",
+      "\t$0",
+      "}",
+    ],
+  },
+  "switch": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:key}) {",
+      "\tcase ${2:value}:",
+      "\t\t$0",
+      "\t\tbreak;",
+      "",
+      "\tdefault:",
+      "\t\tbreak;",
+      "}",
+    ],
+  },
+
+  // TODO: loops
+
+  // TODO: functions
+
+  // TODO: error handling
+
+  // TODO: common functions
+
   // Console.log
   "cl": {
     "body": "console.log($0)",
     "description": "console.log()",
-    "prefix": "cl"
+    "prefix": "cl",
   },
   "cll": {
     "body": "console.log('$1: ', $1)",
     "description": "console.log() with label",
-    "prefix": "cll"
-  }
+    "prefix": "cll",
+  },
 }
