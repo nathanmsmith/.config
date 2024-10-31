@@ -45,6 +45,42 @@
   },
 
   // TODO: loops
+  "For Loop": {
+    "prefix": "for",
+    "body": [
+      "for (let ${1:i} = ${2:0}; ${1:i} < ${3:length}; ${1:i}++) {",
+      "\t${0}",
+      "}",
+    ],
+    "description": "Standard for loop",
+  },
+  "For In Loop": {
+    "prefix": "forin",
+    "body": [
+      "for (const ${1:key} in ${2:object}) {",
+      "\tif (${2:object}.hasOwnProperty(${1:key})) {",
+      "\t\tconst ${3:element} = ${2:object}[${1:key}];",
+      "\t\t${0}",
+      "\t}",
+      "}",
+    ],
+    "description": "For-in loop for object properties",
+  },
+  "For Of Loop": {
+    "prefix": "forof",
+    "body": ["for (const ${1:element} of ${2:iterable}) {", "\t${0}", "}"],
+    "description": "For-of loop for iterables",
+  },
+  "While Loop": {
+    "prefix": "while",
+    "body": ["while (${1:condition}) {", "\t${0}", "}"],
+    "description": "While loop",
+  },
+  "Do While Loop": {
+    "prefix": "dowhile",
+    "body": ["do {", "\t${0}", "} while (${1:condition});"],
+    "description": "Do-while loop",
+  },
 
   // TODO: functions
 
