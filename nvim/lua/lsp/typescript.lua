@@ -11,16 +11,12 @@ require("typescript-tools").setup({
         return
       end
 
-      local idx = 1
-      while idx <= #result.diagnostics do
-        local entry = result.diagnostics[idx]
-
-        local formatter = require("format-ts-errors")[entry.code]
-        entry.message = formatter and formatter(entry.message) or entry.message
-
-        -- codes: https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
-        -- Could filter code here
-        idx = idx + 1
+      local format_ts_errors = require("format-ts-errors")
+      for _, entry in ipairs(result.diagnostics) do
+        local formatter = format_ts_errors[entry.code]
+        if formatter then
+          entry.message = formatter(entry.message)
+        end
       end
 
       vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
