@@ -33,7 +33,7 @@ function _G.snippet_status()
   -- elseif luasnip.jumpable(1) or luasnip.jumpable(-1) then
   --   return "snip k"
   else
-    print(vim.inspect(luasnip.get_active_snip()))
+    -- print(vim.inspect(luasnip.get_active_snip()))
     local active_snip = luasnip.get_active_snip()
     if active_snip then
       local status = active_snip.name .. " "
