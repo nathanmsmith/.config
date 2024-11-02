@@ -6,6 +6,6 @@ end
 function githistory --description 'See the history of a repo'
   set commit_hashes (git log --reverse --format="%H")
   for hash in $commit_hashes
-    git show --stat --patch $hash
+    git show --format=medium --date=format:'%A %B %d, %Y @ %I:%M%p' --stat --patch $hash
   end
 end
