@@ -60,11 +60,9 @@ vim.keymap.set({ "i", "s" }, "<C-h>", function()
   end
 end, { silent = true })
 
-require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
-
-if helpers.isModuleAvailable("stripe") then
-  require("stripe").initSnippets()
-end
+require("luasnip.loaders.from_vscode").lazy_load({
+  paths = { vim.fn.stdpath("config") .. "/snippets", "~/stripe/stripe-config/nvim/snippets" },
+})
 
 -- -- Skeletons
 -- -- local function expandSkeletonSnippet(language, skeleton)
