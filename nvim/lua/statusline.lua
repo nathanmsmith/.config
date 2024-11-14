@@ -1,4 +1,4 @@
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 
 function _G.git_status()
   -- return vim.b.gitsigns_status or ""
