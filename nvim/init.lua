@@ -56,6 +56,7 @@ require("lazy").setup("plugins", {
 })
 
 require("vanilla")
+require("user-commands")
 require("autocmds")
 require("statusline")
 
@@ -70,11 +71,5 @@ require("formatting")
 require("diagnostic")
 require("testing")
 require("git")
-
-vim.cmd([[
-  source ~/.config/nvim/config/custom-commands.vim
-  :command! -nargs=1 Browse silent execute '!open' shellescape(<q-args>,1)
-]])
-
 require("meta")
 require("scratchpad")
