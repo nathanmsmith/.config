@@ -27,6 +27,7 @@ return {
       telescope = {
         alsoSearchSnippetBody = true,
       },
+      -- TODO(2024-11-15,nms): I've seen issues with formatting here. "none" may not be "none".
       jsonFormatter = "none",
     },
     config = function()

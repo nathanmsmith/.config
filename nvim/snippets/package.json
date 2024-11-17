@@ -3,6 +3,12 @@
     "snippets": [
       {
         "language": [
+          "all"
+        ],
+        "path": "./all.jsonc"
+      },
+      {
+        "language": [
           "lua"
         ],
         "path": "./lua.jsonc"

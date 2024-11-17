@@ -1,1 +1,11 @@
-{"keymap":{"prefix":"keymap","body":["vim.keymap.set(\"${1:mode}\", \"${2:keys}\", function()","  ${0}","end, { buffer = event.buffer, desc = \"${3:description}\" })"]}}
+{
+  "keymap": {
+    "prefix": "keymap",
+    "body": [
+      "vim.keymap.set(\"${1:mode}\", \"${2:keys}\", function()",
+      "  ${0}",
+      "end, { buffer = event.buffer, desc = \"${3:description}\" })",
+    ],
+  },
+}
+
