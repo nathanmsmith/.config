@@ -66,6 +66,7 @@ require("statusline")
 -- `helpers.isModuleAvailable("stripe")` is how I check to see if work files are present, i.e., I'm on a work machine.
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initClipboard()
+  require("stripe").initTests()
 else
   require("projectionist")
 end
