@@ -57,6 +57,7 @@ require("lazy").setup("plugins", {
 
 require("vanilla")
 require("windows")
+require("marks")
 require("user-commands")
 require("autocmds")
 require("statusline")

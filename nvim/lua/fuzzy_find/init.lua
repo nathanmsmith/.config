@@ -70,6 +70,7 @@ vim.keymap.set("n", "<leader>w", require("telescope.builtin").grep_string, { des
 vim.keymap.set("n", "<leader>f", require("telescope.builtin").live_grep, { desc = "[F]ind by Grep" })
 vim.keymap.set("n", "<leader>d", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
+vim.keymap.set("n", "<leader>m", require("telescope.builtin").marks, { desc = "[M]arks" })
 vim.keymap.set("n", "<leader>b", require("telescope.builtin").buffers, { desc = "Find existing [B]uffers" })
 vim.keymap.set(
   "n",
