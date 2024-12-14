@@ -109,6 +109,27 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   desc = "Rerun linters when buffer changes",
   group = vim.api.nvim_create_augroup("Lint", { clear = true }),
   callback = function()
-    require("lint").try_lint()
+    -- TODO(2024-12-01,nms): Handle .b (buffer) version
+    if not vim.g.disable_autolint then
+      require("lint").try_lint()
+    end
   end,
+})
+
+vim.api.nvim_create_user_command("LintDisable", function(args)
+  if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
+    vim.b.disable_autolint = true
+  else
+    vim.g.disable_autolint = true
+  end
+end, {
+  desc = "Disable linting",
+  bang = true,
+})
+vim.api.nvim_create_user_command("LintEnable", function()
+  vim.b.disable_autolint = false
+  vim.g.disable_autolint = false
+end, {
+  desc = "Re-enable linting",
 })
