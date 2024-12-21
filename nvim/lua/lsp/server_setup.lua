@@ -30,5 +30,5 @@ else
   require("lsp.sourcekit")
   require("lsp.sorbet")
   require("lsp.typescript")
-  -- require("lsp.ruby_lsp")
+  require("lsp.ruby_lsp")
 end
