@@ -100,3 +100,8 @@ end, { desc = "[M]ark [A]dd" })
 --     end
 --   end
 --   marks_table = vim.fn.extend(marks_table, marks_others)-
+
+vim.keymap.set("n", "<Leader>nt", ":tabnew<CR>", {
+  noremap = true,
+  desc = "Create new tab",
+})
