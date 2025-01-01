@@ -1,0 +1,17 @@
+# vim:ft=conf
+
+theme = night-owl
+
+font-size = 20
+font-family = Dank Mono
+font-family = codicon
+
+window-padding-x = 4
+window-padding-y = 4
+window-padding-balance = true
+window-vsync = true
+window-inherit-working-directory = true
+window-inherit-font-size = false
+window-theme = system
+window-colorspace = display-p3
+macos-titlebar-style = native
