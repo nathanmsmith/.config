@@ -6,6 +6,12 @@ font-size = 20
 font-family = Dank Mono
 font-family = codicon
 
+# Disable ligatures as described here:
+# https://ghostty.org/docs/config/reference#font-feature
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+
 window-padding-x = 4
 window-padding-y = 4
 window-padding-balance = true
@@ -15,3 +21,5 @@ window-inherit-font-size = false
 window-theme = system
 window-colorspace = display-p3
 macos-titlebar-style = native
+
+confirm-close-surface = false
