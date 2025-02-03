@@ -11,5 +11,10 @@
     "prefix": "sd",
     "body": "screen.debug()$0",
     "description": "screen.debug"
+  },
+  "screen.logTestingPlaygroundURL": {
+    "prefix": "playground",
+    "body": "screen.logTestingPlaygroundURL()$0",
+    "description": "screen.logTestingPlaygroundURL"
   }
 }
