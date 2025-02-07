@@ -1,0 +1,87 @@
+// vim:ft=jsonc
+{
+  // Workspace settings
+  "workspace": {
+    "library": [
+      // Add paths to your Lua libraries here
+      // "${3rd}/love2d/library"
+    ],
+    "checkThirdParty": false,
+    "maxPreload": 2000,
+    "preloadFileSize": 1000
+  },
+
+  // Diagnostics configuration
+  "diagnostics": {
+    "disable": [
+      "lowercase-global"
+      // Other diagnostics you might want to disable:
+      // "unused-local",
+      // "unused-function",
+      // "unused-vararg",
+      // "trailing-space"
+    ],
+    "enable": ["duplicate-index", "duplicate-set-field"],
+    "globals": [
+      // Add your global variables here
+      "myGlobal"
+    ],
+    "severity": {
+      // Customize severity levels
+      "redefined-local": "Warning",
+      "unused-local": "Information"
+    },
+    "neededFileStatus": {
+      "codestyle-check": "Any"
+    }
+  },
+
+  // Format configuration
+  "format": {
+    "defaultConfig": {
+      "indent_style": "space",
+      "indent_size": "4",
+      "quote_style": "double",
+      "call_arg_parentheses": "keep",
+      "trailing_table_separator": "smart"
+    }
+  },
+
+  // Type checking settings
+  "type": {
+    "weakNilCheck": false,
+    "weakUnionCheck": false,
+    "castNumberToInteger": true
+  },
+
+  // Runtime configuration
+  "runtime": {
+    "version": "Lua 5.4",
+    "path": ["?.lua", "?/init.lua", "?/?.lua"],
+    "pathStrict": false,
+    "special": {
+      // Special global variables
+      "_G": "type",
+      "_VERSION": "type",
+      "_ENV": "type"
+    }
+  },
+
+  // Hint configuration
+  "hint": {
+    "enable": true,
+    "await": true,
+    "paramName": true,
+    "paramType": true,
+    "returnType": true,
+    "setType": true
+  },
+
+  // IntelliSense settings
+  "intelliSense": {
+    "searchDepth": 0
+  },
+
+  // Telemetry settings
+  "telemetry.enable": false
+}
