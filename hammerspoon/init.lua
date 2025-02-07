@@ -1,8 +1,13 @@
+-- The docs
+-- https://www.hammerspoon.org/go/
+
 hs.window.animationDuration = 0
 
 hs.loadSpoon("EmmyLua")
 hs.loadSpoon("ReloadConfiguration")
 spoon.ReloadConfiguration:start()
+
+modules = require("helpers.modules")
 
 -- ref: https://github.com/Hammerspoon/hammerspoon/issues/2930#issuecomment-899092002
 -- hs.ipc.cliInstall()
@@ -43,26 +48,6 @@ CLIP.start()
 --   hsm.log.i(mod.name .. ": module started")
 -- end
 
--- hs.fnutils.each(modules, loadModuleByName)
--- hs.fnutils.each(hsm, startModule)
-
--- Handle various willSleep/didWake actions.
--- Uses functions from caffeine and bluetooth modules.
-function IsModuleAvailable(name)
-  if package.loaded[name] then
-    return true
-  else
-    for _, searcher in ipairs(package.searchers or package.loaders) do
-      local loader = searcher(name)
-      if type(loader) == "function" then
-        package.preload[name] = loader
-        return true
-      end
-    end
-    return false
-  end
-end
-
-if IsModuleAvailable("stripe") then
+if modules.isModuleAvailable("stripe") then
   S = require("stripe")
 end

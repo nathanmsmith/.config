@@ -1,3 +1,5 @@
+local modules = require("helpers.modules")
+
 local log = hs.logger.new("focus")
 log.setLogLevel(5)
 log.i("Initializing")
@@ -7,7 +9,11 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "f", function()
   hs.application.launchOrFocus("Finder")
 end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "t", function()
-  hs.application.launchOrFocus("iTerm")
+  if modules.isModuleAvailable("stripe") then
+    hs.application.launchOrFocus("iTerm")
+  else
+    hs.application.launchOrFocus("Ghostty")
+  end
 end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "d", function()
   hs.application.launchOrFocus("Dash")
@@ -42,7 +48,11 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "m", function()
 end)
 -- c for "chat"
 hs.hotkey.bind({ "ctrl", "cmd" }, "c", function()
-  hs.application.launchOrFocus("Slack")
+  if modules.isModuleAvailable("stripe") then
+    hs.application.launchOrFocus("Slack")
+  else
+    hs.application.launchOrFocus("Messages")
+  end
 end)
 
 -- Hints
