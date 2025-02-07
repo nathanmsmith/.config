@@ -8,16 +8,12 @@ require("lspconfig").jsonls.setup({
   },
   settings = {
     json = {
-      schemas = vim.tbl_extend("keep", {
-        {
-          fileMatch = { "*.jsonc" },
-          schema = {
-            allowTrailingCommas = true,
-          },
-        },
-      }, require("schemastore").json.schemas()),
+      schemas = require("schemastore").json.schemas(),
       validate = {
         enable = true,
+      },
+      commandsSchema = {
+        ignoredComments = true,
       },
     },
   },
