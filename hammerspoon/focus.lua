@@ -12,7 +12,8 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "t", function()
   if modules.isModuleAvailable("stripe") then
     hs.application.launchOrFocus("iTerm")
   else
-    hs.application.launchOrFocus("Ghostty")
+    hs.application.launchOrFocus("iTerm")
+    -- hs.application.launchOrFocus("Ghostty")
   end
 end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "d", function()

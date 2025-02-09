@@ -13,27 +13,20 @@
 
   // Diagnostics configuration
   "diagnostics": {
-    "disable": [
-      "lowercase-global"
-      // Other diagnostics you might want to disable:
-      // "unused-local",
-      // "unused-function",
-      // "unused-vararg",
-      // "trailing-space"
-    ],
+    "disable": ["lowercase-global"],
     "enable": ["duplicate-index", "duplicate-set-field"],
     "globals": [
       // Add your global variables here
       "myGlobal"
-    ],
-    "severity": {
-      // Customize severity levels
-      "redefined-local": "Warning",
-      "unused-local": "Information"
-    },
-    "neededFileStatus": {
-      "codestyle-check": "Any"
-    }
+    ]
+    // "severity": {
+    //   // Customize severity levels
+    //   "redefined-local": "Warning",
+    //   "unused-local": "Information"
+    // },
+    // "neededFileStatus": {
+    //   "codestyle-check": "Any"
+    // }
   },
 
   // Format configuration
