@@ -29,4 +29,15 @@ function M.contains(table, val)
   return false
 end
 
+---Removes a prefix from the start of a string if it exists
+---@param str string The input string to process
+---@param prefix string The prefix to remove
+---@return string The string with the prefix removed if found, otherwise the original string
+function M.removePrefix(str, prefix)
+  if str:sub(1, #prefix) == prefix then
+    return str:sub(#prefix + 1)
+  end
+  return str
+end
+
 return M

@@ -1,15 +1,24 @@
-vim.api.nvim_create_user_command("Finder", function()
-  -- TODO
-  -- if filetype == oil then
-  --   process
-  --   end
+local helpers = require("custom-helpers")
+
+local function openInMacOS()
   if vim.fn.has("mac") ~= 1 then
     vim.notify("This command only works on macOS", vim.log.levels.ERROR)
     return
   end
-  vim.fn.system("open " .. vim.fn.expand("%:p"))
-end, { bang = true })
+
+  local path = vim.fn.expand("%:p")
+  path = helpers.removePrefix(path, "oil://")
+
+  vim.fn.system("open " .. path)
+end
+
+vim.api.nvim_create_user_command("Finder", openInMacOS, {
+  -- TODO: a bang version that copies the path to clipboard
+  -- bang = true,
+})
+vim.api.nvim_create_user_command("Open", openInMacOS, {})
 vim.api.nvim_create_user_command("FileName", function()
-  local name_and_path = vim.fn.expand("%")
-  vim.fn.setreg("+", name_and_path)
+  local path = vim.fn.expand("%:p")
+  path = helpers.removePrefix(path, "oil://")
+  vim.fn.setreg("+", path)
 end, { bang = true })
