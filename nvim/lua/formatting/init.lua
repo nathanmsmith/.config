@@ -7,6 +7,7 @@ else
   local prettier = { "prettier" }
 
   require("conform").setup({
+    -- log_level = vim.log.levels.DEBUG,
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "isort", "black" },
@@ -21,6 +22,7 @@ else
       graphql = prettier,
       go = { "goimports", "gofmt" },
       swift = { "swiftformat" },
+      ["_"] = { "trim_newlines", "trim_whitespace" }
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then

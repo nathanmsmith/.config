@@ -18,17 +18,6 @@ vim.api.nvim_create_autocmd({ "VimLeave", "VimSuspend" }, {
   pattern = "*",
 })
 
--- Trim trailing whitespace
-local trailing_whitespace_group = vim.api.nvim_create_augroup("TrimTrailingWhiteSpace", { clear = true })
-vim.api.nvim_create_autocmd(
-  "BufWritePre",
-  { command = "%s/\\s\\+$//e", group = trailing_whitespace_group, pattern = "*" }
-)
-vim.api.nvim_create_autocmd(
-  "BufWritePre",
-  { command = "%s/\\n\\+%$//e", group = trailing_whitespace_group, pattern = "*" }
-)
-
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight yanked text",
   callback = function()
