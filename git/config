@@ -1,43 +1,39 @@
-[alias]
-	main-branch = town main-branch
-	continue = town continue
-	hack = town hack
-	new-pull-request = town new-pull-request
-	prepend = town prepend
-	prune-branches = town prune-branches
-	repo = town repo
-	ship = town ship
-	sync = town sync
-	append = town append
-	discard = !git clean -df && git checkout -- .
-	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi > .gitignore"
-  remote-fetch = "!rf() { git config --add remote.origin.fetch +refs/heads/$1:refs/remotes/origin/$1; git fetch origin +$1:refs/remotes/origin/$1; }; rf"
-  remote-purge = "!rp() { git config --unset remote.origin.fetch \".*$1.*\"; git update-ref -d refs/remotes/origin/$1; }; rp"
-	diff-parent = town diff-parent
-	propose = town propose
-	set-parent = town set-parent
-	undo = reset --soft HEAD^
-	delete = town delete
-	rename = town rename
+# vim: noexpandtab
+# Sources I've picked up these configs from over time:
+# * https://blog.gitbutler.com/how-git-core-devs-configure-git/
+# * https://link.springer.com/article/10.1007%2Fs10664-019-09772-z
 
+[user]
+	name = Nathan Smith
+	email = nathan@nathansmith.io
+	signingkey = 3B9BA490BA8CCFE7
 [credential]
 	helper = osxkeychain
 [commit]
 	; gpgsign = true
 	verbose = 2
-[user]
-	name = Nathan Smith
-	email = nathan@nathansmith.io
-	signingkey = 3B9BA490BA8CCFE7
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
 [core]
 	editor = nvim
 [push]
 	default = simple
 	autoSetupRemote = true
+	followTags = true
 [pull]
 	rebase = true
 [fetch]
 	prune = true
+	pruneTags = true
+	all = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [difftool]
 	prompt = false
 [merge]
@@ -67,8 +63,10 @@
 [hub]
 	protocol = https
 [diff]
-	# https://link.springer.com/article/10.1007%2Fs10664-019-09772-z
 	algorithm = histogram
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
 [sendemail]
 	smtpserver = smtp.fastmail.com
 	smtpuser = natedub@fastmail.com
@@ -102,9 +100,30 @@
 	file-decoration-style = none
 [rerere]
 	enabled = true
+	autoupdate = true
 [grep]
 	extendedRegexp = true
 [help]
-	# Automatically correct and execute mistyped commands such as `git stauts`
 	autocorrect = prompt
-# vim: noexpandtab
+
+[alias]
+	main-branch = town main-branch
+	continue = town continue
+	hack = town hack
+	new-pull-request = town new-pull-request
+	prepend = town prepend
+	prune-branches = town prune-branches
+	repo = town repo
+	ship = town ship
+	sync = town sync
+	append = town append
+	discard = !git clean -df && git checkout -- .
+	ignore = "!gi() { curl -sL https://www.gitignore.io/api/$@ ;}; gi > .gitignore"
+  remote-fetch = "!rf() { git config --add remote.origin.fetch +refs/heads/$1:refs/remotes/origin/$1; git fetch origin +$1:refs/remotes/origin/$1; }; rf"
+  remote-purge = "!rp() { git config --unset remote.origin.fetch \".*$1.*\"; git update-ref -d refs/remotes/origin/$1; }; rp"
+	diff-parent = town diff-parent
+	propose = town propose
+	set-parent = town set-parent
+	undo = reset --soft HEAD^
+	delete = town delete
+	rename = town rename
