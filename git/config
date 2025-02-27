@@ -37,10 +37,11 @@
 [difftool]
 	prompt = false
 [merge]
-	tool = diffconflicts
+	tool = neovim
+	conflictstyle = merge
 [mergetool]
 	keepBackup = false
-[mergetool "diffconflicts"]
+[mergetool "neovim"]
 	cmd = nvim "$MERGED"
 	trustExitCode = true
 [color "diff-highlight"]
