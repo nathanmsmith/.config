@@ -111,6 +111,8 @@ vim.keymap.set("n", "<Leader>nt", ":tabnew<CR>", {
 -- 1. https://gist.github.com/OXY2DEV/645c90df32095a8a397735d0be646452
 -- 2. https://github.com/neovim/neovim/pull/30935#issuecomment-2449897286
 
+-- TODO: don't save cursor during git mergetool
+
 -- If invoked as a preview callback, performs 'inccommand' preview by
 -- highlighting trailing whitespace in the current buffer.
 local function trim_space_preview(opts, preview_ns, preview_buf)
