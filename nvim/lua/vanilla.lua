@@ -9,7 +9,7 @@ vim.opt.scrolloff = 20
 -- Show whitespace
 vim.o.list = true
 vim.opt.listchars = {
-  tab = "▸ ",
+  tab = "→ ",
   extends = "❯",
   precedes = "❮",
   trail = "·",
