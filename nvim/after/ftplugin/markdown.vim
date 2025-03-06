@@ -1,3 +1,4 @@
+setlocal textwidth=80
 setlocal spell
 setlocal wrap
 setlocal linebreak
