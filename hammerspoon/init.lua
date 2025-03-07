@@ -18,9 +18,9 @@ P = require("paste")
 -- U = require("urls")
 F = require("focus")
 W = require("window-management")
-CLIP = require("ibooks-clipboard")
-CLIP.log = hs.logger.new("ibooks-clipboard", "debug")
-CLIP.start()
+-- CLIP = require("ibooks-clipboard")
+-- CLIP.log = hs.logger.new("ibooks-clipboard", "debug")
+-- CLIP.start()
 
 -- local modules = {
 --   "ibooks-clipboard",
