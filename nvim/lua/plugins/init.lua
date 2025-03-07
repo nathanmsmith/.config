@@ -214,4 +214,47 @@ return {
   -- "dstein64/vim-startuptime",
   --
   { "brenoprata10/nvim-highlight-colors", opts = { render = "virtual", enable_tailwind = true } },
+
+  {
+    "godlygeek/tabular",
+    -- config = function()
+    --   _G.align = function()
+    --     print("align")
+    --     local pattern = "^%s*|"
+    --     local lineNumber = vim.fn.line(".")
+    --     local currentColumn = vim.fn.col(".")
+    --     local previousLine = vim.fn.getline(lineNumber - 1)
+    --     local currentLine = vim.fn.getline(".")
+    --     local nextLine = vim.fn.getline(lineNumber + 1)
+    --
+    --     print(previousLine)
+    --     print(currentLine)
+    --     print(nextLine)
+    --     print(vim.fn.exists(":Tabularize"))
+    --     print(currentLine:match("^%s*|"))
+    --     print(previousLine:match(pattern))
+    --     print(nextLine:match(pattern))
+    --     print(
+    --       vim.fn.exists(":Tabularize")
+    --         and currentLine:match("^%s*|")
+    --         and (previousLine:match(pattern) or nextLine:match(pattern))
+    --     )
+    --
+    --     if
+    --       vim.fn.exists(":Tabularize")
+    --       and currentLine:match("^%s*|")
+    --       and (previousLine:match(pattern) or nextLine:match(pattern))
+    --     then
+    --       print("running tabular")
+    --       local column = #currentLine:sub(1, currentColumn):gsub("[^|]", "")
+    --       local position = #vim.fn.matchstr(currentLine:sub(1, currentColumn), ".*|\\s*\\zs.*")
+    --       vim.cmd("Tabularize/|/l1") -- `l` means left aligned and `1` means one space of cell padding
+    --       vim.cmd("normal! 0")
+    --       vim.fn.search(("[^|]*|"):rep(column) .. ("\\s\\{-\\}"):rep(position), "ce", lineNumber)
+    --     end
+    --   end
+    --
+    --   vim.keymap.set("i", "|", "|<Esc>:lua _G.align()<CR>a", { silent = true })
+    -- end,
+  },
 }
