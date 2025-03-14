@@ -215,6 +215,8 @@ return {
   --
   { "brenoprata10/nvim-highlight-colors", opts = { render = "virtual", enable_tailwind = true } },
 
+  { "pteroctopus/faster.nvim", opts = {} },
+
   {
     "godlygeek/tabular",
     -- config = function()
