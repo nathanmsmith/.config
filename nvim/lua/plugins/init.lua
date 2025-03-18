@@ -8,19 +8,12 @@ return {
 
   -- Editing nicities
   "tpope/vim-repeat",
-  {
-    "tpope/vim-unimpaired",
-    config = function()
-      -- Let's call it PascalCase, not MixedCase
-      vim.keymap.set("n", "crp", "crm", { remap = true })
-      -- Also kebabcase
-      vim.keymap.set("n", "cr-", "crk", { remap = true })
-    end,
-  },
+  "tpope/vim-unimpaired",
   "tpope/vim-characterize",
   "tpope/vim-speeddating",
   "tpope/vim-rsi",
-  "tpope/vim-abolish",
+  -- "tpope/vim-abolish",
+  -- See abolish.lua
   "tpope/vim-projectionist",
   "tpope/vim-eunuch",
   {
