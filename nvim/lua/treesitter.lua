@@ -17,21 +17,21 @@ require("nvim-treesitter.configs").setup({
     include_match_words = false,
   },
   textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ["aa"] = "@parameter.outer",
-        ["ia"] = "@parameter.inner",
-        ["af"] = "@function.outer",
-        ["if"] = "@function.inner",
-        ["ac"] = "@class.outer",
-        ["ic"] = "@class.inner",
-        ["ar"] = "@block.outer",
-        ["ir"] = "@block.inner",
-      },
-    },
+    -- select = {
+    --   enable = true,
+    --   lookahead = true,
+    --   keymaps = {
+    --     -- You can use the capture groups defined in textobjects.scm
+    --     ["aa"] = "@parameter.outer",
+    --     ["ia"] = "@parameter.inner",
+    --     ["af"] = "@function.outer",
+    --     ["if"] = "@function.inner",
+    --     ["ac"] = "@class.outer",
+    --     ["ic"] = "@class.inner",
+    --     ["ar"] = "@block.outer",
+    --     ["ir"] = "@block.inner",
+    --   },
+    -- },
     move = {
       enable = true,
       set_jumps = true,
