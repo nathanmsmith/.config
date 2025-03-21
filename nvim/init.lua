@@ -14,46 +14,7 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Bootstrap lazy.nvim, the "modern plugin manager for Neovim".
--- More details: https://github.com/folke/lazy.nvim
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable",
-    lazypath,
-  })
-end
--- See: https://www.reddit.com/r/neovim/comments/1cvrilk/diagnosticwarning_after_upgrade_to_neovim_010/
---- @diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
-require("lazy").setup("plugins", {
-  performance = {
-    rtp = {
-      -- Disable builtin vim plugins that I don't use.
-      disabled_plugins = {
-        "gzip",
-        "matchit",
-        "matchparen",
-        "netrwPlugin",
-        "tarPlugin",
-        "tohtml",
-        "tutor",
-        "zipPlugin",
-      },
-    },
-  },
-  change_detection = {
-    enabled = not helpers.isModuleAvailable("stripe"),
-    notify = true,
-  },
-  ui = {
-    border = "single",
-  },
-})
+require("lazy")
 
 require("vanilla")
 require("windows")
