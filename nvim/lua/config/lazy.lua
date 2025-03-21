@@ -17,14 +17,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Setup lazy.nvim
 require("lazy").setup({
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "habamax" } },
-})
-
-require("lazy").setup("plugins", {
   spec = {
     -- import your plugins
     { import = "plugins" },
@@ -44,10 +37,10 @@ require("lazy").setup("plugins", {
       },
     },
   },
-  change_detection = {
-    enabled = not helpers.isModuleAvailable("stripe"),
-    notify = true,
-  },
+  -- change_detection = {
+  --   enabled = not helpers.isModuleAvailable("stripe"),
+  --   notify = true,
+  -- },
   ui = {
     border = "single",
     icons = {
