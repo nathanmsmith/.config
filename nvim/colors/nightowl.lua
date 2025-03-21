@@ -318,3 +318,6 @@ hl("BqfPreviewRange", { fg = palette.light_orange })
 
 hl("LuasnipInsertNode", { fg = palette.blue })
 hl("LuasnipChoiceNode", { fg = palette.orange })
+
+-- Marks
+hl("MarksSign", { fg = palette.red })
