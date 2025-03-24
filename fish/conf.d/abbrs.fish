@@ -80,6 +80,7 @@ abbr --add gsta 'git stash'
 abbr --add gstaa 'git stash --all'
 abbr --add gl 'git log --graph'
 abbr --add gnpr 'git new-pull-request'
+abbr --add gclc 'git commit-last-command'
 
 abbr --add gmt 'git mergetool'
 abbr --add gdt 'git difftool'
