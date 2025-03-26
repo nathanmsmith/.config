@@ -81,7 +81,7 @@
 [format]
 	pretty = format:%C(auto)%h %d%Creset %s%n%Cgreen%ad%Creset %aN <%aE>%n
 [log]
-	date = local
+	date = human
 [pager]
 	diff = delta
 	log = delta
