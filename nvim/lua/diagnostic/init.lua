@@ -9,28 +9,22 @@ vim.diagnostic.config({
     border = "single",
   },
 
-  -- TODO: Implement background diagnostic coloring
-  -- signs = {
-  --   linehl = {
-  --     [vim.diagnostic.severity.ERROR] = "DiagnosticErrorLine",
-  --     [vim.diagnostic.severity.WARN] = "DiagnosticWarnLine",
-  --     [vim.diagnostic.severity.INFO] = "DiagnosticInfoLine",
-  --     [vim.diagnostic.severity.HINT] = "DiagnosticHintLine",
-  --   },
-  -- },
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = ">>",
+      [vim.diagnostic.severity.WARN] = "--",
+      [vim.diagnostic.severity.INFO] = "i",
+      [vim.diagnostic.severity.HINT] = "?",
+    },
+    -- TODO: Implement background diagnostic coloring
+    --   linehl = {
+    --     [vim.diagnostic.severity.ERROR] = "DiagnosticErrorLine",
+    --     [vim.diagnostic.severity.WARN] = "DiagnosticWarnLine",
+    --     [vim.diagnostic.severity.INFO] = "DiagnosticInfoLine",
+    --     [vim.diagnostic.severity.HINT] = "DiagnosticHintLine",
+    --   },
+  },
 })
-
--- Define signs
-local signs = {
-  Error = ">>",
-  Warn = "--",
-  Hint = "?",
-  Info = "i",
-}
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
 
 local severity_levels = {
   vim.diagnostic.severity.ERROR,
