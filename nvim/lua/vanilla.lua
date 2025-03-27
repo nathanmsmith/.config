@@ -102,3 +102,6 @@ vim.opt.spelloptions = "camel"
 
 vim.o.grepprg = "rg --vimgrep --no-heading --smart-case"
 vim.o.grepformat = "%f:%l:%c:%m"
+
+-- Set hover borders
+vim.o.winborder = "single"
