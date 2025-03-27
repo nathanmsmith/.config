@@ -2,13 +2,13 @@ local helpers = require("custom-helpers")
 
 -- Settings
 vim.diagnostic.config({
+  virtual_text = { current_line = true },
   underline = true,
   float = {
     -- Always show the source of a diagnostic message in the floating window
     source = true,
     border = "single",
   },
-
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = ">>",
