@@ -1,11 +1,6 @@
 local helpers = require("custom-helpers")
 
 return {
-  -- Linting
-  { "mfussenegger/nvim-lint" },
-  -- Formatting
-  { "stevearc/conform.nvim", opts = {} },
-
   -- Editing nicities
   "tpope/vim-repeat",
   "tpope/vim-unimpaired",
