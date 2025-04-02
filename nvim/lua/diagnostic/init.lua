@@ -47,14 +47,14 @@ vim.keymap.set("n", "[w", function()
   vim.diagnostic.goto_prev({
     severity = get_highest_error_severity(),
     wrap = true,
-    float = true,
+    float = false,
   })
 end)
 vim.keymap.set("n", "]w", function()
   vim.diagnostic.goto_next({
     severity = get_highest_error_severity(),
     wrap = true,
-    float = true,
+    float = false,
   })
 end)
 
