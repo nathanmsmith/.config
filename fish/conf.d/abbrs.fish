@@ -24,6 +24,7 @@ abbr --add binst 'brew install'
 abbr --add r rails
 abbr --add be 'bundle exec'
 abbr --add ber 'bundle exec rails'
+abbr --add tc 'bin/typecheck'
 
 # Go
 abbr --add got 'go test'
