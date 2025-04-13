@@ -1,4 +1,5 @@
 # Function to handle Ctrl+C gracefully
+# TODO: As of 4.0, I think this is clear-commandline
 function on_exit --on-signal SIGINT
   exit 0
 end

@@ -16,4 +16,14 @@ if status --is-login; and status --is-interactive
     if test -e {$HOME}/.iterm2_shell_integration.fish
         source {$HOME}/.iterm2_shell_integration.fish
     end
+
+  # TODO:
+  # From 4.0 release notes:
+  # > Up-arrow search matches -- which are highlighted in reverse colors -- are no longer syntax-highlighted, to fix bad contrast with the search match highlighting.
+  #
+  # Restore this behavior
+
+  # TODO: look into `prompt_pwd`
+  # TODO: look into `fish_vcs_prompt`
+
 end
