@@ -1,6 +1,8 @@
 # Abbreviations
 # abbrs are no longer universal, so no need for a check
 
+
+abbr --add fc fish_config
 abbr --add cfg config
 abbr --add o open
 abbr --add o. 'open .'
