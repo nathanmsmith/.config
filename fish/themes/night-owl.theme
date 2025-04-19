@@ -4,6 +4,7 @@ fish_color_param 7fdbca
 fish_color_quote ecc48d
 fish_color_comment 637777
 fish_color_error ef5350
+fish_color_keyword c792ea
 
 # TODO: the rest of the colors
 fish_color_autosuggestion 9e9e9e
@@ -15,7 +16,6 @@ fish_color_escape ff79c6
 fish_color_history_current --bold
 fish_color_host bd93f9
 fish_color_host_remote bd93f9
-fish_color_keyword ff79c6
 fish_color_match --background=brblue
 fish_color_normal f8f8f2
 fish_color_operator 50fa7b
