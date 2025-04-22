@@ -175,7 +175,7 @@ vim.keymap.set("n", "mda", function()
   M.update_marks()
 end, { desc = "Delete all global marks" })
 
-vim.keymap.set("n", "ml", require("telescope.builtin").marks, { desc = "List marks" })
+vim.keymap.set("n", "ml", require("fzf-lua").marks, { desc = "List marks" })
 
 M.setup()
 

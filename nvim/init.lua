@@ -22,6 +22,7 @@ require("marks")
 require("user-commands")
 require("autocmds")
 require("statusline")
+require("fuzzy_find")
 
 require("abolish")
 
