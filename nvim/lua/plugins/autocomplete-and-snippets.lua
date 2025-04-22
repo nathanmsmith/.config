@@ -19,6 +19,13 @@ return {
       require("completion")
     end,
   },
+
+  -- TODO: replace this plugin with a custom editor.
+  -- It should take the filetype and return the .jsonc file in
+  -- vim.fn.stdpath("config") .. "/snippets"
+  -- See also: /Users/nathan/.local/share/nvim/lazy/LuaSnip/lua/luasnip/loaders/from_vscode.lua
+  -- * get_file_snippets
+  -- * JSONC parsing
   {
     "chrisgrieser/nvim-scissors",
     opts = {
