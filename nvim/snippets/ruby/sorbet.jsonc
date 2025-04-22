@@ -1,0 +1,6 @@
+{
+  "sig": {
+    "prefix": "sig",
+    "body": ["sig { params(${1:param: String}).returns(${2:return type})$0 }"],
+  },
+}

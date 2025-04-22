@@ -39,6 +39,12 @@
       },
       {
         "language": [
+          "ruby"
+        ],
+        "path": "./ruby/sorbet.jsonc"
+      },
+      {
+        "language": [
           "javascript",
           "javascriptreact",
           "typescript",
