@@ -130,6 +130,10 @@ end
 
 -- Rerender all marks in the sign column
 function M.update_marks()
+  if not M.config.signs.enabled then
+    return
+  end
+
   local bufnr = vim.api.nvim_get_current_buf()
 
   -- Clear all existing marks

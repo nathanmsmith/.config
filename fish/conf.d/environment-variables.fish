@@ -28,5 +28,7 @@ if not set -q $ENV_VARS_INITIALIZED
     # For Rails projects so that they don't get confused locally
     set -Ux DD_TRACE_ENABLED false
 
+    set -Ux MANPAGER 'nvim +Man!'
+
     set -U ENV_VARS_INITIALIZED 1
 end
