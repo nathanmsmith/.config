@@ -5,9 +5,10 @@ return {
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
       {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         opts = {
           ui = {
+            -- TODO(2025-05-28): We should be able to remove this once other plugins (telescope, lazy) support 'winborder'
             border = "single",
             icons = {
               server_installed = "✓",
