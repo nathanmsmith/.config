@@ -83,7 +83,7 @@ require("nvim-treesitter.configs").setup({
     "python",
     "query",
     "regex",
-    "swift",
+    -- "swift",
     "tsx",
     "typescript",
     "vim",
