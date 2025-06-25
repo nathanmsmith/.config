@@ -11,6 +11,7 @@ end
 -- Installer config
 require("mason-lspconfig").setup({
   ensure_installed = installable_servers,
+  automatic_enable = false,
 })
 require("mason-tool-installer").setup({
   ensure_installed = installable_tools,
