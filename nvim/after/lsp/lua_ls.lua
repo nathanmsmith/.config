@@ -26,6 +26,14 @@ end
 
 -- Source: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#sumneko_lua
 return {
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
+  root_markers = {
+    ".luarc.json",
+    ".luarc.jsonc",
+    ".luacheckrc",
+    ".stylua.toml",
+  },
   on_attach = function(client, bufnr)
     local path = client.workspace_folders[1].name
 

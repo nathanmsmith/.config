@@ -24,13 +24,14 @@ vim.lsp.config("*", {
 
 -- Enable servers
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("jsonls")
 
 -- Advanced server setup
 --
 --
 -- require("lsp.emmet")
 -- require("lsp.lua_server")
-require("lsp.jsonls")
+-- require("lsp.jsonls")
 require("lsp.yamlls")
 
 -- Non LspInstall server setup
