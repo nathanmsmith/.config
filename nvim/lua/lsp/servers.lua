@@ -17,7 +17,6 @@ M.installable = {
   "vimls",
   "lua_ls",
   "gopls",
-  "pyright",
   "docker_compose_language_service",
   "dockerls",
 }
@@ -29,7 +28,6 @@ M.basic = {
   "eslint",
   "vimls",
   "gopls",
-  "pyright",
   "docker_compose_language_service",
   "dockerls",
 }
