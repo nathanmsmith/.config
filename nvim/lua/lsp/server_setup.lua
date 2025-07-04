@@ -17,9 +17,19 @@ for _, lsp in ipairs(basic_servers) do
   lspconfig[lsp].setup({ capabilities = capabilities })
 end
 
+vim.lsp.config("*", {
+  capabilities = capabilities,
+  root_markers = { ".git" },
+})
+
+-- Enable servers
+vim.lsp.enable("lua_ls")
+
 -- Advanced server setup
+--
+--
 -- require("lsp.emmet")
-require("lsp.lua_server")
+-- require("lsp.lua_server")
 require("lsp.jsonls")
 require("lsp.yamlls")
 

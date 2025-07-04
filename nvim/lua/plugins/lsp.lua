@@ -24,11 +24,11 @@ return {
       -- Useful status updates for LSP
       { "j-hui/fidget.nvim", opts = {} },
       -- Nice LSP settings for Neovim
-      {
-        "folke/lazydev.nvim",
-        ft = "lua",
-        opts = {},
-      },
+      -- {
+      --   "folke/lazydev.nvim",
+      --   ft = "lua",
+      --   opts = {},
+      -- },
     },
     config = function()
       require("lsp.attach")
