@@ -55,3 +55,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end
   end,
 })
+
+-- vim.api.nvim_create_autocmd("MarkSet", {
+--   desc = "Print when a mark is set",
+--   callback = function(ev)
+--     print(vim.inspect(ev))
+--   end,
+-- })

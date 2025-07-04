@@ -27,8 +27,11 @@ require("lsp.yamlls")
 if helpers.isModuleAvailable("stripe") then
   require("stripe-lsp").initServers()
 else
-  require("lsp.sourcekit")
+  -- require("lsp.sourcekit")
   require("lsp.sorbet")
   require("lsp.typescript")
   require("lsp.ruby_lsp")
+
+  -- 2025-06-02: This is the new nvim 0.11 way of enabling LSPs.
+  vim.lsp.enable("clangd")
 end
