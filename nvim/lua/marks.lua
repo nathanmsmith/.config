@@ -18,7 +18,7 @@ M.config = {
     priority = 100,
     show_uppercase = true,
     show_lowercase = true,
-    show_numbered = true,
+    show_numbered = false,
   },
   sign_group = "MarkGutter",
   sign_name_prefix = "MarkGutter_",
@@ -128,6 +128,20 @@ function M.find_next_unused_global_mark()
   return "A" -- If all marks are used, default to A
 end
 
+-- Give all marks (global and local) for a current buffer.
+---@param bufnr number Buffer number to get marks for
+---@return vim.fn.getmarklist.ret.item[] List of marks where keys are mark names (a-z for local, A-Z for global) and values contain line/column positions
+function M.list_all_marks_for_buffer(bufnr)
+  local local_marks = vim.fn.getmarklist(bufnr)
+  local global_marks = vim.tbl_filter(function(mark)
+    -- pos is a 4-tuple with the bufnr, lnum, col, offset. See `:h getmarklist()`.
+    local global_mark_bufnr = mark.pos[1]
+    return global_mark_bufnr == bufnr
+  end, vim.fn.getmarklist())
+
+  return vim.list_extend(local_marks, global_marks)
+end
+
 -- Rerender all marks in the sign column
 function M.update_marks()
   if not M.config.signs.enabled then
@@ -140,10 +154,7 @@ function M.update_marks()
   vim.fn.sign_unplace(M.config.sign_group, { buffer = bufnr })
 
   -- Get all marks
-  local local_marks = vim.fn.getmarklist(bufnr)
-  local global_marks = vim.fn.getmarklist()
-
-  local all_marks = vim.list_extend(local_marks, global_marks)
+  local all_marks = M.list_all_marks_for_buffer(bufnr)
 
   -- Place signs for each mark
   for _, mark in ipairs(all_marks) do
@@ -169,7 +180,7 @@ function M.update_marks()
 end
 
 -- Core ideas:
-vim.keymap.set("n", "ma", function()
+vim.keymap.set("n", "m-", function()
   local mark = M.find_next_unused_global_mark()
   vim.cmd("normal! m" .. mark)
   M.update_marks()

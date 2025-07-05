@@ -18,7 +18,7 @@ require("config.lazy")
 
 require("vanilla")
 require("windows")
--- require("marks")
+require("marks")
 require("user-commands")
 require("autocmds")
 require("statusline")
