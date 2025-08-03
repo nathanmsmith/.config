@@ -47,8 +47,8 @@ end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "m", function()
   hs.application.launchOrFocus("Music")
 end)
--- c for "chat"
-hs.hotkey.bind({ "ctrl", "cmd" }, "c", function()
+-- g for "messeGes". I know I'm stretching here
+hs.hotkey.bind({ "ctrl", "cmd" }, "g", function()
   if modules.isModuleAvailable("stripe") then
     hs.application.launchOrFocus("Slack")
   else

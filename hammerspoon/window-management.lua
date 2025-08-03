@@ -34,6 +34,55 @@ hs.hotkey.bind({ "alt" }, "k", function()
   win:focusWindowNorth(nil, true)
 end)
 
+-- Move the windows
+-- By app (lowercase)
+--
+
+hs.hotkey.bind({ "cmd", "alt" }, "h", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+
+  f.x = f.x - 50
+  win:setFrame(f)
+end)
+
+-- Move focused window 50 pixels to the right
+hs.hotkey.bind({ "cmd", "alt" }, "l", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+
+  f.x = f.x + 50
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind({ "ctrl", "alt" }, "h", function()
+  local win = hs.window.focusedWindow()
+  local f = win:frame()
+  local screen = win:screen()
+  local max = screen:frame()
+
+  f.x = max.x
+  f.y = max.y
+  f.w = max.w / 3
+  f.h = max.h
+  win:setFrame(f)
+end)
+
+hs.hotkey.bind({ "ctrl", "alt" }, "l", function()
+  local win = hs.window.focusedWindow()
+  win:focusWindowEast(nil, true)
+end)
+
+hs.hotkey.bind({ "ctrl", "alt" }, "j", function()
+  local win = hs.window.focusedWindow()
+  win:focusWindowSouth(nil, true)
+end)
+
+hs.hotkey.bind({ "ctrl", "alt" }, "k", function()
+  local win = hs.window.focusedWindow()
+  win:focusWindowNorth(nil, true)
+end)
+
 -- Move app to screen (uppercase)
 hs.hotkey.bind({ "alt", "shift" }, "h", function()
   local window = hs.window.focusedWindow()
@@ -72,16 +121,4 @@ hs.hotkey.bind({ "alt" }, "w", function()
   local bottom50 = geometry.rect(0, 0.5, 1, 1)
   local top50 = geometry.rect(0, 0, 1, 0.5)
   CreateSplit(top50, bottom50)
-end)
-
--- Fullscreen
-hs.hotkey.bind({ "cmd", "alt" }, "f", function()
-  local window = hs.window.focusedWindow()
-  window:maximize(true)
-end)
-
--- Center
-hs.hotkey.bind({ "alt" }, "c", function()
-  local window = hs.window.focusedWindow()
-  window:centerOnScreen(nil, true)
 end)
