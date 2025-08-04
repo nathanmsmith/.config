@@ -83,7 +83,7 @@ require("nvim-treesitter.configs").setup({
     "python",
     "query",
     "regex",
-    -- "swift",
+    "starlark",
     "tsx",
     "typescript",
     "vim",
@@ -96,3 +96,14 @@ require("nvim-treesitter.configs").setup({
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.foldlevel = 99
+
+vim.filetype.add({
+  extension = {
+    cconf = "python",
+    rbi = "ruby",
+    sky = "starlark",
+  },
+  pattern = {
+    [".*/%.vscode/.*%.json"] = "json5", -- These json files frequently have comments
+  },
+})
