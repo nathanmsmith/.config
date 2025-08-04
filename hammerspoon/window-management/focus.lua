@@ -1,4 +1,22 @@
-local modules = require("helpers.modules")
+hs.hotkey.bind({ "cmd", "ctrl" }, "h", function()
+  local win = hs.window.focusedWindow()
+  win:focusWindowWest(nil, true)
+end)
+
+hs.hotkey.bind({ "cmd", "ctrl" }, "l", function()
+  local win = hs.window.focusedWindow()
+  win:focusWindowEast(nil, true)
+end)
+
+hs.hotkey.bind({ "cmd", "ctrl" }, "j", function()
+  local win = hs.window.focusedWindow()
+  win:focusWindowSouth(nil, true)
+end)
+
+hs.hotkey.bind({ "cmd", "ctrl" }, "k", function()
+  local win = hs.window.focusedWindow()
+  win:focusWindowNorth(nil, true)
+end)
 
 local log = hs.logger.new("focus")
 log.setLogLevel(5)
@@ -9,12 +27,7 @@ hs.hotkey.bind({ "ctrl", "cmd" }, "f", function()
   hs.application.launchOrFocus("Finder")
 end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "t", function()
-  if modules.isModuleAvailable("stripe") then
-    hs.application.launchOrFocus("iTerm")
-  else
-    hs.application.launchOrFocus("iTerm")
-    -- hs.application.launchOrFocus("Ghostty")
-  end
+  hs.application.launchOrFocus("iTerm")
 end)
 hs.hotkey.bind({ "ctrl", "cmd" }, "d", function()
   hs.application.launchOrFocus("Dash")
@@ -59,6 +72,6 @@ end)
 -- Hints
 -- hs.hints.hintChars = {'a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', 's'}
 hs.hints.style = "vimperator"
-hs.hotkey.bind({ "ctrl", "cmd" }, "h", function()
+hs.hotkey.bind({ "ctrl", "cmd" }, "c", function()
   hs.hints.windowHints()
 end)

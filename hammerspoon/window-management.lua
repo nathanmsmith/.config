@@ -38,36 +38,6 @@ end)
 -- By app (lowercase)
 --
 
-hs.hotkey.bind({ "cmd", "alt" }, "h", function()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-
-  f.x = f.x - 50
-  win:setFrame(f)
-end)
-
--- Move focused window 50 pixels to the right
-hs.hotkey.bind({ "cmd", "alt" }, "l", function()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-
-  f.x = f.x + 50
-  win:setFrame(f)
-end)
-
-hs.hotkey.bind({ "ctrl", "alt" }, "h", function()
-  local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 3
-  f.h = max.h
-  win:setFrame(f)
-end)
-
 hs.hotkey.bind({ "ctrl", "alt" }, "l", function()
   local win = hs.window.focusedWindow()
   win:focusWindowEast(nil, true)
