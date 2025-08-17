@@ -17,7 +17,7 @@ Avoid overwriting these: https://jblevins.org/log/kbd
 ## Movement
 `ctrl-alt` moves windows.
 - [x] `ctrl-alt-h/j/k/l`: move window left, down, up, right
-- [ ] `ctrl-alt-H/J/K/L`: snap window to left, down, up, right sides of screen
+- [x] `ctrl-alt-H/J/K/L`: snap window to left, down, up, right sides of screen
 - [x] `ctrl-alt-c`: Center window
 
 ## Sizing
