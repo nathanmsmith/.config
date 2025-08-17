@@ -36,5 +36,12 @@ return {
   root_markers = { "Gemfile", ".git" },
   init_options = {
     formatter = "auto",
+    -- Disable the "migrations are pending" popup
+    -- https://github.com/Shopify/ruby-lsp-rails/issues/540#issuecomment-2656091287
+    addonSettings = {
+      ["Ruby LSP Rails"] = {
+        enablePendingMigrationsPrompt = false,
+      },
+    },
   },
 }
