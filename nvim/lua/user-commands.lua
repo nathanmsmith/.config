@@ -49,7 +49,7 @@ vim.api.nvim_create_user_command("AI", function()
   else
     open_ai_terminal()
   end
-end, {})
+end, { desc = "Toggle AI terminal (Claude Code)" })
 
 -- More ergonomic terminal normal mode mapping
 vim.keymap.set("t", "<Esc><tab>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
