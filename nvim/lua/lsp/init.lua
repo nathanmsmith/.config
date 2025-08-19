@@ -31,7 +31,6 @@ vim.lsp.config("*", {
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("yamlls")
-vim.lsp.enable("gopls")
 vim.lsp.enable("cssls")
 vim.lsp.enable("html")
 vim.lsp.enable("tailwindcss")
