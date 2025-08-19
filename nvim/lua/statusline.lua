@@ -32,7 +32,7 @@ function _G.snippet_status()
       if luasnip.jumpable(1) then
         status = status .. "j"
       end
-      if luasnip.jumpable(1) then
+      if luasnip.jumpable(-1) then
         status = status .. "k"
       end
       if luasnip.choice_active() then
