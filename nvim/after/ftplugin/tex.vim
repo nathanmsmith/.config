@@ -1,4 +1,3 @@
-let b:ale_linters = ['chktex']
 setlocal spell
 
 " textobj-latex - Text objects for LaTeX code
