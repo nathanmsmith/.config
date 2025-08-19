@@ -1,51 +1,52 @@
 local helpers = require("custom-helpers")
 
+local function get_current_path()
+  local path = vim.fn.expand("%:p")
+  return helpers.removePrefix(path, "oil://")
+end
+
 local function openInMacOS()
   if vim.fn.has("mac") ~= 1 then
     vim.notify("This command only works on macOS", vim.log.levels.ERROR)
     return
   end
-
-  local path = vim.fn.expand("%:p")
-  path = helpers.removePrefix(path, "oil://")
-
-  vim.fn.system("open " .. path)
+  vim.fn.system("open " .. get_current_path())
 end
 
-vim.api.nvim_create_user_command("Finder", openInMacOS, {
-  -- TODO: a bang version that copies the path to clipboard
-  -- bang = true,
-})
+vim.api.nvim_create_user_command("Finder", openInMacOS, {})
 vim.api.nvim_create_user_command("Open", openInMacOS, {})
 vim.api.nvim_create_user_command("FileName", function()
-  local path = vim.fn.expand("%:p")
-  path = helpers.removePrefix(path, "oil://")
-  vim.fn.setreg("+", path)
-end, { bang = true })
+  vim.fn.setreg("+", get_current_path())
+end, {})
 
 local ai_buf = nil
 
+local function close_ai_terminal()
+  if not ai_buf or not vim.api.nvim_buf_is_valid(ai_buf) then
+    return
+  end
+
+  local win = vim.fn.bufwinnr(ai_buf)
+  if win ~= -1 then
+    vim.cmd(win .. "wincmd c")
+  end
+  vim.api.nvim_buf_delete(ai_buf, { force = true })
+  ai_buf = nil
+end
+
+local function open_ai_terminal()
+  vim.cmd("vsplit")
+  vim.cmd("terminal claude")
+  ai_buf = vim.api.nvim_get_current_buf()
+  vim.cmd("vertical resize " .. math.floor(vim.o.columns / 3))
+  vim.cmd("startinsert")
+end
+
 vim.api.nvim_create_user_command("AI", function()
   if ai_buf and vim.api.nvim_buf_is_valid(ai_buf) then
-    local win = vim.fn.bufwinnr(ai_buf)
-    if win ~= -1 then
-      -- AI window exists, close it
-      vim.cmd(win .. "wincmd c")
-      ai_buf = nil
-    else
-      -- AI buffer exists but not visible, show it
-      vim.cmd("vsplit")
-      vim.api.nvim_set_current_buf(ai_buf)
-      vim.cmd("vertical resize " .. math.floor(vim.o.columns / 3))
-      vim.cmd("startinsert")
-    end
+    close_ai_terminal()
   else
-    -- No AI buffer, create new one
-    vim.cmd("vsplit")
-    vim.cmd("terminal claude")
-    ai_buf = vim.api.nvim_get_current_buf()
-    vim.cmd("vertical resize " .. math.floor(vim.o.columns / 3))
-    vim.cmd("startinsert")
+    open_ai_terminal()
   end
 end, {})
 
