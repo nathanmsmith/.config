@@ -1,7 +1,7 @@
 local helpers = require("custom-helpers")
 
 local function get_current_path()
-  local path = vim.fn.expand("%:p")
+  local path = vim.fn.expand("%:.")
   return helpers.removePrefix(path, "oil://")
 end
 
@@ -16,6 +16,7 @@ end
 vim.api.nvim_create_user_command("Finder", openInMacOS, {})
 vim.api.nvim_create_user_command("Open", openInMacOS, {})
 vim.api.nvim_create_user_command("FileName", function()
+  print(get_current_path() .. " copied to clipboard")
   vim.fn.setreg("+", get_current_path())
 end, {})
 
