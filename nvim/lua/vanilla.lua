@@ -41,8 +41,12 @@ vim.o.lazyredraw = true
 vim.opt.diffopt:append("internal")
 
 -- Set cursor, see :h guicursor
+-- Format: mode:shape-blinking-highlight
+-- Modes: n=normal, v=visual, c=command, i=insert, r=replace, o=operator, t=terminal, sm=showmatch
+-- Shapes: block, hor{N} (horizontal bar N% height), ver{N} (vertical bar N% width)  
+-- Blinking: blinkon{N}, blinkoff{N}, blinkwait{N} (milliseconds)
 vim.o.guicursor =
-  "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
+  "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,t:ver25-blinkon1,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
 
 -- Searching
 -- Case insensitive by default, case sensitive with an uppercase char
