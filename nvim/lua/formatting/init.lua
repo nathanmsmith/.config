@@ -34,6 +34,7 @@ else
       json = prettier,
       jsonc = prettier,
       graphql = prettier,
+      query = { "format-queries" },
       go = { "goimports", "gofmt" },
       swift = { "swiftformat" },
       ["_"] = { "trim_newlines", "trim_whitespace" },
