@@ -35,21 +35,26 @@ local function close_ai_terminal()
   ai_buf = nil
 end
 
-local function open_ai_terminal()
+local function open_ai_terminal(program)
+  program = program or "claude"
+  if helpers.isModuleAvailable("stripe") then
+    program = require("stripe").aiCommand()
+  end
+
   vim.cmd("vsplit")
-  vim.cmd("terminal claude")
+  vim.cmd("terminal " .. program)
   ai_buf = vim.api.nvim_get_current_buf()
   vim.cmd("vertical resize " .. math.floor(vim.o.columns / 3))
   vim.cmd("startinsert")
 end
 
-vim.api.nvim_create_user_command("AI", function()
+vim.api.nvim_create_user_command("AI", function(opts)
   if ai_buf and vim.api.nvim_buf_is_valid(ai_buf) then
     close_ai_terminal()
   else
-    open_ai_terminal()
+    open_ai_terminal(opts.args ~= "" and opts.args or nil)
   end
-end, { desc = "Toggle AI terminal (Claude Code)" })
+end, { desc = "Toggle AI terminal (Claude Code)", nargs = "?" })
 
 -- More ergonomic terminal normal mode mapping
 vim.keymap.set("t", "<Esc><tab>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
