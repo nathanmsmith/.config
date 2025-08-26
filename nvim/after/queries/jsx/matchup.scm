@@ -1,4 +1,4 @@
-; inherits: typescript,jsx
+; inherits: jsx
 
 (jsx_element) @scope.tag
 

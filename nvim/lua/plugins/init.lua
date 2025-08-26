@@ -193,7 +193,8 @@ return {
 
           -- Tags, but allow dashes like <custom-tag>
           -- ref: https://github.com/echasnovski/mini.ai/blob/main/lua/mini/ai.lua#L1114
-          ["t"] = { "<([%w-]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" },
+          -- ["t"] = false,
+          ["t"] = ai.gen_spec.treesitter({ a = "@tag.outer", i = "@tag.inner" }),
         },
       }
     end,
