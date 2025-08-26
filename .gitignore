@@ -59,14 +59,14 @@ gh/
 
 systemd/
 dev-runner/
+go/
+direnv/
 
 nvim/lazy-lock.json
 
 Transmission Remote GUI/
 
 irb/irbrc_history
-
-direnv/
 
 flipperdevices.com/
 
