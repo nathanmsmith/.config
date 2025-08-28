@@ -44,17 +44,19 @@ end
 
 -- TODO: get these to work with `ghgh`ing into a floating window
 vim.keymap.set("n", "[w", function()
-  vim.diagnostic.goto_prev({
+  vim.diagnostic.jump({
+    count = -1,
+    float = true,
     severity = get_highest_error_severity(),
     wrap = true,
-    float = false,
   })
 end)
 vim.keymap.set("n", "]w", function()
-  vim.diagnostic.goto_next({
+  vim.diagnostic.jump({
+    count = 1,
+    float = true,
     severity = get_highest_error_severity(),
     wrap = true,
-    float = false,
   })
 end)
 
