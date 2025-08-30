@@ -16,6 +16,7 @@ require("nvim-treesitter.configs").setup({
     disable_virtual_text = true,
     include_match_words = false,
   },
+  -- TODO: think about text objects more here
   textobjects = {
     -- select = {
     --   enable = true,

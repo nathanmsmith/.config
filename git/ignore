@@ -57,3 +57,5 @@ gh/
 irb/irbrc_history
 
 .byebug_history
+
+**/.claude/settings.local.json
