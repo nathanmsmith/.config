@@ -37,6 +37,8 @@ else
       query = { "format-queries" },
       go = { "goimports", "gofmt" },
       swift = { "swiftformat" },
+      c = { "uncrustify" },
+      cpp = { "uncrustify" },
       ["_"] = { "trim_newlines", "trim_whitespace" },
     },
     format_on_save = function(bufnr)
@@ -70,3 +72,10 @@ vim.api.nvim_create_user_command("FormatEnable", function()
 end, {
   desc = "Re-enable autoformat-on-save",
 })
+
+--   This will format changed Lua and C files with all appropriate flags set.
+-- - Style rules are (mostly) defined by `src/uncrustify.cfg` which tries to match
+--   the [style-guide]. To use the Nvim `gq` command with `uncrustify`:
+--   if !empty(findfile('src/uncrustify.cfg', ';'))
+--     setlocal formatprg=uncrustify\ -q\ -l\ C\ -c\ src/uncrustify.cfg\ --no-backup
+--   endif
