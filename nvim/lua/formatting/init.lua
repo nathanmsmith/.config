@@ -21,6 +21,12 @@ else
           "$FILENAME",
         },
       },
+      uncrustify = {
+        args = function(_, ctx)
+          local args = { "-q", "-l", "C", "-c", "src/uncrustify.cfg", "--no-backup" }
+          return args
+        end,
+      },
     },
     formatters_by_ft = {
       lua = { "stylua" },
