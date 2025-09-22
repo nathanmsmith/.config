@@ -8,6 +8,19 @@ vim.g["test#custom_strategies"] = {
   end,
 }
 
+vim.g["test#custom_transformations"] = {
+  neovim_functional = function(cmd)
+    local current_file = vim.fn.expand("%:p")
+    if current_file:match("Developer/neovim/") and current_file:match("%.lua$") and current_file:match("test") then
+      local test_file = vim.fn.expand("%:.")
+      return "make functionaltest BUSTED_ARGS='-v' TEST_FILE=" .. test_file
+    end
+    return cmd
+  end,
+}
+
+vim.g["test#transformation"] = "neovim_functional"
+
 vim.g["VimuxRunnerType"] = "window"
 vim.g["VimuxRunnerName"] = "tests"
 vim.g["test#preserve_screen"] = 1
