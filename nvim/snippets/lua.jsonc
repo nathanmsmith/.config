@@ -7,4 +7,16 @@
       "end, { buffer = event.buffer, desc = \"${3:description}\" })",
     ],
   },
+  "pvi": {
+    "prefix": "pvi",
+    "body": ["print(vim.inspect(${0}))"],
+  },
+  "p": {
+    "prefix": "p",
+    "body": ["print(${0})"],
+  },
+  "vi": {
+    "prefix": "vi",
+    "body": ["vim.inspect(${0})"],
+  },
 }
