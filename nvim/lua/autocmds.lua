@@ -56,9 +56,11 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- vim.api.nvim_create_autocmd("MarkSet", {
---   desc = "Print when a mark is set",
---   callback = function(ev)
---     print(vim.inspect(ev))
---   end,
--- })
+if vim.fn.has("nvim-0.12") == 1 then
+  vim.api.nvim_create_autocmd("MarkSet", {
+    desc = "Print when a mark is set",
+    callback = function(ev)
+      print(vim.inspect(ev))
+    end,
+  })
+end
