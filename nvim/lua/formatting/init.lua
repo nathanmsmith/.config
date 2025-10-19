@@ -21,6 +21,7 @@ else
           "$FILENAME",
         },
       },
+      -- Used for Neovim dev
       uncrustify = {
         args = function(_, ctx)
           local args = { "-q", "-l", "C", "-c", "src/uncrustify.cfg", "--no-backup" }
