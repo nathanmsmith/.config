@@ -129,3 +129,9 @@
 	rename = town rename
 	commit-last-command = !fish -c "git-commit-last-command"
 	visualize-commits = !fish -c "git-visualize-commits"
+	compress = town compress
+	contribute = town contribute
+	down = town down
+	observe = town observe
+	park = town park
+	up = town up
