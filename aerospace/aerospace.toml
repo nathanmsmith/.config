@@ -139,6 +139,10 @@ run = "move-node-to-workspace 9"
 [[on-window-detected]]
 if.app-id = 'com.culturedcode.ThingsMac'
 run = "move-node-to-workspace 9"
+[[on-window-detected]]
+# YouTube
+if.app-id = 'com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml'
+run = "move-node-to-workspace 8"
 
 [mode.resize.binding]
 h = 'resize width -50'
@@ -148,4 +152,5 @@ l = 'resize width +50'
 enter = 'mode main'
 esc = 'mode main'
 
-
+# TODO: service mode
+# join-with
