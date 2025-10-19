@@ -128,7 +128,12 @@ alt-n = 'mode join'
 
 # Match by app ID
 [[on-window-detected]]
+# Slack
 if.app-id = 'com.tinyspeck.slackmacgap'
+run = "move-node-to-workspace 10"
+[[on-window-detected]]
+# Messages
+if.app-id = 'com.apple.MobileSMS'
 run = "move-node-to-workspace 10"
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome.app.fmgjjmmmlfnkbppncabfkddbjimcfncm'
@@ -138,11 +143,18 @@ run = "move-node-to-workspace 10"
 if.app-id = 'com.google.Chrome.app.kjbdgfilnfhdoflbpgamdcdgpehopbep'
 run = "move-node-to-workspace 9"
 [[on-window-detected]]
+# Apple Calendar
+if.app-id = 'com.apple.iCal'
+run = "move-node-to-workspace 9"
+[[on-window-detected]]
 if.app-id = 'com.culturedcode.ThingsMac'
 run = "move-node-to-workspace 9"
 [[on-window-detected]]
 # YouTube
 if.app-id = 'com.google.Chrome.app.agimnkijcaahngcdmfeangaknmldooml'
+run = "move-node-to-workspace 8"
+[[on-window-detected]]
+if.app-id = 'com.apple.Music'
 run = "move-node-to-workspace 8"
 
 [mode.resize.binding]
