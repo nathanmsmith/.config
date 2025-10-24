@@ -1,23 +1,3 @@
-hs.hotkey.bind({ "cmd", "ctrl" }, "h", function()
-  local win = hs.window.focusedWindow()
-  win:focusWindowWest(nil, true)
-end)
-
-hs.hotkey.bind({ "cmd", "ctrl" }, "l", function()
-  local win = hs.window.focusedWindow()
-  win:focusWindowEast(nil, true)
-end)
-
-hs.hotkey.bind({ "cmd", "ctrl" }, "j", function()
-  local win = hs.window.focusedWindow()
-  win:focusWindowSouth(nil, true)
-end)
-
-hs.hotkey.bind({ "cmd", "ctrl" }, "k", function()
-  local win = hs.window.focusedWindow()
-  win:focusWindowNorth(nil, true)
-end)
-
 local log = hs.logger.new("focus")
 log.setLogLevel(5)
 log.i("Initializing")
@@ -72,6 +52,6 @@ end)
 -- Hints
 -- hs.hints.hintChars = {'a', 'o', 'e', 'u', 'i', 'd', 'h', 't', 'n', 's'}
 hs.hints.style = "vimperator"
-hs.hotkey.bind({ "ctrl", "cmd" }, "c", function()
+hs.hotkey.bind({ "alt" }, "i", function()
   hs.hints.windowHints()
 end)
