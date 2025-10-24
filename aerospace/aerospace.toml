@@ -87,6 +87,10 @@ alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
 alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
 alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
 
+# Application launching (i3-like)
+alt-enter = 'exec-and-forget osascript -e "tell application \"iTerm2\" to create window with default profile"'
+alt-d = 'exec-and-forget open -na "Google Chrome" --args --profile-directory="Default"'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
