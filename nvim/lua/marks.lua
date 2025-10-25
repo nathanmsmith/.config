@@ -1,15 +1,15 @@
------- MARKS
--- Core ideas:
--- `ma` -> Add a global mark (Start with A and pick first unused mark)
--- `mnX` -> Add a named mark X
--- `mrX` -> Replace the current mark with mark X
-
--- TODO: `mA` -> Add a local mark (Start with a and pick first unused mark)
--- TODO: `mdc` -> Delete mark on current line
--- `mda` -> Delete all marks globally
--- `mdA` -> Delete all marks locally
--- `ml` -> open list of marks
-
+--------- MARKS
+----- Core ideas:
+----- `ma` -> Add a global mark (Start with A and pick first unused mark)
+----- `mnX` -> Add a named mark X
+----- `mrX` -> Replace the current mark with mark X
+---
+----- TODO: `mA` -> Add a local mark (Start with a and pick first unused mark)
+----- TODO: `mdc` -> Delete mark on current line
+----- `mda` -> Delete all marks globally
+----- `mdA` -> Delete all marks locally
+----- `ml` -> open list of marks
+---
 local M = {}
 
 M.config = {
@@ -33,11 +33,9 @@ function M.setup(user_config)
 
   -- Define highlight groups
   -- TODO: adjust these
-  vim.cmd([[
-    highlight default link MarkGutterLower Number
-    highlight default link MarkGutterUpper Number
-    highlight default link MarkGutterNumbered Number
-  ]])
+  vim.api.nvim_set_hl(0, "MarkGutterLower", { link = "Number", default = true })
+  vim.api.nvim_set_hl(0, "MarkGutterUpper", { link = "Number", default = true })
+  vim.api.nvim_set_hl(0, "MarkGutterNumbered", { link = "Number", default = true })
 
   -- Create signs for lowercase, uppercase, and numbered marks
   if M.config.signs.enabled then
@@ -80,53 +78,30 @@ function M.setup(user_config)
       end
     end
   end
-
-  -- Set up autocommands to update the signs
-  local augroup = vim.api.nvim_create_augroup("MarkGutter", { clear = true })
-
-  vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged", "InsertLeave", "CmdlineLeave" }, {
-    group = augroup,
-    callback = function()
-      M.update_marks()
-    end,
-  })
-
-  -- Mark commands can change marks
-  vim.api.nvim_create_autocmd("CmdlineLeave", {
-    group = augroup,
-    pattern = "*",
-    callback = function()
-      local cmd = vim.fn.getcmdline()
-      if cmd:match("^%s*m%s*[a-zA-Z0-9]") then
-        vim.schedule(function()
-          M.update_marks()
-        end)
-      end
-    end,
-  })
 end
-
--- Find next unused global mark (A-Z)
-function M.find_next_unused_global_mark()
-  local marks = vim.fn.getmarklist()
-  local used_marks = {}
-
-  for _, mark in ipairs(marks) do
-    local mark_char = mark.mark:sub(2, 2)
-    if mark_char:match("[A-Z]") then
-      used_marks[mark_char] = true
-    end
-  end
-
-  for i = 65, 90 do -- ASCII codes for A-Z
-    local char = string.char(i)
-    if not used_marks[char] then
-      return char
-    end
-  end
-
-  return "A" -- If all marks are used, default to A
-end
+---
+----- Find next unused global mark (A-Z)
+---function M.find_next_unused_global_mark()
+---  local marks = vim.fn.getmarklist()
+---  local used_marks = {}
+---
+---  for _, mark in ipairs(marks) do
+---    local mark_char = mark.mark:sub(2, 2)
+---    if mark_char:match("[A-Z]") then
+---      used_marks[mark_char] = true
+---    end
+---  end
+---
+---  for i = 65, 90 do -- ASCII codes for A-Z
+---    local char = string.char(i)
+---    if not used_marks[char] then
+---      return char
+---    end
+---  end
+---
+---  return "A" -- If all marks are used, default to A
+---end
+---
 
 -- Give all marks (global and local) for a current buffer.
 ---@param bufnr number Buffer number to get marks for
@@ -178,20 +153,54 @@ function M.update_marks()
     end
   end
 end
+---
+----- Core ideas:
+---vim.keymap.set("n", "m-", function()
+---  local mark = M.find_next_unused_global_mark()
+---  vim.cmd("normal! m" .. mark)
+---  M.update_marks()
+---end, { desc = "Add a mark" })
+---vim.keymap.set("n", "mda", function()
+---  vim.cmd("delmarks A-Z")
+---  M.update_marks()
+---end, { desc = "Delete all global marks" })
+---
 
--- Core ideas:
-vim.keymap.set("n", "m-", function()
-  local mark = M.find_next_unused_global_mark()
-  vim.cmd("normal! m" .. mark)
-  M.update_marks()
-end, { desc = "Add a mark" })
-vim.keymap.set("n", "mda", function()
-  vim.cmd("delmarks A-Z")
-  M.update_marks()
-end, { desc = "Delete all global marks" })
+-- Set up autocommands to update the signs
+if vim.fn.has("nvim-0.12") == 1 then
+  M.setup()
+
+  local augroup = vim.api.nvim_create_augroup("MarkGutter", { clear = true })
+
+  vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged", "InsertLeave", "CmdlineLeave" }, {
+    group = augroup,
+    callback = function()
+      M.update_marks()
+    end,
+  })
+
+  -- Mark commands can change marks
+  vim.api.nvim_create_autocmd("CmdlineLeave", {
+    group = augroup,
+    pattern = "*",
+    callback = function()
+      local cmd = vim.fn.getcmdline()
+      if cmd:match("^%s*m%s*[a-zA-Z0-9]") then
+        vim.schedule(function()
+          M.update_marks()
+        end)
+      end
+    end,
+  })
+
+  vim.api.nvim_create_autocmd("MarkSet", {
+    desc = "Print when a mark is set",
+    callback = function(ev)
+      M.update_marks()
+    end,
+  })
+end
 
 vim.keymap.set("n", "ml", require("fzf-lua").marks, { desc = "List marks" })
-
-M.setup()
 
 return M
