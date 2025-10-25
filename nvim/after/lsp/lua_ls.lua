@@ -35,6 +35,10 @@ return {
     ".stylua.toml",
   },
   on_attach = function(client, bufnr)
+    if not client.workspace_folders or #client.workspace_folders == 0 then
+      return true
+    end
+
     local path = client.workspace_folders[1].name
 
     if string.match(path, ".config/hammerspoon") then
