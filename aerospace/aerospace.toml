@@ -165,6 +165,10 @@ run = "move-node-to-workspace 8"
 # Preview - floating mode
 if.app-id = 'com.apple.Preview'
 run = "layout floating"
+[[on-window-detected]]
+# Finder - floating mode
+if.app-id = 'com.apple.finder'
+run = "layout floating"
 
 [mode.resize.binding]
 h = 'resize width -50'
