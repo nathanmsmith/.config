@@ -169,6 +169,10 @@ run = "layout floating"
 # Finder - floating mode
 if.app-id = 'com.apple.finder'
 run = "layout floating"
+[[on-window-detected]]
+# 1Password - floating mode
+if.app-id = 'com.1password.1password'
+run = "layout floating"
 
 [mode.resize.binding]
 h = 'resize width -50'
