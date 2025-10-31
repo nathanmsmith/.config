@@ -78,7 +78,8 @@ outer.right =      0
 
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-t = 'layout tiles horizontal vertical'
+alt-s = 'layout tiles horizontal vertical' # alt-s for "squares"
+alt-t = 'layout tiles horizontal vertical' # alt-t for "tiles"
 alt-a = 'layout accordion horizontal vertical'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
@@ -97,7 +98,11 @@ alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 # https://nikitabobko.github.io/AeroSpace/commands#fullscreen
-alt-shift-f = 'fullscreen'
+# alt-shift-f = 'fullscreen'
+
+# Toggle floating/tiling mode
+alt-f = 'layout floating'
+alt-shift-f = 'layout tiling'
 
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
@@ -156,6 +161,10 @@ run = "move-node-to-workspace 8"
 [[on-window-detected]]
 if.app-id = 'com.apple.Music'
 run = "move-node-to-workspace 8"
+[[on-window-detected]]
+# Preview - floating mode
+if.app-id = 'com.apple.Preview'
+run = "layout floating"
 
 [mode.resize.binding]
 h = 'resize width -50'
