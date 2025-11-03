@@ -173,6 +173,10 @@ run = "layout floating"
 # 1Password - floating mode
 if.app-id = 'com.1password.1password'
 run = "layout floating"
+[[on-window-detected]]
+# Things - floating mode
+if.app-id = 'com.culturedcode.ThingsMac'
+run = "layout floating"
 
 [mode.resize.binding]
 h = 'resize width -50'
