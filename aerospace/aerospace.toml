@@ -177,6 +177,14 @@ run = "layout floating"
 # Things - floating mode
 if.app-id = 'com.culturedcode.ThingsMac'
 run = "layout floating"
+[[on-window-detected]]
+# DaisyDisk - floating mode
+if.app-id = 'com.daisydiskapp.DaisyDiskStandAlone'
+run = "layout floating"
+[[on-window-detected]]
+# IINA - floating mode
+if.app-id = 'com.colliderli.iina'
+run = "layout floating"
 
 [mode.resize.binding]
 h = 'resize width -50'
