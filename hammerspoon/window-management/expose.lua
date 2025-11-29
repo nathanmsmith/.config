@@ -1,0 +1,7 @@
+-- -- Create expose instance
+-- expose = hs.expose.new()
+--
+-- -- Bind to a hotkey (e.g., ctrl-cmd-e)
+-- hs.hotkey.bind("ctrl-cmd", "e", "Expose", function()
+--   expose:toggleShow()
+-- end)
