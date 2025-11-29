@@ -41,8 +41,14 @@ local function open_ai_terminal(program)
     program = require("stripe").aiCommand()
   end
 
+  local current_file = vim.fn.expand("%:p")
+  local cmd = program
+  if current_file ~= "" then
+    cmd = program .. " " .. vim.fn.shellescape(current_file)
+  end
+
   vim.cmd("vsplit")
-  vim.cmd("terminal " .. program)
+  vim.cmd("terminal " .. cmd)
   ai_buf = vim.api.nvim_get_current_buf()
   vim.cmd("vertical resize " .. math.floor(vim.o.columns / 3))
   vim.cmd("startinsert")
