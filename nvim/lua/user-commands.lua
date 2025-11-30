@@ -62,6 +62,19 @@ vim.api.nvim_create_user_command("AI", function(opts)
   end
 end, { desc = "Toggle AI terminal (Claude Code)", nargs = "?" })
 
+vim.api.nvim_create_user_command("Devlog", function(opts)
+  local devlog_dir = vim.fn.expand("~/Developer/devlog")
+  local filename = opts.args ~= "" and opts.args or os.date("%Y-%m-%d") .. ".md"
+
+  -- Ensure filename has .md extension
+  if not filename:match("%.md$") then
+    filename = filename .. ".md"
+  end
+
+  local filepath = devlog_dir .. "/" .. filename
+  vim.cmd("edit " .. vim.fn.fnameescape(filepath))
+end, { desc = "Open devlog file", nargs = "?" })
+
 -- More ergonomic terminal normal mode mapping
 vim.keymap.set("t", "<Esc><tab>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
