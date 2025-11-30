@@ -9,12 +9,6 @@
 	signingkey = 3B9BA490BA8CCFE7
 [credential]
 	helper = osxkeychain
-[credential "https://github.com"]
-	helper =
-	helper = !fish -c 'if test (uname) = Linux; echo /usr/lib/git-core/git-credential-libsecret; else; echo osxkeychain; end'
-[credential "https://gitlab.com"]
-	helper =
-	helper = !fish -c 'if test (uname) = Linux; echo /usr/lib/git-core/git-credential-libsecret; else; echo osxkeychain; end'
 [commit]
 	; gpgsign = true
 	verbose = 2
