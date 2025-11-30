@@ -46,6 +46,7 @@ else
       swift = { "swiftformat" },
       c = { "uncrustify" },
       cpp = { "uncrustify" },
+      elixir = { "mix" },
       ["_"] = { "trim_newlines", "trim_whitespace" },
     },
     format_on_save = function(bufnr)

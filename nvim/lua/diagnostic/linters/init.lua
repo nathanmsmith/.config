@@ -9,4 +9,5 @@ lint.linters_by_ft = {
   ruby = { "rubocop" },
   swift = { "swiftlint" },
   go = { "golangcilint" },
+  elixir = { "credo" },
 }
