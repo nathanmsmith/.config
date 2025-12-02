@@ -101,7 +101,7 @@ else
   require("diagnostic.linters")
 end
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost" }, {
   desc = "Rerun linters when buffer changes",
   group = vim.api.nvim_create_augroup("Lint", { clear = true }),
   callback = function()
