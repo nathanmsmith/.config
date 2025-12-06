@@ -31,6 +31,7 @@ require("abolish")
 if helpers.isModuleAvailable("stripe") then
   require("stripe").initClipboard()
   require("stripe").initTests()
+  require("stripe").initUserCommands()
   require("stripe-sourcegraph")
 else
   require("projectionist")
