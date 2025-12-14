@@ -32,6 +32,7 @@ local ensure_installed = {
   "starlark",
   "fish",
   "go",
+  "ruby",
 }
 
 -- Check if tree-sitter CLI is installed
