@@ -8,7 +8,7 @@ Currently, these dotfiles are only tested on macOS.
 
 Clone this directory in your home folder, `~`. Run `install.sh`
 
-```
+```bash
 git clone https://github.com/nathunsmitty/.config
 cd .config
 ./install.sh

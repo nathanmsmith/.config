@@ -1,10 +1,12 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      "windwp/nvim-ts-autotag",
-      "RRethy/nvim-treesitter-endwise",
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+      { "windwp/nvim-ts-autotag", branch = "main" },
+      "RRethy/nvim-treesitter-endwise", -- No main branch yet, uses master
     },
     build = ":TSUpdate",
     config = function()
