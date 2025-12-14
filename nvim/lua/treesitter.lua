@@ -31,6 +31,7 @@ local ensure_installed = {
   "eex",
   "starlark",
   "fish",
+  "go",
 }
 
 -- Check if tree-sitter CLI is installed
