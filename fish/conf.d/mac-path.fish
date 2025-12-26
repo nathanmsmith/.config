@@ -7,7 +7,7 @@ if not set -q $PATH_INITIALIZED; and test (uname) = Darwin
     fish_add_path /opt/homebrew/opt/python/libexec/bin
     fish_add_path /opt/homebrew/opt/curl/bin
     fish_add_path /opt/homebrew/opt/llvm/bin
-    fish_add_path /opt/homebrew/opt/postgresql@17/bin
+    fish_add_path /opt/homebrew/opt/postgresql@18/bin
     fish_add_path $HOME/.rbenv/bin
     fish_add_path $PYENV_ROOT/bin
     fish_add_path $CARGO_HOME/bin
