@@ -40,4 +40,7 @@ if status --is-login; and status --is-interactive
   end
   set --erase _asdf_shims
 
+
+  # Direnv
+  direnv hook fish | source
 end

@@ -39,7 +39,7 @@ vim.lsp.enable("vimls")
 vim.lsp.enable("gopls")
 vim.lsp.enable("docker_compose_language_service")
 vim.lsp.enable("dockerls")
-vim.lsp.enable("elixirls")
+vim.lsp.enable("expert")
 
 if helpers.isModuleAvailable("stripe") then
   require("stripe-lsp").initServers()

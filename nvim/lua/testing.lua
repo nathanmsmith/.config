@@ -1,4 +1,4 @@
-local iterm_command = "python3 ~/.config/iTerm/Scripts/run-test.py"
+local iterm_command = "/Applications/iTerm.app/Contents/Resources/it2run ~/.config/iTerm/Scripts/run-test.py"
 
 vim.g["test#custom_strategies"] = {
   iterm = function(test_command)

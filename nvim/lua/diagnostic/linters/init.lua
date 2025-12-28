@@ -1,6 +1,7 @@
 require("diagnostic.linters.rubocop")
 require("diagnostic.linters.swiftlint")
 require("diagnostic.linters.luacheck")
+require("diagnostic.linters.credo")
 
 local lint = require("lint")
 lint.linters_by_ft = {
