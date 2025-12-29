@@ -227,4 +227,16 @@ vim.api.nvim_set_var("projectionist_heuristics", {
       ["alternate"] = "src/test/java/{}.java",
     },
   },
+
+  -- Elixir
+  ["mix.exs"] = {
+    ["lib/*.ex"] = {
+      ["type"] = "source",
+      ["alternate"] = "test/{}_test.exs",
+    },
+    ["test/*_test.exs"] = {
+      ["type"] = "test",
+      ["alternate"] = "lib/{}.ex",
+    },
+  },
 })
