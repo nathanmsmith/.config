@@ -74,3 +74,5 @@ goose/
 wireshark/
 
 cursor/
+
+.expert/expert.log
