@@ -1,3 +1,25 @@
+-- Register custom make-range! directive for treesitter queries
+-- This creates a range from two separate captures (used in JSX/TSX textobjects)
+vim.treesitter.query.add_directive("make-range!", function(match, _, _, pred, metadata)
+  local capture_id = pred[2]
+  if type(capture_id) == "string" then
+    capture_id = capture_id:gsub("^@", "")
+    local start_capture = pred[3]:gsub("^@", "")
+    local end_capture = pred[4]:gsub("^@", "")
+
+    local start_node = match[start_capture]
+    local end_node = match[end_capture]
+
+    if start_node and end_node then
+      local start_row, start_col = start_node:range()
+      local _, _, end_row, end_col = end_node:range()
+
+      metadata[capture_id] = metadata[capture_id] or {}
+      metadata[capture_id].range = { start_row, start_col, end_row, end_col }
+    end
+  end
+end, { force = true })
+
 local ensure_installed = {
   "c",
   "lua",
@@ -46,10 +68,15 @@ end
 require("nvim-treesitter").install(ensure_installed):wait(300000)
 
 -- Enable treesitter highlighting and indentation for all filetypes
+local filetypes = vim.list_extend(vim.list_slice(ensure_installed), {
+  "typescriptreact", -- TSX files
+  "javascriptreact", -- JSX files
+})
+
 local group = vim.api.nvim_create_augroup("TreesitterSetup", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   group = group,
-  pattern = ensure_installed,
+  pattern = filetypes,
   callback = function(_args)
     -- Enable highlighting
     vim.treesitter.start()
