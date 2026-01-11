@@ -84,6 +84,9 @@ return {
             return helpers.contains({ ".DS_Store", ".." }, name)
           end,
         },
+        confirmation = {
+          border = "single",
+        },
       })
       vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
     end,
