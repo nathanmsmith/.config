@@ -1,4 +1,4 @@
-if not set -q $ENV_VARS_INITIALIZED
+if not set -q ENV_VARS_INITIALIZED
     set -U fish_greeting
 
     # Editor

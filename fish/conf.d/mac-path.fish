@@ -1,4 +1,4 @@
-if not set -q $PATH_INITIALIZED; and test (uname) = Darwin
+if not set -q PATH_INITIALIZED; and test (uname) = Darwin
     set -Ux PYENV_ROOT $HOME/.pyenv
     set -Ux GOPATH $HOME/Developer/go
 
