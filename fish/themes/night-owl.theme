@@ -1,8 +1,8 @@
-# # name: 'Night Owl'
+# name: 'Night Owl'
+# preferred_background: 011627
 # Matches the Night Owl VSCode theme and Neovim colorscheme
 # Apply with `fish_config theme choose night-owl`
 
-preferred_background: 011627
 
 fish_color_command 82aaff --italics
 fish_color_param 7fdbca
