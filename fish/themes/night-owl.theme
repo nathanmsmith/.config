@@ -1,4 +1,9 @@
-# Colorscheme: night-owl
+# # name: 'Night Owl'
+# Matches the Night Owl VSCode theme and Neovim colorscheme
+# Apply with `fish_config theme choose night-owl`
+
+preferred_background: 011627
+
 fish_color_command 82aaff --italics
 fish_color_param 7fdbca
 fish_color_quote ecc48d
@@ -6,38 +11,38 @@ fish_color_comment 637777
 fish_color_error ef5350
 fish_color_keyword c792ea
 
-# TODO: the rest of the colors
-fish_color_autosuggestion 9e9e9e
-fish_color_cancel 'ff5555'  '--reverse'
-fish_color_cwd 50fa7b
-fish_color_cwd_root red
-fish_color_end ffd75f
-fish_color_escape ff79c6
+# Shell highlighting colors
+fish_color_autosuggestion 5f7e97
+fish_color_cancel ef5350 --reverse
+fish_color_cwd c5e478
+fish_color_cwd_root ef5350
+fish_color_end f78c6c
+fish_color_escape c792ea
 fish_color_history_current --bold
-fish_color_host bd93f9
-fish_color_host_remote bd93f9
-fish_color_match --background=brblue
-fish_color_normal f8f8f2
-fish_color_operator 50fa7b
-fish_color_option ffb86c
-fish_color_redirection f8f8f2
-fish_color_search_match --background=44475a
-fish_color_selection --background=44475a
-fish_color_status ff5555
-fish_color_user 8be9fd
+fish_color_host 82aaff
+fish_color_host_remote 82aaff
+fish_color_match --background=1d3b53
+fish_color_normal d6deeb
+fish_color_operator 7fdbca
+fish_color_option f78c6c
+fish_color_redirection d6deeb
+fish_color_search_match --background=1d3b53
+fish_color_selection --background=1d3b53
+fish_color_status ef5350
+fish_color_user 7fdbca
 fish_color_valid_path --underline
 fish_pager_color_background
-fish_pager_color_completion f8f8f2
-fish_pager_color_description 6272a4
-fish_pager_color_prefix 8be9fd
-fish_pager_color_progress 6272a4
+fish_pager_color_completion d6deeb
+fish_pager_color_description 5f7e97
+fish_pager_color_prefix 82aaff
+fish_pager_color_progress 5f7e97
 fish_pager_color_secondary_background
 fish_pager_color_secondary_completion
 fish_pager_color_secondary_description
 fish_pager_color_secondary_prefix
-fish_pager_color_selected_background --background=44475a
-fish_pager_color_selected_completion f8f8f2
-fish_pager_color_selected_description 6272a4
-fish_pager_color_selected_prefix 8be9fd
+fish_pager_color_selected_background --background=1d3b53
+fish_pager_color_selected_completion d6deeb
+fish_pager_color_selected_description 5f7e97
+fish_pager_color_selected_prefix 82aaff
 
 # vim:ft=fish
