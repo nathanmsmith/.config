@@ -105,7 +105,6 @@
 	extendedRegexp = true
 [help]
 	autocorrect = prompt
-
 [alias]
 	main-branch = town main-branch
 	continue = town continue
