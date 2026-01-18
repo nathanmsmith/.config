@@ -1,10 +1,55 @@
-local iterm_command = "/Applications/iTerm.app/Contents/Resources/it2run ~/.config/iTerm/Scripts/run-test.py"
-
 vim.g["test#custom_strategies"] = {
   iterm = function(test_command)
-    print(test_command)
-    local full_command = vim.fn.join({ iterm_command, vim.fn.shellescape(test_command) })
-    vim.fn.execute("silent !" .. full_command)
+    print("Test command: " .. test_command)
+    -- Use AppleScript for much faster iTerm2 integration
+    local escaped_command = test_command:gsub("\\", "\\\\"):gsub('"', '\\"')
+    local applescript = string.format(
+      [[
+      tell application "iTerm2"
+        tell current window
+          set testTab to missing value
+
+          repeat with aTab in tabs
+            tell aTab
+              tell current session
+                if name is "Tests" then
+                  set testTab to aTab
+                  exit repeat
+                end if
+              end tell
+            end tell
+          end repeat
+
+          if testTab is missing value then
+            set testTab to (create tab with default profile)
+            tell testTab
+              select
+              tell current session
+                set name to "Tests"
+                write text "%s"
+              end tell
+            end tell
+          else
+            tell testTab
+              select
+              tell current session
+                write text "%s"
+              end tell
+            end tell
+          end if
+        end tell
+      end tell
+    ]],
+      escaped_command,
+      escaped_command
+    )
+
+    local result = vim.fn.system({ "osascript", "-e", applescript })
+    local exit_code = vim.v.shell_error
+
+    if exit_code ~= 0 then
+      print("AppleScript error (exit code " .. exit_code .. "): " .. result)
+    end
   end,
 }
 
