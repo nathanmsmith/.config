@@ -1,3 +1,7 @@
+-- Inspiration:
+-- https://github.com/sdras/night-owl-vscode-theme/
+-- https://css-tricks.com/creating-a-vs-code-theme/
+
 local palette = {
   -- Core colors
   none = "NONE",
