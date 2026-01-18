@@ -31,6 +31,9 @@ local palette = {
   orange = "#f78c6c",
   light_orange = "#ecc48d",
   green = "#addb67",
+  lime_green = "#c5e478",
+  gold = "#ffcb8b",
+  light_cyan = "#baebe2",
   dark_cyan = "#637777",
   cyan2 = "#7fdbca",
 
