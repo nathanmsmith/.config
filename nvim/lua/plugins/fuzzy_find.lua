@@ -4,6 +4,12 @@ return {
     config = function()
       local actions = require("fzf-lua").actions
       require("fzf-lua").setup({
+        winopts = {
+          preview = {
+            layout = 'vertical',
+            vertical = 'up:40%',
+          },
+        },
         actions = {
           true,
           files = {
