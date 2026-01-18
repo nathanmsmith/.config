@@ -1,6 +1,39 @@
 -- Inspiration:
 -- https://github.com/sdras/night-owl-vscode-theme/
 -- https://css-tricks.com/creating-a-vs-code-theme/
+--
+-- Differences from VSCode Night Owl theme:
+--
+-- 1. Line highlighting:
+--    VSCode: #28707d29 (transparent teal)
+--    Neovim: #112630 (solid dark blue-teal)
+--
+-- 2. Line numbers (inactive):
+--    VSCode: #4b6479 (muted blue-gray)
+--    Neovim: #444444 (neutral gray)
+--
+-- 3. Active line number:
+--    VSCode: #C5E4FD (bright cyan)
+--    Neovim: #aaaaaa (neutral gray)
+--
+-- 4. Selection background:
+--    VSCode: #1d3b53 (dark blue)
+--    Neovim: #2d2c5d (dark purple-blue)
+--
+-- 5. Cursor:
+--    VSCode: foreground #80a4c2 (blue cursor)
+--    Neovim: background #80a4c2, foreground #805a3e (inverted with brown fg)
+--
+-- 6. Additional Neovim-specific features:
+--    - Plugin support (gitsigns, conflict-marker, eyeliner, treesitter-context, etc.)
+--    - LSP semantic token highlighting
+--    - Diagnostic styling with underlines
+--    - Extended diff and git conflict visualizations
+--
+-- 7. Color additions not in VSCode theme:
+--    - lime_green, light_cyan, cyan2 for additional syntax variety
+--    - Conflict marker colors for git merge visualization
+--    - Diagnostic warning line background
 
 local palette = {
   -- Core colors
