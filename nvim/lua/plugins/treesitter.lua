@@ -17,21 +17,15 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    config = function()
-      require("treesitter-context").setup({
-        enable = true,
-        max_lines = 10, -- How many lines the window should span
-        min_window_height = 0, -- Minimum editor window height to enable context
-        line_numbers = true,
-        multiline_threshold = 1, -- Maximum number of lines to show for a single context
-        trim_scope = "outer", -- Which context lines to discard if max_lines is exceeded
-        mode = "cursor", -- Line used to calculate context. 'cursor' or 'topline'
-      })
-
-      -- Set background color for context lines using night-owl CursorLine color
-      vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#112630" })
-      vim.api.nvim_set_hl(0, "TreesitterContextLineNumber", { bg = "#112630" })
-    end,
+    opts = {
+      enable = true,
+      max_lines = 10, -- How many lines the window should span
+      min_window_height = 0, -- Minimum editor window height to enable context
+      line_numbers = true,
+      multiline_threshold = 1, -- Maximum number of lines to show for a single context
+      trim_scope = "outer", -- Which context lines to discard if max_lines is exceeded
+      mode = "cursor", -- Line used to calculate context. 'cursor' or 'topline'
+    },
   },
 
   {

@@ -1,97 +1,59 @@
 local palette = {
+  -- Core colors
   none = "NONE",
   fg = "#d6deeb",
   bg = "#011627",
-  folded_bg = "#092135",
+
+  -- Cursor
   cursor_fg = "#805a3e",
   cursor_bg = "#80a4c2",
+  cursorline_bg = "#112630",
+  cursorline_number_fg = "#aaaaaa",
+
+  -- UI elements
   line_number_fg = "#444444",
-  line_number_active_fg = "#c5e4fc",
+  ui_border = "#5f7e97",
+  ui_border2 = "#20395d",
+  colorcolumn_bg = "#222222",
+  visual_bg = "#2d2c5d",
+
+  -- Folding
+  folded_fg = "#777777",
+  foldcolumn_fg = "#333333",
+
+  -- Search
+  incsearch_fg = "#eeeeee",
+
+  -- Syntax colors
+  blue = "#82aaff",
+  magenta = "#c792ea",
+  red = "#ff5874",
+  orange = "#f78c6c",
+  light_orange = "#ecc48d",
+  green = "#addb67",
+  dark_cyan = "#637777",
+  cyan2 = "#7fdbca",
+
+  -- Diagnostics
+  error = "#ef5350",
+  diagnostic_warn_line_bg = "#501010",
+
+  -- Git signs
   sign_add = "#9ccc65",
   sign_change = "#e2b93d",
   sign_delete = "#ef5350",
-  indent_guide = "#1f395d",
-  indent_guide_active = "#7e97ac",
-  visual = "#1d3b53",
-  match_paren = "#1e364a",
-  search_blue = "#063e5d",
-  incremental_search_blue = "#2E485C",
-  error = "#ef5350",
-  word_highlight = "#33384d",
-  word_highlight_write = "#2f3350",
-  changed = "#a2bffc",
-  quickfix_line = "#0e293f",
-  ui_border = "#5f7e97",
-  ui_border2 = "#20395d",
-  nvim_tree_file = "#89a4bb",
-  nvim_tree_indent_marker = "#585858",
-  tab_active_bg = "#0b2942",
-  tab_inactive_bg = "#01111d",
-  parameter = "#d7dbe0",
-  string_delimiter = "#d9f5dd",
-  dark = "#010d18",
-  dark2 = "#021320",
-  dark3 = "#99b76d23",
-  white = "#ffffff",
-  white2 = "#eeefff",
-  dark_white = "#cccccc",
-  gray = "#262a39",
-  gray2 = "#d2dee7",
-  gray3 = "#36414a",
-  gray4 = "#d6deeb80",
-  gray5 = "#969696",
-  gray6 = "#7e97ac",
-  light_blue = "#78ccf0",
-  blue = "#82aaff",
-  blue2 = "#0b253a",
-  blue3 = "#122d42",
-  blue4 = "#1b90dd4d",
-  blue5 = "#234d70",
-  blue6 = "#234d708c",
-  blue7 = "#395a75",
-  blue8 = "#5ca7e4",
-  blue9 = "#5f7e9779",
-  blue10 = "#697098",
-  blue11 = "#8eace3",
-  blue12 = "#b2ccd6",
-  blue13 = "#072232",
-  blue14 = "#273845",
-  blue15 = "#169fff",
-  green = "#addb67",
-  green2 = "#6CC85E",
-  light_cyan = "#caece6",
-  cyan = "#6ae9f0",
-  cyan2 = "#7fdbca",
-  cyan3 = "#7fdbcaff",
-  cyan4 = "#80cbc4",
-  cyan5 = "#baebe2",
-  dark_cyan = "#637777",
-  light_red = "#ff869a",
-  red = "#ff5874",
-  red2 = "#ff6363",
-  red3 = "#ef535090",
-  dark_red = "#ab0300f2",
-  light_orange = "#ecc48d",
-  orange = "#f78c6c",
-  orange2 = "#ffcb8b",
-  light_yellow = "#faf39f",
-  yellow = "#ffd602",
-  yellow2 = "#b39554",
-  yellow3 = "#fad430",
-  yellow4 = "#ffeb95",
-  yellow5 = "#ffeb95cc",
-  light_purple = "#a599e9",
-  purple = "#7e57c2",
-  purple2 = "#5166F0",
-  purple3 = "#da70d6",
-  purple4 = "#7986e7",
-  dark_purple = "#2E2D5E",
-  magenta = "#c792ea",
-  magenta2 = "#c789d6",
-  magenta3 = "#d1aaff",
-  magenta4 = "#ff2c83",
-  magenta5 = "#e2a2f433",
-  magenta6 = "#f6bbe533",
+
+  -- Diff colors
+  diff_add_fg = "#99b76d",
+  diff_add_bg = "#121e3d",
+  diff_delete_bg = "#221f3d",
+
+  -- Conflict markers
+  conflict_begin = "#567f9a",
+  conflict_ours = "#1f4055",
+  conflict_theirs = "#0f1f3f",
+  conflict_end = "#2b2a5e",
+  conflict_ancestor = "#754a81",
 }
 
 --- @param name string
@@ -138,33 +100,33 @@ hl("Operator", { fg = palette.magenta })
 hl("MatchParen", { fg = palette.red, bold = true })
 
 -- https://github.com/neovim/neovim/issues/9800
-hl("CursorLine", { bg = "#112630" })
-hl("CursorLineNr", { fg = "#aaaaaa", bg = "#112630" })
-hl("ColorColumn", { bg = "#222222" })
+hl("CursorLine", { bg = palette.cursorline_bg })
+hl("CursorLineNr", { fg = palette.cursorline_number_fg, bg = palette.cursorline_bg })
+hl("ColorColumn", { bg = palette.colorcolumn_bg })
 hl("Directory", { fg = palette.blue })
 hl("Special", { fg = palette.orange })
 hl("Conceal", { fg = palette.ui_border2 })
 hl("Delimiter", { link = "NONE" })
 
-hl("DiffAdd", { fg = "#99b76d", bg = "#121e3d" })
+hl("DiffAdd", { fg = palette.diff_add_fg, bg = palette.diff_add_bg })
 hl("DiffChange", { fg = palette.fg })
-hl("DiffDelete", { fg = palette.sign_delete, bg = "#221f3d" })
+hl("DiffDelete", { fg = palette.sign_delete, bg = palette.diff_delete_bg })
 hl("DiffText", { fg = palette.green })
 
 hl("WinSeparator", { fg = palette.line_number_fg })
 hl("VertSplit", { fg = palette.line_number_fg })
-hl("Folded", { fg = "#777777", bg = "#011627" })
-hl("FoldColumn", { fg = "#333333", bg = "#011627" })
-hl("SignColumn", { bg = "#011627" })
-hl("IncSearch", { fg = "#eeeeee", bg = palette.light_orange })
-hl("NonText", { fg = "#444444" })
-hl("PMenu", { bg = "#2d2c5d" })
+hl("Folded", { fg = palette.folded_fg, bg = palette.bg })
+hl("FoldColumn", { fg = palette.foldcolumn_fg, bg = palette.bg })
+hl("SignColumn", { bg = palette.bg })
+hl("IncSearch", { fg = palette.incsearch_fg, bg = palette.light_orange })
+hl("NonText", { fg = palette.line_number_fg })
+hl("PMenu", { bg = palette.visual_bg })
 hl("PMenuSel", { bg = palette.magenta })
-hl("Search", { fg = "#011627", bg = palette.light_orange })
+hl("Search", { fg = palette.bg, bg = palette.light_orange })
 hl("SpecialKey", { fg = palette.light_orange })
 hl("Title", { fg = palette.blue, bold = true })
-hl("Visual", { fg = palette.fg, bg = "#2d2c5d" })
-hl("EndOfBuffer", { fg = "#444444", bg = "#011627" })
+hl("Visual", { fg = palette.fg, bg = palette.visual_bg })
+hl("EndOfBuffer", { fg = palette.line_number_fg, bg = palette.bg })
 
 -- Statusline
 hl("StatusLine", { bg = palette.bg, fg = palette.blue })
@@ -177,7 +139,7 @@ hl("NormalFloat", { bg = palette.bg })
 hl("FloatBorder", { link = "StatusLine" })
 
 -- Tabline
-hl("TabLine", { bg = palette.bg, fg = "#aaaaaa" })
+hl("TabLine", { bg = palette.bg, fg = palette.cursorline_number_fg })
 hl("TabLineFill", { bg = palette.bg, fg = palette.ui_border })
 hl("TabLineSel", { bg = palette.bg, fg = palette.green })
 
@@ -191,7 +153,7 @@ hl("DiagnosticUnderlineWarn", { sp = palette.orange, undercurl = true })
 hl("DiagnosticUnderlineInfo", { sp = palette.blue, undercurl = true })
 hl("DiagnosticUnderlineHint", { sp = palette.blue, undercurl = true })
 hl("DiagnosticErrorLine", { bg = palette.error })
-hl("DiagnosticWarnLine", { bg = "#501010" })
+hl("DiagnosticWarnLine", { bg = palette.diagnostic_warn_line_bg })
 hl("DiagnosticInfoLine", { bg = palette.blue })
 hl("DiagnosticHintLine", { bg = palette.blue })
 
@@ -209,11 +171,11 @@ hl("EyelinerPrimary", { fg = palette.red, bold = true, underline = true })
 hl("EyelinerSecondary", { fg = palette.orange, underline = true })
 
 -- conflict-marker.vim (https://github.com/rhysd/conflict-marker.vim)
-hl("ConflictMarkerBegin", { bg = "#567f9a" })
-hl("ConflictMarkerOurs", { bg = "#1f4055" })
-hl("ConflictMarkerTheirs", { bg = "#0f1f3f" })
-hl("ConflictMarkerEnd", { bg = "#2b2a5e" })
-hl("ConflictMarkerCommonAncestorsHunk", { bg = "#754a81" })
+hl("ConflictMarkerBegin", { bg = palette.conflict_begin })
+hl("ConflictMarkerOurs", { bg = palette.conflict_ours })
+hl("ConflictMarkerTheirs", { bg = palette.conflict_theirs })
+hl("ConflictMarkerEnd", { bg = palette.conflict_end })
+hl("ConflictMarkerCommonAncestorsHunk", { bg = palette.conflict_ancestor })
 
 -- gitsigns.nvim
 hl("GitSignsAdd", { fg = palette.sign_add })
@@ -321,3 +283,7 @@ hl("LuasnipChoiceNode", { fg = palette.orange })
 
 -- Marks
 hl("MarksSign", { fg = palette.red })
+
+-- Treesitter Context
+hl("TreesitterContext", { bg = palette.cursorline_bg })
+hl("TreesitterContextLineNumber", { bg = palette.cursorline_bg })
