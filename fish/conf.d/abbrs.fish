@@ -87,7 +87,7 @@ abbr --add gclc 'git commit-last-command'
 abbr --add gwt 'git worktree'
 abbr --add gwtl 'git worktree list'
 abbr --add gwta 'git worktree add'
-# abbr --add gwt 'git worktree'
+abbr --add gwtr 'git worktree remove'
 # TODO: add more git worktree commands
 
 abbr --add gmt 'git mergetool'
