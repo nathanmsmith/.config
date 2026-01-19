@@ -24,7 +24,7 @@ fish_color_host_remote 82aaff
 fish_color_match --background=1d3b53
 fish_color_normal d6deeb
 fish_color_operator 7fdbca
-fish_color_option f78c6c
+fish_color_option ffcb8b
 fish_color_redirection d6deeb
 fish_color_search_match --background=1d3b53
 fish_color_selection --background=1d3b53
