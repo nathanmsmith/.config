@@ -1,0 +1,103 @@
+{
+  "function": {
+    "prefix": "function",
+    "body": ["function ${1:name}", "\t${0}", "end"],
+    "description": "Define a fish function",
+  },
+  "function with description": {
+    "prefix": "funcd",
+    "body": [
+      "function ${1:name} --description '${2:description}'",
+      "\t${0}",
+      "end",
+    ],
+    "description": "Define a fish function with description",
+  },
+  "if statement": {
+    "prefix": "if",
+    "body": ["if ${1:test}", "\t${0}", "end"],
+    "description": "If statement",
+  },
+  "if else": {
+    "prefix": "ife",
+    "body": ["if ${1:test}", "\t${2}", "else", "\t${0}", "end"],
+    "description": "If-else statement",
+  },
+  "for loop": {
+    "prefix": "for",
+    "body": ["for ${1:var} in ${2:list}", "\t${0}", "end"],
+    "description": "For loop",
+  },
+  "while loop": {
+    "prefix": "while",
+    "body": ["while ${1:test}", "\t${0}", "end"],
+    "description": "While loop",
+  },
+  "switch statement": {
+    "prefix": "switch",
+    "body": [
+      "switch ${1:var}",
+      "\tcase ${2:pattern}",
+      "\t\t${3}",
+      "\tcase '*'",
+      "\t\t${0}",
+      "end",
+    ],
+    "description": "Switch statement",
+  },
+  "set variable": {
+    "prefix": "set",
+    "body": ["set ${1:name} ${0:value}"],
+    "description": "Set a variable",
+  },
+  "set local variable": {
+    "prefix": "setl",
+    "body": ["set -l ${1:name} ${0:value}"],
+    "description": "Set a local variable",
+  },
+  "set global variable": {
+    "prefix": "setg",
+    "body": ["set -g ${1:name} ${0:value}"],
+    "description": "Set a global variable",
+  },
+  "set universal variable": {
+    "prefix": "setu",
+    "body": ["set -U ${1:name} ${0:value}"],
+    "description": "Set a universal variable",
+  },
+  "abbreviation": {
+    "prefix": "abbr",
+    "body": ["abbr --add ${1:name} ${0:expansion}"],
+    "description": "Add an abbreviation",
+  },
+  "test condition": {
+    "prefix": "test",
+    "body": ["test ${0}"],
+    "description": "Test condition",
+  },
+  "argparse": {
+    "prefix": "argparse",
+    "body": ["argparse ${1:options} -- \\$argv", "or return"],
+    "description": "Parse arguments",
+  },
+  "string match": {
+    "prefix": "string",
+    "body": ["string match ${1:pattern} ${0:string}"],
+    "description": "String match",
+  },
+  "command substitution": {
+    "prefix": "cmd",
+    "body": ["(${0:command})"],
+    "description": "Command substitution",
+  },
+  "echo": {
+    "prefix": "echo",
+    "body": ["echo \"${0}\""],
+    "description": "Echo a string",
+  },
+  "printf": {
+    "prefix": "printf",
+    "body": ["printf '%s\\n' ${0:string}"],
+    "description": "Print formatted string",
+  },
+}

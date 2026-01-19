@@ -84,6 +84,11 @@ abbr --add gstaa 'git stash --all'
 abbr --add gl 'git log --graph'
 abbr --add gnpr 'git new-pull-request'
 abbr --add gclc 'git commit-last-command'
+abbr --add gwt 'git worktree'
+abbr --add gwtl 'git worktree list'
+abbr --add gwta 'git worktree add'
+# abbr --add gwt 'git worktree'
+# TODO: add more git worktree commands
 
 abbr --add gmt 'git mergetool'
 abbr --add gdt 'git difftool'
