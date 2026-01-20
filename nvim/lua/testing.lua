@@ -1,54 +1,48 @@
 vim.g["test#custom_strategies"] = {
   iterm = function(test_command)
     print("Test command: " .. test_command)
-    -- Use AppleScript for much faster iTerm2 integration
-    local escaped_command = test_command:gsub("\\", "\\\\"):gsub('"', '\\"')
-    local applescript = string.format(
+    -- Use Python for iTerm2 integration with proper tab management
+    local escaped_command = test_command:gsub("\\", "\\\\"):gsub('"', '\\"'):gsub("'", "'\\''")
+    local python_script = string.format(
       [[
-      tell application "iTerm2"
-        tell current window
-          set testTab to missing value
+import iterm2
+import sys
 
-          repeat with aTab in tabs
-            tell aTab
-              tell current session
-                if name is "Tests" then
-                  set testTab to aTab
-                  exit repeat
-                end if
-              end tell
-            end tell
-          end repeat
+async def main(connection):
+    app = await iterm2.async_get_app(connection)
+    window = app.current_terminal_window
+    if window is None:
+        print("No current window", file=sys.stderr)
+        sys.exit(1)
 
-          if testTab is missing value then
-            set testTab to (create tab with default profile)
-            tell testTab
-              select
-              tell current session
-                set name to "Tests"
-                write text "%s"
-              end tell
-            end tell
-          else
-            tell testTab
-              select
-              tell current session
-                write text "%s"
-              end tell
-            end tell
-          end if
-        end tell
-      end tell
-    ]],
-      escaped_command,
+    # Look for existing tab with title containing "Tests"
+    test_tab = None
+    for tab in window.tabs:
+        name = await tab.current_session.async_get_variable("user.test_runner_tab")
+        if name == "1" or "Tests" in tab.current_session.name:
+            test_tab = tab
+            break
+
+    if test_tab is None:
+        # Create new tab
+        test_tab = await window.async_create_tab()
+
+    # Mark this tab as the test runner tab and set title
+    await test_tab.current_session.async_set_variable("user.test_runner_tab", "1")
+    await test_tab.current_session.async_set_name("Tests")
+    await test_tab.async_select()
+    await test_tab.current_session.async_send_text('%s\n')
+
+iterm2.run_until_complete(main)
+]],
       escaped_command
     )
 
-    local result = vim.fn.system({ "osascript", "-e", applescript })
+    local result = vim.fn.system({ "uv", "run", "--with", "iterm2", "python3", "-c", python_script })
     local exit_code = vim.v.shell_error
 
     if exit_code ~= 0 then
-      print("AppleScript error (exit code " .. exit_code .. "): " .. result)
+      print("Python/iTerm2 error (exit code " .. exit_code .. "): " .. result)
     end
   end,
 }
