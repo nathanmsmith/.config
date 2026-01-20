@@ -76,3 +76,4 @@ wireshark/
 cursor/
 
 .expert/expert.log
+sops/
