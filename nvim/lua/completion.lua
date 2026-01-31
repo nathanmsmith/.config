@@ -81,12 +81,12 @@ cmp.setup({
   },
   window = {
     completion = {
-      border = "none",
+      border = "single",
       winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSelection,Search:None",
       scrollbar = true,
     },
     documentation = {
-      border = "none",
+      border = "single",
       winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder",
       scrollbar = true,
     },
