@@ -4,19 +4,28 @@ vim.treesitter.query.add_directive("make-range!", function(match, _, _, pred, me
   local capture_id = pred[2]
   if type(capture_id) == "string" then
     capture_id = capture_id:gsub("^@", "")
-    local start_capture = pred[3]:gsub("^@", "")
-    local end_capture = pred[4]:gsub("^@", "")
+  end
 
-    local start_node = match[start_capture]
-    local end_node = match[end_capture]
+  local start_capture = pred[3]
+  local end_capture = pred[4]
 
-    if start_node and end_node then
-      local start_row, start_col = start_node:range()
-      local _, _, end_row, end_col = end_node:range()
+  -- Handle both string capture names (with @) and numeric capture IDs
+  if type(start_capture) == "string" then
+    start_capture = start_capture:gsub("^@", "")
+  end
+  if type(end_capture) == "string" then
+    end_capture = end_capture:gsub("^@", "")
+  end
 
-      metadata[capture_id] = metadata[capture_id] or {}
-      metadata[capture_id].range = { start_row, start_col, end_row, end_col }
-    end
+  local start_node = match[start_capture]
+  local end_node = match[end_capture]
+
+  if start_node and end_node then
+    local start_row, start_col = start_node:range()
+    local _, _, end_row, end_col = end_node:range()
+
+    metadata[capture_id] = metadata[capture_id] or {}
+    metadata[capture_id].range = { start_row, start_col, end_row, end_col }
   end
 end, { force = true })
 
