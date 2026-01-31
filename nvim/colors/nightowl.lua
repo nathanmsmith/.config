@@ -94,6 +94,9 @@ local palette = {
   conflict_theirs = "#0f1f3f",
   conflict_end = "#2b2a5e",
   conflict_ancestor = "#754a81",
+
+  -- Completion menu (nvim-cmp)
+  cmp_bg = "#2C3043",
 }
 
 --- @param name string
@@ -160,8 +163,8 @@ hl("FoldColumn", { fg = palette.foldcolumn_fg, bg = palette.bg })
 hl("SignColumn", { bg = palette.bg })
 hl("IncSearch", { fg = palette.incsearch_fg, bg = palette.light_orange })
 hl("NonText", { fg = palette.line_number_fg })
-hl("PMenu", { bg = palette.visual_bg })
-hl("PMenuSel", { bg = palette.magenta })
+hl("PMenu", { bg = palette.cmp_bg })
+hl("PMenuSel", { bg = palette.ui_border })
 hl("Search", { fg = palette.bg, bg = palette.light_orange })
 hl("SpecialKey", { fg = palette.light_orange })
 hl("Title", { fg = palette.blue, bold = true })
@@ -327,3 +330,24 @@ hl("MarksSign", { fg = palette.red })
 -- Treesitter Context
 hl("TreesitterContext", { bg = palette.cursorline_bg })
 hl("TreesitterContextLineNumber", { bg = palette.cursorline_bg })
+
+-- nvim-cmp completion menu
+hl("CmpItemAbbrDeprecated", { fg = palette.dark_cyan, strikethrough = true })
+hl("CmpItemAbbrMatch", { fg = palette.blue, bold = true })
+hl("CmpItemAbbrMatchFuzzy", { fg = palette.blue })
+hl("CmpItemKind", { fg = palette.magenta })
+hl("CmpItemMenu", { fg = palette.dark_cyan })
+
+-- Completion window styling
+hl("CmpNormal", { fg = palette.fg, bg = palette.cmp_bg })
+hl("CmpBorder", { fg = palette.blue, bg = palette.cmp_bg })
+hl("CmpSelection", { fg = palette.fg, bg = palette.ui_border })
+hl("CmpCursorLine", { bg = palette.ui_border })
+
+-- Scrollbar
+hl("CmpScrollbar", { bg = palette.cmp_bg })
+hl("CmpScrollbarThumb", { bg = palette.ui_border })
+
+-- Documentation window
+hl("CmpDocNormal", { fg = palette.fg, bg = palette.cmp_bg })
+hl("CmpDocBorder", { fg = palette.blue, bg = palette.cmp_bg })

@@ -80,8 +80,16 @@ cmp.setup({
     ghost_text = true,
   },
   window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    completion = {
+      border = "none",
+      winhighlight = "Normal:CmpNormal,FloatBorder:CmpBorder,CursorLine:CmpSelection,Search:None",
+      scrollbar = true,
+    },
+    documentation = {
+      border = "none",
+      winhighlight = "Normal:CmpDocNormal,FloatBorder:CmpDocBorder",
+      scrollbar = true,
+    },
   },
   formatting = formatting,
   sources = cmp.config.sources({
