@@ -64,6 +64,7 @@ local ensure_installed = {
   "fish",
   "go",
   "ruby",
+  "java",
 }
 
 -- Check if tree-sitter CLI is installed
