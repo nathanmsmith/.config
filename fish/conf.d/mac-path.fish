@@ -9,6 +9,7 @@ if not set -q PATH_INITIALIZED; and test (uname) = Darwin
     fish_add_path /opt/homebrew/opt/llvm/bin
     fish_add_path /opt/homebrew/opt/postgresql@18/bin
     if has_stripe_config
+        set -Ux GOPATH $HOME/go
         fish_add_path $HOME/.rbenv/bin
         fish_add_path $PYENV_ROOT/bin
     end
