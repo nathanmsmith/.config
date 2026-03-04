@@ -1,7 +1,139 @@
 {
-  "sig": {
-    "prefix": "sig",
-    "body": ["sig { params(${1:param: String}).returns(${2:return type})$0 }"]
+  "typed strict": {
+    "prefix": "tstrict",
+    "description": "# typed: strict — all methods must have sigs, no untyped",
+    "body": "# typed: strict"
   },
-  "TODO: enum": {}
+  "typed true": {
+    "prefix": "ttrue",
+    "description": "# typed: true — type-checks the file, untyped values allowed",
+    "body": "# typed: true"
+  },
+  "typed false": {
+    "prefix": "tfalse",
+    "description": "# typed: false — opts file out of type checking",
+    "body": "# typed: false"
+  },
+  "sig void": {
+    "prefix": ["sigv", "sigvoid"],
+    "description": "sig { void } — method returns nothing",
+    "body": ["sig { void }"]
+  },
+  "sig returns": {
+    "prefix": ["sigr", "sigret"],
+    "description": "sig { returns(T) } — method with no params and a return type",
+    "body": ["sig { returns(${1:T}) }"]
+  },
+  "sig params returns": {
+    "prefix": "sig",
+    "description": "sig { params(...).returns(T) } — method with params and return type",
+    "body": ["sig { params(${1:name}: ${2:T}).returns(${3:T}) }"]
+  },
+  "sig params void": {
+    "prefix": "sigpv",
+    "description": "sig { params(...).void } — method with params that returns nothing",
+    "body": ["sig { params(${1:name}: ${2:T}).void }"]
+  },
+  "T.nilable": {
+    "prefix": "tnil",
+    "description": "T.nilable(T) — type that is T or nil",
+    "body": "T.nilable(${1:T})"
+  },
+  "T.let": {
+    "prefix": "tlet",
+    "description": "T.let(value, T) — assert and bind a local variable to a type",
+    "body": "T.let(${1:value}, ${2:T})"
+  },
+  "T.cast": {
+    "prefix": "tcast",
+    "description": "T.cast(value, T) — forcefully cast a value to a type (unchecked)",
+    "body": "T.cast(${1:value}, ${2:T})"
+  },
+  "T.must": {
+    "prefix": "tmust",
+    "description": "T.must(value) — assert value is not nil, raises at runtime if it is",
+    "body": "T.must(${1:value})"
+  },
+  "T.unsafe": {
+    "prefix": "tunsafe",
+    "description": "T.unsafe(value) — escape hatch, treats value as T.untyped",
+    "body": "T.unsafe(${1:value})"
+  },
+  "T::Array": {
+    "prefix": "tarr",
+    "description": "T::Array[T] — typed array generic",
+    "body": "T::Array[${1:T}]"
+  },
+  "T::Hash": {
+    "prefix": "thash",
+    "description": "T::Hash[K, V] — typed hash generic",
+    "body": "T::Hash[${1:K}, ${2:V}]"
+  },
+  "T::Set": {
+    "prefix": "tset",
+    "description": "T::Set[T] — typed set generic",
+    "body": "T::Set[${1:T}]"
+  },
+  "T.any": {
+    "prefix": "tany",
+    "description": "T.any(T1, T2) — union type, value can be any of the listed types",
+    "body": "T.any(${1:T1}, ${2:T2})"
+  },
+  "T.all": {
+    "prefix": "tall",
+    "description": "T.all(T1, T2) — intersection type, value must satisfy all types",
+    "body": "T.all(${1:T1}, ${2:T2})"
+  },
+  "T::Enum": {
+    "prefix": "enum",
+    "description": "T::Enum subclass — runtime-checked enum with typed values",
+    "body": [
+      "class ${1:MyEnum} < T::Enum",
+      "\tenums do",
+      "\t\t${2:VALUE} = new",
+      "\t\t$0",
+      "\tend",
+      "end"
+    ]
+  },
+  "T::Struct": {
+    "prefix": "struct",
+    "description": "T::Struct subclass — immutable typed value object",
+    "body": [
+      "class ${1:MyStruct} < T::Struct",
+      "\tconst :${2:field}, ${3:T}",
+      "\t$0",
+      "end"
+    ]
+  },
+  "const prop": {
+    "prefix": "const",
+    "description": "const :name, T — immutable T::Struct field",
+    "body": "const :${1:name}, ${2:T}"
+  },
+  "prop": {
+    "prefix": "prop",
+    "description": "prop :name, T — mutable T::Struct field",
+    "body": "prop :${1:name}, ${2:T}"
+  },
+  "abstract method": {
+    "prefix": "sigabs",
+    "description": "sig { abstract.returns(T) } — abstract method declaration (must be overridden)",
+    "body": ["sig { abstract.returns(${1:T}) }", "def ${2:method_name}; end"]
+  },
+  "override method": {
+    "prefix": ["sigover", "sigoverride"],
+    "description": "sig { override.returns(T) } — marks method as overriding a parent abstract/interface method",
+    "body": ["sig { override.returns(${1:T}) }"]
+  },
+  "include T::Sig": {
+    "prefix": "tsig",
+    "description": "include T::Sig — enables sig {} blocks in the class",
+    "body": "include T::Sig"
+  },
+  "include T::Helpers": {
+    "prefix": "thelpers",
+    "description": "include T::Helpers — enables abstract!, interface!, mixes_in_class_methods, etc.",
+    "body": "include T::Helpers"
+  }
 }
