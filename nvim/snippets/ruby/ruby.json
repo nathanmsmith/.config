@@ -1,0 +1,173 @@
+{
+  "if": {
+    "prefix": "if",
+    "body": ["if ${1:condition}", "\t$0", "end"]
+  },
+  "if else": {
+    "prefix": "ife",
+    "body": ["if ${1:condition}", "\t$2", "else", "\t$0", "end"]
+  },
+  "if elsif": {
+    "prefix": "ifei",
+    "body": [
+      "if ${1:condition}",
+      "\t$2",
+      "elsif ${3:second_condition}",
+      "\t$0",
+      "end"
+    ]
+  },
+  "if elsif else": {
+    "prefix": "ifee",
+    "body": [
+      "if ${1:condition}",
+      "\t$2",
+      "elsif ${3:second_condition}",
+      "\t$4",
+      "else",
+      "\t$0",
+      "end"
+    ]
+  },
+  "case": {
+    "prefix": "case",
+    "body": [
+      "case ${1:condition}",
+      "when $2",
+      "\t$3",
+      "when $4",
+      "\t$5",
+      "else",
+      "\t$6",
+      "end"
+    ]
+  },
+  "for loop": {
+    "prefix": "for",
+    "body": ["for ${1:value} in ${2:enumerable} do", "\t$0", "end"]
+  },
+  "while loop": {
+    "prefix": "while",
+    "body": ["while ${1:condition}", "\t$0", "end"]
+  },
+  "Module definition": {
+    "prefix": "mod",
+    "body": ["module ${1:ModuleName}", "\t$0", "end"]
+  },
+  "define method": {
+    "prefix": "def",
+    "body": ["def ${1:method_name}${2:(${3:args})}", "\t${0}", "end"]
+  },
+  "define class method": {
+    "prefix": "defself",
+    "body": ["def self.${1:method_name}${2:(${3:args})}", "\t$0", "end"]
+  },
+  "initialize method definition": {
+    "prefix": "definit",
+    "body": ["def initialize(${1:args})", "\t$0", "end"]
+  },
+  "Class definition with initialize": {
+    "prefix": "class init",
+    "body": [
+      "class ${1:ClassName}",
+      "\tdef initialize(${2:args})",
+      "\t\t$0",
+      "\tend",
+      "end"
+    ]
+  },
+  "Class definition": {
+    "prefix": "class",
+    "body": ["class ${1:ClassName}", "\t$0", "end"]
+  },
+
+  "Insert do … end block": {
+    "prefix": "do",
+    "body": ["do", "\t$0", "end"]
+  },
+  "Insert do |variable| … end block": {
+    "prefix": ["dov", "dovar"],
+    "body": ["do |${1:variable}|", "\t$0", "end"]
+  },
+  "Insert inline block with variable": {
+    "prefix": ["b", "{"],
+    "body": "{ |${1:variable}| $2 }"
+  },
+
+  "Insert require": {
+    "prefix": "req",
+    "body": "require \"${1}\"$0"
+  },
+  "Insert require_relative": {
+    "prefix": ["reqr", "reqrel"],
+    "body": "require_relative '${1:}'$0"
+  },
+
+  "Insert each with inline block": {
+    "prefix": ["ea", "each"],
+    "body": "each { |${1:thing}| $0 }"
+  },
+  "Insert each with multiline block": {
+    "prefix": ["eado", "eachdo"],
+    "body": ["each do |${1:thing}|", "\t$0", "end"]
+  },
+  "Insert each with index inline block": {
+    "prefix": ["eawi", "eachwi"],
+    "body": "each_with_index { |${1:thing}, ${2:i}| $0 }"
+  },
+  "Insert each with index multiline block": {
+    "prefix": ["eawido", "eachwido"],
+    "body": ["each_with_index do |${1:thing}, ${2:i}|", "\t$0", "end"]
+  },
+
+  "Insert key: value": {
+    "prefix": ":",
+    "body": "${1:key}: ${2:value}"
+  },
+
+  "Insert debug call": {
+    "prefix": "debug",
+    "body": "debugger"
+  },
+  "Insert pry call": {
+    "prefix": "pry",
+    "body": "require 'pry'; binding.pry"
+  },
+
+  "Exception block": {
+    "prefix": ["beg", "begin", "rescue"],
+    "body": [
+      "begin",
+      "\t$1",
+      "rescue ${2:StandardError} => ${3:exception}",
+      "\t$0",
+      "end"
+    ]
+  },
+  "Exception block with ensure": {
+    "prefix": ["beginensure"],
+    "body": [
+      "begin",
+      "\t$1",
+      "rescue ${2:StandardError} => ${3:exception}",
+      "\t$4",
+      "ensure",
+      "\t$0",
+      "end"
+    ]
+  },
+  "Exception block with else and ensure": {
+    "prefix": ["beginelse"],
+    "body": [
+      "begin",
+      "\t$1",
+      "rescue ${2:StandardError} => ${3:exception}",
+      "\t$4",
+      "else",
+      "\t$5",
+      "ensure",
+      "\t$0",
+      "end"
+    ]
+  }
+}

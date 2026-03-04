@@ -20,7 +20,7 @@ return {
         },
         {
           description = "code snippet files",
-          fileMatch = { "nvim/snippets/**/*.jsonc" },
+          fileMatch = { "nvim/snippets/**/*.json" },
           name = "Neovim/VSCode Code Snippets",
           url = "https://raw.githubusercontent.com/Yash-Singh1/vscode-snippets-json-schema/main/schema.json",
         },

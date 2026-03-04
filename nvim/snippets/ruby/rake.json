@@ -8,7 +8,7 @@
       "\ttask ${3}: :environment do",
       "\t\t${4}",
       "\tend",
-      "end",
-    ],
-  },
+      "end"
+    ]
+  }
 }

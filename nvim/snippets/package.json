@@ -5,49 +5,49 @@
         "language": [
           "all"
         ],
-        "path": "./all.jsonc"
+        "path": "./all.json"
       },
       {
         "language": [
           "lua"
         ],
-        "path": "./lua.jsonc"
+        "path": "./lua.json"
       },
       {
         "language": [
           "fish"
         ],
-        "path": "./fish.jsonc"
+        "path": "./fish.json"
       },
       {
         "language": [
           "ruby"
         ],
-        "path": "./ruby/ruby.jsonc"
+        "path": "./ruby/ruby.json"
       },
       {
         "language": [
           "ruby"
         ],
-        "path": "./ruby/minitest.jsonc"
+        "path": "./ruby/minitest.json"
       },
       {
         "language": [
           "ruby"
         ],
-        "path": "./ruby/rake.jsonc"
+        "path": "./ruby/rake.json"
       },
       {
         "language": [
           "ruby"
         ],
-        "path": "./ruby/rails.jsonc"
+        "path": "./ruby/rails.json"
       },
       {
         "language": [
           "ruby"
         ],
-        "path": "./ruby/sorbet.jsonc"
+        "path": "./ruby/sorbet.json"
       },
       {
         "language": [
@@ -56,7 +56,7 @@
           "typescript",
           "typescriptreact"
         ],
-        "path": "./javascript/javascript.jsonc"
+        "path": "./javascript/javascript.json"
       },
       {
         "language": [
@@ -72,7 +72,7 @@
           "typescript",
           "typescriptreact"
         ],
-        "path": "./javascript/typescript.jsonc"
+        "path": "./javascript/typescript.json"
       },
       {
         "language": [

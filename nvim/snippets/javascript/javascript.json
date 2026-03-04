@@ -1,12 +1,11 @@
 {
-  // Conditionals
   "if": {
     "prefix": "if",
-    "body": ["if (${1:condition}) {", "\t$0", "}"],
+    "body": ["if (${1:condition}) {", "\t$0", "}"]
   },
   "if else": {
     "prefix": "ife",
-    "body": ["if (${1:condition}) {", "\t$2", "} else {", "\t$3", "}"],
+    "body": ["if (${1:condition}) {", "\t$2", "} else {", "\t$3", "}"]
   },
   "if elsif": {
     "prefix": "ifei",
@@ -15,8 +14,8 @@
       "\t$2",
       "} else if (${3:second_condition}) {",
       "\t$4",
-      "}",
-    ],
+      "}"
+    ]
   },
   "if elsif else": {
     "prefix": "ifee",
@@ -27,8 +26,8 @@
       "\t$4",
       "} else {",
       "\t$0",
-      "}",
-    ],
+      "}"
+    ]
   },
   "switch": {
     "prefix": "switch",
@@ -40,19 +39,18 @@
       "",
       "\tdefault:",
       "\t\tbreak;",
-      "}",
-    ],
+      "}"
+    ]
   },
 
-  // TODO: loops
   "For Loop": {
     "prefix": "for",
     "body": [
       "for (let ${1:i} = ${2:0}; ${1:i} < ${3:length}; ${1:i}++) {",
       "\t${0}",
-      "}",
+      "}"
     ],
-    "description": "Standard for loop",
+    "description": "Standard for loop"
   },
   "For In Loop": {
     "prefix": "forin",
@@ -62,41 +60,43 @@
       "\t\tconst ${3:element} = ${2:object}[${1:key}];",
       "\t\t${0}",
       "\t}",
-      "}",
+      "}"
     ],
-    "description": "For-in loop for object properties",
+    "description": "For-in loop for object properties"
   },
   "For Of Loop": {
     "prefix": "forof",
     "body": ["for (const ${1:element} of ${2:iterable}) {", "\t${0}", "}"],
-    "description": "For-of loop for iterables",
+    "description": "For-of loop for iterables"
   },
   "While Loop": {
     "prefix": "while",
     "body": ["while (${1:condition}) {", "\t${0}", "}"],
-    "description": "While loop",
+    "description": "While loop"
   },
   "Do While Loop": {
     "prefix": "dowhile",
     "body": ["do {", "\t${0}", "} while (${1:condition});"],
-    "description": "Do-while loop",
+    "description": "Do-while loop"
   },
 
-  // TODO: functions
+  "function": {
+    "prefix": ["fun", "func", "def"],
+    "body": ["function ${1:myFunc}(${2:params}) {", "\t${0}", "}"]
+  },
+  "anonymous function def": {
+    "prefix": ["constf", "constfun", "constfunc"],
+    "body": ["const ${1:myFunc} = (${2:params}) => $0"]
+  },
 
-  // TODO: error handling
-
-  // TODO: common functions
-
-  // Console.log
   "cl": {
     "body": "console.log($0)",
     "description": "console.log()",
-    "prefix": "cl",
+    "prefix": "cl"
   },
   "cll": {
     "body": "console.log('$1: ', $1)",
     "description": "console.log() with label",
-    "prefix": "cll",
-  },
+    "prefix": "cll"
+  }
 }

@@ -4,19 +4,19 @@
     "body": [
       "vim.keymap.set(\"${1:mode}\", \"${2:keys}\", function()",
       "  ${0}",
-      "end, { buffer = event.buffer, desc = \"${3:description}\" })",
-    ],
+      "end, { buffer = event.buffer, desc = \"${3:description}\" })"
+    ]
   },
   "pvi": {
     "prefix": "pvi",
-    "body": ["print(vim.inspect(${0}))"],
+    "body": ["print(vim.inspect(${0}))"]
   },
   "p": {
     "prefix": "p",
-    "body": ["print(${0})"],
+    "body": ["print(${0})"]
   },
   "vi": {
     "prefix": "vi",
-    "body": ["vim.inspect(${0})"],
-  },
+    "body": ["vim.inspect(${0})"]
+  }
 }

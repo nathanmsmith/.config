@@ -1,14 +1,14 @@
 {
   "desc": {
-    "body": ["describe('${1:my thing}', () => {", "\t$0", "})"],
-    "prefix": "desc"
+    "prefix": ["desc", "describe"],
+    "body": ["describe('${1:my thing}', () => {", "\t$0", "})"]
   },
   "it": {
-    "body": ["it('${1:does something}', () => {", "\t$0", "})"],
-    "prefix": "it"
+    "prefix": "it",
+    "body": ["it('${1:does something}', () => {", "\t$0", "})"]
   },
   "screen.debug": {
-    "prefix": "sd",
+    "prefix": ["sd", "debug"],
     "body": "screen.debug()$0",
     "description": "screen.debug"
   },
