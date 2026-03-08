@@ -78,5 +78,7 @@ cursor/
 .expert/expert.log
 sops/
 
+caddy/
+
 zoolander/
 gocode/
