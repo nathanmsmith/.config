@@ -47,6 +47,8 @@ else
       c = { "uncrustify" },
       cpp = { "uncrustify" },
       elixir = { "mix" },
+      eelixir = { "mix" },
+      heex = { "mix" },
       ["_"] = { "trim_newlines", "trim_whitespace" },
     },
     format_on_save = function(bufnr)
