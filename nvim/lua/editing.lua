@@ -129,8 +129,9 @@ require("mini.ai").setup({
 -- mini.splitjoin
 require("mini.splitjoin").setup()
 
--- undotree keymap
-vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Undotree" })
+-- undotree (native nvim 0.12+)
+vim.cmd("packadd nvim.undotree")
+vim.keymap.set("n", "<leader>u", "<cmd>Undotree<cr>", { desc = "Undotree" })
 
 -- vim-rails: eruby.yaml filetype fix
 if not helpers.isModuleAvailable("stripe") then

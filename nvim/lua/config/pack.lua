@@ -41,7 +41,6 @@ local plugins = {
   "https://github.com/brenoprata10/nvim-highlight-colors",
   "https://github.com/pteroctopus/faster.nvim",
   "https://github.com/godlygeek/tabular",
-  "https://github.com/mbbill/undotree",
   -- Testing
   "https://github.com/vim-test/vim-test",
   "https://github.com/preservim/vimux",
@@ -97,3 +96,5 @@ if not helpers.isModuleAvailable("stripe") then
 end
 
 vim.pack.add(plugins)
+
+vim.cmd.packadd("nvim.difftool")

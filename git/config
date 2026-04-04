@@ -35,6 +35,8 @@
 	updateRefs = true
 [difftool]
 	prompt = false
+[difftool "nvim_difftool"]
+	cmd = nvim -c \"packadd nvim.difftool\" -d \"$LOCAL\" \"$REMOTE\"
 [merge]
 	tool = neovim
 	conflictstyle = merge
@@ -67,7 +69,7 @@
 	colorMoved = plain
 	mnemonicPrefix = true
 	renames = true
-	tool = nvimdiff
+	tool = nvim_difftool
 [sendemail]
 	smtpserver = smtp.fastmail.com
 	smtpuser = natedub@fastmail.com
