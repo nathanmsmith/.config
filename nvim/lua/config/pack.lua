@@ -44,16 +44,6 @@ local plugins = {
   "https://github.com/vim-test/vim-test",
   "https://github.com/preservim/vimux",
   -- LSP
-  "https://github.com/neovim/nvim-lspconfig",
-  "https://github.com/mason-org/mason.nvim",
-  "https://github.com/williamboman/mason-lspconfig.nvim",
-  "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
-  "https://github.com/j-hui/fidget.nvim",
-  "https://github.com/folke/lazydev.nvim",
-  "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/pmizio/typescript-tools.nvim",
-  "https://github.com/davidosomething/format-ts-errors.nvim",
-  "https://github.com/b0o/schemastore.nvim",
   -- Treesitter
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
@@ -63,15 +53,6 @@ local plugins = {
   "https://github.com/folke/ts-comments.nvim",
   "https://github.com/andymass/vim-matchup",
   "https://github.com/ckolkey/ts-node-action",
-  -- Completion & Snippets
-  "https://github.com/hrsh7th/nvim-cmp",
-  "https://github.com/L3MON4D3/LuaSnip",
-  "https://github.com/saadparwaiz1/cmp_luasnip",
-  "https://github.com/hrsh7th/cmp-nvim-lsp",
-  "https://github.com/hrsh7th/cmp-buffer",
-  "https://github.com/hrsh7th/cmp-path",
-  "https://github.com/hrsh7th/cmp-cmdline",
-  "https://github.com/chrisgrieser/nvim-scissors",
   -- Git
   "https://github.com/rhysd/conflict-marker.vim",
   "https://github.com/lewis6991/gitsigns.nvim",
@@ -82,6 +63,8 @@ local plugins = {
   -- Quickfix
   "https://github.com/kevinhwang91/nvim-bqf",
   "https://github.com/stevearc/quicker.nvim",
+
+  "https://github.com/nvim-lua/plenary.nvim",
 }
 
 if not helpers.isModuleAvailable("stripe") then

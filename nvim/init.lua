@@ -42,10 +42,6 @@ else
   require("projectionist")
 end
 
-require("lsp.attach")
-require("lsp")
-require("snippets")
-require("completion")
 require("testing")
 require("git")
 require("quickfix")
