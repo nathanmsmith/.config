@@ -1,3 +1,9 @@
+keybinds {
+    shared_except "locked" {
+        bind "Alt t" { NewTab; }
+    }
+}
+
 pane_frames false
 default_layout "compact"
 
