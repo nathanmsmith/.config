@@ -167,39 +167,37 @@ end
 ---
 
 -- Set up autocommands to update the signs
-if vim.fn.has("nvim-0.12") == 1 then
-  M.setup()
+M.setup()
 
-  local augroup = vim.api.nvim_create_augroup("MarkGutter", { clear = true })
+local augroup = vim.api.nvim_create_augroup("MarkGutter", { clear = true })
 
-  vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged", "InsertLeave", "CmdlineLeave" }, {
-    group = augroup,
-    callback = function()
-      M.update_marks()
-    end,
-  })
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged", "InsertLeave", "CmdlineLeave" }, {
+  group = augroup,
+  callback = function()
+    M.update_marks()
+  end,
+})
 
-  -- Mark commands can change marks
-  vim.api.nvim_create_autocmd("CmdlineLeave", {
-    group = augroup,
-    pattern = "*",
-    callback = function()
-      local cmd = vim.fn.getcmdline()
-      if cmd:match("^%s*m%s*[a-zA-Z0-9]") then
-        vim.schedule(function()
-          M.update_marks()
-        end)
-      end
-    end,
-  })
+-- Mark commands can change marks
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+  group = augroup,
+  pattern = "*",
+  callback = function()
+    local cmd = vim.fn.getcmdline()
+    if cmd:match("^%s*m%s*[a-zA-Z0-9]") then
+      vim.schedule(function()
+        M.update_marks()
+      end)
+    end
+  end,
+})
 
-  vim.api.nvim_create_autocmd("MarkSet", {
-    desc = "Print when a mark is set",
-    callback = function(ev)
-      M.update_marks()
-    end,
-  })
-end
+vim.api.nvim_create_autocmd("MarkSet", {
+  desc = "Print when a mark is set",
+  callback = function(ev)
+    M.update_marks()
+  end,
+})
 
 vim.keymap.set("n", "ml", require("fzf-lua").marks, { desc = "List marks" })
 
