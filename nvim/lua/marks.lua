@@ -131,9 +131,9 @@ function M.update_marks()
   -- Get all marks
   local all_marks = M.list_all_marks_for_buffer(bufnr)
 
-  -- Place signs for each mark
+  -- Group marks by line number
+  local marks_by_line = {}
   for _, mark in ipairs(all_marks) do
-    -- Extract the character from 'x
     local mark_char = mark.mark:sub(2, 2)
 
     local should_show = false
@@ -146,11 +146,32 @@ function M.update_marks()
     end
 
     if should_show then
-      vim.fn.sign_place(0, M.config.sign_group, M.config.sign_name_prefix .. mark_char, bufnr, {
-        lnum = mark.pos[2],
-        priority = M.config.signs.priority,
+      local lnum = mark.pos[2]
+      if not marks_by_line[lnum] then
+        marks_by_line[lnum] = {}
+      end
+      table.insert(marks_by_line[lnum], mark_char)
+    end
+  end
+
+  -- Place a sign for each line, combining multiple marks
+  for lnum, chars in pairs(marks_by_line) do
+    table.sort(chars)
+    local label = #chars > 1 and chars[1] .. "+" or chars[1]
+    local sign_name = M.config.sign_name_prefix .. label
+    -- Dynamically define a combined sign if needed
+    if #chars > 1 then
+      vim.fn.sign_define(sign_name, {
+        text = label,
+        texthl = "MarkGutterLower",
+        linehl = "",
+        numhl = "",
       })
     end
+    vim.fn.sign_place(0, M.config.sign_group, sign_name, bufnr, {
+      lnum = lnum,
+      priority = M.config.signs.priority,
+    })
   end
 end
 ---
@@ -171,7 +192,7 @@ M.setup()
 
 local augroup = vim.api.nvim_create_augroup("MarkGutter", { clear = true })
 
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged", "InsertLeave", "CmdlineLeave" }, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "TextChanged", "InsertLeave", "CmdlineLeave", "MarkSet" }, {
   group = augroup,
   callback = function()
     M.update_marks()
@@ -191,14 +212,5 @@ vim.api.nvim_create_autocmd("CmdlineLeave", {
     end
   end,
 })
-
-vim.api.nvim_create_autocmd("MarkSet", {
-  desc = "Print when a mark is set",
-  callback = function(ev)
-    M.update_marks()
-  end,
-})
-
-vim.keymap.set("n", "ml", require("fzf-lua").marks, { desc = "List marks" })
 
 return M
