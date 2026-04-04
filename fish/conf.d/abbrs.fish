@@ -100,3 +100,5 @@ abbr --add ynt 'yarn test'
 abbr --add ynb 'yarn build'
 abbr --add yna 'yarn add'
 abbr --add ynad 'yarn add --dev'
+
+abbr --add macmini "ssh macmini -t 'tmux -CC new -A -s session1'"
