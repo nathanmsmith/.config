@@ -37,9 +37,6 @@ vim.o.cursorcolumn = false
 -- Don't redraw for macros
 vim.o.lazyredraw = true
 
--- Diff Mode
-vim.opt.diffopt:append("internal")
-
 -- Set cursor, see :h guicursor
 -- Format: mode:shape-blinking-highlight
 -- Modes: n=normal, v=visual, c=command, i=insert, r=replace, o=operator, t=terminal, sm=showmatch
