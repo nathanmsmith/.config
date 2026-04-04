@@ -1,6 +1,57 @@
 -- Note: Split this file out if I add more git functionality
 local Path = require("plenary.path")
 
+-- conflict-marker.vim
+vim.g.conflict_marker_enable_mappings = false -- Unimpaired does this [n and ]n
+vim.g.conflict_marker_highlight_group = ""
+vim.g.conflict_marker_begin = "^<<<<<<< .*$"
+vim.g.conflict_marker_end = "^>>>>>>> .*$"
+
+-- gitsigns
+require("gitsigns").setup({
+  on_attach = function(bufnr)
+    local gitsigns = require("gitsigns")
+
+    local function map(mode, l, r, opts)
+      opts = opts or {}
+      opts.buffer = bufnr
+      vim.keymap.set(mode, l, r, opts)
+    end
+
+    map("n", "]c", function()
+      if vim.wo.diff then
+        vim.cmd.normal({ "]c", bang = true })
+      else
+        gitsigns.nav_hunk("next")
+      end
+    end)
+
+    map("n", "[c", function()
+      if vim.wo.diff then
+        vim.cmd.normal({ "[c", bang = true })
+      else
+        gitsigns.nav_hunk("prev")
+      end
+    end)
+  end,
+})
+
+-- diffview
+require("diffview").setup({
+  diff_binaries = false,
+  use_icons = false,
+  view = {
+    default = {
+      layout = "diff2_horizontal",
+    },
+    merge_tool = {
+      layout = "diff3_horizontal",
+    },
+  },
+})
+vim.keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>", { desc = "Open git diff view" })
+vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory %<cr>", { desc = "File history" })
+
 ---@class OpenGitHubUrlArgs
 ---@field line1 integer # Start line number of the range
 ---@field line2 integer # End line number of the range

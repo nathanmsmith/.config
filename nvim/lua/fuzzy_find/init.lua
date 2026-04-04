@@ -1,5 +1,22 @@
 local helpers = require("custom-helpers")
 
+local actions = require("fzf-lua").actions
+require("fzf-lua").setup({
+  winopts = {
+    preview = {
+      layout = "vertical",
+      vertical = "up:40%",
+    },
+  },
+  actions = {
+    true,
+    files = {
+      true,
+      ["ctrl-q"] = { fn = actions.file_sel_to_qf, prefix = "select-all" },
+    },
+  },
+})
+
 if helpers.isModuleAvailable("stripe") then
   require("stripe-fuzzy_find").initFuzzyFind()
 end

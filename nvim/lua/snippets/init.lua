@@ -1,3 +1,17 @@
+-- nvim-scissors
+require("scissors").setup({
+  snippetDir = vim.fn.stdpath("config") .. "/snippets",
+  telescope = {
+    alsoSearchSnippetBody = true,
+  },
+})
+vim.api.nvim_create_user_command("SnippetEdit", function()
+  require("scissors").editSnippet()
+end, { desc = "Edit snippets" })
+vim.api.nvim_create_user_command("SnippetAdd", function()
+  require("scissors").addNewSnippet()
+end, { desc = "Add a snippet" })
+
 local ls = require("luasnip")
 local types = require("luasnip.util.types")
 local helpers = require("custom-helpers")

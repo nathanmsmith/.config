@@ -1,6 +1,8 @@
 -- Welcome! 👋
 -- This is my config for Neovim.
 
+vim.loader.enable()
+
 vim.cmd("colorscheme nightowl")
 
 local helpers = require("custom-helpers")
@@ -14,9 +16,11 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require("config.lazy")
+require("config.pack")
 
 require("vanilla")
+require("editing")
+require("treesitter")
 require("windows")
 require("marks")
 require("user-commands")
@@ -37,9 +41,15 @@ if helpers.isModuleAvailable("stripe") then
 else
   require("projectionist")
 end
+
+require("lsp.attach")
+require("lsp")
+require("snippets")
+require("completion")
 require("formatting")
 require("diagnostic")
 require("testing")
 require("git")
+require("quickfix")
 require("meta")
 require("scratchpad")

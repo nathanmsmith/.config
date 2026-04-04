@@ -125,6 +125,32 @@ require("nvim-treesitter-textobjects").setup({
   },
 })
 
+-- nvim-ts-autotag
+require("nvim-ts-autotag").setup()
+
+-- nvim-treesitter-context
+require("treesitter-context").setup({
+  enable = true,
+  max_lines = 10,
+  min_window_height = 0,
+  line_numbers = true,
+  multiline_threshold = 1,
+  trim_scope = "outer",
+  mode = "cursor",
+})
+
+-- ts-comments.nvim
+require("ts-comments").setup()
+
+-- vim-matchup
+vim.g.matchup_surround_enabled = true
+vim.g.matchup_delim_noskips = 1
+vim.g.matchup_matchparen_offscreen = {}
+
+-- ts-node-action
+require("ts-node-action").setup({})
+vim.keymap.set({ "n" }, "gs", require("ts-node-action").node_action, { desc = "Trigger Node Action" })
+
 vim.filetype.add({
   extension = {
     cconf = "python",

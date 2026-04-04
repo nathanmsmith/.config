@@ -1,6 +1,19 @@
 local helpers = require("custom-helpers")
 local servers = require("lsp.servers")
 
+require("mason").setup({
+  ui = {
+    border = "single",
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗",
+    },
+  },
+})
+require("fidget").setup()
+require("lazydev").setup()
+
 local installable_servers = servers.installable
 local installable_tools = servers.tools
 if helpers.isModuleAvailable("stripe") then
