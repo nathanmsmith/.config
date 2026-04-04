@@ -6,6 +6,11 @@ font-size = 20
 font-family = Dank Mono
 font-family = codicon
 
+macos-option-as-alt = true
+keybind = alt+left=unbind
+keybind = alt+right=unbind
+
+
 # Disable ligatures as described here:
 # https://ghostty.org/docs/config/reference#font-feature
 font-feature = -calt
