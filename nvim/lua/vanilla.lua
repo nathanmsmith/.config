@@ -28,7 +28,7 @@ vim.o.title = true
 vim.go.titlestring = "nvim"
 
 -- Always show sign column
-vim.o.signcolumn = "auto:1-5"
+vim.o.signcolumn = "yes:1"
 
 -- Highlight the current line, don't highlight the current column
 vim.o.cursorline = true
