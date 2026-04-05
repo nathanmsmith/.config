@@ -45,14 +45,6 @@ local plugins = {
   "https://github.com/preservim/vimux",
   -- LSP
   -- Treesitter
-  "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
-  "https://github.com/windwp/nvim-ts-autotag",
-  "https://github.com/RRethy/nvim-treesitter-endwise",
-  "https://github.com/nvim-treesitter/nvim-treesitter-context",
-  "https://github.com/folke/ts-comments.nvim",
-  "https://github.com/andymass/vim-matchup",
-  "https://github.com/ckolkey/ts-node-action",
   -- Git
   "https://github.com/rhysd/conflict-marker.vim",
   "https://github.com/lewis6991/gitsigns.nvim",

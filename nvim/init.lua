@@ -20,7 +20,6 @@ require("config.pack")
 
 require("vanilla")
 require("editing")
-require("treesitter")
 require("windows")
 require("marks")
 require("user-commands")
@@ -44,6 +43,5 @@ end
 
 require("testing")
 require("git")
-require("quickfix")
 require("meta")
 require("scratchpad")

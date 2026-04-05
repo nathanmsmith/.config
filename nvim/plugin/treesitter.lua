@@ -1,3 +1,14 @@
+vim.pack.add({
+  "https://github.com/nvim-treesitter/nvim-treesitter",
+  "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+  "https://github.com/windwp/nvim-ts-autotag",
+  "https://github.com/RRethy/nvim-treesitter-endwise",
+  "https://github.com/nvim-treesitter/nvim-treesitter-context",
+  "https://github.com/folke/ts-comments.nvim",
+  "https://github.com/andymass/vim-matchup",
+  "https://github.com/ckolkey/ts-node-action",
+})
+
 -- Register custom make-range! directive for treesitter queries
 -- This creates a range from two separate captures (used in JSX/TSX textobjects)
 vim.treesitter.query.add_directive("make-range!", function(match, _, _, pred, metadata)
