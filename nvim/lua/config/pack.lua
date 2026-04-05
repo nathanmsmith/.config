@@ -35,8 +35,6 @@ local plugins = {
   "https://github.com/szw/vim-maximizer",
   "https://github.com/godlygeek/tabular",
   -- Testing
-  "https://github.com/vim-test/vim-test",
-  "https://github.com/preservim/vimux",
   -- LSP
   -- Treesitter
   -- Git

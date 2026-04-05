@@ -1,3 +1,8 @@
+vim.pack.add({
+  "https://github.com/vim-test/vim-test",
+  "https://github.com/preservim/vimux",
+})
+
 vim.g["test#custom_strategies"] = {
   iterm = function(test_command)
     print("Test command: " .. test_command)

@@ -40,7 +40,6 @@ else
   require("projectionist")
 end
 
-require("testing")
 require("git")
 require("meta")
 require("scratchpad")
