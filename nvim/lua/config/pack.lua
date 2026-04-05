@@ -60,9 +60,6 @@ local plugins = {
   -- Fuzzy finding
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/stevearc/conform.nvim",
-  -- Quickfix
-  "https://github.com/kevinhwang91/nvim-bqf",
-  "https://github.com/stevearc/quicker.nvim",
 
   "https://github.com/nvim-lua/plenary.nvim",
 }

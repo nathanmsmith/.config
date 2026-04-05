@@ -1,3 +1,8 @@
+vim.pack.add({
+  "https://github.com/kevinhwang91/nvim-bqf",
+  "https://github.com/stevearc/quicker.nvim",
+})
+
 -- nvim-bqf: setup when quickfix window opens
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "qf",
