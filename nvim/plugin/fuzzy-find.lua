@@ -1,3 +1,7 @@
+vim.pack.add({
+  "https://github.com/ibhagwan/fzf-lua",
+})
+
 local helpers = require("custom-helpers")
 
 local actions = require("fzf-lua").actions

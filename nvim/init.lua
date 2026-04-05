@@ -26,7 +26,6 @@ require("user-commands")
 require("autocmds")
 require("autoread")
 require("statusline")
-require("fuzzy_find")
 
 require("abolish")
 
