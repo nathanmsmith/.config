@@ -32,12 +32,7 @@ local plugins = {
   "https://github.com/tpope/vim-rsi",
   "https://github.com/tpope/vim-projectionist",
   "https://github.com/tpope/vim-eunuch",
-  "https://github.com/kylechui/nvim-surround",
-  "https://github.com/chaoren/vim-wordmotion",
-  "https://github.com/echasnovski/mini.splitjoin",
   "https://github.com/szw/vim-maximizer",
-  "https://github.com/brenoprata10/nvim-highlight-colors",
-  "https://github.com/pteroctopus/faster.nvim",
   "https://github.com/godlygeek/tabular",
   -- Testing
   "https://github.com/vim-test/vim-test",
