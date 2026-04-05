@@ -34,7 +34,6 @@ local plugins = {
   "https://github.com/tpope/vim-eunuch",
   "https://github.com/kylechui/nvim-surround",
   "https://github.com/chaoren/vim-wordmotion",
-  "https://github.com/echasnovski/mini.ai",
   "https://github.com/echasnovski/mini.splitjoin",
   "https://github.com/szw/vim-maximizer",
   "https://github.com/brenoprata10/nvim-highlight-colors",
@@ -50,8 +49,6 @@ local plugins = {
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/sindrets/diffview.nvim",
   -- Fuzzy finding
-  "https://github.com/ibhagwan/fzf-lua",
-  "https://github.com/stevearc/conform.nvim",
 
   "https://github.com/nvim-lua/plenary.nvim",
 }
