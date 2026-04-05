@@ -10,19 +10,6 @@ vim.g.loaded_2html_plugin = 1
 vim.g.loaded_tutor_mode_plugin = 1
 vim.g.loaded_zipPlugin = 1
 
--- Post-install/update hooks (must be before vim.pack.add)
-vim.api.nvim_create_autocmd("PackChanged", {
-  callback = function(ev)
-    local name, kind = ev.data.spec.name, ev.data.kind
-    if name == "nvim-treesitter" and (kind == "install" or kind == "update") then
-      if not ev.data.active then
-        vim.cmd.packadd("nvim-treesitter")
-      end
-      vim.cmd("TSUpdate")
-    end
-  end,
-})
-
 local plugins = {
   -- Editing
   "https://github.com/tpope/vim-repeat",
@@ -34,9 +21,6 @@ local plugins = {
   "https://github.com/tpope/vim-eunuch",
   "https://github.com/szw/vim-maximizer",
   "https://github.com/godlygeek/tabular",
-  -- Testing
-  -- LSP
-  -- Treesitter
   -- Git
   "https://github.com/rhysd/conflict-marker.vim",
   "https://github.com/lewis6991/gitsigns.nvim",
