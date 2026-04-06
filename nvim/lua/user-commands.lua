@@ -63,7 +63,8 @@ vim.api.nvim_create_user_command("AI", function(opts)
 end, { desc = "Toggle AI terminal (Claude Code)", nargs = "?" })
 
 vim.api.nvim_create_user_command("Devlog", function(opts)
-  local devlog_dir = vim.fn.expand("~/Developer/devlog")
+  local devlog_dir = helpers.isModuleAvailable("stripe") and vim.fn.expand("~/stripe/devlog")
+    or vim.fn.expand("~/Developer/devlog")
   local filename = opts.args ~= "" and opts.args or os.date("%Y-%m-%d") .. ".md"
 
   -- Ensure filename has .md extension
