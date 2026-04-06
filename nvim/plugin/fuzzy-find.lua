@@ -2,6 +2,15 @@ vim.pack.add({
   "https://github.com/ibhagwan/fzf-lua",
 })
 
+if require("custom-helpers").isModuleAvailable("stripe") then
+  vim.pack.add({
+    "https://github.com/nvim-telescope/telescope.nvim",
+  })
+  vim.pack.add({
+    "https://github.com/nathanmsmith/livegrep.nvim",
+  })
+end
+
 local helpers = require("custom-helpers")
 
 local actions = require("fzf-lua").actions

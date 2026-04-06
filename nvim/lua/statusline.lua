@@ -23,7 +23,8 @@ function _G.snippet_status()
   -- - `in_snippet()`: returns true if the cursor is inside the current snippet.
   -- - `get_active_snip()`: returns the currently active snippet (not node!).
   -- - `choice_active()`: true if inside a choiceNode.
-  if luasnip.expandable() then
+  local ok, expandable = pcall(luasnip.expandable)
+  if ok and expandable then
     return "[expandable]"
   else
     local active_snip = luasnip.get_active_snip()
