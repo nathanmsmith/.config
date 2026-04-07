@@ -1,7 +1,6 @@
 vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
 local helpers = require("custom-helpers")
-local is_stripe = helpers.isModuleAvailable("stripe")
 
 local eslint_filetypes = {
   javascript = true,
@@ -10,47 +9,25 @@ local eslint_filetypes = {
   typescriptreact = true,
 }
 
-if is_stripe then
-  require("conform").setup({
-    formatters_by_ft = {
-      ["_"] = { "trim_newlines", "trim_whitespace" },
-    },
-    format_after_save = function(bufnr)
-      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-        return
-      end
+require("conform").setup({
+  formatters_by_ft = {
+    ["_"] = { "trim_newlines", "trim_whitespace" },
+  },
+  format_on_save = function(bufnr)
+    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+      return
+    end
 
-      if eslint_filetypes[vim.bo[bufnr].filetype] then
-        vim.cmd("silent! EslintFixAll")
-      end
+    if eslint_filetypes[vim.bo[bufnr].filetype] then
+      vim.cmd("silent! EslintFixAll")
+    end
 
-      return {
-        timeout_ms = 500,
-        lsp_format = "fallback",
-      }
-    end,
-  })
-else
-  require("conform").setup({
-    formatters_by_ft = {
-      ["_"] = { "trim_newlines", "trim_whitespace" },
-    },
-    format_on_save = function(bufnr)
-      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-        return
-      end
-
-      if eslint_filetypes[vim.bo[bufnr].filetype] then
-        vim.cmd("silent! EslintFixAll")
-      end
-
-      return {
-        timeout_ms = 1000,
-        lsp_format = "fallback",
-      }
-    end,
-  })
-end
+    return {
+      timeout_ms = 500,
+      lsp_format = "fallback",
+    }
+  end,
+})
 
 -- Commands to enable/disable formatting
 -- https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#command-to-toggle-format-on-save
