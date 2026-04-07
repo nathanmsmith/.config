@@ -109,6 +109,10 @@
       "rev": "9d22ecef2d019a72748f23cec9db32c7f7b222d2",
       "src": "https://github.com/chrisgrieser/nvim-scissors"
     },
+    "nvim-stripe-configs": {
+      "rev": "f9c608c53355c988c58de6204373f0b98995cc62",
+      "src": "git@git.corp.stripe.com:stevearc/nvim-stripe-configs.git"
+    },
     "nvim-surround": {
       "rev": "19e39478ccf5fa2eefdb3595af2f2927d0ff2416",
       "src": "https://github.com/kylechui/nvim-surround"
@@ -137,6 +141,10 @@
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "payjectionist.nvim": {
+      "rev": "842ecafabb566979eb4cb688fa2f61199eaef8aa",
+      "src": "git@git.corp.stripe.com:nms/payjectionist.nvim.git"
+    },
     "plenary.nvim": {
       "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
       "src": "https://github.com/nvim-lua/plenary.nvim"
@@ -148,6 +156,10 @@
     "schemastore.nvim": {
       "rev": "6d0329adb9c8cbe51b9a28299890a5eb104db7dc",
       "src": "https://github.com/b0o/schemastore.nvim"
+    },
+    "stripe-code-owner.nvim": {
+      "rev": "e5216e37ab690e1153bcd8813c7d4c94ace77c94",
+      "src": "git@git.corp.stripe.com:dbalatero/stripe-code-owner.nvim.git"
     },
     "tabular": {
       "rev": "12437cd1b53488e24936ec4b091c9324cafee311",
@@ -220,6 +232,10 @@
     "vim-test": {
       "rev": "6eb2e5e7b32c321d373d2954199f4510be804713",
       "src": "https://github.com/vim-test/vim-test"
+    },
+    "vim-test-stripe": {
+      "rev": "968f8c1124c5f2f6056379fc19dfba89155f45c4",
+      "src": "git@git.corp.stripe.com:dbalatero/vim-test-stripe.git"
     },
     "vim-unimpaired": {
       "rev": "db65482581a28e4ccf355be297f1864a4e66985c",

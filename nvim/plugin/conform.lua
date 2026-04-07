@@ -1,62 +1,49 @@
 vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
 local helpers = require("custom-helpers")
+local is_stripe = helpers.isModuleAvailable("stripe")
 
-if helpers.isModuleAvailable("stripe") then
-  require("stripe-formatting").initFormatters()
-else
-  -- Common formatters
-  local prettier = { "prettier" }
+local eslint_filetypes = {
+  javascript = true,
+  javascriptreact = true,
+  typescript = true,
+  typescriptreact = true,
+}
 
+if is_stripe then
   require("conform").setup({
-    -- log_level = vim.log.levels.DEBUG,
-    formatters = {
-      rubocop = {
-        args = {
-          "--server",
-          -- Unsafe autocorrect
-          "-A",
-          "-f",
-          "quiet",
-          "--stderr",
-          "--stdin",
-          "$FILENAME",
-        },
-      },
-      -- Used for Neovim dev
-      uncrustify = {
-        args = function(_, ctx)
-          local args = { "-q", "-l", "C", "-c", "src/uncrustify.cfg", "--no-backup" }
-          return args
-        end,
-      },
-    },
     formatters_by_ft = {
-      lua = { "stylua" },
-      python = { "isort", "black" },
-      ruby = { "rubocop" },
-      javascript = prettier,
-      typescript = prettier,
-      javascriptreact = prettier,
-      typescriptreact = prettier,
-      html = prettier,
-      json = prettier,
-      jsonc = prettier,
-      graphql = prettier,
-      query = { "format-queries" },
-      go = { "goimports", "gofmt" },
-      swift = { "swiftformat" },
-      c = { "uncrustify" },
-      cpp = { "uncrustify" },
-      elixir = { "mix" },
-      eelixir = { "mix" },
-      heex = { "mix" },
+      ["_"] = { "trim_newlines", "trim_whitespace" },
+    },
+    format_after_save = function(bufnr)
+      if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+        return
+      end
+
+      if eslint_filetypes[vim.bo[bufnr].filetype] then
+        vim.cmd("silent! EslintFixAll")
+      end
+
+      return {
+        timeout_ms = 500,
+        lsp_format = "fallback",
+      }
+    end,
+  })
+else
+  require("conform").setup({
+    formatters_by_ft = {
       ["_"] = { "trim_newlines", "trim_whitespace" },
     },
     format_on_save = function(bufnr)
       if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
         return
       end
+
+      if eslint_filetypes[vim.bo[bufnr].filetype] then
+        vim.cmd("silent! EslintFixAll")
+      end
+
       return {
         timeout_ms = 1000,
         lsp_format = "fallback",
@@ -84,10 +71,3 @@ vim.api.nvim_create_user_command("FormatEnable", function()
 end, {
   desc = "Re-enable autoformat-on-save",
 })
-
---   This will format changed Lua and C files with all appropriate flags set.
--- - Style rules are (mostly) defined by `src/uncrustify.cfg` which tries to match
---   the [style-guide]. To use the Nvim `gq` command with `uncrustify`:
---   if !empty(findfile('src/uncrustify.cfg', ';'))
---     setlocal formatprg=uncrustify\ -q\ -l\ C\ -c\ src/uncrustify.cfg\ --no-backup
---   endif
