@@ -149,7 +149,11 @@ require("nvim-treesitter-textobjects").setup({
 })
 
 -- nvim-ts-autotag
-require("nvim-ts-autotag").setup()
+require("nvim-ts-autotag").setup({
+  per_filetype = {
+    ["eruby"] = { enable_close = false, enable_rename = false, enable_close_on_slash = false },
+  },
+})
 
 -- nvim-treesitter-context
 require("treesitter-context").setup({
