@@ -32,6 +32,7 @@ nvim/lua/stripe.lua
 nvim/lua/stripe-*.lua
 nvim/lua/plugins/stripe-plugins-mac.lua
 nvim/lua/plugins/stripe-plugins-devbox.lua
+nvim/plugin/stripe-plugins.lua
 fish/functions/pay-remote-ssh.fish
 fish/functions/stripe-config.fish
 fish/stripe-config.fish
