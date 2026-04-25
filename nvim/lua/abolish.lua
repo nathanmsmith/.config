@@ -396,7 +396,10 @@ local function substitute_command(count, line1, line2, parsed, preview_ns)
         opts.flags,
       }),
     }
-    vim.cmd.substitute(cmd)
+    local ok, err = pcall(vim.cmd.substitute, cmd)
+    if not ok and err and not err:match("E486") then
+      vim.notify(err, vim.log.levels.ERROR)
+    end
   elseif preview_ns and #vim.tbl_keys(dict) > 1 then
     already_seen.start = {}
     already_seen.end_ = {}

@@ -50,7 +50,7 @@ local function open_ai_terminal(program)
   vim.cmd("vsplit")
   vim.cmd("terminal " .. cmd)
   ai_buf = vim.api.nvim_get_current_buf()
-  vim.cmd("vertical resize " .. math.floor(vim.o.columns / 3))
+  vim.cmd("vertical resize " .. math.floor(vim.o.columns / 2))
   vim.cmd("startinsert")
 end
 
@@ -61,6 +61,12 @@ vim.api.nvim_create_user_command("AI", function(opts)
     open_ai_terminal(opts.args ~= "" and opts.args or nil)
   end
 end, { desc = "Toggle AI terminal (Claude Code)", nargs = "?" })
+
+vim.api.nvim_create_user_command("RestartSession", function()
+  local session = vim.fn.stdpath("cache") .. "/restart-session.vim"
+  vim.cmd("mksession! " .. vim.fn.fnameescape(session))
+  vim.cmd("restart source " .. vim.fn.fnameescape(session))
+end, {})
 
 vim.api.nvim_create_user_command("Devlog", function(opts)
   local devlog_dir = helpers.isModuleAvailable("stripe") and vim.fn.expand("~/stripe/devlog")
